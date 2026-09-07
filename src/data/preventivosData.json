@@ -1,5 +1,5 @@
 {
-  "totalPendientes": 691,
+  "totalPendientes": 675,
   "totalRealizados": 1250,
   "metaMensual": 550,
   "diasHabilesRestantes": 17,
@@ -209,13 +209,13 @@
       "luno": "021123000170",
       "direccion": "AV. Chile 1585",
       "localidad": "Comodoro Rivadavia",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Gonzalez Cabrera, Antonio",
       "modelo": "CTI90 SNBC",
       "zona": "Patagonia",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101214565",
@@ -223,13 +223,13 @@
       "luno": "021123000270",
       "direccion": "Av. Kennedy 2119",
       "localidad": "Comodoro Rivadavia",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Gonzalez Cabrera, Antonio",
       "modelo": "KISAN KD30",
       "zona": "Patagonia",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101214564",
@@ -237,13 +237,13 @@
       "luno": "021123000070",
       "direccion": "AV. Chile 1705",
       "localidad": "Comodoro Rivadavia",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Gonzalez Cabrera, Antonio",
       "modelo": "KISAN KD30",
       "zona": "Patagonia",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101214540",
@@ -554,20 +554,6 @@
       "esSinAsignar": true
     },
     {
-      "pedido": "101214332",
-      "cliente": "FAVANET",
-      "luno": "004925002070",
-      "direccion": "Jupiter 248",
-      "localidad": "Pinamar",
-      "tecnico": "Montiel, Juan Fernando",
-      "modelo": "GLORY P1000",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": false
-    },
-    {
       "pedido": "101214331",
       "cliente": "FAVANET",
       "luno": "004925000970",
@@ -811,13 +797,13 @@
       "luno": "008681007370",
       "direccion": "J Williams Y Av H Yrigoyen",
       "localidad": "Trelew",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Godoy, Diego",
       "modelo": "CTE2 SNBC",
       "zona": "Patagonia",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101214077",
@@ -834,32 +820,18 @@
       "esSinAsignar": true
     },
     {
-      "pedido": "101214068",
-      "cliente": "CENCOSUD S.A",
-      "luno": "008681061670",
-      "direccion": "Rivadavia Y Totoras",
-      "localidad": "Pinamar",
-      "tecnico": "Montiel, Juan Fernando",
-      "modelo": "CTE2 SNBC",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": false
-    },
-    {
       "pedido": "101214055",
       "cliente": "CENCOSUD S.A",
       "luno": "008681028970",
       "direccion": "Josiah Williams (ruta prov.7 ) y peron",
       "localidad": "Trelew",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Godoy, Diego",
       "modelo": "GLORY P500",
       "zona": "Patagonia",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101214014",
@@ -1072,20 +1044,6 @@
       "esSinAsignar": true
     },
     {
-      "pedido": "101213805",
-      "cliente": "ANDRES PONSA S.A",
-      "luno": "010983000070",
-      "direccion": "Saavedra 440",
-      "localidad": "General Madariaga",
-      "tecnico": "SIN ASIGNAR",
-      "modelo": "CTI UL- C",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
-    },
-    {
       "pedido": "101213799",
       "cliente": "AEROPUERTOS ARGENTINA 2000 SA",
       "luno": "007089005070",
@@ -1105,13 +1063,13 @@
       "luno": "002359017770",
       "direccion": "Ruta 5 y 33 (CP 6400)",
       "localidad": "Trenque Lauquen",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Garcia, Alejandro Javier",
       "modelo": "CTI90 SNBC - C",
       "zona": "Patagonia",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101213782",
@@ -1658,20 +1616,6 @@
       "fabricante": "Fabricante",
       "detalleFalla": "MANTENIMIENTO PREVENTIVO SEGUNDO SEMESTRE",
       "esSinAsignar": true
-    },
-    {
-      "pedido": "101200724",
-      "cliente": "BAPRO",
-      "luno": "5669",
-      "direccion": "Bartolome Mitre 925",
-      "localidad": "Coronel Pringles",
-      "tecnico": "Martos, Jose Angel",
-      "modelo": "DT-7000H22V",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "MANTENIMIENTO PREVENTIVO SEGUNDO SEMESTRE",
-      "esSinAsignar": false
     },
     {
       "pedido": "101200720",
@@ -2293,20 +2237,6 @@
       "pedido": "101200385",
       "cliente": "BAPRO",
       "luno": "6697",
-      "direccion": "General Pinto 1798",
-      "localidad": "Tandil",
-      "tecnico": "Aldayturriaga, Martin",
-      "modelo": "DT-7000H34N",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "MANTENIMIENTO PREVENTIVO SEGUNDO SEMESTRE",
-      "esSinAsignar": false
-    },
-    {
-      "pedido": "101200382",
-      "cliente": "BAPRO",
-      "luno": "5544",
       "direccion": "General Pinto 1798",
       "localidad": "Tandil",
       "tecnico": "Aldayturriaga, Martin",
@@ -4866,20 +4796,6 @@
       "esSinAsignar": true
     },
     {
-      "pedido": "101197204",
-      "cliente": "BANCO NACION",
-      "luno": "7881",
-      "direccion": "Avda. Edison 302",
-      "localidad": "Mar Del Plata",
-      "tecnico": "Chiriello, Pablo Javier",
-      "modelo": "DT-7000H22V",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Mantenimiento Preventivo. 2do Semestre 2026. Anexar Fotos del antes y después como soporte de la actividad ejecutada.",
-      "esSinAsignar": false
-    },
-    {
       "pedido": "101197146",
       "cliente": "BANCO NACION",
       "luno": "7795",
@@ -5258,20 +5174,6 @@
       "esSinAsignar": true
     },
     {
-      "pedido": "101196827",
-      "cliente": "BANCO NACION",
-      "luno": "10073",
-      "direccion": "Avda. Edison 302",
-      "localidad": "Mar Del Plata",
-      "tecnico": "Chiriello, Pablo Javier",
-      "modelo": "DT-7000H22V",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Mantenimiento Preventivo. 2do Semestre 2026. Anexar Fotos del antes y después como soporte de la actividad ejecutada.",
-      "esSinAsignar": false
-    },
-    {
       "pedido": "101196825",
       "cliente": "BANCO NACION",
       "luno": "5907",
@@ -5356,20 +5258,6 @@
       "esSinAsignar": true
     },
     {
-      "pedido": "101196770",
-      "cliente": "BANCO NACION",
-      "luno": "10072",
-      "direccion": "Avda. Edison 302",
-      "localidad": "Mar Del Plata",
-      "tecnico": "Chiriello, Pablo Javier",
-      "modelo": "DT-7000H22V",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Mantenimiento Preventivo. 2do Semestre 2026. Anexar Fotos del antes y después como soporte de la actividad ejecutada.",
-      "esSinAsignar": false
-    },
-    {
       "pedido": "101196768",
       "cliente": "BANCO NACION",
       "luno": "10071",
@@ -5396,20 +5284,6 @@
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo. 2do Semestre 2026. Anexar Fotos del antes y después como soporte de la actividad ejecutada.",
       "esSinAsignar": true
-    },
-    {
-      "pedido": "101196711",
-      "cliente": "BANCO NACION",
-      "luno": "4112",
-      "direccion": "Avda. Edison 302",
-      "localidad": "Mar Del Plata",
-      "tecnico": "Chiriello, Pablo Javier",
-      "modelo": "DT-7000H34N (FECT)",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Mantenimiento Preventivo. 2do Semestre 2026. Anexar Fotos del antes y después como soporte de la actividad ejecutada.",
-      "esSinAsignar": false
     },
     {
       "pedido": "101196710",
@@ -5823,13 +5697,13 @@
       "luno": "10452",
       "direccion": "Bvd. Villegas 501",
       "localidad": "Trenque Lauquen",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Garcia, Alejandro Javier",
       "modelo": "ATM  OPTEVA 522",
       "zona": "Patagonia",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo. 2do Semestre 2026. Anexar Fotos del antes y después como soporte de la actividad ejecutada.",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101196089",
@@ -5851,13 +5725,13 @@
       "luno": "10495",
       "direccion": "Bvd. Villegas 501",
       "localidad": "Trenque Lauquen",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Garcia, Alejandro Javier",
       "modelo": "ATM  OPTEVA 522",
       "zona": "Patagonia",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo. 2do Semestre 2026. Anexar Fotos del antes y después como soporte de la actividad ejecutada.",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101196014",
@@ -5928,20 +5802,6 @@
       "fabricante": "Fabricante",
       "detalleFalla": "MANTENIMIENTO PREVENTIVO SEGUNDO SEMESTRE",
       "esSinAsignar": true
-    },
-    {
-      "pedido": "101195862",
-      "cliente": "BANCO CREDICOOP",
-      "luno": "870281",
-      "direccion": "Estomba 968",
-      "localidad": "Bahia Blanca",
-      "tecnico": "Pavon, Diego Emanuel",
-      "modelo": "ATM  OPTEVA 522",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "MANTENIMIENTO PREVENTIVO SEGUNDO SEMESTRE",
-      "esSinAsignar": false
     },
     {
       "pedido": "101195860",
@@ -6406,20 +6266,6 @@
       "esSinAsignar": true
     },
     {
-      "pedido": "101181567",
-      "cliente": "BANCO HIPOTECARIO",
-      "luno": "040TI0001",
-      "direccion": "Colon 461",
-      "localidad": "Viedma",
-      "tecnico": "Vicente, Francisco Ariel",
-      "modelo": "TAS OPTEVA 720 R/L ENA",
-      "zona": "Patagonia",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "MANTENIMIENTO PREVENTIVO SEGUNDO SEMESTRE 2026\r\nMANTENIMIENTO PREVENTIVO SEGUNDO CUATRIMESTRE 2026",
-      "esSinAsignar": false
-    },
-    {
       "pedido": "101181563",
       "cliente": "BANCO HIPOTECARIO",
       "luno": "033TI0002",
@@ -6593,13 +6439,13 @@
       "luno": "015TI0003",
       "direccion": "Av. Independencia 1701 UF 1 Y 2",
       "localidad": "Mar Del Plata",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Buratti, Fabian",
       "modelo": "TAS OPTEVA 720 R/L ENA",
       "zona": "Patagonia",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "MANTENIMIENTO PREVENTIVO SEGUNDO SEMESTRE 2026\r\nMANTENIMIENTO PREVENTIVO SEGUNDO CUATRIMESTRE 2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101181478",
@@ -6658,32 +6504,46 @@
       "esSinAsignar": true
     },
     {
+      "pedido": "101215321",
+      "cliente": "BANCO LA PAMPA",
+      "luno": "111",
+      "direccion": "Av. General Roca 1331",
+      "localidad": "General Roca",
+      "tecnico": "Ibañez, Pablo Fernando",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA",
+      "zona": "Suroeste",
+      "negocio": "ATM",
+      "fabricante": "Fabricante",
+      "detalleFalla": "- Falla : presenta error en la impresora",
+      "esSinAsignar": false
+    },
+    {
+      "pedido": "101215297",
+      "cliente": "BANCO NACION",
+      "luno": "20066",
+      "direccion": "Calle Roque Sáez Peña y Calle Corbalán",
+      "localidad": "Lujan De Cuyo",
+      "tecnico": "Bastias, Carlos Ignacio",
+      "modelo": "DT-7000H22V",
+      "zona": "Suroeste",
+      "negocio": "ATM",
+      "fabricante": "Fabricante",
+      "detalleFalla": "Dispensador no funciona\r\n\r\nSLA Vence 08/09 10:33hs \r\nTELLEX 8 a 16hs",
+      "esSinAsignar": false
+    },
+    {
       "pedido": "101215113",
       "cliente": "SAIEP",
       "luno": "004677025970",
       "direccion": "Belgrano 2186",
       "localidad": "Neuquen",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Ibañez, Pablo Fernando",
       "modelo": "CTI UL",
       "zona": "Suroeste",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Cliente se comunica por error de aplicación",
-      "esSinAsignar": true
-    },
-    {
-      "pedido": "101215099",
-      "cliente": "GRA-ME SRL",
-      "luno": "010888000070",
-      "direccion": "San Miguel 883",
-      "localidad": "Las Heras",
-      "tecnico": "SIN ASIGNAR",
-      "modelo": "CTI UL",
-      "zona": "Suroeste",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Cliente se comunica por pantalla en negro. Se verifica que de manera remota se tiene acceso al equipo, pero el monitor se encuentra apagado. Se realiza verificación de cpu y reinicio del mismo, luego reinicio del equipo completo. La clienta nos informa que encendió en azul y con la leyenda \"No Signal\", pero a los pocos segundos se volvió a apagar. Se verifica cableado y se reinicia nuevamente equipo en conjunto, pero la falla persiste y se deja de tener conexión remota.\r\nLa clienta solicita la asistencia con urgencia.\r\nContacto: +5492614541997 (Jésica Gonzalez)\r\nHorarios: De 08 a 13 y de 17 a 21hs",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101215051",
@@ -6705,26 +6565,12 @@
       "luno": "008681029470",
       "direccion": "Independencia 1100",
       "localidad": "Las Heras",
-      "tecnico": "Gonzalez, Leonardo",
+      "tecnico": "Fiorio, Andres Ezequiel",
       "modelo": "CTI90 SNBC",
       "zona": "Suroeste",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Se comunica el usuario indicando que no puede depositar ni ingresar con el usuario.",
-      "esSinAsignar": false
-    },
-    {
-      "pedido": "101214903",
-      "cliente": "BANCO NACION",
-      "luno": "10342",
-      "direccion": "San Isidro 740",
-      "localidad": "Rivadavia",
-      "tecnico": "Lorca Biassi, Enzo Martin",
-      "modelo": "ATM  OPTEVA 522",
-      "zona": "Suroeste",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Error en lectora de tarjetas, las retiene y el ATM queda fuera de servicio\r\n\r\nSLA Vence 07/09 12:27hs\r\nTELLEX 8 a 16hs",
       "esSinAsignar": false
     },
     {
@@ -6747,7 +6593,7 @@
       "luno": "19647",
       "direccion": "Plantamura entre San Felipe y Del Castillo",
       "localidad": "Mendoza",
-      "tecnico": "Gonzalez, Leonardo",
+      "tecnico": "Lorca Biassi, Enzo Martin",
       "modelo": "CS2070 RL",
       "zona": "Suroeste",
       "negocio": "ATM",
@@ -7330,32 +7176,18 @@
       "esSinAsignar": true
     },
     {
-      "pedido": "101214065",
-      "cliente": "CENCOSUD S.A",
-      "luno": "008681067570",
-      "direccion": "Jorge A Calle 897",
-      "localidad": "Mendoza",
-      "tecnico": "SIN ASIGNAR",
-      "modelo": "GLORY P500",
-      "zona": "Suroeste",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
-    },
-    {
       "pedido": "101214056",
       "cliente": "CENCOSUD S.A",
       "luno": "008681051870",
       "direccion": "San Miguel 1650",
       "localidad": "Las Heras",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Gonzalez, Leonardo",
       "modelo": "GLORY P500",
       "zona": "Suroeste",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101214050",
@@ -7405,13 +7237,13 @@
       "luno": "008681052970",
       "direccion": "Ruta Panamericana 2675",
       "localidad": "Godoy Cruz",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Bastias, Carlos Ignacio",
       "modelo": "GLORY P500",
       "zona": "Suroeste",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101214032",
@@ -7433,13 +7265,13 @@
       "luno": "008681029470",
       "direccion": "Independencia 1100",
       "localidad": "Las Heras",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Fiorio, Andres Ezequiel",
       "modelo": "CTI90 SNBC",
       "zona": "Suroeste",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101213996",
@@ -7498,32 +7330,18 @@
       "esSinAsignar": true
     },
     {
-      "pedido": "101213986",
-      "cliente": "CARREFOUR",
-      "luno": "006624112270",
-      "direccion": "San Martin 8110",
-      "localidad": "Lujan De Cuyo",
-      "tecnico": "SIN ASIGNAR",
-      "modelo": "CTE1 SNBC",
-      "zona": "Suroeste",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
-    },
-    {
       "pedido": "101213982",
       "cliente": "CARREFOUR",
       "luno": "006624118570",
       "direccion": "Ruta 82 Esq. Calle Union",
       "localidad": "Lujan De Cuyo",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Bastias, Carlos Ignacio",
       "modelo": "CTE1 SNBC",
       "zona": "Suroeste",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101213976",
@@ -7566,20 +7384,6 @@
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
       "esSinAsignar": true
-    },
-    {
-      "pedido": "101213863",
-      "cliente": "CARREFOUR",
-      "luno": "006624050470",
-      "direccion": "LATERAL SUR ACCESO ESTE Y RONDEAU",
-      "localidad": "Guaymallen",
-      "tecnico": "Fiorio, Andres Ezequiel",
-      "modelo": "GLORY P500",
-      "zona": "Suroeste",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Mantenimiento Preventivo al 30/09/2026",
-      "esSinAsignar": false
     },
     {
       "pedido": "101213853",
@@ -7853,7 +7657,7 @@
       "luno": "20325",
       "direccion": "Gral San Martin 2131",
       "localidad": "Neuquen",
-      "tecnico": "Ibañez, Pablo Fernando",
+      "tecnico": "Lazzaro, Leonardo",
       "modelo": "ATM  OPTEVA 522",
       "zona": "Suroeste",
       "negocio": "ATM",
@@ -7867,7 +7671,7 @@
       "luno": "20324",
       "direccion": "Gral San Martin 2131",
       "localidad": "Neuquen",
-      "tecnico": "Ibañez, Pablo Fernando",
+      "tecnico": "Lazzaro, Leonardo",
       "modelo": "ATM  OPTEVA 522",
       "zona": "Suroeste",
       "negocio": "ATM",
@@ -7972,20 +7776,6 @@
       "fabricante": "Fabricante",
       "detalleFalla": "APLICAR SOLUCION PARA EVITAR EL HW ERROR PRODUCIDO POR EMPTY\r\nNO APLICAR SOBRE EQUIPOS CON PROCESADOR DENVER, NI DISPENSADORES CON PLACA H. ( SUSPENDER Y DEJAR EN NOTAS INTERNAS LO OBSERVADO)",
       "esSinAsignar": true
-    },
-    {
-      "pedido": "101211894",
-      "cliente": "BANCO CREDICOOP",
-      "luno": "810871",
-      "direccion": "Pablo Pescara 323",
-      "localidad": "Maipu",
-      "tecnico": "Bastias, Carlos Ignacio",
-      "modelo": "ATM  OPTEVA 510",
-      "zona": "Suroeste",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "APLICAR SOLUCION PARA EVITAR EL HW ERROR PRODUCIDO POR EMPTY\r\nNO APLICAR SOBRE EQUIPOS CON PROCESADOR DENVER, NI DISPENSADORES CON PLACA H. ( SUSPENDER Y DEJAR EN NOTAS INTERNAS LO OBSERVADO)",
-      "esSinAsignar": false
     },
     {
       "pedido": "101211881",
@@ -8273,13 +8063,13 @@
       "luno": "S1HBS783",
       "direccion": "Delia Salas 1175",
       "localidad": "Neuquen",
-      "tecnico": "SIN ASIGNAR",
+      "tecnico": "Ibañez, Pablo Fernando",
       "modelo": "DT-7000H68NLR ATM",
       "zona": "Suroeste",
       "negocio": "ATM",
       "fabricante": "Fabricante",
       "detalleFalla": "Mantenimiento preventivo tercer trimestre 2026",
-      "esSinAsignar": true
+      "esSinAsignar": false
     },
     {
       "pedido": "101211677",
@@ -8315,7 +8105,7 @@
       "luno": "10198",
       "direccion": "Casa de Gobierno PB - Ala Oeste - Rentas",
       "localidad": "Mendoza",
-      "tecnico": "Gonzalez, Leonardo",
+      "tecnico": "Lorca Biassi, Enzo Martin",
       "modelo": "ATM  OPTEVA 522",
       "zona": "Suroeste",
       "negocio": "ATM",
@@ -9528,17 +9318,17 @@
       "esSinAsignar": true
     },
     {
-      "pedido": "101214874",
-      "cliente": "ACA",
-      "luno": "002359018070",
-      "direccion": "R231 y av.arrayanes - v.langostura",
-      "localidad": "Villa La Angostura",
+      "pedido": "101215184",
+      "cliente": "BANCO NACION",
+      "luno": "5031",
+      "direccion": "Av. San Martin 2598",
+      "localidad": "El Bolson",
       "tecnico": "Torres, Florencia",
-      "modelo": "CTI UL",
+      "modelo": "ATM  OPTEVA 522",
       "zona": "Bariloche",
       "negocio": "ATM",
       "fabricante": "Fabricante",
-      "detalleFalla": "El cliente se comunica por error al depositar, initialization error",
+      "detalleFalla": "Problemas con el dispensador. Presenta los billetes torcidos al usuario, los traba y rompe en el stacker\r\n\r\nSLA Vence 08/09 10:08hs \r\nTELLEX 8 a 16hs",
       "esSinAsignar": false
     },
     {
@@ -9610,20 +9400,6 @@
       "fabricante": "Fabricante",
       "detalleFalla": "APLICAR SOLUCION PARA EVITAR EL HW ERROR PRODUCIDO POR EMPTY\r\n\r\nNO APLICAR SOBRE EQUIPOS CON PROCESADOR DENVER, NI DISPENSADORES CON PLACA H. ( SUSPENDER Y DEJAR EN NOTAS INTERNAS LO OBSERVADO)",
       "esSinAsignar": true
-    },
-    {
-      "pedido": "101208364",
-      "cliente": "SAIEP",
-      "luno": "004677023570",
-      "direccion": "Av. Exequiel Bustillo 12964 (Ruta 237 - Km 13)",
-      "localidad": "San Carlos De Bariloche",
-      "tecnico": "Torres, Florencia",
-      "modelo": "CTI90 SNBC",
-      "zona": "Bariloche",
-      "negocio": "ATM",
-      "fabricante": "Fabricante",
-      "detalleFalla": "Verificar conexion remota con monitoreo // El cliente llama por que el monitor no enciende",
-      "esSinAsignar": false
     },
     {
       "pedido": "101207739",

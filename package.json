@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "procesar-datos": "node scripts/process_all_reports_deep.cjs",
+    "actualizar": "node scripts/process_all_reports_deep.cjs && tsc && vite build"
   },
   "dependencies": {
     "@types/canvas-confetti": "^1.9.0",
