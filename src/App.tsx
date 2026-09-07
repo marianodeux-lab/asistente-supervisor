@@ -145,6 +145,16 @@ export function App() {
     }
   };
 
+  // Handler for restoring default unified agenda
+  const handleRestoreDefaultAgenda = () => {
+    setTickets(initialTickets as Ticket[]);
+    setReports(prev => prev.map(r => ({
+      ...r,
+      isActive: r.name.includes('Agenda_Diaria_Patagonia_Oficial') || r.id === 'rep_base_1'
+    })));
+    setActiveTab('sla_agenda');
+  };
+
   // Handler for deleting report
   const handleDeleteReport = (reportId: string) => {
     setReports(prev => prev.filter(r => r.id !== reportId));
@@ -275,6 +285,7 @@ export function App() {
             onUploadSuccess={handleUploadSuccess}
             onActivateReport={handleActivateReport}
             onDeleteReport={handleDeleteReport}
+            onRestoreDefaultAgenda={handleRestoreDefaultAgenda}
             activeReportName={activeReportName}
           />
         )}

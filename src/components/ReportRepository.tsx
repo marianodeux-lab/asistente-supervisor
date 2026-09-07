@@ -9,7 +9,9 @@ import {
   Database, 
   ShieldCheck, 
   AlertCircle,
-  FileCheck
+  FileCheck,
+  Sparkles,
+  Layers
 } from 'lucide-react';
 import { parseExcelFile, ProcessedExcelResult } from '../services/excelProcessor';
 import { Ticket } from '../types';
@@ -30,6 +32,7 @@ interface ReportRepositoryProps {
   onUploadSuccess: (newReport: ReportItem) => void;
   onActivateReport: (reportId: string) => void;
   onDeleteReport: (reportId: string) => void;
+  onRestoreDefaultAgenda?: () => void;
   activeReportName: string;
 }
 
@@ -38,40 +41,73 @@ export const ReportRepository: React.FC<ReportRepositoryProps> = ({
   onUploadSuccess,
   onActivateReport,
   onDeleteReport,
+  onRestoreDefaultAgenda,
   activeReportName
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFileProcess = async (file: File) => {
-    if (!file.name.endsWith('.xlsx') && !file.name.endsWith('.xls') && !file.name.endsWith('.csv')) {
-      setErrorMsg('Por favor selecciona un archivo Excel (.xlsx, .xls) o CSV exportado de Flow Pro.');
-      return;
-    }
+  const handleFilesProcess = async (fileList: FileList | File[]) => {
+    const files = Array.from(fileList);
+    if (files.length === 0) return;
 
     setIsProcessing(true);
     setErrorMsg(null);
+    setSuccessMsg(null);
 
     try {
-      const result: ProcessedExcelResult = await parseExcelFile(file);
-      
-      const sizeKB = (file.size / 1024).toFixed(1);
-      const sizeStr = file.size > 1024 * 1024 ? `${(file.size / (1024 * 1024)).toFixed(2)} MB` : `${sizeKB} KB`;
+      const mergedMap = new Map<string, Ticket>();
+      let totalRows = 0;
+      let totalBytes = 0;
+      const processedNames: string[] = [];
+
+      for (const file of files) {
+        if (!file.name.endsWith('.xlsx') && !file.name.endsWith('.xls') && !file.name.endsWith('.csv')) {
+          continue;
+        }
+
+        const result: ProcessedExcelResult = await parseExcelFile(file);
+        totalRows += result.rowCount;
+        totalBytes += file.size;
+        processedNames.push(file.name);
+
+        result.tickets.forEach(t => {
+          if (!mergedMap.has(t.pedido)) {
+            mergedMap.set(t.pedido, t);
+          } else {
+            // merge additional metadata if exists
+            const existing = mergedMap.get(t.pedido)!;
+            mergedMap.set(t.pedido, { ...existing, ...t });
+          }
+        });
+      }
+
+      const mergedTickets = Array.from(mergedMap.values());
+      if (mergedTickets.length === 0) {
+        setErrorMsg('No se encontraron registros de pedidos válidos en los archivos seleccionados.');
+        return;
+      }
+
+      const sizeKB = (totalBytes / 1024).toFixed(1);
+      const sizeStr = totalBytes > 1024 * 1024 ? `${(totalBytes / (1024 * 1024)).toFixed(2)} MB` : `${sizeKB} KB`;
+      const displayName = files.length === 1 ? files[0].name : `Agenda Unificada (${files.length} reportes)`;
 
       const newReport: ReportItem = {
         id: `rep_${Date.now()}`,
-        name: file.name,
+        name: displayName,
         size: sizeStr,
         uploadDate: new Date().toLocaleString('es-AR'),
-        rowCount: result.rowCount,
+        rowCount: totalRows,
         isActive: true,
-        ticketsCount: result.tickets.length,
-        data: result.tickets
+        ticketsCount: mergedTickets.length,
+        data: mergedTickets
       };
 
       onUploadSuccess(newReport);
+      setSuccessMsg(`¡Se procesaron y unificaron ${mergedTickets.length} pedidos exitosamente!`);
     } catch (err: any) {
       console.error(err);
       setErrorMsg('Error al procesar el archivo Excel. Verifica que sea un formato válido.');
@@ -84,7 +120,7 @@ export const ReportRepository: React.FC<ReportRepositoryProps> = ({
     e.preventDefault();
     setIsDragging(false);
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      handleFileProcess(e.dataTransfer.files[0]);
+      handleFilesProcess(e.dataTransfer.files);
     }
   };
 
@@ -105,20 +141,32 @@ export const ReportRepository: React.FC<ReportRepositoryProps> = ({
               </span>
             </h3>
             <p className="text-xs text-slate-300 mt-1 leading-relaxed max-w-3xl">
-              Puedes descargar tus reportes de <strong>Flow Pro</strong> directamente a tu PC de oficina y arrastrarlos aquí. La aplicación almacena, procesa y versiona los datos de forma autónoma dentro de su base interna, sin ser bloqueada por los filtros de red de tu empresa.
+              Puedes descargar tus reportes de <strong>Flow Pro</strong> (Pendientes Patagonia, Pendientes Suroeste, Asignados, Adicionales) directamente a tu PC de oficina y arrastrarlos aquí. La aplicación los unifica y versiona de forma autónoma.
             </p>
           </div>
         </div>
 
-        <div className="text-right flex-shrink-0">
-          <span className="text-[10px] text-slate-400 block uppercase font-bold">Reporte Activo Actual</span>
-          <span className="text-xs font-mono font-bold text-amber-400 bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 inline-block mt-1">
-            {activeReportName}
-          </span>
+        <div className="text-right flex-shrink-0 space-y-2">
+          <div>
+            <span className="text-[10px] text-slate-400 block uppercase font-bold">Reporte Activo Actual</span>
+            <span className="text-xs font-mono font-bold text-amber-400 bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 inline-block mt-1">
+              {activeReportName}
+            </span>
+          </div>
+
+          {onRestoreDefaultAgenda && (
+            <button
+              onClick={onRestoreDefaultAgenda}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-lg text-xs font-bold transition shadow-md shadow-amber-500/10 ml-auto"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Restablecer Agenda Oficial (505 pedidos)</span>
+            </button>
+          )}
         </div>
       </div>
 
-      {/* Upload Drag & Drop Area */}
+      {/* Upload Drag & Drop Area (Multiple Files Supported) */}
       <div
         onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
         onDragLeave={() => setIsDragging(false)}
@@ -133,10 +181,11 @@ export const ReportRepository: React.FC<ReportRepositoryProps> = ({
         <input
           ref={fileInputRef}
           type="file"
+          multiple
           accept=".xlsx,.xls,.csv"
           onChange={(e) => {
             if (e.target.files && e.target.files.length > 0) {
-              handleFileProcess(e.target.files[0]);
+              handleFilesProcess(e.target.files);
             }
           }}
           className="hidden"
@@ -149,10 +198,10 @@ export const ReportRepository: React.FC<ReportRepositoryProps> = ({
 
           <div>
             <h4 className="text-base font-bold text-white">
-              {isProcessing ? 'Procesando archivo de Flow Pro...' : 'Arrastra aquí tu nuevo Reporte de Flow Pro'}
+              {isProcessing ? 'Procesando y unificando archivos de Flow Pro...' : 'Arrastra aquí tus Reportes de Flow Pro'}
             </h4>
             <p className="text-xs text-slate-400 mt-1">
-              Soporta archivos <strong className="text-slate-200">.xlsx</strong>, <strong className="text-slate-200">.xls</strong> o <strong className="text-slate-200">.csv</strong>. Haz clic para examinar en tu equipo.
+              Puedes seleccionar uno o varios archivos simultáneamente (<strong className="text-slate-200">Pendientes Patagonia, Pendientes Suroeste, Asignados, Adicionales</strong>).
             </p>
           </div>
 
@@ -160,6 +209,13 @@ export const ReportRepository: React.FC<ReportRepositoryProps> = ({
             <div className="p-2.5 rounded-lg bg-red-950/80 border border-red-500/50 text-red-300 text-xs flex items-center justify-center gap-1.5">
               <AlertCircle className="w-4 h-4" />
               <span>{errorMsg}</span>
+            </div>
+          )}
+
+          {successMsg && (
+            <div className="p-2.5 rounded-lg bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-xs flex items-center justify-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4" />
+              <span>{successMsg}</span>
             </div>
           )}
         </div>

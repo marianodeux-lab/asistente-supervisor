@@ -239,6 +239,33 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
   const pendCount = useMemo(() => controlInicioList.filter(i => i.estadoMarcaje === 'PENDIENTE_INICIO').length, [controlInicioList]);
   const sinPedidosCount = useMemo(() => controlInicioList.filter(i => i.estadoMarcaje === 'SIN_PEDIDOS').length, [controlInicioList]);
 
+  // Exact metrics for TOTAL EN AGENDA (Pendientes Patagonia + Suroeste vs Coordinados Mis Técnicos)
+  const totalPendientesRegion = useMemo(() => {
+    const patSuroesteOrders = tickets.filter(t => 
+      t.region === 'PATAGONIA' || 
+      t.region === 'SUROESTE' || 
+      t.origenReporte === 'Patagonia' || 
+      t.origenReporte === 'Suroeste' ||
+      masterTecMap.has(t.tecnico?.toLowerCase())
+    );
+    return patSuroesteOrders.length > 0 ? patSuroesteOrders.length : tickets.length;
+  }, [tickets, masterTecMap]);
+
+  const coordinadosMisTecnicos = useMemo(() => {
+    return tickets.filter(t => {
+      const isMyTech = masterTecMap.has(t.tecnico?.toLowerCase());
+      const isAssigned = t.tecnico && t.tecnico.toLowerCase() !== 'sin asignar';
+      return isMyTech && isAssigned;
+    }).length;
+  }, [tickets, masterTecMap]);
+
+  const sinAsignarRegion = useMemo(() => {
+    return tickets.filter(t => {
+      const isPatSuroeste = t.region === 'PATAGONIA' || t.region === 'SUROESTE' || t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste';
+      return isPatSuroeste && (!t.tecnico || t.tecnico.toLowerCase() === 'sin asignar');
+    }).length;
+  }, [tickets]);
+
   // Filtered & Sorted Tickets
   const filteredTickets = useMemo(() => {
     return tickets.filter(t => {
@@ -372,11 +399,32 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Total en Agenda</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Total en Agenda</span>
             <Clock className="w-4 h-4 text-amber-400" />
           </div>
-          <p className="text-2xl font-black text-white mt-1">{tickets.length}</p>
-          <span className="text-[11px] text-slate-400">Pedidos activos en la región</span>
+          
+          <div className="flex items-baseline gap-2 mt-1">
+            <p className="text-2xl font-black text-white">{totalPendientesRegion}</p>
+            <span className="text-[11px] text-slate-400 font-semibold">pedidos en región</span>
+          </div>
+
+          <div className="mt-2 pt-1.5 border-t border-slate-800 text-[10px] space-y-0.5">
+            <div className="flex items-center justify-between text-slate-300">
+              <span className="flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Coordinados a mis técnicos:
+              </span>
+              <strong className="text-emerald-400 font-mono font-bold">{coordinadosMisTecnicos}</strong>
+            </div>
+
+            <div className="flex items-center justify-between text-slate-400">
+              <span className="flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                Sin asignar / En espera:
+              </span>
+              <strong className="text-amber-300 font-mono font-bold">{sinAsignarRegion}</strong>
+            </div>
+          </div>
         </button>
 
         <button
