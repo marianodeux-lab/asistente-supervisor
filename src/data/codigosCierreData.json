@@ -1,0 +1,142 @@
+{
+  "COMPL": {
+    "desc": "Completo (Cierre Exitoso en Campo)",
+    "tipo": "EXITO",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "emerald"
+  },
+  "PPR": {
+    "desc": "Pendiente por Repuesto",
+    "tipo": "REPUESTO",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "amber"
+  },
+  "PPRC": {
+    "desc": "Pendiente por Repuesto (Cliente)",
+    "tipo": "REPUESTO",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "amber"
+  },
+  "PCCV": {
+    "desc": "Pendiente Cliente con Visita",
+    "tipo": "CLIENTE",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "blue"
+  },
+  "PCSI": {
+    "desc": "Pendiente Cliente sin ir",
+    "tipo": "CLIENTE",
+    "esRemoto": true,
+    "esCampo": false,
+    "color": "slate"
+  },
+  "PPE": {
+    "desc": "Pendiente por Especialistas",
+    "tipo": "SOPORTE",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "purple"
+  },
+  "PPH": {
+    "desc": "Pendiente",
+    "tipo": "PENDIENTE",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "slate"
+  },
+  "PSUP": {
+    "desc": "Pendiente Supervisor",
+    "tipo": "SUPERVISION",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "red"
+  },
+  "SPRSI": {
+    "desc": "Supervisor sin ir",
+    "tipo": "SUPERVISION",
+    "esRemoto": true,
+    "esCampo": false,
+    "color": "red"
+  },
+  "DERIV": {
+    "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+    "tipo": "MESA_CTD",
+    "esRemoto": true,
+    "esCampo": false,
+    "color": "cyan"
+  },
+  "MONITOREO": {
+    "desc": "Mesa de Servicios Cash Today (Soporte Remoto)",
+    "tipo": "REMOTO",
+    "esRemoto": true,
+    "esCampo": false,
+    "color": "teal"
+  },
+  "TELCA": {
+    "desc": "Cierre Telefónico / Remoto Exitoso",
+    "tipo": "REMOTO",
+    "esRemoto": true,
+    "esCampo": false,
+    "color": "teal"
+  },
+  "TELCA2": {
+    "desc": "Cierre Telefónico / Remoto Exitoso (Mesa CTD)",
+    "tipo": "REMOTO",
+    "esRemoto": true,
+    "esCampo": false,
+    "color": "teal"
+  },
+  "TELCA3": {
+    "desc": "Cierre Telefónico / Remoto Exitoso (Mesa CTD)",
+    "tipo": "REMOTO",
+    "esRemoto": true,
+    "esCampo": false,
+    "color": "teal"
+  },
+  "TELFA": {
+    "desc": "Cierre Telefónico Facturable (Soporte Remoto)",
+    "tipo": "REMOTO",
+    "esRemoto": true,
+    "esCampo": false,
+    "color": "teal"
+  },
+  "CEF": {
+    "desc": "Cierre Efectivo Facturable",
+    "tipo": "FACTURABLE",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "yellow"
+  },
+  "CEFIC": {
+    "desc": "Cierre Efectivo Facturable Incluido en Contrato",
+    "tipo": "FACTURABLE",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "yellow"
+  },
+  "CGTIA": {
+    "desc": "En Garantía",
+    "tipo": "GARANTIA",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "emerald"
+  },
+  "FACT": {
+    "desc": "Facturable",
+    "tipo": "FACTURABLE",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "yellow"
+  },
+  "FACT2": {
+    "desc": "Facturable",
+    "tipo": "FACTURABLE",
+    "esRemoto": false,
+    "esCampo": true,
+    "color": "yellow"
+  }
+}

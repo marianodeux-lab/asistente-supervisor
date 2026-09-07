@@ -1,0 +1,4570 @@
+[
+  {
+    "pn": "49-211436-000A",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 16,
+    "diferencia": 15
+  },
+  {
+    "pn": "19-063498-000A",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 12,
+    "diferencia": 11
+  },
+  {
+    "pn": "49-201788-000G",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 10,
+    "unidades": 41,
+    "diferencia": 31
+  },
+  {
+    "pn": "49-249441-762A",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 56,
+    "diferencia": 54
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 65,
+    "diferencia": 64
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 61,
+    "diferencia": 59
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 13,
+    "diferencia": 12
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 12,
+    "diferencia": 11
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "WN-000322-200A",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 14,
+    "diferencia": 13
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 5,
+    "diferencia": 3
+  },
+  {
+    "pn": "W0-000000-9651",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 40,
+    "unidades": 91,
+    "diferencia": 51
+  },
+  {
+    "pn": "GL-000000-3987",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-000D50-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 11,
+    "diferencia": 10
+  },
+  {
+    "pn": "W0-175004-4668",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 3,
+    "unidades": 37,
+    "diferencia": 34
+  },
+  {
+    "pn": "GR-501100-4001",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "CI-3300CO-M376",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SV-217422-000F",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GL-000006-3876",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000006-3996",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "49-249441-762A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "CI-3300CO-M609",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "W0-175004-4668",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "CI-1300SC-H002",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-SB1015-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "19-063498-000A",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Barrera, Fernando Andrés",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "SC-SNBCLA-SYMT",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 17,
+    "diferencia": 16
+  },
+  {
+    "pn": "SC-202839-000B",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-000J",
+    "tecnico": "Barrera, Fernando Andrés",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-202839-000B",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "55-001185-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "CI-1300SC-H002",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-050201-1774",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "GR-030101-0367",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020704-0197",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-2939",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-202839-000B",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-3300CO-M341",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020801-0454",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-020801-0454",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020801-0454",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020801-0454",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-1875",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Barrera, Fernando Andrés",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "49-211436-000A",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-050201-2928",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-000000-0014",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 22,
+    "diferencia": 21
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 23,
+    "diferencia": 22
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 25,
+    "diferencia": 24
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 25,
+    "diferencia": 24
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 17,
+    "diferencia": 16
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 32,
+    "diferencia": 31
+  },
+  {
+    "pn": "49-239735-000A",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 21,
+    "diferencia": 20
+  },
+  {
+    "pn": "P8-000000-0017",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 67,
+    "diferencia": 65
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 22,
+    "diferencia": 21
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Barrera, Fernando Andrés",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "CI-1300SC-H003",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "SV-217422-000F",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 13,
+    "diferencia": 12
+  },
+  {
+    "pn": "GL-000006-3996",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "WN-007000-212A",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-239735-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "W0-000000-6651",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "WN-007000-212A",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 15,
+    "diferencia": 14
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-020201-1056",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 9,
+    "diferencia": 8
+  },
+  {
+    "pn": "GR-020201-1056",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "CI-3300CO-M376",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-1300SC-H003",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 2,
+    "diferencia": 0
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "CI-1300SC-H002",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "49-249440-764A",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-050201-3870",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "GR-050201-2939",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-030101-0367",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "P8-512000-1298",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-020801-0454",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-050201-1774",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GR-050201-2928",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "GL-ESCROW-000A",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020201-1056",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-F12VEC-W01A",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-4463",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-3300CO-M341",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "19-063498-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "SC-000369-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-050201-2928",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "SC-000156-000B",
+    "tecnico": "Barrera, Fernando Andrés",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-4463",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020704-0197",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-020704-0197",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-050201-3870",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-030101-0583",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-2939",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-050201-3870",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-030101-0367",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-2300SU-B360",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "SC-000128-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-030101-0583",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "49-249440-764A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "49-249441-762A",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-201446-9001",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 31,
+    "diferencia": 30
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 136,
+    "diferencia": 135
+  },
+  {
+    "pn": "SV-217422-000F",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 22,
+    "diferencia": 21
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 48,
+    "diferencia": 46
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 34,
+    "diferencia": 33
+  },
+  {
+    "pn": "SV-217422-000F",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "SV-217422-000F",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 12,
+    "diferencia": 11
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 68,
+    "diferencia": 66
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 14,
+    "diferencia": 13
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 53,
+    "diferencia": 51
+  },
+  {
+    "pn": "49-209536-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "CI-1300AC-C526",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 40,
+    "unidades": 63,
+    "diferencia": 23
+  },
+  {
+    "pn": "CI-3300SC-H270",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "CI-3300CO-M601",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "CI-3300SC-H270",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 15,
+    "diferencia": 14
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 35,
+    "diferencia": 34
+  },
+  {
+    "pn": "GR-050201-4463",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-020501-0006",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "49-211435-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "49-211436-000A",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-020501-0006",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Barrera, Fernando Andrés",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-3300CO-M609",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-050201-2939",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-202839-000B",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-202839-000B",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "WN-000322-200A",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "SC-202839-000B",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020704-0197",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "GR-050201-2928",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 15,
+    "diferencia": 13
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "55-001174-ALEP",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-050201-2939",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "SC-000003-000A",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "P8-000000-0041",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "55-001185-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-3300CO-M341",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-3300CO-M341",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000156-000B",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "W0-175005-3977",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-050201-2928",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "W0-175005-3977",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "49-249440-768A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "55-001163-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-2939",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "P8-HERAMO-000A",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "SC-000402-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 125,
+    "diferencia": 123
+  },
+  {
+    "pn": "CI-1300IN-S078",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 9,
+    "diferencia": 8
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 47,
+    "diferencia": 45
+  },
+  {
+    "pn": "00-103334-000D",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "GL-000D50-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 12,
+    "diferencia": 10
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 16,
+    "diferencia": 14
+  },
+  {
+    "pn": "49-239735-000A",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "49-239735-000A",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 11,
+    "diferencia": 10
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 9,
+    "diferencia": 8
+  },
+  {
+    "pn": "CI-3300CO-M376",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000004-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 9,
+    "diferencia": 8
+  },
+  {
+    "pn": "GR-050201-2939",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 22,
+    "diferencia": 20
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "CI-1300SC-H003",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 5,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "CI-1300SC-H003",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "W0-175004-4668",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "19-063498-000A",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "W0-000000-9651",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 3,
+    "unidades": 17,
+    "diferencia": 14
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-050201-2928",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-3870",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "GR-020201-1056",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 19,
+    "diferencia": 18
+  },
+  {
+    "pn": "GR-020704-0197",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000006-3876",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "SC-000003-000A",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000003-000A",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "CI-3300CO-M341",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020201-1056",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-050201-1774",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "SC-000018-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-1875",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-020201-1056",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-1771",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "SC-000369-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020501-0006",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GR-501100-4001",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000376-000A",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020801-0454",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-3870",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-030101-0367",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-2928",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-000000-0014",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-000000-0014",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "CI-2300AN-G195",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "49-249440-764A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-000000-0014",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "55-001163-000A",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "SV-217422-000F",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 15,
+    "diferencia": 14
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 78,
+    "diferencia": 76
+  },
+  {
+    "pn": "P8-690031-0876",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 96,
+    "diferencia": 94
+  },
+  {
+    "pn": "00-104777-000M",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 28,
+    "diferencia": 27
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 19,
+    "diferencia": 18
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 20,
+    "diferencia": 19
+  },
+  {
+    "pn": "49-249440-764A",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "00-103323-000B",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "49-249441-762A",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "19-063498-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 13,
+    "diferencia": 12
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 14,
+    "diferencia": 13
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 16,
+    "diferencia": 15
+  },
+  {
+    "pn": "GR-020201-1056",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "19-063498-000A",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "SC-000003-000A",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "SV-217422-000F",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GR-050201-2939",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "SC-000003-000A",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "GR-020704-0197",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "P8-000000-0028",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-050201-4463",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 9,
+    "diferencia": 8
+  },
+  {
+    "pn": "GR-050201-1875",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "55-001163-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-PYDE10-000A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-2928",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "55-001163-000A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "SC-SNBCLA-SYMT",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "49-239735-000A",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000006-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "CI-3300CO-M341",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-2939",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "SC-000003-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "49-211481-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000378-000A",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-211436-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-050201-3870",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-030101-0583",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-030101-0367",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-1771",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "P8-000000-0048",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 42,
+    "diferencia": 41
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 32,
+    "diferencia": 31
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 12,
+    "diferencia": 11
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 55,
+    "diferencia": 54
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 49,
+    "diferencia": 47
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 15,
+    "diferencia": 14
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 51,
+    "diferencia": 50
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "00-104789-000D",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "GL-000006-3996",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "00-103323-000B",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 11,
+    "diferencia": 10
+  },
+  {
+    "pn": "GL-ESCROW-000A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "W0-000000-6651",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 10,
+    "unidades": 41,
+    "diferencia": 31
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "00-104468-000B",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "19-063498-000A",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 32,
+    "diferencia": 30
+  },
+  {
+    "pn": "GR-050201-4463",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "00-104468-000B",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "19-063498-000A",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "CI-3300CO-M868",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Barrera, Fernando Andrés",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "19-063498-000A",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-1300AC-C528",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "49-239735-000A",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-3300CO-M601",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "P8-512PWR-1298",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "55-001185-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-3300CO-M763",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 1,
+    "diferencia": -1
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GR-020201-1056",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 9,
+    "diferencia": 8
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000156-000B",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000376-000A",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "P8-000000-0048",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-020801-0454",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "SC-202839-000B",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000156-000B",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000156-000B",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-4463",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-0KITPC-CIMA",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020801-0454",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-1875",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-1875",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-030101-0367",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-000000-0014",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GL-000378-000A",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-000000-0014",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-000000-0014",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "49-249441-762A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-050201-2928",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-030101-0367",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-000000-0014",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-050201-4572",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 11,
+    "diferencia": 9
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 28,
+    "diferencia": 27
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-211436-000A",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 19,
+    "diferencia": 18
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 12,
+    "diferencia": 11
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "CI-1300SC-H002",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "CI-1300SC-H002",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 46,
+    "diferencia": 44
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 16,
+    "diferencia": 15
+  },
+  {
+    "pn": "49-211481-000A",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "WN-000322-200A",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 27,
+    "diferencia": 26
+  },
+  {
+    "pn": "P8-000000-0048",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 11,
+    "diferencia": 10
+  },
+  {
+    "pn": "P8-000000-0048",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "SV-217422-000F",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 9,
+    "diferencia": 8
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "P8-000000-0048",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 12,
+    "diferencia": 11
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "WN-007000-212A",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 9,
+    "diferencia": 8
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "SC-SNBCLA-SYMT",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "GL-000000-3987",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-1300SC-H003",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-1300SC-H002",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "SC-000003-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "W0-175005-3977",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "SC-000047-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "WN-000322-200A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "SC-202839-000B",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000047-000A",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-201446-9001",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GL-KEYB18-000A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "GL-F12VEC-W01A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "00-103334-000E",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 5,
+    "diferencia": 4
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-F12VEC-W01A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-501100-4001",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GL-ESCROW-000A",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "P8-000000-0067",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "SC-000156-000B",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-BOOT",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020201-1056",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "W0-175005-3977",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "CI-3300CO-M341",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-202839-000B",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-3870",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-020801-0454",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000047-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-3870",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-1875",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-4463",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-030101-0367",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-4300TR-A234",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 0,
+    "diferencia": -2
+  },
+  {
+    "pn": "W0-175004-1947",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-020801-0454",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 28,
+    "diferencia": 27
+  },
+  {
+    "pn": "49-239735-000A",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "SV-217422-000F",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 21,
+    "diferencia": 20
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 14,
+    "diferencia": 13
+  },
+  {
+    "pn": "49-221669-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 19,
+    "diferencia": 18
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 7,
+    "diferencia": 6
+  },
+  {
+    "pn": "49-209542-000F",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 23,
+    "diferencia": 22
+  },
+  {
+    "pn": "49-211433-000A",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 27,
+    "diferencia": 26
+  },
+  {
+    "pn": "49-211432-000A",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 22,
+    "diferencia": 20
+  },
+  {
+    "pn": "49-223820-000A",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 21,
+    "diferencia": 20
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Hernandez, Marcos Alberto",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 31,
+    "diferencia": 29
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 10,
+    "diferencia": 9
+  },
+  {
+    "pn": "SC-000003-000A",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 22,
+    "diferencia": 21
+  },
+  {
+    "pn": "CI-1300AC-C528",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "00-104777-000D",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 2,
+    "unidades": 20,
+    "diferencia": 18
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "49-249441-762A",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "CI-1300SC-H003",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "SV-223939-000D",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 8,
+    "diferencia": 7
+  },
+  {
+    "pn": "CI-3300SC-H239",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "CI-3300CO-M376",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "P8-000000-0015",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 9,
+    "diferencia": 8
+  },
+  {
+    "pn": "44-000356-000A",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-247984-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-XION85-000A",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-201446-9001",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "CI-1300SC-H003",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "CI-1300SC-H003",
+    "tecnico": "Aldayturriaga, Martin",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-3300SC-H239",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GL-000000-3987",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000046-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "49-239735-000A",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Foschi, Alejandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Ibañez, Pablo Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000003-000A",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 9,
+    "diferencia": 8
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-249440-764A",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "49-208102-000M",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020201-1056",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "SC-000003-000A",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "GL-000000-3876",
+    "tecnico": "Corti Victor",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-501100-4001",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "P8-000000-0038",
+    "tecnico": "Castaño, Matias",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 6,
+    "diferencia": 5
+  },
+  {
+    "pn": "CI-3300CO-M601",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GL-000000-3975",
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "44-000081-000A",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "44-000081-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "49-249440-768A",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "CI-3300CO-M341",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-3870",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 3,
+    "diferencia": 2
+  },
+  {
+    "pn": "GR-030101-0367",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-050201-3870",
+    "tecnico": "Vicente, Francisco Ariel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 4,
+    "diferencia": 3
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GL-000006-3874",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "DR-0MULTI-000L",
+    "tecnico": "Pavon, Diego Emanuel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-2928",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "SC-000378-000A",
+    "tecnico": "Lazzaro, Leonardo",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 2,
+    "diferencia": 1
+  },
+  {
+    "pn": "GR-050201-1771",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-2939",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-020704-0197",
+    "tecnico": "Allende, Martin Leandro",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-050201-1875",
+    "tecnico": "Montiel, Juan Fernando",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-030101-0367",
+    "tecnico": "Buratti, Fabian",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 1,
+    "diferencia": 0
+  },
+  {
+    "pn": "GR-000000-0014",
+    "tecnico": "Garcia, Alejandro Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "GR-000000-0014",
+    "tecnico": "Martos, Jose Angel",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "44-000081-000A",
+    "tecnico": "Godoy, Diego",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  },
+  {
+    "pn": "49-211436-000A",
+    "tecnico": "Chiriello, Pablo Javier",
+    "tipo": "STOCK FIJO",
+    "cantMinima": 1,
+    "unidades": 0,
+    "diferencia": -1
+  }
+]

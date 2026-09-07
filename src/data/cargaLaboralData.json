@@ -1,0 +1,286 @@
+{
+  "kpisGenerales": {
+    "totalKmRecorridosMes": 48250,
+    "horasLaborTotales": 3420,
+    "horasViajeTotales": 1680,
+    "promedioAsistenciasPorTecnicoDia": 3.8,
+    "ratioKmVsduracion": 0.78
+  },
+  "porTecnico": [
+    {
+      "tecnico": "Aldayturriaga, Martin",
+      "zona": "Oeste",
+      "ciudad": "General Villegas / Trenque Lauquen",
+      "pedidosAtendidos": 56,
+      "kmTotal": 875,
+      "horasLabor": 97,
+      "horasViaje": 19,
+      "slaEfectivo": 88,
+      "ratioEficiencia": "0.84"
+    },
+    {
+      "tecnico": "Allende, Martin Leandro",
+      "zona": "La Pampa",
+      "ciudad": "Santa Rosa",
+      "pedidosAtendidos": 54,
+      "kmTotal": 2803,
+      "horasLabor": 157,
+      "horasViaje": 62,
+      "slaEfectivo": 91,
+      "ratioEficiencia": "0.72"
+    },
+    {
+      "tecnico": "Barrera, Fernando Andrés",
+      "zona": "Contratistas",
+      "ciudad": "Bahía Blanca / Interior",
+      "pedidosAtendidos": 58,
+      "kmTotal": 1200,
+      "horasLabor": 75,
+      "horasViaje": 26,
+      "slaEfectivo": 97,
+      "ratioEficiencia": "0.74"
+    },
+    {
+      "tecnico": "Buratti, Fabian",
+      "zona": "Atlántica",
+      "ciudad": "Mar del Plata",
+      "pedidosAtendidos": 57,
+      "kmTotal": 1310,
+      "horasLabor": 119,
+      "horasViaje": 29,
+      "slaEfectivo": 87,
+      "ratioEficiencia": "0.80"
+    },
+    {
+      "tecnico": "Castaño, Matias",
+      "zona": "Atlántica",
+      "ciudad": "Mar del Plata / Miramar",
+      "pedidosAtendidos": 73,
+      "kmTotal": 917,
+      "horasLabor": 166,
+      "horasViaje": 20,
+      "slaEfectivo": 98,
+      "ratioEficiencia": "0.89"
+    },
+    {
+      "tecnico": "Christiansen, Patricio",
+      "zona": "Centro",
+      "ciudad": "Bahía Blanca",
+      "pedidosAtendidos": 43,
+      "kmTotal": 3023,
+      "horasLabor": 142,
+      "horasViaje": 67,
+      "slaEfectivo": 93,
+      "ratioEficiencia": "0.68"
+    },
+    {
+      "tecnico": "Chiriello, Pablo Javier",
+      "zona": "Atlántica",
+      "ciudad": "Mar del Plata",
+      "pedidosAtendidos": 38,
+      "kmTotal": 1642,
+      "horasLabor": 161,
+      "horasViaje": 36,
+      "slaEfectivo": 98,
+      "ratioEficiencia": "0.82"
+    },
+    {
+      "tecnico": "Corti Victor",
+      "zona": "Contratistas",
+      "ciudad": "Sur / Río Negro",
+      "pedidosAtendidos": 70,
+      "kmTotal": 1264,
+      "horasLabor": 144,
+      "horasViaje": 28,
+      "slaEfectivo": 85,
+      "ratioEficiencia": "0.84"
+    },
+    {
+      "tecnico": "Diez, Jonatan",
+      "zona": "Sur",
+      "ciudad": "Trelew / Rawson",
+      "pedidosAtendidos": 37,
+      "kmTotal": 3003,
+      "horasLabor": 84,
+      "horasViaje": 66,
+      "slaEfectivo": 92,
+      "ratioEficiencia": "0.56"
+    },
+    {
+      "tecnico": "Foschi, Alejandro",
+      "zona": "Contratistas",
+      "ciudad": "Sur",
+      "pedidosAtendidos": 60,
+      "kmTotal": 3064,
+      "horasLabor": 143,
+      "horasViaje": 68,
+      "slaEfectivo": 90,
+      "ratioEficiencia": "0.68"
+    },
+    {
+      "tecnico": "Garcia, Alejandro Javier",
+      "zona": "Oeste",
+      "ciudad": "Trenque Lauquen",
+      "pedidosAtendidos": 46,
+      "kmTotal": 1524,
+      "horasLabor": 132,
+      "horasViaje": 33,
+      "slaEfectivo": 88,
+      "ratioEficiencia": "0.80"
+    },
+    {
+      "tecnico": "Godoy, Diego",
+      "zona": "Sur",
+      "ciudad": "Trelew / Madryn",
+      "pedidosAtendidos": 62,
+      "kmTotal": 2828,
+      "horasLabor": 157,
+      "horasViaje": 62,
+      "slaEfectivo": 91,
+      "ratioEficiencia": "0.72"
+    },
+    {
+      "tecnico": "Gonzalez Cabrera, Antonio",
+      "zona": "Sur",
+      "ciudad": "Comodoro Rivadavia",
+      "pedidosAtendidos": 53,
+      "kmTotal": 2475,
+      "horasLabor": 114,
+      "horasViaje": 55,
+      "slaEfectivo": 91,
+      "ratioEficiencia": "0.67"
+    },
+    {
+      "tecnico": "Heinz, Carlos",
+      "zona": "La Pampa",
+      "ciudad": "General Pico",
+      "pedidosAtendidos": 39,
+      "kmTotal": 3097,
+      "horasLabor": 122,
+      "horasViaje": 68,
+      "slaEfectivo": 87,
+      "ratioEficiencia": "0.64"
+    },
+    {
+      "tecnico": "Hernandez, Marcos Alberto",
+      "zona": "La Pampa",
+      "ciudad": "General Pico / Santa Rosa",
+      "pedidosAtendidos": 34,
+      "kmTotal": 2683,
+      "horasLabor": 142,
+      "horasViaje": 59,
+      "slaEfectivo": 89,
+      "ratioEficiencia": "0.71"
+    },
+    {
+      "tecnico": "Ibañez, Pablo Fernando",
+      "zona": "Suroeste",
+      "ciudad": "Neuquén / Alto Valle",
+      "pedidosAtendidos": 64,
+      "kmTotal": 2376,
+      "horasLabor": 98,
+      "horasViaje": 52,
+      "slaEfectivo": 96,
+      "ratioEficiencia": "0.65"
+    },
+    {
+      "tecnico": "Lazzaro, Leonardo",
+      "zona": "Suroeste",
+      "ciudad": "Neuquén",
+      "pedidosAtendidos": 52,
+      "kmTotal": 955,
+      "horasLabor": 171,
+      "horasViaje": 21,
+      "slaEfectivo": 93,
+      "ratioEficiencia": "0.89"
+    },
+    {
+      "tecnico": "Martos, Jose Angel",
+      "zona": "Oeste",
+      "ciudad": "Pehuajó / Bolívar",
+      "pedidosAtendidos": 64,
+      "kmTotal": 1390,
+      "horasLabor": 160,
+      "horasViaje": 30,
+      "slaEfectivo": 92,
+      "ratioEficiencia": "0.84"
+    },
+    {
+      "tecnico": "Meneses, Cristian",
+      "zona": "Suroeste",
+      "ciudad": "Bariloche / San Martín",
+      "pedidosAtendidos": 37,
+      "kmTotal": 2254,
+      "horasLabor": 99,
+      "horasViaje": 50,
+      "slaEfectivo": 91,
+      "ratioEficiencia": "0.66"
+    },
+    {
+      "tecnico": "Montiel, Juan Fernando",
+      "zona": "Atlántica",
+      "ciudad": "Villa Gesell / Pinamar / Costa",
+      "pedidosAtendidos": 43,
+      "kmTotal": 2043,
+      "horasLabor": 95,
+      "horasViaje": 45,
+      "slaEfectivo": 93,
+      "ratioEficiencia": "0.68"
+    },
+    {
+      "tecnico": "Osorio, Gabriel",
+      "zona": "Sur",
+      "ciudad": "Río Gallegos",
+      "pedidosAtendidos": 50,
+      "kmTotal": 2664,
+      "horasLabor": 118,
+      "horasViaje": 59,
+      "slaEfectivo": 90,
+      "ratioEficiencia": "0.67"
+    },
+    {
+      "tecnico": "Pavon, Diego Emanuel",
+      "zona": "Centro",
+      "ciudad": "Bahía Blanca / Punta Alta",
+      "pedidosAtendidos": 72,
+      "kmTotal": 2696,
+      "horasLabor": 74,
+      "horasViaje": 59,
+      "slaEfectivo": 88,
+      "ratioEficiencia": "0.56"
+    },
+    {
+      "tecnico": "Rodriguez, Mateo Joaquin",
+      "zona": "Centro",
+      "ciudad": "Tres Arroyos / Necochea",
+      "pedidosAtendidos": 31,
+      "kmTotal": 2272,
+      "horasLabor": 161,
+      "horasViaje": 50,
+      "slaEfectivo": 99,
+      "ratioEficiencia": "0.76"
+    },
+    {
+      "tecnico": "Sanchez, Claudio",
+      "zona": "La Pampa",
+      "ciudad": "Santa Rosa",
+      "pedidosAtendidos": 36,
+      "kmTotal": 898,
+      "horasLabor": 175,
+      "horasViaje": 19,
+      "slaEfectivo": 90,
+      "ratioEficiencia": "0.90"
+    },
+    {
+      "tecnico": "Vicente, Francisco Ariel",
+      "zona": "Centro",
+      "ciudad": "Bahía Blanca",
+      "pedidosAtendidos": 56,
+      "kmTotal": 1114,
+      "horasLabor": 129,
+      "horasViaje": 24,
+      "slaEfectivo": 99,
+      "ratioEficiencia": "0.84"
+    }
+  ]
+}

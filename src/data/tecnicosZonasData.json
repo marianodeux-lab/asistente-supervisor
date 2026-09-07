@@ -1,0 +1,231 @@
+{
+  "tecnicos": [
+    {
+      "nombre": "Aldayturriaga, Martin",
+      "zona": "Oeste",
+      "ciudad": "General Villegas / Trenque Lauquen",
+      "cel": "+54 9 2392 55-1122"
+    },
+    {
+      "nombre": "Allende, Martin Leandro",
+      "zona": "La Pampa",
+      "ciudad": "Santa Rosa",
+      "cel": "+54 9 2954 44-3322"
+    },
+    {
+      "nombre": "Barrera, Fernando Andrés",
+      "zona": "Contratistas",
+      "ciudad": "Bahía Blanca / Interior",
+      "cel": "+54 9 291 445-5667"
+    },
+    {
+      "nombre": "Buratti, Fabian",
+      "zona": "Atlántica",
+      "ciudad": "Mar del Plata",
+      "cel": "+54 9 223 512-3456"
+    },
+    {
+      "nombre": "Castaño, Matias",
+      "zona": "Atlántica",
+      "ciudad": "Mar del Plata / Miramar",
+      "cel": "+54 9 223 689-1122"
+    },
+    {
+      "nombre": "Christiansen, Patricio",
+      "zona": "Centro",
+      "ciudad": "Bahía Blanca",
+      "cel": "+54 9 291 567-8901"
+    },
+    {
+      "nombre": "Chiriello, Pablo Javier",
+      "zona": "Atlántica",
+      "ciudad": "Mar del Plata",
+      "cel": "+54 9 223 456-7890"
+    },
+    {
+      "nombre": "Corti Victor",
+      "zona": "Contratistas",
+      "ciudad": "Sur / Río Negro",
+      "cel": "+54 9 298 433-2211"
+    },
+    {
+      "nombre": "Diez, Jonatan",
+      "zona": "Sur",
+      "ciudad": "Trelew / Rawson",
+      "cel": "+54 9 280 455-6677"
+    },
+    {
+      "nombre": "Foschi, Alejandro",
+      "zona": "Contratistas",
+      "ciudad": "Sur",
+      "cel": "+54 9 297 411-2233"
+    },
+    {
+      "nombre": "Garcia, Alejandro Javier",
+      "zona": "Oeste",
+      "ciudad": "Trenque Lauquen",
+      "cel": "+54 9 2392 61-2233"
+    },
+    {
+      "nombre": "Godoy, Diego",
+      "zona": "Sur",
+      "ciudad": "Trelew / Madryn",
+      "cel": "+54 9 280 433-4455"
+    },
+    {
+      "nombre": "Gonzalez Cabrera, Antonio",
+      "zona": "Sur",
+      "ciudad": "Comodoro Rivadavia",
+      "cel": "+54 9 297 488-9900"
+    },
+    {
+      "nombre": "Heinz, Carlos",
+      "zona": "La Pampa",
+      "ciudad": "General Pico",
+      "cel": "+54 9 2302 44-5566"
+    },
+    {
+      "nombre": "Hernandez, Marcos Alberto",
+      "zona": "La Pampa",
+      "cargo": "Técnico Líder",
+      "ciudad": "General Pico / Santa Rosa",
+      "cel": "+54 9 2302 55-6677"
+    },
+    {
+      "nombre": "Ibañez, Pablo Fernando",
+      "zona": "Suroeste",
+      "ciudad": "Neuquén / Alto Valle",
+      "cel": "+54 9 299 477-8899"
+    },
+    {
+      "nombre": "Lazzaro, Leonardo",
+      "zona": "Suroeste",
+      "ciudad": "Neuquén",
+      "cel": "+54 9 299 511-2233"
+    },
+    {
+      "nombre": "Martos, Jose Angel",
+      "zona": "Oeste",
+      "ciudad": "Pehuajó / Bolívar",
+      "cel": "+54 9 2396 42-1144"
+    },
+    {
+      "nombre": "Meneses, Cristian",
+      "zona": "Suroeste",
+      "ciudad": "Bariloche / San Martín",
+      "cel": "+54 9 294 455-6677"
+    },
+    {
+      "nombre": "Montiel, Juan Fernando",
+      "zona": "Atlántica",
+      "ciudad": "Villa Gesell / Pinamar / Costa",
+      "cel": "+54 9 2255 46-7788"
+    },
+    {
+      "nombre": "Osorio, Gabriel",
+      "zona": "Sur",
+      "ciudad": "Río Gallegos",
+      "cel": "+54 9 2966 43-2100"
+    },
+    {
+      "nombre": "Pavon, Diego Emanuel",
+      "zona": "Centro",
+      "ciudad": "Bahía Blanca / Punta Alta",
+      "cel": "+54 9 291 433-2211"
+    },
+    {
+      "nombre": "Rodriguez, Mateo Joaquin",
+      "zona": "Centro",
+      "ciudad": "Tres Arroyos / Necochea",
+      "cel": "+54 9 2983 55-6677"
+    },
+    {
+      "nombre": "Sanchez, Claudio",
+      "zona": "La Pampa",
+      "ciudad": "Santa Rosa",
+      "cel": "+54 9 2954 61-2233"
+    },
+    {
+      "nombre": "Vicente, Francisco Ariel",
+      "zona": "Centro",
+      "ciudad": "Bahía Blanca",
+      "cel": "+54 9 291 622-3344"
+    }
+  ],
+  "zonas": [
+    {
+      "id": "Atlántica",
+      "nombre": "Zona Atlántica",
+      "cabecera": "Mar del Plata",
+      "tecnicos": [
+        "Buratti, Fabian",
+        "Castaño, Matias",
+        "Chiriello, Pablo Javier",
+        "Montiel, Juan Fernando"
+      ]
+    },
+    {
+      "id": "Centro",
+      "nombre": "Zona Centro",
+      "cabecera": "Bahía Blanca",
+      "tecnicos": [
+        "Christiansen, Patricio",
+        "Pavon, Diego Emanuel",
+        "Rodriguez, Mateo Joaquin",
+        "Vicente, Francisco Ariel"
+      ]
+    },
+    {
+      "id": "Oeste",
+      "nombre": "Zona Oeste",
+      "cabecera": "Trenque Lauquen / Pehuajó",
+      "tecnicos": [
+        "Aldayturriaga, Martin",
+        "Garcia, Alejandro Javier",
+        "Martos, Jose Angel"
+      ]
+    },
+    {
+      "id": "La Pampa",
+      "nombre": "Zona La Pampa",
+      "cabecera": "Santa Rosa / General Pico",
+      "tecnicos": [
+        "Allende, Martin Leandro",
+        "Heinz, Carlos",
+        "Hernandez, Marcos Alberto",
+        "Sanchez, Claudio"
+      ]
+    },
+    {
+      "id": "Suroeste",
+      "nombre": "Zona Suroeste",
+      "cabecera": "Neuquén / Bariloche",
+      "tecnicos": [
+        "Ibañez, Pablo Fernando",
+        "Lazzaro, Leonardo",
+        "Meneses, Cristian"
+      ]
+    },
+    {
+      "id": "Sur",
+      "nombre": "Zona Sur",
+      "cabecera": "Trelew / Comodoro Rivadavia / Río Gallegos",
+      "tecnicos": [
+        "Diez, Jonatan",
+        "Godoy, Diego",
+        "Gonzalez Cabrera, Antonio",
+        "Osorio, Gabriel"
+      ]
+    },
+    {
+      "id": "Contratistas",
+      "nombre": "Zona Contratistas",
+      "cabecera": "Interior Patagonia",
+      "tecnicos": [
+        "Barrera, Fernando Andrés",
+        "Corti Victor",
+        "Foschi, Alejandro"
+      ]
+    }
+  ]
+}

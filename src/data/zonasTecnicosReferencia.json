@@ -1,0 +1,182 @@
+[
+  {
+    "nombre": "Aldayturriaga, Martin",
+    "zonaTecnica": "IN TDL",
+    "region": "PATAGONIA",
+    "zonaLocal": "Oeste",
+    "atm": 53,
+    "cashToday": 20,
+    "subTotal": 73
+  },
+  {
+    "nombre": "Allende, Martin Leandro",
+    "zonaTecnica": "IN SRO",
+    "region": "PATAGONIA",
+    "zonaLocal": "La Pampa",
+    "atm": 93,
+    "cashToday": 11,
+    "subTotal": 104
+  },
+  {
+    "nombre": "Barrera, Fernando Andrés",
+    "zonaTecnica": "IN RIT",
+    "region": "PATAGONIA",
+    "zonaLocal": "Contratistas",
+    "atm": 4,
+    "cashToday": 0,
+    "subTotal": 4
+  },
+  {
+    "nombre": "Buratti, Fabian",
+    "zonaTecnica": "IN MDP 2",
+    "region": "PATAGONIA",
+    "zonaLocal": "Atlántica",
+    "atm": 78,
+    "cashToday": 1,
+    "subTotal": 79
+  },
+  {
+    "nombre": "Castaño, Matias",
+    "zonaTecnica": "IN MDP3",
+    "region": "PATAGONIA",
+    "zonaLocal": "Atlántica",
+    "atm": 0,
+    "cashToday": 75,
+    "subTotal": 75
+  },
+  {
+    "nombre": "Chiriello, Pablo Javier",
+    "zonaTecnica": "IN MDP 1",
+    "region": "PATAGONIA",
+    "zonaLocal": "Atlántica",
+    "atm": 64,
+    "cashToday": 11,
+    "subTotal": 75
+  },
+  {
+    "nombre": "Corti Victor",
+    "zonaTecnica": "IN TDF",
+    "region": "PATAGONIA",
+    "zonaLocal": "Contratistas",
+    "atm": 2,
+    "cashToday": 19,
+    "subTotal": 21
+  },
+  {
+    "nombre": "Foschi, Alejandro",
+    "zonaTecnica": "IN RGA",
+    "region": "PATAGONIA",
+    "zonaLocal": "Contratistas",
+    "atm": 8,
+    "cashToday": 19,
+    "subTotal": 27
+  },
+  {
+    "nombre": "Garcia, Alejandro Javier",
+    "zonaTecnica": "IN TRQ",
+    "region": "PATAGONIA",
+    "zonaLocal": "Oeste",
+    "atm": 78,
+    "cashToday": 10,
+    "subTotal": 88
+  },
+  {
+    "nombre": "Godoy, Diego",
+    "zonaTecnica": "IN TRE",
+    "region": "PATAGONIA",
+    "zonaLocal": "Sur",
+    "atm": 11,
+    "cashToday": 27,
+    "subTotal": 38
+  },
+  {
+    "nombre": "Gonzalez Cabrera, Antonio",
+    "zonaTecnica": "IN COM",
+    "region": "PATAGONIA",
+    "zonaLocal": "Sur",
+    "atm": 25,
+    "cashToday": 32,
+    "subTotal": 57
+  },
+  {
+    "nombre": "Hernandez, Marcos Alberto",
+    "zonaTecnica": "IN PCO",
+    "region": "PATAGONIA",
+    "zonaLocal": "La Pampa",
+    "atm": 44,
+    "cashToday": 2,
+    "subTotal": 46
+  },
+  {
+    "nombre": "Hernandez, Marcos Alberto",
+    "zonaTecnica": "IN PCO1",
+    "region": "PATAGONIA",
+    "zonaLocal": "La Pampa",
+    "atm": 36,
+    "cashToday": 1,
+    "subTotal": 37
+  },
+  {
+    "nombre": "Torres, Florencia",
+    "zonaTecnica": "IN BAR",
+    "region": "SUROESTE",
+    "zonaLocal": "Suroeste",
+    "atm": 7,
+    "cashToday": 41,
+    "subTotal": 48
+  },
+  {
+    "nombre": "Ibañez, Pablo Fernando",
+    "zonaTecnica": "IN CIP",
+    "region": "SUROESTE",
+    "zonaLocal": "Suroeste",
+    "atm": 26,
+    "cashToday": 58,
+    "subTotal": 84
+  },
+  {
+    "nombre": "Lazzaro, Leonardo",
+    "zonaTecnica": "IN NQN",
+    "region": "SUROESTE",
+    "zonaLocal": "Suroeste",
+    "atm": 43,
+    "cashToday": 51,
+    "subTotal": 94
+  },
+  {
+    "nombre": "Martos, Jose Angel",
+    "zonaTecnica": "IN OLA",
+    "region": "PATAGONIA",
+    "zonaLocal": "Oeste",
+    "atm": 61,
+    "cashToday": 11,
+    "subTotal": 72
+  },
+  {
+    "nombre": "Montiel, Juan Fernando",
+    "zonaTecnica": "IN COS",
+    "region": "PATAGONIA",
+    "zonaLocal": "Atlántica",
+    "atm": 43,
+    "cashToday": 28,
+    "subTotal": 71
+  },
+  {
+    "nombre": "Pavon, Diego Emanuel",
+    "zonaTecnica": "IN BB2",
+    "region": "PATAGONIA",
+    "zonaLocal": "Centro",
+    "atm": 71,
+    "cashToday": 35,
+    "subTotal": 106
+  },
+  {
+    "nombre": "Vicente, Francisco Ariel",
+    "zonaTecnica": "IN VIE",
+    "region": "PATAGONIA",
+    "zonaLocal": "Centro",
+    "atm": 21,
+    "cashToday": 11,
+    "subTotal": 32
+  }
+]

@@ -1,0 +1,290 @@
+[
+  {
+    "tecnico": "Aldayturriaga, Martin",
+    "zonaLocal": "Oeste",
+    "zonaTecnica": "IN TDL",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "BAPRO",
+      "luno": "11488",
+      "direccion": "Avellaneda 199",
+      "localidad": "General Madariaga",
+      "horaCoordinada": "14:00",
+      "fechaVto": "SLA 02/03/2026 17:55:19",
+      "estado": "SEG Registrado",
+      "cumplePrimerHorario": false
+    },
+    "estadoMarcaje": "PENDIENTE_INICIO"
+  },
+  {
+    "tecnico": "Allende, Martin Leandro",
+    "zonaLocal": "La Pampa",
+    "zonaTecnica": "IN SRO",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "BANCO NACION",
+      "luno": "4136",
+      "direccion": "Avda. General San Martín Oeste 1",
+      "localidad": "Santa Rosa",
+      "horaCoordinada": "08:00",
+      "fechaVto": "Hasta 05/01/2026 14:00:00",
+      "estado": "SEG Control Final",
+      "cumplePrimerHorario": true
+    },
+    "estadoMarcaje": "ASISTENCIA_OK"
+  },
+  {
+    "tecnico": "Barrera, Fernando Andrés",
+    "zonaLocal": "Contratistas",
+    "zonaTecnica": "IN RIT",
+    "region": "PATAGONIA",
+    "tienePedidos": false,
+    "primerPedido": null,
+    "estadoMarcaje": "SIN_PEDIDOS"
+  },
+  {
+    "tecnico": "Buratti, Fabian",
+    "zonaLocal": "Atlántica",
+    "zonaTecnica": "IN MDP 2",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "BAPRO",
+      "luno": "11369",
+      "direccion": "Av. Constitucion 5850",
+      "localidad": "Mar Del Plata",
+      "horaCoordinada": "10:00",
+      "fechaVto": "Hasta 02/03/2026 13:00:00",
+      "estado": "SEG Asistencia",
+      "cumplePrimerHorario": true
+    },
+    "estadoMarcaje": "ASISTENCIA_OK"
+  },
+  {
+    "tecnico": "Castaño, Matias",
+    "zonaLocal": "Atlántica",
+    "zonaTecnica": "IN MDP3",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "ACA",
+      "luno": "002359016370",
+      "direccion": "Diagonal F De La Palza 1733",
+      "localidad": "Miramar",
+      "horaCoordinada": "11:30",
+      "fechaVto": "Hasta 02/03/2026 18:15:52",
+      "estado": "SEG Registrado",
+      "cumplePrimerHorario": false
+    },
+    "estadoMarcaje": "PENDIENTE_INICIO"
+  },
+  {
+    "tecnico": "Chiriello, Pablo Javier",
+    "zonaLocal": "Atlántica",
+    "zonaTecnica": "IN MDP 1",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "BAPRO",
+      "luno": "8728",
+      "direccion": "Av. J. Peralta Ramos 1890",
+      "localidad": "Mar Del Plata",
+      "horaCoordinada": "08:00",
+      "fechaVto": "Hasta 02/03/2026 13:00:00",
+      "estado": "SEG Asistencia",
+      "cumplePrimerHorario": true
+    },
+    "estadoMarcaje": "ASISTENCIA_OK"
+  },
+  {
+    "tecnico": "Corti Victor",
+    "zonaLocal": "Contratistas",
+    "zonaTecnica": "IN TDF",
+    "region": "PATAGONIA",
+    "tienePedidos": false,
+    "primerPedido": null,
+    "estadoMarcaje": "SIN_PEDIDOS"
+  },
+  {
+    "tecnico": "Foschi, Alejandro",
+    "zonaLocal": "Contratistas",
+    "zonaTecnica": "IN RGA",
+    "region": "PATAGONIA",
+    "tienePedidos": false,
+    "primerPedido": null,
+    "estadoMarcaje": "SIN_PEDIDOS"
+  },
+  {
+    "tecnico": "Garcia, Alejandro Javier",
+    "zonaLocal": "Oeste",
+    "zonaTecnica": "IN TRQ",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "BAPRO",
+      "luno": "11214",
+      "direccion": "San Martin 1",
+      "localidad": "Pellegrini",
+      "horaCoordinada": "10:30",
+      "fechaVto": "Hasta 02/03/2026 13:32:32",
+      "estado": "SEG Asistencia",
+      "cumplePrimerHorario": true
+    },
+    "estadoMarcaje": "ASISTENCIA_OK"
+  },
+  {
+    "tecnico": "Godoy, Diego",
+    "zonaLocal": "Sur",
+    "zonaTecnica": "IN TRE",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "BANCO NACION",
+      "luno": "5060",
+      "direccion": "9 de Julio  127",
+      "localidad": "Puerto Madryn",
+      "horaCoordinada": "10:00",
+      "fechaVto": "Hasta 27/02/2026 14:54:40",
+      "estado": "SEG Asistencia",
+      "cumplePrimerHorario": true
+    },
+    "estadoMarcaje": "ASISTENCIA_OK"
+  },
+  {
+    "tecnico": "Gonzalez Cabrera, Antonio",
+    "zonaLocal": "Sur",
+    "zonaTecnica": "IN COM",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "BANCO CREDICOOP",
+      "luno": "808231",
+      "direccion": "Pellegrini 851",
+      "localidad": "Comodoro Rivadavia",
+      "horaCoordinada": "08:30",
+      "fechaVto": "Hasta 08/01/2026 08:51:10",
+      "estado": "SEG Asistencia",
+      "cumplePrimerHorario": true
+    },
+    "estadoMarcaje": "ASISTENCIA_OK"
+  },
+  {
+    "tecnico": "Hernandez, Marcos Alberto",
+    "zonaLocal": "La Pampa",
+    "zonaTecnica": "IN PCO",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "CLIENTE INTERNO",
+      "luno": "SRO",
+      "direccion": "Fiorucci 45",
+      "localidad": "Santa Rosa",
+      "horaCoordinada": "09:20",
+      "fechaVto": "Hasta 02/03/2026 09:18:00",
+      "estado": "SEG Asistencia",
+      "cumplePrimerHorario": true
+    },
+    "estadoMarcaje": "ASISTENCIA_OK"
+  },
+  {
+    "tecnico": "Hernandez, Marcos Alberto",
+    "zonaLocal": "La Pampa",
+    "zonaTecnica": "IN PCO1",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "CLIENTE INTERNO",
+      "luno": "SRO",
+      "direccion": "Fiorucci 45",
+      "localidad": "Santa Rosa",
+      "horaCoordinada": "09:20",
+      "fechaVto": "Hasta 02/03/2026 09:18:00",
+      "estado": "SEG Asistencia",
+      "cumplePrimerHorario": true
+    },
+    "estadoMarcaje": "ASISTENCIA_OK"
+  },
+  {
+    "tecnico": "Torres, Florencia",
+    "zonaLocal": "Suroeste",
+    "zonaTecnica": "IN BAR",
+    "region": "SUROESTE",
+    "tienePedidos": false,
+    "primerPedido": null,
+    "estadoMarcaje": "SIN_PEDIDOS"
+  },
+  {
+    "tecnico": "Ibañez, Pablo Fernando",
+    "zonaLocal": "Suroeste",
+    "zonaTecnica": "IN CIP",
+    "region": "SUROESTE",
+    "tienePedidos": false,
+    "primerPedido": null,
+    "estadoMarcaje": "SIN_PEDIDOS"
+  },
+  {
+    "tecnico": "Lazzaro, Leonardo",
+    "zonaLocal": "Suroeste",
+    "zonaTecnica": "IN NQN",
+    "region": "SUROESTE",
+    "tienePedidos": false,
+    "primerPedido": null,
+    "estadoMarcaje": "SIN_PEDIDOS"
+  },
+  {
+    "tecnico": "Martos, Jose Angel",
+    "zonaLocal": "Oeste",
+    "zonaTecnica": "IN OLA",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "BAPRO",
+      "luno": "11203",
+      "direccion": "Los Ligustros S/N",
+      "localidad": "Olavarria",
+      "horaCoordinada": "09:00",
+      "fechaVto": "Hasta 06/01/2026 17:00:00",
+      "estado": "SEG Asistencia",
+      "cumplePrimerHorario": true
+    },
+    "estadoMarcaje": "ASISTENCIA_OK"
+  },
+  {
+    "tecnico": "Montiel, Juan Fernando",
+    "zonaLocal": "Atlántica",
+    "zonaTecnica": "IN COS",
+    "region": "PATAGONIA",
+    "tienePedidos": false,
+    "primerPedido": null,
+    "estadoMarcaje": "SIN_PEDIDOS"
+  },
+  {
+    "tecnico": "Pavon, Diego Emanuel",
+    "zonaLocal": "Centro",
+    "zonaTecnica": "IN BB2",
+    "region": "PATAGONIA",
+    "tienePedidos": true,
+    "primerPedido": {
+      "cliente": "BANCO CREDICOOP",
+      "luno": "812961",
+      "direccion": "Garibaldi 360",
+      "localidad": "Bahia Blanca",
+      "horaCoordinada": "09:00",
+      "fechaVto": "Hasta 03/03/2026 11:59:37",
+      "estado": "SEG Asistencia",
+      "cumplePrimerHorario": true
+    },
+    "estadoMarcaje": "ASISTENCIA_OK"
+  },
+  {
+    "tecnico": "Vicente, Francisco Ariel",
+    "zonaLocal": "Centro",
+    "zonaTecnica": "IN VIE",
+    "region": "PATAGONIA",
+    "tienePedidos": false,
+    "primerPedido": null,
+    "estadoMarcaje": "SIN_PEDIDOS"
+  }
+]

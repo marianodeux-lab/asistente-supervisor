@@ -1,0 +1,2747 @@
+{
+  "totalBaseModels": 135,
+  "matchedCount": 125,
+  "missingCount": 10,
+  "missingModels": [
+    {
+      "modelo": "CRP-100",
+      "count": 416,
+      "marcas": [
+        "CRP"
+      ],
+      "negociosInBase": [
+        "ATM"
+      ],
+      "clientes": [
+        "PROSEGUR - CRP"
+      ],
+      "sources": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ],
+      "sampleDenominacion": "Frida Shultz de Mantovani 1191",
+      "sugerenciaNegocio": "ATM"
+    },
+    {
+      "modelo": "KISAN KD30",
+      "count": 205,
+      "marcas": [
+        "SMART BOX"
+      ],
+      "negociosInBase": [
+        "ATM"
+      ],
+      "clientes": [
+        "STARBUCKS COFFE ARGENTINA SRL",
+        "ARCOS DORADOS",
+        "PROSEGUR",
+        "FPC S.A",
+        "RUMAOS S.A",
+        "OUR PLACE IN THE WORLD S.A",
+        "FAST FOOD SUDAMERICANA S.A",
+        "RICARDO DARIO FERRARI USANDIZAGA",
+        "ROMERO CARLOS ALBERTO",
+        "SAIEP",
+        "PLANTA PROSEGUR",
+        "BLA FOODGROUP S.R.L",
+        "PLASTIMI S.R.L"
+      ],
+      "sources": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ],
+      "sampleDenominacion": "Av. Del Libertador Gral San Martin 13100",
+      "sugerenciaNegocio": "ATM"
+    },
+    {
+      "modelo": "INLANE 300 DEPO",
+      "count": 20,
+      "marcas": [
+        "SMART BOX"
+      ],
+      "negociosInBase": [
+        "ATM"
+      ],
+      "clientes": [
+        "PICOTTO MARIA ELINA",
+        "PLANTA PROSEGUR",
+        "COOPERATIVA DE SERVICIOS DE ADMINISTRACION DE VENTAS A CREDITO GUIA LTDA"
+      ],
+      "sources": [
+        "Abril",
+        "Agosto",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ],
+      "sampleDenominacion": "Lavalle 64",
+      "sugerenciaNegocio": "ATM"
+    },
+    {
+      "modelo": "ATMR 4534-515",
+      "count": 15,
+      "marcas": [
+        "DIEBOLD NIXDORF"
+      ],
+      "negociosInBase": [
+        "ATM"
+      ],
+      "clientes": [
+        "PROSEGUR",
+        "PLANTA PROSEGUR"
+      ],
+      "sources": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ],
+      "sampleDenominacion": "Tomas Espora 106",
+      "sugerenciaNegocio": "ATM"
+    },
+    {
+      "modelo": "CTI COMPACT",
+      "count": 7,
+      "marcas": [
+        "SMART BOX"
+      ],
+      "negociosInBase": [
+        "ATM"
+      ],
+      "clientes": [
+        "PLANTA PROSEGUR"
+      ],
+      "sources": [
+        "Agosto",
+        "Julio"
+      ],
+      "sampleDenominacion": "Catamarca 2555",
+      "sugerenciaNegocio": "ATM"
+    },
+    {
+      "modelo": "INLANE 300",
+      "count": 4,
+      "marcas": [
+        "SMART BOX"
+      ],
+      "negociosInBase": [
+        "ATM"
+      ],
+      "clientes": [
+        "DON GASTON",
+        "PROSEGUR"
+      ],
+      "sources": [
+        "Agosto",
+        "Julio",
+        "Junio"
+      ],
+      "sampleDenominacion": "Ruta Nacional 16 y, Av. Sabin 3500",
+      "sugerenciaNegocio": "ATM"
+    },
+    {
+      "modelo": "ATMR 4534 515",
+      "count": 3,
+      "marcas": [
+        "DIEBOLD NIXDORF"
+      ],
+      "negociosInBase": [
+        "ATM"
+      ],
+      "clientes": [
+        "PLANTA PROSEGUR"
+      ],
+      "sources": [
+        "Agosto",
+        "Julio"
+      ],
+      "sampleDenominacion": "Carlos Alvear 4862",
+      "sugerenciaNegocio": "ATM"
+    },
+    {
+      "modelo": "DT-7000I64A",
+      "count": 3,
+      "marcas": [
+        "GRG"
+      ],
+      "negociosInBase": [
+        "ATM"
+      ],
+      "clientes": [
+        "BANCO CORRIENTES"
+      ],
+      "sources": [
+        "Agosto"
+      ],
+      "sampleDenominacion": "San Martin 333",
+      "sugerenciaNegocio": "ATM"
+    },
+    {
+      "modelo": "CI8000",
+      "count": 1,
+      "marcas": [
+        "GRG"
+      ],
+      "negociosInBase": [
+        "ATM"
+      ],
+      "clientes": [
+        "BANCO CORRIENTES"
+      ],
+      "sources": [
+        "Agosto"
+      ],
+      "sampleDenominacion": "San Martin 333",
+      "sugerenciaNegocio": "ATM"
+    },
+    {
+      "modelo": "DT-7000P2800NL",
+      "count": 1,
+      "marcas": [
+        "GRG"
+      ],
+      "negociosInBase": [
+        "ATM"
+      ],
+      "clientes": [
+        "BANCO CORRIENTES"
+      ],
+      "sources": [
+        "Agosto"
+      ],
+      "sampleDenominacion": "San Martin 333",
+      "sugerenciaNegocio": "ATM"
+    }
+  ],
+  "allBaseModelsWithStatus": [
+    {
+      "modelo": "DT-7000H22V",
+      "count": 7610,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H34N",
+      "count": 4479,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 3DES RB",
+      "count": 100,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 3DES",
+      "count": 40,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L RB",
+      "count": 96,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 3DES EDC R",
+      "count": 24,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L",
+      "count": 999,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/3DES",
+      "count": 8,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 510 F/L",
+      "count": 30,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 510",
+      "count": 41,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 510 IP",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM CD OPTEVA 520",
+      "count": 42,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522 RB",
+      "count": 195,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522",
+      "count": 6080,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV RB",
+      "count": 121,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 510 EDC R",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 510 EDC R FTA",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 510 FTA IP",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 510 EDC R FTA IP",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA FTA RB",
+      "count": 16,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA RB",
+      "count": 88,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA",
+      "count": 336,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA EDC R",
+      "count": 21,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R",
+      "count": 40,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV",
+      "count": 120,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV FTA",
+      "count": 8,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 F/L IP",
+      "count": 6,
+      "marca": "OPTEVA",
+      "negocio": "",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Enero",
+        "Febrero",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 3DES IP",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 F/L",
+      "count": 62,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L FTA",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 F/L FTA",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R",
+      "count": 8,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R EMV RB",
+      "count": 8,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L EDC R",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4533-023",
+      "count": 25,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4533-022",
+      "count": 52,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4533-020",
+      "count": 201,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4533-021",
+      "count": 62,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4500 Slim",
+      "count": 82,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TAS OPTEVA 720 F/L",
+      "count": 24,
+      "marca": "OPTEVA TAS",
+      "negocio": "ATM",
+      "mpcrMatch": "TAS MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM CD OPTEVA 520 R/L",
+      "count": 86,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CS2070 RL",
+      "count": 456,
+      "marca": "DIEBOLD NIXDORF",
+      "negocio": "ATM",
+      "mpcrMatch": "CS2070",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4500  IDM",
+      "count": 27,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "GLORY P500",
+      "count": 3259,
+      "marca": "Smart Box, SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "GLORY P500",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TAS OPTEVA 720 F/L ENA",
+      "count": 178,
+      "marca": "OPTEVA TAS",
+      "negocio": "ATM",
+      "mpcrMatch": "TAS MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV",
+      "count": 426,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522 IP",
+      "count": 16,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4500",
+      "count": 24,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM OPTEVA 522 5ºGAV",
+      "count": 48,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM OPTEVA 522 5ºGAV RB",
+      "count": 24,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4535",
+      "count": 16,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV RB",
+      "count": 40,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ RB",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM OPTEVA 522 EDC R/G VOZ RB",
+      "count": 56,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522 EDC R/G VOZ",
+      "count": 40,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ",
+      "count": 96,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522 G VOZ",
+      "count": 72,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TAS OPTEVA 720 R/L",
+      "count": 284,
+      "marca": "OPTEVA TAS",
+      "negocio": "ATM",
+      "mpcrMatch": "TAS MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L G VOZ",
+      "count": 16,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522 EDC R RB",
+      "count": 18,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L FTA IP",
+      "count": 9,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 F/L FTA RB",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV/G VOZ",
+      "count": 14,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CTI90 SNBC",
+      "count": 4270,
+      "marca": "SMART BOX, Smart Box",
+      "negocio": "ATM",
+      "mpcrMatch": "CTI90 SNBC",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TAS OPTEVA 720 R/L ENA",
+      "count": 839,
+      "marca": "OPTEVA TAS",
+      "negocio": "ATM",
+      "mpcrMatch": "TAS MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TAS CD OPTEVA 520 R/L",
+      "count": 88,
+      "marca": "OPTEVA TAS",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM OPTEVA 510 R/L 3DES IP",
+      "count": 4,
+      "marca": "OPTEVA",
+      "negocio": "",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Enero",
+        "Febrero",
+        "Marzo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 F/L 5ºGAV",
+      "count": 24,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522 G VOZ RB",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV EDC R/G VOZ RB",
+      "count": 48,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 5°GAV/EDC R/RB",
+      "count": 24,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522 EDC R IP",
+      "count": 16,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA IDM RB",
+      "count": 24,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R RB",
+      "count": 16,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA IDM",
+      "count": 48,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CIMA SDM500",
+      "count": 1729,
+      "marca": "Smart Box, SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "CIMA",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 F/L ENA IDM",
+      "count": 80,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522 EDC R",
+      "count": 24,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CTI UL- C",
+      "count": 2687,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "CTI UL",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CS280 RL",
+      "count": 2046,
+      "marca": "DIEBOLD NIXDORF",
+      "negocio": "ATM",
+      "mpcrMatch": "CS280",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4500 RL IDM",
+      "count": 47,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TAS OPTEVA 720 R/L ENA2",
+      "count": 8,
+      "marca": "OPTEVA TAS",
+      "negocio": "ATM",
+      "mpcrMatch": "TAS MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4500 FL IDM",
+      "count": 55,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CTE2 SNBC -C",
+      "count": 709,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "CTE2 SNBC",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CS280",
+      "count": 312,
+      "marca": "DIEBOLD NIXDORF",
+      "negocio": "ATM",
+      "mpcrMatch": "CS280",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TAS  OPTEVA 522",
+      "count": 198,
+      "marca": "OPTEVA TAS",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV / EDC",
+      "count": 8,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CS2070",
+      "count": 96,
+      "marca": "DIEBOLD NIXDORF",
+      "negocio": "ATM",
+      "mpcrMatch": "CS2070",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CS280 FL",
+      "count": 40,
+      "marca": "DIEBOLD NIXDORF",
+      "negocio": "ATM",
+      "mpcrMatch": "CS280",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TAS OPTEVA 522 FL – TAS",
+      "count": 16,
+      "marca": "OPTEVA TAS",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CTI UL",
+      "count": 1587,
+      "marca": "SMART BOX, Smart Box",
+      "negocio": "ATM",
+      "mpcrMatch": "CTI UL",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TAS",
+      "count": 544,
+      "marca": "Smart Box, SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "TAS",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CS2070 FL",
+      "count": 16,
+      "marca": "DIEBOLD NIXDORF",
+      "negocio": "ATM",
+      "mpcrMatch": "CS2070",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM FULL OPTEVA 720 F/L ENA",
+      "count": 8,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TDE 4500 RL",
+      "count": 14,
+      "marca": "TDE 4500",
+      "negocio": "ATM",
+      "mpcrMatch": "TDE",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H22VL",
+      "count": 871,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "GLORY P1000",
+      "count": 519,
+      "marca": "SMART BOX, Smart Box",
+      "negocio": "ATM",
+      "mpcrMatch": "GLORY P1000",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "GLORY P1001",
+      "count": 184,
+      "marca": "SMART BOX, Smart Box",
+      "negocio": "ATM",
+      "mpcrMatch": "GLORY P1001",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CTE2 SNBC",
+      "count": 2351,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "CTE2 SNBC",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "PMINI-MEI",
+      "count": 32,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "PMINI-MEI",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM OPTEVA 868 ECRM DISP IDM",
+      "count": 16,
+      "marca": "OPTEVA MI",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA ECRM",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H22N RL",
+      "count": 107,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "OPTEVA 828",
+      "count": 16,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CTE1 SNBC",
+      "count": 292,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "CTE1 SNBC",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CTI90 SNBC - C",
+      "count": 1606,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "CTI90 SNBC",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CAJA ROBOTIZADA",
+      "count": 8,
+      "marca": "GUNNEBO",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H34N S/CHK",
+      "count": 224,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA ECRM",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H22VLR",
+      "count": 505,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "TAS OPTEVA 522 RL – TAS",
+      "count": 8,
+      "marca": "OPTEVA TAS",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H68NLR TAS",
+      "count": 618,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA ECRM",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATMR 4534-515",
+      "count": 15,
+      "marca": "DIEBOLD NIXDORF",
+      "negocio": "ATM",
+      "mpcrMatch": "NO REGISTRADO EN MPCR",
+      "negocioMpcr": null,
+      "estaEnMpcr": false,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H34N (FECT)",
+      "count": 2594,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA ECRM",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H68NLR ATM",
+      "count": 406,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA ECRM",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H68VLR",
+      "count": 566,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA ECRM",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H68VLR ATM",
+      "count": 69,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H34N (FET)",
+      "count": 40,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA ECRM",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM CS280 RL",
+      "count": 8,
+      "marca": "DIEBOLD NIXDORF",
+      "negocio": "ATM",
+      "mpcrMatch": "CS280",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H68VLR+BAM",
+      "count": 72,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA MI",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522 F/L",
+      "count": 59,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H34N (FET) S/CHK",
+      "count": 8,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA ECRM",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H34NL",
+      "count": 8,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA ECRM",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CRP-100",
+      "count": 416,
+      "marca": "CRP",
+      "negocio": "ATM",
+      "mpcrMatch": "NO REGISTRADO EN MPCR",
+      "negocioMpcr": null,
+      "estaEnMpcr": false,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "KISAN KD30",
+      "count": 205,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "NO REGISTRADO EN MPCR",
+      "negocioMpcr": null,
+      "estaEnMpcr": false,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "INLANE 300 DEPO",
+      "count": 20,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "NO REGISTRADO EN MPCR",
+      "negocioMpcr": null,
+      "estaEnMpcr": false,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM  OPTEVA 522 R/L",
+      "count": 14,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DI90S",
+      "count": 8,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "DI90S",
+      "negocioMpcr": "CTD",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "ATM CD OPTEVA 520 F/L",
+      "count": 12,
+      "marca": "OPTEVA",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "DT-7000H34N (FECT) S/CHK",
+      "count": 8,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "OPTEVA ECRM",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Abril",
+        "Agosto",
+        "Enero",
+        "Febrero",
+        "Julio",
+        "Junio",
+        "Marzo",
+        "Mayo"
+      ]
+    },
+    {
+      "modelo": "CTI COMPACT",
+      "count": 7,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "NO REGISTRADO EN MPCR",
+      "negocioMpcr": null,
+      "estaEnMpcr": false,
+      "fuentes": [
+        "Agosto",
+        "Julio"
+      ]
+    },
+    {
+      "modelo": "ATMR 4534 515",
+      "count": 3,
+      "marca": "DIEBOLD NIXDORF",
+      "negocio": "ATM",
+      "mpcrMatch": "NO REGISTRADO EN MPCR",
+      "negocioMpcr": null,
+      "estaEnMpcr": false,
+      "fuentes": [
+        "Agosto",
+        "Julio"
+      ]
+    },
+    {
+      "modelo": "INLANE 300",
+      "count": 4,
+      "marca": "SMART BOX",
+      "negocio": "ATM",
+      "mpcrMatch": "NO REGISTRADO EN MPCR",
+      "negocioMpcr": null,
+      "estaEnMpcr": false,
+      "fuentes": [
+        "Agosto",
+        "Julio",
+        "Junio"
+      ]
+    },
+    {
+      "modelo": "CI8000",
+      "count": 1,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "NO REGISTRADO EN MPCR",
+      "negocioMpcr": null,
+      "estaEnMpcr": false,
+      "fuentes": [
+        "Agosto"
+      ]
+    },
+    {
+      "modelo": "DT-7000P2800NL",
+      "count": 1,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "NO REGISTRADO EN MPCR",
+      "negocioMpcr": null,
+      "estaEnMpcr": false,
+      "fuentes": [
+        "Agosto"
+      ]
+    },
+    {
+      "modelo": "DT-7000I64A",
+      "count": 3,
+      "marca": "GRG",
+      "negocio": "ATM",
+      "mpcrMatch": "NO REGISTRADO EN MPCR",
+      "negocioMpcr": null,
+      "estaEnMpcr": false,
+      "fuentes": [
+        "Agosto"
+      ]
+    },
+    {
+      "modelo": "ATM OPTEVA 510 R/L 3DES",
+      "count": 3,
+      "marca": "OPTEVA",
+      "negocio": "",
+      "mpcrMatch": "OPTEVA",
+      "negocioMpcr": "ATM",
+      "estaEnMpcr": true,
+      "fuentes": [
+        "Enero",
+        "Febrero",
+        "Marzo"
+      ]
+    }
+  ]
+}

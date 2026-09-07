@@ -1,0 +1,60 @@
+{
+  "masUtilizados": [
+    {
+      "pn": "GE-READ07-000A",
+      "descripcion": "MORPHOSMART WINCOR LARGE AREA OPTICAL FINGERPRINT",
+      "cantidad": 38,
+      "fabricante": "Wincor",
+      "tipo": "Biométrico"
+    },
+    {
+      "pn": "GR-020201-1056",
+      "descripcion": "SANKYO CARD READER ICT3Q8-3H0180-S PN 202011056",
+      "cantidad": 36,
+      "fabricante": "GRG Banking",
+      "tipo": "Lectora de Tarjetas"
+    },
+    {
+      "pn": "49-211432-000A",
+      "descripcion": "PICKER, AFD, AGGRESSIVE OPTEVA 522",
+      "cantidad": 32,
+      "fabricante": "Diebold Nixdorf",
+      "tipo": "Mecanismo Dispensador"
+    },
+    {
+      "pn": "GR-050201-3870",
+      "descripcion": "CAM8350 HEAD ASSY PN 502013870",
+      "cantidad": 25,
+      "fabricante": "GRG Banking",
+      "tipo": "Cabezal Recontador"
+    },
+    {
+      "pn": "GR-050201-1938",
+      "descripcion": "CASSETTE ASSEMBLY PN 502011938",
+      "cantidad": 24,
+      "fabricante": "GRG Banking",
+      "tipo": "Gaveta / Cassette"
+    },
+    {
+      "pn": "GR-050201-2917",
+      "descripcion": "CAM8350 CASSETTE 502012917",
+      "cantidad": 23,
+      "fabricante": "GRG Banking",
+      "tipo": "Gaveta"
+    },
+    {
+      "pn": "CI-0KITPC-CIMA",
+      "descripcion": "KIT PC SNBC+Fuente+Video REEMPLAZO PC CIMA",
+      "cantidad": 18,
+      "fabricante": "CIMA",
+      "tipo": "Placa Base / PC"
+    },
+    {
+      "pn": "SN-020301-4412",
+      "descripcion": "SENSOR OPTICO DE ARRASTRE SNBC CTI90",
+      "cantidad": 16,
+      "fabricante": "SNBC",
+      "tipo": "Sensor Óptico"
+    }
+  ]
+}

@@ -1,0 +1,1585 @@
+{
+  "modelos": [
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "DN200V RL",
+      "modelos": "DN200V RECICLADOR",
+      "mpcr": "DN",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 510"
+    },
+    {
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000I21",
+      "modelos": "GRG H21",
+      "mpcr": "GRG H21",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 510 EDC R"
+    },
+    {
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H22N RL",
+      "modelos": "GRG CASH",
+      "mpcr": "GRG H22",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 510 EDC R FTA"
+    },
+    {
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H22V",
+      "modelos": "GRG CASH",
+      "mpcr": "GRG H22",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 510 EDC R FTA IP"
+    },
+    {
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H22VL",
+      "modelos": "GRG CASH",
+      "mpcr": "GRG H22",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 510 F/L"
+    },
+    {
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H22VLR",
+      "modelos": "GRG CASH",
+      "mpcr": "GRG H22",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 510 FTA IP"
+    },
+    {
+      "fabricante": "GRG",
+      "modeloBase": "DT-7000H34N",
+      "modelos": "GRG FULL",
+      "mpcr": "GRG H34",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 510 IP"
+    },
+    {
+      "fabricante": "GRG",
+      "modeloBase": "DT-7000H34N (FECT)",
+      "modelos": "GRG FULL",
+      "mpcr": "GRG H34",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 522"
+    },
+    {
+      "fabricante": "GRG",
+      "modeloBase": "DT-7000H34N (FET)",
+      "modelos": "GRG FULL",
+      "mpcr": "GRG H34",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 522 EDC R"
+    },
+    {
+      "fabricante": "GRG",
+      "modeloBase": "DT-7000H34NL",
+      "modelos": "GRG FULL",
+      "mpcr": "GRG H34",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 522 EDC R IP"
+    },
+    {
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H34N (FECT) S/CHK",
+      "modelos": "GRG FULL",
+      "mpcr": "GRG H34",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 522 EDC R RB"
+    },
+    {
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H34N (FET) S/CHK",
+      "modelos": "GRG FULL",
+      "mpcr": "GRG H34",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 522 EDC R/G VOZ"
+    },
+    {
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H34N S/CHK",
+      "modelos": "GRG FULL",
+      "mpcr": "GRG H34",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 522 F/L"
+    },
+    {
+      "fabricante": "GRG",
+      "modeloBase": "DT-7000H68NLR ATM",
+      "modelos": "GRG Reciclador",
+      "mpcr": "GRG H68",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 522 G VOZ"
+    },
+    {
+      "fabricante": "GRG",
+      "modeloBase": "DT-7000H68NLR TAS",
+      "modelos": "GRG Reciclador",
+      "mpcr": "GRG H68",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 522 G VOZ RB"
+    },
+    {
+      "fabricante": "GRG",
+      "modeloBase": "DT-7000H68VLR",
+      "modelos": "GRG Reciclador",
+      "mpcr": "GRG H68",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 522 IP"
+    },
+    {
+      "fabricante": "GRG",
+      "modeloBase": "DT-7000H68VLR ATM",
+      "modelos": "GRG Reciclador",
+      "mpcr": "GRG H68",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 522 RB"
+    },
+    {
+      "fabricante": "GRG",
+      "modeloBase": "DT-7000H68VLR+BAM",
+      "modelos": "GRG Reciclador",
+      "mpcr": "GRG H68",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM  OPTEVA 620 R/L"
+    },
+    {
+      "fabricante": "GUNNEBO",
+      "modeloBase": "CAJA ROBOTIZADA",
+      "modelos": "Gunnebo",
+      "mpcr": "Gunnebo",
+      "negocio": "CTD",
+      "marcaDesc": "DIEBOLD NIXDORF",
+      "modeloDesc": "ATM 828 FL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510",
+      "modelos": "Diebold Opteva 510 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM CD OPTEVA 520"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 EDC R",
+      "modelos": "Diebold Opteva 510 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM CD OPTEVA 520 F/L"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 EDC R FTA",
+      "modelos": "Diebold Opteva 510 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM CD OPTEVA 520 R/L"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 EDC R FTA IP",
+      "modelos": "Diebold Opteva 510 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "DIEBOLD NIXDORF",
+      "modeloDesc": "ATM CS280 RL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 F/L",
+      "modelos": "Diebold Opteva 510 F/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 F/L"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 FTA IP",
+      "modelos": "Diebold Opteva 510 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 F/L 5ºGAV"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 IP",
+      "modelos": "Diebold Opteva 510 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 F/L ENA"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 F/L ENA IDM"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 EDC R",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 F/L FTA"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 EDC R IP",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 F/L FTA RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 EDC R RB",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 F/L IP"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 EDC R/G VOZ",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 F/L",
+      "modelos": "Diebold Opteva 510 F/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 3DES"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 G VOZ",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 3DES EDC R"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 G VOZ RB",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 3DES IP"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 IP",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 3DES RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 R/L",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 5°GAV/EDC R/RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 RB",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 5ºGAV"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 620 R/L",
+      "modelos": "Diebold Opteva 620 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 5ºGAV / EDC"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 620 R/L 3DES",
+      "modelos": "Diebold Opteva 620 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 5ºGAV EDC R/G VOZ RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 620 R/L EDC R",
+      "modelos": "Diebold Opteva 620 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 5ºGAV RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 620 R/L EDC R FTA",
+      "modelos": "Diebold Opteva 620 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 620 R/L EDC R IP",
+      "modelos": "Diebold Opteva 620 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 620 R/L FTA",
+      "modelos": "Diebold Opteva 620 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L EDC R"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 620 R/L FTA IP",
+      "modelos": "Diebold Opteva 620 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 620 R/L IP",
+      "modelos": "Diebold Opteva 620 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 620 R/L RB",
+      "modelos": "Diebold Opteva 620 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R EMV RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM CD OPTEVA 520",
+      "modelos": "Diebold Opteva 520 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA EDC R"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM CD OPTEVA 520 EDC R",
+      "modelos": "Diebold Opteva 520 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA FTA RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM CD OPTEVA 520 F/L",
+      "modelos": "Diebold Opteva 520 F/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA IDM"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM CD OPTEVA 520 R/L",
+      "modelos": "Diebold Opteva 520 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA IDM RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM CD OPTEVA 520 R/L 5°GAV",
+      "modelos": "Diebold Opteva 520 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L",
+      "modelos": "Diebold Opteva 720 F/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L 5ºGAV",
+      "modelos": "Diebold Opteva 720 F/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L FTA",
+      "modelos": "Diebold Opteva 720 F/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L FTA RB",
+      "modelos": "Diebold Opteva 720 F/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV FTA"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L IP",
+      "modelos": "Diebold Opteva 720 F/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV/G VOZ"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 3DES",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L ENA/3DES"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 3DES EDC R",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L FTA"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 3DES IP",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L FTA IP"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 3DES RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L G VOZ"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 3DES/5ºGAV",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM FULL OPTEVA 720 R/L RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5°GAV/EDC R/RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM OPTEVA 510 R/L 3DES"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM OPTEVA 510 R/L 3DES IP"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV / EDC",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM OPTEVA 522 5ºGAV"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV EDC R/G VOZ RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM OPTEVA 522 5ºGAV RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "ATM OPTEVA 522 EDC R/G VOZ RB"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA MI",
+      "modeloDesc": "ATM OPTEVA 868 ECRM DISP IDM"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "GUNNEBO",
+      "modeloDesc": "CAJA ROBOTIZADA"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L EDC R",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "CIMA SDM500"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L EDC R FTA",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "CIMA SDM500"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L FTA",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "DIEBOLD NIXDORF",
+      "modeloDesc": "CS2070"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L FTA IP",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "DIEBOLD NIXDORF",
+      "modeloDesc": "CS2070 FL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L G VOZ",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "DIEBOLD NIXDORF",
+      "modeloDesc": "CS2070 RL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "DIEBOLD NIXDORF",
+      "modeloDesc": "CS280"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 510 R/L",
+      "modelos": "Diebold Opteva 510 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "DIEBOLD NIXDORF",
+      "modeloDesc": "CS280 FL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 510 R/L 3DES",
+      "modelos": "Diebold Opteva 510 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "DIEBOLD NIXDORF",
+      "modeloDesc": "CS280 RL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 510 R/L 3DES IP",
+      "modelos": "Diebold Opteva 510 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "CTE1 SNBC"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 520 R/L",
+      "modelos": "Diebold Opteva 520 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "CTE2 SNBC"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 522  NDX SP4",
+      "modelos": "Diebold Opteva 510 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "CTE2 SNBC -C"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 522 5ºGAV",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "CTI UL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 522 5ºGAV RB",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "CTI UL- C"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 522 EDC R/G VOZ RB",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "CTI90 SNBC"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 522 NDX/5ºGAV",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "CTI90 SNBC - C"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 722 R/L",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "DI90S"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS  OPTEVA 522",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H22N RL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS CD OPTEVA 520 R/L",
+      "modelos": "Diebold Opteva 520 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H22V"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 520 R/L",
+      "modelos": "Diebold Opteva 520 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H22VL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 522 FL – TAS",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H22VLR"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 522 RL – TAS",
+      "modelos": "Diebold Opteva 522 R/L",
+      "mpcr": "OPTEVA",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H34N"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "3700 FL ECRM",
+      "modelos": "NEXTGEN 3700",
+      "mpcr": "OPTEVA ECRM",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H34N (FECT)"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "3700 FL ECRM – IDM",
+      "modelos": "NEXTGEN 3700",
+      "mpcr": "OPTEVA ECRM",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H34N (FECT) S/CHK"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM 828 FL",
+      "modelos": "Diebold Opteva 828 ",
+      "mpcr": "OPTEVA ECRM",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H34N (FET)"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 368 R/L",
+      "modelos": "Diebold Opteva 368",
+      "mpcr": "OPTEVA ECRM",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H34N (FET) S/CHK"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 868 ECRM",
+      "modelos": "Diebold Opteva 868",
+      "mpcr": "OPTEVA ECRM",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H34N S/CHK"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 868 ECRM DISP IDM",
+      "modelos": "Diebold Opteva 868",
+      "mpcr": "OPTEVA ECRM",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H34NL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "CS3700 RL",
+      "modelos": "NEXTGEN 3700 R/L",
+      "mpcr": "OPTEVA ECRM",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H68NLR ATM"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "OPTEVA 828",
+      "modelos": "Diebold Opteva 828 ",
+      "mpcr": "OPTEVA ECRM",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H68NLR TAS"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 868 ECRM IDM",
+      "modelos": "Diebold Opteva 868",
+      "mpcr": "OPTEVA ECRM",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H68VLR"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L ENA",
+      "modelos": "Diebold Opteva 720 F/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H68VLR ATM"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L ENA IDM",
+      "modelos": "Diebold Opteva 720 F/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "GRG",
+      "modeloDesc": "DT-7000H68VLR+BAM"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "GLORY P1000"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "GLORY P1000"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R EMV",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "GLORY P1001"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R EMV RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "GLORY P1001"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA EDC R",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "GLORY P500"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA FTA RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "GLORY P500"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA IDM",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA",
+      "modeloDesc": "OPTEVA 828"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA IDM EDC R EMV",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "PMINI-MEI"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA IDM EDC R/5 GAV",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "TAS"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA IDM RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "Smart Box",
+      "modeloDesc": "TAS"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA TAS",
+      "modeloDesc": "TAS  OPTEVA 522"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA TAS",
+      "modeloDesc": "TAS CD OPTEVA 520 R/L"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA TAS",
+      "modeloDesc": "TAS OPTEVA 522 FL – TAS"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA TAS",
+      "modeloDesc": "TAS OPTEVA 522 RL – TAS"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV FTA",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA TAS",
+      "modeloDesc": "TAS OPTEVA 720 F/L"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV RB",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA TAS",
+      "modeloDesc": "TAS OPTEVA 720 F/L ENA"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV/G VOZ",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA TAS",
+      "modeloDesc": "TAS OPTEVA 720 R/L"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/3DES",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA TAS",
+      "modeloDesc": "TAS OPTEVA 720 R/L ENA"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L IDM",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "OPTEVA MI",
+      "negocio": "ATM",
+      "marcaDesc": "OPTEVA TAS",
+      "modeloDesc": "TAS OPTEVA 720 R/L ENA2"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 868 ECRM DEP IDM",
+      "modelos": "Diebold Opteva 868",
+      "mpcr": "TAS ECRM",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4500"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 F/L",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "TAS MI",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4500  IDM"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 F/L ENA",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "TAS MI",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4500 FL IDM"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 F/L ENA IDM",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "TAS MI",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4500 RL"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 R/L",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "TAS MI",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4500 RL IDM"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 R/L ENA",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "TAS MI",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4500 Slim"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 R/L ENA IDM",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "TAS MI",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4533-020"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 R/L ENA2",
+      "modelos": "Diebold Opteva 720 R/L",
+      "mpcr": "TAS MI",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4533-021"
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4533-022"
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500 FL",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4533-023"
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500 RL",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE",
+      "negocio": "ATM",
+      "marcaDesc": "TDE 4500",
+      "modeloDesc": "TDE 4535"
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500 Slim",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4533-020",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4533-021",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4533-022",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4533-023",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4535",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500  IDM",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE MI",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500 FL IDM",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE MI",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500 RL IDM",
+      "modelos": "Procomp TDE4500",
+      "mpcr": "TDE MI",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "DIEBOLD NIXDORF",
+      "modeloBase": "ATM CS280 RL",
+      "modelos": "Procash 280",
+      "mpcr": "CS280",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "DIEBOLD NIXDORF",
+      "modeloBase": "CS2070",
+      "modelos": "Wincor 2070",
+      "mpcr": "CS2070",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "DIEBOLD NIXDORF",
+      "modeloBase": "CS2070 FL",
+      "modelos": "Wincor 2070 F/L",
+      "mpcr": "CS2070",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "DIEBOLD NIXDORF",
+      "modeloBase": "CS2070 RL",
+      "modelos": "Wincor 2070",
+      "mpcr": "CS2070",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "DIEBOLD NIXDORF",
+      "modeloBase": "CS280",
+      "modelos": "Procash 280",
+      "mpcr": "CS280",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "DIEBOLD NIXDORF",
+      "modeloBase": "CS280 FL",
+      "modelos": "Procash 280 F/L",
+      "mpcr": "CS280",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "DIEBOLD NIXDORF",
+      "modeloBase": "CS280 RL",
+      "modelos": "Procash 280",
+      "mpcr": "CS280",
+      "negocio": "ATM",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "CIMA",
+      "modeloBase": "CIMA SDM500",
+      "modelos": "CIMA SDM500",
+      "mpcr": "CIMA",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "SNBC",
+      "modeloBase": "CTE1 SNBC",
+      "modelos": "CTE1 SNBC",
+      "mpcr": "CTE1 SNBC",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "SNBC",
+      "modeloBase": "CTE2 SNBC",
+      "modelos": "CTE2 SNBC",
+      "mpcr": "CTE2 SNBC",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "SNBC",
+      "modeloBase": "CTE2 SNBC -C",
+      "modelos": "CTE2 SNBC -C",
+      "mpcr": "CTE2 SNBC",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "SNBC",
+      "modeloBase": "CTI UL",
+      "modelos": "CTI UL",
+      "mpcr": "CTI UL",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "SNBC",
+      "modeloBase": "CTI UL- C",
+      "modelos": "CTI UL- C",
+      "mpcr": "CTI UL",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "SNBC",
+      "modeloBase": "CTI90 SNBC",
+      "modelos": "CTI90 SNBC",
+      "mpcr": "CTI90 SNBC",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "SNBC",
+      "modeloBase": "CTI90 SNBC - C",
+      "modelos": "CTI90 SNBC - C",
+      "mpcr": "CTI90 SNBC",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Smart Box",
+      "modeloBase": "DI90S",
+      "modelos": "DI90S",
+      "mpcr": "DI90S",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "GLORY",
+      "modeloBase": "GLORY P1000",
+      "modelos": "GLORY P1000",
+      "mpcr": "GLORY P1000",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "GLORY",
+      "modeloBase": "GLORY P1001",
+      "modelos": "GLORY P1001",
+      "mpcr": "GLORY P1001",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "GLORY",
+      "modeloBase": "GLORY P500",
+      "modelos": "GLORY P500",
+      "mpcr": "GLORY P500",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Smart Box",
+      "modeloBase": "PMINI-MEI",
+      "modelos": "PMINI-MEI",
+      "mpcr": "PMINI-MEI",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    },
+    {
+      "fabricante": "Prosegur",
+      "modeloBase": "TAS",
+      "modelos": "TAS",
+      "mpcr": "TAS",
+      "negocio": "CTD",
+      "marcaDesc": "",
+      "modeloDesc": ""
+    }
+  ],
+  "benchmarks": [
+    {
+      "fabricante": "CIMA",
+      "mpcr": "CIMA",
+      "callRateTarget": 0.35
+    },
+    {
+      "fabricante": "SNBC",
+      "mpcr": "CTE1 SNBC",
+      "callRateTarget": 0.35
+    },
+    {
+      "fabricante": "SNBC",
+      "mpcr": "CTE2 SNBC",
+      "callRateTarget": 0.35
+    },
+    {
+      "fabricante": "SNBC",
+      "mpcr": "CTI UL SNBC",
+      "callRateTarget": 0.35
+    },
+    {
+      "fabricante": "SNBC",
+      "mpcr": "CTI90 SNBC",
+      "callRateTarget": 0.35
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "mpcr": "DN",
+      "callRateTarget": 0.5
+    },
+    {
+      "fabricante": "GLORY",
+      "mpcr": "GLORY P1000",
+      "callRateTarget": 0.35
+    },
+    {
+      "fabricante": "GLORY",
+      "mpcr": "GLORY P1001",
+      "callRateTarget": 0.35
+    },
+    {
+      "fabricante": "GLORY",
+      "mpcr": "GLORY P500",
+      "callRateTarget": 0.35
+    },
+    {
+      "fabricante": "GLORY",
+      "mpcr": "GLORY TAS",
+      "callRateTarget": 0.35
+    },
+    {
+      "fabricante": "GRG Banking",
+      "mpcr": "GRG H21",
+      "callRateTarget": 0.5
+    },
+    {
+      "fabricante": "GRG Banking",
+      "mpcr": "GRG H22",
+      "callRateTarget": 0.5
+    },
+    {
+      "fabricante": "GRG Banking",
+      "mpcr": "GRG H34",
+      "callRateTarget": 0.5
+    },
+    {
+      "fabricante": "GRG Banking",
+      "mpcr": "GRG H68",
+      "callRateTarget": 0.5
+    },
+    {
+      "fabricante": "GUNNEBO",
+      "mpcr": "GUNNEBO",
+      "callRateTarget": 0.2
+    },
+    {
+      "fabricante": "MEI",
+      "mpcr": "MEI",
+      "callRateTarget": 0.35
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "mpcr": "OPTEVA",
+      "callRateTarget": 0.5
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "mpcr": "OPTEVA ECRM",
+      "callRateTarget": 0.7
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "mpcr": "OPTEVA MI",
+      "callRateTarget": 0.5
+    },
+    {
+      "fabricante": "Prosegur",
+      "mpcr": "PROSEGUR",
+      "callRateTarget": 1.3
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "mpcr": "TAS ECRM",
+      "callRateTarget": 1
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "mpcr": "TAS MI",
+      "callRateTarget": 0.5
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "mpcr": "TDE",
+      "callRateTarget": 0.3
+    },
+    {
+      "fabricante": "Diebold Procomp",
+      "mpcr": "TDE MI",
+      "callRateTarget": 0.5
+    },
+    {
+      "fabricante": "Wincor",
+      "mpcr": "WINCOR",
+      "callRateTarget": 0.5
+    },
+    {
+      "fabricante": "Wincor",
+      "mpcr": "WINCOR MI",
+      "callRateTarget": 0.5
+    }
+  ]
+}

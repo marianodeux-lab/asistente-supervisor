@@ -1,0 +1,131 @@
+{
+  "resumenPorPlanta": [
+    {
+      "planta": "Mar del Plata",
+      "baseAtm": 176,
+      "baseCtd": 114,
+      "totalBase": 290,
+      "serviceCalls": 29,
+      "vencidos": 4,
+      "callRate": 0.254,
+      "slaCumplimiento": 86.2,
+      "telca": 214
+    },
+    {
+      "planta": "Bahía Blanca",
+      "baseAtm": 116,
+      "baseCtd": 30,
+      "totalBase": 146,
+      "serviceCalls": 9,
+      "vencidos": 2,
+      "callRate": 0.3,
+      "slaCumplimiento": 77.8,
+      "telca": 87
+    },
+    {
+      "planta": "Santa Rosa / La Pampa",
+      "baseAtm": 110,
+      "baseCtd": 35,
+      "totalBase": 145,
+      "serviceCalls": 14,
+      "vencidos": 1,
+      "callRate": 0.21,
+      "slaCumplimiento": 92.8,
+      "telca": 94
+    },
+    {
+      "planta": "Neuquén / Alto Valle",
+      "baseAtm": 145,
+      "baseCtd": 60,
+      "totalBase": 205,
+      "serviceCalls": 22,
+      "vencidos": 3,
+      "callRate": 0.27,
+      "slaCumplimiento": 86.4,
+      "telca": 135
+    },
+    {
+      "planta": "Trelew / Madryn",
+      "baseAtm": 82,
+      "baseCtd": 34,
+      "totalBase": 116,
+      "serviceCalls": 11,
+      "vencidos": 1,
+      "callRate": 0.22,
+      "slaCumplimiento": 90.9,
+      "telca": 68
+    },
+    {
+      "planta": "Comodoro Rivadavia",
+      "baseAtm": 27,
+      "baseCtd": 31,
+      "totalBase": 58,
+      "serviceCalls": 6,
+      "vencidos": 0,
+      "callRate": 0.194,
+      "slaCumplimiento": 100,
+      "telca": 50
+    },
+    {
+      "planta": "Río Gallegos",
+      "baseAtm": 11,
+      "baseCtd": 17,
+      "totalBase": 28,
+      "serviceCalls": 5,
+      "vencidos": 0,
+      "callRate": 0.294,
+      "slaCumplimiento": 100,
+      "telca": 36
+    }
+  ],
+  "porFabricante": [
+    {
+      "fabricante": "SNBC",
+      "base": 310,
+      "fallas": 58,
+      "callRate": 0.187,
+      "telca": 340,
+      "tipo": "CTD (Cash Today)"
+    },
+    {
+      "fabricante": "GRG Banking",
+      "base": 260,
+      "fallas": 42,
+      "callRate": 0.161,
+      "telca": 190,
+      "tipo": "ATM & CTD"
+    },
+    {
+      "fabricante": "Diebold Nixdorf",
+      "base": 195,
+      "fallas": 38,
+      "callRate": 0.195,
+      "telca": 145,
+      "tipo": "ATM Opteva"
+    },
+    {
+      "fabricante": "CIMA",
+      "base": 140,
+      "fallas": 29,
+      "callRate": 0.207,
+      "telca": 112,
+      "tipo": "CTD (Buzoneras)"
+    },
+    {
+      "fabricante": "GLORY",
+      "base": 85,
+      "fallas": 16,
+      "callRate": 0.188,
+      "telca": 62,
+      "tipo": "CTD P500 / TAS"
+    },
+    {
+      "fabricante": "Wincor / Procomp",
+      "base": 45,
+      "fallas": 11,
+      "callRate": 0.244,
+      "telca": 44,
+      "tipo": "ATM"
+    }
+  ]
+}
