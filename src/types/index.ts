@@ -68,6 +68,7 @@ export interface Ticket {
   tecnicoZona?: string;
   localidad: string;
   direccion: string;
+  modelo?: string;
   lat?: number | null;
   lng?: number | null;
   despacho?: string;

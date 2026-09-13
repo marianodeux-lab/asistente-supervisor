@@ -1,12 +1,63 @@
 import * as XLSX from 'xlsx';
-import { Ticket, EquipoCronico, MpPendienteDetalle } from '../types';
+import { Ticket, EquipoCronico, MpPendienteDetalle, MovimientoStockItem, VisitaHistoricaLuno } from '../types';
 import zonasReferencia from '../data/zonasTecnicosReferencia.json';
+import preventivosData from '../data/preventivosData.json';
+import buzonMovimientosData from '../data/buzonMovimientosData.json';
+import reincidenciasData from '../data/reincidenciasData.json';
 import { formatTimeClean, ZONA_TECNICA_TO_LOCAL } from '../utils/formatters';
 
+// 1. Map Technicians to Reference Zones & Regions
 const masterTecMap = new Map<string, typeof zonasReferencia[0]>();
+const misTecnicosNombres = new Set<string>();
+
 zonasReferencia.forEach(z => {
-  masterTecMap.set(z.nombre.toLowerCase(), z);
+  const normName = z.nombre.toLowerCase().trim();
+  masterTecMap.set(normName, z);
+  misTecnicosNombres.add(normName);
 });
+
+// 2. Map Stock Movements from Buzón de Movimientos by Clean Pedido
+const buzonMap = new Map<string, MovimientoStockItem[]>();
+if (Array.isArray(buzonMovimientosData)) {
+  (buzonMovimientosData as unknown as MovimientoStockItem[]).forEach(item => {
+    const p = String(item.cleanPed || item.pedido || '').split('-')[0].trim();
+    if (p) {
+      if (!buzonMap.has(p)) buzonMap.set(p, []);
+      buzonMap.get(p)!.push(item);
+    }
+  });
+}
+
+// 3. Map MP Pendientes per Luno
+const mpPendingByLuno = new Map<string, { pedido: string; detalleFalla: string; tecAsignado: string; esSinAsignar: boolean }>();
+if (preventivosData && Array.isArray((preventivosData as any).pendientesDetalle)) {
+  (preventivosData as any).pendientesDetalle.forEach((item: any) => {
+    const luno = String(item.luno || item.ATM || '').trim();
+    if (luno) {
+      mpPendingByLuno.set(luno, {
+        pedido: String(item.pedido || ''),
+        detalleFalla: String(item.detalleFalla || 'Mantenimiento Preventivo'),
+        tecAsignado: String(item.tecnico || 'SIN ASIGNAR'),
+        esSinAsignar: !!item.esSinAsignar
+      });
+    }
+  });
+}
+
+// 4. Map Historical Failures / Reincidencias per Luno
+const cronicosMap = new Map<string, any>();
+if (Array.isArray(reincidenciasData)) {
+  reincidenciasData.forEach((item: any) => {
+    const l = String(item.luno || item.equipo || '').trim();
+    if (l) cronicosMap.set(l, item);
+  });
+}
+
+// Regional boundaries and allowed zones
+const allowedSuroesteZones = ['IN BAR', 'IN CIP', 'IN NQN', 'Suroeste', 'Bariloche', 'Cipolletti', 'Neuquen', 'Neuquén'];
+const ambaRegions = ['CABA', 'ZONA NORTE', 'ZONA SUR', 'ZONA OESTE', 'C2D', 'AMBA'];
+const litoralRegions = ['LITORAL-NORTE', 'LITORAL'];
+const patagoniaRegions = ['PATAGONIA', 'SUROESTE'];
 
 // Helper to parse dates from Excel numbers or strings into DD/MM/YYYY
 export function parseExcelDate(val: any): { dateStr: string; rawIso: string } {
@@ -74,12 +125,15 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
         const data = new Uint8Array(e.target?.result as ArrayBuffer);
         const workbook = XLSX.read(data, { type: 'array' });
         
-        console.log('Workbook loaded:', workbook.SheetNames);
-        
         const tickets: Ticket[] = [];
-        const cronicos: EquipoCronico[] = [];
-        const mpPendientes: MpPendienteDetalle[] = [];
         let totalRows = 0;
+
+        const lowerFileName = file.name.toLowerCase();
+        const isAdicionalesFile = lowerFileName.includes('adicional');
+        const isAsignadosFile = lowerFileName.includes('asignado');
+        const isSuroesteFile = lowerFileName.includes('suroeste');
+        const defaultFileOrigin = isAdicionalesFile ? 'Adicionales' : (isAsignadosFile ? 'Asignados' : (isSuroesteFile ? 'Suroeste' : 'Patagonia'));
+        const defaultFileZona = isSuroesteFile ? 'Suroeste' : 'Patagonia';
 
         // Try reading known sheets or fallback to first sheet
         workbook.SheetNames.forEach(sheetName => {
@@ -115,22 +169,28 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
             const mIdx = headers.findIndex(h => /^m$/i.test(h));
             const fallaIdx = headers.findIndex(h => /detalle\s*falla|desc\s*problema|problema/i.test(h));
             const cptoIdx = headers.findIndex(h => /cpto|concepto/i.test(h));
+            const modIdx = headers.findIndex(h => /modelo/i.test(h));
+            const fVtoIdx = headers.findIndex(h => /vto|vencimiento/i.test(h));
 
             for (let i = headerIdx + 1; i < rawData.length; i++) {
               const row = rawData[i];
               if (!row || !row[pedIdx]) continue;
 
-              const ped = String(row[pedIdx]).trim();
+              const fullPed = String(row[pedIdx]).trim();
+              const cleanPed = fullPed.split('-')[0].trim();
               const luno = lunoIdx !== -1 && row[lunoIdx] ? String(row[lunoIdx]).trim() : '';
               const cliente = cliIdx !== -1 && row[cliIdx] ? String(row[cliIdx]).trim() : 'Cliente';
               const tecAsignado = tecIdx !== -1 && row[tecIdx] ? String(row[tecIdx]).trim() : 'Sin Asignar';
               const tecZona = tecZonaIdx !== -1 && row[tecZonaIdx] ? String(row[tecZonaIdx]).trim() : tecAsignado;
-              const rawZona = zonaIdx !== -1 && row[zonaIdx] ? String(row[zonaIdx]).trim() : 'Patagonia';
-              const rawReg = regIdx !== -1 && row[regIdx] ? String(row[regIdx]).trim().toUpperCase() : 'PATAGONIA';
-              const estado = estIdx !== -1 && row[estIdx] ? String(row[estIdx]).trim() : 'SEG Registrado';
+              const rawZona = zonaIdx !== -1 && row[zonaIdx] ? String(row[zonaIdx]).trim() : defaultFileZona;
+              const rawReg = regIdx !== -1 && row[regIdx] ? String(row[regIdx]).trim().toUpperCase() : defaultFileZona.toUpperCase();
+              const estado = estIdx !== -1 && row[estIdx] ? String(row[estIdx]).trim() : (isAdicionalesFile ? 'AIEC Abierto' : 'SEG Registrado');
               const mVal = mIdx !== -1 && row[mIdx] ? String(row[mIdx]).trim().toUpperCase() : '';
               const detalleFalla = fallaIdx !== -1 && row[fallaIdx] ? String(row[fallaIdx]).trim() : '-';
-              const concepto = cptoIdx !== -1 && row[cptoIdx] ? String(row[cptoIdx]).trim() : 'SERVICE CALL';
+              const concepto = cptoIdx !== -1 && row[cptoIdx] ? String(row[cptoIdx]).trim() : (isAdicionalesFile ? 'AIEC' : 'SERVICE CALL');
+              const loc = locIdx !== -1 && row[locIdx] ? String(row[locIdx]).trim() : defaultFileZona;
+              const dir = dirIdx !== -1 && row[dirIdx] ? String(row[dirIdx]).trim() : '';
+              const modelo = modIdx !== -1 && row[modIdx] ? String(row[modIdx]).trim() : 'ATM/CTD';
 
               // Date & Time parsing
               const fCoorParsed = fCoorIdx !== -1 ? parseExcelDate(row[fCoorIdx]) : parseExcelDate(null);
@@ -146,8 +206,8 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
                 }
               }
 
-              // Technician & Region mapping
-              let finalRegion = rawReg || 'PATAGONIA';
+              // Technician & Master Zone mapping
+              let finalRegion = defaultFileZona;
               let zonaTecnica = rawZona;
               let zonaLocal = ZONA_TECNICA_TO_LOCAL[rawZona] || '';
 
@@ -155,13 +215,55 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
               if (tecMaster) {
                 finalRegion = tecMaster.region;
                 zonaTecnica = tecMaster.zonaTecnica || rawZona;
-                zonaLocal = tecMaster.zonaLocal;
+                zonaLocal = tecMaster.zonaLocal || zonaLocal;
+              } else {
+                if (ambaRegions.includes(rawReg) || rawZona.startsWith('C2D') || rawZona.startsWith('NORTE') || rawZona.startsWith('SUR') || rawZona.startsWith('OESTE') || rawZona.startsWith('CABA')) {
+                  finalRegion = 'AMBA';
+                } else if (litoralRegions.includes(rawReg) || rawZona.startsWith('IN2 SFE') || rawZona.startsWith('IN2 ROS') || rawZona.startsWith('IN2 PAR') || rawZona.startsWith('IN2 COR') || rawZona.startsWith('IN2 POS') || rawZona.startsWith('IN2 RES')) {
+                  finalRegion = 'LITORAL';
+                } else if (patagoniaRegions.includes(rawReg)) {
+                  finalRegion = rawReg;
+                }
               }
 
+              // Filter Asignados: Only keep Mis Técnicos, AMBA, and Litoral
+              if (isAsignadosFile) {
+                const isMyTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
+                const isAmba = finalRegion === 'AMBA' || ambaRegions.includes(rawReg);
+                const isLitoral = finalRegion === 'LITORAL' || litoralRegions.includes(rawReg);
+                const isPatagonia = finalRegion === 'PATAGONIA' || finalRegion === 'SUROESTE';
+
+                if (!isMyTec && !isAmba && !isLitoral && !isPatagonia) {
+                  continue; // Skip NOA, Córdoba, Cuyo, etc.
+                }
+              }
+
+              // Filter Suroeste if necessary
+              if (isSuroesteFile || finalRegion === 'SUROESTE') {
+                const isAllowed = allowedSuroesteZones.some(z => 
+                  loc.toLowerCase().includes(z.toLowerCase()) || 
+                  dir.toLowerCase().includes(z.toLowerCase()) || 
+                  rawZona.toLowerCase().includes(z.toLowerCase()) ||
+                  tecAsignado.toLowerCase().includes('lazzaro') ||
+                  tecAsignado.toLowerCase().includes('ibañez') ||
+                  tecAsignado.toLowerCase().includes('torres')
+                );
+                if (!isAllowed) continue;
+              }
+
+              // Cross-reference with Buzón de Movimientos (Repuestos / Stock Fijo)
+              const stockMovs = buzonMap.get(cleanPed) || buzonMap.get(fullPed) || [];
+
+              // Cross-reference with MP Pendientes
+              const mpInfo = luno ? mpPendingByLuno.get(luno) : null;
+
+              // Cross-reference with Reincidencias / Cronicos
+              const cronicoInfo = luno ? cronicosMap.get(luno) : null;
+
               tickets.push({
-                id: ped,
-                pedido: ped.split('-')[0],
-                pedidoFull: ped,
+                id: fullPed,
+                pedido: cleanPed,
+                pedidoFull: fullPed,
                 cliente,
                 luno,
                 equipo: luno,
@@ -170,7 +272,7 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
                 estado,
                 slaPorcentaje: slaVal,
                 hsSla: Math.max(1, Math.round((100 - slaVal) / 12)),
-                fechaVencimiento: new Date(Date.now() + (100 - slaVal) * 3600000).toISOString(),
+                fechaVencimiento: fVtoIdx !== -1 && row[fVtoIdx] ? String(row[fVtoIdx]) : new Date(Date.now() + (100 - slaVal) * 3600000).toISOString(),
                 fechaCoordinada: `${fCoorParsed.dateStr} ${hCoorParsed}`.trim(),
                 fCoorDate: fCoorParsed.dateStr,
                 hCoor: hCoorParsed,
@@ -184,12 +286,22 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
                 zonaTecnica,
                 zonaLocal,
                 region: finalRegion,
-                localidad: locIdx !== -1 && row[locIdx] ? String(row[locIdx]).trim() : 'Patagonia',
-                direccion: dirIdx !== -1 && row[dirIdx] ? String(row[dirIdx]).trim() : '',
+                localidad: loc,
+                direccion: dir,
+                modelo,
                 notificadoMovil: mVal === 'S',
                 m: mVal,
-                esAdicional: /aiec/i.test(concepto) || /adicional/i.test(file.name),
-                esAsignadoCOT: /asignado/i.test(file.name)
+                origenReporte: defaultFileOrigin,
+                esAdicional: isAdicionalesFile || /aiec/i.test(concepto),
+                esAsignadoCOT: isAsignadosFile,
+
+                // Deep Cross-referencing Alerts
+                alertaMpPendiente: !!mpInfo,
+                alertaMpSinAsignar: mpInfo ? mpInfo.esSinAsignar : false,
+                mpPendienteDetalle: mpInfo ? { pedido: mpInfo.pedido, detalleFalla: mpInfo.detalleFalla, tecAsignado: mpInfo.tecAsignado } : null,
+                movimientosStock: stockMovs,
+                cantidadVisitasHistoricas: cronicoInfo ? cronicoInfo.totalFallas : 0,
+                cantidadSoporteRemoto: cronicoInfo ? cronicoInfo.fallasTelca : 0
               });
             }
           }
@@ -197,8 +309,8 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
 
         resolve({
           tickets,
-          cronicos,
-          mpPendientes,
+          cronicos: [],
+          mpPendientes: [],
           fileName: file.name,
           uploadDate: new Date().toLocaleString('es-AR'),
           rowCount: totalRows

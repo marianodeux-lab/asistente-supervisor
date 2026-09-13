@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { TabNavigation, TabKey } from './components/TabNavigation';
 import { SlaMonitor } from './components/SlaMonitor';
@@ -15,6 +15,7 @@ import { ChronicDetailModal } from './components/ChronicDetailModal';
 import { AuthModal } from './components/AuthModal';
 import { UserManagementModal } from './components/UserManagementModal';
 import { AuthService } from './services/authService';
+import { ReportSyncService } from './services/reportSyncService';
 
 // Preloaded datasets
 import initialTickets from './data/agendaData.json';
@@ -166,9 +167,44 @@ export function App() {
     setSelectedTicket(updated);
   };
 
-  // Refresh simulation
+  // Cloud Sync on Mount & Refresh
+  const fetchCloudAgenda = async () => {
+    try {
+      const res = await ReportSyncService.fetchActiveDataset<Ticket[]>('agenda_activa');
+      if (res.data && res.data.payload && Array.isArray(res.data.payload) && res.data.payload.length > 0) {
+        const cloudTickets = res.data.payload;
+        setTickets(cloudTickets);
+
+        const cloudReportItem: ReportItem = {
+          id: 'rep_cloud_active',
+          name: res.data.archivos_origen.length > 0 ? res.data.archivos_origen.join(' + ') : 'Agenda Nube Supabase',
+          size: `${(JSON.stringify(cloudTickets).length / (1024 * 1024)).toFixed(2)} MB`,
+          uploadDate: new Date(res.data.updated_at).toLocaleString('es-AR'),
+          rowCount: res.data.total_registros,
+          isActive: true,
+          ticketsCount: cloudTickets.length,
+          data: cloudTickets,
+          author: res.data.updated_by,
+          isCloudSynced: res.source === 'supabase'
+        };
+
+        setReports(prev => [
+          cloudReportItem,
+          ...prev.filter(r => r.id !== 'rep_cloud_active').map(r => ({ ...r, isActive: false }))
+        ]);
+      }
+    } catch (e) {
+      console.warn('Error fetching cloud agenda on mount:', e);
+    }
+  };
+
+  useEffect(() => {
+    fetchCloudAgenda();
+  }, []);
+
+  // Refresh handler
   const handleRefresh = () => {
-    setTickets(prev => [...prev]);
+    fetchCloudAgenda();
   };
 
   const handleExport = () => {
@@ -287,6 +323,7 @@ export function App() {
             onDeleteReport={handleDeleteReport}
             onRestoreDefaultAgenda={handleRestoreDefaultAgenda}
             activeReportName={activeReportName}
+            currentUser={currentUser}
           />
         )}
 
