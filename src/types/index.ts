@@ -431,3 +431,68 @@ export interface PasswordResetToken {
   fechaExpiracion: number;
 }
 
+// ==========================================
+// Auditoría de Stock de Técnicos & Devoluciones
+// ==========================================
+
+export interface StockDeudaItem {
+  pn: string;
+  idUnico: string;
+  esGen: boolean;
+  descripcion: string;
+  tecnico: string;
+  pedRetiro: string;
+  codEquipo: string;
+  cliente: string;
+  fecha: string;
+  marca: string;
+  ubicacion?: string;
+}
+
+export interface StockTecnicoItem {
+  pn: string;
+  idUnico: string;
+  descripcion: string;
+  tecnico: string;
+  pedidoCot: string;
+  pedidoStock: string;
+  cliente: string;
+  fechaMov: string;
+  ubicacion: string;
+  esStockFijo?: boolean;
+}
+
+export interface RetornoSemanalItem extends StockTecnicoItem {
+  motivo: 'FUERA_DE_STOCK_FIJO' | 'EXCEDENTE_STOCK_FIJO';
+  detalleMotivo: string;
+  cantAutorizadaSf?: number;
+  cantActualEnStock?: number;
+}
+
+export interface TecnicoStockAuditoria {
+  nombre: string;
+  norm: string;
+  esMiTecnico: boolean;
+  zonaTecnica: string;
+  region: string;
+  zonaLocal: string;
+  totalAdeudado: number; // deudaRecambios.length + retornosSemanales.length
+  deudaRecambiosCount: number;
+  deudaGenCount: number;
+  retornosSemanalesCount: number;
+  stockTecnicoTotalCount: number;
+  stockFijoCount: number;
+  deudaRecambios: StockDeudaItem[];
+  retornosSemanales: RetornoSemanalItem[];
+  stockTecnicoItems: StockTecnicoItem[];
+}
+
+export interface StockAuditoriaState {
+  fechaCorte: string;
+  totalAdeudadoRegion: number;
+  totalStockDeudaRegion: number;
+  totalGenRegion: number;
+  totalRetornosSemanalesRegion: number;
+  totalTecnicosConDeuda: number;
+  tecnicos: TecnicoStockAuditoria[];
+}

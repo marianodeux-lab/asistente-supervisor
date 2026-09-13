@@ -32,6 +32,7 @@ import modelosMpcrData from './data/modelosMpcrData.json';
 import zonasTecnicosRef from './data/zonasTecnicosReferencia.json';
 import ctdDemoradosData from './data/ctdRadarDemoradosData.json';
 import baseInstaladaClientesData from './data/baseInstaladaClientesData.json';
+import stockAuditoriaData from './data/stockAuditoriaData.json';
 
 import { 
   Ticket, 
@@ -49,7 +50,8 @@ import {
   CallRateBenchmark,
   ZonaTecnicoRef,
   BaseInstaladaClienteRow,
-  UserAccount
+  UserAccount,
+  StockAuditoriaState
 } from './types';
 
 export function App() {
@@ -69,6 +71,7 @@ export function App() {
   const [cargaLaboral, setCargaLaboral] = useState<CargaLaboralState>(initialCargaLaboral as CargaLaboralState);
   const [despachos, setDespachos] = useState<DespachoItem[]>(initialDespachos as DespachoItem[]);
   const [repuestos, setRepuestos] = useState<RepuestosState>(initialRepuestos as RepuestosState);
+  const [stockAuditoria, setStockAuditoria] = useState<StockAuditoriaState>(stockAuditoriaData as unknown as StockAuditoriaState);
   
   // Reference Tables State
   const [stockFijo, setStockFijo] = useState<StockFijoItem[]>(stockFijoData as StockFijoItem[]);
@@ -168,8 +171,9 @@ export function App() {
   };
 
   // Cloud Sync on Mount & Refresh
-  const fetchCloudAgenda = async () => {
+  const fetchCloudData = async () => {
     try {
+      // 1. Fetch Agenda Activa
       const res = await ReportSyncService.fetchActiveDataset<Ticket[]>('agenda_activa');
       if (res.data && res.data.payload && Array.isArray(res.data.payload) && res.data.payload.length > 0) {
         const cloudTickets = res.data.payload;
@@ -193,18 +197,24 @@ export function App() {
           ...prev.filter(r => r.id !== 'rep_cloud_active').map(r => ({ ...r, isActive: false }))
         ]);
       }
+
+      // 2. Fetch Stock Repuestos Activo
+      const stockRes = await ReportSyncService.fetchActiveDataset<StockAuditoriaState>('stock_repuestos_activo');
+      if (stockRes.data && stockRes.data.payload && stockRes.data.payload.tecnicos) {
+        setStockAuditoria(stockRes.data.payload);
+      }
     } catch (e) {
-      console.warn('Error fetching cloud agenda on mount:', e);
+      console.warn('Error fetching cloud data on mount:', e);
     }
   };
 
   useEffect(() => {
-    fetchCloudAgenda();
+    fetchCloudData();
   }, []);
 
   // Refresh handler
   const handleRefresh = () => {
-    fetchCloudAgenda();
+    fetchCloudData();
   };
 
   const handleExport = () => {
@@ -311,6 +321,8 @@ export function App() {
           <DespachosRepuestosView
             despachos={despachos}
             repuestos={repuestos}
+            stockAuditoria={stockAuditoria}
+            onRefreshAuditoria={handleRefresh}
           />
         )}
 
@@ -324,6 +336,7 @@ export function App() {
             onRestoreDefaultAgenda={handleRestoreDefaultAgenda}
             activeReportName={activeReportName}
             currentUser={currentUser}
+            onStockAuditSuccess={(newStock) => setStockAuditoria(newStock)}
           />
         )}
 

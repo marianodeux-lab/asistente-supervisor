@@ -14,17 +14,24 @@ import {
   ChevronsLeft,
   ChevronsRight
 } from 'lucide-react';
-import { DespachoItem, RepuestosState } from '../types';
+import { DespachoItem, RepuestosState, StockAuditoriaState } from '../types';
+import { StockAuditoriaView } from './StockAuditoriaView';
+import defaultStockAuditoria from '../data/stockAuditoriaData.json';
 
 interface DespachosRepuestosViewProps {
   despachos: DespachoItem[];
   repuestos: RepuestosState;
+  stockAuditoria?: StockAuditoriaState;
+  onRefreshAuditoria?: () => void;
 }
 
 export const DespachosRepuestosView: React.FC<DespachosRepuestosViewProps> = ({
   despachos,
-  repuestos
+  repuestos,
+  stockAuditoria,
+  onRefreshAuditoria
 }) => {
+  const [activeTab, setActiveTab] = useState<'AUDITORIA_STOCK' | 'GUIAS_DESPACHOS'>('AUDITORIA_STOCK');
   const [searchDespachos, setSearchDespachos] = useState('');
   const [searchPartes, setSearchPartes] = useState('');
 
@@ -76,11 +83,59 @@ export const DespachosRepuestosView: React.FC<DespachosRepuestosViewProps> = ({
     return filteredPartes.slice(start, start + pageSizePartes);
   }, [filteredPartes, currentPagePartes, pageSizePartes]);
 
+  const currentStockData = stockAuditoria || (defaultStockAuditoria as unknown as StockAuditoriaState);
+
   return (
     <div className="space-y-6">
       
-      {/* Top Banner */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {/* Top Module Sub-Tab Switcher */}
+      <div className="flex border-b border-slate-800 bg-slate-900/60 p-1.5 rounded-2xl gap-2 text-xs">
+        <button
+          onClick={() => setActiveTab('AUDITORIA_STOCK')}
+          className={`flex-1 py-2.5 px-4 rounded-xl font-bold transition flex items-center justify-center gap-2 ${
+            activeTab === 'AUDITORIA_STOCK'
+              ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+          }`}
+        >
+          <Package className="w-4 h-4" />
+          <span>Auditoría de Stock de Técnicos & Devoluciones</span>
+          <span className={`text-[11px] px-2 py-0.2 rounded-full font-black ${
+            activeTab === 'AUDITORIA_STOCK' ? 'bg-slate-950 text-amber-400' : 'bg-red-950 text-red-300 border border-red-800/60'
+          }`}>
+            {currentStockData.totalAdeudadoRegion} pzas
+          </span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('GUIAS_DESPACHOS')}
+          className={`flex-1 py-2.5 px-4 rounded-xl font-bold transition flex items-center justify-center gap-2 ${
+            activeTab === 'GUIAS_DESPACHOS'
+              ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+          }`}
+        >
+          <Truck className="w-4 h-4" />
+          <span>Envíos & Guías de Despacho (Jet-Paq)</span>
+          <span className={`text-[11px] px-2 py-0.2 rounded-full font-black ${
+            activeTab === 'GUIAS_DESPACHOS' ? 'bg-slate-950 text-amber-400' : 'bg-slate-800 text-slate-300'
+          }`}>
+            {despachos.length} guías
+          </span>
+        </button>
+      </div>
+
+      {activeTab === 'AUDITORIA_STOCK' && (
+        <StockAuditoriaView 
+          data={currentStockData}
+          onRefresh={onRefreshAuditoria}
+        />
+      )}
+
+      {activeTab === 'GUIAS_DESPACHOS' && (
+        <div className="space-y-6">
+          {/* Top Banner */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         
         <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-xl">
           <div className="flex items-center justify-between">
@@ -346,7 +401,9 @@ export const DespachosRepuestosView: React.FC<DespachosRepuestosViewProps> = ({
 
         </div>
 
-      </div>
+        </div>
+        </div>
+      )}
 
     </div>
   );

@@ -19,6 +19,7 @@ import {
   X
 } from 'lucide-react';
 import { parseExcelFile, ProcessedExcelResult } from '../services/excelProcessor';
+import { processStockFiles } from '../services/stockProcessor';
 import { ReportSyncService, UploadHistoryItem } from '../services/reportSyncService';
 import { 
   getSupabaseConfig, 
@@ -26,7 +27,7 @@ import {
   clearRuntimeSupabaseConfig, 
   testSupabaseConnection 
 } from '../services/supabaseClient';
-import { Ticket, UserAccount } from '../types';
+import { Ticket, UserAccount, StockAuditoriaState } from '../types';
 
 export interface ReportItem {
   id: string;
@@ -49,6 +50,7 @@ interface ReportRepositoryProps {
   onRestoreDefaultAgenda?: () => void;
   activeReportName: string;
   currentUser?: UserAccount;
+  onStockAuditSuccess?: (newStock: StockAuditoriaState) => void;
 }
 
 export const ReportRepository: React.FC<ReportRepositoryProps> = ({
@@ -58,7 +60,8 @@ export const ReportRepository: React.FC<ReportRepositoryProps> = ({
   onDeleteReport,
   onRestoreDefaultAgenda,
   activeReportName,
-  currentUser
+  currentUser,
+  onStockAuditSuccess
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -148,80 +151,115 @@ export const ReportRepository: React.FC<ReportRepositoryProps> = ({
     setSuccessMsg(null);
 
     try {
-      const mergedMap = new Map<string, Ticket>();
-      let totalRows = 0;
-      let totalBytes = 0;
-      const processedNames: string[] = [];
-
-      for (const file of files) {
-        if (!file.name.endsWith('.xlsx') && !file.name.endsWith('.xls') && !file.name.endsWith('.csv')) {
-          continue;
-        }
-
-        const result: ProcessedExcelResult = await parseExcelFile(file);
-        totalRows += result.rowCount;
-        totalBytes += file.size;
-        processedNames.push(file.name);
-
-        result.tickets.forEach(t => {
-          if (!mergedMap.has(t.pedido)) {
-            mergedMap.set(t.pedido, t);
-          } else {
-            // merge additional metadata if exists
-            const existing = mergedMap.get(t.pedido)!;
-            mergedMap.set(t.pedido, { ...existing, ...t });
-          }
-        });
-      }
-
-      const mergedTickets = Array.from(mergedMap.values());
-      if (mergedTickets.length === 0) {
-        setErrorMsg('No se encontraron registros de pedidos válidos en los archivos seleccionados.');
-        return;
-      }
-
-      const sizeKB = (totalBytes / 1024).toFixed(1);
-      const sizeStr = totalBytes > 1024 * 1024 ? `${(totalBytes / (1024 * 1024)).toFixed(2)} MB` : `${sizeKB} KB`;
-      const displayName = files.length === 1 ? files[0].name : `Agenda Unificada (${files.length} reportes)`;
       const authorName = currentUser?.nombre || 'Mariano Deux';
+      const messages: string[] = [];
 
-      // 1. Save to Supabase Cloud & Local Cache
-      const syncResult = await ReportSyncService.upsertReportDataset(
-        'agenda_activa',
-        mergedTickets,
-        {
-          updated_by: authorName,
-          archivos_origen: processedNames,
-          total_registros: mergedTickets.length,
-          tamaño_kb: Math.round(totalBytes / 1024)
+      // 1. Separate Stock Reports (Stock Deuda / Stock Tecnico) from Agenda Reports
+      const stockFiles = files.filter(f => {
+        const l = f.name.toLowerCase();
+        return l.includes('deuda') || l.includes('stock tecnico') || l.includes('stock técnico');
+      });
+
+      const agendaFiles = files.filter(f => {
+        const l = f.name.toLowerCase();
+        return !l.includes('deuda') && !l.includes('stock tecnico') && !l.includes('stock técnico');
+      });
+
+      // Process Stock Reports if present
+      if (stockFiles.length > 0) {
+        const { result: stockResult, processedFiles: stockProcessed } = await processStockFiles(stockFiles);
+        if (stockProcessed.length > 0) {
+          const totalStockBytes = stockFiles.reduce((acc, f) => acc + f.size, 0);
+          const syncStock = await ReportSyncService.upsertReportDataset(
+            'stock_repuestos_activo',
+            stockResult,
+            {
+              updated_by: authorName,
+              archivos_origen: stockProcessed,
+              total_registros: stockResult.totalAdeudadoRegion,
+              tamaño_kb: Math.round(totalStockBytes / 1024)
+            }
+          );
+
+          if (onStockAuditSuccess) {
+            onStockAuditSuccess(stockResult);
+          }
+
+          messages.push(`¡Repuestos de Stock procesados (${stockProcessed.join(', ')})! Total a devolver: ${stockResult.totalAdeudadoRegion} piezas.`);
         }
-      );
-
-      const newReport: ReportItem = {
-        id: `rep_${Date.now()}`,
-        name: displayName,
-        size: sizeStr,
-        uploadDate: new Date().toLocaleString('es-AR'),
-        rowCount: totalRows,
-        isActive: true,
-        ticketsCount: mergedTickets.length,
-        data: mergedTickets,
-        author: authorName,
-        isCloudSynced: syncResult.savedToCloud
-      };
-
-      onUploadSuccess(newReport);
-
-      if (syncResult.savedToCloud) {
-        setSuccessMsg(`¡Éxito! Se procesaron y sincronizaron en Supabase ${mergedTickets.length} pedidos. Ya están disponibles en cualquier dispositivo.`);
-      } else {
-        setSuccessMsg(`¡Se unificaron ${mergedTickets.length} pedidos en memoria local! ${syncResult.error || ''}`);
       }
 
-      loadHistory();
+      // Process Agenda Reports if present
+      if (agendaFiles.length > 0) {
+        const mergedMap = new Map<string, Ticket>();
+        let totalRows = 0;
+        let totalBytes = 0;
+        const processedNames: string[] = [];
+
+        for (const file of agendaFiles) {
+          if (!file.name.endsWith('.xlsx') && !file.name.endsWith('.xls') && !file.name.endsWith('.csv')) {
+            continue;
+          }
+
+          const result: ProcessedExcelResult = await parseExcelFile(file);
+          totalRows += result.rowCount;
+          totalBytes += file.size;
+          processedNames.push(file.name);
+
+          result.tickets.forEach(t => {
+            if (!mergedMap.has(t.pedido)) {
+              mergedMap.set(t.pedido, t);
+            } else {
+              const existing = mergedMap.get(t.pedido)!;
+              mergedMap.set(t.pedido, { ...existing, ...t });
+            }
+          });
+        }
+
+        const mergedTickets = Array.from(mergedMap.values());
+        if (mergedTickets.length > 0) {
+          const sizeKB = (totalBytes / 1024).toFixed(1);
+          const sizeStr = totalBytes > 1024 * 1024 ? `${(totalBytes / (1024 * 1024)).toFixed(2)} MB` : `${sizeKB} KB`;
+          const displayName = agendaFiles.length === 1 ? agendaFiles[0].name : `Agenda Unificada (${agendaFiles.length} reportes)`;
+
+          const syncResult = await ReportSyncService.upsertReportDataset(
+            'agenda_activa',
+            mergedTickets,
+            {
+              updated_by: authorName,
+              archivos_origen: processedNames,
+              total_registros: mergedTickets.length,
+              tamaño_kb: Math.round(totalBytes / 1024)
+            }
+          );
+
+          const newReport: ReportItem = {
+            id: `rep_${Date.now()}`,
+            name: displayName,
+            size: sizeStr,
+            uploadDate: new Date().toLocaleString('es-AR'),
+            rowCount: totalRows,
+            isActive: true,
+            ticketsCount: mergedTickets.length,
+            data: mergedTickets,
+            author: authorName,
+            isCloudSynced: syncResult.savedToCloud
+          };
+
+          onUploadSuccess(newReport);
+          messages.push(`¡Agenda sincronizada con ${mergedTickets.length} pedidos!`);
+        }
+      }
+
+      if (messages.length > 0) {
+        setSuccessMsg(messages.join(' '));
+        loadHistory();
+      } else {
+        setErrorMsg('No se encontraron registros válidos de Agenda ni de Stock en los archivos.');
+      }
     } catch (err: any) {
       console.error(err);
-      setErrorMsg('Error al procesar el archivo Excel. Verifica que sea un formato válido.');
+      setErrorMsg('Error al procesar los archivos. Verifica que sean formatos válidos de Flow Pro.');
     } finally {
       setIsProcessing(false);
     }
@@ -325,7 +363,7 @@ export const ReportRepository: React.FC<ReportRepositoryProps> = ({
               {isProcessing ? 'Procesando y sincronizando con la nube...' : 'Arrastra aquí tus Reportes de Flow Pro'}
             </h4>
             <p className="text-xs text-slate-400 mt-1">
-              Puedes seleccionar uno o varios archivos simultáneamente (<strong className="text-slate-200">Pendientes Patagonia, Pendientes Suroeste, Asignados, Adicionales</strong>).
+              Puedes seleccionar uno o varios archivos simultáneamente (<strong className="text-slate-200">Pendientes Patagonia, Suroeste, Asignados, Adicionales, Stock Deuda, Stock Técnico</strong>).
             </p>
           </div>
 
