@@ -11,6 +11,7 @@ import {
   AlertTriangle
 } from 'lucide-react';
 import { EquipoCronico } from '../types';
+import { formatExcelDate } from '../utils/formatters';
 
 interface ChronicDetailModalProps {
   cronico: EquipoCronico | null;
@@ -23,6 +24,10 @@ export const ChronicDetailModal: React.FC<ChronicDetailModalProps> = ({
 }) => {
   if (!cronico) return null;
 
+  const validTecnicos = (cronico.tecnicosInvolucrados || []).filter(
+    t => t && t !== 'Técnico' && t !== 'SIN ASIGNAR' && t !== '-'
+  );
+
   return (
     <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
       <div className="bg-slate-900 border border-slate-700 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
@@ -30,22 +35,18 @@ export const ChronicDetailModal: React.FC<ChronicDetailModalProps> = ({
         {/* Header */}
         <div className="bg-slate-950 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className={`p-2.5 rounded-xl ${
-              cronico.estadoSalud === 'CRÍTICO' ? 'bg-red-500/20 text-red-400 border border-red-500/30' :
-              cronico.estadoSalud === 'ADVERTENCIA' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' :
-              'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-            }`}>
+            <div className="p-2.5 rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/30">
               <Radio className="w-5 h-5 animate-pulse" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-lg font-bold text-white">Historial Clínico: Equipo {cronico.luno}</h3>
-                <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold uppercase ${
-                  cronico.estadoSalud === 'CRÍTICO' ? 'bg-red-600 text-white' :
-                  cronico.estadoSalud === 'ADVERTENCIA' ? 'bg-amber-600 text-white' :
-                  'bg-emerald-600 text-white'
+                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
+                  cronico.estadoSalud === 'CRÍTICO' 
+                    ? 'bg-red-950 text-red-300 border border-red-800 animate-pulse' 
+                    : 'bg-amber-950 text-amber-300 border border-amber-800'
                 }`}>
-                  {cronico.estadoSalud} ({cronico.totalFallas} fallas SLA)
+                  {cronico.estadoSalud} ({cronico.totalFallas} FALLAS SLA)
                 </span>
               </div>
               <p className="text-xs text-slate-400">
@@ -78,7 +79,7 @@ export const ChronicDetailModal: React.FC<ChronicDetailModalProps> = ({
               <span>•</span>
               <span className="flex items-center gap-1 text-blue-300">
                 <Wrench className="w-3 h-3 text-blue-400" />
-                <strong>Último Preventivo MTM:</strong> {cronico.ultimoMtmFecha || 'Sin registro reciente'}
+                <strong>Último Preventivo MTM:</strong> {formatExcelDate(cronico.ultimoMtmFecha) || 'Sin registro reciente'}
               </span>
             </div>
           </div>
@@ -90,11 +91,17 @@ export const ChronicDetailModal: React.FC<ChronicDetailModalProps> = ({
               Técnicos que Intervinieron este Equipo
             </h4>
             <div className="flex flex-wrap gap-2">
-              {cronico.tecnicosInvolucrados.map(tec => (
-                <span key={tec} className="text-xs bg-slate-900 border border-slate-700 text-slate-200 px-2.5 py-1 rounded-md font-medium">
-                  {tec}
+              {validTecnicos.length > 0 ? (
+                validTecnicos.map(tec => (
+                  <span key={tec} className="text-xs bg-slate-900 border border-slate-700 text-slate-200 px-2.5 py-1 rounded-md font-medium">
+                    {tec}
+                  </span>
+                ))
+              ) : (
+                <span className="text-xs text-slate-400 italic">
+                  Registrado en guardias rotativas de zona
                 </span>
-              ))}
+              )}
             </div>
           </div>
 
@@ -114,11 +121,15 @@ export const ChronicDetailModal: React.FC<ChronicDetailModalProps> = ({
                         {f.origen}
                       </span>
                       <span className="font-mono text-amber-400 font-bold">Pedido #{f.pedido}</span>
-                      <span className="text-slate-500">•</span>
-                      <span className="text-slate-300 font-semibold">{f.tecnico}</span>
+                      {f.tecnico && f.tecnico !== 'Técnico' && (
+                        <>
+                          <span className="text-slate-500">•</span>
+                          <span className="text-slate-300 font-semibold">{f.tecnico}</span>
+                        </>
+                      )}
                     </div>
                     <span className="text-slate-400 text-[11px] font-medium font-mono">
-                      {f.fecha}
+                      {formatExcelDate(f.fecha)}
                     </span>
                   </div>
                   <p className="text-xs text-slate-200 font-normal pl-1 border-l-2 border-amber-500/50 mt-1">

@@ -350,6 +350,95 @@ function parseDateFormatted(val) {
   return s;
 }
 
+function toIsoDate(val) {
+  if (!val && val !== 0) return '';
+  const num = typeof val === 'number' ? val : (typeof val === 'string' && /^\d+(\.\d+)?$/.test(val.trim()) ? Number(val.trim()) : NaN);
+  if (!isNaN(num) && num > 30000 && num < 70000) {
+    const utcDays = num - 25569;
+    const utcMs = utcDays * 86400 * 1000;
+    const d = new Date(utcMs);
+    const day = d.getUTCDate().toString().padStart(2, '0');
+    const month = (d.getUTCMonth() + 1).toString().padStart(2, '0');
+    const year = d.getUTCFullYear();
+    return `${year}-${month}-${day}`;
+  }
+  const str = String(val).trim();
+  if (str.includes('/')) {
+    const p = str.split(' ')[0].split('/');
+    if (p.length === 3) {
+      const d = p[0].padStart(2, '0');
+      const m = p[1].padStart(2, '0');
+      const y = p[2].length === 2 ? `20${p[2]}` : p[2];
+      return `${y}-${m}-${d}`;
+    }
+  }
+  if (str.includes('-')) {
+    return str.split('T')[0];
+  }
+  return '';
+}
+
+// Load MP Cerrados Map for MP Deficiente detection (<30d)
+const mpCerradosMapPath = path.resolve(outDir, 'mpCerradosMap.json');
+let mpCerradosMap = {};
+if (fs.existsSync(mpCerradosMapPath)) {
+  try {
+    mpCerradosMap = JSON.parse(fs.readFileSync(mpCerradosMapPath, 'utf8'));
+  } catch (e) {
+    console.warn('Could not parse mpCerradosMap.json:', e.message);
+  }
+}
+
+// Helper to extract real client, branch, and real address from RELEVAMIENTOS CASH TODAY observations
+function extractRelevamientoClient(detalle) {
+  if (!detalle) return null;
+  const lines = String(detalle).split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  
+  // Template pattern with 'Contacto del cliente' separator
+  const contactIdx = lines.findIndex(l => /Contacto (del )?cliente/i.test(l));
+  if (contactIdx !== -1 && contactIdx + 1 < lines.length) {
+    const dataLines = lines.slice(contactIdx + 1);
+    if (dataLines[0] && !dataLines[0].startsWith('¿') && !dataLines[0].startsWith('-')) {
+      return {
+        clienteReal: dataLines[0],
+        obra: dataLines[1] || '',
+        sucursal: dataLines[2] || '',
+        direccionReal: dataLines[3] || '',
+        localidadReal: dataLines[4] || ''
+      };
+    }
+  }
+
+  // Non-template format: check line right after "relevamiento"
+  const idxNombre = lines.findIndex(l => /relevamiento/i.test(l));
+  if (idxNombre !== -1 && lines[idxNombre + 1]) {
+    const nextLine = lines[idxNombre + 1];
+    if (nextLine && !nextLine.startsWith('¿') && !/^(A entregar|A mover|Nombre|El técnico)/i.test(nextLine)) {
+      return {
+        clienteReal: nextLine,
+        obra: lines[idxNombre + 2] || '',
+        sucursal: lines[idxNombre + 3] || '',
+        direccionReal: lines[idxNombre + 4] || '',
+        localidadReal: lines[idxNombre + 5] || ''
+      };
+    }
+  }
+
+  // Search for company indicators (S.A., S.R.L., etc.)
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (/(S\.?A\.?|S\.?R\.?L\.?|S\.?A\.?S\.?|INC|SOCIEDAD|ASOCIADOS|ARGENTINA)/i.test(line) && 
+        !line.includes('¿') && !/Nombre Cliente/i.test(line) && !/relevamiento/i.test(line) && !/El técnico/i.test(line)) {
+      return { 
+        clienteReal: line, 
+        sucursal: lines[i + 2] || lines[i + 1] || '' 
+      };
+    }
+  }
+  
+  return null;
+}
+
 function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
   if (!fs.existsSync(filePath)) return [];
   const wb = XLSX.readFile(filePath);
@@ -400,6 +489,7 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
     }
 
     // Filter Asignados: Only keep Mis Técnicos, AMBA, and Litoral
+    // AND CRITICAL RULE: only keep same day (fecha actual dinámica) and next day (día posterior)
     if (tipoOrigen === 'Asignados') {
       const isMyTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
       const isAmba = regionFinal === 'AMBA' || ambaRegions.includes(regTec);
@@ -408,6 +498,22 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
 
       if (!isMyTec && !isAmba && !isLitoral && !isPatagonia) {
         return null; // Discard NOA, Córdoba, Cuyo, etc.
+      }
+
+      // Filter Asignados strictly to same day (dynamic current date) and next day (día posterior)
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, '0');
+      const todayStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+      const tomorrow = new Date(now);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const tomorrowStr = `${pad(tomorrow.getDate())}/${pad(tomorrow.getMonth() + 1)}/${tomorrow.getFullYear()}`;
+
+      const isTodayOrTomorrow = fCoorDate === todayStr || fCoorDate === tomorrowStr ||
+        fCoorDate === `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}` ||
+        fCoorDate === `${tomorrow.getDate()}/${tomorrow.getMonth() + 1}/${tomorrow.getFullYear()}`;
+
+      if (!isTodayOrTomorrow) {
+        return null; // Discard older dates or dates beyond tomorrow
       }
     }
 
@@ -451,11 +557,80 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
     const adInfo = adicionalesByLuno.get(luno) || null;
     const tieneAdicional = !!adInfo;
 
+    // Cross-reference with MP Cerrados (Detección de MP Deficiente < 30 días)
+    const mpCerrado = luno ? mpCerradosMap[luno] : null;
+    let ultimoMpFecha = null;
+    let diasDesdeUltimoMp = null;
+    let esMpDeficiente = false;
+    let tecnicoUltimoMp = null;
+    let obsUltimoMp = null;
+
+    if (mpCerrado) {
+      ultimoMpFecha = mpCerrado.ultimoMpFecha || null;
+      tecnicoUltimoMp = mpCerrado.tecMp || null;
+      obsUltimoMp = mpCerrado.obsMp || null;
+      if (mpCerrado.rawDateIso) {
+        const mpDate = new Date(mpCerrado.rawDateIso);
+        // Compare with reference date 07/09/2026
+        const refTime = new Date('2026-09-07T12:00:00Z').getTime();
+        const diffDays = Math.round((refTime - mpDate.getTime()) / (1000 * 60 * 60 * 24));
+        diasDesdeUltimoMp = diffDays >= 0 ? diffDays : null;
+        esMpDeficiente = diffDays >= 0 && diffDays <= 30;
+      }
+    }
+
+    // Días desde última atención
+    let diasDesdeUltimaAtencion = String(r['Días desde última atención'] || '').trim();
+    if (!diasDesdeUltimaAtencion || diasDesdeUltimaAtencion === '-') {
+      if (visitasCampo.length > 0 && visitasCampo[0].fecha) {
+        const dIso = toIsoDate(visitasCampo[0].fecha);
+        if (dIso) {
+          const days = Math.round((new Date('2026-09-07T12:00:00Z').getTime() - new Date(dIso).getTime()) / (1000 * 60 * 60 * 24));
+          diasDesdeUltimaAtencion = days <= 1 ? '1 día' : (days < 30 ? `${days} días` : `${Math.round(days / 30)} mes(es)`);
+        } else {
+          diasDesdeUltimaAtencion = '1 día';
+        }
+      } else {
+        diasDesdeUltimaAtencion = '1 día';
+      }
+    }
+
+    // Reincidencias Counter
+    const rRaw = parseInt(r['R'] || '0', 10) || 0;
+    const reincidenciaCount = rRaw > 0 ? rRaw : (visitasCampo.length > 0 ? visitasCampo.length : 0);
+
+    // Concepto & Flujo
+    const conceptoLlamada = tipoOrigen === 'Adicionales' ? 'AIEC' : (r['Cpto Llamada'] || 'SERVICE CALL');
+    const isSinAsignar = !tecAsignado || tecAsignado.toLowerCase() === 'sin asignar' || tecAsignado.toLowerCase().includes('sin asignar');
+    const esScVigente = conceptoLlamada !== 'AIEC' && tipoOrigen !== 'Adicionales';
+    let origenFlujo = 'SC_PENDIENTE';
+    if (tipoOrigen === 'Adicionales') {
+      origenFlujo = 'ADICIONAL';
+    } else if (mpInfo) {
+      origenFlujo = 'MP_PENDIENTE';
+    } else if (tipoOrigen === 'Asignados') {
+      origenFlujo = 'ASIGNADO_COT';
+    } else {
+      origenFlujo = 'SC_PENDIENTE';
+    }
+
+    let clienteReal = null;
+    let sucursalRelevamiento = null;
+    if (/relevamiento/i.test(cliente) || /cash today/i.test(cliente) || /relevamiento/i.test(detalleFalla)) {
+      const parsedRelev = extractRelevamientoClient(detalleFalla);
+      if (parsedRelev) {
+        clienteReal = parsedRelev.clienteReal;
+        sucursalRelevamiento = parsedRelev.sucursal;
+      }
+    }
+
     return {
       id: ped,
       pedido: cleanPed,
       pedidoFull: ped,
       cliente,
+      clienteReal,
+      sucursalRelevamiento,
       luno,
       equipo: luno,
       tecnico: tecAsignado,
@@ -467,11 +642,21 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       fechaCoordinada: fechaCoordinadaDisplay,
       fCoorDate,
       hCoor,
-      diasUltimaAtencion: r['Días desde última atención'] || '1 día',
+      diasUltimaAtencion: diasDesdeUltimaAtencion,
+      diasDesdeUltimaAtencion,
+      reincidenciaCount,
+      ultimoMpFecha,
+      diasDesdeUltimoMp,
+      esMpDeficiente,
+      tecnicoUltimoMp,
+      obsUltimoMp,
+      origenFlujo,
+      esScVigente,
+      alertaSinAsignar: isSinAsignar,
       controlInicio: r['Ctrl Inicio'] || 'Normal',
       stock: String(r['Stock'] || '0'),
       repuestos: r['Repuestos'] || '-',
-      concepto: tipoOrigen === 'Adicionales' ? 'AIEC' : (r['Cpto Llamada'] || 'SERVICE CALL'),
+      concepto: conceptoLlamada,
       detalleFalla,
       zona: rawZona,
       zonaTecnica,
@@ -546,6 +731,20 @@ const controlInicioList = zonasListRef.map(tec => {
   const estadoStr = first ? String(first['Estado'] || '').trim() : (matches.length > 0 ? String(matches[0]['Estado'] || '') : 'Sin pedidos asignados');
   const esAsistencia = estadoStr === 'SEG Asistencia' || estadoStr === 'SEG Control Final' || estadoStr === 'SEG Fin Asistencia';
 
+  let primerClienteReal = undefined;
+  let primerSucursalRelev = undefined;
+  if (first) {
+    const rawCli = String(first['Cliente'] || '').trim();
+    const rawObs = String(first['Observaciones'] || first['Detalle de falla'] || first['Detalle Falla'] || '');
+    if (/relevamiento/i.test(rawCli) || /cash today/i.test(rawCli) || /relevamiento/i.test(rawObs)) {
+      const parsedRelev = extractRelevamientoClient(rawObs);
+      if (parsedRelev) {
+        primerClienteReal = parsedRelev.clienteReal;
+        primerSucursalRelev = parsedRelev.sucursal;
+      }
+    }
+  }
+
   return {
     tecnico: tec.nombre,
     zonaLocal: tec.zonaLocal,
@@ -553,7 +752,11 @@ const controlInicioList = zonasListRef.map(tec => {
     region: tec.region,
     tienePedidos: !!first,
     primerPedido: first ? {
+      pedido: String(first['Pedido'] || '').trim(),
+      concepto: String(first['Concepto'] || first['Cpto Llamada'] || 'SC').trim(),
       cliente: String(first['Cliente'] || '').trim(),
+      clienteReal: primerClienteReal,
+      sucursalRelevamiento: primerSucursalRelev,
       luno: String(first['Luno'] || '').trim(),
       direccion: String(first['Direccion'] || '').trim(),
       localidad: String(first['Localidad'] || '').trim(),

@@ -6,6 +6,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "BAPRO",
       "luno": "11488",
       "direccion": "Avellaneda 199",
@@ -24,6 +26,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "BANCO NACION",
       "luno": "4136",
       "direccion": "Avda. General San Martín Oeste 1",
@@ -51,6 +55,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "BAPRO",
       "luno": "11369",
       "direccion": "Av. Constitucion 5850",
@@ -69,6 +75,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "ACA",
       "luno": "002359016370",
       "direccion": "Diagonal F De La Palza 1733",
@@ -87,6 +95,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "BAPRO",
       "luno": "8728",
       "direccion": "Av. J. Peralta Ramos 1890",
@@ -123,6 +133,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "BAPRO",
       "luno": "11214",
       "direccion": "San Martin 1",
@@ -141,6 +153,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "BANCO NACION",
       "luno": "5060",
       "direccion": "9 de Julio  127",
@@ -159,6 +173,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "BANCO CREDICOOP",
       "luno": "808231",
       "direccion": "Pellegrini 851",
@@ -177,6 +193,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "CLIENTE INTERNO",
       "luno": "SRO",
       "direccion": "Fiorucci 45",
@@ -195,6 +213,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "CLIENTE INTERNO",
       "luno": "SRO",
       "direccion": "Fiorucci 45",
@@ -240,6 +260,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "BAPRO",
       "luno": "11203",
       "direccion": "Los Ligustros S/N",
@@ -267,6 +289,8 @@
     "region": "PATAGONIA",
     "tienePedidos": true,
     "primerPedido": {
+      "pedido": "",
+      "concepto": "SC",
       "cliente": "BANCO CREDICOOP",
       "luno": "812961",
       "direccion": "Garibaldi 360",

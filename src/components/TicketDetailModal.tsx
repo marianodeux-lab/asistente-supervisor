@@ -14,7 +14,10 @@ import {
   Flame,
   History,
   ArrowRightLeft,
-  Tag
+  Tag,
+  Wrench,
+  Store,
+  Building2
 } from 'lucide-react';
 import { Ticket, TecnicoInfo, EquipoCronico } from '../types';
 import { formatTimeClean } from '../utils/formatters';
@@ -164,6 +167,48 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
             </div>
           )}
 
+          {/* RELEVAMIENTOS CASH TODAY: DISTINCIÓN DE CLIENTE REAL EN OBSERVACIONES */}
+          {(ticket.clienteReal || (ticket.cliente && ticket.cliente.toUpperCase().includes('RELEVAMIENTOS CASH TODAY'))) && (
+            <div className="p-4 rounded-xl bg-gradient-to-r from-amber-950/70 via-slate-900 to-slate-950 border border-amber-500/60 shadow-lg space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5 text-amber-300">
+                  <div className="p-2 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                    <Store className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider block text-amber-300">
+                      Relevamiento de Sitio • Cash Today
+                    </span>
+                    <span className="text-[11px] text-slate-400">
+                      En Flow el cliente figura unificado como <strong className="text-amber-300">RELEVAMIENTOS CASH TODAY</strong>, pero el cliente real a relevar surge de las observaciones:
+                    </span>
+                  </div>
+                </div>
+                <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase bg-amber-950 text-amber-300 border border-amber-600">
+                  Factibilidad Técnica
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs bg-slate-950/80 p-3 rounded-lg border border-slate-800">
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase font-semibold block">Cliente Comercial Real:</span>
+                  <strong className="text-sm text-white font-bold block mt-0.5 text-amber-200">
+                    {ticket.clienteReal || 'Identificado en Observaciones'}
+                  </strong>
+                </div>
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase font-semibold block">Sucursal / Local / Obra:</span>
+                  <strong className="text-xs text-slate-200 font-semibold block mt-0.5">
+                    {ticket.sucursalRelevamiento || 'Central / Punto de Sitio'}
+                  </strong>
+                </div>
+                <div className="sm:col-span-2 pt-2 border-t border-slate-800/80 flex items-center justify-between text-slate-300">
+                  <span>Dirección del Relevamiento: <strong className="text-white font-medium">{ticket.direccionReal || ticket.direccion} ({ticket.localidadReal || ticket.localidad})</strong></span>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Grid Info: Ubicación & Técnico */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
@@ -231,6 +276,17 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
               )}
             </div>
 
+          </div>
+
+          {/* Detalle del Pedido & Observaciones del COT / Flow */}
+          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+              <FileText className="w-3.5 h-3.5 text-amber-400" />
+              Detalle del Pedido & Observaciones de Flow
+            </h4>
+            <div className="bg-slate-900/90 p-3 rounded-lg border border-slate-800 text-xs text-slate-200 leading-relaxed whitespace-pre-wrap font-sans">
+              {ticket.detalleFalla || 'Sin observaciones adicionales registradas.'}
+            </div>
           </div>
 
           {/* CROSS-REFERENCE 1: BUZÓN DE MOVIMIENTOS (Repuestos Instalados/Retirados con Módulo + QR) */}
@@ -355,6 +411,69 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* CROSS-REFERENCE 3: AUDITORÍA DE MANTENIMIENTO PREVENTIVO (MP Cerrados) */}
+          {(ticket.ultimoMpFecha || ticket.esMpDeficiente) && (
+            <div className={`p-4 rounded-xl border space-y-3 ${
+              ticket.esMpDeficiente 
+                ? 'bg-red-950/30 border-red-500/50 text-red-200' 
+                : 'bg-slate-950 border-slate-800 text-slate-200'
+            }`}>
+              <div className="flex items-center justify-between">
+                <h4 className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 text-amber-400">
+                  <Wrench className="w-3.5 h-3.5 text-amber-400" />
+                  Auditoría de Preventivos (MP Cerrados)
+                </h4>
+                {ticket.esMpDeficiente ? (
+                  <span className="text-[10px] bg-red-950 border border-red-500 text-red-300 px-2 py-0.5 rounded-full font-bold animate-pulse">
+                    🚨 Riesgo MP Deficiente (&lt;30 días)
+                  </span>
+                ) : (
+                  <span className="text-[10px] bg-emerald-950 border border-emerald-800 text-emerald-300 px-2 py-0.5 rounded-full font-semibold">
+                    MP Realizado
+                  </span>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                <div className="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
+                  <span className="text-[10px] text-slate-400 block uppercase font-medium">Fecha Último MP:</span>
+                  <strong className="text-white text-xs font-mono">{ticket.ultimoMpFecha || 'Sin registro'}</strong>
+                </div>
+                <div className="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
+                  <span className="text-[10px] text-slate-400 block uppercase font-medium">Antigüedad MP:</span>
+                  <strong className={`text-xs font-bold ${ticket.esMpDeficiente ? 'text-red-400' : 'text-slate-200'}`}>
+                    {ticket.diasDesdeUltimoMp !== null && ticket.diasDesdeUltimoMp !== undefined ? `Hace ${ticket.diasDesdeUltimoMp} días` : 'Desconocida'}
+                  </strong>
+                </div>
+                <div className="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
+                  <span className="text-[10px] text-slate-400 block uppercase font-medium">Técnico que cerró MP:</span>
+                  <strong className="text-slate-200 text-xs truncate block" title={ticket.tecnicoUltimoMp || '-'}>
+                    {ticket.tecnicoUltimoMp || 'No informado'}
+                  </strong>
+                </div>
+              </div>
+
+              {ticket.obsUltimoMp && (
+                <p className="text-[11px] text-slate-300 italic bg-slate-900/60 p-2 rounded border border-slate-800">
+                  Obs de Cierre MP: "{ticket.obsUltimoMp}"
+                </p>
+              )}
+
+              {ticket.esMpDeficiente && (
+                <div className="bg-red-950/60 border border-red-500/40 p-2.5 rounded-lg text-xs text-red-200 flex items-start gap-2">
+                  <AlertTriangle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold">Alerta de Calidad Operativa:</p>
+                    <p className="text-[11px] opacity-90">
+                      Este equipo presentó una falla de Service Call (SC) dentro de los 30 días posteriores al cierre del preventivo. 
+                      Verifique si el llamado actual se relaciona con partes manipuladas durante el mantenimiento preventivo.
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 

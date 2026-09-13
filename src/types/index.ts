@@ -88,10 +88,31 @@ export interface Ticket {
   cantidadVisitasHistoricas?: number;
   cantidadSoporteRemoto?: number;
   historialPrevioLuno?: VisitaHistoricaLuno[];
+  
+  // Refined SLA & Agenda Tracking
+  diasDesdeUltimaAtencion?: string;
+  reincidenciaCount?: number;
+  ultimoConcepto?: string;
+  ultimoMpFecha?: string | null;
+  diasDesdeUltimoMp?: number | null;
+  esMpDeficiente?: boolean;
+  tecnicoUltimoMp?: string | null;
+  obsUltimoMp?: string | null;
+  origenFlujo?: 'SC_PENDIENTE' | 'ASIGNADO_COT' | 'ADICIONAL' | 'MP_PENDIENTE';
+  esScVigente?: boolean;
+  alertaSinAsignar?: boolean;
+  clienteReal?: string;
+  sucursalRelevamiento?: string;
+  direccionReal?: string;
+  localidadReal?: string;
 }
 
 export interface ControlInicioPrimerPedido {
+  pedido?: string;
+  concepto?: string;
   cliente: string;
+  clienteReal?: string;
+  sucursalRelevamiento?: string;
   luno: string;
   direccion: string;
   localidad: string;
@@ -115,6 +136,10 @@ export interface ControlInicioItem {
 export interface FallaHistorica {
   pedido: string | number;
   fecha: string;
+  rawDateIso?: string;
+  codCierre?: string;
+  esRemotoTelca?: boolean;
+  esVisitaCampo?: boolean;
   falla: string;
   tecnico: string;
   origen: string;
@@ -130,9 +155,12 @@ export interface EquipoCronico {
   localidad?: string;
   totalFallas: number;
   fallasServiceCall: number;
+  totalVisitasCampo?: number;
+  totalSoporteRemoto?: number;
   fallasTelca: number;
   fallasOtros: number;
   ultimasFallas: FallaHistorica[];
+  todasFallas?: FallaHistorica[];
   zona: string;
   tecnicosInvolucrados: string[];
   causasFrecuentes: Record<string, number>;

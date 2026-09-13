@@ -153,6 +153,15 @@ export const HallAiService = {
     const expiredTickets = ctx.tickets.filter(t => t.hsSla < 0).length;
     const criticalCronicos = ctx.cronicos.filter(c => c.estadoSalud === 'CRÍTICO').length;
 
+    // SLA & Agenda Operational Status
+    const scPendientesSinCoordinar = ctx.tickets.filter(t => 
+      (t.esScVigente || t.concepto === 'SC') && 
+      (t.alertaSinAsignar || !t.tecnico || t.tecnico.toLowerCase() === 'sin asignar')
+    ).length;
+    const ticketsCoordinadosEnAgenda = ctx.tickets.filter(t => t.tecnico && t.tecnico.toLowerCase() !== 'sin asignar').length;
+    const mpDeficientesCount = ctx.tickets.filter(t => t.esMpDeficiente).length;
+    const aiecCount = ctx.tickets.filter(t => t.concepto === 'AIEC' || t.esAdicional).length;
+
     return `Eres "Hall", un asistente de inteligencia artificial táctico y analítico integrado en la aplicación "Asistente Supervisor".
 Estás diseñado específicamente para la supervisión operativa del servicio técnico de cajeros automáticos (ATM) y terminales de autoservicio (CTD) en la región PATAGONIA Y SUROESTE de Argentina (bases IN BAR - Bariloche, IN CIP - Cipolletti/Neuquén, Chubut, Santa Cruz, Tierra del Fuego, Bahía Blanca, etc.).
 Operas con los sistemas de gestión Flow Pro y Metro.
@@ -164,11 +173,20 @@ REGLAS DE NEGOCIO OBLIGATORIAS:
 4. CONSUMIBLES: Repuestos NO retornables (correas, ruedas de fricción, rodillos, sensores consumibles).
 5. RETORNOS SEMANALES: Repuestos que el técnico pidió para un reclamo puntual y no utilizó o no están autorizados como SF; deben devolverse la misma semana.
 6. MEJORA DE SLA MEDIANTE SF: Cuando un técnico usa frecuentemente un repuesto que NO está en su Stock Fijo, tiene que esperar el despacho de casa central, demorando la resolución y poniendo en riesgo el SLA. Proponer sumar esas partes a su SF es vital.
+7. REPORTES PENDIENTES PATAGONIA Y SUROESTE: Muestran todos los Service Calls (SC) vigentes, estén o no en la agenda del técnico. Los SC sin coordinar representan un riesgo directo de pagar SLA; deben coordinarse con máxima urgencia.
+8. REPORTE ASIGNADOS (AGENDA COT): Muestra todos los pedidos que la operadora del COT asignó a la agenda del técnico (provenientes de Adicionales, MP Pendientes o Pendientes).
+9. MP CERRADOS Y MP DEFICIENTE (<30 días): Si un equipo con Service Call vigente tuvo un preventivo (MP) cerrado en los últimos 30 días, indica a priori un "MP Deficiente" (falla prematura por mantenimiento deficiente).
+10. CIERRES TELCA2: Son atenciones de soporte remoto de mesa, no visitas de técnicos a campo. Si un equipo acumula cierres TELCA2, es indicio de que requiere una visita física en sitio.
+11. RELEVAMIENTOS CASH TODAY: En Flow Pro, el cliente "RELEVAMIENTOS CASH TODAY" es una denominación genérica administrativa que agrupa visitas técnicas para relevar la factibilidad de instalación de equipos Cash Today. Es el mismo cliente formal en el sistema para todos los pedidos de ese concepto; el cliente comercial real al cual se asiste (ej: Puma, Joyeros, AD Real Estate, etc.) y su sucursal surgen exclusivamente del texto de las observaciones / detalle de falla.
 
 SITUACIÓN OPERATIVA ACTUAL CONSOLIDADA:
 - Deuda real en mano en la región: ${ctx.stockAuditoria.totalAdeudadoRegion} piezas (${ctx.stockAuditoria.totalDeudaRealRegion} recambios cambiados en campo + ${ctx.stockAuditoria.totalRetornosSemanalesRegion} retornos semanales fuera de SF).
 - Piezas ya despachadas en tránsito con OR (no exigibles): ${ctx.stockAuditoria.totalEnTransitoRegion} piezas.
 - Técnicos con deuda real en mano: ${ctx.stockAuditoria.totalTecnicosConDeuda} de ${ctx.stockAuditoria.tecnicos.length}.
+- Pedidos coordinados en agenda técnica: ${ticketsCoordinadosEnAgenda}.
+- Service Calls (SC) vigentes SIN COORDINAR (Riesgo inminente de pagar penalización SLA): ${scPendientesSinCoordinar}.
+- Equipos con Service Call y alerta de MP Deficiente (<30 días post-preventivo): ${mpDeficientesCount}.
+- Tareas AIEC en agenda (sin SLA, aprovechar mismo domicilio de visita): ${aiecCount}.
 - Tickets en SLA Crítico (<2h restantes): ${criticalTickets}.
 - Tickets ya vencidos de SLA: ${expiredTickets}.
 - Equipos Reincidentes Crónicos (SLA 60 días): ${criticalCronicos}.

@@ -4,7 +4,9 @@ import zonasReferencia from '../data/zonasTecnicosReferencia.json';
 import preventivosData from '../data/preventivosData.json';
 import buzonMovimientosData from '../data/buzonMovimientosData.json';
 import reincidenciasData from '../data/reincidenciasData.json';
-import { formatTimeClean, ZONA_TECNICA_TO_LOCAL } from '../utils/formatters';
+import mpCerradosMap from '../data/mpCerradosMap.json';
+import ultimasAtencionesMap from '../data/ultimasAtencionesMap.json';
+import { formatTimeClean, ZONA_TECNICA_TO_LOCAL, extractRelevamientoClient } from '../utils/formatters';
 
 // 1. Map Technicians to Reference Zones & Regions
 const masterTecMap = new Map<string, typeof zonasReferencia[0]>();
@@ -227,6 +229,7 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
               }
 
               // Filter Asignados: Only keep Mis Técnicos, AMBA, and Litoral
+              // AND CRITICAL RULE: only keep same day (fecha actual dinámica) and next day (día posterior)
               if (isAsignadosFile) {
                 const isMyTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
                 const isAmba = finalRegion === 'AMBA' || ambaRegions.includes(rawReg);
@@ -235,6 +238,23 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
 
                 if (!isMyTec && !isAmba && !isLitoral && !isPatagonia) {
                   continue; // Skip NOA, Córdoba, Cuyo, etc.
+                }
+
+                // Filter Asignados strictly to same day (dynamic current date) and next day (día posterior)
+                const now = new Date();
+                const pad = (n: number) => String(n).padStart(2, '0');
+                const todayStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+                const tomorrow = new Date(now);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const tomorrowStr = `${pad(tomorrow.getDate())}/${pad(tomorrow.getMonth() + 1)}/${tomorrow.getFullYear()}`;
+
+                const normFCoor = fCoorParsed.dateStr;
+                const isTodayOrTomorrow = normFCoor === todayStr || normFCoor === tomorrowStr || 
+                  normFCoor === `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}` ||
+                  normFCoor === `${tomorrow.getDate()}/${tomorrow.getMonth() + 1}/${tomorrow.getFullYear()}`;
+
+                if (!isTodayOrTomorrow) {
+                  continue; // Exclude orders from older dates or beyond tomorrow
                 }
               }
 
@@ -260,11 +280,59 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
               // Cross-reference with Reincidencias / Cronicos
               const cronicoInfo = luno ? cronicosMap.get(luno) : null;
 
+              // Cross-reference with Ultimas Atenciones (from Agenda Diaria / Suspendidos)
+              const atencionInfo = luno ? (ultimasAtencionesMap as Record<string, any>)[luno] : null;
+              const diasDesdeUltimaAtencion = atencionInfo?.diasUltimaAtencion || 'SC - 1 mes';
+              const reincidenciaCount = atencionInfo?.reincidenciaCount !== undefined ? atencionInfo.reincidenciaCount : (cronicoInfo ? cronicoInfo.totalFallas : 0);
+
+              // Cross-reference with MP Cerrados (Detección de MP Deficiente < 30 días)
+              const mpCerrado = luno ? (mpCerradosMap as Record<string, any>)[luno] : null;
+              let ultimoMpFecha: string | null = null;
+              let diasDesdeUltimoMp: number | null = null;
+              let esMpDeficiente = false;
+              let tecnicoUltimoMp: string | null = null;
+              let obsUltimoMp: string | null = null;
+
+              if (mpCerrado) {
+                ultimoMpFecha = mpCerrado.ultimoMpFecha;
+                tecnicoUltimoMp = mpCerrado.tecMp;
+                obsUltimoMp = mpCerrado.obsMp;
+                const mpDate = new Date(mpCerrado.rawDateIso);
+                const diffDays = Math.round((Date.now() - mpDate.getTime()) / (1000 * 60 * 60 * 24));
+                diasDesdeUltimoMp = diffDays >= 0 ? diffDays : null;
+                esMpDeficiente = diffDays >= 0 && diffDays <= 30;
+              }
+
+              const isSinAsignar = !tecAsignado || tecAsignado.toLowerCase() === 'sin asignar' || tecAsignado.toLowerCase().includes('sin asignar');
+              const esScVigente = concepto !== 'AIEC' && !isAdicionalesFile;
+              let origenFlujo: 'SC_PENDIENTE' | 'ASIGNADO_COT' | 'ADICIONAL' | 'MP_PENDIENTE' = 'SC_PENDIENTE';
+              if (isAdicionalesFile) {
+                origenFlujo = 'ADICIONAL';
+              } else if (mpInfo) {
+                origenFlujo = 'MP_PENDIENTE';
+              } else if (isAsignadosFile) {
+                origenFlujo = 'ASIGNADO_COT';
+              } else {
+                origenFlujo = 'SC_PENDIENTE';
+              }
+
+              let clienteReal = undefined;
+              let sucursalRelevamiento = undefined;
+              if (/relevamiento/i.test(cliente) || /cash today/i.test(cliente) || /relevamiento/i.test(detalleFalla)) {
+                const parsedRelev = extractRelevamientoClient(detalleFalla);
+                if (parsedRelev) {
+                  clienteReal = parsedRelev.clienteReal;
+                  sucursalRelevamiento = parsedRelev.sucursal;
+                }
+              }
+
               tickets.push({
                 id: fullPed,
                 pedido: cleanPed,
                 pedidoFull: fullPed,
                 cliente,
+                clienteReal,
+                sucursalRelevamiento,
                 luno,
                 equipo: luno,
                 tecnico: tecAsignado,
@@ -276,7 +344,18 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
                 fechaCoordinada: `${fCoorParsed.dateStr} ${hCoorParsed}`.trim(),
                 fCoorDate: fCoorParsed.dateStr,
                 hCoor: hCoorParsed,
-                diasUltimaAtencion: '1 día',
+                diasUltimaAtencion: diasDesdeUltimaAtencion,
+                diasDesdeUltimaAtencion,
+                reincidenciaCount,
+                ultimoConcepto: atencionInfo?.diasUltimaAtencion?.split('-')[0]?.trim() || 'SC',
+                ultimoMpFecha,
+                diasDesdeUltimoMp,
+                esMpDeficiente,
+                tecnicoUltimoMp,
+                obsUltimoMp,
+                origenFlujo,
+                esScVigente,
+                alertaSinAsignar: isSinAsignar,
                 controlInicio: 'Normal',
                 stock: stkIdx !== -1 && row[stkIdx] ? String(row[stkIdx]) : '0',
                 repuestos: repIdx !== -1 && row[repIdx] ? String(row[repIdx]) : '-',

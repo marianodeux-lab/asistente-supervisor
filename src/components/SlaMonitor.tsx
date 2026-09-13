@@ -25,7 +25,12 @@ import {
   ChevronDown,
   ChevronUp,
   Activity,
-  Compass
+  Compass,
+  History,
+  Play,
+  RotateCcw,
+  Store,
+  Building2
 } from 'lucide-react';
 import { Ticket, TecnicoInfo, ZonaInfo, EquipoCronico, ControlInicioItem } from '../types';
 import zonasReferencia from '../data/zonasTecnicosReferencia.json';
@@ -49,8 +54,19 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
   onSelectTicket,
   onOpenCronicoDetail
 }) => {
+  // Dynamic Current Dates (Hoy y Día Posterior)
+  const { todayStr, tomorrowStr } = useMemo(() => {
+    const now = new Date();
+    const pad = (n: number) => String(n).padStart(2, '0');
+    const today = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+    const tmrw = new Date(now);
+    tmrw.setDate(tmrw.getDate() + 1);
+    const tomorrow = `${pad(tmrw.getDate())}/${pad(tmrw.getMonth() + 1)}/${tmrw.getFullYear()}`;
+    return { todayStr: today, tomorrowStr: tomorrow };
+  }, []);
+
   const [search, setSearch] = useState('');
-  const [dateFilter, setDateFilter] = useState<'HOY' | 'TODOS'>('HOY');
+  const [dateFilter, setDateFilter] = useState<'HOY' | 'MANANA' | 'HOY_Y_MANANA' | 'TODOS'>('HOY_Y_MANANA');
   
   // Cascading Filter States
   const [selectedRegion, setSelectedRegion] = useState<string>('ALL');
@@ -59,7 +75,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
   const [selectedTecnico, setSelectedTecnico] = useState<string>('ALL');
   const [selectedCliente, setSelectedCliente] = useState<string>('ALL');
   const [selectedEstado, setSelectedEstado] = useState<string>('ALL');
-  const [specialFilter, setSpecialFilter] = useState<'ALL' | 'MP_PENDIENTE' | 'ADICIONAL_PENDIENTE' | 'REINCIDENTE' | 'AIEC' | 'ASIGNADO_COT' | 'MOVIL_S'>('ALL');
+  const [specialFilter, setSpecialFilter] = useState<'ALL' | 'SC_PENDIENTES' | 'SC_SIN_ASIGNAR' | 'MP_DEFICIENTE' | 'REINCIDENTE' | 'ASIGNADO_COT' | 'MOVIL_S' | 'MP_PENDIENTE' | 'ADICIONAL_PENDIENTE' | 'AIEC'>('ALL');
   const [slaFilter, setSlaFilter] = useState<'ALL' | 'CRITICAL' | 'WARNING' | 'OK'>('ALL');
   const [sortBy, setSortBy] = useState<'sla_desc' | 'sla_asc' | 'pedido' | 'cliente' | 'fecha'>('sla_desc');
 
@@ -189,20 +205,40 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
   const handleTecnicoChange = (newTec: string) => {
     setSelectedTecnico(newTec);
     if (newTec !== 'ALL') {
+      setSpecialFilter('ALL');
       const masterInfo = masterTecMap.get(newTec.toLowerCase());
       if (masterInfo) {
-        if (masterInfo.region && selectedRegion === 'ALL') {
+        if (masterInfo.region) {
           setSelectedRegion(masterInfo.region);
         }
-        if (masterInfo.zonaLocal && selectedZonaLocal === 'ALL') {
+        if (masterInfo.zonaLocal) {
           setSelectedZonaLocal(masterInfo.zonaLocal);
         }
-        if (masterInfo.zonaTecnica && selectedZona === 'ALL') {
+        if (masterInfo.zonaTecnica) {
           setSelectedZona(masterInfo.zonaTecnica);
         }
       }
     }
     setCurrentPage(1);
+  };
+
+  // Dedicated selection from technician card in Control de Inicio
+  const handleSelectTecnicoFromCard = (newTec: string) => {
+    setSelectedTecnico(newTec);
+    setSpecialFilter('ALL');
+    setDateFilter('TODOS');
+    setSearch('');
+    const masterInfo = masterTecMap.get(newTec.toLowerCase());
+    if (masterInfo) {
+      if (masterInfo.region) setSelectedRegion(masterInfo.region);
+      if (masterInfo.zonaLocal) setSelectedZonaLocal(masterInfo.zonaLocal);
+      if (masterInfo.zonaTecnica) setSelectedZona(masterInfo.zonaTecnica);
+    }
+    setCurrentPage(1);
+    const el = document.getElementById('agenda-table-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   // Unique clients
@@ -226,10 +262,21 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
     return map;
   }, [cronicos]);
 
-  // Fast counts
+  // Fast counts based on dynamic today and tomorrow
   const hoyCount = useMemo(() => {
-    return tickets.filter(t => t.fCoorDate === '07/09/2026' || (t.fechaCoordinada && t.fechaCoordinada.includes('07/09/2026'))).length;
-  }, [tickets]);
+    return tickets.filter(t => t.fCoorDate === todayStr || (t.fechaCoordinada && t.fechaCoordinada.includes(todayStr))).length;
+  }, [tickets, todayStr]);
+
+  const mananaCount = useMemo(() => {
+    return tickets.filter(t => t.fCoorDate === tomorrowStr || (t.fechaCoordinada && t.fechaCoordinada.includes(tomorrowStr))).length;
+  }, [tickets, tomorrowStr]);
+
+  const hoyYMananaCount = useMemo(() => {
+    return tickets.filter(t => 
+      t.fCoorDate === todayStr || t.fCoorDate === tomorrowStr ||
+      (t.fechaCoordinada && (t.fechaCoordinada.includes(todayStr) || t.fechaCoordinada.includes(tomorrowStr)))
+    ).length;
+  }, [tickets, todayStr, tomorrowStr]);
 
   const movilSCount = useMemo(() => {
     return tickets.filter(t => t.notificadoMovil || t.m === 'S').length;
@@ -239,40 +286,83 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
   const pendCount = useMemo(() => controlInicioList.filter(i => i.estadoMarcaje === 'PENDIENTE_INICIO').length, [controlInicioList]);
   const sinPedidosCount = useMemo(() => controlInicioList.filter(i => i.estadoMarcaje === 'SIN_PEDIDOS').length, [controlInicioList]);
 
-  // Exact metrics for TOTAL EN AGENDA (Pendientes Patagonia + Suroeste vs Coordinados Mis Técnicos)
-  const totalPendientesRegion = useMemo(() => {
-    const patSuroesteOrders = tickets.filter(t => 
-      t.region === 'PATAGONIA' || 
-      t.region === 'SUROESTE' || 
-      t.origenReporte === 'Patagonia' || 
-      t.origenReporte === 'Suroeste' ||
-      masterTecMap.has(t.tecnico?.toLowerCase())
-    );
-    return patSuroesteOrders.length > 0 ? patSuroesteOrders.length : tickets.length;
-  }, [tickets, masterTecMap]);
-
-  const coordinadosMisTecnicos = useMemo(() => {
-    return tickets.filter(t => {
-      const isMyTech = masterTecMap.has(t.tecnico?.toLowerCase());
-      const isAssigned = t.tecnico && t.tecnico.toLowerCase() !== 'sin asignar';
-      return isMyTech && isAssigned;
-    }).length;
-  }, [tickets, masterTecMap]);
-
-  const sinAsignarRegion = useMemo(() => {
-    return tickets.filter(t => {
-      const isPatSuroeste = t.region === 'PATAGONIA' || t.region === 'SUROESTE' || t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste';
-      return isPatSuroeste && (!t.tecnico || t.tecnico.toLowerCase() === 'sin asignar');
-    }).length;
+  // Coordinated vs Uncoordinated Breakdown (Total en Agenda)
+  const coordinadosCount = useMemo(() => {
+    return tickets.filter(t => t.tecnico && t.tecnico.toLowerCase() !== 'sin asignar').length;
   }, [tickets]);
+
+  // Set of addresses of all currently coordinated orders (to match AIEC at same address)
+  const coordinatedAddresses = useMemo(() => {
+    const set = new Set<string>();
+    tickets.forEach(t => {
+      if (t.tecnico && t.tecnico.toLowerCase() !== 'sin asignar' && t.direccion) {
+        set.add(`${(t.cliente || '').trim().toLowerCase()}|${(t.direccion || '').trim().toLowerCase()}`);
+      }
+    });
+    return set;
+  }, [tickets]);
+
+  // SC Sin Coordinar (Service Call del reporte Pendientes con riesgo directo de SLA)
+  const scSinCoordinarCount = useMemo(() => {
+    return tickets.filter(t => 
+      (t.esScVigente || t.concepto === 'SC') && 
+      (t.alertaSinAsignar || !t.tecnico || t.tecnico.toLowerCase() === 'sin asignar')
+    ).length;
+  }, [tickets]);
+
+  // AIEC Sin Coordinar (Sin SLA pero útil para coordinar visitas múltiples en el mismo domicilio)
+  const aiecSinCoordinarCount = useMemo(() => {
+    return tickets.filter(t => 
+      (t.concepto === 'AIEC' || t.esAdicional) && 
+      (!t.tecnico || t.tecnico.toLowerCase() === 'sin asignar')
+    ).length;
+  }, [tickets]);
+
+  // AIEC sin coordinar que comparten domicilio con un pedido ya coordinado hoy
+  const aiecMismoDomicilioCount = useMemo(() => {
+    return tickets.filter(t => {
+      const isAiec = t.concepto === 'AIEC' || t.esAdicional;
+      const isSinAsignar = !t.tecnico || t.tecnico.toLowerCase() === 'sin asignar';
+      if (!isAiec || !isSinAsignar || !t.direccion) return false;
+      const key = `${(t.cliente || '').trim().toLowerCase()}|${(t.direccion || '').trim().toLowerCase()}`;
+      return coordinatedAddresses.has(key);
+    }).length;
+  }, [tickets, coordinatedAddresses]);
+
+  // Exact metrics for SC Pendientes, Asignados COT, and MP Deficiente (< 30 días)
+  const scPendientesTotal = useMemo(() => {
+    return tickets.filter(t => t.esScVigente).length;
+  }, [tickets]);
+
+  const scSinAsignar = scSinCoordinarCount;
+  const scAsignados = coordinadosCount;
+
+  const totalAsignadosCOT = useMemo(() => {
+    return tickets.filter(t => t.esAsignadoCOT).length;
+  }, [tickets]);
+
+  const mpDeficienteTotal = useMemo(() => {
+    return tickets.filter(t => t.esMpDeficiente).length;
+  }, [tickets]);
+
+  const totalPendientesRegion = scPendientesTotal;
+  const coordinadosMisTecnicos = scAsignados;
+  const sinAsignarRegion = scSinAsignar;
 
   // Filtered & Sorted Tickets
   const filteredTickets = useMemo(() => {
     return tickets.filter(t => {
-      // Date Filter (Agenda de Hoy vs Todos)
+      // Date Filter (Agenda de Hoy, Mañana, Hoy + Mañana vs Todos)
       if (dateFilter === 'HOY') {
-        const isToday = t.fCoorDate === '07/09/2026' || (t.fechaCoordinada && t.fechaCoordinada.includes('07/09/2026'));
+        const isToday = t.fCoorDate === todayStr || (t.fechaCoordinada && t.fechaCoordinada.includes(todayStr));
         if (!isToday) return false;
+      } else if (dateFilter === 'MANANA') {
+        const isTomorrow = t.fCoorDate === tomorrowStr || (t.fechaCoordinada && t.fechaCoordinada.includes(tomorrowStr));
+        if (!isTomorrow) return false;
+      } else if (dateFilter === 'HOY_Y_MANANA') {
+        const isTodayOrTomorrow = t.fCoorDate === todayStr || t.fCoorDate === tomorrowStr ||
+          (t.fechaCoordinada && (t.fechaCoordinada.includes(todayStr) || t.fechaCoordinada.includes(tomorrowStr)));
+        if (!isTodayOrTomorrow) return false;
       }
 
       // Search
@@ -281,6 +371,8 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         const match = 
           t.pedido.toLowerCase().includes(query) ||
           t.cliente.toLowerCase().includes(query) ||
+          (t.clienteReal && t.clienteReal.toLowerCase().includes(query)) ||
+          (t.sucursalRelevamiento && t.sucursalRelevamiento.toLowerCase().includes(query)) ||
           t.luno.toLowerCase().includes(query) ||
           t.tecnico.toLowerCase().includes(query) ||
           t.localidad.toLowerCase().includes(query) ||
@@ -304,13 +396,36 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         if (ticketZonaLocal !== selectedZonaLocal) return false;
       }
 
-      // Zona Filter
+      // Zona Filter (Cleaned to avoid string suffix mismatches like "(Oeste)")
       if (selectedZona !== 'ALL') {
-        if (ticketZona !== selectedZona && t.zonaTecnica !== selectedZona && t.zona !== selectedZona) return false;
+        const cleanSelectedZona = selectedZona.replace(/\s*\([^)]*\)/g, '').trim();
+        const tZona = (t.zonaTecnica || t.zona || '').trim();
+        const match = tZona === selectedZona || tZona === cleanSelectedZona || ticketZona === selectedZona || ticketZona === cleanSelectedZona;
+        if (!match) {
+          const isMyTech = selectedTecnico !== 'ALL' && t.tecnico && t.tecnico.toLowerCase() === selectedTecnico.toLowerCase();
+          if (!isMyTech) return false;
+        }
       }
 
-      // Tecnico Filter
-      if (selectedTecnico !== 'ALL' && t.tecnico !== selectedTecnico) return false;
+      // Tecnico Filter: includes tickets assigned to the technician AND pending SCs in the technician's zone
+      if (selectedTecnico !== 'ALL') {
+        const isAssignedToThisTech = t.tecnico && t.tecnico.toLowerCase() === selectedTecnico.toLowerCase();
+        
+        const master = masterTecMap.get(selectedTecnico.toLowerCase());
+        const techZonaTecnica = (master?.zonaTecnica || '').trim();
+        const techZonaLocal = (master?.zonaLocal || '').trim();
+        
+        const isPendingScInZone = (t.esScVigente || t.concepto === 'SC') && 
+          (t.alertaSinAsignar || !t.tecnico || t.tecnico.toLowerCase() === 'sin asignar') &&
+          (
+            (techZonaTecnica && (t.zonaTecnica === techZonaTecnica || t.zona === techZonaTecnica)) ||
+            (techZonaLocal && (t.zonaLocal === techZonaLocal || ZONA_TECNICA_TO_LOCAL[t.zonaTecnica || t.zona] === techZonaLocal))
+          );
+
+        if (!isAssignedToThisTech && !isPendingScInZone) {
+          return false;
+        }
+      }
 
       // Cliente Filter
       if (selectedCliente !== 'ALL' && t.cliente !== selectedCliente) return false;
@@ -319,10 +434,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       if (selectedEstado !== 'ALL' && t.estado !== selectedEstado) return false;
 
       // Special Filter
+      if (specialFilter === 'SC_PENDIENTES' && !t.esScVigente) return false;
+      if (specialFilter === 'SC_SIN_ASIGNAR' && (!t.esScVigente || !t.alertaSinAsignar)) return false;
+      if (specialFilter === 'MP_DEFICIENTE' && !t.esMpDeficiente) return false;
       if (specialFilter === 'MOVIL_S' && !t.notificadoMovil && t.m !== 'S') return false;
       if (specialFilter === 'MP_PENDIENTE' && !t.alertaMpPendiente) return false;
       if (specialFilter === 'ADICIONAL_PENDIENTE' && !t.alertaAdicionalPendiente) return false;
-      if (specialFilter === 'REINCIDENTE' && !cronicoMap.has(t.luno)) return false;
+      if (specialFilter === 'REINCIDENTE' && (!t.reincidenciaCount || t.reincidenciaCount <= 0) && !cronicoMap.has(t.luno)) return false;
       if (specialFilter === 'AIEC' && t.concepto !== 'AIEC' && !t.esAdicional) return false;
       if (specialFilter === 'ASIGNADO_COT' && !t.esAsignadoCOT) return false;
 
@@ -388,45 +506,104 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
     <div className="space-y-6">
       
       {/* Top Banner & Fast SLA Filter Tabs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
         
+        {/* CARD 1: TOTAL EN AGENDA (COORDINADOS + SIN COORDINAR SC & AIEC) */}
         <button
-          onClick={() => { setSlaFilter('ALL'); setSpecialFilter('ALL'); }}
+          onClick={() => { setSpecialFilter('ALL'); setSlaFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
-            slaFilter === 'ALL' && specialFilter === 'ALL'
+            specialFilter === 'ALL' && slaFilter === 'ALL'
               ? 'bg-slate-800 border-amber-500/80 shadow-lg shadow-amber-500/10'
               : 'bg-slate-900/80 border-slate-800 hover:bg-slate-800/60'
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Total en Agenda</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400">Total en Agenda</span>
             <Clock className="w-4 h-4 text-amber-400" />
           </div>
           
           <div className="flex items-baseline gap-2 mt-1">
-            <p className="text-2xl font-black text-white">{totalPendientesRegion}</p>
-            <span className="text-[11px] text-slate-400 font-semibold">pedidos en región</span>
+            <p className="text-2xl font-black text-white">{coordinadosCount}</p>
+            <span className="text-[10px] text-emerald-400 font-bold">coordinados</span>
           </div>
 
-          <div className="mt-2 pt-1.5 border-t border-slate-800 text-[10px] space-y-0.5">
-            <div className="flex items-center justify-between text-slate-300">
+          <div className="mt-2 pt-1.5 border-t border-slate-800 text-[10px] space-y-1">
+            {/* SC Sin Coordinar (Riesgo SLA) */}
+            <div 
+              onClick={(e) => {
+                e.stopPropagation();
+                setSpecialFilter('SC_SIN_ASIGNAR');
+                setSlaFilter('ALL');
+              }}
+              className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
+                specialFilter === 'SC_SIN_ASIGNAR' ? 'bg-red-500/20 text-red-300 font-bold' : 'text-red-400/90 hover:bg-red-950/40'
+              }`}
+              title="Filtrar pedidos SC del reporte Pendientes sin coordinar (Riesgo de pagar SLA)"
+            >
               <span className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                Coordinados a mis técnicos:
+                <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span>
+                SC Sin Coordinar (Riesgo SLA):
               </span>
-              <strong className="text-emerald-400 font-mono font-bold">{coordinadosMisTecnicos}</strong>
+              <strong className="text-red-400 font-mono font-black">{scSinCoordinarCount}</strong>
             </div>
 
-            <div className="flex items-center justify-between text-slate-400">
+            {/* AIEC Sin Coordinar */}
+            <div 
+              onClick={(e) => {
+                e.stopPropagation();
+                setSpecialFilter('AIEC');
+                setSlaFilter('ALL');
+              }}
+              className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
+                specialFilter === 'AIEC' ? 'bg-cyan-500/20 text-cyan-300 font-bold' : 'text-cyan-400/90 hover:bg-cyan-950/40'
+              }`}
+              title="Filtrar pedidos AIEC sin coordinar (Sin SLA pero oportuno para aprovechar visita si coincide domicilio)"
+            >
               <span className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                Sin asignar / En espera:
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                AIEC Sin Coordinar:
               </span>
-              <strong className="text-amber-300 font-mono font-bold">{sinAsignarRegion}</strong>
+              <div className="flex items-center gap-1">
+                <strong className="text-cyan-300 font-mono font-bold">{aiecSinCoordinarCount}</strong>
+                {aiecMismoDomicilioCount > 0 && (
+                  <span className="text-[9px] bg-cyan-950 border border-cyan-700 text-cyan-200 px-1 rounded font-bold" title={`${aiecMismoDomicilioCount} equipo(s) AIEC comparten domicilio con un pedido ya coordinado hoy`}>
+                    📍 {aiecMismoDomicilioCount} en mismo dom.
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </button>
 
+        {/* CARD 2: ASIGNADOS FLOW COT */}
+        <button
+          onClick={() => { setSpecialFilter('ASIGNADO_COT'); setSlaFilter('ALL'); }}
+          className={`p-4 rounded-xl text-left border transition-all ${
+            specialFilter === 'ASIGNADO_COT'
+              ? 'bg-blue-950/70 border-blue-500 shadow-lg shadow-blue-500/20'
+              : 'bg-slate-900/80 border-slate-800 hover:bg-blue-950/30'
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-blue-400">Asignados COT</span>
+            <UserCheck className="w-4 h-4 text-blue-400" />
+          </div>
+          
+          <div className="flex items-baseline gap-2 mt-1">
+            <p className="text-2xl font-black text-blue-300">{totalAsignadosCOT}</p>
+            <span className="text-[10px] text-slate-400 font-semibold">agenda de campo</span>
+          </div>
+
+          <div className="mt-2 pt-1.5 border-t border-slate-800 text-[10px] space-y-0.5 text-slate-300">
+            <div className="flex items-center justify-between">
+              <span>Distribuidos por COT:</span>
+              <span className="text-[10px] text-blue-300 font-mono font-bold">100% Flow</span>
+            </div>
+            <p className="text-[10px] text-slate-400 truncate">Adicionales, MP y SC asignados</p>
+          </div>
+        </button>
+
+        {/* CARD 3: SLA CRÍTICO / >85% */}
         <button
           onClick={() => { setSlaFilter('CRITICAL'); setSpecialFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
@@ -436,33 +613,38 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-red-400">SLA Crítico / &gt;85%</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-red-400">SLA Crítico / &gt;85%</span>
             <Flame className="w-4 h-4 text-red-400 animate-pulse" />
           </div>
           <p className="text-2xl font-black text-red-300 mt-1">
             {tickets.filter(t => t.slaPorcentaje >= 85 || t.hsSla <= 2).length}
           </p>
-          <span className="text-[11px] text-red-300/80">Riesgo inminente de penalización</span>
+          <span className="text-[10px] text-red-300/80 block mt-1">Riesgo inminente de penalización</span>
         </button>
 
+        {/* CARD 4: RIESGO MP DEFICIENTE (< 30 DÍAS) */}
         <button
-          onClick={() => { setSlaFilter('WARNING'); setSpecialFilter('ALL'); }}
+          onClick={() => { setSpecialFilter('MP_DEFICIENTE'); setSlaFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
-            slaFilter === 'WARNING'
-              ? 'bg-amber-950/70 border-amber-500 shadow-lg shadow-amber-500/20'
-              : 'bg-slate-900/80 border-slate-800 hover:bg-amber-950/30'
+            specialFilter === 'MP_DEFICIENTE'
+              ? 'bg-rose-950/80 border-rose-500 shadow-lg shadow-rose-500/20'
+              : 'bg-slate-900/80 border-slate-800 hover:bg-rose-950/30'
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Advertencia 65-85%</span>
-            <AlertTriangle className="w-4 h-4 text-amber-400" />
+            <span className="text-[11px] font-bold uppercase tracking-wider text-rose-400">🚨 MP Deficiente</span>
+            <AlertTriangle className="w-4 h-4 text-rose-400" />
           </div>
-          <p className="text-2xl font-black text-amber-300 mt-1">
-            {tickets.filter(t => t.slaPorcentaje >= 65 && t.slaPorcentaje < 85 && t.hsSla > 2).length}
+          <p className="text-2xl font-black text-rose-300 mt-1">
+            {mpDeficienteTotal}
           </p>
-          <span className="text-[11px] text-amber-300/80">Atención preventiva recomendada</span>
+          <div className="mt-1 text-[10px] text-rose-300/80 leading-tight">
+            <span>Falla &lt; 30 días post-preventivo</span>
+            <span className="block text-slate-400 mt-0.5">Cruza c/ MP Cerrados</span>
+          </div>
         </button>
 
+        {/* CARD 5: EN TÉRMINO <65% */}
         <button
           onClick={() => { setSlaFilter('OK'); setSpecialFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
@@ -472,13 +654,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">En Término &lt;65%</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400">En Término &lt;65%</span>
             <CheckCircle2 className="w-4 h-4 text-emerald-400" />
           </div>
           <p className="text-2xl font-black text-emerald-300 mt-1">
             {tickets.filter(t => t.slaPorcentaje < 65).length}
           </p>
-          <span className="text-[11px] text-emerald-300/80">Operación en rango óptimo</span>
+          <span className="text-[10px] text-emerald-300/80 block mt-1">Operación en rango óptimo</span>
         </button>
 
       </div>
@@ -578,11 +760,21 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               const isPend = item.estadoMarcaje === 'PENDIENTE_INICIO';
               const isSin = item.estadoMarcaje === 'SIN_PEDIDOS';
 
+              // Find matching full ticket from dataset for rich operational details
+              const matchingTicket = tickets.find(t => 
+                t.tecnico && t.tecnico.toLowerCase() === item.tecnico.toLowerCase() &&
+                (t.luno === item.primerPedido?.luno || (t.hCoor && item.primerPedido?.horaCoordinada && t.hCoor.startsWith(item.primerPedido.horaCoordinada)))
+              ) || tickets.find(t => t.tecnico && t.tecnico.toLowerCase() === item.tecnico.toLowerCase());
+
+              const concept = matchingTicket?.concepto || (matchingTicket?.esAdicional ? 'AIEC' : 'SC');
+              const isAiec = concept === 'AIEC' || matchingTicket?.esAdicional;
+              const isMp = concept === 'MP' || concept === 'MTM';
+
               return (
                 <div
                   key={`${item.tecnico}-${idx}`}
-                  onClick={() => handleTecnicoChange(item.tecnico)}
-                  className={`p-3.5 rounded-xl border transition-all cursor-pointer group relative overflow-hidden ${
+                  onClick={() => handleSelectTecnicoFromCard(item.tecnico)}
+                  className={`p-3.5 rounded-xl border transition-all cursor-pointer group relative overflow-visible ${
                     isOk
                       ? 'bg-slate-950/70 border-emerald-500/40 hover:border-emerald-400 hover:bg-emerald-950/20'
                       : isPend
@@ -591,6 +783,71 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                   }`}
                   title={`Clic para filtrar agenda de ${item.tecnico}`}
                 >
+                  {/* RICH FLOATING TOOLTIP ON HOVER (Shows exact concept SC, MP, AIEC & details) */}
+                  {item.primerPedido && (
+                    <div className="absolute left-0 right-0 bottom-[102%] hidden group-hover:block z-50 p-3.5 bg-slate-950 border border-amber-500/70 rounded-xl shadow-2xl backdrop-blur-md text-xs space-y-2 pointer-events-none transition-all duration-200">
+                      <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
+                        <div className="flex items-center gap-1.5">
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase ${
+                            isAiec ? 'bg-cyan-950 text-cyan-300 border border-cyan-800' :
+                            isMp ? 'bg-purple-950 text-purple-300 border border-purple-800' :
+                            'bg-amber-950 text-amber-300 border border-amber-800'
+                          }`}>
+                            {isAiec ? '📌 AIEC (En Contrato)' : isMp ? '🔄 Preventivo (MP)' : '🛠️ Service Call (SC)'}
+                          </span>
+                          {matchingTicket?.pedido && (
+                            <span className="font-mono font-bold text-amber-400">#{matchingTicket.pedido}</span>
+                          )}
+                        </div>
+                        <span className="font-mono text-[10px] text-slate-400">
+                          🕒 {formatTimeClean(item.primerPedido.horaCoordinada)} hs
+                        </span>
+                      </div>
+
+                      <div className="space-y-1">
+                        <p className="font-bold text-white text-xs">
+                          {item.primerPedido.cliente} <span className="font-mono text-slate-400 font-normal">(ATM {item.primerPedido.luno})</span>
+                        </p>
+                        {(item.primerPedido.clienteReal || matchingTicket?.clienteReal) && (
+                          <div className="text-[11px] font-bold text-amber-300 flex items-center gap-1 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-500/50">
+                            <Store className="w-3 h-3 text-amber-400 flex-shrink-0" />
+                            <span>Sitio Real: {item.primerPedido.clienteReal || matchingTicket?.clienteReal}</span>
+                            {(item.primerPedido.sucursalRelevamiento || matchingTicket?.sucursalRelevamiento) && (
+                              <span className="text-amber-200/90 font-normal">
+                                ({item.primerPedido.sucursalRelevamiento || matchingTicket?.sucursalRelevamiento})
+                              </span>
+                            )}
+                          </div>
+                        )}
+                        <p className="text-[11px] text-slate-300 flex items-center gap-1">
+                          <MapPin className="w-3 h-3 text-slate-500 flex-shrink-0" />
+                          {item.primerPedido.localidad} - {item.primerPedido.direccion}
+                        </p>
+                        {matchingTicket?.detalleFalla && (
+                          <p className="text-[11px] text-slate-400 italic bg-slate-900/90 p-1.5 rounded border border-slate-800 line-clamp-2">
+                            "{matchingTicket.detalleFalla}"
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[10px]">
+                        <span className="text-slate-400">Estado: <strong className="text-emerald-400">{item.primerPedido.estado}</strong></span>
+                        {matchingTicket && !isAiec && (
+                          <span className="text-amber-300 font-mono font-bold">
+                            SLA: {matchingTicket.slaPorcentaje}% ({matchingTicket.hsSla}h rest.)
+                          </span>
+                        )}
+                      </div>
+
+                      {matchingTicket?.esMpDeficiente && (
+                        <div className="px-2 py-1 rounded bg-rose-950/90 border border-rose-500/80 text-rose-300 text-[10px] font-bold flex items-center gap-1">
+                          <AlertTriangle className="w-3 h-3 text-rose-400 flex-shrink-0" />
+                          <span>🚨 Alerta: MP realizado hace {matchingTicket.diasDesdeUltimoMp} días</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
                   {/* Top: Tech Name + Status Badge */}
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div>
@@ -618,14 +875,23 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                     </span>
                   </div>
 
-                  {/* Body: First Scheduled Ticket Details (Hours formatted cleanly without seconds) */}
+                  {/* Body: First Scheduled Ticket Details (Hours formatted cleanly without seconds + Concept Badge) */}
                   {item.primerPedido ? (
                     <div className="space-y-1 text-[11px] bg-slate-900/80 p-2 rounded-lg border border-slate-800/80">
                       <div className="flex items-center justify-between text-slate-300">
-                        <span className="font-bold flex items-center gap-1 text-amber-300">
-                          <Clock className="w-3 h-3 text-amber-400" />
-                          1° Coord: {formatTimeClean(item.primerPedido.horaCoordinada)}
-                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-bold flex items-center gap-1 text-amber-300">
+                            <Clock className="w-3 h-3 text-amber-400" />
+                            1° Coord: {formatTimeClean(item.primerPedido.horaCoordinada)}
+                          </span>
+                          <span className={`px-1 py-0.2 rounded font-bold text-[9px] uppercase ${
+                            isAiec ? 'bg-cyan-950 text-cyan-300 border border-cyan-800' :
+                            isMp ? 'bg-purple-950 text-purple-300 border border-purple-800' :
+                            'bg-amber-950 text-amber-300 border border-amber-800'
+                          }`}>
+                            {concept}
+                          </span>
+                        </div>
                         <span className={`font-mono text-[10px] px-1.5 py-0.2 rounded font-semibold ${
                           item.primerPedido.estado === 'SEG Asistencia'
                             ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
@@ -640,6 +906,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                       <p className="font-medium text-slate-200 truncate" title={`${item.primerPedido.cliente} - LUNO: ${item.primerPedido.luno}`}>
                         {item.primerPedido.cliente} <span className="text-slate-400 font-mono">({item.primerPedido.luno})</span>
                       </p>
+
+                      {(item.primerPedido.clienteReal || matchingTicket?.clienteReal) && (
+                        <p className="text-[10px] text-amber-300 font-bold truncate flex items-center gap-1" title={`Sitio Real: ${item.primerPedido.clienteReal || matchingTicket?.clienteReal}`}>
+                          <Store className="w-2.5 h-2.5 text-amber-400 flex-shrink-0" />
+                          <span>Sitio: {item.primerPedido.clienteReal || matchingTicket?.clienteReal}</span>
+                        </p>
+                      )}
                       
                       <p className="text-[10px] text-slate-400 truncate flex items-center gap-1">
                         <MapPin className="w-2.5 h-2.5 text-slate-500 flex-shrink-0" />
@@ -676,16 +949,34 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5 mr-1">
               <Calendar className="w-3.5 h-3.5 text-amber-400" /> Agenda:
             </span>
-            <div className="flex items-center bg-slate-950 border border-slate-800 rounded-xl p-1 gap-1">
+            <div className="flex flex-wrap items-center bg-slate-950 border border-slate-800 rounded-xl p-1 gap-1">
               <button
-                onClick={() => setDateFilter('HOY')}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                onClick={() => { setDateFilter('HOY_Y_MANANA'); setCurrentPage(1); }}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                  dateFilter === 'HOY_Y_MANANA'
+                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                }`}
+                title={`Ver pedidos coordinados para hoy (${todayStr}) y mañana (${tomorrowStr})`}
+              >
+                <span>📅 Hoy + Mañana</span>
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
+                  dateFilter === 'HOY_Y_MANANA' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
+                }`}>
+                  {hoyYMananaCount}
+                </span>
+              </button>
+
+              <button
+                onClick={() => { setDateFilter('HOY'); setCurrentPage(1); }}
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition ${
                   dateFilter === 'HOY'
                     ? 'bg-amber-500 text-slate-950 shadow-md'
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                 }`}
+                title={`Ver pedidos coordinados únicamente para hoy (${todayStr})`}
               >
-                <span>📅 Agenda de Hoy (07/09/2026)</span>
+                <span>🕒 Hoy ({todayStr})</span>
                 <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
                   dateFilter === 'HOY' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
                 }`}>
@@ -694,14 +985,32 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               </button>
 
               <button
-                onClick={() => setDateFilter('TODOS')}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                onClick={() => { setDateFilter('MANANA'); setCurrentPage(1); }}
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition ${
+                  dateFilter === 'MANANA'
+                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                }`}
+                title={`Ver pedidos coordinados para el día siguiente (${tomorrowStr})`}
+              >
+                <span>☀️ Mañana ({tomorrowStr})</span>
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
+                  dateFilter === 'MANANA' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
+                }`}>
+                  {mananaCount}
+                </span>
+              </button>
+
+              <button
+                onClick={() => { setDateFilter('TODOS'); setCurrentPage(1); }}
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition ${
                   dateFilter === 'TODOS'
                     ? 'bg-amber-500 text-slate-950 shadow-md'
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                 }`}
+                title="Ver todos los pedidos sin filtro de fecha"
               >
-                <span>📋 Todos los Pedidos</span>
+                <span>📋 Todos</span>
                 <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
                   dateFilter === 'TODOS' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
                 }`}>
@@ -857,12 +1166,15 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               className="w-full bg-slate-950 border border-amber-500/40 rounded-lg text-xs text-amber-300 py-1.5 px-2 focus:outline-none focus:border-amber-500 font-semibold"
             >
               <option value="ALL">Sin Filtro Especial</option>
+              <option value="SC_PENDIENTES">🚨 SC Pendientes Región ({scPendientesTotal})</option>
+              <option value="SC_SIN_ASIGNAR">⚠️ SC Sin Asignar / Riesgo SLA ({scSinAsignar})</option>
+              <option value="MP_DEFICIENTE">🚨 Riesgo MP Deficiente &lt;30d ({mpDeficienteTotal})</option>
+              <option value="ASIGNADO_COT">📅 Asignados Flow COT ({totalAsignadosCOT})</option>
+              <option value="REINCIDENTE">🔁 Reincidentes (R &gt; 0)</option>
               <option value="MOVIL_S">📱 Informado Móvil (M=S)</option>
               <option value="MP_PENDIENTE">⚠️ Con MP Pendiente</option>
               <option value="ADICIONAL_PENDIENTE">📌 Con Adicional AIEC</option>
-              <option value="REINCIDENTE">🚨 Solo Reincidentes</option>
               <option value="AIEC">AIEC (Sin SLA)</option>
-              <option value="ASIGNADO_COT">Asignados Flow COT</option>
             </select>
           </div>
 
@@ -886,7 +1198,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       </div>
 
       {/* Tickets Table / List */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+      <div id="agenda-table-section" className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
         
         {/* Table Header with Pagination size selector */}
         <div className="px-5 py-3.5 bg-slate-950 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
@@ -923,10 +1235,11 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           <table className="w-full text-left border-collapse text-xs">
             <thead>
               <tr className="bg-slate-950/60 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800/80">
-                <th className="py-3 px-4">Pedido / Equipo</th>
+                <th className="py-3 px-4">Días última atención & R</th>
+                <th className="py-3 px-4">Pedido / Equipo & MP</th>
                 <th className="py-3 px-4">Cliente & Ubicación</th>
-                <th className="py-3 px-4">Técnico & Zona Técnica</th>
-                <th className="py-3 px-4">Detalle Falla / Síntoma & Alertas</th>
+                <th className="py-3 px-4">Técnico & Coordinación</th>
+                <th className="py-3 px-4">Detalle Falla & Alertas</th>
                 <th className="py-3 px-4">Estado / Móvil & Horario</th>
                 <th className="py-3 px-4">Stock / Repuesto</th>
                 <th className="py-3 px-4 text-right">Semáforo SLA</th>
@@ -936,7 +1249,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
             <tbody className="divide-y divide-slate-800/60">
               {paginatedTickets.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="py-12 text-center text-slate-400">
+                  <td colSpan={9} className="py-12 text-center text-slate-400">
                     <p className="text-sm font-medium">No se encontraron pedidos con los filtros actuales</p>
                   </td>
                 </tr>
@@ -948,6 +1261,8 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                   const isAIEC = t.concepto === 'AIEC' || t.esAdicional;
                   const isMovil = t.notificadoMovil || t.m === 'S';
                   const localZone = ZONA_TECNICA_TO_LOCAL[t.zonaTecnica || t.zona] || t.zonaLocal || '';
+                  const isSinAsignar = !t.tecnico || t.tecnico.toLowerCase() === 'sin asignar';
+                  const sharesAddressWithCoordinated = isAIEC && t.direccion && coordinatedAddresses.has(`${(t.cliente || '').trim().toLowerCase()}|${(t.direccion || '').trim().toLowerCase()}`);
 
                   return (
                     <tr
@@ -955,7 +1270,25 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                       onClick={() => onSelectTicket(t)}
                       className="hover:bg-slate-800/60 transition cursor-pointer group"
                     >
-                      {/* Pedido / Equipo */}
+                      {/* 1. Días última atención & R */}
+                      <td className="py-3 px-4 font-medium whitespace-nowrap">
+                        <div className="space-y-1">
+                          <span className="text-xs font-semibold text-slate-200 block">
+                            {t.diasDesdeUltimaAtencion || t.diasUltimaAtencion || '1 día'}
+                          </span>
+                          {((t.reincidenciaCount && t.reincidenciaCount > 0) || cronico) && (
+                            <span 
+                              className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-purple-950 border border-purple-500/60 text-purple-300 font-bold text-[10px] shadow-sm"
+                              title={`Reincidencias registradas en equipo (R = ${t.reincidenciaCount || (cronico ? cronico.totalFallas : 1)})`}
+                            >
+                              <RotateCcw className="w-2.5 h-2.5 text-purple-400" />
+                              R: {t.reincidenciaCount || (cronico ? cronico.totalFallas : 1)}
+                            </span>
+                          )}
+                        </div>
+                      </td>
+
+                      {/* 2. Pedido / Equipo & MP */}
                       <td className="py-3 px-4 font-medium">
                         <div className="flex items-center gap-1.5 flex-wrap">
                           <span className="font-mono text-amber-400 font-bold group-hover:underline">
@@ -976,47 +1309,105 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                               className="px-1.5 py-0.2 rounded bg-purple-950 border border-purple-500 text-purple-300 font-bold text-[10px] flex items-center gap-1 hover:bg-purple-900"
                             >
                               <Radio className="w-2.5 h-2.5 animate-pulse text-purple-400" />
-                              REINCIDENTE
+                              CRÓNICO
                             </button>
                           )}
                         </div>
-                        <span className="text-[11px] text-slate-400 block font-mono mt-0.5">
-                          Equipo: <strong className="text-slate-200">{t.luno || '-'}</strong>
-                        </span>
+                        <div className="flex items-center gap-1 text-[11px] text-slate-400 font-mono mt-0.5">
+                          <span>Eq: <strong className="text-slate-200">{t.luno || '-'}</strong></span>
+                        </div>
+                        {/* MP Cerrados Detection: Alerta de MP Deficiente (<30d) vs MP OK (>30d) */}
+                        {t.esMpDeficiente ? (
+                          <div 
+                            className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-red-950/90 border border-red-500/80 text-red-300 text-[10px] font-bold shadow-sm"
+                            title={`¡Alerta de Calidad! Este equipo tuvo un Mantenimiento Preventivo cerrado hace solo ${t.diasDesdeUltimoMp ?? '<30'} días (${t.ultimoMpFecha || ''}${t.tecnicoUltimoMp ? ` por ${t.tecnicoUltimoMp}` : ''}). Falla prematura post-MP.`}
+                          >
+                            <AlertTriangle className="w-3 h-3 text-red-400 flex-shrink-0 animate-bounce" />
+                            <span>🚨 MP Deficiente ({t.diasDesdeUltimoMp ?? '<30'}d)</span>
+                          </div>
+                        ) : t.ultimoMpFecha ? (
+                          <div 
+                            className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-950/60 border border-emerald-700/60 text-emerald-400 text-[10px] font-medium"
+                            title={`Último MP cerrado el ${t.ultimoMpFecha}${t.diasDesdeUltimoMp ? ` (hace ${t.diasDesdeUltimoMp} días)` : ''}${t.tecnicoUltimoMp ? ` por ${t.tecnicoUltimoMp}` : ''}`}
+                          >
+                            <CheckCircle2 className="w-2.5 h-2.5 text-emerald-400 flex-shrink-0" />
+                            <span>MP {t.ultimoMpFecha}</span>
+                          </div>
+                        ) : null}
                       </td>
 
-                      {/* Cliente & Ubicación */}
+                      {/* 3. Cliente & Ubicación */}
                       <td className="py-3 px-4">
                         <span className="font-bold text-white block">{t.cliente}</span>
+                        {t.clienteReal && (
+                          <div 
+                            className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-amber-500/15 border border-amber-500/40 text-amber-300 text-[10px] font-bold"
+                            title={`Relevamiento Cash Today: El cliente comercial y sucursal a relevar es ${t.clienteReal}${t.sucursalRelevamiento ? ` (${t.sucursalRelevamiento})` : ''}`}
+                          >
+                            <Store className="w-3 h-3 text-amber-400 flex-shrink-0" />
+                            <span className="truncate max-w-[180px]">Sitio Real: {t.clienteReal}</span>
+                            {t.sucursalRelevamiento && <span className="text-amber-200/90 font-normal">({t.sucursalRelevamiento})</span>}
+                          </div>
+                        )}
                         <span className="text-[11px] text-slate-400 flex items-center gap-1 truncate max-w-[200px]" title={`${t.localidad} - ${t.direccion}`}>
                           <MapPin className="w-3 h-3 text-slate-500 flex-shrink-0" />
                           {t.localidad} {t.direccion ? `(${t.direccion})` : ''}
                         </span>
                       </td>
 
-                      {/* Técnico & Zona Técnica (Linked to Zona Local) */}
+                      {/* 4. Técnico & Coordinación */}
                       <td className="py-3 px-4">
-                        <span className="font-semibold text-slate-200 block">{t.tecnico}</span>
-                        <div className="flex items-center gap-1 text-[11px] text-amber-400/90 font-medium flex-wrap">
-                          <span>{t.zonaTecnica || t.zona}</span>
-                          {localZone && (
-                            <span className="text-[10px] text-slate-300 bg-slate-950 px-1 rounded border border-slate-800">
-                              {localZone}
+                        {isSinAsignar ? (
+                          <div>
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-red-950 border border-red-500 text-red-300 font-bold text-[11px] shadow-sm animate-pulse">
+                              <AlertTriangle className="w-3 h-3 text-red-400 flex-shrink-0" />
+                              🚨 SIN COORDINAR / Riesgo SLA
                             </span>
-                          )}
-                          {t.region && (
-                            <span className="text-[10px] text-slate-400 bg-slate-950 px-1 rounded border border-slate-800">
-                              {t.region}
+                            <span className="text-[10px] text-slate-400 block mt-0.5">
+                              Reporte: <strong className="text-amber-400">{t.origenReporte || 'Pendientes'}</strong> • Zona {t.zonaTecnica || t.zona}
                             </span>
-                          )}
-                        </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <span className="font-semibold text-slate-100">{t.tecnico}</span>
+                              <span className="inline-flex items-center px-1.5 py-0.2 rounded bg-emerald-950/60 border border-emerald-700/60 text-emerald-400 text-[9px] font-bold">
+                                ✓ Coordinado
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-1 text-[11px] text-amber-400/90 font-medium flex-wrap mt-0.5">
+                              <span>{t.zonaTecnica || t.zona}</span>
+                              {localZone && (
+                                <span className="text-[10px] text-slate-300 bg-slate-950 px-1 rounded border border-slate-800">
+                                  {localZone}
+                                </span>
+                              )}
+                              {t.region && (
+                                <span className="text-[10px] text-slate-400 bg-slate-950 px-1 rounded border border-slate-800">
+                                  {t.region}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        )}
                       </td>
 
-                      {/* Detalle Falla / Síntoma & LLAMADAS / CALLOUTS */}
+                      {/* 5. Detalle Falla & Alertas */}
                       <td className="py-3 px-4 max-w-[280px]">
                         <p className="text-xs text-slate-200 font-medium truncate" title={t.detalleFalla}>
                           {t.detalleFalla || '-'}
                         </p>
+
+                        {/* CALLOUT: AIEC comparte mismo domicilio con pedido coordinado */}
+                        {sharesAddressWithCoordinated && (
+                          <div 
+                            className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 text-[10px] font-bold shadow-sm"
+                            title="Existe otro pedido coordinado en este mismo domicilio. Se recomienda aprovechar la visita del técnico para realizar el AIEC sin incurrir en traslados adicionales."
+                          >
+                            <MapPin className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                            <span>📍 Mismo dom. coordinado (Aprovechar visita)</span>
+                          </div>
+                        )}
 
                         {/* CALLOUT: MP PENDIENTE SIN ASIGNAR */}
                         {t.alertaMpSinAsignar && (
@@ -1041,7 +1432,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         )}
                       </td>
 
-                      {/* Estado / Móvil & Horario (Without seconds) */}
+                      {/* 6. Estado / Móvil & Horario (Without seconds) */}
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-1.5 flex-wrap">
                           <span className={`inline-block px-2 py-0.5 rounded text-[11px] font-bold ${
@@ -1073,7 +1464,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         </span>
                       </td>
 
-                      {/* Stock / Repuesto */}
+                      {/* 7. Stock / Repuesto */}
                       <td className="py-3 px-4">
                         <span className="text-slate-300 font-medium block truncate max-w-[130px]" title={t.repuestos}>
                           {t.repuestos}
@@ -1085,7 +1476,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         )}
                       </td>
 
-                      {/* Semáforo SLA */}
+                      {/* 8. Semáforo SLA */}
                       <td className="py-3 px-4 text-right">
                         <div className="inline-block text-right">
                           <div className="flex items-center justify-end gap-1.5">
@@ -1118,7 +1509,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         </div>
                       </td>
 
-                      {/* Action */}
+                      {/* 9. Action */}
                       <td className="py-3 px-3 text-center">
                         <button
                           onClick={(e) => {
