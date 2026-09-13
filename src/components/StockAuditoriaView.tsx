@@ -32,7 +32,7 @@ export const StockAuditoriaView: React.FC<StockAuditoriaViewProps> = ({
   const [filterScope, setFilterScope] = useState<'MIS_TECNICOS' | 'TODOS'>('MIS_TECNICOS');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTecNorm, setSelectedTecNorm] = useState<string>('');
-  const [activeSubTab, setActiveSubTab] = useState<'DEUDA_RECAMBIOS' | 'RETORNOS_SEMANALES' | 'STOCK_COMPLETO'>('DEUDA_RECAMBIOS');
+  const [activeSubTab, setActiveSubTab] = useState<'DEUDA_RECAMBIOS' | 'RETORNOS_SEMANALES' | 'EN_TRANSITO' | 'STOCK_COMPLETO'>('DEUDA_RECAMBIOS');
 
   // Filter technicians
   const filteredTecs = useMemo(() => {
@@ -45,7 +45,8 @@ export const StockAuditoriaView: React.FC<StockAuditoriaViewProps> = ({
         t.zonaTecnica.toLowerCase().includes(q) ||
         t.zonaLocal.toLowerCase().includes(q) ||
         t.deudaRecambios.some(d => d.pn.toLowerCase().includes(q) || d.idUnico.toLowerCase().includes(q) || d.pedRetiro.includes(q)) ||
-        t.retornosSemanales.some(r => r.pn.toLowerCase().includes(q) || r.idUnico.toLowerCase().includes(q) || r.pedidoCot.includes(q))
+        t.retornosSemanales.some(r => r.pn.toLowerCase().includes(q) || r.idUnico.toLowerCase().includes(q) || r.pedidoCot.includes(q)) ||
+        t.partesEnTransito.some(p => p.pn.toLowerCase().includes(q) || p.idUnico.toLowerCase().includes(q) || (p.devEnTransito && p.devEnTransito.includes(q)))
       );
     });
   }, [data.tecnicos, filterScope, searchQuery]);
@@ -65,18 +66,25 @@ export const StockAuditoriaView: React.FC<StockAuditoriaViewProps> = ({
       ['Técnico', tec.nombre],
       ['Zona Técnica', tec.zonaTecnica],
       ['Región', tec.region],
-      ['Total Repuestos Adeudados', tec.totalAdeudado],
+      ['Total Repuestos Adeudados (En Mano)', tec.totalAdeudado],
+      ['Total Repuestos En Tránsito con OR (No Exigibles)', tec.enTransitoConOrCount],
       [''],
-      ['--- STOCK DEUDA (RECAMBIOS EN CAMPO) ---'],
+      ['--- 1. STOCK DEUDA (RECAMBIOS EN CAMPO) ---'],
       ['PN', 'Id Unico', 'Es GEN', 'Descripcion', 'Pedido Retiro', 'Luno', 'Cliente', 'Fecha'],
       ...tec.deudaRecambios.map(d => [
         d.pn, d.idUnico, d.esGen ? 'SI (-GEN)' : 'NO', `"${d.descripcion}"`, d.pedRetiro, d.codEquipo, `"${d.cliente}"`, d.fecha
       ]),
       [''],
-      ['--- RETORNOS SEMANALES OBLIGATORIOS (FUERA DE STOCK FIJO / EXCEDENTES) ---'],
+      ['--- 2. RETORNOS SEMANALES OBLIGATORIOS (FUERA DE STOCK FIJO / EXCEDENTES) ---'],
       ['PN', 'Id Unico', 'Motivo', 'Detalle', 'Pedido Cot Solicita', 'Cliente Cot', 'Fecha Mov'],
       ...tec.retornosSemanales.map(r => [
         r.pn, r.idUnico, r.motivo, `"${r.detalleMotivo}"`, r.pedidoCot, `"${r.cliente}"`, r.fechaMov
+      ]),
+      [''],
+      ['--- 3. PARTES EN TRÁNSITO CON OR (YA DESPACHADAS POR EL TÉCNICO - NO EXIGIBLES) ---'],
+      ['PN', 'Id Unico', 'Descripcion', 'Dev en transito/OR', 'Transporte', 'Fecha Despacho'],
+      ...tec.partesEnTransito.map(p => [
+        p.pn, p.idUnico, `"${p.descripcion}"`, p.devEnTransito || '', (p as any).transporteOrMetro || '', (p as any).fechaOrMetro || (p as any).fecha || ''
       ])
     ];
 
@@ -93,73 +101,94 @@ export const StockAuditoriaView: React.FC<StockAuditoriaViewProps> = ({
   return (
     <div className="space-y-6">
       
-      {/* Top Banner & KPI Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Top Banner & KPI Cards (5 Cards) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
         
         {/* Total Adeudado General */}
-        <div className="bg-gradient-to-br from-red-950/80 via-slate-900 to-slate-950 border border-red-500/50 p-5 rounded-2xl shadow-xl flex flex-col justify-between">
+        <div className="bg-gradient-to-br from-red-950/80 via-slate-900 to-slate-950 border border-red-500/50 p-4 rounded-2xl shadow-xl flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-red-300">Total Adeudado a Devolver</span>
-            <div className="p-2 rounded-xl bg-red-500/20 text-red-400">
-              <AlertTriangle className="w-5 h-5 animate-pulse" />
+            <span className="text-xs font-bold uppercase tracking-wider text-red-300">Deuda Real en Mano</span>
+            <div className="p-1.5 rounded-xl bg-red-500/20 text-red-400">
+              <AlertTriangle className="w-4 h-4 animate-pulse" />
             </div>
           </div>
-          <div className="mt-3">
-            <p className="text-3xl font-black text-white">{data.totalAdeudadoRegion} <span className="text-sm font-semibold text-red-300">piezas</span></p>
-            <span className="text-[11px] text-slate-300 mt-1 block">
-              Suma de Stock Deuda + Retornos Semanales
+          <div className="mt-2.5">
+            <p className="text-2xl sm:text-3xl font-black text-white">{data.totalAdeudadoRegion} <span className="text-xs font-semibold text-red-300">piezas</span></p>
+            <span className="text-[11px] text-slate-300 mt-0.5 block">
+              Recambios + Retornos no despachados
             </span>
           </div>
         </div>
 
         {/* Stock Deuda Recambios */}
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-xl flex flex-col justify-between">
+        <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl shadow-xl flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Stock Deuda (Recambios)</span>
-            <div className="p-2 rounded-xl bg-amber-500/20 text-amber-400">
-              <RotateCcw className="w-5 h-5" />
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Recambios en Campo</span>
+            <div className="p-1.5 rounded-xl bg-amber-500/20 text-amber-400">
+              <RotateCcw className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-3">
+          <div className="mt-2.5">
             <div className="flex items-baseline gap-2">
-              <p className="text-3xl font-black text-white">{data.totalStockDeudaRegion}</p>
-              <span className="text-xs font-bold text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800/60">
-                {data.totalGenRegion} con -GEN
+              <p className="text-2xl sm:text-3xl font-black text-white">{data.totalStockDeudaRegion}</p>
+              <span className="text-[10px] font-bold text-amber-400 bg-amber-950/80 px-1.5 py-0.2 rounded border border-amber-800/60">
+                {data.totalGenRegion} -GEN
               </span>
             </div>
-            <span className="text-[11px] text-slate-400 mt-1 block">
-              Piezas cambiadas en campo pendientes de lab
+            <span className="text-[11px] text-slate-400 mt-0.5 block">
+              Pendientes de laboratorio
             </span>
           </div>
         </div>
 
         {/* Retornos Semanales */}
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-xl flex flex-col justify-between">
+        <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl shadow-xl flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Retornos Semanales</span>
-            <div className="p-2 rounded-xl bg-purple-500/20 text-purple-400">
-              <Clock className="w-5 h-5" />
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Retornos Fuera SF</span>
+            <div className="p-1.5 rounded-xl bg-purple-500/20 text-purple-400">
+              <Clock className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-3">
-            <p className="text-3xl font-black text-purple-200">{data.totalRetornosSemanalesRegion} <span className="text-sm font-semibold text-purple-400">piezas</span></p>
-            <span className="text-[11px] text-slate-400 mt-1 block">
-              Pedidas para services no usadas o excedentes SF
+          <div className="mt-2.5">
+            <p className="text-2xl sm:text-3xl font-black text-purple-200">{data.totalRetornosSemanalesRegion} <span className="text-xs font-semibold text-purple-400">piezas</span></p>
+            <span className="text-[11px] text-slate-400 mt-0.5 block">
+              Pedidas no usadas / Excedentes
+            </span>
+          </div>
+        </div>
+
+        {/* En Tránsito con OR (No exigibles) */}
+        <div className="bg-slate-900 border border-blue-500/40 p-4 rounded-2xl shadow-xl flex flex-col justify-between">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-300">En Tránsito con OR</span>
+            <div className="p-1.5 rounded-xl bg-blue-500/20 text-blue-400">
+              <Truck className="w-4 h-4" />
+            </div>
+          </div>
+          <div className="mt-2.5">
+            <div className="flex items-baseline gap-1.5">
+              <p className="text-2xl sm:text-3xl font-black text-white">{data.totalEnTransitoRegion}</p>
+              <span className="text-[10px] font-bold text-blue-300 bg-blue-950/80 px-1.5 py-0.2 rounded border border-blue-800/60">
+                Despachadas
+              </span>
+            </div>
+            <span className="text-[11px] text-slate-400 mt-0.5 block">
+              Con remito/OR (No es deuda técnica)
             </span>
           </div>
         </div>
 
         {/* Técnicos con Deuda */}
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-xl flex flex-col justify-between">
+        <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl shadow-xl flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Técnicos Involucrados</span>
-            <div className="p-2 rounded-xl bg-slate-800 text-slate-300">
-              <User className="w-5 h-5" />
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Técnicos c/ Deuda</span>
+            <div className="p-1.5 rounded-xl bg-slate-800 text-slate-300">
+              <User className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-3">
-            <p className="text-3xl font-black text-white">{data.totalTecnicosConDeuda} <span className="text-sm font-semibold text-slate-400">de {data.tecnicos.filter(t => t.esMiTecnico).length}</span></p>
-            <span className="text-[11px] text-slate-400 mt-1 block">
+          <div className="mt-2.5">
+            <p className="text-2xl sm:text-3xl font-black text-white">{data.totalTecnicosConDeuda} <span className="text-xs font-semibold text-slate-400">de {data.tecnicos.filter(t => t.esMiTecnico).length}</span></p>
+            <span className="text-[11px] text-slate-400 mt-0.5 block">
               Supervisión Patagonia & Suroeste
             </span>
           </div>
@@ -360,10 +389,25 @@ export const StockAuditoriaView: React.FC<StockAuditoriaViewProps> = ({
                 </button>
 
                 <button
+                  onClick={() => setActiveSubTab('EN_TRANSITO')}
+                  className={`pb-2.5 px-3 font-bold transition border-b-2 flex items-center gap-1.5 ${
+                    activeSubTab === 'EN_TRANSITO'
+                      ? 'border-blue-500 text-blue-400'
+                      : 'border-transparent text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  <Truck className="w-3.5 h-3.5" />
+                  <span>En Tránsito con OR</span>
+                  <span className="text-[10px] bg-blue-950/80 border border-blue-800/60 text-blue-300 px-1.5 py-0.2 rounded font-mono">
+                    {selectedTec.enTransitoConOrCount}
+                  </span>
+                </button>
+
+                <button
                   onClick={() => setActiveSubTab('STOCK_COMPLETO')}
                   className={`pb-2.5 px-3 font-bold transition border-b-2 flex items-center gap-1.5 ${
                     activeSubTab === 'STOCK_COMPLETO'
-                      ? 'border-blue-500 text-blue-300'
+                      ? 'border-indigo-500 text-indigo-300'
                       : 'border-transparent text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -483,7 +527,77 @@ export const StockAuditoriaView: React.FC<StockAuditoriaViewProps> = ({
                   )
                 )}
 
-                {/* 3. STOCK TECNICO COMPLETO */}
+                {/* 3. PARTES EN TRANSITO CON OR */}
+                {activeSubTab === 'EN_TRANSITO' && (
+                  selectedTec.partesEnTransito.length === 0 ? (
+                    <div className="py-16 text-center text-slate-500 text-xs">
+                      <Truck className="w-8 h-8 mx-auto mb-2 text-blue-400 opacity-60" />
+                      <p className="font-bold text-slate-300">Sin piezas en tránsito</p>
+                      <p className="text-[11px] mt-1">Este técnico no registra piezas despachadas en viaje a depósito.</p>
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      {/* Explanatory Banner */}
+                      <div className="p-3 bg-blue-950/40 border border-blue-800/60 rounded-xl flex items-start gap-2.5 text-xs text-blue-200">
+                        <Info className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="font-bold">Partes Despachadas con Orden de Retiro (OR / Remito)</p>
+                          <p className="text-[11px] text-blue-300/80 mt-0.5">
+                            El técnico ya gestionó la devolución con el transporte. Se encuentran en viaje y el stock central aún no las procesó en depósito. <strong>NO constituyen deuda exigible al técnico.</strong>
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        {selectedTec.partesEnTransito.map((p, i) => (
+                          <div key={i} className="p-3 bg-slate-950/80 border border-blue-900/40 rounded-xl space-y-1.5 hover:border-blue-700/60 transition">
+                            <div className="flex items-start justify-between gap-2">
+                              <div>
+                                <div className="flex items-center gap-2 flex-wrap">
+                                  <span className="font-mono font-bold text-blue-300 text-xs">{p.pn}</span>
+                                  {p.devEnTransito && (
+                                    <span className="text-[10px] bg-blue-950 border border-blue-500 text-blue-200 font-bold font-mono px-2 py-0.5 rounded flex items-center gap-1">
+                                      <Truck className="w-3 h-3 text-cyan-400" /> OR Metro: #{p.devEnTransito}
+                                    </span>
+                                  )}
+                                </div>
+                                <p className="text-xs text-slate-200 mt-0.5 line-clamp-1">{p.descripcion}</p>
+                              </div>
+
+                              <span className="text-[10px] font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800 flex-shrink-0">
+                                {p.idUnico}
+                              </span>
+                            </div>
+
+                            <div className="flex flex-wrap items-center gap-3 text-[11px] text-slate-400 pt-1 border-t border-slate-900">
+                              {(p as any).transporteOrMetro && (
+                                <>
+                                  <span>Transporte: <strong className="text-white font-medium">{(p as any).transporteOrMetro}</strong></span>
+                                  <span>•</span>
+                                </>
+                              )}
+                              {((p as any).fechaOrMetro || (p as any).fecha) && (
+                                <>
+                                  <span>Fecha OR: <strong className="text-slate-200 font-mono">{(p as any).fechaOrMetro || (p as any).fecha}</strong></span>
+                                  <span>•</span>
+                                </>
+                              )}
+                              {(p as any).cliente && (
+                                <>
+                                  <span>Cliente Origen: <strong className="text-slate-300">{(p as any).cliente}</strong></span>
+                                  <span>•</span>
+                                </>
+                              )}
+                              <span>Estado: <strong className="text-cyan-400 font-semibold">En Viaje a Depósito</strong></span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                )}
+
+                {/* 4. STOCK TECNICO COMPLETO */}
                 {activeSubTab === 'STOCK_COMPLETO' && (
                   <div className="space-y-1.5">
                     {selectedTec.stockTecnicoItems.map((st, i) => (

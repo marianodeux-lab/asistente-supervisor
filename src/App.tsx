@@ -14,6 +14,7 @@ import { TicketDetailModal } from './components/TicketDetailModal';
 import { ChronicDetailModal } from './components/ChronicDetailModal';
 import { AuthModal } from './components/AuthModal';
 import { UserManagementModal } from './components/UserManagementModal';
+import { HallAiAssistantModal } from './components/HallAiAssistantModal';
 import { AuthService } from './services/authService';
 import { ReportSyncService } from './services/reportSyncService';
 
@@ -60,6 +61,7 @@ export function App() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
   const [authModalMode, setAuthModalMode] = useState<'LOGIN' | 'FIRST_LOGIN' | 'FORGOT_PASSWORD'>('LOGIN');
   const [isUserManagementOpen, setIsUserManagementOpen] = useState<boolean>(false);
+  const [isHallModalOpen, setIsHallModalOpen] = useState<boolean>(false);
 
   const [activeTab, setActiveTab] = useState<TabKey>('sla_agenda');
 
@@ -234,6 +236,7 @@ export function App() {
         currentUser={currentUser}
         onOpenAuthModal={handleOpenAuthModal}
         onOpenUserManagement={() => setIsUserManagementOpen(true)}
+        onOpenHallAi={() => setIsHallModalOpen(true)}
         tickets={tickets}
         cronicos={cronicos}
         onRefresh={handleRefresh}
@@ -375,6 +378,16 @@ export function App() {
         onClose={() => setIsUserManagementOpen(false)}
         currentUser={currentUser}
         onSwitchUser={(u) => setCurrentUser(u)}
+      />
+
+      <HallAiAssistantModal
+        isOpen={isHallModalOpen}
+        onClose={() => setIsHallModalOpen(false)}
+        tickets={tickets}
+        cronicos={cronicos}
+        stockAuditoria={stockAuditoria}
+        tecnicos={tecnicos}
+        zonas={zonas}
       />
 
     </div>

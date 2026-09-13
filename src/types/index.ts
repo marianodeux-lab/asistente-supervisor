@@ -447,6 +447,10 @@ export interface StockDeudaItem {
   fecha: string;
   marca: string;
   ubicacion?: string;
+  devEnTransito?: string;
+  esEnTransito?: boolean;
+  fechaOrMetro?: string;
+  transporteOrMetro?: string;
 }
 
 export interface StockTecnicoItem {
@@ -460,6 +464,10 @@ export interface StockTecnicoItem {
   fechaMov: string;
   ubicacion: string;
   esStockFijo?: boolean;
+  devEnTransito?: string;
+  esEnTransito?: boolean;
+  fechaOrMetro?: string;
+  transporteOrMetro?: string;
 }
 
 export interface RetornoSemanalItem extends StockTecnicoItem {
@@ -476,20 +484,25 @@ export interface TecnicoStockAuditoria {
   zonaTecnica: string;
   region: string;
   zonaLocal: string;
-  totalAdeudado: number; // deudaRecambios.length + retornosSemanales.length
+  totalAdeudado: number; // Solo deuda real no despachada (deudaRecambios.length + retornosSemanales.length)
+  deudaRealEnManoCount: number;
+  enTransitoConOrCount: number;
   deudaRecambiosCount: number;
   deudaGenCount: number;
   retornosSemanalesCount: number;
   stockTecnicoTotalCount: number;
   stockFijoCount: number;
-  deudaRecambios: StockDeudaItem[];
-  retornosSemanales: RetornoSemanalItem[];
+  deudaRecambios: StockDeudaItem[]; // Deuda real en mano
+  partesEnTransito: (StockDeudaItem | RetornoSemanalItem)[]; // Despachadas con OR
+  retornosSemanales: RetornoSemanalItem[]; // Retornos semanales en mano
   stockTecnicoItems: StockTecnicoItem[];
 }
 
 export interface StockAuditoriaState {
   fechaCorte: string;
-  totalAdeudadoRegion: number;
+  totalAdeudadoRegion: number; // Deuda real en mano
+  totalDeudaRealRegion: number;
+  totalEnTransitoRegion: number;
   totalStockDeudaRegion: number;
   totalGenRegion: number;
   totalRetornosSemanalesRegion: number;

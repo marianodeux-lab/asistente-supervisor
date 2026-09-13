@@ -9,7 +9,7 @@ import {
 import zonasReferencia from '../data/zonasTecnicosReferencia.json';
 import stockFijoData from '../data/stockFijoData.json';
 
-// Technicians reference map
+// Technicians reference map (Strictly Patagonia & Suroeste)
 const tecToZonaMap = new Map<string, typeof zonasReferencia[0]>();
 const misTecsSet = new Set<string>();
 
@@ -50,12 +50,14 @@ export async function processStockFiles(
 ): Promise<{ result: StockAuditoriaState; processedFiles: string[] }> {
   let rawDeuda: any[] = [];
   let rawTecnico: any[] = [];
+  let rawConsumibles: any[] = [];
   const processedFiles: string[] = [];
 
   for (const file of files) {
     const lowerName = file.name.toLowerCase();
     const isDeuda = lowerName.includes('deuda') || lowerName.includes('recambio');
     const isTecnico = lowerName.includes('stock tecnico') || lowerName.includes('stock técnico') || lowerName.includes('tecnico.xls') || lowerName.includes('técnico.xls');
+    const isConsumibles = lowerName.includes('consumible') || lowerName.includes('pendientes');
 
     if (isDeuda) {
       const rows = await parseFileRows(file);
@@ -65,52 +67,67 @@ export async function processStockFiles(
       const rows = await parseFileRows(file);
       rawTecnico = rows;
       processedFiles.push(file.name);
+    } else if (isConsumibles) {
+      const rows = await parseFileRows(file);
+      rawConsumibles = rows;
+      processedFiles.push(file.name);
     }
   }
 
   return {
-    result: buildStockAuditoriaState(rawDeuda, rawTecnico),
+    result: buildStockAuditoriaState(rawDeuda, rawTecnico, rawConsumibles),
     processedFiles
   };
 }
 
-export function buildStockAuditoriaState(rawDeuda: any[], rawTecnico: any[]): StockAuditoriaState {
+export function buildStockAuditoriaState(rawDeuda: any[], rawTecnico: any[], _rawConsumibles: any[] = []): StockAuditoriaState {
   const tecSummary = new Map<string, TecnicoStockAuditoria>();
 
-  function getOrCreateTec(tecName: string): TecnicoStockAuditoria {
-    const norm = tecName.toLowerCase().trim();
-    if (!tecSummary.has(norm)) {
-      const zInfo = tecToZonaMap.get(norm);
-      tecSummary.set(norm, {
-        nombre: tecName,
-        norm,
-        esMiTecnico: !!zInfo,
-        zonaTecnica: zInfo ? zInfo.zonaTecnica : 'Otra',
-        region: zInfo ? zInfo.region : 'Otra',
-        zonaLocal: zInfo ? zInfo.zonaLocal : '',
-        totalAdeudado: 0,
-        deudaRecambiosCount: 0,
-        deudaGenCount: 0,
-        retornosSemanalesCount: 0,
-        stockTecnicoTotalCount: 0,
-        stockFijoCount: 0,
-        deudaRecambios: [],
-        retornosSemanales: [],
-        stockTecnicoItems: []
-      });
-    }
-    return tecSummary.get(norm)!;
-  }
+  // Initialize ALL assigned technicians from zonasTecnicosReferencia so none is missed
+  zonasReferencia.forEach(z => {
+    const norm = z.nombre.toLowerCase().trim();
+    tecSummary.set(norm, {
+      nombre: z.nombre,
+      norm,
+      esMiTecnico: true,
+      zonaTecnica: z.zonaTecnica,
+      region: z.region,
+      zonaLocal: z.zonaLocal,
+      totalAdeudado: 0,
+      deudaRealEnManoCount: 0,
+      enTransitoConOrCount: 0,
+      deudaRecambiosCount: 0,
+      deudaGenCount: 0,
+      retornosSemanalesCount: 0,
+      stockTecnicoTotalCount: 0,
+      stockFijoCount: 0,
+      deudaRecambios: [],
+      partesEnTransito: [],
+      retornosSemanales: [],
+      stockTecnicoItems: []
+    });
+  });
 
-  // 1. Process Stock Deuda (Recambios de campo a devolver)
+  // 1. Process Stock Deuda (Filtrado estricto a Mis Técnicos y evaluación de Dev en tránsito/OR)
   rawDeuda.forEach(r => {
     const tec = String(r['Base Stock'] || r['Tecnico Ret'] || '').trim();
     if (!tec) return;
-    const tObj = getOrCreateTec(tec);
+    const norm = tec.toLowerCase().trim();
+
+    // FILTRADO ESTRICTO: Descartar técnicos foráneos
+    if (!misTecsSet.has(norm)) return;
+
+    const tObj = tecSummary.get(norm)!;
     const idUnico = String(r['Id Unico'] || '').trim();
     const esGen = idUnico.toUpperCase().endsWith('-GEN') || String(r['Marca Desc'] || '').toUpperCase() === 'GEN';
+    
+    // REGLA CLAVE: Si Dev en transito/OR tiene valor, NO es deuda del técnico, está en viaje
+    const dev = String(r['Dev en transito/OR'] || '').trim();
+    const esEnTransito = Boolean(dev && dev !== '0' && dev !== '-' && dev.toLowerCase() !== 'null');
+    const orMetro = String(r['Fecha OR Metro'] || r['Obs OR Metro'] || '').trim();
+    const transMetro = String(r['Transporte OR Metro'] || '').trim();
 
-    tObj.deudaRecambios.push({
+    const deudaItem: StockDeudaItem = {
       pn: String(r['PN'] || '').trim(),
       idUnico,
       esGen,
@@ -121,16 +138,33 @@ export function buildStockAuditoriaState(rawDeuda: any[], rawTecnico: any[]): St
       cliente: String(r['Cliente Desc'] || '').trim(),
       fecha: String(r['F Ing Lab'] || r['F Mov Stock'] || ''),
       marca: String(r['Marca Desc'] || '').trim(),
-      ubicacion: String(r['Ubicacion en deposito'] || '').trim()
-    });
+      ubicacion: String(r['Ubicacion en deposito'] || '').trim(),
+      devEnTransito: dev,
+      esEnTransito,
+      fechaOrMetro: orMetro,
+      transporteOrMetro: transMetro
+    };
+
+    if (esEnTransito) {
+      tObj.partesEnTransito.push(deudaItem);
+    } else {
+      tObj.deudaRecambios.push(deudaItem);
+    }
   });
 
-  // 2. Process Stock Tecnico
+  // 2. Process Stock Tecnico (Filtrado estricto a Mis Técnicos)
   rawTecnico.forEach(r => {
     const tec = String(r['Base Stock'] || '').trim();
     if (!tec) return;
-    const tObj = getOrCreateTec(tec);
+    const norm = tec.toLowerCase().trim();
+
+    // FILTRADO ESTRICTO: Descartar técnicos foráneos
+    if (!misTecsSet.has(norm)) return;
+
+    const tObj = tecSummary.get(norm)!;
     const pn = String(r['PN'] || '').trim().toUpperCase();
+    const dev = String(r['Dev en transito/OR'] || '').trim();
+    const esEnTransito = Boolean(dev && dev !== '0' && dev !== '-' && dev.toLowerCase() !== 'null');
 
     tObj.stockTecnicoItems.push({
       pn,
@@ -141,7 +175,10 @@ export function buildStockAuditoriaState(rawDeuda: any[], rawTecnico: any[]): St
       pedidoStock: String(r['Pedido Stock Solicita'] || '').trim(),
       cliente: String(r['Cliente Cot Solicita'] || '').trim(),
       fechaMov: String(r['F Mov Stock'] || ''),
-      ubicacion: String(r['Ubicacion en deposito'] || '').trim()
+      ubicacion: String(r['Ubicacion en deposito'] || '').trim(),
+      devEnTransito: dev,
+      esEnTransito,
+      transporteOrMetro: String(r['Transporte OR Metro'] || '').trim()
     });
   });
 
@@ -158,16 +195,22 @@ export function buildStockAuditoriaState(rawDeuda: any[], rawTecnico: any[]): St
       const totalQty = items.length;
 
       if (quota === 0) {
-        // Fuera de Stock Fijo -> 100% de estas piezas deben ser devueltas en la semana
+        // Fuera de Stock Fijo -> Repuestos pedidos para un reclamo que deben devolverse
         items.forEach(it => {
-          tObj.retornosSemanales.push({
+          const retornoItem: RetornoSemanalItem = {
             ...it,
             esStockFijo: false,
             motivo: 'FUERA_DE_STOCK_FIJO',
-            detalleMotivo: 'Repuesto pedido para service call puntual no autorizado como Stock Fijo',
+            detalleMotivo: 'Repuesto pedido para service call puntual no autorizado en Stock Fijo',
             cantAutorizadaSf: 0,
             cantActualEnStock: totalQty
-          });
+          };
+
+          if (it.esEnTransito) {
+            tObj.partesEnTransito.push(retornoItem);
+          } else {
+            tObj.retornosSemanales.push(retornoItem);
+          }
         });
       } else {
         // Marcamos las autorizadas como SF
@@ -178,49 +221,56 @@ export function buildStockAuditoriaState(rawDeuda: any[], rawTecnico: any[]): St
           } else {
             // Excedentes de Stock Fijo
             it.esStockFijo = false;
-            tObj.retornosSemanales.push({
+            const retornoItem: RetornoSemanalItem = {
               ...it,
               motivo: 'EXCEDENTE_STOCK_FIJO',
               detalleMotivo: `Excede cuota de Stock Fijo autorizada (Tiene ${totalQty}, Autorizado ${quota})`,
               cantAutorizadaSf: quota,
               cantActualEnStock: totalQty
-            });
+            };
+
+            if (it.esEnTransito) {
+              tObj.partesEnTransito.push(retornoItem);
+            } else {
+              tObj.retornosSemanales.push(retornoItem);
+            }
           }
         });
       }
     });
 
-    tObj.deudaRecambiosCount = tObj.deudaRecambios.length;
+    tObj.deudaRealEnManoCount = tObj.deudaRecambios.length;
     tObj.deudaGenCount = tObj.deudaRecambios.filter(d => d.esGen).length;
     tObj.retornosSemanalesCount = tObj.retornosSemanales.length;
+    tObj.enTransitoConOrCount = tObj.partesEnTransito.length;
     tObj.stockTecnicoTotalCount = tObj.stockTecnicoItems.length;
-    tObj.totalAdeudado = tObj.deudaRecambiosCount + tObj.retornosSemanalesCount;
+
+    // TOTAL ADEUDADO EXIGIBLE = Solo lo que tiene en mano (descontando lo que ya tiene OR/remito)
+    tObj.totalAdeudado = tObj.deudaRealEnManoCount + tObj.retornosSemanalesCount;
   });
 
-  const allTecs = Array.from(tecSummary.values());
+  const misTecsList = Array.from(tecSummary.values());
 
-  // Order technicians: misTecnicos first, then by totalAdeudado desc
-  allTecs.sort((a, b) => {
-    if (a.esMiTecnico && !b.esMiTecnico) return -1;
-    if (!a.esMiTecnico && b.esMiTecnico) return 1;
-    return b.totalAdeudado - a.totalAdeudado;
-  });
+  // Ordenar: mayor deuda real exigible primero
+  misTecsList.sort((a, b) => b.totalAdeudado - a.totalAdeudado);
 
-  // Calculate Region KPIs (Mis Técnicos)
-  const misTecsList = allTecs.filter(t => t.esMiTecnico);
+  // Totales Regionales
   const totalAdeudadoRegion = misTecsList.reduce((sum, t) => sum + t.totalAdeudado, 0);
-  const totalStockDeudaRegion = misTecsList.reduce((sum, t) => sum + t.deudaRecambiosCount, 0);
+  const totalDeudaRealRegion = misTecsList.reduce((sum, t) => sum + t.deudaRealEnManoCount, 0);
   const totalGenRegion = misTecsList.reduce((sum, t) => sum + t.deudaGenCount, 0);
   const totalRetornosSemanalesRegion = misTecsList.reduce((sum, t) => sum + t.retornosSemanalesCount, 0);
+  const totalEnTransitoRegion = misTecsList.reduce((sum, t) => sum + t.enTransitoConOrCount, 0);
   const totalTecnicosConDeuda = misTecsList.filter(t => t.totalAdeudado > 0).length;
 
   return {
     fechaCorte: new Date().toLocaleDateString('es-AR'),
     totalAdeudadoRegion,
-    totalStockDeudaRegion,
+    totalDeudaRealRegion,
+    totalEnTransitoRegion,
+    totalStockDeudaRegion: totalDeudaRealRegion,
     totalGenRegion,
     totalRetornosSemanalesRegion,
     totalTecnicosConDeuda,
-    tecnicos: allTecs
+    tecnicos: misTecsList
   };
 }

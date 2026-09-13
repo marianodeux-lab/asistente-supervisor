@@ -154,15 +154,15 @@ export const ReportRepository: React.FC<ReportRepositoryProps> = ({
       const authorName = currentUser?.nombre || 'Mariano Deux';
       const messages: string[] = [];
 
-      // 1. Separate Stock Reports (Stock Deuda / Stock Tecnico) from Agenda Reports
+      // 1. Separate Stock Reports (Stock Deuda / Stock Tecnico / Consumibles) from Agenda Reports
       const stockFiles = files.filter(f => {
         const l = f.name.toLowerCase();
-        return l.includes('deuda') || l.includes('stock tecnico') || l.includes('stock técnico');
+        return l.includes('deuda') || l.includes('stock tecnico') || l.includes('stock técnico') || l.includes('consumible') || l.includes('pendientes sf') || l.includes('pendientes de stock');
       });
 
       const agendaFiles = files.filter(f => {
         const l = f.name.toLowerCase();
-        return !l.includes('deuda') && !l.includes('stock tecnico') && !l.includes('stock técnico');
+        return !l.includes('deuda') && !l.includes('stock tecnico') && !l.includes('stock técnico') && !l.includes('consumible') && !l.includes('pendientes sf') && !l.includes('pendientes de stock');
       });
 
       // Process Stock Reports if present

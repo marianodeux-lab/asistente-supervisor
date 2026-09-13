@@ -20,6 +20,7 @@ interface HeaderProps {
   currentUser: UserAccount;
   onOpenAuthModal: (mode?: 'LOGIN' | 'FIRST_LOGIN' | 'FORGOT_PASSWORD') => void;
   onOpenUserManagement: () => void;
+  onOpenHallAi?: () => void;
   tickets: Ticket[];
   cronicos: EquipoCronico[];
   onRefresh: () => void;
@@ -40,6 +41,7 @@ export const Header: React.FC<HeaderProps> = ({
   currentUser,
   onOpenAuthModal,
   onOpenUserManagement,
+  onOpenHallAi,
   tickets,
   cronicos,
   onRefresh,
@@ -208,6 +210,18 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
             )}
           </div>
+
+          {/* Hall IA Assistant Button */}
+          {onOpenHallAi && (
+            <button
+              onClick={onOpenHallAi}
+              className="flex items-center gap-1.5 bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-lg shadow-purple-500/25 border border-purple-400/30"
+              title="Abrir Asistente de IA Hall"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300 animate-pulse" />
+              <span>Hall IA</span>
+            </button>
+          )}
 
           {/* Refresh button */}
           <button
