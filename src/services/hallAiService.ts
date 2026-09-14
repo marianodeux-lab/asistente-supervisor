@@ -232,6 +232,55 @@ ESTILO DE RESPUESTA:
 - Nunca culpes a un técnico por piezas que ya tienen OR en tránsito.`;
   },
 
+  cachedDiscoveredModels: null as string[] | null,
+
+  async getAvailableModels(apiKey: string): Promise<string[]> {
+    if (this.cachedDiscoveredModels && this.cachedDiscoveredModels.length > 0) {
+      return this.cachedDiscoveredModels;
+    }
+
+    const endpoints = [
+      'https://generativelanguage.googleapis.com/v1beta/models',
+      'https://generativelanguage.googleapis.com/v1/models'
+    ];
+
+    for (const ep of endpoints) {
+      try {
+        const res = await fetch(`${ep}?key=${apiKey}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.models && Array.isArray(data.models)) {
+            const valid = data.models
+              .filter((m: any) => Array.isArray(m.supportedGenerationMethods) && m.supportedGenerationMethods.includes('generateContent'))
+              .map((m: any) => String(m.name || '').replace(/^models\//, ''))
+              .filter((name: string) => name.length > 0);
+
+            if (valid.length > 0) {
+              valid.sort((a: string, b: string) => {
+                const score = (n: string) => {
+                  const s = n.toLowerCase();
+                  if (s.includes('1.5-flash')) return 100;
+                  if (s.includes('flash')) return 90;
+                  if (s.includes('2.0')) return 80;
+                  if (s.includes('pro')) return 70;
+                  return 10;
+                };
+                return score(b) - score(a);
+              });
+              console.log('Gemini models detected via API:', valid);
+              this.cachedDiscoveredModels = valid;
+              return valid;
+            }
+          }
+        }
+      } catch (err) {
+        console.warn(`Could not fetch models from ${ep}:`, err);
+      }
+    }
+
+    return ['gemini-1.5-flash', 'gemini-1.5-flash-latest', 'gemini-2.0-flash', 'gemini-1.5-pro', 'gemini-pro'];
+  },
+
   // Main chat method
   async askHall(
     userPrompt: string,
@@ -248,65 +297,104 @@ ESTILO DE RESPUESTA:
     try {
       const systemInstruction = this.getSystemPrompt(ctx);
       
-      const contents: any[] = [
-        {
-          role: 'user',
-          parts: [{ text: `${systemInstruction}\n\n--- INICIO DE LA CONVERSACIÓN CON EL SUPERVISOR ---` }]
-        },
-        {
-          role: 'model',
-          parts: [{ text: 'Entendido. Soy Hall, tu asistente de supervisión operativa para Patagonia & Suroeste. Tengo cargados todos los datos de tickets, SLA, reincidencias y auditoría de stock. ¿En qué puedo ayudarte hoy?' }]
-        }
-      ];
-
-      // Add recent history (up to last 6 messages)
+      // Build strictly alternating message list
+      const rawMessages: { role: 'user' | 'model'; text: string }[] = [];
       history.slice(-6).forEach(msg => {
-        contents.push({
-          role: msg.sender === 'user' ? 'user' : 'model',
-          parts: [{ text: msg.text }]
-        });
+        if (msg.text && msg.text.trim()) {
+          rawMessages.push({
+            role: msg.sender === 'user' ? 'user' : 'model',
+            text: msg.text.trim()
+          });
+        }
+      });
+      rawMessages.push({
+        role: 'user',
+        text: userPrompt.trim()
       });
 
-      // Add current user prompt
-      contents.push({
-        role: 'user',
-        parts: [{ text: userPrompt }]
-      });
+      // Merge any consecutive messages with identical role to avoid 400 Bad Request
+      const cleanContents: { role: 'user' | 'model'; parts: { text: string }[] }[] = [];
+      for (const m of rawMessages) {
+        const last = cleanContents[cleanContents.length - 1];
+        if (last && last.role === m.role) {
+          last.parts[0].text += `\n\n${m.text}`;
+        } else {
+          cleanContents.push({
+            role: m.role,
+            parts: [{ text: m.text }]
+          });
+        }
+      }
+
+      // Ensure conversation starts with a user turn
+      if (cleanContents.length > 0 && cleanContents[0].role !== 'user') {
+        cleanContents.unshift({
+          role: 'user',
+          parts: [{ text: 'Hola Hall, inicia la supervisión táctica de Patagonia & Suroeste.' }]
+        });
+      }
+
+      // Discover models supported by this specific key
+      const candidateModels = await this.getAvailableModels(apiKey);
+      console.log('Attempting Gemini generation with candidates:', candidateModels);
 
       let lastError = '';
-      for (const model of CANDIDATE_MODELS) {
-        try {
-          const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
-            {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                contents,
-                generationConfig: {
-                  temperature: 0.3,
-                  maxOutputTokens: 2500
-                }
-              })
-            }
-          );
+      for (const rawModel of candidateModels) {
+        const model = rawModel.replace(/^models\//, '');
+        
+        // Try v1beta first, then fallback to v1
+        for (const apiVer of ['v1beta', 'v1']) {
+          try {
+            const bodyPayload: any = {
+              contents: cleanContents,
+              generationConfig: {
+                temperature: 0.3,
+                maxOutputTokens: 2500
+              }
+            };
 
-          if (response.ok) {
-            const data = await response.json();
-            const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
-            if (answer) {
-              return answer;
+            // In v1beta, system_instruction is top-level
+            if (apiVer === 'v1beta') {
+              bodyPayload.system_instruction = {
+                parts: [{ text: systemInstruction }]
+              };
+            } else {
+              // In v1, prepend system instruction to the first user turn if needed
+              if (cleanContents[0]?.parts[0]) {
+                bodyPayload.contents = [
+                  {
+                    role: 'user',
+                    parts: [{ text: `${systemInstruction}\n\n${cleanContents[0].parts[0].text}` }]
+                  },
+                  ...cleanContents.slice(1)
+                ];
+              }
             }
-          } else {
-            const errJson = await response.json().catch(() => ({}));
-            lastError = errJson.error?.message || response.statusText;
-            console.warn(`Gemini model ${model} failed (${response.status}):`, lastError);
-            continue; // Try next candidate model (e.g. gemini-2.0-flash, gemini-1.5-pro)
+
+            const response = await fetch(
+              `https://generativelanguage.googleapis.com/${apiVer}/models/${model}:generateContent?key=${apiKey}`,
+              {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(bodyPayload)
+              }
+            );
+
+            if (response.ok) {
+              const data = await response.json();
+              const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
+              if (answer) {
+                return answer;
+              }
+            } else {
+              const errJson = await response.json().catch(() => ({}));
+              lastError = errJson.error?.message || `${response.status} ${response.statusText}`;
+              console.warn(`Gemini model ${model} (${apiVer}) failed:`, lastError);
+            }
+          } catch (err: any) {
+            lastError = err?.message || String(err);
+            console.warn(`Gemini model ${model} (${apiVer}) network error:`, lastError);
           }
-        } catch (err: any) {
-          lastError = err?.message || String(err);
-          console.warn(`Gemini model ${model} network error:`, lastError);
-          continue;
         }
       }
 
