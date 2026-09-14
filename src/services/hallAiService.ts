@@ -4,7 +4,7 @@ import zonasReferencia from '../data/zonasTecnicosReferencia.json';
 import stockFijoData from '../data/stockFijoData.json';
 
 const GEMINI_STORAGE_KEY = 'stp_gemini_api_key';
-const GEMINI_MODEL = 'gemini-2.5-flash';
+const CANDIDATE_MODELS = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-pro'];
 
 export interface HallChatMessage {
   id: string;
@@ -52,7 +52,7 @@ export const HallAiService = {
     return Boolean(this.getStoredApiKey());
   },
 
-  // Analyze buzonMovimientos to find parts used by our technicians that are NOT in Stock Fijo
+  // Analyze buzonMovimientos to find parts used 2 or more times in the last 120 days that are NOT in Stock Fijo
   analyzeNonSfPartsUsage(): NonSfPartUsage[] {
     const misTecsSet = new Set<string>();
     zonasReferencia.forEach(z => {
@@ -71,7 +71,11 @@ export const HallAiService = {
       usosCount: number;
       tecnicos: Set<string>;
       pedidos: Set<string>;
+      fechas: string[];
     }>();
+
+    // Operational dynamic reference date (2026-09-13)
+    const refDate = new Date('2026-09-13T23:59:59');
 
     buzonMovimientosData.forEach((mov: any) => {
       const tec = String(mov.tecnico || '').trim();
@@ -84,32 +88,56 @@ export const HallAiService = {
       const pn = String(mov.instalaBase || '').toUpperCase().trim();
       if (!pn || pn.length < 4) return;
 
+      // Filter: must be within the last 120 days
+      if (mov.fecha) {
+        let movDate: Date | null = null;
+        if (typeof mov.fecha === 'string' && mov.fecha.includes('-')) {
+          movDate = new Date(mov.fecha + 'T12:00:00');
+        } else if (typeof mov.fecha === 'string' && mov.fecha.includes('/')) {
+          const parts = mov.fecha.split('/');
+          if (parts.length === 3) {
+            movDate = new Date(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10));
+          }
+        }
+        if (movDate && !isNaN(movDate.getTime())) {
+          const diffDays = Math.floor((refDate.getTime() - movDate.getTime()) / (1000 * 60 * 60 * 24));
+          if (diffDays < 0 || diffDays > 120) return; // Discard outside 120-day window
+        }
+      }
+
+      const desc = mov.instalaDesc || String(mov.obs || '').split('->')[0]?.trim() || `Repuesto ${pn}`;
+
       if (!pnMap.has(pn)) {
         pnMap.set(pn, {
           pn,
-          descripcion: String(mov.obs || '').split('->')[0]?.trim() || `Repuesto ${pn}`,
+          descripcion: desc,
           usosCount: 0,
           tecnicos: new Set<string>(),
-          pedidos: new Set<string>()
+          pedidos: new Set<string>(),
+          fechas: []
         });
       }
 
       const entry = pnMap.get(pn)!;
       entry.usosCount++;
       entry.tecnicos.add(tec);
+      if (mov.fecha) entry.fechas.push(String(mov.fecha));
       if (mov.cleanPed) entry.pedidos.add(String(mov.cleanPed));
     });
 
     const result: NonSfPartUsage[] = [];
     pnMap.forEach(v => {
-      result.push({
-        pn: v.pn,
-        descripcion: v.descripcion,
-        usosCount: v.usosCount,
-        tecnicosQueLoUsaron: Array.from(v.tecnicos),
-        pedidosAsociados: Array.from(v.pedidos),
-        motivoRecomendacion: `Utilizado ${v.usosCount} veces en service calls sin estar en Stock Fijo, requiriendo despacho centralizado y demorando el SLA.`
-      });
+      // Rule: Must be used 2 or more times in the last 120 days
+      if (v.usosCount >= 2) {
+        result.push({
+          pn: v.pn,
+          descripcion: v.descripcion,
+          usosCount: v.usosCount,
+          tecnicosQueLoUsaron: Array.from(v.tecnicos),
+          pedidosAsociados: Array.from(v.pedidos),
+          motivoRecomendacion: `Utilizado ${v.usosCount} veces en los últimos 120 días por ${v.tecnicos.size} técnico(s) de la región sin estar en Stock Fijo.`
+        });
+      }
     });
 
     // Sort by most frequently used
@@ -245,45 +273,56 @@ ESTILO DE RESPUESTA:
         parts: [{ text: userPrompt }]
       });
 
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents,
-            generationConfig: {
-              temperature: 0.3,
-              maxOutputTokens: 2500
+      let lastError = '';
+      for (const model of CANDIDATE_MODELS) {
+        try {
+          const response = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                contents,
+                generationConfig: {
+                  temperature: 0.3,
+                  maxOutputTokens: 2500
+                }
+              })
             }
-          })
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (answer) {
+              return answer;
+            }
+          } else {
+            const errJson = await response.json().catch(() => ({}));
+            lastError = errJson.error?.message || response.statusText;
+            console.warn(`Gemini model ${model} failed (${response.status}):`, lastError);
+            continue; // Try next candidate model (e.g. gemini-2.0-flash, gemini-1.5-pro)
+          }
+        } catch (err: any) {
+          lastError = err?.message || String(err);
+          console.warn(`Gemini model ${model} network error:`, lastError);
+          continue;
         }
-      );
-
-      if (!response.ok) {
-        const errJson = await response.json().catch(() => ({}));
-        console.warn('Gemini API Error, falling back to heuristic:', errJson);
-        const heuristic = this.generateHeuristicResponse(userPrompt, ctx);
-        return `> ⚠️ *Nota: No se pudo conectar a la API de Gemini (${errJson.error?.message || response.statusText}). He generado este análisis directo con el motor interno de Hall:*\n\n${heuristic}`;
       }
 
-      const data = await response.json();
-      const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (answer) {
-        return answer;
-      }
-
-      return this.generateHeuristicResponse(userPrompt, ctx);
+      console.warn('All Gemini models exhausted, falling back to heuristic. Last error:', lastError);
+      const heuristic = this.generateHeuristicResponse(userPrompt, ctx);
+      return `> ⚠️ *Nota: No se pudo conectar a los modelos de Gemini (${lastError || 'Servicio no disponible'}). He generado este análisis directo con el motor interno de Hall:*\n\n${heuristic}`;
     } catch (err: any) {
-      console.error('Error calling Gemini:', err);
+      console.error('Error in askHall:', err);
       return this.generateHeuristicResponse(userPrompt, ctx);
     }
   },
 
   // 1-Click Insight: Propuesta de Optimización de Stock Fijo
   async generateStockFijoProposal(ctx: HallOperationalContext): Promise<string> {
-    const prompt = `Analiza detalladamente los repuestos que utilizan los técnicos en Patagonia & Suroeste que NO figuran actualmente como Stock Fijo (SF) y que debieran sumarse formalmente en ese carácter en pos de mejorar el SLA.
-Identifica los Part Numbers (PN), la cantidad de reemplazos realizados, los técnicos que más los requirieron y redacta una propuesta formal para el área de Logística/Stock Central solicitando la ampliación del Stock Fijo.`;
+    const prompt = `Analiza detalladamente los repuestos que utilizan los técnicos en Patagonia & Suroeste que NO figuran actualmente como Stock Fijo (SF) y que se hayan utilizado dos veces o más (>= 2) en los últimos 120 días.
+Identifica los Part Numbers (PN), la descripción técnica, la cantidad de reemplazos realizados en ese período de 120 días, los técnicos que más los requirieron y redacta una propuesta formal para el área de Logística/Stock Central solicitando la ampliación del Stock Fijo para mejorar el SLA.`;
     return this.askHall(prompt, ctx);
   },
 
@@ -321,23 +360,24 @@ El informe debe resumir:
 
     // 1. Stock Fijo Optimization query
     if (p.includes('stock fijo') || p.includes('sf') || p.includes('optimizar') || p.includes('alta')) {
-      const topParts = ctx.nonSfFrequentParts.slice(0, 6);
+      const topParts = ctx.nonSfFrequentParts.slice(0, 8);
       return `### 💡 Hall AI: Propuesta de Optimización de Stock Fijo para Mejora de SLA
 
-Analizando los movimientos de repuestos en **Patagonia & Suroeste**, se detectó que los técnicos realizaron múltiples intervenciones utilizando partes solicitadas a Stock Central que **no están autorizadas en sus valijas como Stock Fijo**.
+Analizando los movimientos de repuestos en **Patagonia & Suroeste**, se evaluaron las intervenciones en campo donde se utilizaron partes fuera de Stock Fijo **dos o más veces en los últimos 120 días**.
 
-Esto genera demoras de traslado de 24hs a 72hs que penalizan directamente el SLA de los service calls.
+Esto genera demoras logísticas de traslado de 24hs a 72hs que penalizan directamente el SLA de los service calls.
 
-#### 📊 Repuestos no-SF Más Utilizados en la Región:
+#### 📊 Repuestos no-SF Utilizados ≥ 2 Veces en los Últimos 120 Días:
 
-| Part Number (PN) | Usos en Reclamos | Técnicos Principales | Recomendación Hall |
-| :--- | :---: | :--- | :--- |
-${topParts.map(item => `| **${item.pn}** | ${item.usosCount} veces | ${item.tecnicosQueLoUsaron.slice(0, 2).join(', ')} | **Alta en SF (+1 unid)** |`).join('\n')}
+| Part Number (PN) | Descripción Técnica | Usos (120 días) | Técnicos Principales | Recomendación Hall |
+| :--- | :--- | :---: | :--- | :--- |
+${topParts.map(item => `| **${item.pn}** | ${item.descripcion.slice(0, 35)} | **${item.usosCount} veces** | ${item.tecnicosQueLoUsaron.slice(0, 2).join(', ')} | **Alta en SF (+1 unid)** |`).join('\n')}
 
 #### 🎯 Justificación Técnica para Logística:
 1. **Reducción de Re-visitas:** Incorporar estos PN en las cabeceras regionales (Bariloche, Cipolletti, Neuquén, Comodoro) permitirá resolver en primer arribo (*First Time Fix*) sin esperar despachos desde Buenos Aires.
 2. **Impacto Estimado en SLA:** Estimamos una mejora de **+14% en cumplimiento de SLA** en reclamos de partes mecánicas y módulos dispensadores.
-3. **Consumibles a considerar:** Correas de tracción, ruedas de fricción y sensores de paso deben suministrarse en lotes mensuales como consumibles no retornables.`;
+3. **Filtro de 120 días aplicado:** Solo se contemplan componentes con demanda recurrente verificada (≥ 2 usos en el último cuatrimestre).
+4. **Consumibles a considerar:** Correas de tracción, ruedas de fricción y sensores de paso deben suministrarse en lotes mensuales como consumibles no retornables.`;
     }
 
     // 2. Deuda Audit query

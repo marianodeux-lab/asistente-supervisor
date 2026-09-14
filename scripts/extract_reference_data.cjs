@@ -183,6 +183,12 @@ if (fs.existsSync(fileAgo)) {
   baseInstaladaClientesList = rawAgo.map(r => {
     const d = parseDate(r['FECHAHABILITACION']);
     const slaText = r['SLA_R'] ? (`${r['SLA_R']}h`) : (r['SLA_S'] ? (`${r['SLA_S']}h`) : '-');
+    const marcaDesc = String(r['MARCA_DESC'] || '').trim();
+    const red = String(r['RED'] || '').trim();
+    // Business Rule: Cuando MARCA_DESC es Smart Box y la RED es Prosegur, define que el equipo es Cash Today
+    const isCashToday = marcaDesc.toLowerCase() === 'smart box' && red.toLowerCase() === 'prosegur';
+    const negocio = isCashToday ? 'Cash Today' : 'ATM';
+
     return {
       cliente: String(r['CLIENTE_DESC'] || r['CLIENTE'] || '').trim(),
       atm: String(r['COD_EQUIPO'] || r['ATM'] || r['LUNO'] || '').trim(),
@@ -192,17 +198,18 @@ if (fs.existsSync(fileAgo)) {
       provincia: String(r['PROVINCIA'] || '').trim(),
       distancia: String(r['KM'] || '0').trim(),
       mpcr: getMpcr(r['MARCA_DESC'], r['MODELO_DESC']),
-      red: String(r['RED'] || '').trim(),
+      red: red,
       sla: slaText,
       tecnicoZona: String(r['TECNICO_ZONA'] || '').trim(),
       antiguedad: calcAntiguedad(d),
       fechaHabilitacion: formatFecha(d),
       // Metadata for dependent cascading filters
-      fabricante: String(r['MARCA_DESC'] || '').trim(),
+      fabricante: marcaDesc,
       modelo: String(r['MODELO_DESC'] || '').trim(),
       region: String(r['REGIONTECNICO'] || '').trim(),
       plantaCabecera: getPlantaCabecera(r['ZONA_DESC'], r['LOCALIDAD']),
-      negocio: String(r['NEGOCIO'] || 'ATM').trim(),
+      negocio: negocio,
+      esCashToday: isCashToday,
       recaudador: String(r['RECAUDADOR'] || '').trim()
     };
   }).filter(e => e.cliente || e.atm);

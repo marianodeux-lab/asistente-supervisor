@@ -105,6 +105,52 @@ export interface Ticket {
   sucursalRelevamiento?: string;
   direccionReal?: string;
   localidadReal?: string;
+
+  // Resumed / Previously Suspended Ticket Detection
+  esPedidoSuspendidoPrevio?: boolean;
+  suspensionPrevia?: {
+    codCierre?: string;
+    codigoCierre?: string;
+    desc?: string;
+    descCierre?: string;
+    fecha?: string;
+    tecnico?: string;
+    obs?: string;
+    observaciones?: string;
+  } | null;
+
+  // MP Quality & Labor Time (T Asis)
+  tiempoAsistenciaMp?: string;
+  tiempoAsistenciaMinutosMp?: number;
+  alertaTiempoMp?: {
+    tieneAlerta: boolean;
+    tipoEquipo: 'ATM' | 'CASH_TODAY' | 'GLORY_CIMA';
+    tipoEquipoLabel: string;
+    umbralMinutos: number;
+    mensaje: string;
+  } | null;
+
+  // Full Machine Parts Replacement History
+  repuestosHistoricos?: RepuestoHistoricoItem[];
+}
+
+export interface RepuestoHistoricoItem {
+  pedido: string;
+  cleanPed: string;
+  fecha: string;
+  hora: string;
+  tecnico: string;
+  idInstala: string;
+  instalaBase: string;
+  instalaDesc?: string;
+  instalaQr?: string;
+  idRetira: string;
+  retiraBase: string;
+  retiraDesc?: string;
+  retiraQr?: string;
+  esStockFijo: boolean;
+  origenStock?: string;
+  obs?: string;
 }
 
 export interface ControlInicioPrimerPedido {
@@ -171,6 +217,16 @@ export interface EquipoCronico {
   ultimoMtmFecha?: string | null;
   tiempoPostMtm?: string;
   recomendacion: string;
+  repuestosHistoricos?: RepuestoHistoricoItem[];
+  tiempoAsistenciaMp?: string;
+  tiempoAsistenciaMinutosMp?: number;
+  alertaTiempoMp?: {
+    tieneAlerta: boolean;
+    tipoEquipo: 'ATM' | 'CASH_TODAY' | 'GLORY_CIMA';
+    tipoEquipoLabel: string;
+    umbralMinutos: number;
+    mensaje: string;
+  } | null;
 }
 
 export interface StockFijoItem {
@@ -432,6 +488,7 @@ export interface BaseInstaladaClienteRow {
   region: string;
   plantaCabecera: string;
   negocio: string;
+  esCashToday?: boolean;
   recaudador: string;
 }
 

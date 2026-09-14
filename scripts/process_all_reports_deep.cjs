@@ -89,6 +89,33 @@ function parseDateAny(val) {
   return s;
 }
 
+// Helper to parse strict DD/MM/YYYY [HH:mm[:ss]] strings into a Date object
+function parseExcelDateTime(str) {
+  if (!str) return null;
+  const s = String(str).trim();
+  const num = Number(s);
+  if (!isNaN(num) && num > 30000 && num < 70000) {
+    const utcDays = num - 25569;
+    return new Date(utcDays * 86400 * 1000);
+  }
+  const match = s.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?)?/);
+  if (match) {
+    const day = parseInt(match[1], 10);
+    const month = parseInt(match[2], 10) - 1;
+    const year = parseInt(match[3], 10);
+    const hour = match[4] ? parseInt(match[4], 10) : 0;
+    const min = match[5] ? parseInt(match[5], 10) : 0;
+    const sec = match[6] ? parseInt(match[6], 10) : 0;
+    return new Date(year, month, day, hour, min, sec);
+  }
+  const isoMatch = s.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+  if (isoMatch) {
+    const d = new Date(s);
+    if (!isNaN(d.getTime())) return d;
+  }
+  return null;
+}
+
 // Helper function to parse part string into Base Module PN + Lab QR Code
 function parsePartCode(code) {
   if (!code || typeof code !== 'string') return { raw: '-', pnBase: '-', qr: '-' };
@@ -126,6 +153,26 @@ if (fs.existsSync(fileStockFijo)) {
   console.log(`✅ Stock Fijo referenciado: ${sfMap.size} asignaciones mapeadas`);
 }
 
+// 3b. Load Master LP (PN -> Descripcion)
+const fileMasterLp = path.resolve(__dirname, '../Reportes/Datos/Master LP.xlsx');
+const masterLpMap = new Map();
+const masterLpDict = {};
+if (fs.existsSync(fileMasterLp)) {
+  const mlpWb = XLSX.readFile(fileMasterLp);
+  const mlpWs = mlpWb.Sheets['Master LP'] || mlpWb.Sheets[mlpWb.SheetNames[0]];
+  const mlpRaw = XLSX.utils.sheet_to_json(mlpWs, { defval: '' });
+  mlpRaw.forEach(r => {
+    const pn = String(r['PN'] || '').trim().toUpperCase();
+    const desc = String(r['DESCRIPCION'] || '').trim();
+    if (pn && desc) {
+      masterLpMap.set(pn, desc);
+      masterLpDict[pn] = desc;
+    }
+  });
+  fs.writeFileSync(path.join(outDir, 'masterLpMap.json'), JSON.stringify(masterLpDict, null, 2));
+  console.log(`✅ Master LP cargado: ${masterLpMap.size} repuestos con descripción técnica oficial`);
+}
+
 // 4. Read Buzon de Movimientos
 const fileBuzon = path.resolve(__dirname, '../Reportes/Reporte Buzon Movimientos.xlsx');
 let buzonMap = new Map();
@@ -153,6 +200,9 @@ if (fs.existsSync(fileBuzon)) {
 
     const fechaVal = parseDateAny(r['FECHA']);
 
+    const instalaDesc = masterLpMap.get(instParsed.pnBase.toUpperCase()) || masterLpMap.get(rawInst.toUpperCase()) || '';
+    const retiraDesc = masterLpMap.get(retParsed.pnBase.toUpperCase()) || masterLpMap.get(rawRet.toUpperCase()) || '';
+
     const item = {
       pedido: rawPed,
       cleanPed,
@@ -161,8 +211,10 @@ if (fs.existsSync(fileBuzon)) {
       idInstala: rawInst,
       idRetira: rawRet,
       instalaBase: instParsed.pnBase,
+      instalaDesc,
       instalaQr: instParsed.qr,
       retiraBase: retParsed.pnBase,
+      retiraDesc,
       retiraQr: retParsed.qr,
       esStockFijo,
       cantAsignadaSf,
@@ -176,11 +228,18 @@ if (fs.existsSync(fileBuzon)) {
     buzonMap.get(cleanPed).push(item);
   });
 }
-fs.writeFileSync(path.join(outDir, 'buzonMovimientosData.json'), JSON.stringify(buzonList.slice(0, 500), null, 2));
-console.log(`✅ Buzón Movimientos: ${buzonList.length} transacciones procesadas (${buzonMap.size} pedidos con repuestos asociados)`);
 
-// 5. Read Suspendidos for History per Equipment
+// Keep all movements for our regional technicians (or all if none matched)
+const patagoniaBuzonList = buzonList.filter(item => {
+  const normTec = String(item.tecnico || '').toLowerCase().trim();
+  return misTecnicosNombres.has(normTec);
+});
+fs.writeFileSync(path.join(outDir, 'buzonMovimientosData.json'), JSON.stringify(patagoniaBuzonList.length > 0 ? patagoniaBuzonList : buzonList, null, 2));
+console.log(`✅ Buzón Movimientos: ${patagoniaBuzonList.length} transacciones de técnicos de la región guardadas (${buzonMap.size} pedidos con repuestos asociados)`);
+
+// 5. Read Suspendidos for History per Equipment & Map cleanPed -> Luno
 const suspendidosHistoryMap = new Map();
+const cleanPedToLunoMap = new Map();
 
 function loadSuspendidosFile(filePath, defaultZona) {
   if (!fs.existsSync(filePath)) return;
@@ -194,6 +253,9 @@ function loadSuspendidosFile(filePath, defaultZona) {
 
     const ped = String(r['PEDIDO'] || r['Pedido'] || '').trim();
     const cleanPed = ped.split('-')[0];
+    if (cleanPed && luno) {
+      cleanPedToLunoMap.set(cleanPed, luno);
+    }
     const codCierre = String(r['CODIGOCIERRE'] || r['CODCIERRE'] || r['CODCIE'] || r['Cod Cierre'] || '').trim();
     const cpto = String(r['CONCEPTOLLAMADA'] || r['CONCEPTO LLAMADA'] || r['Concepto'] || '').trim();
     const obs = String(r['OBSERVACIONESCONTROL'] || r['OBSERVACIONES CONTROL'] || r['DETALLEFALLA'] || r['DETALLE FALLA'] || '').trim();
@@ -236,7 +298,7 @@ function loadSuspendidosFile(filePath, defaultZona) {
 
 loadSuspendidosFile(path.resolve(__dirname, '../Reportes/Reporte Suspendidos Patagonia.xls'), 'Patagonia');
 loadSuspendidosFile(path.resolve(__dirname, '../Reportes/Reporte Suspendidos Suroeste.xls'), 'Suroeste');
-console.log(`✅ Suspendidos: ${suspendidosHistoryMap.size} Equipos con historial de intervenciones cargado`);
+console.log(`✅ Suspendidos: ${suspendidosHistoryMap.size} Equipos con historial de intervenciones cargado (${cleanPedToLunoMap.size} pedidos mapeados a luno)`);
 
 // 6. Map MP Pendientes per Luno
 const mpPendingByLuno = new Map(); // luno -> { pedido, detalleFalla, tecAsignado, esSinAsignar }
@@ -378,16 +440,143 @@ function toIsoDate(val) {
   return '';
 }
 
-// Load MP Cerrados Map for MP Deficiente detection (<30d)
-const mpCerradosMapPath = path.resolve(outDir, 'mpCerradosMap.json');
+// Load MP Cerrados (Patagonia & Suroeste) with T Asis & Quality Evaluation
 let mpCerradosMap = {};
-if (fs.existsSync(mpCerradosMapPath)) {
-  try {
-    mpCerradosMap = JSON.parse(fs.readFileSync(mpCerradosMapPath, 'utf8'));
-  } catch (e) {
-    console.warn('Could not parse mpCerradosMap.json:', e.message);
-  }
+
+function loadMpCerrados(filePath) {
+  if (!fs.existsSync(filePath)) return;
+  const wb = XLSX.readFile(filePath);
+  const ws = wb.Sheets[wb.SheetNames[0]];
+  const raw = XLSX.utils.sheet_to_json(ws, { defval: '' });
+  
+  raw.forEach(r => {
+    const luno = String(r['Luno'] || r['LUNO'] || r['ATM'] || '').trim();
+    if (!luno || luno.length < 3) return;
+
+    const ped = String(r['Pedido'] || r['PEDIDO'] || '').split('-')[0].trim();
+    if (ped) cleanPedToLunoMap.set(ped, luno);
+
+    const fFinRaw = r['F Fin'] || r['Fecha'] || r['MARCA FIN'] || r['F Alta'];
+    const fechaFormatted = parseDateFormatted(fFinRaw);
+    const fechaIso = toIsoDate(fFinRaw);
+    const tecMp = String(r['Tec Asignado'] || r['Tec Zona'] || r['TECNICO'] || '').trim();
+    const obsMp = String(r['Obs Control'] || r['OBSERVACIONESCONTROL'] || r['DETALLEFALLA'] || '').trim();
+
+    // Parse T Asis
+    const rawTAsis = r['T Asis'];
+    let minutosAsis = 0;
+    let displayTAsis = 'No registrado';
+    if (typeof rawTAsis === 'number') {
+      minutosAsis = Math.round(rawTAsis * 24 * 60);
+      const h = Math.floor(minutosAsis / 60);
+      const m = minutosAsis % 60;
+      displayTAsis = h > 0 ? `${h}h ${m}m` : `${m}m`;
+    } else if (rawTAsis) {
+      const parts = String(rawTAsis).trim().split(':');
+      if (parts.length >= 2) {
+        minutosAsis = (parseInt(parts[0], 10) || 0) * 60 + (parseInt(parts[1], 10) || 0);
+        const h = Math.floor(minutosAsis / 60);
+        const m = minutosAsis % 60;
+        displayTAsis = h > 0 ? `${h}h ${m}m` : `${m}m`;
+      }
+    }
+
+    // Quality Alert logic:
+    // ATM: average 60m, alert < 45m
+    // Cash Today: min 30m, alert < 30m
+    // Glory/CIMA: min 60m, alert < 60m
+    const modeloMp = String(r['Modelo'] || '').toUpperCase();
+    let tieneAlertaMp = false;
+    let mensajeAlertaMp = '';
+    let umbralMinutos = 45;
+    let tipoEquipo = 'ATM';
+
+    if (modeloMp.includes('GLORY') || modeloMp.includes('CIMA')) {
+      umbralMinutos = 60;
+      tipoEquipo = 'GLORY_CIMA';
+      if (minutosAsis > 0 && minutosAsis < 60) {
+        tieneAlertaMp = true;
+        mensajeAlertaMp = `⚠️ Tiempo MP insuficiente en Glory/CIMA (${minutosAsis} min vs mínimo requerido 60 min)`;
+      }
+    } else if (
+      modeloMp.includes('CTI') || 
+      modeloMp.includes('CTE') || 
+      modeloMp.includes('KISAN') || 
+      modeloMp.includes('TAS') || 
+      modeloMp.includes('TDE') || 
+      modeloMp.includes('CASH') || 
+      modeloMp.includes('SNBC')
+    ) {
+      umbralMinutos = 30;
+      tipoEquipo = 'CASH_TODAY';
+      if (minutosAsis > 0 && minutosAsis < 30) {
+        tieneAlertaMp = true;
+        mensajeAlertaMp = `⚠️ Tiempo MP insuficiente en Cash Today (${minutosAsis} min vs mínimo requerido 30 min)`;
+      }
+    } else {
+      umbralMinutos = 45;
+      tipoEquipo = 'ATM';
+      if (minutosAsis > 0 && minutosAsis < 45) {
+        tieneAlertaMp = true;
+        mensajeAlertaMp = `⚠️ Tiempo MP insuficiente en ATM (${minutosAsis} min vs media de 45-60 min)`;
+      }
+    }
+
+    mpCerradosMap[luno] = {
+      ultimoMpFecha: fechaFormatted,
+      rawDateIso: fechaIso,
+      tecMp,
+      obsMp,
+      tiempoAsistencia: displayTAsis,
+      tiempoAsistenciaMinutos: minutosAsis,
+      alertaTiempoMp: tieneAlertaMp ? {
+        tieneAlerta: true,
+        mensaje: mensajeAlertaMp,
+        minutos: minutosAsis,
+        umbral: umbralMinutos,
+        tipoEquipo
+      } : null
+    };
+  });
 }
+
+loadMpCerrados(path.resolve(__dirname, '../Reportes/MP Cerrados Patagonia.xls'));
+loadMpCerrados(path.resolve(__dirname, '../Reportes/MP Cerrados Suroeste.xls'));
+fs.writeFileSync(path.join(outDir, 'mpCerradosMap.json'), JSON.stringify(mpCerradosMap, null, 2));
+console.log(`✅ MP Cerrados procesados: ${Object.keys(mpCerradosMap).length} equipos auditados con T Asis`);
+
+// Build lunoToRepuestosMap from buzonList
+const lunoToRepuestosMap = new Map();
+buzonList.forEach(item => {
+  const luno = cleanPedToLunoMap.get(item.cleanPed);
+  if (!luno) return;
+  if (!lunoToRepuestosMap.has(luno)) lunoToRepuestosMap.set(luno, []);
+  lunoToRepuestosMap.get(luno).push({
+    pedido: item.cleanPed,
+    fecha: item.fecha,
+    hora: item.hora,
+    tecnico: item.tecnico,
+    instalaBase: item.instalaBase,
+    instalaDesc: item.instalaDesc || masterLpMap.get(item.instalaBase) || item.instalaBase,
+    instalaQr: item.instalaQr,
+    retiraBase: item.retiraBase,
+    retiraDesc: item.retiraDesc || masterLpMap.get(item.retiraBase) || item.retiraBase,
+    retiraQr: item.retiraQr,
+    esStockFijo: item.esStockFijo,
+    origenStock: item.origenStock,
+    obs: item.obs
+  });
+});
+
+for (const [luno, parts] of lunoToRepuestosMap.entries()) {
+  parts.sort((a, b) => (b.fecha || '').localeCompare(a.fecha || ''));
+}
+const lunoToRepDict = {};
+for (const [luno, parts] of lunoToRepuestosMap.entries()) {
+  lunoToRepDict[luno] = parts;
+}
+fs.writeFileSync(path.join(outDir, 'lunoToRepuestosMap.json'), JSON.stringify(lunoToRepDict, null, 2));
+console.log(`✅ Repuestos Reemplazados por Equipo: ${lunoToRepuestosMap.size} equipos con historial de partes`);
 
 // Helper to extract real client, branch, and real address from RELEVAMIENTOS CASH TODAY observations
 function extractRelevamientoClient(detalle) {
@@ -624,6 +813,29 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       }
     }
 
+    // Check if this coordinated order was previously suspended on this equipment
+    const suspMatch = historialTotal.find(h => h.pedido === cleanPed);
+    const esPedidoSuspendidoPrevio = !!suspMatch;
+    const suspensionPrevia = suspMatch ? {
+      pedido: suspMatch.pedido,
+      fecha: suspMatch.fecha,
+      codigoCierre: suspMatch.codCierre,
+      descCierre: suspMatch.cierreInfo?.desc || suspMatch.codCierre,
+      observaciones: suspMatch.observaciones,
+      tecnico: suspMatch.tecnico
+    } : null;
+
+    // True SLA remaining hours calculation without forcing 1h on expired tickets
+    let realHsSla = 0;
+    const vtoDate = parseExcelDateTime(r['Fecha Vto']);
+    const refTime = new Date('2026-09-13T12:00:00').getTime();
+    if (vtoDate) {
+      realHsSla = Math.round((vtoDate.getTime() - refTime) / (1000 * 60 * 60));
+    } else {
+      realHsSla = slaVal >= 100 ? 0 : Math.round((100 - slaVal) / 12);
+    }
+    if (slaVal >= 100 && realHsSla > 0) realHsSla = 0;
+
     return {
       id: ped,
       pedido: cleanPed,
@@ -637,7 +849,7 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       tecnicoZona: tecZona,
       estado: tipoOrigen === 'Adicionales' ? 'AIEC Abierto' : (r['Estado'] || 'SEG Registrado'),
       slaPorcentaje: slaVal,
-      hsSla: Math.max(1, Math.round((100 - slaVal) / 12)),
+      hsSla: realHsSla,
       fechaVencimiento: r['Fecha Vto'] || 'Hasta 07/09/2026 18:00:00',
       fechaCoordinada: fechaCoordinadaDisplay,
       fCoorDate,
@@ -650,6 +862,12 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       esMpDeficiente,
       tecnicoUltimoMp,
       obsUltimoMp,
+      tiempoAsistenciaMp: mpCerrado?.tiempoAsistencia || null,
+      tiempoAsistenciaMinutosMp: mpCerrado?.tiempoAsistenciaMinutos || null,
+      alertaTiempoMp: mpCerrado?.alertaTiempoMp || null,
+      repuestosHistoricos: lunoToRepuestosMap.get(luno) || [],
+      esPedidoSuspendidoPrevio,
+      suspensionPrevia,
       origenFlujo,
       esScVigente,
       alertaSinAsignar: isSinAsignar,

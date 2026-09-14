@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   X, 
   Radio, 
@@ -8,7 +8,8 @@ import {
   Sparkles,
   Layers,
   Calendar,
-  AlertTriangle
+  AlertTriangle,
+  Package
 } from 'lucide-react';
 import { EquipoCronico } from '../types';
 import { formatExcelDate } from '../utils/formatters';
@@ -23,6 +24,8 @@ export const ChronicDetailModal: React.FC<ChronicDetailModalProps> = ({
   onClose
 }) => {
   if (!cronico) return null;
+
+  const [activeTab, setActiveTab] = useState<'FALLAS' | 'REPUESTOS' | 'MP'>('FALLAS');
 
   const validTecnicos = (cronico.tecnicosInvolucrados || []).filter(
     t => t && t !== 'Técnico' && t !== 'SIN ASIGNAR' && t !== '-'
@@ -105,40 +108,194 @@ export const ChronicDetailModal: React.FC<ChronicDetailModalProps> = ({
             </div>
           </div>
 
-          {/* Timeline of failures */}
-          <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-xl space-y-3 shadow-lg">
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-amber-400" />
-              Llamadas Service Call Registradas en SLA (Últimos 60 Días)
-            </h4>
-            
-            <div className="space-y-2.5">
-              {cronico.ultimasFallas.map((f, idx) => (
-                <div key={idx} className="bg-slate-950 border border-slate-800 p-3 rounded-lg space-y-1">
-                  <div className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-orange-950 text-orange-300 border border-orange-800">
-                        {f.origen}
-                      </span>
-                      <span className="font-mono text-amber-400 font-bold">Pedido #{f.pedido}</span>
-                      {f.tecnico && f.tecnico !== 'Técnico' && (
-                        <>
-                          <span className="text-slate-500">•</span>
-                          <span className="text-slate-300 font-semibold">{f.tecnico}</span>
-                        </>
-                      )}
-                    </div>
-                    <span className="text-slate-400 text-[11px] font-medium font-mono">
-                      {formatExcelDate(f.fecha)}
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-200 font-normal pl-1 border-l-2 border-amber-500/50 mt-1">
-                    "{f.falla}"
-                  </p>
-                </div>
-              ))}
-            </div>
+          {/* Tabs Navigation: Fallas vs Repuestos vs Auditoría MP */}
+          <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
+            <button
+              onClick={() => setActiveTab('FALLAS')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                activeTab === 'FALLAS'
+                  ? 'bg-amber-500 text-slate-950 shadow'
+                  : 'bg-slate-950 text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <Clock className="w-3.5 h-3.5" />
+              <span>Fallas SLA ({cronico.ultimasFallas?.length || 0})</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('REPUESTOS')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                activeTab === 'REPUESTOS'
+                  ? 'bg-amber-500 text-slate-950 shadow'
+                  : 'bg-slate-950 text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <Package className="w-3.5 h-3.5" />
+              <span>Repuestos Reemplazados ({cronico.repuestosHistoricos?.length || 0})</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('MP')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                activeTab === 'MP'
+                  ? 'bg-amber-500 text-slate-950 shadow'
+                  : 'bg-slate-950 text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <Wrench className="w-3.5 h-3.5" />
+              <span>Auditoría MP {cronico.alertaTiempoMp?.tieneAlerta && '⚠️'}</span>
+            </button>
           </div>
+
+          {/* TAB 1: Timeline of failures */}
+          {activeTab === 'FALLAS' && (
+            <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-xl space-y-3 shadow-lg">
+              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-amber-400" />
+                Llamadas Service Call Registradas en SLA (Últimos 60 Días)
+              </h4>
+              
+              <div className="space-y-2.5">
+                {cronico.ultimasFallas && cronico.ultimasFallas.length > 0 ? (
+                  cronico.ultimasFallas.map((f, idx) => (
+                    <div key={idx} className="bg-slate-950 border border-slate-800 p-3 rounded-lg space-y-1">
+                      <div className="flex items-center justify-between text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-orange-950 text-orange-300 border border-orange-800">
+                            {f.origen}
+                          </span>
+                          <span className="font-mono text-amber-400 font-bold">Pedido #{f.pedido}</span>
+                          {f.tecnico && f.tecnico !== 'Técnico' && (
+                            <>
+                              <span className="text-slate-500">•</span>
+                              <span className="text-slate-300 font-semibold">{f.tecnico}</span>
+                            </>
+                          )}
+                        </div>
+                        <span className="text-slate-400 text-[11px] font-medium font-mono">
+                          {formatExcelDate(f.fecha)}
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-200 font-normal pl-1 border-l-2 border-amber-500/50 mt-1">
+                        "{f.falla}"
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-xs text-slate-400 py-3 text-center">Sin fallas registradas.</p>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 2: Replaced parts from Master LP */}
+          {activeTab === 'REPUESTOS' && (
+            <div className="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-3 shadow-lg">
+              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Package className="w-3.5 h-3.5 text-amber-400" />
+                Historial de Repuestos Reemplazados (Trazabilidad Máquina)
+              </h4>
+
+              {cronico.repuestosHistoricos && cronico.repuestosHistoricos.length > 0 ? (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs border-collapse">
+                    <thead>
+                      <tr className="border-b border-slate-800 text-[10px] uppercase text-slate-400 font-semibold">
+                        <th className="py-2 px-2.5">Fecha</th>
+                        <th className="py-2 px-2.5">Pedido</th>
+                        <th className="py-2 px-2.5">Técnico</th>
+                        <th className="py-2 px-2.5">Repuesto Instalado</th>
+                        <th className="py-2 px-2.5">Repuesto Retirado</th>
+                        <th className="py-2 px-2.5">Origen Stock</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-800/60">
+                      {cronico.repuestosHistoricos.map((rep, idx) => (
+                        <tr key={idx} className="hover:bg-slate-900/60 transition">
+                          <td className="py-2.5 px-2.5 whitespace-nowrap text-slate-300 font-mono text-[11px]">
+                            {rep.fecha}
+                            {rep.hora && <span className="text-[10px] text-slate-500 block">{rep.hora}</span>}
+                          </td>
+                          <td className="py-2.5 px-2.5 text-amber-400 font-bold whitespace-nowrap font-mono text-xs">
+                            #{rep.pedido}
+                          </td>
+                          <td className="py-2.5 px-2.5 text-slate-200 whitespace-nowrap">
+                            {rep.tecnico}
+                          </td>
+                          <td className="py-2.5 px-2.5">
+                            <span className="font-mono text-emerald-400 font-bold block text-xs">{rep.instalaBase}</span>
+                            <span className="text-[11px] text-slate-300 block font-medium">{rep.instalaDesc || 'Sin descripción'}</span>
+                            {rep.instalaQr && rep.instalaQr !== 'Sin QR' && (
+                              <span className="text-[10px] text-emerald-400/80 font-mono">QR: {rep.instalaQr}</span>
+                            )}
+                          </td>
+                          <td className="py-2.5 px-2.5">
+                            <span className="font-mono text-orange-400 font-bold block text-xs">{rep.retiraBase}</span>
+                            <span className="text-[11px] text-slate-300 block font-medium">{rep.retiraDesc || 'Sin descripción'}</span>
+                            {rep.retiraQr && rep.retiraQr !== 'Sin QR' && (
+                              <span className="text-[10px] text-orange-400/80 font-mono">QR: {rep.retiraQr}</span>
+                            )}
+                          </td>
+                          <td className="py-2.5 px-2.5 whitespace-nowrap">
+                            <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                              rep.esStockFijo ? 'bg-emerald-950 text-emerald-300 border border-emerald-800' : 'bg-slate-800 text-slate-300 border border-slate-700'
+                            }`}>
+                              {rep.origenStock}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="py-6 text-center text-slate-400 text-xs">
+                  No se registran reemplazos de repuestos asociados a este cajero en Buzón de Movimientos.
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 3: Auditoría MP */}
+          {activeTab === 'MP' && (
+            <div className="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-4 shadow-lg">
+              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Wrench className="w-3.5 h-3.5 text-amber-400" />
+                Auditoría de Mantenimiento Preventivo (MP Cerrados)
+              </h4>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                <div className="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+                  <span className="text-[10px] text-slate-400 block uppercase font-medium">Último MTM Cerrado:</span>
+                  <strong className="text-white text-xs font-mono">{formatExcelDate(cronico.ultimoMtmFecha) || 'Sin registro'}</strong>
+                </div>
+
+                <div className="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+                  <span className="text-[10px] text-slate-400 block uppercase font-medium">Tiempo Laboral (T Asis):</span>
+                  <strong className={`text-xs font-mono font-bold ${cronico.alertaTiempoMp?.tieneAlerta ? 'text-amber-400' : 'text-white'}`}>
+                    {cronico.tiempoAsistenciaMp || 'No registrado'}
+                  </strong>
+                </div>
+
+                <div className="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+                  <span className="text-[10px] text-slate-400 block uppercase font-medium">Estado Calidad MP:</span>
+                  <strong className={`text-xs font-bold ${cronico.alertaTiempoMp?.tieneAlerta ? 'text-amber-400' : 'text-emerald-400'}`}>
+                    {cronico.alertaTiempoMp?.tieneAlerta ? 'Alerta de Tiempo Insuficiente' : 'Cumple Estándar'}
+                  </strong>
+                </div>
+              </div>
+
+              {cronico.alertaTiempoMp?.tieneAlerta && (
+                <div className="bg-amber-950/60 border border-amber-500/40 p-3 rounded-lg text-xs text-amber-200 flex items-start gap-2">
+                  <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold">Alerta de Calidad en Preventivo:</p>
+                    <p className="text-[11px] opacity-90 mt-0.5">{cronico.alertaTiempoMp.mensaje}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
 
         </div>
 

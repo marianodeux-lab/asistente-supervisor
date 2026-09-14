@@ -20,7 +20,7 @@ import {
   Building2
 } from 'lucide-react';
 import { Ticket, TecnicoInfo, EquipoCronico } from '../types';
-import { formatTimeClean } from '../utils/formatters';
+import { formatTimeClean, formatSlaExpirationDisplay } from '../utils/formatters';
 
 interface TicketDetailModalProps {
   ticket: Ticket | null;
@@ -43,6 +43,7 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
 
   const [nota, setNota] = useState(ticket.notasSupervision || '');
   const [isSaved, setIsSaved] = useState(false);
+  const [activeHistoryTab, setActiveHistoryTab] = useState<'INTERVENCIONES' | 'REPUESTOS'>('INTERVENCIONES');
 
   const tecObj = tecnicos.find(t => t.nombre.toLowerCase() === ticket.tecnico.toLowerCase());
   const cronicoMatch = cronicos.find(c => c.luno === ticket.luno);
@@ -58,15 +59,7 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
     }
   };
 
-  const vtoDate = new Date(ticket.fechaVencimiento);
-  const formattedVto = isNaN(vtoDate.getTime()) ? ticket.fechaVencimiento : vtoDate.toLocaleString('es-AR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-
+  const slaInfo = formatSlaExpirationDisplay(ticket.fechaVencimiento, ticket.slaPorcentaje, ticket.hsSla);
   const isAIEC = ticket.concepto === 'AIEC' || ticket.esAdicional;
 
   return (
@@ -78,6 +71,7 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
           <div className="flex items-center gap-3">
             <div className={`p-2.5 rounded-xl ${
               isAIEC ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' :
+              slaInfo.isExpired ? 'bg-red-500/20 text-red-400 border border-red-500/30' :
               ticket.slaPorcentaje >= 85 ? 'bg-red-500/20 text-red-400 border border-red-500/30' :
               ticket.slaPorcentaje >= 65 ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' :
               'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
@@ -99,6 +93,11 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
                     Asignado Flow Android
                   </span>
                 )}
+                {ticket.esPedidoSuspendidoPrevio && (
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-amber-950 text-amber-300 border border-amber-700 font-semibold">
+                    Reanudado (Previamente Suspendido)
+                  </span>
+                )}
               </div>
               <p className="text-xs text-slate-400">Cliente: <strong className="text-slate-200">{ticket.cliente}</strong></p>
             </div>
@@ -117,23 +116,24 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
           {/* SLA Alert banner */}
           <div className={`p-4 rounded-xl border flex items-center justify-between ${
             isAIEC ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200' :
+            slaInfo.isExpired ? 'bg-red-950/70 border-red-500 text-red-200 shadow-lg shadow-red-950/50' :
             ticket.slaPorcentaje >= 85 ? 'bg-red-950/40 border-red-500/40 text-red-200' :
             ticket.slaPorcentaje >= 65 ? 'bg-amber-950/40 border-amber-500/40 text-amber-200' :
             'bg-emerald-950/40 border-emerald-500/40 text-emerald-200'
           }`}>
             <div className="flex items-center gap-3">
-              <Flame className="w-5 h-5 flex-shrink-0" />
+              <Flame className={`w-5 h-5 flex-shrink-0 ${slaInfo.isExpired ? 'text-red-400 animate-pulse' : ''}`} />
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider">
-                  {isAIEC ? 'Atención Incluida en Contrato (AIEC)' : 'Estado de SLA (Service Call)'}
+                  {isAIEC ? 'Atención Incluida en Contrato (AIEC)' : slaInfo.isExpired ? '🚨 Alerta de Incumplimiento de SLA' : 'Estado de SLA (Service Call)'}
                 </p>
-                <p className="text-sm font-bold">
+                <p className={`text-sm font-bold ${slaInfo.isExpired ? 'text-red-300' : ''}`}>
                   {isAIEC 
                     ? 'No computa para SLA • Incluido en Agenda de Ruta' 
-                    : `${ticket.slaPorcentaje}% Consumido (${ticket.hsSla} hs restantes)`
+                    : slaInfo.badgeTitle
                   }
                 </p>
-                {!isAIEC && <p className="text-xs opacity-80">Vence: {formattedVto}</p>}
+                {!isAIEC && <p className="text-xs opacity-90 font-medium">{slaInfo.badgeDesc}</p>}
               </div>
             </div>
             <div className="text-right">
@@ -143,6 +143,36 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
               </span>
             </div>
           </div>
+
+          {/* BANNER: PEDIDO REANUDADO / SUSPENDIDO PREVIAMENTE */}
+          {ticket.esPedidoSuspendidoPrevio && (
+            <div className="p-3.5 rounded-xl bg-amber-950/70 border border-amber-500 shadow-md flex items-start gap-3 text-amber-200">
+              <div className="p-2 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30 flex-shrink-0">
+                <AlertTriangle className="w-5 h-5 text-amber-400" />
+              </div>
+              <div className="text-xs space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-amber-300 text-sm">
+                    ⏸️ Pedido Reanudado • Suspendido Previamente
+                  </span>
+                  {(ticket.suspensionPrevia?.codigoCierre || ticket.suspensionPrevia?.codCierre) && (
+                    <span className="px-2 py-0.5 rounded bg-amber-900/80 text-amber-200 font-mono font-bold text-[10px] border border-amber-600">
+                      {ticket.suspensionPrevia.codigoCierre || ticket.suspensionPrevia.codCierre}: {ticket.suspensionPrevia.descCierre || ticket.suspensionPrevia.desc}
+                    </span>
+                  )}
+                </div>
+                <p className="text-slate-200">
+                  Este pedido coordinado en agenda coincide con una orden suspendida anteriormente en el equipo.
+                  {ticket.suspensionPrevia?.tecnico && <span> Atendió previamente: <strong className="text-white">{ticket.suspensionPrevia.tecnico}</strong> ({ticket.suspensionPrevia.fecha}).</span>}
+                </p>
+                {(ticket.suspensionPrevia?.observaciones || ticket.suspensionPrevia?.obs) && (
+                  <p className="text-slate-300 italic bg-slate-950/80 p-2 rounded border border-slate-800 text-[11px]">
+                    Motivo previo de suspensión: "{ticket.suspensionPrevia.observaciones || ticket.suspensionPrevia.obs}"
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
 
           {/* Chronic Warning if matched */}
           {cronicoMatch && (
@@ -355,67 +385,157 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
             </div>
           )}
 
-          {/* CROSS-REFERENCE 2: HISTORIAL PREVIO DE ESTE EQUIPO (Reporte Suspendidos: Campo vs Remoto) */}
-          {ticket.historialPrevioLuno && ticket.historialPrevioLuno.length > 0 && (
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <History className="w-3.5 h-3.5 text-amber-400" />
-                  Historial de Intervenciones en Equipo {ticket.luno}
-                </h4>
-                <div className="flex items-center gap-2 text-[11px]">
-                  <span className="text-emerald-400 font-semibold bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-800/50">
-                    {ticket.cantidadVisitasHistoricas || 0} Visitas a Campo
-                  </span>
-                  {(ticket.cantidadSoporteRemoto || 0) > 0 && (
-                    <span className="text-teal-400 font-semibold bg-teal-950/50 px-2 py-0.5 rounded border border-teal-800/50">
-                      {ticket.cantidadSoporteRemoto} Soporte Remoto (Mesa)
-                    </span>
-                  )}
-                </div>
+          {/* CROSS-REFERENCE 2: HISTORIAL DEL EQUIPO (Intervenciones vs Repuestos Reemplazados Master LP) */}
+          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setActiveHistoryTab('INTERVENCIONES')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                    activeHistoryTab === 'INTERVENCIONES'
+                      ? 'bg-amber-500 text-slate-950 shadow'
+                      : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
+                  }`}
+                >
+                  <History className="w-3.5 h-3.5" />
+                  <span>Intervenciones Técnicas ({ticket.historialPrevioLuno?.length || 0})</span>
+                </button>
+
+                <button
+                  onClick={() => setActiveHistoryTab('REPUESTOS')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                    activeHistoryTab === 'REPUESTOS'
+                      ? 'bg-amber-500 text-slate-950 shadow'
+                      : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
+                  }`}
+                >
+                  <Package className="w-3.5 h-3.5" />
+                  <span>Repuestos Reemplazados ({ticket.repuestosHistoricos?.length || 0})</span>
+                </button>
               </div>
 
-              <div className="space-y-2">
-                {ticket.historialPrevioLuno.map((h, idx) => (
-                  <div key={idx} className={`bg-slate-900/80 border p-2.5 rounded-lg text-xs space-y-1 ${
-                    h.esSoporteRemoto ? 'border-teal-500/30' : 'border-slate-800'
-                  }`}>
-                    <div className="flex items-center justify-between">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-mono text-amber-400 font-bold">Pedido #{h.pedido}</span>
-                        <span className="text-[10px] bg-slate-800 px-1.5 py-0.2 rounded text-slate-300 font-semibold">{h.concepto}</span>
-                        
-                        {h.esSoporteRemoto ? (
-                          <span className="text-[10px] px-2 py-0.2 rounded font-bold uppercase bg-teal-950 text-teal-300 border border-teal-800">
-                            Soporte Remoto (Mesa Monitoreo)
-                          </span>
-                        ) : h.codCierre ? (
-                          <span className="text-[10px] px-2 py-0.2 rounded font-bold uppercase bg-slate-800 text-slate-200 border border-slate-700" title={h.cierreInfo?.desc}>
-                            {h.codCierre}: {h.cierreInfo?.desc || ''}
-                          </span>
-                        ) : null}
-                      </div>
-                      <span className="text-slate-400 text-[11px] font-mono">{h.fecha}</span>
-                    </div>
-
-                    <div className="flex items-center justify-between text-[11px] text-slate-400">
-                      <span>Intervino: <strong className="text-slate-300">{h.tecnico}</strong></span>
-                      <span className="text-slate-500">{h.zona}</span>
-                    </div>
-
-                    {h.observaciones && (
-                      <p className="text-[11px] text-slate-300 border-l-2 border-slate-700 pl-2 mt-1">
-                        "{h.observaciones}"
-                      </p>
-                    )}
-                  </div>
-                ))}
+              <div className="flex items-center gap-2 text-[11px]">
+                <span className="text-emerald-400 font-semibold bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-800/50">
+                  {ticket.cantidadVisitasHistoricas || 0} Visitas a Campo
+                </span>
+                {(ticket.cantidadSoporteRemoto || 0) > 0 && (
+                  <span className="text-teal-400 font-semibold bg-teal-950/50 px-2 py-0.5 rounded border border-teal-800/50">
+                    {ticket.cantidadSoporteRemoto} Soporte Remoto
+                  </span>
+                )}
               </div>
             </div>
-          )}
+
+            {/* TAB 1: Intervenciones Técnicas */}
+            {activeHistoryTab === 'INTERVENCIONES' && (
+              <div className="space-y-2">
+                {ticket.historialPrevioLuno && ticket.historialPrevioLuno.length > 0 ? (
+                  ticket.historialPrevioLuno.map((h, idx) => (
+                    <div key={idx} className={`bg-slate-900/80 border p-2.5 rounded-lg text-xs space-y-1 ${
+                      h.esSoporteRemoto ? 'border-teal-500/30' : 'border-slate-800'
+                    }`}>
+                      <div className="flex items-center justify-between">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-mono text-amber-400 font-bold">Pedido #{h.pedido}</span>
+                          <span className="text-[10px] bg-slate-800 px-1.5 py-0.2 rounded text-slate-300 font-semibold">{h.concepto}</span>
+                          
+                          {h.esSoporteRemoto ? (
+                            <span className="text-[10px] px-2 py-0.2 rounded font-bold uppercase bg-teal-950 text-teal-300 border border-teal-800">
+                              Soporte Remoto (Mesa Monitoreo)
+                            </span>
+                          ) : h.codCierre ? (
+                            <span className="text-[10px] px-2 py-0.2 rounded font-bold uppercase bg-slate-800 text-slate-200 border border-slate-700" title={h.cierreInfo?.desc}>
+                              {h.codCierre}: {h.cierreInfo?.desc || ''}
+                            </span>
+                          ) : null}
+                        </div>
+                        <span className="text-slate-400 text-[11px] font-mono">{h.fecha}</span>
+                      </div>
+
+                      <div className="flex items-center justify-between text-[11px] text-slate-400">
+                        <span>Intervino: <strong className="text-slate-300">{h.tecnico}</strong></span>
+                        <span className="text-slate-500">{h.zona}</span>
+                      </div>
+
+                      {h.observaciones && (
+                        <p className="text-[11px] text-slate-300 border-l-2 border-slate-700 pl-2 mt-1">
+                          "{h.observaciones}"
+                        </p>
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-xs text-slate-400 py-3 text-center">No se registran intervenciones previas en este equipo.</p>
+                )}
+              </div>
+            )}
+
+            {/* TAB 2: Repuestos Reemplazados (Trazabilidad Master LP) */}
+            {activeHistoryTab === 'REPUESTOS' && (
+              <div className="space-y-2">
+                {ticket.repuestosHistoricos && ticket.repuestosHistoricos.length > 0 ? (
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs border-collapse">
+                      <thead>
+                        <tr className="border-b border-slate-800 text-[10px] uppercase text-slate-400 font-semibold">
+                          <th className="py-2 px-2.5">Fecha</th>
+                          <th className="py-2 px-2.5">Pedido</th>
+                          <th className="py-2 px-2.5">Técnico</th>
+                          <th className="py-2 px-2.5">Repuesto Instalado</th>
+                          <th className="py-2 px-2.5">Repuesto Retirado</th>
+                          <th className="py-2 px-2.5">Origen Stock</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-800/60">
+                        {ticket.repuestosHistoricos.map((rep, idx) => (
+                          <tr key={idx} className="hover:bg-slate-900/60 transition">
+                            <td className="py-2.5 px-2.5 whitespace-nowrap text-slate-300 font-mono text-[11px]">
+                              {rep.fecha}
+                              {rep.hora && <span className="text-[10px] text-slate-500 block">{rep.hora}</span>}
+                            </td>
+                            <td className="py-2.5 px-2.5 text-amber-400 font-bold whitespace-nowrap font-mono text-xs">
+                              #{rep.pedido}
+                            </td>
+                            <td className="py-2.5 px-2.5 text-slate-200 whitespace-nowrap">
+                              {rep.tecnico}
+                            </td>
+                            <td className="py-2.5 px-2.5">
+                              <span className="font-mono text-emerald-400 font-bold block text-xs">{rep.instalaBase}</span>
+                              <span className="text-[11px] text-slate-300 block font-medium">{rep.instalaDesc || 'Sin descripción'}</span>
+                              {rep.instalaQr && rep.instalaQr !== 'Sin QR' && (
+                                <span className="text-[10px] text-emerald-400/80 font-mono">QR: {rep.instalaQr}</span>
+                              )}
+                            </td>
+                            <td className="py-2.5 px-2.5">
+                              <span className="font-mono text-orange-400 font-bold block text-xs">{rep.retiraBase}</span>
+                              <span className="text-[11px] text-slate-300 block font-medium">{rep.retiraDesc || 'Sin descripción'}</span>
+                              {rep.retiraQr && rep.retiraQr !== 'Sin QR' && (
+                                <span className="text-[10px] text-orange-400/80 font-mono">QR: {rep.retiraQr}</span>
+                              )}
+                            </td>
+                            <td className="py-2.5 px-2.5 whitespace-nowrap">
+                              <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                                rep.esStockFijo ? 'bg-emerald-950 text-emerald-300 border border-emerald-800' : 'bg-slate-800 text-slate-300 border border-slate-700'
+                              }`}>
+                                {rep.origenStock}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="py-6 text-center text-slate-400 text-xs">
+                    No se registran movimientos de repuestos asociados a este equipo en Buzón de Movimientos.
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
 
           {/* CROSS-REFERENCE 3: AUDITORÍA DE MANTENIMIENTO PREVENTIVO (MP Cerrados) */}
-          {(ticket.ultimoMpFecha || ticket.esMpDeficiente) && (
+          {(ticket.ultimoMpFecha || ticket.esMpDeficiente || ticket.tiempoAsistenciaMp) && (
             <div className={`p-4 rounded-xl border space-y-3 ${
               ticket.esMpDeficiente 
                 ? 'bg-red-950/30 border-red-500/50 text-red-200' 
@@ -437,7 +557,7 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
                 )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
                 <div className="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
                   <span className="text-[10px] text-slate-400 block uppercase font-medium">Fecha Último MP:</span>
                   <strong className="text-white text-xs font-mono">{ticket.ultimoMpFecha || 'Sin registro'}</strong>
@@ -449,12 +569,28 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
                   </strong>
                 </div>
                 <div className="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
+                  <span className="text-[10px] text-slate-400 block uppercase font-medium">Tiempo Laboral (T Asis):</span>
+                  <strong className={`text-xs font-mono font-bold ${ticket.alertaTiempoMp?.tieneAlerta ? 'text-amber-400' : 'text-white'}`}>
+                    {ticket.tiempoAsistenciaMp || 'No registrado'}
+                  </strong>
+                </div>
+                <div className="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
                   <span className="text-[10px] text-slate-400 block uppercase font-medium">Técnico que cerró MP:</span>
                   <strong className="text-slate-200 text-xs truncate block" title={ticket.tecnicoUltimoMp || '-'}>
                     {ticket.tecnicoUltimoMp || 'No informado'}
                   </strong>
                 </div>
               </div>
+
+              {ticket.alertaTiempoMp?.tieneAlerta && (
+                <div className="bg-amber-950/60 border border-amber-500/40 p-2.5 rounded-lg text-xs text-amber-200 flex items-start gap-2">
+                  <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold">Alerta de Calidad en Mantenimiento Preventivo:</p>
+                    <p className="text-[11px] opacity-90">{ticket.alertaTiempoMp.mensaje}</p>
+                  </div>
+                </div>
+              )}
 
               {ticket.obsUltimoMp && (
                 <p className="text-[11px] text-slate-300 italic bg-slate-900/60 p-2 rounded border border-slate-800">

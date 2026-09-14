@@ -1294,6 +1294,14 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                           <span className="font-mono text-amber-400 font-bold group-hover:underline">
                             #{t.pedido}
                           </span>
+                          {t.esPedidoSuspendidoPrevio && (
+                            <span 
+                              className="px-1.5 py-0.2 rounded bg-amber-950/90 border border-amber-500 text-amber-300 font-bold text-[10px]"
+                              title={`Pedido reanudado: suspendido previamente por ${t.suspensionPrevia?.codigoCierre || t.suspensionPrevia?.codCierre || 'cierre'}: ${t.suspensionPrevia?.descCierre || t.suspensionPrevia?.desc || ''}`}
+                            >
+                              ⏸️ Reanudado ({t.suspensionPrevia?.codigoCierre || t.suspensionPrevia?.codCierre || 'PPR'})
+                            </span>
+                          )}
                           {isAIEC && (
                             <span className="px-1.5 py-0.2 rounded bg-cyan-950 border border-cyan-800 text-cyan-300 font-bold text-[10px]">
                               AIEC
@@ -1334,6 +1342,17 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                             <span>MP {t.ultimoMpFecha}</span>
                           </div>
                         ) : null}
+
+                        {t.tiempoAsistenciaMp && (
+                          <div className="flex items-center gap-1 mt-0.5">
+                            <span className={`text-[10px] font-mono ${t.alertaTiempoMp?.tieneAlerta ? 'text-amber-400 font-bold' : 'text-slate-400'}`}>
+                              T Asis: {t.tiempoAsistenciaMp}
+                            </span>
+                            {t.alertaTiempoMp?.tieneAlerta && (
+                              <span className="text-[10px] text-amber-400" title={t.alertaTiempoMp.mensaje}>⚠️</span>
+                            )}
+                          </div>
+                        )}
                       </td>
 
                       {/* 3. Cliente & Ubicación */}
@@ -1489,8 +1508,8 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                               {isAIEC ? 'Sin SLA' : `${t.slaPorcentaje}%`}
                             </span>
                             {!isAIEC && (
-                              <span className="text-[10px] text-slate-400 font-mono">
-                                ({t.hsSla}h rest.)
+                              <span className={`text-[10px] font-mono ${t.slaPorcentaje >= 100 || t.hsSla <= 0 ? 'text-red-400 font-bold' : 'text-slate-400'}`}>
+                                {t.slaPorcentaje >= 100 || t.hsSla <= 0 ? '(Vencido)' : `(${t.hsSla}h rest.)`}
                               </span>
                             )}
                           </div>

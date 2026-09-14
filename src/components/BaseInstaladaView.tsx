@@ -56,103 +56,103 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   // Dependent cascading options calculations
-  // 1. Fabricante options (from all data)
-  const fabricanteOptions = useMemo(() => {
+  // 1. Region options (from all data)
+  const regionOptions = useMemo(() => {
     const set = new Set<string>();
-    data.forEach(item => { if (item.fabricante) set.add(item.fabricante); });
+    data.forEach(item => { if (item.region) set.add(item.region); });
     return Array.from(set).sort();
   }, [data]);
 
-  // 2. Modelo options (dependent on Fabricante)
-  const dataAfterFabricante = useMemo(() => {
-    if (filterFabricante === 'ALL') return data;
-    return data.filter(d => d.fabricante === filterFabricante);
-  }, [data, filterFabricante]);
-
-  const modeloOptions = useMemo(() => {
-    const set = new Set<string>();
-    dataAfterFabricante.forEach(item => { if (item.modelo) set.add(item.modelo); });
-    return Array.from(set).sort();
-  }, [dataAfterFabricante]);
-
-  // 3. MPCR options (dependent on Fabricante + Modelo)
-  const dataAfterModelo = useMemo(() => {
-    if (filterModelo === 'ALL') return dataAfterFabricante;
-    return dataAfterFabricante.filter(d => d.modelo === filterModelo);
-  }, [dataAfterFabricante, filterModelo]);
-
-  const mpcrOptions = useMemo(() => {
-    const set = new Set<string>();
-    dataAfterModelo.forEach(item => { if (item.mpcr) set.add(item.mpcr); });
-    return Array.from(set).sort();
-  }, [dataAfterModelo]);
-
-  // 4. Red options (dependent on 1..3)
-  const dataAfterMpcr = useMemo(() => {
-    if (filterMpcr === 'ALL') return dataAfterModelo;
-    return dataAfterModelo.filter(d => d.mpcr === filterMpcr);
-  }, [dataAfterModelo, filterMpcr]);
-
-  const redOptions = useMemo(() => {
-    const set = new Set<string>();
-    dataAfterMpcr.forEach(item => { if (item.red) set.add(item.red); });
-    return Array.from(set).sort();
-  }, [dataAfterMpcr]);
-
-  // 5. Tecnico options (dependent on 1..4)
-  const dataAfterRed = useMemo(() => {
-    if (filterRed === 'ALL') return dataAfterMpcr;
-    return dataAfterMpcr.filter(d => d.red === filterRed);
-  }, [dataAfterMpcr, filterRed]);
-
-  const tecnicoOptions = useMemo(() => {
-    const set = new Set<string>();
-    dataAfterRed.forEach(item => { if (item.tecnicoZona) set.add(item.tecnicoZona); });
-    return Array.from(set).sort();
-  }, [dataAfterRed]);
-
-  // 6. Region options (dependent on 1..5)
-  const dataAfterTecnico = useMemo(() => {
-    if (filterTecnico === 'ALL') return dataAfterRed;
-    return dataAfterRed.filter(d => d.tecnicoZona === filterTecnico);
-  }, [dataAfterRed, filterTecnico]);
-
-  const regionOptions = useMemo(() => {
-    const set = new Set<string>();
-    dataAfterTecnico.forEach(item => { if (item.region) set.add(item.region); });
-    return Array.from(set).sort();
-  }, [dataAfterTecnico]);
-
-  // 7. Planta Cabecera options (dependent on 1..6)
   const dataAfterRegion = useMemo(() => {
-    if (filterRegion === 'ALL') return dataAfterTecnico;
-    return dataAfterTecnico.filter(d => d.region === filterRegion);
-  }, [dataAfterTecnico, filterRegion]);
+    if (filterRegion === 'ALL') return data;
+    return data.filter(d => d.region === filterRegion);
+  }, [data, filterRegion]);
 
+  // 2. Planta Cabecera options (dependent on Region)
   const plantaCabeceraOptions = useMemo(() => {
     const set = new Set<string>();
     dataAfterRegion.forEach(item => { if (item.plantaCabecera) set.add(item.plantaCabecera); });
     return Array.from(set).sort();
   }, [dataAfterRegion]);
 
-  // 8. Negocio options (dependent on 1..7)
   const dataAfterPlantaCabecera = useMemo(() => {
     if (filterPlantaCabecera === 'ALL') return dataAfterRegion;
     return dataAfterRegion.filter(d => d.plantaCabecera === filterPlantaCabecera);
   }, [dataAfterRegion, filterPlantaCabecera]);
 
-  const negocioOptions = useMemo(() => {
+  // 3. Tecnico options (dependent on Region + Planta Cabecera)
+  const tecnicoOptions = useMemo(() => {
     const set = new Set<string>();
-    dataAfterPlantaCabecera.forEach(item => { if (item.negocio) set.add(item.negocio); });
+    dataAfterPlantaCabecera.forEach(item => { if (item.tecnicoZona) set.add(item.tecnicoZona); });
     return Array.from(set).sort();
   }, [dataAfterPlantaCabecera]);
 
-  // 9. Recaudador options (dependent on 1..8)
-  const dataAfterNegocio = useMemo(() => {
-    if (filterNegocio === 'ALL') return dataAfterPlantaCabecera;
-    return dataAfterPlantaCabecera.filter(d => d.negocio === filterNegocio);
-  }, [dataAfterPlantaCabecera, filterNegocio]);
+  const dataAfterTecnico = useMemo(() => {
+    if (filterTecnico === 'ALL') return dataAfterPlantaCabecera;
+    return dataAfterPlantaCabecera.filter(d => d.tecnicoZona === filterTecnico);
+  }, [dataAfterPlantaCabecera, filterTecnico]);
 
+  // 4. Fabricante options (dependent on Region + Planta Cabecera + Tecnico)
+  const fabricanteOptions = useMemo(() => {
+    const set = new Set<string>();
+    dataAfterTecnico.forEach(item => { if (item.fabricante) set.add(item.fabricante); });
+    return Array.from(set).sort();
+  }, [dataAfterTecnico]);
+
+  const dataAfterFabricante = useMemo(() => {
+    if (filterFabricante === 'ALL') return dataAfterTecnico;
+    return dataAfterTecnico.filter(d => d.fabricante === filterFabricante);
+  }, [dataAfterTecnico, filterFabricante]);
+
+  // 5. Modelo options (dependent on Fabricante)
+  const modeloOptions = useMemo(() => {
+    const set = new Set<string>();
+    dataAfterFabricante.forEach(item => { if (item.modelo) set.add(item.modelo); });
+    return Array.from(set).sort();
+  }, [dataAfterFabricante]);
+
+  const dataAfterModelo = useMemo(() => {
+    if (filterModelo === 'ALL') return dataAfterFabricante;
+    return dataAfterFabricante.filter(d => d.modelo === filterModelo);
+  }, [dataAfterFabricante, filterModelo]);
+
+  // 6. MPCR options (dependent on Fabricante + Modelo)
+  const mpcrOptions = useMemo(() => {
+    const set = new Set<string>();
+    dataAfterModelo.forEach(item => { if (item.mpcr) set.add(item.mpcr); });
+    return Array.from(set).sort();
+  }, [dataAfterModelo]);
+
+  const dataAfterMpcr = useMemo(() => {
+    if (filterMpcr === 'ALL') return dataAfterModelo;
+    return dataAfterModelo.filter(d => d.mpcr === filterMpcr);
+  }, [dataAfterModelo, filterMpcr]);
+
+  // 7. Red options (dependent on previous)
+  const redOptions = useMemo(() => {
+    const set = new Set<string>();
+    dataAfterMpcr.forEach(item => { if (item.red) set.add(item.red); });
+    return Array.from(set).sort();
+  }, [dataAfterMpcr]);
+
+  const dataAfterRed = useMemo(() => {
+    if (filterRed === 'ALL') return dataAfterMpcr;
+    return dataAfterMpcr.filter(d => d.red === filterRed);
+  }, [dataAfterMpcr, filterRed]);
+
+  // 8. Negocio options (dependent on previous)
+  const negocioOptions = useMemo(() => {
+    const set = new Set<string>();
+    dataAfterRed.forEach(item => { if (item.negocio) set.add(item.negocio); });
+    return Array.from(set).sort();
+  }, [dataAfterRed]);
+
+  const dataAfterNegocio = useMemo(() => {
+    if (filterNegocio === 'ALL') return dataAfterRed;
+    return dataAfterRed.filter(d => d.negocio === filterNegocio);
+  }, [dataAfterRed, filterNegocio]);
+
+  // 9. Recaudador options (dependent on previous)
   const recaudadorOptions = useMemo(() => {
     const set = new Set<string>();
     dataAfterNegocio.forEach(item => { if (item.recaudador) set.add(item.recaudador); });
@@ -176,7 +176,8 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
         d.provincia.toLowerCase().includes(q) ||
         d.tecnicoZona.toLowerCase().includes(q) ||
         d.mpcr.toLowerCase().includes(q) ||
-        d.red.toLowerCase().includes(q)
+        d.red.toLowerCase().includes(q) ||
+        (d.negocio && d.negocio.toLowerCase().includes(q))
       );
     }
     return result;
@@ -290,7 +291,12 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
 
     filteredData.forEach(item => {
       if (item.cliente) clientesSet.add(item.cliente);
-      if (item.negocio === 'Cash Today') ctdCount++;
+      const isCtd = Boolean(
+        item.esCashToday ||
+        item.negocio === 'Cash Today' ||
+        (item.fabricante && item.fabricante.toLowerCase().trim() === 'smart box' && item.red && item.red.toLowerCase().trim() === 'prosegur')
+      );
+      if (isCtd) ctdCount++;
       else atmCount++;
     });
 
@@ -456,100 +462,10 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
 
         {/* The 9 Filters in exact order */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3">
-          {/* 1. FABRICANTE */}
+          {/* 1. REGIÓN */}
           <div className="space-y-1">
             <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
               <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">1</span>
-              FABRICANTE
-            </label>
-            <select
-              value={filterFabricante}
-              onChange={(e) => setFilterFabricante(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
-            >
-              <option value="ALL">Todos los Fabricantes ({fabricanteOptions.length})</option>
-              {fabricanteOptions.map(f => (
-                <option key={f} value={f}>{f}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* 2. MODELO */}
-          <div className="space-y-1">
-            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">2</span>
-              MODELO
-            </label>
-            <select
-              value={filterModelo}
-              onChange={(e) => setFilterModelo(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
-            >
-              <option value="ALL">Todos los Modelos ({modeloOptions.length})</option>
-              {modeloOptions.map(m => (
-                <option key={m} value={m}>{m}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* 3. MPCR */}
-          <div className="space-y-1">
-            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">3</span>
-              MPCR
-            </label>
-            <select
-              value={filterMpcr}
-              onChange={(e) => setFilterMpcr(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
-            >
-              <option value="ALL">Todos los MPCR ({mpcrOptions.length})</option>
-              {mpcrOptions.map(mp => (
-                <option key={mp} value={mp}>{mp}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* 4. RED */}
-          <div className="space-y-1">
-            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">4</span>
-              RED
-            </label>
-            <select
-              value={filterRed}
-              onChange={(e) => setFilterRed(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
-            >
-              <option value="ALL">Todas las Redes ({redOptions.length})</option>
-              {redOptions.map(r => (
-                <option key={r} value={r}>{r}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* 5. TECNICO */}
-          <div className="space-y-1">
-            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">5</span>
-              TECNICO
-            </label>
-            <select
-              value={filterTecnico}
-              onChange={(e) => setFilterTecnico(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
-            >
-              <option value="ALL">Todos los Técnicos ({tecnicoOptions.length})</option>
-              {tecnicoOptions.map(t => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* 6. REGIÓN */}
-          <div className="space-y-1">
-            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">6</span>
               REGIÓN
             </label>
             <select
@@ -564,10 +480,10 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
             </select>
           </div>
 
-          {/* 7. PLANTA CABECERA */}
+          {/* 2. PLANTA CABECERA */}
           <div className="space-y-1">
             <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">7</span>
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">2</span>
               Planta Cabecera
             </label>
             <select
@@ -578,6 +494,96 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
               <option value="ALL">Todas las Plantas ({plantaCabeceraOptions.length})</option>
               {plantaCabeceraOptions.map(pc => (
                 <option key={pc} value={pc}>{pc}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* 3. TECNICO */}
+          <div className="space-y-1">
+            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">3</span>
+              TECNICO
+            </label>
+            <select
+              value={filterTecnico}
+              onChange={(e) => setFilterTecnico(e.target.value)}
+              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+            >
+              <option value="ALL">Todos los Técnicos ({tecnicoOptions.length})</option>
+              {tecnicoOptions.map(t => (
+                <option key={t} value={t}>{t}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* 4. FABRICANTE */}
+          <div className="space-y-1">
+            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">4</span>
+              FABRICANTE
+            </label>
+            <select
+              value={filterFabricante}
+              onChange={(e) => setFilterFabricante(e.target.value)}
+              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+            >
+              <option value="ALL">Todos los Fabricantes ({fabricanteOptions.length})</option>
+              {fabricanteOptions.map(f => (
+                <option key={f} value={f}>{f}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* 5. MODELO */}
+          <div className="space-y-1">
+            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">5</span>
+              MODELO
+            </label>
+            <select
+              value={filterModelo}
+              onChange={(e) => setFilterModelo(e.target.value)}
+              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+            >
+              <option value="ALL">Todos los Modelos ({modeloOptions.length})</option>
+              {modeloOptions.map(m => (
+                <option key={m} value={m}>{m}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* 6. MPCR */}
+          <div className="space-y-1">
+            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">6</span>
+              MPCR
+            </label>
+            <select
+              value={filterMpcr}
+              onChange={(e) => setFilterMpcr(e.target.value)}
+              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+            >
+              <option value="ALL">Todos los MPCR ({mpcrOptions.length})</option>
+              {mpcrOptions.map(mp => (
+                <option key={mp} value={mp}>{mp}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* 7. RED */}
+          <div className="space-y-1">
+            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">7</span>
+              RED
+            </label>
+            <select
+              value={filterRed}
+              onChange={(e) => setFilterRed(e.target.value)}
+              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+            >
+              <option value="ALL">Todas las Redes ({redOptions.length})</option>
+              {redOptions.map(r => (
+                <option key={r} value={r}>{r}</option>
               ))}
             </select>
           </div>
@@ -762,7 +768,17 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
 
                     {/* 2. N° DE ATM */}
                     <td className="py-2.5 px-3 font-mono font-bold text-amber-400 whitespace-nowrap">
-                      {row.atm || '-'}
+                      <div className="flex items-center gap-1.5">
+                        <span>{row.atm || '-'}</span>
+                        {(row.esCashToday || row.negocio === 'Cash Today' || (row.fabricante?.toLowerCase().trim() === 'smart box' && row.red?.toLowerCase().trim() === 'prosegur')) && (
+                          <span 
+                            className="px-1.5 py-0.2 rounded bg-purple-950/90 border border-purple-500/50 text-purple-300 font-bold text-[9px] tracking-wide"
+                            title="Terminal Cash Today (Smart Box / Prosegur)"
+                          >
+                            CTD
+                          </span>
+                        )}
+                      </div>
                     </td>
 
                     {/* 3. N° DE SERIE */}
@@ -811,7 +827,9 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
                     {/* 9. RED */}
                     <td className="py-2.5 px-3 whitespace-nowrap">
                       <span className={`px-2 py-0.5 rounded text-[11px] font-semibold border ${
-                        row.red.toLowerCase().includes('link') 
+                        row.red.toLowerCase().includes('prosegur')
+                          ? 'bg-purple-500/15 text-purple-300 border-purple-500/30 font-bold'
+                          : row.red.toLowerCase().includes('link') 
                           ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20'
                           : row.red.toLowerCase().includes('banelco')
                           ? 'bg-rose-500/10 text-rose-300 border-rose-500/20'

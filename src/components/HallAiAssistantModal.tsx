@@ -193,7 +193,7 @@ Puedes hacerme cualquier pregunta o seleccionar uno de los análisis rápidos a 
                 <h2 className="text-base font-black tracking-tight text-white flex items-center gap-2">
                   Hall IA
                   <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                    Operaciones Flash 2.5
+                    Gemini 1.5 Flash
                   </span>
                 </h2>
               </div>

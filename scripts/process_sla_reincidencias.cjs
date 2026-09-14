@@ -175,6 +175,19 @@ for (const item of slaFailuresMap.values()) {
 const defaultMin60dIso = '2026-07-08';
 const defaultMax60dIso = '2026-09-07';
 
+// Load lunoToRepuestosMap and mpCerradosMap if available
+let lunoToRepMap = {};
+try {
+  const ltrPath = path.join(outDir, 'lunoToRepuestosMap.json');
+  if (fs.existsSync(ltrPath)) lunoToRepMap = JSON.parse(fs.readFileSync(ltrPath, 'utf8'));
+} catch (e) {}
+
+let mpCerradosMap = {};
+try {
+  const mpcPath = path.join(outDir, 'mpCerradosMap.json');
+  if (fs.existsSync(mpcPath)) mpCerradosMap = JSON.parse(fs.readFileSync(mpcPath, 'utf8'));
+} catch (e) {}
+
 // Build strict Reincidentes Array
 const reincidentesEstrictos = Array.from(slaFailuresMap.values())
   .filter(item => item.fallasSla.length >= 2) // repeated failures
@@ -193,6 +206,7 @@ const reincidentesEstrictos = Array.from(slaFailuresMap.values())
     }
 
     const ultimoMtm = lastMtmMap.get(item.equipo) || null;
+    const mpInfo = mpCerradosMap[item.equipo] || null;
 
     return {
       luno: item.equipo,
@@ -213,6 +227,10 @@ const reincidentesEstrictos = Array.from(slaFailuresMap.values())
       topCausa: "Falla Reiterada en SLA (60 días)",
       ultimoMtmFecha: ultimoMtm,
       tiempoPostMtm: ultimoMtm ? "Equipo visitado por MTM previamente" : "Sin registro de MTM reciente",
+      tiempoAsistenciaMp: mpInfo?.tiempoAsistencia || null,
+      tiempoAsistenciaMinutosMp: mpInfo?.tiempoAsistenciaMinutos || null,
+      alertaTiempoMp: mpInfo?.alertaTiempoMp || null,
+      repuestosHistoricos: lunoToRepMap[item.equipo] || [],
       tecnicosInvolucrados: Array.from(item.tecnicos),
       ultimasFallas: item.fallasSla.slice(0, 10),
       todasFallas: item.fallasSla,
