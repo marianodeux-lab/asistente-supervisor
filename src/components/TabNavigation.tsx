@@ -8,7 +8,8 @@ import {
   Package, 
   Database,
   UploadCloud,
-  Building2
+  Building2,
+  FileSpreadsheet
 } from 'lucide-react';
 
 export type TabKey = 
@@ -16,6 +17,7 @@ export type TabKey =
   | 'reincidencias' 
   | 'preventivos' 
   | 'base_instalada'
+  | 'analisis_patagonia'
   | 'tablas_ref'
   | 'call_rate' 
   | 'carga_laboral' 
@@ -63,6 +65,11 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
       label: 'Base Instalada',
       icon: <Building2 className="w-4 h-4" />,
       badge: baseEquiposCount
+    },
+    {
+      key: 'analisis_patagonia',
+      label: 'Análisis Patagonia (Excel)',
+      icon: <FileSpreadsheet className="w-4 h-4" />
     },
     {
       key: 'tablas_ref',

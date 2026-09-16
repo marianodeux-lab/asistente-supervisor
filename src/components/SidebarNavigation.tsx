@@ -9,6 +9,7 @@ import {
   Database,
   UploadCloud,
   Building2,
+  FileSpreadsheet,
   Pin,
   PinOff,
   Sparkles,
@@ -85,6 +86,13 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
       icon: Building2,
       badge: baseEquiposCount,
       badgeType: 'neutral'
+    },
+    {
+      key: 'analisis_patagonia',
+      label: 'Análisis Patagonia (Excel)',
+      shortLabel: 'Planillas',
+      category: 'GESTIÓN',
+      icon: FileSpreadsheet,
     },
     {
       key: 'tablas_ref',

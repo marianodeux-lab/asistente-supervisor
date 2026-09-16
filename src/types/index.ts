@@ -645,3 +645,83 @@ export interface SolicitudesStockState {
   consumibles: SolicitudStockItem[];
   herramientas: SolicitudStockItem[];
 }
+
+export interface AnalisisRow {
+  id?: string;
+  PEDIDO?: string | number;
+  Pedido?: string | number;
+  CLIENTE?: string;
+  Cliente?: string;
+  ATM?: string;
+  'ATM ID'?: string;
+  DIRECCION?: string;
+  Direccion?: string;
+  LOCALIDAD?: string;
+  Localidad?: string;
+  PROVINCIA?: string;
+  'TECNICO ZONA'?: string;
+  'Tecnico Zona'?: string;
+  'TECNICO ASISTIO'?: string;
+  'Tecnico Asig'?: string;
+  'MARCA ALTA'?: string;
+  'Fecha Alta'?: string;
+  'MARCA INICIO'?: string;
+  'Marca Arribo'?: string;
+  'MARCA FIN'?: string;
+  'TIEMPO DE ASISTENCIA'?: string;
+  'Tiempo Labor'?: string;
+  'Fecha Vto SLA'?: string;
+  'Tiempo SLA Exededido'?: string;
+  'Dif sincro'?: number | string;
+  'DETALLE FALLA'?: string;
+  'Falla Informada'?: string;
+  'Falla Encontrada'?: string;
+  MODELO?: string;
+  Modelo?: string;
+  'OBSERVACIONES CONTROL'?: string;
+  Observaciones?: string;
+  'PROBLEMA ENCONTRADO'?: string;
+  TIEMPOACREDITACION?: number | string;
+  'NOTAS INTERNAS'?: string;
+  'Notas Internas'?: string;
+  STOCK?: number | string;
+  Stock?: number | string;
+  'CODIGO CIERRE'?: string;
+  'Cod Cierre'?: string;
+  'CONCEPTO LLAMADA'?: string;
+  TIPO?: string;
+  Tipo?: string;
+  'SOLICITUD REPUESTO'?: string;
+  'CUMPLIO SLA'?: number;
+  'Cumplio SLA TS'?: number;
+  'FALLA RECURRENTE'?: string;
+  'Falla Recurrente'?: string;
+  NEGOCIO?: string;
+  Negocio?: string;
+  'ZONA LOCAL'?: string;
+  'Zona Local'?: string;
+  'TIPO ATENCIÓN'?: string;
+  ID?: string;
+  Mes?: number | string;
+  'Nombre del mes'?: string;
+  Fabricante?: string;
+  MPCR?: string;
+  'Fin de semana'?: string;
+  Semana?: number | string;
+  'Semana del año'?: number | string;
+  Año?: number | string;
+  Día?: string;
+  'Utiliza Repuesto'?: string;
+  'Fecha Recurrente'?: number | string;
+  Fallador?: string;
+  [key: string]: any;
+}
+
+export interface AnalisisMetadata {
+  fechaActualizacion: string;
+  fuente: string;
+  totalSuspendidos: number;
+  totalSla: number;
+  totalTelca: number;
+  totalGeneral: number;
+}

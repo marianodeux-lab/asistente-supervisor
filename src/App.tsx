@@ -10,6 +10,7 @@ import { CargaLaboralView } from './components/CargaLaboralView';
 import { DespachosRepuestosView } from './components/DespachosRepuestosView';
 import { ReferenceTablesView } from './components/ReferenceTablesView';
 import { BaseInstaladaView } from './components/BaseInstaladaView';
+import { AnalisisPatagoniaView } from './components/AnalisisPatagoniaView';
 import { ReportRepository, ReportItem } from './components/ReportRepository';
 import { TicketDetailModal } from './components/TicketDetailModal';
 import { ChronicDetailModal } from './components/ChronicDetailModal';
@@ -301,6 +302,11 @@ export function App() {
             <BaseInstaladaView
               data={baseClientes}
             />
+          )}
+
+          {/* Tab: Análisis Patagonia (Excel: Suspendidos, SLA, TELCA) */}
+          {activeTab === 'analisis_patagonia' && (
+            <AnalisisPatagoniaView />
           )}
 
           {/* Tab 4: Tablas de Referencia & Stock Fijo */}

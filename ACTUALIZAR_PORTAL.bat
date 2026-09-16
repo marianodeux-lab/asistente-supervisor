@@ -33,7 +33,19 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 echo.
-echo [2/3] Compilando la aplicacion web para produccion...
+echo [3/4] Procesando Archivo Maestro Analisis Patagonia 2026 y Derivaciones TELCA...
+call node scripts/process_analisis_patagonia.cjs
+call node scripts/generate_telca_derivaciones.cjs
+if %ERRORLEVEL% NEQ 0 (
+    color 0C
+    echo.
+    echo [ERROR] Hubo un error al procesar el Analisis Patagonia 2026.
+    pause
+    exit /b %ERRORLEVEL%
+)
+
+echo.
+echo [4/4] Compilando la aplicacion web para produccion...
 call npm run build
 if %ERRORLEVEL% NEQ 0 (
     color 0C
