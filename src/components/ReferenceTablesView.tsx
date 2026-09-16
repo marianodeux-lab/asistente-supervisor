@@ -23,7 +23,17 @@ import {
   ShieldCheck,
   AlertOctagon,
   HelpCircle,
-  FileSpreadsheet
+  FileSpreadsheet,
+  Warehouse,
+  Clock,
+  Truck,
+  Boxes,
+  FileCheck,
+  CheckCircle,
+  XCircle,
+  AlertCircle,
+  UserCheck,
+  PackageCheck
 } from 'lucide-react';
 import { 
   ResponsiveContainer, 
@@ -36,24 +46,40 @@ import {
   LineChart, 
   Line 
 } from 'recharts';
-import { StockFijoItem, ModeloMpcrItem, CallRateBenchmark, ZonaTecnicoRef, BaseInstaladaAbmState, BaseInstaladaEquipo } from '../types';
+import { 
+  StockFijoItem, 
+  ModeloMpcrItem, 
+  CallRateBenchmark, 
+  ZonaTecnicoRef, 
+  BaseInstaladaAbmState, 
+  BaseInstaladaEquipo,
+  StockRegionalItem,
+  SolicitudesStockState,
+  SolicitudStockItem
+} from '../types';
 import baseInstaladaData from '../data/baseInstaladaAbmData.json';
 import modelosDiscrepancias from '../data/modelosDiscrepanciasData.json';
+import stockRegionalMdpDefault from '../data/stockRegionalMdpData.json';
+import solicitudesStockDefault from '../data/solicitudesStockData.json';
 
 interface ReferenceTablesViewProps {
   stockFijo: StockFijoItem[];
   modelosMpcr: ModeloMpcrItem[];
   benchmarks: CallRateBenchmark[];
   zonasTecnicos: ZonaTecnicoRef[];
+  stockRegional?: StockRegionalItem[];
+  solicitudesStock?: SolicitudesStockState;
 }
 
 export const ReferenceTablesView: React.FC<ReferenceTablesViewProps> = ({
   stockFijo,
   modelosMpcr,
   benchmarks,
-  zonasTecnicos
+  zonasTecnicos,
+  stockRegional,
+  solicitudesStock
 }) => {
-  const [activeSubTab, setActiveSubTab] = useState<'stock_fijo' | 'modelos_mpcr' | 'zonas_tecnicos' | 'base_instalada'>('stock_fijo');
+  const [activeSubTab, setActiveSubTab] = useState<'stock_fijo' | 'modelos_mpcr' | 'zonas_tecnicos' | 'base_instalada' | 'stock_regional' | 'solicitudes_pendientes'>('stock_fijo');
 
   // Search & Filters for Stock Fijo
   const [sfSearch, setSfSearch] = useState('');
@@ -311,6 +337,152 @@ export const ReferenceTablesView: React.FC<ReferenceTablesViewProps> = ({
     return (currentAbmPeriod?.modificacionesDetalle || []).slice(start, start + abmPageSize);
   }, [currentAbmPeriod, abmCurrentPage, abmPageSize]);
 
+  // ========================================================
+  // DATA & HOOKS: STOCK REGIONAL & SOLICITUDES SEMANALES
+  // ========================================================
+  const actualStockRegional = useMemo(() => {
+    return (stockRegional && stockRegional.length > 0) ? stockRegional : (stockRegionalMdpDefault as unknown as StockRegionalItem[]);
+  }, [stockRegional]);
+
+  const actualSolicitudes = useMemo(() => {
+    return solicitudesStock || (solicitudesStockDefault as unknown as SolicitudesStockState);
+  }, [solicitudesStock]);
+
+  // Search & Filters for Stock Regional Planta Mar del Plata
+  const [srSearch, setSrSearch] = useState('');
+  const [srEstado, setSrEstado] = useState<'ALL' | 'DISPONIBLE' | 'QUIEBRE'>('ALL');
+  const [srPageSize, setSrPageSize] = useState<number>(40);
+  const [srCurrentPage, setSrCurrentPage] = useState<number>(1);
+
+  // Filtered Stock Regional
+  const filteredSr = useMemo(() => {
+    return actualStockRegional.filter(item => {
+      if (srSearch.trim()) {
+        const q = srSearch.toLowerCase();
+        const match = item.pn.toLowerCase().includes(q) || item.descripcion.toLowerCase().includes(q);
+        if (!match) return false;
+      }
+      if (srEstado === 'DISPONIBLE' && item.estado !== 'DISPONIBLE') return false;
+      if (srEstado === 'QUIEBRE' && item.estado === 'DISPONIBLE') return false;
+      return true;
+    });
+  }, [actualStockRegional, srSearch, srEstado]);
+
+  const srTotalPages = Math.ceil(filteredSr.length / srPageSize) || 1;
+  const srPaginated = useMemo(() => {
+    const start = (srCurrentPage - 1) * srPageSize;
+    return filteredSr.slice(start, start + srPageSize);
+  }, [filteredSr, srCurrentPage, srPageSize]);
+
+  // Metrics for Stock Regional
+  const srMetrics = useMemo(() => {
+    const totalItems = actualStockRegional.length;
+    const disponibles = actualStockRegional.filter(i => i.estado === 'DISPONIBLE').length;
+    const quiebres = actualStockRegional.filter(i => i.estado !== 'DISPONIBLE').length;
+    const totalUnidades = actualStockRegional.reduce((acc, i) => acc + (i.unidades || 0), 0);
+    return { totalItems, disponibles, quiebres, totalUnidades };
+  }, [actualStockRegional]);
+
+  // Search & Filters for Solicitudes Semanales
+  const [solCat, setSolCat] = useState<'ALL' | 'Stock Fijo' | 'Consumibles' | 'Herramientas'>('ALL');
+  const [solTecnico, setSolTecnico] = useState('ALL');
+  const [solStockCentral, setSolStockCentral] = useState<'ALL' | 'CON_STOCK' | 'SIN_STOCK'>('ALL');
+  const [solSearch, setSolSearch] = useState('');
+  const [solPageSize, setSolPageSize] = useState<number>(40);
+  const [solCurrentPage, setSolCurrentPage] = useState<number>(1);
+
+  // Consolidated Solicitudes List
+  const allSolicitudes = useMemo(() => {
+    const sf = (actualSolicitudes.stockFijo || []).map(s => ({ ...s, categoria: 'Stock Fijo' as const }));
+    const con = (actualSolicitudes.consumibles || []).map(s => ({ ...s, categoria: 'Consumibles' as const }));
+    const her = (actualSolicitudes.herramientas || []).map(s => ({ ...s, categoria: 'Herramientas' as const }));
+    return [...sf, ...con, ...her];
+  }, [actualSolicitudes]);
+
+  const solTecnicosList = useMemo(() => {
+    const set = new Set<string>();
+    allSolicitudes.forEach(s => {
+      if (s.tecnico) set.add(s.tecnico);
+    });
+    return Array.from(set).sort();
+  }, [allSolicitudes]);
+
+  const filteredSolicitudes = useMemo(() => {
+    return allSolicitudes.filter(s => {
+      if (solCat !== 'ALL' && s.categoria !== solCat) return false;
+      if (solTecnico !== 'ALL' && s.tecnico !== solTecnico) return false;
+      if (solStockCentral === 'CON_STOCK' && !s.tieneStockCentral) return false;
+      if (solStockCentral === 'SIN_STOCK' && s.tieneStockCentral) return false;
+      if (solSearch.trim()) {
+        const q = solSearch.toLowerCase();
+        const match = 
+          s.pn.toLowerCase().includes(q) ||
+          s.descripcion.toLowerCase().includes(q) ||
+          s.solicitud.toLowerCase().includes(q) ||
+          s.tecnico.toLowerCase().includes(q) ||
+          (s.tecnicoZona && s.tecnicoZona.toLowerCase().includes(q));
+        if (!match) return false;
+      }
+      return true;
+    });
+  }, [allSolicitudes, solCat, solTecnico, solStockCentral, solSearch]);
+
+  const solTotalPages = Math.ceil(filteredSolicitudes.length / solPageSize) || 1;
+  const solPaginated = useMemo(() => {
+    const start = (solCurrentPage - 1) * solPageSize;
+    return filteredSolicitudes.slice(start, start + solPageSize);
+  }, [filteredSolicitudes, solCurrentPage, solPageSize]);
+
+  // Export handlers
+  const handleExportSr = () => {
+    const headers = ["PN", "Descripcion", "Base Stock", "Cant Minima", "Unidades Planta", "Faltante", "Estado", "Planta", "Subzona Asignada"];
+    const rows = filteredSr.map(r => [
+      `"${r.pn}"`,
+      `"${(r.descripcion || '').replace(/"/g, '""')}"`,
+      `"${r.baseStock}"`,
+      r.cantMinima,
+      r.unidades,
+      r.diferencia,
+      r.estado,
+      `"${r.planta}"`,
+      `"${r.subzonaAsignada}"`
+    ]);
+    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `stock_regional_planta_mdp_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleExportSolicitudes = () => {
+    const headers = ["Solicitud", "Fecha", "Categoria", "Tecnico", "Zona", "Region", "PN", "Descripcion", "Tipo Parte", "Cantidad Solicitada", "Stock Central", "Estado Central"];
+    const rows = filteredSolicitudes.map(s => [
+      `"${s.solicitud}"`,
+      `"${s.fecha}"`,
+      `"${s.categoria}"`,
+      `"${s.tecnico}"`,
+      `"${s.tecnicoZona || ''}"`,
+      `"${s.region || ''}"`,
+      `"${s.pn}"`,
+      `"${(s.descripcion || '').replace(/"/g, '""')}"`,
+      `"${s.tipoParte}"`,
+      s.cantidad,
+      s.cantStkCentral !== null ? s.cantStkCentral : 0,
+      s.tieneStockCentral ? 'CON_STOCK_CENTRAL' : 'SIN_STOCK_CENTRAL'
+    ]);
+    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `solicitudes_semanales_stock_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="space-y-6">
       
@@ -376,6 +548,36 @@ export const ReferenceTablesView: React.FC<ReferenceTablesViewProps> = ({
             <span>Base Instalada 2026 & Control ABM</span>
             <span className="text-[10px] bg-emerald-950 text-emerald-200 border border-emerald-500 px-1.5 py-0.2 rounded-full font-mono font-bold">
               {abmData.baseActualAgosto.totalSupervisado} activos
+            </span>
+          </button>
+
+          <button
+            onClick={() => setActiveSubTab('stock_regional')}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+              activeSubTab === 'stock_regional'
+                ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20'
+                : 'text-cyan-400 hover:text-white hover:bg-cyan-950/50 border border-cyan-500/30'
+            }`}
+          >
+            <Warehouse className="w-4 h-4" />
+            <span>Stock Regional Planta MDP</span>
+            <span className="text-[10px] bg-cyan-950 text-cyan-200 border border-cyan-500 px-1.5 py-0.2 rounded-full font-mono font-bold">
+              {srMetrics.totalItems} PNs
+            </span>
+          </button>
+
+          <button
+            onClick={() => setActiveSubTab('solicitudes_pendientes')}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+              activeSubTab === 'solicitudes_pendientes'
+                ? 'bg-purple-500 text-slate-950 shadow-md shadow-purple-500/20'
+                : 'text-purple-400 hover:text-white hover:bg-purple-950/50 border border-purple-500/30'
+            }`}
+          >
+            <Clock className="w-4 h-4" />
+            <span>Solicitudes Semanales (SF/Cons)</span>
+            <span className="text-[10px] bg-purple-950 text-purple-200 border border-purple-500 px-1.5 py-0.2 rounded-full font-mono font-bold">
+              {allSolicitudes.length}
             </span>
           </button>
 
@@ -1862,7 +2064,592 @@ export const ReferenceTablesView: React.FC<ReferenceTablesViewProps> = ({
         </div>
       )}
 
+      {/* SUB-TAB 5: STOCK REGIONAL (PLANTA MAR DEL PLATA) */}
+      {activeSubTab === 'stock_regional' && (
+        <div className="space-y-4">
+          
+          {/* Rules & Context Banner */}
+          <div className="p-4 rounded-xl bg-gradient-to-r from-cyan-950/70 via-slate-900 to-slate-950 border border-cyan-500/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 shadow-lg">
+            <div className="flex items-start gap-3">
+              <div className="p-2 rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 mt-0.5">
+                <Warehouse className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  Almacén Regional Planta Mar del Plata — Doble Capa de Abastecimiento
+                </h4>
+                <div className="flex flex-wrap items-center gap-1.5 mt-1">
+                  <span className="text-[11px] text-cyan-300 font-semibold">Técnicos con acceso directo a planta:</span>
+                  {actualSolicitudes.tecnicosAtlanticaHabilitados.map((tec, idx) => (
+                    <span key={idx} className="text-[10px] bg-cyan-950/80 text-cyan-200 border border-cyan-700/60 px-2 py-0.5 rounded font-mono">
+                      {tec}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed max-w-3xl">
+                  Los técnicos de la subzona <strong>Atlántica</strong> disponen de su <em>Stock Fijo (SF)</em> móvil en valija y además cuentan con el respaldo inmediato de este <strong>Stock Regional (SR)</strong> en la planta de Mar del Plata.
+                  <span className="text-cyan-300 font-semibold block mt-0.5">
+                    Ante fallas críticas o faltantes de stock móvil, verificar disponibilidad aquí para retiro presencial inmediato antes de solicitar despacho a Casa Central.
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={handleExportSr}
+              className="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-700 transition flex-shrink-0"
+            >
+              <Download className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Exportar SR</span>
+            </button>
+          </div>
+
+          {/* KPI Metrics Cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 shadow-md">
+              <div className="flex items-center justify-between text-xs text-slate-400">
+                <span>Catálogo Almacén</span>
+                <Boxes className="w-4 h-4 text-cyan-400" />
+              </div>
+              <div className="mt-1 flex items-baseline gap-2">
+                <span className="text-2xl font-bold font-mono text-cyan-300">{srMetrics.totalItems}</span>
+                <span className="text-[11px] text-slate-400">partes activas</span>
+              </div>
+              <p className="text-[10px] text-slate-500 mt-1">Planta Mar del Plata</p>
+            </div>
+
+            <div className="bg-slate-900 border border-emerald-900/40 rounded-xl p-3 shadow-md">
+              <div className="flex items-center justify-between text-xs text-emerald-400">
+                <span>Disponibles con Stock</span>
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              </div>
+              <div className="mt-1 flex items-baseline gap-2">
+                <span className="text-2xl font-bold font-mono text-emerald-300">{srMetrics.disponibles}</span>
+                <span className="text-[11px] text-emerald-500">con unidades en planta</span>
+              </div>
+              <p className="text-[10px] text-emerald-600 mt-1">Retiro presencial habilitado</p>
+            </div>
+
+            <div className="bg-slate-900 border border-rose-900/40 rounded-xl p-3 shadow-md">
+              <div className="flex items-center justify-between text-xs text-rose-400">
+                <span>Quiebres / Bajo Mínimo</span>
+                <AlertOctagon className="w-4 h-4 text-rose-400" />
+              </div>
+              <div className="mt-1 flex items-baseline gap-2">
+                <span className="text-2xl font-bold font-mono text-rose-300">{srMetrics.quiebres}</span>
+                <span className="text-[11px] text-rose-400">alerta reposición</span>
+              </div>
+              <p className="text-[10px] text-rose-500 mt-1">Requiere pedido a Logística Central</p>
+            </div>
+
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 shadow-md">
+              <div className="flex items-center justify-between text-xs text-slate-400">
+                <span>Unidades Físicas Totales</span>
+                <PackageCheck className="w-4 h-4 text-cyan-400" />
+              </div>
+              <div className="mt-1 flex items-baseline gap-2">
+                <span className="text-2xl font-bold font-mono text-white">{srMetrics.totalUnidades}</span>
+                <span className="text-[11px] text-slate-400">unidades en estantería</span>
+              </div>
+              <p className="text-[10px] text-slate-500 mt-1">Inventario consolidado en planta</p>
+            </div>
+          </div>
+
+          {/* Search, Filter Toolbar & Pagination Info */}
+          <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-wrap items-center justify-between gap-3 shadow-md">
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="relative">
+                <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Buscar por PN o descripción..."
+                  value={srSearch}
+                  onChange={(e) => { setSrSearch(e.target.value); setSrCurrentPage(1); }}
+                  className="bg-slate-950 border border-slate-700 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 w-64"
+                />
+              </div>
+
+              <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800 text-xs">
+                <button
+                  onClick={() => { setSrEstado('ALL'); setSrCurrentPage(1); }}
+                  className={`px-2.5 py-1 rounded font-semibold transition ${srEstado === 'ALL' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
+                >
+                  Todos ({actualStockRegional.length})
+                </button>
+                <button
+                  onClick={() => { setSrEstado('DISPONIBLE'); setSrCurrentPage(1); }}
+                  className={`px-2.5 py-1 rounded font-semibold transition ${srEstado === 'DISPONIBLE' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-white'}`}
+                >
+                  Disponibles ({srMetrics.disponibles})
+                </button>
+                <button
+                  onClick={() => { setSrEstado('QUIEBRE'); setSrCurrentPage(1); }}
+                  className={`px-2.5 py-1 rounded font-semibold transition ${srEstado === 'QUIEBRE' ? 'bg-rose-600 text-white' : 'text-slate-400 hover:text-white'}`}
+                >
+                  Quiebres ({srMetrics.quiebres})
+                </button>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 text-xs text-slate-400">
+              <span>Registros:</span>
+              <select
+                value={srPageSize}
+                onChange={(e) => { setSrPageSize(Number(e.target.value)); setSrCurrentPage(1); }}
+                className="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-slate-200 text-xs focus:outline-none"
+              >
+                <option value={20}>20</option>
+                <option value={40}>40</option>
+                <option value={100}>100</option>
+              </select>
+              <span className="font-mono text-cyan-300 font-bold">{filteredSr.length}</span> ítems filtrados
+            </div>
+          </div>
+
+          {/* Table */}
+          <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xl">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-slate-950/80 border-b border-slate-800 text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
+                    <th className="py-2.5 px-3">Part Number (PN)</th>
+                    <th className="py-2.5 px-3">Descripción Técnica (Master LP)</th>
+                    <th className="py-2.5 px-3">Almacén / Base</th>
+                    <th className="py-2.5 px-3 text-center">Cant. Mínima</th>
+                    <th className="py-2.5 px-3 text-center">Stock en Planta</th>
+                    <th className="py-2.5 px-3 text-center">Faltante</th>
+                    <th className="py-2.5 px-3 text-center">Estado</th>
+                    <th className="py-2.5 px-3">Acción Operativa</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60 text-xs">
+                  {srPaginated.length === 0 ? (
+                    <tr>
+                      <td colSpan={8} className="py-8 text-center text-slate-500">
+                        No se encontraron piezas en el Stock Regional con los filtros actuales.
+                      </td>
+                    </tr>
+                  ) : (
+                    srPaginated.map((item, idx) => (
+                      <tr key={idx} className="hover:bg-slate-800/40 transition">
+                        <td className="py-2 px-3 font-mono font-bold text-cyan-300">
+                          {item.pn}
+                        </td>
+                        <td className="py-2 px-3 text-slate-200 max-w-md">
+                          {item.descripcion}
+                        </td>
+                        <td className="py-2 px-3 text-slate-400 text-[11px]">
+                          {item.baseStock}
+                        </td>
+                        <td className="py-2 px-3 font-mono text-center text-slate-300">
+                          {item.cantMinima}
+                        </td>
+                        <td className="py-2 px-3 font-mono font-bold text-center">
+                          <span className={`px-2 py-0.5 rounded ${
+                            item.unidades >= item.cantMinima
+                              ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60'
+                              : item.unidades > 0
+                              ? 'bg-amber-950 text-amber-300 border border-amber-700/60'
+                              : 'bg-rose-950 text-rose-300 border border-rose-700/60'
+                          }`}>
+                            {item.unidades}
+                          </span>
+                        </td>
+                        <td className="py-2 px-3 font-mono text-center">
+                          {item.unidades < item.cantMinima ? (
+                            <span className="text-rose-400 font-bold">-{item.cantMinima - item.unidades}</span>
+                          ) : (
+                            <span className="text-slate-600">0</span>
+                          )}
+                        </td>
+                        <td className="py-2 px-3 text-center">
+                          {item.estado === 'DISPONIBLE' && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">
+                              <CheckCircle className="w-3 h-3 text-emerald-400" /> DISPONIBLE
+                            </span>
+                          )}
+                          {item.estado === 'BAJO_MINIMO' && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950/80 text-amber-300 border border-amber-500/40">
+                              <AlertTriangle className="w-3 h-3 text-amber-400" /> BAJO MÍNIMO
+                            </span>
+                          )}
+                          {item.estado === 'SIN_STOCK' && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-rose-950/80 text-rose-300 border border-rose-500/40">
+                              <XCircle className="w-3 h-3 text-rose-400" /> SIN STOCK
+                            </span>
+                          )}
+                        </td>
+                        <td className="py-2 px-3 text-[11px]">
+                          {item.unidades > 0 ? (
+                            <span className="text-emerald-400 font-medium">Retiro inmediato en planta</span>
+                          ) : (
+                            <span className="text-rose-400 font-medium">Reclamar envío a Central</span>
+                          )}
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Pagination Controls */}
+            <div className="px-3 py-2 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+              <div>
+                Mostrando {filteredSr.length > 0 ? (srCurrentPage - 1) * srPageSize + 1 : 0} - {Math.min(srCurrentPage * srPageSize, filteredSr.length)} de {filteredSr.length}
+              </div>
+
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setSrCurrentPage(1)}
+                  disabled={srCurrentPage === 1}
+                  className="p-1 rounded bg-slate-950 border border-slate-800 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronsLeft className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => setSrCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={srCurrentPage === 1}
+                  className="p-1 rounded bg-slate-950 border border-slate-800 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                </button>
+                <span className="px-2 text-xs font-mono text-cyan-300">
+                  {srCurrentPage} / {srTotalPages}
+                </span>
+                <button
+                  onClick={() => setSrCurrentPage(p => Math.min(srTotalPages, p + 1))}
+                  disabled={srCurrentPage === srTotalPages}
+                  className="p-1 rounded bg-slate-950 border border-slate-800 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => setSrCurrentPage(srTotalPages)}
+                  disabled={srCurrentPage === srTotalPages}
+                  className="p-1 rounded bg-slate-950 border border-slate-800 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronsRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      )}
+
+      {/* SUB-TAB 6: SOLICITUDES SEMANALES (SF, CONSUMIBLES, HERRAMIENTAS) */}
+      {activeSubTab === 'solicitudes_pendientes' && (
+        <div className="space-y-4">
+
+          {/* Context & Auditoría de Demora Banner */}
+          <div className="p-4 rounded-xl bg-gradient-to-r from-purple-950/70 via-slate-900 to-slate-950 border border-purple-500/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 shadow-lg">
+            <div className="flex items-start gap-3">
+              <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400 border border-purple-500/30 mt-0.5">
+                <Clock className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  Auditoría de Solicitudes Semanales — Deslinde de Demoras por Stock Central
+                </h4>
+                <p className="text-xs text-slate-300 mt-0.5 leading-relaxed max-w-3xl">
+                  Permite auditar el cumplimiento del abastecimiento para la dotación de la región. El indicador <code className="text-purple-300 font-mono font-bold">CANTSTKCENTRAL</code> define objetivamente la responsabilidad operativa:
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs">
+                  <span className="inline-flex items-center gap-1.5 text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-600/50">
+                    <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                    <strong>Con Stock Central:</strong> Demora logística de Casa Central. Reclamar despacho inmediato.
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded border border-rose-600/50">
+                    <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
+                    <strong>Sin Stock Central:</strong> Quiebre de proveedor central. Faltante no imputable al técnico.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={handleExportSolicitudes}
+              className="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-700 transition flex-shrink-0"
+            >
+              <Download className="w-3.5 h-3.5 text-purple-400" />
+              <span>Exportar Solicitudes</span>
+            </button>
+          </div>
+
+          {/* Metric Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5">
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-2.5 shadow-md">
+              <span className="text-[11px] text-slate-400">Total Solicitudes</span>
+              <div className="mt-1 flex items-baseline gap-1.5">
+                <span className="text-xl font-bold font-mono text-purple-300">{actualSolicitudes.metricas.totalSolicitudes}</span>
+                <span className="text-[10px] text-slate-500">pedidos</span>
+              </div>
+            </div>
+
+            <div className="bg-slate-900 border border-amber-900/40 rounded-xl p-2.5 shadow-md">
+              <span className="text-[11px] text-amber-400">Stock Fijo</span>
+              <div className="mt-1 flex items-baseline gap-1.5">
+                <span className="text-xl font-bold font-mono text-amber-300">{actualSolicitudes.metricas.totalStockFijo}</span>
+                <span className="text-[10px] text-amber-500">solicitudes</span>
+              </div>
+            </div>
+
+            <div className="bg-slate-900 border border-cyan-900/40 rounded-xl p-2.5 shadow-md">
+              <span className="text-[11px] text-cyan-400">Consumibles (NORET)</span>
+              <div className="mt-1 flex items-baseline gap-1.5">
+                <span className="text-xl font-bold font-mono text-cyan-300">{actualSolicitudes.metricas.totalConsumibles}</span>
+                <span className="text-[10px] text-cyan-500">no deuda</span>
+              </div>
+            </div>
+
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-2.5 shadow-md">
+              <span className="text-[11px] text-slate-400">Herramientas</span>
+              <div className="mt-1 flex items-baseline gap-1.5">
+                <span className="text-xl font-bold font-mono text-slate-300">{actualSolicitudes.metricas.totalHerramientas}</span>
+                <span className="text-[10px] text-slate-500">pedidos</span>
+              </div>
+            </div>
+
+            <div className="bg-slate-900 border border-emerald-900/40 rounded-xl p-2.5 shadow-md">
+              <span className="text-[11px] text-emerald-400">Con Stock Central</span>
+              <div className="mt-1 flex items-baseline gap-1.5">
+                <span className="text-xl font-bold font-mono text-emerald-300">{actualSolicitudes.metricas.conStockCentral}</span>
+                <span className="text-[10px] text-emerald-500">demora despacho</span>
+              </div>
+            </div>
+
+            <div className="bg-slate-900 border border-rose-900/40 rounded-xl p-2.5 shadow-md">
+              <span className="text-[11px] text-rose-400">Sin Stock Central</span>
+              <div className="mt-1 flex items-baseline gap-1.5">
+                <span className="text-xl font-bold font-mono text-rose-300">{actualSolicitudes.metricas.sinStockCentral}</span>
+                <span className="text-[10px] text-rose-500">quiebre proveedor</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Filtering Toolbar */}
+          <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-wrap items-center justify-between gap-3 shadow-md">
+            <div className="flex flex-wrap items-center gap-2">
+              
+              {/* Category Pills */}
+              <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800 text-xs">
+                <button
+                  onClick={() => { setSolCat('ALL'); setSolCurrentPage(1); }}
+                  className={`px-2.5 py-1 rounded font-semibold transition ${solCat === 'ALL' ? 'bg-purple-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
+                >
+                  Todas ({allSolicitudes.length})
+                </button>
+                <button
+                  onClick={() => { setSolCat('Stock Fijo'); setSolCurrentPage(1); }}
+                  className={`px-2.5 py-1 rounded font-semibold transition ${solCat === 'Stock Fijo' ? 'bg-amber-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
+                >
+                  Stock Fijo ({actualSolicitudes.metricas.totalStockFijo})
+                </button>
+                <button
+                  onClick={() => { setSolCat('Consumibles'); setSolCurrentPage(1); }}
+                  className={`px-2.5 py-1 rounded font-semibold transition ${solCat === 'Consumibles' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
+                >
+                  Consumibles ({actualSolicitudes.metricas.totalConsumibles})
+                </button>
+                <button
+                  onClick={() => { setSolCat('Herramientas'); setSolCurrentPage(1); }}
+                  className={`px-2.5 py-1 rounded font-semibold transition ${solCat === 'Herramientas' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'}`}
+                >
+                  Herramientas ({actualSolicitudes.metricas.totalHerramientas})
+                </button>
+              </div>
+
+              {/* Central Stock Availability Filter */}
+              <select
+                value={solStockCentral}
+                onChange={(e) => { setSolStockCentral(e.target.value as any); setSolCurrentPage(1); }}
+                className="bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none"
+              >
+                <option value="ALL">Todo Estado Central</option>
+                <option value="CON_STOCK">🟢 Con Stock en Central ({actualSolicitudes.metricas.conStockCentral})</option>
+                <option value="SIN_STOCK">🔴 Sin Stock en Central ({actualSolicitudes.metricas.sinStockCentral})</option>
+              </select>
+
+              {/* Technician Dropdown */}
+              <select
+                value={solTecnico}
+                onChange={(e) => { setSolTecnico(e.target.value); setSolCurrentPage(1); }}
+                className="bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none max-w-[200px]"
+              >
+                <option value="ALL">Todos los Técnicos ({solTecnicosList.length})</option>
+                {solTecnicosList.map(t => (
+                  <option key={t} value={t}>{t}</option>
+                ))}
+              </select>
+
+              {/* Search input */}
+              <div className="relative">
+                <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Buscar PN, solicitud, técnico..."
+                  value={solSearch}
+                  onChange={(e) => { setSolSearch(e.target.value); setSolCurrentPage(1); }}
+                  className="bg-slate-950 border border-slate-700 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-purple-500 w-52"
+                />
+              </div>
+
+            </div>
+
+            <div className="flex items-center gap-2 text-xs text-slate-400">
+              <span>Registros:</span>
+              <select
+                value={solPageSize}
+                onChange={(e) => { setSolPageSize(Number(e.target.value)); setSolCurrentPage(1); }}
+                className="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-slate-200 text-xs focus:outline-none"
+              >
+                <option value={20}>20</option>
+                <option value={40}>40</option>
+                <option value={100}>100</option>
+              </select>
+              <span className="font-mono text-purple-300 font-bold">{filteredSolicitudes.length}</span> solicitudes
+            </div>
+          </div>
+
+          {/* Table */}
+          <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xl">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-slate-950/80 border-b border-slate-800 text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
+                    <th className="py-2.5 px-3">Solicitud</th>
+                    <th className="py-2.5 px-3">Fecha</th>
+                    <th className="py-2.5 px-3">Técnico & Zona</th>
+                    <th className="py-2.5 px-3">Part Number (PN)</th>
+                    <th className="py-2.5 px-3">Descripción Técnica</th>
+                    <th className="py-2.5 px-3 text-center">Tipo</th>
+                    <th className="py-2.5 px-3 text-center">Cant.</th>
+                    <th className="py-2.5 px-3 text-center">Stock Central</th>
+                    <th className="py-2.5 px-3">Dictamen / Responsabilidad</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60 text-xs">
+                  {solPaginated.length === 0 ? (
+                    <tr>
+                      <td colSpan={9} className="py-8 text-center text-slate-500">
+                        No se encontraron solicitudes pendientes con los filtros actuales.
+                      </td>
+                    </tr>
+                  ) : (
+                    solPaginated.map((sol, idx) => (
+                      <tr key={idx} className="hover:bg-slate-800/40 transition">
+                        <td className="py-2 px-3 font-mono font-bold text-purple-300 text-[11px]">
+                          #{sol.solicitud}
+                        </td>
+                        <td className="py-2 px-3 text-slate-400 font-mono text-[11px]">
+                          {sol.fecha}
+                        </td>
+                        <td className="py-2 px-3 text-slate-200">
+                          <div className="font-semibold">{sol.tecnico}</div>
+                          <div className="text-[10px] text-slate-400 font-mono">{sol.tecnicoZona || '-'} • {sol.zonaLocal || sol.region || ''}</div>
+                        </td>
+                        <td className="py-2 px-3 font-mono font-bold text-cyan-300 text-[11px]">
+                          {sol.pn}
+                        </td>
+                        <td className="py-2 px-3 text-slate-300 max-w-xs truncate" title={sol.descripcion}>
+                          {sol.descripcion}
+                        </td>
+                        <td className="py-2 px-3 text-center">
+                          <div className="flex flex-col items-center gap-0.5">
+                            <span className={`px-1.5 py-0.2 rounded text-[10px] font-bold ${
+                              sol.categoria === 'Stock Fijo' 
+                                ? 'bg-amber-950 text-amber-300 border border-amber-600/50' 
+                                : sol.categoria === 'Consumibles'
+                                ? 'bg-cyan-950 text-cyan-300 border border-cyan-600/50'
+                                : 'bg-slate-800 text-slate-300 border border-slate-700'
+                            }`}>
+                              {sol.categoria}
+                            </span>
+                            <span className={`text-[9px] font-mono ${sol.tipoParte === 'NORET' ? 'text-emerald-400' : 'text-slate-400'}`}>
+                              {sol.tipoParte === 'NORET' ? 'No Retornable' : 'Retornable'}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-2 px-3 font-mono font-bold text-center text-slate-200">
+                          {sol.cantidad}
+                        </td>
+                        <td className="py-2 px-3 font-mono font-bold text-center">
+                          {sol.cantStkCentral !== null && sol.cantStkCentral > 0 ? (
+                            <span className="bg-emerald-950 text-emerald-300 border border-emerald-700/60 px-2 py-0.5 rounded text-[11px]">
+                              {sol.cantStkCentral} u.
+                            </span>
+                          ) : (
+                            <span className="bg-rose-950/60 text-rose-400 border border-rose-800/40 px-2 py-0.5 rounded text-[10px]">
+                              0
+                            </span>
+                          )}
+                        </td>
+                        <td className="py-2 px-3">
+                          {sol.tieneStockCentral ? (
+                            <span className="inline-flex items-center gap-1.5 text-emerald-300 font-semibold text-[11px]">
+                              <CheckCircle className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                              <span>Demora Despacho Central (Reclamar)</span>
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1.5 text-rose-300 font-semibold text-[11px]">
+                              <AlertTriangle className="w-3.5 h-3.5 text-rose-400 flex-shrink-0" />
+                              <span>Quiebre en Central (No imputable)</span>
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Pagination Controls */}
+            <div className="px-3 py-2 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+              <div>
+                Mostrando {filteredSolicitudes.length > 0 ? (solCurrentPage - 1) * solPageSize + 1 : 0} - {Math.min(solCurrentPage * solPageSize, filteredSolicitudes.length)} de {filteredSolicitudes.length}
+              </div>
+
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setSolCurrentPage(1)}
+                  disabled={solCurrentPage === 1}
+                  className="p-1 rounded bg-slate-950 border border-slate-800 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronsLeft className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => setSolCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={solCurrentPage === 1}
+                  className="p-1 rounded bg-slate-950 border border-slate-800 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                </button>
+                <span className="px-2 text-xs font-mono text-purple-300">
+                  {solCurrentPage} / {solTotalPages}
+                </span>
+                <button
+                  onClick={() => setSolCurrentPage(p => Math.min(solTotalPages, p + 1))}
+                  disabled={solCurrentPage === solTotalPages}
+                  className="p-1 rounded bg-slate-950 border border-slate-800 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => setSolCurrentPage(solTotalPages)}
+                  disabled={solCurrentPage === solTotalPages}
+                  className="p-1 rounded bg-slate-950 border border-slate-800 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronsRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      )}
+
     </div>
   );
 };
-

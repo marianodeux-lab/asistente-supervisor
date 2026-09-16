@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
-import { TabNavigation, TabKey } from './components/TabNavigation';
+import { SidebarNavigation } from './components/SidebarNavigation';
+import { TabKey } from './components/TabNavigation';
 import { SlaMonitor } from './components/SlaMonitor';
 import { RecurrenceRadar } from './components/RecurrenceRadar';
 import { PreventivosManager } from './components/PreventivosManager';
@@ -34,6 +35,8 @@ import zonasTecnicosRef from './data/zonasTecnicosReferencia.json';
 import ctdDemoradosData from './data/ctdRadarDemoradosData.json';
 import baseInstaladaClientesData from './data/baseInstaladaClientesData.json';
 import stockAuditoriaData from './data/stockAuditoriaData.json';
+import stockRegionalMdpData from './data/stockRegionalMdpData.json';
+import solicitudesStockData from './data/solicitudesStockData.json';
 
 import { 
   Ticket, 
@@ -52,7 +55,9 @@ import {
   ZonaTecnicoRef,
   BaseInstaladaClienteRow,
   UserAccount,
-  StockAuditoriaState
+  StockAuditoriaState,
+  StockRegionalItem,
+  SolicitudesStockState
 } from './types';
 
 export function App() {
@@ -66,7 +71,7 @@ export function App() {
   const [activeTab, setActiveTab] = useState<TabKey>('sla_agenda');
 
   // Application Data State
-  const [tickets, setTickets] = useState<Ticket[]>(initialTickets as Ticket[]);
+  const [tickets, setTickets] = useState<Ticket[]>(initialTickets as unknown as Ticket[]);
   const [cronicos, setCronicos] = useState<EquipoCronico[]>(initialCronicos as unknown as EquipoCronico[]);
   const [preventivos, setPreventivos] = useState<PreventivosState>(initialPreventivos as PreventivosState);
   const [callRate, setCallRate] = useState<CallRateState>(initialCallRate as CallRateState);
@@ -99,7 +104,7 @@ export function App() {
       rowCount: initialTickets.length,
       isActive: true,
       ticketsCount: initialTickets.length,
-      data: initialTickets as Ticket[]
+      data: initialTickets as unknown as Ticket[]
     },
     {
       id: 'rep_base_2',
@@ -153,7 +158,7 @@ export function App() {
 
   // Handler for restoring default unified agenda
   const handleRestoreDefaultAgenda = () => {
-    setTickets(initialTickets as Ticket[]);
+    setTickets(initialTickets as unknown as Ticket[]);
     setReports(prev => prev.map(r => ({
       ...r,
       isActive: r.name.includes('Agenda_Diaria_Patagonia_Oficial') || r.id === 'rep_base_1'
@@ -229,126 +234,133 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-500 selection:text-slate-950">
+    <div className="h-screen w-screen bg-[#0e0f13] text-[#f1f3f6] flex flex-row overflow-hidden selection:bg-amber-500 selection:text-slate-950">
       
-      {/* Top Header */}
-      <Header
-        currentUser={currentUser}
-        onOpenAuthModal={handleOpenAuthModal}
-        onOpenUserManagement={() => setIsUserManagementOpen(true)}
-        onOpenHallAi={() => setIsHallModalOpen(true)}
-        tickets={tickets}
-        cronicos={cronicos}
-        onRefresh={handleRefresh}
-        onExport={handleExport}
-        activeTab={activeTab}
-      />
-
-      {/* Tabs Navigation */}
-      <TabNavigation
+      {/* Auto-Hiding Left Rail Sidebar with Hover Expansion */}
+      <SidebarNavigation
         activeTab={activeTab}
         onTabChange={setActiveTab}
         ticketCount={tickets.length}
         cronicosCount={cronicos.filter(c => c.estadoSalud === 'CRÍTICO').length}
         mpPendingCount={preventivos.totalPendientes}
         baseEquiposCount={baseClientes.length}
+        onOpenHallAi={() => setIsHallModalOpen(true)}
       />
 
-      {/* Main Content Body */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 lg:p-8 space-y-6">
+      {/* Main Workspace Column */}
+      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
         
-        {/* Tab 1: Control SLA & Agenda Diaria */}
-        {activeTab === 'sla_agenda' && (
-          <SlaMonitor
-            tickets={tickets}
-            tecnicos={tecnicos}
-            zonas={zonas}
-            cronicos={cronicos}
-            onSelectTicket={setSelectedTicket}
-            onOpenCronicoDetail={setSelectedCronico}
-          />
-        )}
+        {/* Ultra-compact Top Header */}
+        <Header
+          currentUser={currentUser}
+          onOpenAuthModal={handleOpenAuthModal}
+          onOpenUserManagement={() => setIsUserManagementOpen(true)}
+          onOpenHallAi={() => setIsHallModalOpen(true)}
+          tickets={tickets}
+          cronicos={cronicos}
+          onRefresh={handleRefresh}
+          onExport={handleExport}
+          activeTab={activeTab}
+        />
 
-        {/* Tab 2: Radar de Reincidencias */}
-        {activeTab === 'reincidencias' && (
-          <RecurrenceRadar
-            cronicos={cronicos}
-            zonas={zonas}
-            onSelectCronico={setSelectedCronico}
-          />
-        )}
+        {/* High Availability Scrollable Data Canvas */}
+        <main className="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-6 space-y-5 bg-[#0e0f13]">
+          
+          {/* Tab 1: Control SLA & Agenda Diaria */}
+          {activeTab === 'sla_agenda' && (
+            <SlaMonitor
+              tickets={tickets}
+              tecnicos={tecnicos}
+              zonas={zonas}
+              cronicos={cronicos}
+              onSelectTicket={setSelectedTicket}
+              onOpenCronicoDetail={setSelectedCronico}
+            />
+          )}
 
-        {/* Tab 3: Plan de Preventivos (MP) */}
-        {activeTab === 'preventivos' && (
-          <PreventivosManager
-            preventivos={preventivos}
-            zonas={zonas}
-            ctdDemorados={ctdDemoradosData as CtdDemoradoItem[]}
-          />
-        )}
+          {/* Tab 2: Radar de Reincidencias */}
+          {activeTab === 'reincidencias' && (
+            <RecurrenceRadar
+              cronicos={cronicos}
+              zonas={zonas}
+              onSelectCronico={setSelectedCronico}
+            />
+          )}
 
-        {/* Tab: Base Instalada Detalle Clientes */}
-        {activeTab === 'base_instalada' && (
-          <BaseInstaladaView
-            data={baseClientes}
-          />
-        )}
+          {/* Tab 3: Plan de Preventivos (MP) */}
+          {activeTab === 'preventivos' && (
+            <PreventivosManager
+              preventivos={preventivos}
+              zonas={zonas}
+              ctdDemorados={ctdDemoradosData as CtdDemoradoItem[]}
+            />
+          )}
 
-        {/* Tab 4: Tablas de Referencia & Stock Fijo */}
-        {activeTab === 'tablas_ref' && (
-          <ReferenceTablesView
-            stockFijo={stockFijo}
-            modelosMpcr={modelosMpcr}
-            benchmarks={benchmarks}
-            zonasTecnicos={zonasRef}
-          />
-        )}
+          {/* Tab: Base Instalada Detalle Clientes */}
+          {activeTab === 'base_instalada' && (
+            <BaseInstaladaView
+              data={baseClientes}
+            />
+          )}
 
-        {/* Tab 5: Call Rate & Fabricantes */}
-        {activeTab === 'call_rate' && (
-          <CallRateAnalytics
-            data={callRate}
-          />
-        )}
+          {/* Tab 4: Tablas de Referencia & Stock Fijo */}
+          {activeTab === 'tablas_ref' && (
+            <ReferenceTablesView
+              stockFijo={stockFijo}
+              modelosMpcr={modelosMpcr}
+              benchmarks={benchmarks}
+              zonasTecnicos={zonasRef}
+              stockRegional={stockRegionalMdpData as StockRegionalItem[]}
+              solicitudesStock={solicitudesStockData as unknown as SolicitudesStockState}
+            />
+          )}
 
-        {/* Tab 6: Carga Laboral & KM */}
-        {activeTab === 'carga_laboral' && (
-          <CargaLaboralView
-            data={cargaLaboral}
-            zonas={zonas}
-          />
-        )}
+          {/* Tab 5: Call Rate & Fabricantes */}
+          {activeTab === 'call_rate' && (
+            <CallRateAnalytics
+              data={callRate}
+            />
+          )}
 
-        {/* Tab 7: Repuestos & Despachos */}
-        {activeTab === 'repuestos' && (
-          <DespachosRepuestosView
-            despachos={despachos}
-            repuestos={repuestos}
-            stockAuditoria={stockAuditoria}
-            onRefreshAuditoria={handleRefresh}
-          />
-        )}
+          {/* Tab 6: Carga Laboral & KM */}
+          {activeTab === 'carga_laboral' && (
+            <CargaLaboralView
+              data={cargaLaboral}
+              zonas={zonas}
+            />
+          )}
 
-        {/* Tab 8: Repositorio Interno de Reportes */}
-        {activeTab === 'importador' && (
-          <ReportRepository
-            reports={reports}
-            onUploadSuccess={handleUploadSuccess}
-            onActivateReport={handleActivateReport}
-            onDeleteReport={handleDeleteReport}
-            onRestoreDefaultAgenda={handleRestoreDefaultAgenda}
-            activeReportName={activeReportName}
-            currentUser={currentUser}
-            onStockAuditSuccess={(newStock) => setStockAuditoria(newStock)}
-          />
-        )}
+          {/* Tab 7: Repuestos & Despachos */}
+          {activeTab === 'repuestos' && (
+            <DespachosRepuestosView
+              despachos={despachos}
+              repuestos={repuestos}
+              stockAuditoria={stockAuditoria}
+              onRefreshAuditoria={handleRefresh}
+            />
+          )}
 
-      </main>
+          {/* Tab 8: Repositorio Interno de Reportes */}
+          {activeTab === 'importador' && (
+            <ReportRepository
+              reports={reports}
+              onUploadSuccess={handleUploadSuccess}
+              onActivateReport={handleActivateReport}
+              onDeleteReport={handleDeleteReport}
+              onRestoreDefaultAgenda={handleRestoreDefaultAgenda}
+              activeReportName={activeReportName}
+              currentUser={currentUser}
+              onStockAuditSuccess={(newStock) => setStockAuditoria(newStock)}
+            />
+          )}
 
-      {/* Footer */}
-      <footer className="border-t border-slate-800/80 bg-slate-950 py-4 px-4 text-center text-xs text-slate-500">
-        <p>Portal Asistente Supervisor • Servicio Técnico Patagonia & Suroeste (IN BAR, IN CIP, IN NQN) • Operaciones Flow Pro</p>
-      </footer>
+          {/* Footer inside data scroll */}
+          <footer className="border-t border-white/5 py-4 text-center text-xs text-slate-500 mt-8">
+            <p>Portal Asistente Supervisor • Servicio Técnico Patagonia & Suroeste (IN BAR, IN CIP, IN NQN) • Operaciones Flow Pro</p>
+          </footer>
+
+        </main>
+      </div>
 
       {/* Modals */}
       <TicketDetailModal

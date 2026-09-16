@@ -11,12 +11,23 @@ echo ===========================================================================
 echo.
 echo Carpeta de trabajo: %CD%
 echo.
-echo [1/3] Procesando y cruzando todos los reportes Excel de Reportes...
+echo [1/4] Procesando y cruzando todos los reportes Excel de Reportes...
 call node scripts/process_all_reports_deep.cjs
 if %ERRORLEVEL% NEQ 0 (
     color 0C
     echo.
-    echo [ERROR] Hubo un error al procesar los archivos Excel.
+    echo [ERROR] Hubo un error al procesar los archivos Excel principales.
+    pause
+    exit /b %ERRORLEVEL%
+)
+
+echo.
+echo [2/4] Procesando Informe Semanal de Stock Fijo, Consumibles y Stock Regional...
+call node scripts/process_informe_stock_semanal.cjs
+if %ERRORLEVEL% NEQ 0 (
+    color 0C
+    echo.
+    echo [ERROR] Hubo un error al procesar el informe semanal de repuestos.
     pause
     exit /b %ERRORLEVEL%
 )

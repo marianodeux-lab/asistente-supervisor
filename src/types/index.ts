@@ -594,3 +594,54 @@ export interface StockAuditoriaState {
   totalTecnicosConDeuda: number;
   tecnicos: TecnicoStockAuditoria[];
 }
+
+// ==========================================
+// Stock Regional (Planta Mar del Plata) & Solicitudes Semanales
+// ==========================================
+
+export interface StockRegionalItem {
+  pn: string;
+  descripcion: string;
+  baseStock: string;
+  tipo: string;
+  cantMinima: number;
+  unidades: number;
+  diferencia: number;
+  estado: 'DISPONIBLE' | 'BAJO_MINIMO' | 'SIN_STOCK';
+  planta: string;
+  subzonaAsignada: string;
+}
+
+export interface SolicitudStockItem {
+  solicitud: string;
+  pn: string;
+  descripcion: string;
+  fecha: string;
+  cantidad: number;
+  cantStkCentral: number | null;
+  tieneStockCentral: boolean;
+  estadoCentral: 'DISPONIBLE_CENTRAL' | 'SIN_STOCK_CENTRAL';
+  tipoParte: string;
+  concepto: string;
+  tecnico: string;
+  tecnicoZona?: string;
+  region?: string;
+  zonaLocal?: string;
+}
+
+export interface SolicitudesStockState {
+  fechaCorte: string;
+  metricas: {
+    totalSolicitudes: number;
+    totalStockFijo: number;
+    totalConsumibles: number;
+    totalHerramientas: number;
+    conStockCentral: number;
+    sinStockCentral: number;
+    tecnicosInvolucrados: number;
+  };
+  tecnicosAtlanticaHabilitados: string[];
+  stockFijo: SolicitudStockItem[];
+  consumibles: SolicitudStockItem[];
+  herramientas: SolicitudStockItem[];
+}

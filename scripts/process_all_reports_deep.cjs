@@ -64,6 +64,23 @@ if (fs.existsSync(fileZonas)) {
   console.log(`✅ Zonas Técnicos Fuente de Verdad: ${zonasListRef.length} técnicos configurados`);
 }
 
+// Centro-Oeste technicians under Mariano Deus supervision
+const marianoCoTechs = new Set([
+  'xavier, hernan',
+  'bastias, carlos ignacio',
+  'ochoa, diego armando',
+  'fiorio, andres ezequiel',
+  'lorca biassi, enzo martin',
+  'olivencia, emmanuel matias',
+  'deus, mariano',
+  'gonzalez, elio fabian',
+  'lazzaro, leonardo',
+  'gonzalez, leonardo',
+  'torres, florencia',
+  'ibañez, pablo fernando',
+  'meneses, cristian'
+]);
+
 // Helper to parse dates into ISO / standard format
 function parseDateAny(val) {
   if (!val) return '2026-02-28';
@@ -634,7 +651,17 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
   const ws = wb.Sheets[wb.SheetNames[0]];
   const raw = XLSX.utils.sheet_to_json(ws, { defval: '' });
   
-  return raw.map(r => {
+  // Filter visible rows if sheet has Excel autofilter / hidden rows
+  const visibleRaw = [];
+  for (let i = 0; i < raw.length; i++) {
+    const rowMeta = ws['!rows'] && ws['!rows'][i + 1];
+    const isHidden = rowMeta && (rowMeta.hidden === true || rowMeta.hidden === 1);
+    if (!isHidden) {
+      visibleRaw.push(raw[i]);
+    }
+  }
+
+  return visibleRaw.map(r => {
     const ped = String(r['Pedido'] || r['PEDIDO'] || '').trim();
     if (!ped) return null;
 
@@ -646,6 +673,7 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
     const dir = String(r['Direccion'] || r['DIRECCION'] || '').trim();
     const rawZona = String(r['Zona'] || r['Zona Local'] || defaultZona || 'Patagonia').trim();
     const regTec = String(r['Region Tec'] || defaultZona || '').trim().toUpperCase();
+    const lidReg = String(r['Lider Region'] || '').trim();
     const detalleFalla = String(r['Detalle Falla'] || r['Desc Problema'] || r['Problema'] || '-').trim();
     
     // Column H ("M"): Móvil notificado / coordinado
@@ -677,32 +705,14 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       }
     }
 
-    // Filter Asignados: Only keep Mis Técnicos, AMBA, and Litoral
-    // AND CRITICAL RULE: only keep same day (fecha actual dinámica) and next day (día posterior)
+    // Filter Asignados: Only keep Mis Técnicos in Patagonia and Centro-Oeste that belong to supervisor
     if (tipoOrigen === 'Asignados') {
-      const isMyTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
-      const isAmba = regionFinal === 'AMBA' || ambaRegions.includes(regTec);
-      const isLitoral = regionFinal === 'LITORAL' || litoralRegions.includes(regTec);
-      const isPatagonia = regionFinal === 'PATAGONIA' || regionFinal === 'SUROESTE';
+      const isMyPatTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
+      const isMyCoTec = marianoCoTechs.has(tecAsignado.toLowerCase()) || lidReg === 'Deus, Mariano';
+      const isPatOrCo = regTec === 'PATAGONIA' || regTec === 'CENTRO-OESTE';
 
-      if (!isMyTec && !isAmba && !isLitoral && !isPatagonia) {
-        return null; // Discard NOA, Córdoba, Cuyo, etc.
-      }
-
-      // Filter Asignados strictly to same day (dynamic current date) and next day (día posterior)
-      const now = new Date();
-      const pad = (n) => String(n).padStart(2, '0');
-      const todayStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
-      const tomorrow = new Date(now);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const tomorrowStr = `${pad(tomorrow.getDate())}/${pad(tomorrow.getMonth() + 1)}/${tomorrow.getFullYear()}`;
-
-      const isTodayOrTomorrow = fCoorDate === todayStr || fCoorDate === tomorrowStr ||
-        fCoorDate === `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}` ||
-        fCoorDate === `${tomorrow.getDate()}/${tomorrow.getMonth() + 1}/${tomorrow.getFullYear()}`;
-
-      if (!isTodayOrTomorrow) {
-        return null; // Discard older dates or dates beyond tomorrow
+      if (!((isMyPatTec || isMyCoTec) && isPatOrCo)) {
+        return null; // Discard NOA, Córdoba, CABA, AMBA, Litoral, etc.
       }
     }
 
@@ -904,14 +914,36 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
   }).filter(Boolean);
 }
 
+const agendaAsignados = parseAgendaSheet(path.resolve(__dirname, '../Reportes/Agenda Diaria/Asignados.xls'), 'Asignados', 'Patagonia');
 const agendaPatagonia = parseAgendaSheet(path.resolve(__dirname, '../Reportes/Agenda Diaria/Pendientes Patagonia.xls'), 'Patagonia', 'Patagonia');
 const agendaSuroeste = parseAgendaSheet(path.resolve(__dirname, '../Reportes/Agenda Diaria/Pendientes Suroeste.xls'), 'Suroeste', 'Suroeste');
 const agendaAdicionales = parseAgendaSheet(path.resolve(__dirname, '../Reportes/Agenda Diaria/Adicionales.xls'), 'Adicionales', 'Patagonia');
-const agendaAsignados = parseAgendaSheet(path.resolve(__dirname, '../Reportes/Agenda Diaria/Asignados.xls'), 'Asignados', 'Patagonia');
 
-// Merge and deduplicate by clean Pedido
+// Merge and deduplicate by clean Pedido:
+// Asignados COT has first priority (definitive assigned field agenda for supervisor technicians)
 const unifiedAgendaMap = new Map();
-[...agendaPatagonia, ...agendaSuroeste, ...agendaAdicionales, ...agendaAsignados].forEach(t => {
+
+// 1. Asignados COT (49 pedidos reales asignados a técnicos de Patagonia y Centro-Oeste)
+agendaAsignados.forEach(t => {
+  unifiedAgendaMap.set(t.pedido, t);
+});
+
+// 2. Pendientes Patagonia que NO hayan sido asignados
+agendaPatagonia.forEach(t => {
+  if (!unifiedAgendaMap.has(t.pedido)) {
+    unifiedAgendaMap.set(t.pedido, t);
+  }
+});
+
+// 3. Pendientes Suroeste que NO hayan sido asignados
+agendaSuroeste.forEach(t => {
+  if (!unifiedAgendaMap.has(t.pedido)) {
+    unifiedAgendaMap.set(t.pedido, t);
+  }
+});
+
+// 4. Adicionales (AIEC) que no estén duplicados
+agendaAdicionales.forEach(t => {
   if (!unifiedAgendaMap.has(t.pedido)) {
     unifiedAgendaMap.set(t.pedido, t);
   }
@@ -919,7 +951,7 @@ const unifiedAgendaMap = new Map();
 
 const unifiedAgenda = Array.from(unifiedAgendaMap.values());
 fs.writeFileSync(path.join(outDir, 'agendaData.json'), JSON.stringify(unifiedAgenda, null, 2));
-console.log(`✅ Agenda Diaria Unificada: ${unifiedAgenda.length} pedidos combinados con filtros de región (Mis Técnicos + AMBA + Litoral)`);
+console.log(`✅ Agenda Diaria Unificada: ${unifiedAgenda.length} pedidos combinados (${agendaAsignados.length} Asignados COT + pendientes sin asignar)`);
 
 // 9. Generate Control de Inicio de Jornada Data (Primer Pedido del Día / Marcaje)
 let excelCI = [];

@@ -18,6 +18,23 @@ zonasReferencia.forEach(z => {
   misTecnicosNombres.add(normName);
 });
 
+// Centro-Oeste technicians under Mariano Deus supervision
+const marianoCoTechs = new Set([
+  'xavier, hernan',
+  'bastias, carlos ignacio',
+  'ochoa, diego armando',
+  'fiorio, andres ezequiel',
+  'lorca biassi, enzo martin',
+  'olivencia, emmanuel matias',
+  'deus, mariano',
+  'gonzalez, elio fabian',
+  'lazzaro, leonardo',
+  'gonzalez, leonardo',
+  'torres, florencia',
+  'ibañez, pablo fernando',
+  'meneses, cristian'
+]);
+
 // 2. Map Stock Movements from Buzón de Movimientos by Clean Pedido
 const buzonMap = new Map<string, MovimientoStockItem[]>();
 if (Array.isArray(buzonMovimientosData)) {
@@ -174,9 +191,17 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
             const modIdx = headers.findIndex(h => /modelo/i.test(h));
             const fVtoIdx = headers.findIndex(h => /vto|vencimiento/i.test(h));
 
+            const lidIdx = headers.findIndex(h => /lider/i.test(h));
+
             for (let i = headerIdx + 1; i < rawData.length; i++) {
               const row = rawData[i];
               if (!row || !row[pedIdx]) continue;
+
+              // Check if row is hidden by Excel autofilter
+              const rowMeta = (ws as any)['!rows'] && (ws as any)['!rows'][i];
+              if (rowMeta && (rowMeta.hidden === true || rowMeta.hidden === 1)) {
+                continue;
+              }
 
               const fullPed = String(row[pedIdx]).trim();
               const cleanPed = fullPed.split('-')[0].trim();
@@ -186,6 +211,7 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
               const tecZona = tecZonaIdx !== -1 && row[tecZonaIdx] ? String(row[tecZonaIdx]).trim() : tecAsignado;
               const rawZona = zonaIdx !== -1 && row[zonaIdx] ? String(row[zonaIdx]).trim() : defaultFileZona;
               const rawReg = regIdx !== -1 && row[regIdx] ? String(row[regIdx]).trim().toUpperCase() : defaultFileZona.toUpperCase();
+              const rawLid = lidIdx !== -1 && row[lidIdx] ? String(row[lidIdx]).trim() : '';
               const estado = estIdx !== -1 && row[estIdx] ? String(row[estIdx]).trim() : (isAdicionalesFile ? 'AIEC Abierto' : 'SEG Registrado');
               const mVal = mIdx !== -1 && row[mIdx] ? String(row[mIdx]).trim().toUpperCase() : '';
               const detalleFalla = fallaIdx !== -1 && row[fallaIdx] ? String(row[fallaIdx]).trim() : '-';
@@ -228,33 +254,14 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
                 }
               }
 
-              // Filter Asignados: Only keep Mis Técnicos, AMBA, and Litoral
-              // AND CRITICAL RULE: only keep same day (fecha actual dinámica) and next day (día posterior)
+              // Filter Asignados: Only keep Mis Técnicos in Patagonia and Centro-Oeste
               if (isAsignadosFile) {
-                const isMyTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
-                const isAmba = finalRegion === 'AMBA' || ambaRegions.includes(rawReg);
-                const isLitoral = finalRegion === 'LITORAL' || litoralRegions.includes(rawReg);
-                const isPatagonia = finalRegion === 'PATAGONIA' || finalRegion === 'SUROESTE';
+                const isMyPatTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
+                const isMyCoTec = marianoCoTechs.has(tecAsignado.toLowerCase()) || rawLid === 'Deus, Mariano';
+                const isPatOrCo = finalRegion === 'PATAGONIA' || finalRegion === 'CENTRO-OESTE';
 
-                if (!isMyTec && !isAmba && !isLitoral && !isPatagonia) {
-                  continue; // Skip NOA, Córdoba, Cuyo, etc.
-                }
-
-                // Filter Asignados strictly to same day (dynamic current date) and next day (día posterior)
-                const now = new Date();
-                const pad = (n: number) => String(n).padStart(2, '0');
-                const todayStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
-                const tomorrow = new Date(now);
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                const tomorrowStr = `${pad(tomorrow.getDate())}/${pad(tomorrow.getMonth() + 1)}/${tomorrow.getFullYear()}`;
-
-                const normFCoor = fCoorParsed.dateStr;
-                const isTodayOrTomorrow = normFCoor === todayStr || normFCoor === tomorrowStr || 
-                  normFCoor === `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}` ||
-                  normFCoor === `${tomorrow.getDate()}/${tomorrow.getMonth() + 1}/${tomorrow.getFullYear()}`;
-
-                if (!isTodayOrTomorrow) {
-                  continue; // Exclude orders from older dates or beyond tomorrow
+                if (!((isMyPatTec || isMyCoTec) && isPatOrCo)) {
+                  continue; // Skip NOA, Córdoba, CABA, AMBA, Litoral, etc.
                 }
               }
 

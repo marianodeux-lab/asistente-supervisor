@@ -19,7 +19,8 @@ import {
   ExternalLink,
   ChevronRight,
   Maximize2,
-  Minimize2
+  Minimize2,
+  Warehouse
 } from 'lucide-react';
 import { 
   HallAiService, 
@@ -86,10 +87,10 @@ export const HallAiAssistantModal: React.FC<HallAiAssistantModalProps> = ({
           id: 'welcome_1',
           sender: 'hall',
           timestamp: new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' }),
-          text: `### 🤖 Hola Mariano, soy Hall.
-Asistente de inteligencia artificial para la supervisión operativa de **Patagonia & Suroeste**.
+          text: `### 🔴 Hola Mariano, soy HAL IA.
+Asistente de inteligencia artificial táctico para la supervisión operativa de **Patagonia & Suroeste** (Sistema HAL 9000).
 
-He sincronizado los datos en vivo de tus **${operationalContext.tecnicos.length} técnicos**, tickets de SLA, reincidencias de cajeros automáticos y la **auditoría de stock de repuestos** (con **${operationalContext.stockAuditoria.totalAdeudadoRegion} piezas** en deuda real exigible y **${operationalContext.stockAuditoria.totalEnTransitoRegion} piezas** despachadas en tránsito con OR).
+He sincronizado los datos en vivo de tus **${operationalContext.tecnicos.length} técnicos**, tickets de SLA, reincidencias de cajeros automáticos, **Stock Regional de Planta Mar del Plata** y la **auditoría de stock de repuestos** (con **${operationalContext.stockAuditoria.totalAdeudadoRegion} piezas** en deuda real exigible y **${operationalContext.stockAuditoria.totalEnTransitoRegion} piezas** despachadas en tránsito con OR).
 
 Puedes hacerme cualquier pregunta o seleccionar uno de los análisis rápidos a continuación:`
         }
@@ -184,16 +185,20 @@ Puedes hacerme cualquier pregunta o seleccionar uno de los análisis rápidos a 
         <div className="px-6 py-4 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950/50 border-b border-slate-800 flex items-center justify-between gap-4">
           
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-purple-500/25 relative">
-              <Bot className="w-5 h-5" />
-              <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-slate-950 rounded-full"></span>
+            <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-red-500/80 shadow-lg shadow-red-500/50 flex-shrink-0 bg-black flex items-center justify-center">
+              <img src="/hal9000.webp" alt="HAL 9000" className="w-full h-full object-cover" />
+              <span className="absolute bottom-0 right-0 w-3 h-3 bg-red-500 border-2 border-slate-950 rounded-full animate-ping"></span>
+              <span className="absolute bottom-0 right-0 w-3 h-3 bg-red-500 border-2 border-slate-950 rounded-full"></span>
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-base font-black tracking-tight text-white flex items-center gap-2">
-                  Hall IA
+                  HAL IA
+                  <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/40 font-bold">
+                    HAL 9000
+                  </span>
                   <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                    Gemini 1.5 Flash
+                    Gemini Live
                   </span>
                 </h2>
               </div>
@@ -323,6 +328,15 @@ Puedes hacerme cualquier pregunta o seleccionar uno de los análisis rápidos a 
             <FileText className="w-3 h-3 text-purple-400" />
             <span>📝 Informe Ejecutivo Semanal</span>
           </button>
+
+          <button
+            onClick={() => handleSendMessage('Audita la disponibilidad del Stock Regional en Planta Mar del Plata y el deslinde de demoras de solicitudes con Central', 'STOCK_REGIONAL')}
+            disabled={isLoading}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition flex-shrink-0 font-semibold disabled:opacity-50"
+          >
+            <Warehouse className="w-3 h-3 text-cyan-400" />
+            <span>🏭 Stock Regional MDP & Central</span>
+          </button>
         </div>
 
         {/* Chat Messages Body */}
@@ -336,8 +350,8 @@ Puedes hacerme cualquier pregunta o seleccionar uno de los análisis rápidos a 
                 className={`flex gap-3 text-sm animate-fadeIn ${isUser ? 'justify-end' : 'justify-start'}`}
               >
                 {!isUser && (
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
-                    <Bot className="w-4 h-4" />
+                  <div className="w-8 h-8 rounded-full overflow-hidden border border-red-500/80 shadow-md shadow-red-500/40 flex items-center justify-center flex-shrink-0 bg-black">
+                    <img src="/hal9000.webp" alt="HAL" className="w-full h-full object-cover" />
                   </div>
                 )}
 
@@ -349,8 +363,8 @@ Puedes hacerme cualquier pregunta o seleccionar uno de los análisis rápidos a 
                   
                   {/* Message Header */}
                   <div className="flex items-center justify-between gap-4 pb-1 border-b border-white/10 text-[11px]">
-                    <span className={`font-bold ${isUser ? 'text-slate-950' : 'text-cyan-400'}`}>
-                      {isUser ? 'Mariano Deux (Supervisor)' : 'Hall IA'}
+                    <span className={`font-bold ${isUser ? 'text-slate-950' : 'text-red-400'}`}>
+                      {isUser ? 'Mariano Deux (Supervisor)' : 'HAL IA'}
                     </span>
                     <span className={isUser ? 'text-slate-800' : 'text-slate-500'}>
                       {msg.timestamp}
@@ -400,12 +414,12 @@ Puedes hacerme cualquier pregunta o seleccionar uno de los análisis rápidos a 
 
           {isLoading && (
             <div className="flex gap-3 items-center text-slate-400 text-xs animate-pulse">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white">
-                <Bot className="w-4 h-4" />
+              <div className="w-8 h-8 rounded-full overflow-hidden border border-red-500 shadow-md shadow-red-500/50 flex items-center justify-center bg-black flex-shrink-0">
+                <img src="/hal9000.webp" alt="HAL" className="w-full h-full object-cover" />
               </div>
               <div className="bg-slate-900 border border-slate-800 rounded-2xl px-4 py-3 text-slate-300 flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-spin" />
-                <span>Hall está analizando la matriz de datos y sintetizando respuesta...</span>
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                <span>HAL IA está analizando la matriz de datos y sintetizando respuesta...</span>
               </div>
             </div>
           )}
@@ -426,7 +440,7 @@ Puedes hacerme cualquier pregunta o seleccionar uno de los análisis rápidos a 
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder="Pregúntale a Hall sobre repuestos, deuda, SLAs, técnicos, Lunos o zonas..."
+              placeholder="Pregúntale a HAL IA sobre repuestos, stock regional, deuda, SLAs, técnicos, Lunos o zonas..."
               disabled={isLoading}
               className="flex-1 bg-slate-900 border border-slate-800 focus:border-cyan-500 rounded-2xl px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none transition shadow-inner"
             />

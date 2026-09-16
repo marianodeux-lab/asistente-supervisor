@@ -1473,6 +1473,21 @@
   ],
   "4328": [
     {
+      "pedido": "101215988",
+      "fecha": "2026-09-11",
+      "hora": "12:39:24",
+      "tecnico": "Lorca Biassi, Enzo Martin",
+      "instalaBase": "GR-020201-1056",
+      "instalaDesc": "SANKYO CARD READER ICT3Q8-3H0180-S PN 202011056",
+      "instalaQr": "0870",
+      "retiraBase": "GR-020201-1056",
+      "retiraDesc": "SANKYO CARD READER ICT3Q8-3H0180-S PN 202011056",
+      "retiraQr": "0171",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100249061Retirado con exito wf 100206147"
+    },
+    {
       "pedido": "101209195",
       "fecha": "2026-08-14",
       "hora": "11:30:56",
@@ -4146,6 +4161,38 @@
       "obs": "No se pudo grabar la instalacion ->No se pudo grabar el Formulario.Retirado con exito wf 100133627"
     }
   ],
+  "7157": [
+    {
+      "pedido": "101212849",
+      "fecha": "2026-09-10",
+      "hora": "10:52:27",
+      "tecnico": "Nicolai, Gustavo",
+      "instalaBase": "W0-000000-9651",
+      "instalaDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
+      "instalaQr": "3586",
+      "retiraBase": "W0-000000-9651",
+      "retiraDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
+      "retiraQr": "1616",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100249636Retirado con exito wf 100182586"
+    },
+    {
+      "pedido": "101212849",
+      "fecha": "2026-09-10",
+      "hora": "10:52:27",
+      "tecnico": "Nicolai, Gustavo",
+      "instalaBase": "W0-000000-9651",
+      "instalaDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
+      "instalaQr": "3583",
+      "retiraBase": "W0-000000",
+      "retiraDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
+      "retiraQr": "9651",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100249632Creado wf por idunico inexistente 100251236Retirado con exito wf 100251236"
+    }
+  ],
   "7182": [
     {
       "pedido": "101196130",
@@ -6260,6 +6307,21 @@
     }
   ],
   "10237": [
+    {
+      "pedido": "101215704",
+      "fecha": "2026-09-09",
+      "hora": "10:34:32",
+      "tecnico": "Pichin, Roberto",
+      "instalaBase": "49-209542-000F",
+      "instalaDesc": "CD RDR,MTZ,TRK1/2/3,RD/WRT,HIC WAS D/E",
+      "instalaQr": "3441",
+      "retiraBase": "49-209542-000F",
+      "retiraDesc": "CD RDR,MTZ,TRK1/2/3,RD/WRT,HIC WAS D/E",
+      "retiraQr": "3111",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Cambio de base con exito wf 100160130Instalado con exito wf 100160130Retirado con exito wf 100147090"
+    },
     {
       "pedido": "101197544",
       "fecha": "2026-09-02",
@@ -13326,6 +13388,23 @@
       "obs": "Cambio de base con exito wf 100184445Instalado con exito wf 100184445Retirado con exito wf 100173018"
     }
   ],
+  "20300": [
+    {
+      "pedido": "101216196",
+      "fecha": "2026-09-11",
+      "hora": "12:08:48",
+      "tecnico": "Moralez, Pablo",
+      "instalaBase": "W0-175025-6248",
+      "instalaDesc": "TP28 RECEIPT PRINTER PN 1750256248",
+      "instalaQr": "0217",
+      "retiraBase": "W0-175025",
+      "retiraDesc": "TP28 RECEIPT PRINTER PN 1750256248",
+      "retiraQr": "6248",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100177126Creado wf por idunico inexistente 100251319Retirado con exito wf 100251319"
+    }
+  ],
   "20301": [
     {
       "pedido": "101162534",
@@ -16931,6 +17010,21 @@
   ],
   "850831": [
     {
+      "pedido": "101215877",
+      "fecha": "2026-09-10",
+      "hora": "14:43:13",
+      "tecnico": "Nicolai, Gustavo",
+      "instalaBase": "49-209542-000F",
+      "instalaDesc": "CD RDR,MTZ,TRK1/2/3,RD/WRT,HIC WAS D/E",
+      "instalaQr": "1924",
+      "retiraBase": "49-209542-000F",
+      "retiraDesc": "CD RDR,MTZ,TRK1/2/3,RD/WRT,HIC WAS D/E",
+      "retiraQr": "4285",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100109190Retirado con exito wf 100217084"
+    },
+    {
       "pedido": "101211724",
       "fecha": "2026-09-07",
       "hora": "11:51:32",
@@ -18755,6 +18849,53 @@
       "obs": "Instalado con exito wf 100216451Retirado con exito wf 100203614"
     }
   ],
+  "057TI0001": [
+    {
+      "pedido": "101215936",
+      "fecha": "2026-09-11",
+      "hora": "11:37:16",
+      "tecnico": "Nicolai, Gustavo",
+      "instalaBase": "SV-223939-000D",
+      "instalaDesc": "ASSY,VALIDATOR,TYPE B,W/TENSIO",
+      "instalaQr": "0660",
+      "retiraBase": "SV-223939-000D",
+      "retiraDesc": "ASSY,VALIDATOR,TYPE B,W/TENSIO",
+      "retiraQr": "0169",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100104861Retirado con exito wf 100071272"
+    },
+    {
+      "pedido": "101205656",
+      "fecha": "2026-08-05",
+      "hora": "10:38:58",
+      "tecnico": "Nicolai, Gustavo",
+      "instalaBase": "49-222609-000B",
+      "instalaDesc": "CCA, ESCROW",
+      "instalaQr": "0810",
+      "retiraBase": "49-222609-000B",
+      "retiraDesc": "CCA, ESCROW",
+      "retiraQr": "0446",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100208808Retirado con exito wf 100124724"
+    },
+    {
+      "pedido": "101205656",
+      "fecha": "2026-08-05",
+      "hora": "10:38:58",
+      "tecnico": "Nicolai, Gustavo",
+      "instalaBase": "SV-217422-000F",
+      "instalaDesc": "ASSY,ESCROW,ENA,SERVICE,PACKAG was D",
+      "instalaQr": "0660",
+      "retiraBase": "SV-217422-000F",
+      "retiraDesc": "ASSY,ESCROW,ENA,SERVICE,PACKAG was D",
+      "retiraQr": "0991",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100122611Retirado con exito wf 100172625"
+    }
+  ],
   "008681061670": [
     {
       "pedido": "101215267",
@@ -18892,6 +19033,68 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Cambio de base con exito wf 100245471Instalado con exito wf 100245471Retirado con exito wf 100212778"
+    }
+  ],
+  "006583002170": [
+    {
+      "pedido": "101215487",
+      "fecha": "2026-09-09",
+      "hora": "10:58:00",
+      "tecnico": "Quiroga, Emmanuel",
+      "instalaBase": "GL-SB1015-000A",
+      "instalaDesc": "ALL IN ONE CON LIC. INCUIDA VERS ACTUAL PN SB1015Q",
+      "instalaQr": "0087",
+      "retiraBase": "GL-SB1015-000A",
+      "retiraDesc": "ALL IN ONE CON LIC. INCUIDA VERS ACTUAL PN SB1015Q",
+      "retiraQr": "0166",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100149234Retirado con exito wf 100176113"
+    },
+    {
+      "pedido": "101213036",
+      "fecha": "2026-09-04",
+      "hora": "14:08:23",
+      "tecnico": "Quiroga, Emmanuel",
+      "instalaBase": "SC-000017-000A",
+      "instalaDesc": "CHIP SIM CLARO",
+      "instalaQr": "0378",
+      "retiraBase": "SC-000017-000A",
+      "retiraDesc": "CHIP SIM CLARO",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100249428Creado wf por idunico inexistente 100251152Retirado con exito wf 100251152"
+    },
+    {
+      "pedido": "101213036",
+      "fecha": "2026-09-04",
+      "hora": "14:08:23",
+      "tecnico": "Quiroga, Emmanuel",
+      "instalaBase": "SC-RS123W-000A",
+      "instalaDesc": "ROUTER TELDAT SWITCH 4 PUERTOS 4G/LTE PN RCRSH123W4GLQAM",
+      "instalaQr": "1694",
+      "retiraBase": "SC-RS123W-000A",
+      "retiraDesc": "ROUTER TELDAT SWITCH 4 PUERTOS 4G/LTE PN RCRSH123W4GLQAM",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100248879Creado wf por idunico inexistente 100251151Retirado con exito wf 100251151"
+    },
+    {
+      "pedido": "101188736",
+      "fecha": "2026-07-24",
+      "hora": "17:30:02",
+      "tecnico": "Nicolai, Gustavo",
+      "instalaBase": "GL-000D50-000A",
+      "instalaDesc": "MODULO D50",
+      "instalaQr": "0368",
+      "retiraBase": "GL-000D50-000A",
+      "retiraDesc": "MODULO D50",
+      "retiraQr": "0197",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "No se pudo grabar la instalacion ->No se pudo grabar el Formulario.Retirado con exito wf 100161124"
     }
   ],
   "004677016470": [
@@ -19161,53 +19364,6 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Cambio de base con exito wf 100248688Instalado con exito wf 100248688Creado wf por idunico inexistente 100251159Retirado con exito wf 100251159"
-    }
-  ],
-  "006583002170": [
-    {
-      "pedido": "101213036",
-      "fecha": "2026-09-04",
-      "hora": "14:08:23",
-      "tecnico": "Quiroga, Emmanuel",
-      "instalaBase": "SC-000017-000A",
-      "instalaDesc": "CHIP SIM CLARO",
-      "instalaQr": "0378",
-      "retiraBase": "SC-000017-000A",
-      "retiraDesc": "CHIP SIM CLARO",
-      "retiraQr": "Sin QR",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100249428Creado wf por idunico inexistente 100251152Retirado con exito wf 100251152"
-    },
-    {
-      "pedido": "101213036",
-      "fecha": "2026-09-04",
-      "hora": "14:08:23",
-      "tecnico": "Quiroga, Emmanuel",
-      "instalaBase": "SC-RS123W-000A",
-      "instalaDesc": "ROUTER TELDAT SWITCH 4 PUERTOS 4G/LTE PN RCRSH123W4GLQAM",
-      "instalaQr": "1694",
-      "retiraBase": "SC-RS123W-000A",
-      "retiraDesc": "ROUTER TELDAT SWITCH 4 PUERTOS 4G/LTE PN RCRSH123W4GLQAM",
-      "retiraQr": "Sin QR",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100248879Creado wf por idunico inexistente 100251151Retirado con exito wf 100251151"
-    },
-    {
-      "pedido": "101188736",
-      "fecha": "2026-07-24",
-      "hora": "17:30:02",
-      "tecnico": "Nicolai, Gustavo",
-      "instalaBase": "GL-000D50-000A",
-      "instalaDesc": "MODULO D50",
-      "instalaQr": "0368",
-      "retiraBase": "GL-000D50-000A",
-      "retiraDesc": "MODULO D50",
-      "retiraQr": "0197",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "No se pudo grabar la instalacion ->No se pudo grabar el Formulario.Retirado con exito wf 100161124"
     }
   ],
   "006997002870": [
@@ -21557,38 +21713,6 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100239636Creado wf por idunico inexistente 100248869Retirado con exito wf 100248869"
-    }
-  ],
-  "057TI0001": [
-    {
-      "pedido": "101205656",
-      "fecha": "2026-08-05",
-      "hora": "10:38:58",
-      "tecnico": "Nicolai, Gustavo",
-      "instalaBase": "49-222609-000B",
-      "instalaDesc": "CCA, ESCROW",
-      "instalaQr": "0810",
-      "retiraBase": "49-222609-000B",
-      "retiraDesc": "CCA, ESCROW",
-      "retiraQr": "0446",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100208808Retirado con exito wf 100124724"
-    },
-    {
-      "pedido": "101205656",
-      "fecha": "2026-08-05",
-      "hora": "10:38:58",
-      "tecnico": "Nicolai, Gustavo",
-      "instalaBase": "SV-217422-000F",
-      "instalaDesc": "ASSY,ESCROW,ENA,SERVICE,PACKAG was D",
-      "instalaQr": "0660",
-      "retiraBase": "SV-217422-000F",
-      "retiraDesc": "ASSY,ESCROW,ENA,SERVICE,PACKAG was D",
-      "retiraQr": "0991",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100122611Retirado con exito wf 100172625"
     }
   ],
   "005124008870": [

@@ -334,12 +334,23 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
     return tickets.filter(t => t.esScVigente).length;
   }, [tickets]);
 
-  const scSinAsignar = scSinCoordinarCount;
-  const scAsignados = coordinadosCount;
-
   const totalAsignadosCOT = useMemo(() => {
     return tickets.filter(t => t.esAsignadoCOT).length;
   }, [tickets]);
+
+  // Pedidos de reportes Pendientes Patagonia y Suroeste que NO hayan sido asignados en COT
+  const pendientesPatagoniaSuroesteNoAsignados = useMemo(() => {
+    return tickets.filter(t => !t.esAsignadoCOT && (t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste'));
+  }, [tickets]);
+
+  // Total en Agenda = Asignados COT + Pedidos pendientes de Patagonia y Suroeste NO asignados
+  // (Si todos hubieran sido asignados, ambas tarjetas dicen exactamente lo mismo)
+  const totalEnAgenda = useMemo(() => {
+    return totalAsignadosCOT + pendientesPatagoniaSuroesteNoAsignados.length;
+  }, [totalAsignadosCOT, pendientesPatagoniaSuroesteNoAsignados]);
+
+  const scSinAsignar = pendientesPatagoniaSuroesteNoAsignados.length;
+  const scAsignados = totalAsignadosCOT;
 
   const mpDeficienteTotal = useMemo(() => {
     return tickets.filter(t => t.esMpDeficiente).length;
@@ -434,8 +445,18 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       if (selectedEstado !== 'ALL' && t.estado !== selectedEstado) return false;
 
       // Special Filter
+      if (specialFilter === 'ALL') {
+        // En Total en Agenda se visualizan los Asignados COT + los pendientes de Patagonia/Suroeste
+        // Los AIEC no coordinados se visualizan al hacer clic en 'AIEC Sin Coordinar'
+        if (t.esAdicional && !t.esAsignadoCOT && (!t.tecnico || t.tecnico.toLowerCase() === 'sin asignar')) {
+          return false;
+        }
+      }
       if (specialFilter === 'SC_PENDIENTES' && !t.esScVigente) return false;
-      if (specialFilter === 'SC_SIN_ASIGNAR' && (!t.esScVigente || !t.alertaSinAsignar)) return false;
+      if (specialFilter === 'SC_SIN_ASIGNAR') {
+        const isPendienteNoAsig = !t.esAsignadoCOT && (t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste');
+        if (!isPendienteNoAsig) return false;
+      }
       if (specialFilter === 'MP_DEFICIENTE' && !t.esMpDeficiente) return false;
       if (specialFilter === 'MOVIL_S' && !t.notificadoMovil && t.m !== 'S') return false;
       if (specialFilter === 'MP_PENDIENTE' && !t.alertaMpPendiente) return false;
@@ -508,7 +529,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       {/* Top Banner & Fast SLA Filter Tabs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
         
-        {/* CARD 1: TOTAL EN AGENDA (COORDINADOS + SIN COORDINAR SC & AIEC) */}
+        {/* CARD 1: TOTAL EN AGENDA (ASIGNADOS COT + PENDIENTES NO ASIGNADOS) */}
         <button
           onClick={() => { setSpecialFilter('ALL'); setSlaFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
@@ -523,12 +544,16 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           </div>
           
           <div className="flex items-baseline gap-2 mt-1">
-            <p className="text-2xl font-black text-white">{coordinadosCount}</p>
-            <span className="text-[10px] text-emerald-400 font-bold">coordinados</span>
+            <p className="text-2xl font-black text-white">{totalEnAgenda}</p>
+            <span className="text-[10px] text-emerald-400 font-bold">
+              {pendientesPatagoniaSuroesteNoAsignados.length > 0 
+                ? `${totalAsignadosCOT} asig. + ${pendientesPatagoniaSuroesteNoAsignados.length} pend.` 
+                : 'coordinados'}
+            </span>
           </div>
 
           <div className="mt-2 pt-1.5 border-t border-slate-800 text-[10px] space-y-1">
-            {/* SC Sin Coordinar (Riesgo SLA) */}
+            {/* Sin Asignar en Patagonia / Suroeste */}
             <div 
               onClick={(e) => {
                 e.stopPropagation();
@@ -538,13 +563,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
                 specialFilter === 'SC_SIN_ASIGNAR' ? 'bg-red-500/20 text-red-300 font-bold' : 'text-red-400/90 hover:bg-red-950/40'
               }`}
-              title="Filtrar pedidos SC del reporte Pendientes sin coordinar (Riesgo de pagar SLA)"
+              title="Filtrar pedidos de los reportes pendientes que no fueron asignados en COT (Riesgo SLA)"
             >
               <span className="flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span>
-                SC Sin Coordinar (Riesgo SLA):
+                Sin Asignar (Pat/Sur):
               </span>
-              <strong className="text-red-400 font-mono font-black">{scSinCoordinarCount}</strong>
+              <strong className="text-red-400 font-mono font-black">{pendientesPatagoniaSuroesteNoAsignados.length}</strong>
             </div>
 
             {/* AIEC Sin Coordinar */}
@@ -599,7 +624,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               <span>Distribuidos por COT:</span>
               <span className="text-[10px] text-blue-300 font-mono font-bold">100% Flow</span>
             </div>
-            <p className="text-[10px] text-slate-400 truncate">Adicionales, MP y SC asignados</p>
+            <p className="text-[10px] text-slate-400 truncate">Patagonia & Centro-Oeste</p>
           </div>
         </button>
 
