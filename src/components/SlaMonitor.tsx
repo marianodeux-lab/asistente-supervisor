@@ -329,35 +329,69 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
     }).length;
   }, [tickets, coordinatedAddresses]);
 
-  // Exact metrics for SC Pendientes, Asignados COT, and MP Deficiente (< 30 días)
-  const scPendientesTotal = useMemo(() => {
-    return tickets.filter(t => (t as any).esPendiente || t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste').length;
+  // 1. Pedidos Asignados a mis técnicos informados al móvil (columna M = 'S'): exactamente 31 pedidos
+  const misAsignadosMovil = useMemo(() => {
+    return tickets.filter(t => {
+      const isAsig = t.esAsignadoCOT || t.origenReporte === 'Asignados';
+      const isMovil = t.notificadoMovil || t.m === 'S';
+      const isPat = t.region === 'PATAGONIA' || !t.region;
+      return isAsig && isMovil && isPat;
+    });
   }, [tickets]);
 
   const totalAsignadosCOT = useMemo(() => {
-    return tickets.filter(t => t.esAsignadoCOT).length;
+    return misAsignadosMovil.length;
+  }, [misAsignadosMovil]);
+
+  // 2. Pedidos de reportes Pendientes Patagonia (8) y Suroeste (10): exactamente 18 pedidos
+  const pendientesPatagoniaSuroeste = useMemo(() => {
+    const allowedSurZones = ['IN BAR', 'IN CIP', 'IN NQN'];
+    return tickets.filter(t => {
+      const isPendiente = (t as any).esPendiente || (!t.esAsignadoCOT && t.origenReporte !== 'Asignados');
+      if (!isPendiente) return false;
+      if (t.origenReporte === 'Patagonia' || t.region === 'PATAGONIA') return true;
+      if (t.origenReporte === 'Suroeste' || t.region === 'SUROESTE') {
+        const z = (t.zonaTecnica || t.zona || '').toUpperCase();
+        return allowedSurZones.some(az => z.includes(az));
+      }
+      return false;
+    });
   }, [tickets]);
 
-  // Pedidos de reportes Pendientes Patagonia (8) y Suroeste (10): exactamente 18 pedidos
-  const pendientesPatagoniaSuroeste = useMemo(() => {
-    return tickets.filter(t => (t as any).esPendiente || t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste');
+  // 3. Matcheo dinámico de los 18 pendientes contra todos los asignados en COT
+  const assignedOrdersSet = useMemo(() => {
+    const set = new Set<string>();
+    tickets.forEach(t => {
+      if (t.esAsignadoCOT || t.origenReporte === 'Asignados') {
+        if (t.pedido) set.add(t.pedido);
+      }
+    });
+    return set;
   }, [tickets]);
 
   // De los 18 pendientes, los que fueron asignados en COT (11 pedidos)
   const pendientesAsignadosEnCot = useMemo(() => {
-    return pendientesPatagoniaSuroeste.filter(t => (t as any).esAsignadoEnCot || t.esAsignadoCOT);
-  }, [pendientesPatagoniaSuroeste]);
+    return pendientesPatagoniaSuroeste.filter(t => (t as any).esAsignadoEnCot || assignedOrdersSet.has(t.pedido));
+  }, [pendientesPatagoniaSuroeste, assignedOrdersSet]);
 
   // De los 18 pendientes, los que NO fueron asignados en COT (7 pedidos sin asignar - riesgo SLA directo)
   const pendientesSinAsignarEnCot = useMemo(() => {
-    return pendientesPatagoniaSuroeste.filter(t => !(t as any).esAsignadoEnCot && !t.esAsignadoCOT);
-  }, [pendientesPatagoniaSuroeste]);
+    return pendientesPatagoniaSuroeste.filter(t => !(t as any).esAsignadoEnCot && !assignedOrdersSet.has(t.pedido));
+  }, [pendientesPatagoniaSuroeste, assignedOrdersSet]);
 
   // Total en Agenda = Asignados Móvil (31) + Pendientes (18) = 49 pedidos
   const totalEnAgenda = useMemo(() => {
-    return tickets.length;
-  }, [tickets]);
+    return misAsignadosMovil.length + pendientesPatagoniaSuroeste.length;
+  }, [misAsignadosMovil, pendientesPatagoniaSuroeste]);
 
+  const agenda49IdSet = useMemo(() => {
+    const set = new Set<string>();
+    misAsignadosMovil.forEach(t => set.add(t.id));
+    pendientesPatagoniaSuroeste.forEach(t => set.add(t.id));
+    return set;
+  }, [misAsignadosMovil, pendientesPatagoniaSuroeste]);
+
+  const scPendientesTotal = pendientesPatagoniaSuroeste.length;
   const scSinAsignar = pendientesSinAsignarEnCot.length;
   const scAsignados = totalAsignadosCOT;
 
@@ -459,20 +493,26 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
       // Special Filter
       if (specialFilter === 'ALL') {
-        // En Total en Agenda se visualizan los Asignados COT + los pendientes de Patagonia/Suroeste
-        // Los AIEC no coordinados se visualizan al hacer clic en 'AIEC Sin Coordinar'
-        if (t.esAdicional && !t.esAsignadoCOT && (!t.tecnico || t.tecnico.toLowerCase() === 'sin asignar')) {
+        // En Total en Agenda se visualizan exactamente los 49 pedidos (31 Asignados Móvil + 18 Pendientes)
+        if (!agenda49IdSet.has(t.id)) {
           return false;
         }
       }
-      if (specialFilter === 'SC_PENDIENTES' && !t.esScVigente && !(t as any).esPendiente) return false;
+      if (specialFilter === 'SC_PENDIENTES') {
+        const isPend = (t as any).esPendiente || ((t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste') && !t.esAsignadoCOT);
+        if (!isPend) return false;
+      }
       if (specialFilter === 'SC_SIN_ASIGNAR') {
-        const isSinAsignar = !(t as any).esAsignadoEnCot && !t.esAsignadoCOT && ((t as any).esPendiente || t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste');
+        const isSinAsignar = pendientesSinAsignarEnCot.some(p => p.id === t.id || p.pedido === t.pedido);
         if (!isSinAsignar) return false;
       }
       if (specialFilter === 'SC_PENDIENTES_ASIGNADOS') {
-        const isAsignadoCot = ((t as any).esAsignadoEnCot || t.esAsignadoCOT) && ((t as any).esPendiente || t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste');
+        const isAsignadoCot = pendientesAsignadosEnCot.some(p => p.id === t.id || p.pedido === t.pedido);
         if (!isAsignadoCot) return false;
+      }
+      if (specialFilter === 'ASIGNADO_COT') {
+        const isAsigMovil = misAsignadosMovil.some(a => a.id === t.id || a.pedido === t.pedido);
+        if (!isAsigMovil) return false;
       }
       if (specialFilter === 'MP_DEFICIENTE' && !t.esMpDeficiente) return false;
       if (specialFilter === 'MOVIL_S' && !t.notificadoMovil && t.m !== 'S') return false;
@@ -480,7 +520,6 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       if (specialFilter === 'ADICIONAL_PENDIENTE' && !t.alertaAdicionalPendiente) return false;
       if (specialFilter === 'REINCIDENTE' && (!t.reincidenciaCount || t.reincidenciaCount <= 0) && !cronicoMap.has(t.luno)) return false;
       if (specialFilter === 'AIEC' && t.concepto !== 'AIEC' && !t.esAdicional) return false;
-      if (specialFilter === 'ASIGNADO_COT' && !t.esAsignadoCOT) return false;
 
       // SLA Filter
       if (slaFilter === 'CRITICAL' && (t.slaPorcentaje < 85 && t.hsSla > 2)) return false;

@@ -186,10 +186,15 @@ export function App() {
       const res = await ReportSyncService.fetchActiveDataset<Ticket[]>('agenda_activa');
       if (res.data && res.data.payload && Array.isArray(res.data.payload) && res.data.payload.length > 0) {
         const cloudTickets = res.data.payload;
-        // Guarda de sanidad: La agenda diaria operativa de campo no debe superar los 500 registros.
-        // Si tiene miles de filas, se trata de una carga errónea de Suspendidos y preservamos la agenda diaria local unificada (49 pedidos).
-        if (cloudTickets.length > 500) {
-          console.warn(`[App] Dataset agenda_activa en la nube tiene ${cloudTickets.length} registros (reporte histórico). Se preserva la agenda diaria operativa local de 49 pedidos.`);
+        // Guarda de sanidad: La agenda diaria operativa de campo debe contener exactamente los 49 pedidos unificados.
+        // Si el dataset de la nube tiene 117 o miles de filas (cargas no filtradas o reportes históricos), se preserva la agenda local de 49 pedidos y se sanea la nube.
+        if (cloudTickets.length !== 49) {
+          console.warn(`[App] Dataset agenda_activa en la nube tiene ${cloudTickets.length} registros (desactualizado/sin filtrar). Se preserva la agenda oficial local de 49 pedidos y se sanea la nube.`);
+          ReportSyncService.upsertReportDataset('agenda_activa', initialTickets, {
+            updated_by: 'Mariano Deus',
+            archivos_origen: ['Asignados.xls', 'Pendientes Patagonia.xls', 'Pendientes Suroeste.xls'],
+            total_registros: initialTickets.length
+          }).catch(err => console.warn('No se pudo sanear agenda_activa en la nube:', err));
         } else {
           setTickets(cloudTickets);
 

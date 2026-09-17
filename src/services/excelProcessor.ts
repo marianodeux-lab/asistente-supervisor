@@ -259,28 +259,20 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
                 continue;
               }
 
-              // Filter Asignados: Only keep Mis Técnicos in Patagonia and Suroeste
+              // Filter Asignados: Only keep Mis Técnicos in Patagonia with M === 'S' (informados al móvil: 31 pedidos exactos)
               if (isAsignadosFile) {
-                const isMyPatTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
-                const isMyCoTec = marianoCoTechs.has(tecAsignado.toLowerCase()) || rawLid === 'Deus, Mariano';
-                const isPatOrSur = finalRegion === 'PATAGONIA' || finalRegion === 'SUROESTE';
-
-                if (!((isMyPatTec || isMyCoTec) && isPatOrSur)) {
-                  continue; // Skip NOA, Córdoba, CABA, AMBA, Litoral, Centro-Oeste, etc.
+                const isM_S = mVal === 'S';
+                const isMyPatTec = rawReg === 'PATAGONIA' || rawLid === 'Hernandez, Marcos Alberto' || misTecnicosNombres.has(tecAsignado.toLowerCase());
+                if (!isM_S || !isMyPatTec) {
+                  continue;
                 }
               }
 
-              // Filter Suroeste if necessary
-              if (isSuroesteFile || finalRegion === 'SUROESTE') {
-                const isAllowed = allowedSuroesteZones.some(z => 
-                  loc.toLowerCase().includes(z.toLowerCase()) || 
-                  dir.toLowerCase().includes(z.toLowerCase()) || 
-                  rawZona.toLowerCase().includes(z.toLowerCase()) ||
-                  tecAsignado.toLowerCase().includes('lazzaro') ||
-                  tecAsignado.toLowerCase().includes('ibañez') ||
-                  tecAsignado.toLowerCase().includes('torres')
-                );
-                if (!isAllowed) continue;
+              // Filter Suroeste Pendientes: Strictly keep the 3 supervisor zones (IN BAR, IN CIP, IN NQN: 10 pedidos exactos)
+              if (isSuroesteFile || defaultFileZona === 'Suroeste') {
+                const isAllowedZone = allowedSuroesteZones.includes(rawZona) || 
+                                      allowedSuroesteZones.some(z => rawZona.toUpperCase().includes(z) || loc.toUpperCase().includes(z));
+                if (!isAllowedZone) continue;
               }
 
               // Cross-reference with Buzón de Movimientos (Repuestos / Stock Fijo)
