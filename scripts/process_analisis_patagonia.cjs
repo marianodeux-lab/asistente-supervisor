@@ -161,6 +161,12 @@ function processSlaFile(filePath, isSuroeste = false) {
       return;
     }
 
+    // Regla: En el Reporte SLA solo deben aparecer los cierres CEF, CEFIC y COMPL. El resto debe ser excluido.
+    const codCierre = String(r['Cod Cierre'] || r['CODIGOCIERRE'] || '').trim().toUpperCase();
+    if (codCierre !== 'CEF' && codCierre !== 'CEFIC' && codCierre !== 'COMPL') {
+      return;
+    }
+
     const rawFechaFin = r['Fecha Fin'] || r['FECHA FIN'] || r['Marca Fin'];
     const rawHoraFin = r['Hora Fin'] || r['HORA FIN'] || '';
     const marcaFinStr = excelDateToString(rawFechaFin, true, rawHoraFin);

@@ -5,9 +5,9 @@
   "fechaActualizacionTelca": "16/09/2026",
   "fuente": "Reportes Activos (Patagonia & Suroeste)",
   "totalSuspendidos": 6945,
-  "totalSla": 8425,
+  "totalSla": 3773,
   "totalTelca": 11220,
-  "repuestosUtilizadosSla": 748,
-  "pctRepuestosSla": 8.9,
-  "totalGeneral": 26590
+  "repuestosUtilizadosSla": 744,
+  "pctRepuestosSla": 19.7,
+  "totalGeneral": 21938
 }
