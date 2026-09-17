@@ -80,7 +80,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
   const [selectedTecnico, setSelectedTecnico] = useState<string>('ALL');
   const [selectedCliente, setSelectedCliente] = useState<string>('ALL');
   const [selectedEstado, setSelectedEstado] = useState<string>('ALL');
-  const [specialFilter, setSpecialFilter] = useState<'ALL' | 'SC_PENDIENTES' | 'SC_SIN_ASIGNAR' | 'MP_DEFICIENTE' | 'REINCIDENTE' | 'ASIGNADO_COT' | 'MOVIL_S' | 'MP_PENDIENTE' | 'ADICIONAL_PENDIENTE' | 'AIEC'>('ALL');
+  const [specialFilter, setSpecialFilter] = useState<'ALL' | 'SC_PENDIENTES' | 'SC_SIN_ASIGNAR' | 'SC_PENDIENTES_ASIGNADOS' | 'MP_DEFICIENTE' | 'REINCIDENTE' | 'ASIGNADO_COT' | 'MOVIL_S' | 'MP_PENDIENTE' | 'ADICIONAL_PENDIENTE' | 'AIEC'>('ALL');
   const [slaFilter, setSlaFilter] = useState<'ALL' | 'CRITICAL' | 'WARNING' | 'OK'>('ALL');
   const [sortBy, setSortBy] = useState<'sla_desc' | 'sla_asc' | 'pedido' | 'cliente' | 'fecha'>('sla_desc');
 
@@ -331,25 +331,34 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
   // Exact metrics for SC Pendientes, Asignados COT, and MP Deficiente (< 30 días)
   const scPendientesTotal = useMemo(() => {
-    return tickets.filter(t => t.esScVigente).length;
+    return tickets.filter(t => (t as any).esPendiente || t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste').length;
   }, [tickets]);
 
   const totalAsignadosCOT = useMemo(() => {
     return tickets.filter(t => t.esAsignadoCOT).length;
   }, [tickets]);
 
-  // Pedidos de reportes Pendientes Patagonia y Suroeste que NO hayan sido asignados en COT
-  const pendientesPatagoniaSuroesteNoAsignados = useMemo(() => {
-    return tickets.filter(t => !t.esAsignadoCOT && (t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste'));
+  // Pedidos de reportes Pendientes Patagonia (8) y Suroeste (10): exactamente 18 pedidos
+  const pendientesPatagoniaSuroeste = useMemo(() => {
+    return tickets.filter(t => (t as any).esPendiente || t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste');
   }, [tickets]);
 
-  // Total en Agenda = Asignados COT + Pedidos pendientes de Patagonia y Suroeste NO asignados
-  // (Si todos hubieran sido asignados, ambas tarjetas dicen exactamente lo mismo)
-  const totalEnAgenda = useMemo(() => {
-    return totalAsignadosCOT + pendientesPatagoniaSuroesteNoAsignados.length;
-  }, [totalAsignadosCOT, pendientesPatagoniaSuroesteNoAsignados]);
+  // De los 18 pendientes, los que fueron asignados en COT (11 pedidos)
+  const pendientesAsignadosEnCot = useMemo(() => {
+    return pendientesPatagoniaSuroeste.filter(t => (t as any).esAsignadoEnCot || t.esAsignadoCOT);
+  }, [pendientesPatagoniaSuroeste]);
 
-  const scSinAsignar = pendientesPatagoniaSuroesteNoAsignados.length;
+  // De los 18 pendientes, los que NO fueron asignados en COT (7 pedidos sin asignar - riesgo SLA directo)
+  const pendientesSinAsignarEnCot = useMemo(() => {
+    return pendientesPatagoniaSuroeste.filter(t => !(t as any).esAsignadoEnCot && !t.esAsignadoCOT);
+  }, [pendientesPatagoniaSuroeste]);
+
+  // Total en Agenda = Asignados Móvil (31) + Pendientes (18) = 49 pedidos
+  const totalEnAgenda = useMemo(() => {
+    return tickets.length;
+  }, [tickets]);
+
+  const scSinAsignar = pendientesSinAsignarEnCot.length;
   const scAsignados = totalAsignadosCOT;
 
   const mpDeficienteTotal = useMemo(() => {
@@ -456,10 +465,14 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           return false;
         }
       }
-      if (specialFilter === 'SC_PENDIENTES' && !t.esScVigente) return false;
+      if (specialFilter === 'SC_PENDIENTES' && !t.esScVigente && !(t as any).esPendiente) return false;
       if (specialFilter === 'SC_SIN_ASIGNAR') {
-        const isPendienteNoAsig = !t.esAsignadoCOT && (t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste');
-        if (!isPendienteNoAsig) return false;
+        const isSinAsignar = !(t as any).esAsignadoEnCot && !t.esAsignadoCOT && ((t as any).esPendiente || t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste');
+        if (!isSinAsignar) return false;
+      }
+      if (specialFilter === 'SC_PENDIENTES_ASIGNADOS') {
+        const isAsignadoCot = ((t as any).esAsignadoEnCot || t.esAsignadoCOT) && ((t as any).esPendiente || t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste');
+        if (!isAsignadoCot) return false;
       }
       if (specialFilter === 'MP_DEFICIENTE' && !t.esMpDeficiente) return false;
       if (specialFilter === 'MOVIL_S' && !t.notificadoMovil && t.m !== 'S') return false;
@@ -533,7 +546,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       {/* Top Banner & Fast SLA Filter Tabs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
         
-        {/* CARD 1: TOTAL EN AGENDA (ASIGNADOS COT + PENDIENTES NO ASIGNADOS) */}
+        {/* CARD 1: TOTAL EN AGENDA (49 PEDIDOS: 31 ASIGNADOS + 18 PENDIENTES) */}
         <button
           onClick={() => { setSpecialFilter('ALL'); setSlaFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
@@ -550,13 +563,30 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           <div className="flex items-baseline gap-2 mt-1">
             <p className="text-2xl font-black text-white">{totalEnAgenda}</p>
             <span className="text-[10px] text-emerald-400 font-bold">
-              {pendientesPatagoniaSuroesteNoAsignados.length > 0 
-                ? `${totalAsignadosCOT} asig. + ${pendientesPatagoniaSuroesteNoAsignados.length} pend.` 
-                : 'coordinados'}
+              {`${totalAsignadosCOT} asig. + ${pendientesPatagoniaSuroeste.length} pend.`}
             </span>
           </div>
 
           <div className="mt-2 pt-1.5 border-t border-slate-800 text-[10px] space-y-1">
+            {/* Pendientes Asignados en COT */}
+            <div 
+              onClick={(e) => {
+                e.stopPropagation();
+                setSpecialFilter('SC_PENDIENTES_ASIGNADOS');
+                setSlaFilter('ALL');
+              }}
+              className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
+                specialFilter === 'SC_PENDIENTES_ASIGNADOS' ? 'bg-emerald-500/20 text-emerald-300 font-bold' : 'text-emerald-400/90 hover:bg-emerald-950/40'
+              }`}
+              title="De los 18 pendientes, pedidos que ya figuran asignados en el reporte de Asignados"
+            >
+              <span className="flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Pend. Asignados COT:
+              </span>
+              <strong className="text-emerald-400 font-mono font-bold">{pendientesAsignadosEnCot.length}</strong>
+            </div>
+
             {/* Sin Asignar en Patagonia / Suroeste */}
             <div 
               onClick={(e) => {
@@ -567,44 +597,18 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
                 specialFilter === 'SC_SIN_ASIGNAR' ? 'bg-red-500/20 text-red-300 font-bold' : 'text-red-400/90 hover:bg-red-950/40'
               }`}
-              title="Filtrar pedidos de los reportes pendientes que no fueron asignados en COT (Riesgo SLA)"
+              title="Filtrar pedidos de los reportes pendientes que no fueron asignados en COT (Riesgo SLA directo)"
             >
               <span className="flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span>
                 Sin Asignar (Pat/Sur):
               </span>
-              <strong className="text-red-400 font-mono font-black">{pendientesPatagoniaSuroesteNoAsignados.length}</strong>
-            </div>
-
-            {/* AIEC Sin Coordinar */}
-            <div 
-              onClick={(e) => {
-                e.stopPropagation();
-                setSpecialFilter('AIEC');
-                setSlaFilter('ALL');
-              }}
-              className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
-                specialFilter === 'AIEC' ? 'bg-cyan-500/20 text-cyan-300 font-bold' : 'text-cyan-400/90 hover:bg-cyan-950/40'
-              }`}
-              title="Filtrar pedidos AIEC sin coordinar (Sin SLA pero oportuno para aprovechar visita si coincide domicilio)"
-            >
-              <span className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                AIEC Sin Coordinar:
-              </span>
-              <div className="flex items-center gap-1">
-                <strong className="text-cyan-300 font-mono font-bold">{aiecSinCoordinarCount}</strong>
-                {aiecMismoDomicilioCount > 0 && (
-                  <span className="text-[9px] bg-cyan-950 border border-cyan-700 text-cyan-200 px-1 rounded font-bold" title={`${aiecMismoDomicilioCount} equipo(s) AIEC comparten domicilio con un pedido ya coordinado hoy`}>
-                    📍 {aiecMismoDomicilioCount} en mismo dom.
-                  </span>
-                )}
-              </div>
+              <strong className="text-red-400 font-mono font-black">{pendientesSinAsignarEnCot.length}</strong>
             </div>
           </div>
         </button>
 
-        {/* CARD 2: ASIGNADOS FLOW COT */}
+        {/* CARD 2: ASIGNADOS FLOW COT (31 PEDIDOS CON MÓVIL S) */}
         <button
           onClick={() => { setSpecialFilter('ASIGNADO_COT'); setSlaFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
@@ -625,10 +629,10 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
           <div className="mt-2 pt-1.5 border-t border-slate-800 text-[10px] space-y-0.5 text-slate-300">
             <div className="flex items-center justify-between">
-              <span>Distribuidos por COT:</span>
-              <span className="text-[10px] text-blue-300 font-mono font-bold">100% Flow</span>
+              <span>Informados al móvil:</span>
+              <span className="text-[10px] text-blue-300 font-mono font-bold">M = 'S' ({totalAsignadosCOT})</span>
             </div>
-            <p className="text-[10px] text-slate-400 truncate">Patagonia & Centro-Oeste</p>
+            <p className="text-[10px] text-slate-400 truncate">Patagonia (Mis Técnicos)</p>
           </div>
         </button>
 

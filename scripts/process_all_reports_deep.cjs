@@ -707,33 +707,28 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       }
     }
 
+    const patagoniaRegions = ['PATAGONIA'];
+    const allowedSuroesteZones = ['IN BAR', 'IN CIP', 'IN NQN'];
+
     // STRICT REGIONAL FILTER: Discard any ticket outside Patagonia & Suroeste
     if (regionFinal !== 'PATAGONIA' && regionFinal !== 'SUROESTE') {
       return null;
     }
 
-    // Filter Asignados: Only keep Mis Técnicos in Patagonia and Suroeste that belong to supervisor
+    // Filter Asignados: Only keep Mis Técnicos in Patagonia with M === 'S' (informados al móvil: 31 pedidos exactos)
     if (tipoOrigen === 'Asignados') {
-      const isMyPatTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
-      const isMyCoTec = marianoCoTechs.has(tecAsignado.toLowerCase()) || lidReg === 'Deus, Mariano';
-      const isPatOrSur = regionFinal === 'PATAGONIA' || regionFinal === 'SUROESTE';
-
-      if (!((isMyPatTec || isMyCoTec) && isPatOrSur)) {
-        return null; // Discard NOA, Córdoba, CABA, AMBA, Litoral, etc.
+      const isM_S = mValue === 'S';
+      const isMyPatTec = regTec === 'PATAGONIA' || lidReg === 'Hernandez, Marcos Alberto' || misTecnicosNombres.has(tecAsignado.toLowerCase());
+      if (!isM_S || !isMyPatTec) {
+        return null;
       }
     }
 
-    // Filter Suroeste if necessary
-    if (defaultZona === 'Suroeste' || regionFinal === 'SUROESTE') {
-      const isAllowed = allowedSuroesteZones.some(z => 
-        loc.toLowerCase().includes(z.toLowerCase()) || 
-        dir.toLowerCase().includes(z.toLowerCase()) || 
-        rawZona.toLowerCase().includes(z.toLowerCase()) ||
-        tecAsignado.toLowerCase().includes('lazzaro') ||
-        tecAsignado.toLowerCase().includes('ibañez') ||
-        tecAsignado.toLowerCase().includes('torres')
-      );
-      if (!isAllowed) return null;
+    // Filter Suroeste Pendientes: Strictly keep the 3 supervisor zones (IN BAR, IN CIP, IN NQN: 10 pedidos exactos)
+    if (tipoOrigen === 'Suroeste' || defaultZona === 'Suroeste') {
+      const isAllowedZone = allowedSuroesteZones.includes(rawZona) || 
+                            allowedSuroesteZones.some(z => rawZona.toUpperCase().includes(z) || loc.toUpperCase().includes(z));
+      if (!isAllowedZone) return null;
     }
 
     let slaVal = 0;
@@ -926,39 +921,54 @@ const agendaPatagonia = parseAgendaSheet(path.resolve(__dirname, '../Reportes/Ag
 const agendaSuroeste = parseAgendaSheet(path.resolve(__dirname, '../Reportes/Agenda Diaria/Pendientes Suroeste.xls'), 'Suroeste', 'Suroeste');
 const agendaAdicionales = parseAgendaSheet(path.resolve(__dirname, '../Reportes/Agenda Diaria/Adicionales.xls'), 'Adicionales', 'Patagonia');
 
-// Merge and deduplicate by clean Pedido:
-// Asignados COT has first priority (definitive assigned field agenda for supervisor technicians)
-const unifiedAgendaMap = new Map();
+// Lookup map from all Asignados.xls to cross-match whether the 18 pending orders were assigned in COT
+const asigLookupMap = new Map();
+if (fs.existsSync(path.resolve(__dirname, '../Reportes/Agenda Diaria/Asignados.xls'))) {
+  const wbAllAsig = XLSX.readFile(path.resolve(__dirname, '../Reportes/Agenda Diaria/Asignados.xls'));
+  const rawAllAsig = XLSX.utils.sheet_to_json(wbAllAsig.Sheets[wbAllAsig.SheetNames[0]], { defval: '' });
+  rawAllAsig.forEach(r => {
+    const p = String(r['Pedido'] || r['PEDIDO'] || '').split('-')[0].trim();
+    if (p) asigLookupMap.set(p, r);
+  });
+}
 
-// 1. Asignados COT (49 pedidos reales asignados a técnicos de Patagonia y Centro-Oeste)
-agendaAsignados.forEach(t => {
-  unifiedAgendaMap.set(t.pedido, t);
+// 1. Asignados a técnicos con móvil (M='S'): exactamente 31 pedidos
+const agendaAsignadosUnicos = agendaAsignados.map(t => ({
+  ...t,
+  id: `asig_${t.pedido}`,
+  esAsignadoCOT: true,
+  notificadoMovil: true
+}));
+
+// 2. Pendientes Patagonia (8) y Suroeste (10): exactamente 18 pedidos
+const agendaPendientesUnicos = [...agendaPatagonia, ...agendaSuroeste].map(t => {
+  const match = asigLookupMap.get(t.pedido);
+  const esAsignado = !!match;
+  const tecCot = match ? String(match['Tec Asignado'] || match['Tecnico'] || '').trim() : 'SIN ASIGNAR';
+  const mCot = match ? String(match['M'] || '').trim().toUpperCase() : 'N';
+  const estadoCot = match ? String(match['Estado'] || '').trim() : t.estado;
+  const cierreCot = match ? String(match['Cierre'] || '').trim() : '';
+
+  return {
+    ...t,
+    id: `pend_${t.pedido}`,
+    esPendiente: true,
+    esAsignadoEnCot: esAsignado,
+    tecAsignadoCot: tecCot,
+    mCot: mCot,
+    estadoCot: estadoCot,
+    cierreCot: cierreCot,
+    alertaSinAsignar: !esAsignado
+  };
 });
 
-// 2. Pendientes Patagonia que NO hayan sido asignados
-agendaPatagonia.forEach(t => {
-  if (!unifiedAgendaMap.has(t.pedido)) {
-    unifiedAgendaMap.set(t.pedido, t);
-  }
-});
+// TOTAL EN AGENDA = 31 ASIGNADOS + 18 PENDIENTES = 49 PEDIDOS
+const unifiedAgenda = [...agendaAsignadosUnicos, ...agendaPendientesUnicos];
 
-// 3. Pendientes Suroeste que NO hayan sido asignados
-agendaSuroeste.forEach(t => {
-  if (!unifiedAgendaMap.has(t.pedido)) {
-    unifiedAgendaMap.set(t.pedido, t);
-  }
-});
-
-// 4. Adicionales (AIEC) que no estén duplicados
-agendaAdicionales.forEach(t => {
-  if (!unifiedAgendaMap.has(t.pedido)) {
-    unifiedAgendaMap.set(t.pedido, t);
-  }
-});
-
-const unifiedAgenda = Array.from(unifiedAgendaMap.values());
 fs.writeFileSync(path.join(outDir, 'agendaData.json'), JSON.stringify(unifiedAgenda, null, 2));
-console.log(`✅ Agenda Diaria Unificada: ${unifiedAgenda.length} pedidos combinados (${agendaAsignados.length} Asignados COT + pendientes sin asignar)`);
+const asignadosCotEnPendientes = agendaPendientesUnicos.filter(p => p.esAsignadoEnCot).length;
+const sinAsignarEnPendientes = agendaPendientesUnicos.filter(p => !p.esAsignadoEnCot).length;
+console.log(`✅ Agenda Diaria Unificada: ${unifiedAgenda.length} pedidos totales (31 Asignados Móvil + 18 Pendientes: ${asignadosCotEnPendientes} asignados en COT / ${sinAsignarEnPendientes} sin asignar)`);
 
 // 9. Generate Control de Inicio de Jornada Data (Primer Pedido del Día / Marcaje)
 let excelCI = [];

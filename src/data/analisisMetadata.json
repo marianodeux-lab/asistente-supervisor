@@ -1,11 +1,11 @@
 {
-  "fechaActualizacion": "17/09/2026",
-  "fechaActualizacionSuspendidos": "17/09/2026",
+  "fechaActualizacion": "16/09/2026",
+  "fechaActualizacionSuspendidos": "16/09/2026",
   "fechaActualizacionSla": "13/09/2026",
-  "fechaActualizacionTelca": "17/09/2026",
-  "fuente": "Análisis Atenciones 2026",
-  "totalSuspendidos": 9865,
-  "totalSla": 2990,
+  "fechaActualizacionTelca": "16/09/2026",
+  "fuente": "Reportes Activos (Patagonia & Suroeste)",
+  "totalSuspendidos": 12975,
+  "totalSla": 8425,
   "totalTelca": 11220,
-  "totalGeneral": 24075
+  "totalGeneral": 32620
 }

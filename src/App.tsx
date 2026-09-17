@@ -186,25 +186,31 @@ export function App() {
       const res = await ReportSyncService.fetchActiveDataset<Ticket[]>('agenda_activa');
       if (res.data && res.data.payload && Array.isArray(res.data.payload) && res.data.payload.length > 0) {
         const cloudTickets = res.data.payload;
-        setTickets(cloudTickets);
+        // Guarda de sanidad: La agenda diaria operativa de campo no debe superar los 500 registros.
+        // Si tiene miles de filas, se trata de una carga errónea de Suspendidos y preservamos la agenda diaria local unificada (49 pedidos).
+        if (cloudTickets.length > 500) {
+          console.warn(`[App] Dataset agenda_activa en la nube tiene ${cloudTickets.length} registros (reporte histórico). Se preserva la agenda diaria operativa local de 49 pedidos.`);
+        } else {
+          setTickets(cloudTickets);
 
-        const cloudReportItem: ReportItem = {
-          id: 'rep_cloud_active',
-          name: res.data.archivos_origen.length > 0 ? res.data.archivos_origen.join(' + ') : 'Agenda Nube Supabase',
-          size: `${(JSON.stringify(cloudTickets).length / (1024 * 1024)).toFixed(2)} MB`,
-          uploadDate: new Date(res.data.updated_at).toLocaleString('es-AR'),
-          rowCount: res.data.total_registros,
-          isActive: true,
-          ticketsCount: cloudTickets.length,
-          data: cloudTickets,
-          author: res.data.updated_by,
-          isCloudSynced: res.source === 'supabase'
-        };
+          const cloudReportItem: ReportItem = {
+            id: 'rep_cloud_active',
+            name: res.data.archivos_origen.length > 0 ? res.data.archivos_origen.join(' + ') : 'Agenda Nube Supabase',
+            size: `${(JSON.stringify(cloudTickets).length / (1024 * 1024)).toFixed(2)} MB`,
+            uploadDate: new Date(res.data.updated_at).toLocaleString('es-AR'),
+            rowCount: res.data.total_registros,
+            isActive: true,
+            ticketsCount: cloudTickets.length,
+            data: cloudTickets,
+            author: res.data.updated_by,
+            isCloudSynced: res.source === 'supabase'
+          };
 
-        setReports(prev => [
-          cloudReportItem,
-          ...prev.filter(r => r.id !== 'rep_cloud_active').map(r => ({ ...r, isActive: false }))
-        ]);
+          setReports(prev => [
+            cloudReportItem,
+            ...prev.filter(r => r.id !== 'rep_cloud_active').map(r => ({ ...r, isActive: false }))
+          ]);
+        }
       }
 
       // 2. Fetch Stock Repuestos Activo
