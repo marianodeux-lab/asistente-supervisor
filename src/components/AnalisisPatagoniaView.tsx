@@ -337,8 +337,12 @@ export const AnalisisPatagoniaView: React.FC = () => {
 
       // 7. Día de la Semana
       if (selectedDia !== 'ALL') {
-        const d = r.Día || r['Día'];
-        if (d && d.toLowerCase() !== selectedDia.toLowerCase()) return false;
+        if (selectedDia === 'FIN_DE_SEMANA') {
+          if (!checkIsWeekend(r)) return false;
+        } else {
+          const d = r.Día || r['Día'];
+          if (d && d.toLowerCase() !== selectedDia.toLowerCase()) return false;
+        }
       }
 
       // 8. Cliente
@@ -1297,17 +1301,32 @@ export const AnalisisPatagoniaView: React.FC = () => {
             {/* Día de la Semana Chips */}
             <div className="flex items-center gap-1 flex-wrap">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-1">Día:</span>
-              {['ALL', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'].map(dia => (
+              {[
+                { id: 'ALL', label: 'Todos' },
+                { id: 'lunes', label: 'Lun' },
+                { id: 'martes', label: 'Mar' },
+                { id: 'miércoles', label: 'Mié' },
+                { id: 'jueves', label: 'Jue' },
+                { id: 'viernes', label: 'Vie' },
+                { id: 'sábado', label: 'Sáb' },
+                { id: 'domingo', label: 'Dom' },
+                { id: 'FIN_DE_SEMANA', label: 'Fin de Semana' }
+              ].map(item => (
                 <button
-                  key={dia}
-                  onClick={() => { setSelectedDia(dia); setCurrentPage(1); }}
+                  key={item.id}
+                  onClick={() => { setSelectedDia(item.id); setCurrentPage(1); }}
                   className={`px-2 py-0.5 rounded text-[11px] font-bold transition ${
-                    selectedDia === dia
-                      ? 'bg-amber-500 text-slate-950'
-                      : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
+                    selectedDia === item.id
+                      ? item.id === 'FIN_DE_SEMANA'
+                        ? 'bg-amber-500 text-slate-950 ring-2 ring-amber-400/50'
+                        : 'bg-amber-500 text-slate-950'
+                      : item.id === 'FIN_DE_SEMANA'
+                        ? 'bg-amber-950/40 border border-amber-500/40 text-amber-400 hover:text-amber-200'
+                        : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
                   }`}
+                  title={item.id === 'FIN_DE_SEMANA' ? 'Filtrar sábados y domingos (guardias)' : undefined}
                 >
-                  {dia === 'ALL' ? 'Todos' : dia.slice(0, 3)}
+                  {item.label}
                 </button>
               ))}
             </div>
