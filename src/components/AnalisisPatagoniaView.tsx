@@ -359,7 +359,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
 
       // 10. Utiliza Repuesto (Sí / No)
       if (selectedRepuesto !== 'ALL') {
-        const rep = r['Utiliza Repuesto'] || (r['SOLICITUD REPUESTO'] === 'Sí' || r.Stock ? 'Sí' : 'No');
+        const rep = r['Utiliza Repuesto'] || 'No';
         if (rep !== selectedRepuesto) return false;
       }
 
@@ -492,6 +492,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
         total: 0, 
         slaPct: 0, 
         recurrentePct: 0, 
+        repuestoCount: 0,
         repuestoPct: 0,
         fdsCount: 0,
         fdsPct: 0,
@@ -507,7 +508,8 @@ export const AnalisisPatagoniaView: React.FC = () => {
 
     const slaOk = contextFilteredData.filter(r => (r['CUMPLIO SLA'] === 1 || r['Cumplio SLA TS'] === 1)).length;
     const recurrenteCount = contextFilteredData.filter(r => (r['FALLA RECURRENTE'] === 'S' || r['Falla Recurrente'] === 'S')).length;
-    const repuestoCount = contextFilteredData.filter(r => (r['Utiliza Repuesto'] === 'Sí' || r['SOLICITUD REPUESTO'] === 'Sí' || (r.Stock && r.Stock !== 0))).length;
+    const repuestoCount = contextFilteredData.filter(r => r['Utiliza Repuesto'] === 'Sí').length;
+    const repuestoPct = total > 0 ? Number(((repuestoCount / total) * 100).toFixed(1)) : 0;
     
     // Weekend calls
     const fdsCount = contextFilteredData.filter(r => checkIsWeekend(r)).length;
@@ -538,7 +540,8 @@ export const AnalisisPatagoniaView: React.FC = () => {
       total,
       slaPct: Math.round((slaOk / total) * 100),
       recurrentePct: Math.round((recurrenteCount / total) * 100),
-      repuestoPct: Math.round((repuestoCount / total) * 100),
+      repuestoCount,
+      repuestoPct,
       fdsCount,
       fdsPct,
       derivadosCount,
@@ -855,9 +858,14 @@ export const AnalisisPatagoniaView: React.FC = () => {
                 Utiliza Repuesto
               </span>
               <p className="text-2xl font-black text-purple-300 mt-0.5 font-mono">
-                {kpis.repuestoPct}%
+                {kpis.repuestoCount.toLocaleString('es-AR')}
+                <span className="text-xs font-semibold text-purple-400 ml-1.5">({kpis.repuestoPct}%)</span>
               </p>
-              <span className="text-[10px] text-slate-400">repuestos solicitados/usados</span>
+              <span className="text-[10px] text-slate-400">
+                {activeSubTab === 'SLA' 
+                  ? 'pedidos con parte utilizada (SLA)' 
+                  : 'atenciones asociadas a parte en SLA'}
+              </span>
             </div>
           )}
 

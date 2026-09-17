@@ -133,7 +133,97 @@ function getNegocio(r) {
   return tipoSeg || 'ATM';
 }
 
-// 1. PROCESAR SUSPENDIDOS (Excluyendo TELCA y exigiendo visitas en perímetro de supervisión)
+// ==========================================
+// 1. PROCESAR SLA PRIMERO (para extraer pedidos que usaron repuestos en la realidad)
+// ==========================================
+console.log('⚙️ Procesando Reportes de SLA...');
+const fSlaPat = path.resolve(projectRoot, 'Reportes/Reporte Sla Patagonia.xls');
+const fSlaSur = path.resolve(projectRoot, 'Reportes/Reporte Sla Suroeste.xls');
+
+let slaData = [];
+let maxFechaFinSlaTs = 0;
+let maxFechaFinSlaStr = '13/09/2026';
+const ordersWithStockInSla = new Set();
+
+function processSlaFile(filePath, isSuroeste = false) {
+  if (!fs.existsSync(filePath)) return [];
+  const wb = XLSX.readFile(filePath);
+  const ws = wb.Sheets[wb.SheetNames[0]];
+  const raw = XLSX.utils.sheet_to_json(ws, { range: 5, defval: '' });
+
+  const result = [];
+  raw.forEach((r) => {
+    const ped = String(r['Pedido'] || r['PEDIDO'] || '').trim();
+    if (!ped) return;
+
+    const rawZona = String(r['Zona'] || r['ZONA'] || '').trim();
+    if (isSuroeste && !mySuroesteZones.has(rawZona)) {
+      return;
+    }
+
+    const rawFechaFin = r['Fecha Fin'] || r['FECHA FIN'] || r['Marca Fin'];
+    const rawHoraFin = r['Hora Fin'] || r['HORA FIN'] || '';
+    const marcaFinStr = excelDateToString(rawFechaFin, true, rawHoraFin);
+    const fechaFinStr = excelDateToString(rawFechaFin, false);
+
+    const dateInfo = getDateInfo(rawFechaFin, fechaFinStr);
+    if (dateInfo.ts > maxFechaFinSlaTs) {
+      maxFechaFinSlaTs = dateInfo.ts;
+      maxFechaFinSlaStr = fechaFinStr;
+    }
+
+    const rawStock = r['Stock'];
+    const hasPart = Boolean(rawStock && rawStock !== 0 && rawStock !== '0' && String(rawStock).trim() !== '');
+    if (hasPart) {
+      ordersWithStockInSla.add(ped);
+    }
+
+    const cumplioSlaVal = Number(r['Cumplio SLA TS']) === 1 || String(r['Cumplio SLA TS']).toUpperCase() === 'S' ? 1 : 0;
+    const negocio = getNegocio(r);
+
+    const row = {
+      id: `sla_${ped}`,
+      PEDIDO: ped,
+      CLIENTE: String(r['Cliente'] || r['CLIENTE'] || '').trim(),
+      ATM: String(r['ATM ID'] || r['ATM'] || '').trim(),
+      DIRECCION: String(r['Direccion'] || r['DIRECCION'] || '').trim(),
+      LOCALIDAD: String(r['Localidad'] || r['LOCALIDAD'] || '').trim(),
+      PROVINCIA: String(r['Provincia'] || r['PROVINCIA'] || '').trim(),
+      ZONA: rawZona,
+      'ZONA LOCAL': isSuroeste ? 'Suroeste' : 'Patagonia',
+      'TECNICO ASISTIO': String(r['Tecnico Asig'] || r['Tecnico Zona'] || '').trim(),
+      'TECNICO ZONA': String(r['Tecnico Zona'] || '').trim(),
+      'FECHA FIN': fechaFinStr,
+      'MARCA FIN': marcaFinStr,
+      'CODIGO CIERRE': String(r['Cod Cierre'] || r['CODIGOCIERRE'] || 'COMPL').trim(),
+      'CUMPLIO SLA': cumplioSlaVal,
+      'FALLA RECURRENTE': String(r['Falla Recurrente'] || 'N').trim().toUpperCase() === 'S' ? 'S' : 'N',
+      NEGOCIO: negocio,
+      'CONCEPTO LLAMADA': String(r['Tipo'] || 'SERVICE CALL').trim(),
+      'Utiliza Repuesto': hasPart ? 'Sí' : 'No',
+      Stock: hasPart ? String(rawStock).trim() : 0,
+      'Fin de semana': dateInfo.finDeSemana,
+      Semana: dateInfo.semana,
+      Mes: dateInfo.mes,
+      Día: dateInfo.dia
+    };
+    result.push(row);
+  });
+  return result;
+}
+
+if (fs.existsSync(fSlaPat)) {
+  const patSlaRows = processSlaFile(fSlaPat, false);
+  const surSlaRows = processSlaFile(fSlaSur, true);
+  slaData = [...patSlaRows, ...surSlaRows];
+  console.log(`✅ SLA procesado desde Reportes/: ${slaData.length} registros (Patagonia: ${patSlaRows.length}, Suroeste: ${surSlaRows.length})`);
+  console.log(`   Pedidos únicos con repuesto utilizado (Stock en SLA): ${ordersWithStockInSla.size} (${((ordersWithStockInSla.size / slaData.length) * 100).toFixed(1)}%)`);
+  console.log(`   Última Fecha Fin detectada en SLA: ${maxFechaFinSlaStr}`);
+}
+
+// ==========================================
+// 2. PROCESAR SUSPENDIDOS (Excluyendo TELCA y DERIV, y mapeando repuestos desde SLA)
+// ==========================================
 console.log('⚙️ Procesando Reportes de Suspendidos...');
 const fSuspPat = path.resolve(projectRoot, 'Reportes/Reporte Suspendidos Patagonia.xls');
 const fSuspSur = path.resolve(projectRoot, 'Reportes/Reporte Suspendidos Suroeste.xls');
@@ -159,13 +249,18 @@ function processSuspendidosFile(filePath, isSuroeste = false) {
       return;
     }
 
-    // 2. Regla: Pedidos que tuvieron visitas de técnicos a campo
+    // 2. Regla: Excluir cierres DERIV (desvíos de soporte remoto a visita técnica)
+    if (codCierre === 'DERIV') {
+      return;
+    }
+
+    // 3. Regla: Pedidos que tuvieron visitas de técnicos a campo
     const tecAsistio = String(r['TECNICOASISTIO'] || '').trim();
     const tecAsignado = String(r['TECNICO'] || '').trim();
     const tecZona = String(r['TECNICOZONA'] || '').trim();
     const tecFinal = tecAsistio || tecAsignado || tecZona;
 
-    // Excluir cierres sin técnico asignado/asistiendo (cierres de mesa o desvíos automáticos sin visita)
+    // Excluir cierres sin técnico asignado/asistiendo (cierres de mesa o automáticos sin visita)
     if (!tecFinal || tecFinal.toUpperCase() === 'SIN ASIGNAR') {
       return;
     }
@@ -195,6 +290,9 @@ function processSuspendidosFile(filePath, isSuroeste = false) {
 
     const negocio = getNegocio(r);
 
+    // Regla de Repuesto: Discrimina del reporte SLA donde figura si el pedido consumió parte
+    const usedPartInSla = ordersWithStockInSla.has(ped);
+
     const row = {
       id: `susp_${ped}`,
       PEDIDO: ped,
@@ -215,7 +313,8 @@ function processSuspendidosFile(filePath, isSuroeste = false) {
       'CUMPLIO SLA': (String(r['CUMPLIOSLASOLUCION']).toUpperCase() === 'S' || Number(r['CUMPLIOSLASOLUCION']) === 1) ? 1 : 0,
       'FALLA RECURRENTE': String(r['FALLARECURRENTE'] || r['Falla Recurrente'] || 'N').trim().toUpperCase() === 'S' ? 'S' : 'N',
       NEGOCIO: negocio,
-      'Utiliza Repuesto': r['REMITO'] ? 'Sí' : 'No',
+      'Utiliza Repuesto': usedPartInSla ? 'Sí' : 'No',
+      Stock: usedPartInSla ? 1 : 0,
       'Fin de semana': dateInfo.finDeSemana,
       Semana: dateInfo.semana,
       Mes: dateInfo.mes,
@@ -230,89 +329,17 @@ if (fs.existsSync(fSuspPat)) {
   const patRows = processSuspendidosFile(fSuspPat, false);
   const surRows = processSuspendidosFile(fSuspSur, true);
   suspendidosData = [...patRows, ...surRows];
+  const suspWithStockCount = suspendidosData.filter(r => r['Utiliza Repuesto'] === 'Sí').length;
   console.log(`✅ Suspendidos con visitas procesados desde Reportes/: ${suspendidosData.length} registros (Patagonia: ${patRows.length}, Suroeste: ${surRows.length})`);
+  console.log(`   Atenciones asociadas a pedidos con repuesto en SLA: ${suspWithStockCount} (${((suspWithStockCount / suspendidosData.length) * 100).toFixed(1)}%)`);
   console.log(`   Última FECHA FIN detectada en Suspendidos: ${maxFechaFinSuspendidosStr}`);
 } else {
   console.log('⚠️ No se encontraron archivos en Reportes/, leyendo fallback...');
 }
 
-// 2. PROCESAR SLA (Patagonia + Suroeste filtrado a mis zonas)
-console.log('⚙️ Procesando Reportes de SLA...');
-const fSlaPat = path.resolve(projectRoot, 'Reportes/Reporte Sla Patagonia.xls');
-const fSlaSur = path.resolve(projectRoot, 'Reportes/Reporte Sla Suroeste.xls');
-
-let slaData = [];
-let maxFechaFinSlaTs = 0;
-let maxFechaFinSlaStr = '13/09/2026';
-
-function processSlaFile(filePath, isSuroeste = false) {
-  if (!fs.existsSync(filePath)) return [];
-  const wb = XLSX.readFile(filePath);
-  const ws = wb.Sheets[wb.SheetNames[0]];
-  const raw = XLSX.utils.sheet_to_json(ws, { range: 5, defval: '' });
-
-  const result = [];
-  raw.forEach((r) => {
-    const ped = String(r['Pedido'] || r['PEDIDO'] || '').trim();
-    if (!ped) return;
-
-    const rawZona = String(r['Zona'] || r['ZONA'] || '').trim();
-    if (isSuroeste && !mySuroesteZones.has(rawZona)) {
-      return;
-    }
-
-    const rawFechaFin = r['Fecha Fin'] || r['FECHA FIN'] || r['Marca Fin'];
-    const rawHoraFin = r['Hora Fin'] || r['HORA FIN'] || '';
-    const marcaFinStr = excelDateToString(rawFechaFin, true, rawHoraFin);
-    const fechaFinStr = excelDateToString(rawFechaFin, false);
-
-    const dateInfo = getDateInfo(rawFechaFin, fechaFinStr);
-    if (dateInfo.ts > maxFechaFinSlaTs) {
-      maxFechaFinSlaTs = dateInfo.ts;
-      maxFechaFinSlaStr = fechaFinStr;
-    }
-
-    const cumplioSlaVal = Number(r['Cumplio SLA TS']) === 1 || String(r['Cumplio SLA TS']).toUpperCase() === 'S' ? 1 : 0;
-    const negocio = getNegocio(r);
-
-    const row = {
-      id: `sla_${ped}`,
-      PEDIDO: ped,
-      CLIENTE: String(r['Cliente'] || r['CLIENTE'] || '').trim(),
-      ATM: String(r['ATM ID'] || r['ATM'] || '').trim(),
-      DIRECCION: String(r['Direccion'] || r['DIRECCION'] || '').trim(),
-      LOCALIDAD: String(r['Localidad'] || r['LOCALIDAD'] || '').trim(),
-      PROVINCIA: String(r['Provincia'] || r['PROVINCIA'] || '').trim(),
-      ZONA: rawZona,
-      'ZONA LOCAL': isSuroeste ? 'Suroeste' : 'Patagonia',
-      'TECNICO ASISTIO': String(r['Tecnico Asig'] || r['Tecnico Zona'] || '').trim(),
-      'TECNICO ZONA': String(r['Tecnico Zona'] || '').trim(),
-      'FECHA FIN': fechaFinStr,
-      'MARCA FIN': marcaFinStr,
-      'CODIGO CIERRE': String(r['Cod Cierre'] || r['CODIGOCIERRE'] || 'COMPL').trim(),
-      'CUMPLIO SLA': cumplioSlaVal,
-      'FALLA RECURRENTE': String(r['Falla Recurrente'] || 'N').trim().toUpperCase() === 'S' ? 'S' : 'N',
-      NEGOCIO: negocio,
-      'CONCEPTO LLAMADA': String(r['Tipo'] || 'SERVICE CALL').trim(),
-      'Fin de semana': dateInfo.finDeSemana,
-      Semana: dateInfo.semana,
-      Mes: dateInfo.mes,
-      Día: dateInfo.dia
-    };
-    result.push(row);
-  });
-  return result;
-}
-
-if (fs.existsSync(fSlaPat)) {
-  const patSlaRows = processSlaFile(fSlaPat, false);
-  const surSlaRows = processSlaFile(fSlaSur, true);
-  slaData = [...patSlaRows, ...surSlaRows];
-  console.log(`✅ SLA procesado desde Reportes/: ${slaData.length} registros (Patagonia: ${patSlaRows.length}, Suroeste: ${surSlaRows.length})`);
-  console.log(`   Última Fecha Fin detectada en SLA: ${maxFechaFinSlaStr}`);
-}
-
+// ==========================================
 // 3. MANTENER O PROCESAR CERRADOS TELCA
+// ==========================================
 let telcaData = [];
 const existingTelcaPath = path.join(outDir, 'analisisTelcaData.json');
 if (fs.existsSync(existingTelcaPath)) {
@@ -342,6 +369,8 @@ const summary = {
   totalSuspendidos: suspendidosData.length,
   totalSla: slaData.length,
   totalTelca: telcaData.length,
+  repuestosUtilizadosSla: ordersWithStockInSla.size,
+  pctRepuestosSla: Number(((ordersWithStockInSla.size / (slaData.length || 1)) * 100).toFixed(1)),
   totalGeneral: suspendidosData.length + slaData.length + telcaData.length
 };
 fs.writeFileSync(path.join(outDir, 'analisisMetadata.json'), JSON.stringify(summary, null, 2));
