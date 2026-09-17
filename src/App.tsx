@@ -11,6 +11,7 @@ import { DespachosRepuestosView } from './components/DespachosRepuestosView';
 import { ReferenceTablesView } from './components/ReferenceTablesView';
 import { BaseInstaladaView } from './components/BaseInstaladaView';
 import { AnalisisPatagoniaView } from './components/AnalisisPatagoniaView';
+import { DashboardOperativoView } from './components/DashboardOperativoView';
 import { ReportRepository, ReportItem } from './components/ReportRepository';
 import { TicketDetailModal } from './components/TicketDetailModal';
 import { ChronicDetailModal } from './components/ChronicDetailModal';
@@ -297,6 +298,11 @@ export function App() {
             />
           )}
 
+          {/* Tab: Dashboard Operativo & KPIs */}
+          {activeTab === 'dashboard_operativo' && (
+            <DashboardOperativoView />
+          )}
+
           {/* Tab: Base Instalada Detalle Clientes */}
           {activeTab === 'base_instalada' && (
             <BaseInstaladaView
@@ -304,7 +310,7 @@ export function App() {
             />
           )}
 
-          {/* Tab: Análisis Patagonia (Excel: Suspendidos, SLA, TELCA) */}
+          {/* Tab: Análisis Atenciones (Suspendidos, SLA, TELCA) */}
           {activeTab === 'analisis_patagonia' && (
             <AnalisisPatagoniaView />
           )}

@@ -719,6 +719,9 @@ export interface AnalisisRow {
 
 export interface AnalisisMetadata {
   fechaActualizacion: string;
+  fechaActualizacionSuspendidos?: string;
+  fechaActualizacionSla?: string;
+  fechaActualizacionTelca?: string;
   fuente: string;
   totalSuspendidos: number;
   totalSla: number;

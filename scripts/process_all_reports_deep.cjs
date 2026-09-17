@@ -696,22 +696,29 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       zonaTecnica = tecMaster.zonaTecnica || rawZona;
       zonaLocal = tecMaster.zonaLocal;
     } else {
-      if (ambaRegions.includes(regTec) || rawZona.startsWith('C2D') || rawZona.startsWith('NORTE') || rawZona.startsWith('SUR') || rawZona.startsWith('OESTE') || rawZona.startsWith('CABA')) {
-        regionFinal = 'AMBA';
-      } else if (litoralRegions.includes(regTec) || rawZona.startsWith('IN2 SFE') || rawZona.startsWith('IN2 ROS') || rawZona.startsWith('IN2 PAR') || rawZona.startsWith('IN2 COR') || rawZona.startsWith('IN2 POS') || rawZona.startsWith('IN2 RES')) {
-        regionFinal = 'LITORAL';
-      } else if (patagoniaRegions.includes(regTec)) {
+      if (patagoniaRegions.includes(regTec)) {
         regionFinal = regTec;
+      } else if (regTec === 'SUROESTE' || allowedSuroesteZones.some(z => rawZona.toLowerCase().includes(z.toLowerCase()) || loc.toLowerCase().includes(z.toLowerCase()))) {
+        regionFinal = 'SUROESTE';
+      } else if (defaultZona === 'Patagonia' || defaultZona === 'Suroeste') {
+        regionFinal = defaultZona.toUpperCase();
+      } else {
+        regionFinal = 'OTRA';
       }
     }
 
-    // Filter Asignados: Only keep Mis Técnicos in Patagonia and Centro-Oeste that belong to supervisor
+    // STRICT REGIONAL FILTER: Discard any ticket outside Patagonia & Suroeste
+    if (regionFinal !== 'PATAGONIA' && regionFinal !== 'SUROESTE') {
+      return null;
+    }
+
+    // Filter Asignados: Only keep Mis Técnicos in Patagonia and Suroeste that belong to supervisor
     if (tipoOrigen === 'Asignados') {
       const isMyPatTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
       const isMyCoTec = marianoCoTechs.has(tecAsignado.toLowerCase()) || lidReg === 'Deus, Mariano';
-      const isPatOrCo = regTec === 'PATAGONIA' || regTec === 'CENTRO-OESTE';
+      const isPatOrSur = regionFinal === 'PATAGONIA' || regionFinal === 'SUROESTE';
 
-      if (!((isMyPatTec || isMyCoTec) && isPatOrCo)) {
+      if (!((isMyPatTec || isMyCoTec) && isPatOrSur)) {
         return null; // Discard NOA, Córdoba, CABA, AMBA, Litoral, etc.
       }
     }

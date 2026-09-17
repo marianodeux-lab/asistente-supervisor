@@ -9,10 +9,12 @@ import {
   Database,
   UploadCloud,
   Building2,
-  FileSpreadsheet
+  FileSpreadsheet,
+  LayoutDashboard
 } from 'lucide-react';
 
 export type TabKey = 
+  | 'dashboard_operativo'
   | 'sla_agenda' 
   | 'reincidencias' 
   | 'preventivos' 
@@ -43,6 +45,11 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
 }) => {
   const tabs: { key: TabKey; label: string; icon: React.ReactNode; badge?: number }[] = [
     {
+      key: 'dashboard_operativo',
+      label: 'Dashboard KPIs',
+      icon: <LayoutDashboard className="w-4 h-4 text-cyan-400" />
+    },
+    {
       key: 'sla_agenda',
       label: 'Control SLA & Agenda',
       icon: <Clock className="w-4 h-4" />,
@@ -68,7 +75,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
     },
     {
       key: 'analisis_patagonia',
-      label: 'Análisis Patagonia (Excel)',
+      label: 'Análisis Atenciones',
       icon: <FileSpreadsheet className="w-4 h-4" />
     },
     {

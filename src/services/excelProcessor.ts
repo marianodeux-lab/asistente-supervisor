@@ -72,10 +72,8 @@ if (Array.isArray(reincidenciasData)) {
   });
 }
 
-// Regional boundaries and allowed zones
+// Regional boundaries and allowed zones: strictly Patagonia and Suroeste
 const allowedSuroesteZones = ['IN BAR', 'IN CIP', 'IN NQN', 'Suroeste', 'Bariloche', 'Cipolletti', 'Neuquen', 'Neuquén'];
-const ambaRegions = ['CABA', 'ZONA NORTE', 'ZONA SUR', 'ZONA OESTE', 'C2D', 'AMBA'];
-const litoralRegions = ['LITORAL-NORTE', 'LITORAL'];
 const patagoniaRegions = ['PATAGONIA', 'SUROESTE'];
 
 // Helper to parse dates from Excel numbers or strings into DD/MM/YYYY
@@ -245,23 +243,30 @@ export function parseExcelFile(file: File): Promise<ProcessedExcelResult> {
                 zonaTecnica = tecMaster.zonaTecnica || rawZona;
                 zonaLocal = tecMaster.zonaLocal || zonaLocal;
               } else {
-                if (ambaRegions.includes(rawReg) || rawZona.startsWith('C2D') || rawZona.startsWith('NORTE') || rawZona.startsWith('SUR') || rawZona.startsWith('OESTE') || rawZona.startsWith('CABA')) {
-                  finalRegion = 'AMBA';
-                } else if (litoralRegions.includes(rawReg) || rawZona.startsWith('IN2 SFE') || rawZona.startsWith('IN2 ROS') || rawZona.startsWith('IN2 PAR') || rawZona.startsWith('IN2 COR') || rawZona.startsWith('IN2 POS') || rawZona.startsWith('IN2 RES')) {
-                  finalRegion = 'LITORAL';
-                } else if (patagoniaRegions.includes(rawReg)) {
+                if (patagoniaRegions.includes(rawReg)) {
                   finalRegion = rawReg;
+                } else if (rawReg === 'SUROESTE' || allowedSuroesteZones.some(z => rawZona.toLowerCase().includes(z.toLowerCase()) || loc.toLowerCase().includes(z.toLowerCase()))) {
+                  finalRegion = 'SUROESTE';
+                } else if (defaultFileZona === 'Patagonia' || defaultFileZona === 'Suroeste') {
+                  finalRegion = defaultFileZona.toUpperCase();
+                } else {
+                  finalRegion = 'OTRA';
                 }
               }
 
-              // Filter Asignados: Only keep Mis Técnicos in Patagonia and Centro-Oeste
+              // STRICT REGIONAL FILTER: Exclude any ticket outside Patagonia & Suroeste
+              if (finalRegion !== 'PATAGONIA' && finalRegion !== 'SUROESTE') {
+                continue;
+              }
+
+              // Filter Asignados: Only keep Mis Técnicos in Patagonia and Suroeste
               if (isAsignadosFile) {
                 const isMyPatTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
                 const isMyCoTec = marianoCoTechs.has(tecAsignado.toLowerCase()) || rawLid === 'Deus, Mariano';
-                const isPatOrCo = finalRegion === 'PATAGONIA' || finalRegion === 'CENTRO-OESTE';
+                const isPatOrSur = finalRegion === 'PATAGONIA' || finalRegion === 'SUROESTE';
 
-                if (!((isMyPatTec || isMyCoTec) && isPatOrCo)) {
-                  continue; // Skip NOA, Córdoba, CABA, AMBA, Litoral, etc.
+                if (!((isMyPatTec || isMyCoTec) && isPatOrSur)) {
+                  continue; // Skip NOA, Córdoba, CABA, AMBA, Litoral, Centro-Oeste, etc.
                 }
               }
 

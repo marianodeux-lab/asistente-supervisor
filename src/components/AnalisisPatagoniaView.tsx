@@ -547,6 +547,79 @@ export const AnalisisPatagoniaView: React.FC = () => {
     };
   }, [contextFilteredData]);
 
+  // Helper to parse dates from various Excel serials / strings into timestamp & formatted date
+  const parseFechaFinValue = (val: any): { timestamp: number; formatted: string } | null => {
+    if (!val) return null;
+    if (typeof val === 'number') {
+      const epoch = new Date(Date.UTC(1899, 11, 30));
+      const d = new Date(epoch.getTime() + val * 86400000);
+      if (isNaN(d.getTime())) return null;
+      const day = String(d.getUTCDate()).padStart(2, '0');
+      const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+      const year = d.getUTCFullYear();
+      return { timestamp: d.getTime(), formatted: `${day}/${month}/${year}` };
+    }
+    const s = String(val).trim();
+    if (s.includes('/')) {
+      const parts = s.split(' ')[0].split('/');
+      if (parts.length === 3) {
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        let year = parseInt(parts[2], 10);
+        if (year < 100) year += 2000;
+        const d = new Date(year, month, day);
+        if (isNaN(d.getTime())) return null;
+        return {
+          timestamp: d.getTime(),
+          formatted: `${String(day).padStart(2, '0')}/${String(month + 1).padStart(2, '0')}/${year}`
+        };
+      }
+    }
+    if (s.includes('-')) {
+      const d = new Date(s);
+      if (!isNaN(d.getTime())) {
+        const day = String(d.getDate()).padStart(2, '0');
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const year = d.getFullYear();
+        return { timestamp: d.getTime(), formatted: `${day}/${month}/${year}` };
+      }
+    }
+    return null;
+  };
+
+  // Dynamic analysis of the latest date registered in the FECHA FIN column
+  const ultimaFechaFinRegistrada = useMemo(() => {
+    if (currentRawData && currentRawData.length > 0) {
+      let maxTimestamp = 0;
+      let maxFormatted = '';
+
+      for (let i = 0; i < currentRawData.length; i++) {
+        const r = currentRawData[i];
+        // Scan for FECHA FIN column or any variant
+        const val = r['FECHA FIN'] || r['FECHAFIN'] || r['MARCA FIN'] || r['Marca Fin'] || r['Fecha Fin'] || r['FECHA_FIN'] || r['FechaFin'] || r['Fecha'];
+        if (!val) continue;
+
+        const parsed = parseFechaFinValue(val);
+        if (parsed && parsed.timestamp > maxTimestamp) {
+          maxTimestamp = parsed.timestamp;
+          maxFormatted = parsed.formatted;
+        }
+      }
+
+      if (maxFormatted) {
+        return maxFormatted;
+      }
+    }
+
+    if (activeSubTab === 'SUSPENDIDOS') {
+      return metadata.fechaActualizacionSuspendidos || metadata.fechaActualizacion || '17/09/2026';
+    }
+    if (activeSubTab === 'SLA') {
+      return metadata.fechaActualizacionSla || '13/09/2026';
+    }
+    return metadata.fechaActualizacion || '17/09/2026';
+  }, [currentRawData, activeSubTab, metadata]);
+
   // CSV Export Handler
   const handleExportCSV = () => {
     if (filteredData.length === 0) return;
@@ -563,7 +636,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `analisis_patagonia_${activeSubTab.toLowerCase()}_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute('download', `analisis_atenciones_${activeSubTab.toLowerCase()}_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -639,7 +712,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="text-xl font-black text-white tracking-wide">
-                  Análisis Operativo Patagonia 2026
+                  Análisis Atenciones 2026
                 </h1>
                 <span className="px-2.5 py-0.5 bg-amber-500/20 border border-amber-500/50 text-amber-300 text-xs font-bold rounded-full">
                   Archivo Maestro Excel
@@ -652,7 +725,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
                 )}
               </div>
               <p className="text-xs text-slate-300 mt-0.5">
-                Pestañas de análisis histórico de campo, cumplimiento de SLA y resolución remota de mesa (TELCA / TELCA2).
+                Pestañas de análisis de atenciones históricas, cumplimiento de SLA y resolución remota de mesa (TELCA / TELCA2).
               </p>
             </div>
           </div>
@@ -710,9 +783,15 @@ export const AnalisisPatagoniaView: React.FC = () => {
                 Última Actualización
               </span>
               <p className="text-lg font-bold text-white mt-1 font-mono">
-                {metadata.fechaActualizacion}
+                {ultimaFechaFinRegistrada}
               </p>
-              <span className="text-[10px] text-slate-400">Patagonia 2026.xlsx</span>
+              <span className="text-[10px] text-slate-400" title="Última fecha registrada en la columna FECHA FIN del reporte">
+                {activeSubTab === 'SUSPENDIDOS' 
+                  ? 'Último registro en FECHA FIN (Suspendidos)' 
+                  : activeSubTab === 'SLA' 
+                    ? 'Último registro en FECHA FIN (SLA)' 
+                    : 'Último registro en FECHA FIN'}
+              </span>
             </div>
           )}
 

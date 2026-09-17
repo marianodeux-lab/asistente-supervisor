@@ -6824,6 +6824,15 @@
     "tiempoAsistenciaMinutos": 65,
     "alertaTiempoMp": null
   },
+  "004677000670": {
+    "ultimoMpFecha": "16/04/2026",
+    "rawDateIso": "2026-04-17",
+    "tecMp": "Corti Victor",
+    "obsMp": "[17/04/2026] mantenimiento",
+    "tiempoAsistencia": "52m",
+    "tiempoAsistenciaMinutos": 52,
+    "alertaTiempoMp": null
+  },
   "002201153770": {
     "ultimoMpFecha": "04/02/2026",
     "rawDateIso": "2026-02-05",
@@ -7178,6 +7187,15 @@
     "tiempoAsistenciaMinutos": 80,
     "alertaTiempoMp": null
   },
+  "002170005870": {
+    "ultimoMpFecha": "10/02/2026",
+    "rawDateIso": "2026-02-11",
+    "tecMp": "Montiel, Juan Fernando",
+    "obsMp": "[11/02/2026] se realiza mantenimiento preventivo en el equipo se realizaron pruebas correspondientes",
+    "tiempoAsistencia": "1h 1m",
+    "tiempoAsistenciaMinutos": 61,
+    "alertaTiempoMp": null
+  },
   "002170018171": {
     "ultimoMpFecha": "10/02/2026",
     "rawDateIso": "2026-02-11",
@@ -7203,6 +7221,15 @@
     "obsMp": "[13/02/2026] se realiza mantenimiento preventivo en el equipo se realizaron pruebas correspondientes",
     "tiempoAsistencia": "1h 10m",
     "tiempoAsistenciaMinutos": 70,
+    "alertaTiempoMp": null
+  },
+  "S1JBS271": {
+    "ultimoMpFecha": "20/01/2026",
+    "rawDateIso": "2026-01-21",
+    "tecMp": "Martos, Jose Angel",
+    "obsMp": "[21/01/2026] Se realizo MP del 1er trimestre\r\nmodulo probado en produccion junto al funcionario.\r\nequipo operativo",
+    "tiempoAsistencia": "1h 55m",
+    "tiempoAsistenciaMinutos": 115,
     "alertaTiempoMp": null
   },
   "003781012870": {
@@ -9035,15 +9062,6 @@
     "tiempoAsistenciaMinutos": 61,
     "alertaTiempoMp": null
   },
-  "002170005870": {
-    "ultimoMpFecha": "10/02/2026",
-    "rawDateIso": "2026-02-11",
-    "tecMp": "Montiel, Juan Fernando",
-    "obsMp": "[11/02/2026] se realiza mantenimiento preventivo en el equipo se realizaron pruebas correspondientes",
-    "tiempoAsistencia": "1h 1m",
-    "tiempoAsistenciaMinutos": 61,
-    "alertaTiempoMp": null
-  },
   "008681061170": {
     "ultimoMpFecha": "18/02/2026",
     "rawDateIso": "2026-02-19",
@@ -9242,6 +9260,24 @@
     "tiempoAsistenciaMinutos": 47,
     "alertaTiempoMp": null
   },
+  "033TI0002": {
+    "ultimoMpFecha": "12/04/2026",
+    "rawDateIso": "2026-04-13",
+    "tecMp": "Allende, Martin Leandro",
+    "obsMp": "[13/04/2026] Se realizó mantenimiento preventivo. Se realizaron pruebas en diagnóstico sin fallas.",
+    "tiempoAsistencia": "59m",
+    "tiempoAsistenciaMinutos": 59,
+    "alertaTiempoMp": null
+  },
+  "033TI0001": {
+    "ultimoMpFecha": "12/04/2026",
+    "rawDateIso": "2026-04-13",
+    "tecMp": "Allende, Martin Leandro",
+    "obsMp": "[13/04/2026] Se realizó mantenimiento preventivo. Se realizaron pruebas en diagnóstico sin fallas.",
+    "tiempoAsistencia": "57m",
+    "tiempoAsistenciaMinutos": 57,
+    "alertaTiempoMp": null
+  },
   "045TI0003": {
     "ultimoMpFecha": "08/04/2026",
     "rawDateIso": "2026-04-09",
@@ -9265,6 +9301,15 @@
     "rawDateIso": "2026-04-15",
     "tecMp": "Pavon, Diego Emanuel",
     "obsMp": "[15/04/2026] Se realizo mantenimiento preventivo OK Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas.  TAS OPERATIVA",
+    "tiempoAsistencia": "1h 0m",
+    "tiempoAsistenciaMinutos": 60,
+    "alertaTiempoMp": null
+  },
+  "001TI0003": {
+    "ultimoMpFecha": "14/04/2026",
+    "rawDateIso": "2026-04-15",
+    "tecMp": "Pavon, Diego Emanuel",
+    "obsMp": "[15/04/2026] Se realizo mantenimiento preventivo OK Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. TAS OPERATIVA",
     "tiempoAsistencia": "1h 0m",
     "tiempoAsistenciaMinutos": 60,
     "alertaTiempoMp": null
@@ -9301,6 +9346,33 @@
       "umbral": 30,
       "tipoEquipo": "CASH_TODAY"
     }
+  },
+  "015TI0003": {
+    "ultimoMpFecha": "07/04/2026",
+    "rawDateIso": "2026-04-08",
+    "tecMp": "Buratti, Fabian",
+    "obsMp": "[08/04/2026] diagnóstico pruebas y preventivo ok",
+    "tiempoAsistencia": "5h 48m",
+    "tiempoAsistenciaMinutos": 348,
+    "alertaTiempoMp": null
+  },
+  "015TI0004": {
+    "ultimoMpFecha": "15/03/2026",
+    "rawDateIso": "2026-03-16",
+    "tecMp": "Buratti, Fabian",
+    "obsMp": "[16/03/2026] diagnóstico  y preventivo ok",
+    "tiempoAsistencia": "2h 20m",
+    "tiempoAsistenciaMinutos": 140,
+    "alertaTiempoMp": null
+  },
+  "015TI0002": {
+    "ultimoMpFecha": "08/04/2026",
+    "rawDateIso": "2026-04-09",
+    "tecMp": "Buratti, Fabian",
+    "obsMp": "[09/04/2026] diagnóstico pruebas y preventivo ok",
+    "tiempoAsistencia": "2h 2m",
+    "tiempoAsistenciaMinutos": 122,
+    "alertaTiempoMp": null
   },
   "015TI0001": {
     "ultimoMpFecha": "14/09/2026",
@@ -9887,15 +9959,6 @@
     "tiempoAsistenciaMinutos": 71,
     "alertaTiempoMp": null
   },
-  "004677000670": {
-    "ultimoMpFecha": "16/04/2026",
-    "rawDateIso": "2026-04-17",
-    "tecMp": "Corti Victor",
-    "obsMp": "[17/04/2026] mantenimiento",
-    "tiempoAsistencia": "52m",
-    "tiempoAsistenciaMinutos": 52,
-    "alertaTiempoMp": null
-  },
   "004677012070": {
     "ultimoMpFecha": "09/04/2026",
     "rawDateIso": "2026-04-10",
@@ -10187,15 +10250,6 @@
       "tipoEquipo": "GLORY_CIMA"
     }
   },
-  "S1JBS271": {
-    "ultimoMpFecha": "20/01/2026",
-    "rawDateIso": "2026-01-21",
-    "tecMp": "Martos, Jose Angel",
-    "obsMp": "[21/01/2026] Se realizo MP del 1er trimestre\r\nmodulo probado en produccion junto al funcionario.\r\nequipo operativo",
-    "tiempoAsistencia": "1h 55m",
-    "tiempoAsistenciaMinutos": 115,
-    "alertaTiempoMp": null
-  },
   "036TI0001": {
     "ultimoMpFecha": "12/04/2026",
     "rawDateIso": "2026-04-13",
@@ -10203,24 +10257,6 @@
     "obsMp": "[13/04/2026] Se realizó mantenimiento preventivo. Se realizó prueba de depósito de efectivo con cliente. Prueba EXITOSA. Tas operativa y en servicio",
     "tiempoAsistencia": "1h 21m",
     "tiempoAsistenciaMinutos": 81,
-    "alertaTiempoMp": null
-  },
-  "033TI0002": {
-    "ultimoMpFecha": "12/04/2026",
-    "rawDateIso": "2026-04-13",
-    "tecMp": "Allende, Martin Leandro",
-    "obsMp": "[13/04/2026] Se realizó mantenimiento preventivo. Se realizaron pruebas en diagnóstico sin fallas.",
-    "tiempoAsistencia": "59m",
-    "tiempoAsistenciaMinutos": 59,
-    "alertaTiempoMp": null
-  },
-  "033TI0001": {
-    "ultimoMpFecha": "12/04/2026",
-    "rawDateIso": "2026-04-13",
-    "tecMp": "Allende, Martin Leandro",
-    "obsMp": "[13/04/2026] Se realizó mantenimiento preventivo. Se realizaron pruebas en diagnóstico sin fallas.",
-    "tiempoAsistencia": "57m",
-    "tiempoAsistenciaMinutos": 57,
     "alertaTiempoMp": null
   },
   "046TI0001": {
@@ -10259,15 +10295,6 @@
     "tiempoAsistenciaMinutos": 66,
     "alertaTiempoMp": null
   },
-  "001TI0003": {
-    "ultimoMpFecha": "14/04/2026",
-    "rawDateIso": "2026-04-15",
-    "tecMp": "Pavon, Diego Emanuel",
-    "obsMp": "[15/04/2026] Se realizo mantenimiento preventivo OK Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. TAS OPERATIVA",
-    "tiempoAsistencia": "1h 0m",
-    "tiempoAsistenciaMinutos": 60,
-    "alertaTiempoMp": null
-  },
   "035TI0002": {
     "ultimoMpFecha": "13/04/2026",
     "rawDateIso": "2026-04-14",
@@ -10275,33 +10302,6 @@
     "obsMp": "[14/04/2026] Se realiza mantenimiento preventivo",
     "tiempoAsistencia": "52m",
     "tiempoAsistenciaMinutos": 52,
-    "alertaTiempoMp": null
-  },
-  "015TI0003": {
-    "ultimoMpFecha": "07/04/2026",
-    "rawDateIso": "2026-04-08",
-    "tecMp": "Buratti, Fabian",
-    "obsMp": "[08/04/2026] diagnóstico pruebas y preventivo ok",
-    "tiempoAsistencia": "5h 48m",
-    "tiempoAsistenciaMinutos": 348,
-    "alertaTiempoMp": null
-  },
-  "015TI0004": {
-    "ultimoMpFecha": "15/03/2026",
-    "rawDateIso": "2026-03-16",
-    "tecMp": "Buratti, Fabian",
-    "obsMp": "[16/03/2026] diagnóstico  y preventivo ok",
-    "tiempoAsistencia": "2h 20m",
-    "tiempoAsistenciaMinutos": 140,
-    "alertaTiempoMp": null
-  },
-  "015TI0002": {
-    "ultimoMpFecha": "08/04/2026",
-    "rawDateIso": "2026-04-09",
-    "tecMp": "Buratti, Fabian",
-    "obsMp": "[09/04/2026] diagnóstico pruebas y preventivo ok",
-    "tiempoAsistencia": "2h 2m",
-    "tiempoAsistenciaMinutos": 122,
     "alertaTiempoMp": null
   },
   "002359058270": {
@@ -10520,6 +10520,15 @@
     "tiempoAsistenciaMinutos": 55,
     "alertaTiempoMp": null
   },
+  "008350004871": {
+    "ultimoMpFecha": "13/04/2026",
+    "rawDateIso": "2026-04-14",
+    "tecMp": "Vazquez, Nicolas",
+    "obsMp": "[14/04/2026] Mantenimiento preventivo al 30/04/2026.",
+    "tiempoAsistencia": "1h 0m",
+    "tiempoAsistenciaMinutos": 60,
+    "alertaTiempoMp": null
+  },
   "006740000070": {
     "ultimoMpFecha": "13/05/2026",
     "rawDateIso": "2026-05-14",
@@ -10601,6 +10610,33 @@
     "tiempoAsistenciaMinutos": 60,
     "alertaTiempoMp": null
   },
+  "001035022370": {
+    "ultimoMpFecha": "17/02/2026",
+    "rawDateIso": "2026-02-18",
+    "tecMp": "Marin, Leandro Alexis",
+    "obsMp": "[18/02/2026] mantenimiento preventivo ok",
+    "tiempoAsistencia": "1h 5m",
+    "tiempoAsistenciaMinutos": 65,
+    "alertaTiempoMp": null
+  },
+  "001035022371": {
+    "ultimoMpFecha": "17/02/2026",
+    "rawDateIso": "2026-02-18",
+    "tecMp": "Marin, Leandro Alexis",
+    "obsMp": "[18/02/2026] mantenimiento preventivo ok",
+    "tiempoAsistencia": "1h 0m",
+    "tiempoAsistenciaMinutos": 60,
+    "alertaTiempoMp": null
+  },
+  "008383009070": {
+    "ultimoMpFecha": "16/04/2026",
+    "rawDateIso": "2026-04-17",
+    "tecMp": "Vazquez, Nicolas",
+    "obsMp": "[17/04/2026] Mantenimiento preventivo al 30/04/2026.",
+    "tiempoAsistencia": "1h 0m",
+    "tiempoAsistenciaMinutos": 60,
+    "alertaTiempoMp": null
+  },
   "008383009770": {
     "ultimoMpFecha": "30/03/2026",
     "rawDateIso": "2026-03-31",
@@ -10615,6 +10651,15 @@
     "rawDateIso": "2026-04-14",
     "tecMp": "Vazquez, Nicolas",
     "obsMp": "[14/04/2026] Mantenimiento preventivo al 30/04/2026.",
+    "tiempoAsistencia": "1h 0m",
+    "tiempoAsistenciaMinutos": 60,
+    "alertaTiempoMp": null
+  },
+  "001719000070": {
+    "ultimoMpFecha": "05/03/2026",
+    "rawDateIso": "2026-03-06",
+    "tecMp": "Marin, Leandro Alexis",
+    "obsMp": "[06/03/2026] mantenimiento preventivo ok",
     "tiempoAsistencia": "1h 0m",
     "tiempoAsistenciaMinutos": 60,
     "alertaTiempoMp": null
@@ -10722,6 +10767,15 @@
     "obsMp": "[13/04/2026] Mantenimiento preventivo al 30/04/2026.",
     "tiempoAsistencia": "1h 0m",
     "tiempoAsistenciaMinutos": 60,
+    "alertaTiempoMp": null
+  },
+  "008681049770": {
+    "ultimoMpFecha": "16/04/2026",
+    "rawDateIso": "2026-04-17",
+    "tecMp": "Vazquez, Nicolas",
+    "obsMp": "[17/04/2026] Mantenimiento preventivo al 30/04/2026",
+    "tiempoAsistencia": "1h 10m",
+    "tiempoAsistenciaMinutos": 70,
     "alertaTiempoMp": null
   },
   "008681049070": {
@@ -10893,6 +10947,15 @@
     "obsMp": "[25/03/2026]   mantenimiento preventivo // [18/03/2026] se suspende por que el tesorero informó que el mantenimiento esta programado por mail para el día 19/03.",
     "tiempoAsistencia": "1h 0m",
     "tiempoAsistenciaMinutos": 60,
+    "alertaTiempoMp": null
+  },
+  "S1JBS245": {
+    "ultimoMpFecha": "29/06/2026",
+    "rawDateIso": "2026-06-30",
+    "tecMp": "Gonzalez Lopez, Raul Lionel",
+    "obsMp": "[30/06/2026] Se realizó mantenimiento preventivo. ATM OK",
+    "tiempoAsistencia": "0m",
+    "tiempoAsistenciaMinutos": 0,
     "alertaTiempoMp": null
   },
   "006740000570": {
@@ -12755,15 +12818,6 @@
     "tiempoAsistenciaMinutos": 67,
     "alertaTiempoMp": null
   },
-  "S1JBS245": {
-    "ultimoMpFecha": "29/06/2026",
-    "rawDateIso": "2026-06-30",
-    "tecMp": "Gonzalez Lopez, Raul Lionel",
-    "obsMp": "[30/06/2026] Se realizó mantenimiento preventivo. ATM OK",
-    "tiempoAsistencia": "0m",
-    "tiempoAsistenciaMinutos": 0,
-    "alertaTiempoMp": null
-  },
   "056TI0002": {
     "ultimoMpFecha": "08/09/2026",
     "rawDateIso": "2026-09-09",
@@ -12780,6 +12834,24 @@
     "obsMp": "[09/09/2026] mantenimiento preventivo ok,  tasa de aceptación 91%",
     "tiempoAsistencia": "2h 15m",
     "tiempoAsistenciaMinutos": 135,
+    "alertaTiempoMp": null
+  },
+  "017TI0005": {
+    "ultimoMpFecha": "14/04/2026",
+    "rawDateIso": "2026-04-15",
+    "tecMp": "Lazzaro, Leonardo",
+    "obsMp": "[15/04/2026] mantenimiento preventivo",
+    "tiempoAsistencia": "1h 2m",
+    "tiempoAsistenciaMinutos": 62,
+    "alertaTiempoMp": null
+  },
+  "017TI0004": {
+    "ultimoMpFecha": "27/04/2026",
+    "rawDateIso": "2026-04-28",
+    "tecMp": "Lazzaro, Leonardo",
+    "obsMp": "[28/04/2026] mantenimiento preventivo",
+    "tiempoAsistencia": "1h 6m",
+    "tiempoAsistenciaMinutos": 66,
     "alertaTiempoMp": null
   },
   "004178000370": {
@@ -13292,15 +13364,6 @@
     "tiempoAsistenciaMinutos": 44,
     "alertaTiempoMp": null
   },
-  "001719000070": {
-    "ultimoMpFecha": "05/03/2026",
-    "rawDateIso": "2026-03-06",
-    "tecMp": "Marin, Leandro Alexis",
-    "obsMp": "[06/03/2026] mantenimiento preventivo ok",
-    "tiempoAsistencia": "1h 0m",
-    "tiempoAsistenciaMinutos": 60,
-    "alertaTiempoMp": null
-  },
   "001035040271": {
     "ultimoMpFecha": "17/02/2026",
     "rawDateIso": "2026-02-18",
@@ -13324,24 +13387,6 @@
     "rawDateIso": "2026-03-02",
     "tecMp": "Vazquez, Nicolas",
     "obsMp": "[02/03/2026] Mantenimiento preventivo al 28/02/2026.",
-    "tiempoAsistencia": "1h 0m",
-    "tiempoAsistenciaMinutos": 60,
-    "alertaTiempoMp": null
-  },
-  "001035022370": {
-    "ultimoMpFecha": "17/02/2026",
-    "rawDateIso": "2026-02-18",
-    "tecMp": "Marin, Leandro Alexis",
-    "obsMp": "[18/02/2026] mantenimiento preventivo ok",
-    "tiempoAsistencia": "1h 5m",
-    "tiempoAsistenciaMinutos": 65,
-    "alertaTiempoMp": null
-  },
-  "001035022371": {
-    "ultimoMpFecha": "17/02/2026",
-    "rawDateIso": "2026-02-18",
-    "tecMp": "Marin, Leandro Alexis",
-    "obsMp": "[18/02/2026] mantenimiento preventivo ok",
     "tiempoAsistencia": "1h 0m",
     "tiempoAsistenciaMinutos": 60,
     "alertaTiempoMp": null
@@ -13454,24 +13499,6 @@
     "tiempoAsistenciaMinutos": 85,
     "alertaTiempoMp": null
   },
-  "008350004871": {
-    "ultimoMpFecha": "13/04/2026",
-    "rawDateIso": "2026-04-14",
-    "tecMp": "Vazquez, Nicolas",
-    "obsMp": "[14/04/2026] Mantenimiento preventivo al 30/04/2026.",
-    "tiempoAsistencia": "1h 0m",
-    "tiempoAsistenciaMinutos": 60,
-    "alertaTiempoMp": null
-  },
-  "008383009070": {
-    "ultimoMpFecha": "16/04/2026",
-    "rawDateIso": "2026-04-17",
-    "tecMp": "Vazquez, Nicolas",
-    "obsMp": "[17/04/2026] Mantenimiento preventivo al 30/04/2026.",
-    "tiempoAsistencia": "1h 0m",
-    "tiempoAsistenciaMinutos": 60,
-    "alertaTiempoMp": null
-  },
   "008415014970": {
     "ultimoMpFecha": "22/04/2026",
     "rawDateIso": "2026-04-23",
@@ -13504,15 +13531,6 @@
       "umbral": 60,
       "tipoEquipo": "GLORY_CIMA"
     }
-  },
-  "008681049770": {
-    "ultimoMpFecha": "16/04/2026",
-    "rawDateIso": "2026-04-17",
-    "tecMp": "Vazquez, Nicolas",
-    "obsMp": "[17/04/2026] Mantenimiento preventivo al 30/04/2026",
-    "tiempoAsistencia": "1h 10m",
-    "tiempoAsistenciaMinutos": 70,
-    "alertaTiempoMp": null
   },
   "008681004670": {
     "ultimoMpFecha": "22/04/2026",
@@ -13707,24 +13725,6 @@
     "obsMp": "[22/04/2026] mantenimiento preventivo ok",
     "tiempoAsistencia": "50m",
     "tiempoAsistenciaMinutos": 50,
-    "alertaTiempoMp": null
-  },
-  "017TI0005": {
-    "ultimoMpFecha": "14/04/2026",
-    "rawDateIso": "2026-04-15",
-    "tecMp": "Lazzaro, Leonardo",
-    "obsMp": "[15/04/2026] mantenimiento preventivo",
-    "tiempoAsistencia": "1h 2m",
-    "tiempoAsistenciaMinutos": 62,
-    "alertaTiempoMp": null
-  },
-  "017TI0004": {
-    "ultimoMpFecha": "27/04/2026",
-    "rawDateIso": "2026-04-28",
-    "tecMp": "Lazzaro, Leonardo",
-    "obsMp": "[28/04/2026] mantenimiento preventivo",
-    "tiempoAsistencia": "1h 6m",
-    "tiempoAsistenciaMinutos": 66,
     "alertaTiempoMp": null
   },
   "017TI0003": {

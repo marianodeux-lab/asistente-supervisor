@@ -1,6 +1,9 @@
 {
-  "fechaActualizacion": "09/03/2026",
-  "fuente": "Análisis Patagonia 2026.xlsx",
+  "fechaActualizacion": "17/09/2026",
+  "fechaActualizacionSuspendidos": "17/09/2026",
+  "fechaActualizacionSla": "13/09/2026",
+  "fechaActualizacionTelca": "17/09/2026",
+  "fuente": "Análisis Atenciones 2026",
   "totalSuspendidos": 9865,
   "totalSla": 2990,
   "totalTelca": 11220,

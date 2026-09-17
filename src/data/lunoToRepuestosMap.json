@@ -349,6 +349,21 @@
   ],
   "148": [
     {
+      "pedido": "101216189",
+      "fecha": "2026-09-16",
+      "hora": "16:13:05",
+      "tecnico": "Garcia, Alejandro Javier",
+      "instalaBase": "WN-007000-195A",
+      "instalaDesc": "CHASSIS P CCDM CHECK CASH ASSY *W0-175010-8714*",
+      "instalaQr": "0083",
+      "retiraBase": "WN-007000-195A",
+      "retiraDesc": "CHASSIS P CCDM CHECK CASH ASSY *W0-175010-8714*",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "No se pudo grabar la instalacion ->No se pudo grabar el Formulario.Creado wf por idunico inexistente 100251494Retirado con exito wf 100251494"
+    },
+    {
       "pedido": "101153121",
       "fecha": "2026-01-23",
       "hora": "10:31:26",
@@ -553,7 +568,7 @@
       "retiraQr": "0GEN",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Cambio de base con exito wf 100171717No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 02/01/2026-15:00:46\r\n\r\nFecha Automatica Ult Transaccion : 02/01/2026-15:00:48\r\n\r\nCreado wf por idunico inexistente 100242879Retirado con exito wf 100242879"
+      "obs": "Cambio de base con exito wf 100171717No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 02/01/2026-15:00:46\r\r\nFecha Automatica Ult Transaccion : 02/01/2026-15:00:48\r\r\nCreado wf por idunico inexistente 100242879Retirado con exito wf 100242879"
     }
   ],
   "3028": [
@@ -574,6 +589,21 @@
     }
   ],
   "3049": [
+    {
+      "pedido": "101183780",
+      "fecha": "2026-05-15",
+      "hora": "12:49:49",
+      "tecnico": "Montiel, Juan Fernando",
+      "instalaBase": "GR-050201-2939",
+      "instalaDesc": "CAM8350 ESCROW MODULE 502012939",
+      "instalaQr": "0119",
+      "retiraBase": "GR-050201",
+      "retiraDesc": "CAM8350 ESCROW MODULE 502012939",
+      "retiraQr": "2939",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100240865Creado wf por idunico inexistente 100248051Retirado con exito wf 100248051"
+    },
     {
       "pedido": "101183780",
       "fecha": "2026-05-15",
@@ -603,21 +633,6 @@
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
       "obs": "Instalado con exito wf 100243196Retirado con exito wf 100238240"
-    },
-    {
-      "pedido": "101183780",
-      "fecha": "2026-05-15",
-      "hora": "12:49:49",
-      "tecnico": "Montiel, Juan Fernando",
-      "instalaBase": "GR-050201-2939",
-      "instalaDesc": "CAM8350 ESCROW MODULE 502012939",
-      "instalaQr": "0119",
-      "retiraBase": "GR-050201",
-      "retiraDesc": "CAM8350 ESCROW MODULE 502012939",
-      "retiraQr": "2939",
-      "esStockFijo": true,
-      "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100240865Creado wf por idunico inexistente 100248051Retirado con exito wf 100248051"
     },
     {
       "pedido": "101175574",
@@ -1004,6 +1019,23 @@
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
       "obs": "Instalado con exito wf 100229666Retirado con exito wf 100149188"
+    }
+  ],
+  "4060": [
+    {
+      "pedido": "101216066",
+      "fecha": "2026-09-14",
+      "hora": "14:05:49",
+      "tecnico": "Olivencia, Emmanuel Matias",
+      "instalaBase": "WN-175025-6247",
+      "instalaDesc": "PRINTER TP27 80MM RECEIPT PN 1750256247",
+      "instalaQr": "0001",
+      "retiraBase": "WN-175025-6247",
+      "retiraDesc": "PRINTER TP27 80MM RECEIPT PN 1750256247",
+      "retiraQr": "0077",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100094366Retirado con exito wf 100170112"
     }
   ],
   "4101": [
@@ -1554,6 +1586,23 @@
       "obs": "No se encontro la parte P8-000000-0038-0459Creado wf por idunico inexistente 100251258Retirado con exito wf 100251258"
     }
   ],
+  "4418": [
+    {
+      "pedido": "101216901",
+      "fecha": "2026-09-15",
+      "hora": "16:06:48",
+      "tecnico": "Garcia, Alejandro Javier",
+      "instalaBase": "GR-050201-3870",
+      "instalaDesc": "GR-050201-3870 CAM8350 HEAD ASSY PN 502013870",
+      "instalaQr": "0127",
+      "retiraBase": "GR-050201",
+      "retiraDesc": "GR-050201-3870 CAM8350 HEAD ASSY PN 502013870",
+      "retiraQr": "3870",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100245130Creado wf por idunico inexistente 100251470Retirado con exito wf 100251470"
+    }
+  ],
   "4420": [
     {
       "pedido": "101212317",
@@ -1639,21 +1688,6 @@
       "fecha": "2026-05-27",
       "hora": "10:39:07",
       "tecnico": "Xavier, Hernan",
-      "instalaBase": "GR-050201-3870",
-      "instalaDesc": "GR-050201-3870 CAM8350 HEAD ASSY PN 502013870",
-      "instalaQr": "0123",
-      "retiraBase": "GR-050201-3870",
-      "retiraDesc": "GR-050201-3870 CAM8350 HEAD ASSY PN 502013870",
-      "retiraQr": "0046",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100243861Instalado con exito wf 100243861Retirado con exito wf 100228516"
-    },
-    {
-      "pedido": "101184980",
-      "fecha": "2026-05-27",
-      "hora": "10:39:07",
-      "tecnico": "Xavier, Hernan",
       "instalaBase": "GR-030101-2118",
       "instalaDesc": "GR-030101-2118",
       "instalaQr": "0024",
@@ -1663,6 +1697,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Cambio de base con exito wf 100243322Instalado con exito wf 100243322Creado wf por idunico inexistente 100248271Retirado con exito wf 100248271"
+    },
+    {
+      "pedido": "101184980",
+      "fecha": "2026-05-27",
+      "hora": "10:39:07",
+      "tecnico": "Xavier, Hernan",
+      "instalaBase": "GR-050201-3870",
+      "instalaDesc": "GR-050201-3870 CAM8350 HEAD ASSY PN 502013870",
+      "instalaQr": "0123",
+      "retiraBase": "GR-050201-3870",
+      "retiraDesc": "GR-050201-3870 CAM8350 HEAD ASSY PN 502013870",
+      "retiraQr": "0046",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100243861Instalado con exito wf 100243861Retirado con exito wf 100228516"
     },
     {
       "pedido": "101175248",
@@ -2161,6 +2210,21 @@
     }
   ],
   "4986": [
+    {
+      "pedido": "101216535",
+      "fecha": "2026-09-16",
+      "hora": "10:09:47",
+      "tecnico": "Gonzalez Lopez, Raul Lionel",
+      "instalaBase": "WN-007000-022A",
+      "instalaDesc": "INTERMEDIATE TRANSPORT-VM 3 *W0-175010-1952*",
+      "instalaQr": "0076",
+      "retiraBase": "WN-007000-022A",
+      "retiraDesc": "INTERMEDIATE TRANSPORT-VM 3 *W0-175010-1952*",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100236142Instalado con exito wf 100236142Creado wf por idunico inexistente 100251476Retirado con exito wf 100251476"
+    },
     {
       "pedido": "101211506",
       "fecha": "2026-08-28",
@@ -3559,21 +3623,6 @@
       "fecha": "2026-09-02",
       "hora": "09:56:24",
       "tecnico": "Chiriello, Pablo Javier",
-      "instalaBase": "GR-021402-0232",
-      "instalaDesc": "DISCO 128GB/MSATA SSD 214020232",
-      "instalaQr": "0001",
-      "retiraBase": "GR-021402-0505",
-      "retiraDesc": "Disco SSD 1TB_mSATA GRG",
-      "retiraQr": "0017",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100200952Instalado con exito wf 100200952Retirado con exito wf 100233180"
-    },
-    {
-      "pedido": "101213307",
-      "fecha": "2026-09-02",
-      "hora": "09:56:24",
-      "tecnico": "Chiriello, Pablo Javier",
       "instalaBase": "P8-000000-0068",
       "instalaDesc": "P8-000000-0068",
       "instalaQr": "0051",
@@ -3583,6 +3632,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Cambio de base con exito wf 100239248Instalado con exito wf 100239248Creado wf por idunico inexistente 100251065Retirado con exito wf 100251065"
+    },
+    {
+      "pedido": "101213307",
+      "fecha": "2026-09-02",
+      "hora": "09:56:24",
+      "tecnico": "Chiriello, Pablo Javier",
+      "instalaBase": "GR-021402-0232",
+      "instalaDesc": "DISCO 128GB/MSATA SSD 214020232",
+      "instalaQr": "0001",
+      "retiraBase": "GR-021402-0505",
+      "retiraDesc": "Disco SSD 1TB_mSATA GRG",
+      "retiraQr": "0017",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100200952Instalado con exito wf 100200952Retirado con exito wf 100233180"
     },
     {
       "pedido": "101186835",
@@ -3772,21 +3836,6 @@
       "fecha": "2026-05-08",
       "hora": "14:16:47",
       "tecnico": "Martos, Jose Angel",
-      "instalaBase": "GR-050201-2939",
-      "instalaDesc": "CAM8350 ESCROW MODULE 502012939",
-      "instalaQr": "0139",
-      "retiraBase": "GR-050201-2939",
-      "retiraDesc": "CAM8350 ESCROW MODULE 502012939",
-      "retiraQr": "0005",
-      "esStockFijo": true,
-      "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100245212Retirado con exito wf 100184859"
-    },
-    {
-      "pedido": "101181611",
-      "fecha": "2026-05-08",
-      "hora": "14:16:47",
-      "tecnico": "Martos, Jose Angel",
       "instalaBase": "GR-050201-3870",
       "instalaDesc": "GR-050201-3870 CAM8350 HEAD ASSY PN 502013870",
       "instalaQr": "0024",
@@ -3796,6 +3845,21 @@
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
       "obs": "Instalado con exito wf 100208072Retirado con exito wf 100243861"
+    },
+    {
+      "pedido": "101181611",
+      "fecha": "2026-05-08",
+      "hora": "14:16:47",
+      "tecnico": "Martos, Jose Angel",
+      "instalaBase": "GR-050201-2939",
+      "instalaDesc": "CAM8350 ESCROW MODULE 502012939",
+      "instalaQr": "0139",
+      "retiraBase": "GR-050201-2939",
+      "retiraDesc": "CAM8350 ESCROW MODULE 502012939",
+      "retiraQr": "0005",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100245212Retirado con exito wf 100184859"
     },
     {
       "pedido": "101178596",
@@ -3840,7 +3904,7 @@
       "retiraQr": "0051",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Cambio de base con exito wf 100243861No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 22/04/2026-16:05:39\r\n\r\nFecha Automatica Ult Transaccion : 22/04/2026-16:05:45\r\n\r\nRetirado con exito wf 100229323"
+      "obs": "Cambio de base con exito wf 100243861No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 22/04/2026-16:05:39\r\r\nFecha Automatica Ult Transaccion : 22/04/2026-16:05:45\r\r\nRetirado con exito wf 100229323"
     },
     {
       "pedido": "101150324",
@@ -3994,7 +4058,7 @@
       "retiraQr": "0176",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100243157No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 16/03/2026-09:27:52\r\n\r\nFecha Automatica Ult Transaccion : 16/03/2026-09:28:28\r\n\r\nRetirado con exito wf 100242827"
+      "obs": "Cambio de base con exito wf 100243157No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 16/03/2026-09:27:52\r\r\nFecha Automatica Ult Transaccion : 16/03/2026-09:28:28\r\r\nRetirado con exito wf 100242827"
     },
     {
       "pedido": "101166293",
@@ -4009,7 +4073,7 @@
       "retiraQr": "2006",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100242827No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 12/03/2026-14:57:22\r\n\r\nFecha Automatica Ult Transaccion : 12/03/2026-14:57:55\r\n\r\nCreado wf por idunico inexistente 100245261Retirado con exito wf 100245261"
+      "obs": "Cambio de base con exito wf 100242827No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 12/03/2026-14:57:22\r\r\nFecha Automatica Ult Transaccion : 12/03/2026-14:57:55\r\r\nCreado wf por idunico inexistente 100245261Retirado con exito wf 100245261"
     }
   ],
   "6696": [
@@ -4030,6 +4094,21 @@
     }
   ],
   "7014": [
+    {
+      "pedido": "101216278",
+      "fecha": "2026-09-14",
+      "hora": "12:27:54",
+      "tecnico": "Bastias, Carlos Ignacio",
+      "instalaBase": "49-208102-000M",
+      "instalaDesc": "CCA,DISPENSER NEW",
+      "instalaQr": "1002",
+      "retiraBase": "49-208102-000M",
+      "retiraDesc": "CCA,DISPENSER NEW",
+      "retiraQr": "0GEN",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100196373Creado wf por idunico inexistente 100251346Retirado con exito wf 100251346"
+    },
     {
       "pedido": "101159510",
       "fecha": "2026-02-20",
@@ -4169,13 +4248,13 @@
       "tecnico": "Nicolai, Gustavo",
       "instalaBase": "W0-000000-9651",
       "instalaDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
-      "instalaQr": "3586",
-      "retiraBase": "W0-000000-9651",
+      "instalaQr": "3583",
+      "retiraBase": "W0-000000",
       "retiraDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
-      "retiraQr": "1616",
+      "retiraQr": "9651",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100249636Retirado con exito wf 100182586"
+      "obs": "Instalado con exito wf 100249632Creado wf por idunico inexistente 100251236Retirado con exito wf 100251236"
     },
     {
       "pedido": "101212849",
@@ -4184,13 +4263,13 @@
       "tecnico": "Nicolai, Gustavo",
       "instalaBase": "W0-000000-9651",
       "instalaDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
-      "instalaQr": "3583",
-      "retiraBase": "W0-000000",
+      "instalaQr": "3586",
+      "retiraBase": "W0-000000-9651",
       "retiraDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
-      "retiraQr": "9651",
+      "retiraQr": "1616",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100249632Creado wf por idunico inexistente 100251236Retirado con exito wf 100251236"
+      "obs": "Instalado con exito wf 100249636Retirado con exito wf 100182586"
     }
   ],
   "7182": [
@@ -5286,6 +5365,21 @@
   ],
   "8230": [
     {
+      "pedido": "101215780",
+      "fecha": "2026-09-16",
+      "hora": "13:11:44",
+      "tecnico": "Buratti, Fabian",
+      "instalaBase": "GR-050201-3870",
+      "instalaDesc": "GR-050201-3870 CAM8350 HEAD ASSY PN 502013870",
+      "instalaQr": "0112",
+      "retiraBase": "GR-050201-3870",
+      "retiraDesc": "GR-050201-3870 CAM8350 HEAD ASSY PN 502013870",
+      "retiraQr": "0030",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Estado incorrecto de la parte 100242764Estado incorrecto de la parte 100214246"
+    },
+    {
       "pedido": "101204168",
       "fecha": "2026-07-28",
       "hora": "09:41:16",
@@ -5720,7 +5814,7 @@
       "retiraQr": "0348",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100243751No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 08/04/2026-11:01:29\r\n\r\nFecha Automatica Ult Transaccion : 08/04/2026-11:02:07\r\n\r\nCreado wf por idunico inexistente 100246755Retirado con exito wf 100246755"
+      "obs": "Cambio de base con exito wf 100243751No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 08/04/2026-11:01:29\r\r\nFecha Automatica Ult Transaccion : 08/04/2026-11:02:07\r\r\nCreado wf por idunico inexistente 100246755Retirado con exito wf 100246755"
     },
     {
       "pedido": "101162436",
@@ -5767,7 +5861,7 @@
       "retiraQr": "1056",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100197994No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 08/04/2026-11:19:29\r\n\r\nFecha Automatica Ult Transaccion : 08/04/2026-11:20:07\r\n\r\nCreado wf por idunico inexistente 100246756Retirado con exito wf 100246756"
+      "obs": "Cambio de base con exito wf 100197994No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 08/04/2026-11:19:29\r\r\nFecha Automatica Ult Transaccion : 08/04/2026-11:20:07\r\r\nCreado wf por idunico inexistente 100246756Retirado con exito wf 100246756"
     },
     {
       "pedido": "101162437",
@@ -5884,6 +5978,21 @@
     }
   ],
   "9181": [
+    {
+      "pedido": "101215595",
+      "fecha": "2026-09-14",
+      "hora": "08:30:39",
+      "tecnico": "Olivencia, Emmanuel Matias",
+      "instalaBase": "W0-175020-4431",
+      "instalaDesc": "BA80 8,4 TFT DISPLAY R-TOUCH LGY PN 1750204431",
+      "instalaQr": "0047",
+      "retiraBase": "W0-175020-4431",
+      "retiraDesc": "BA80 8,4 TFT DISPLAY R-TOUCH LGY PN 1750204431",
+      "retiraQr": "0048",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100241416Retirado con exito wf 100241417"
+    },
     {
       "pedido": "101176485",
       "fecha": "2026-04-22",
@@ -6453,13 +6562,13 @@
       "tecnico": "Marin, Leandro Alexis",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "3034",
+      "instalaQr": "3950",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "3688",
+      "retiraQr": "8214",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100131655Retirado con exito wf 100139138"
+      "obs": "Instalado con exito wf 100142681Retirado con exito wf 100223486"
     },
     {
       "pedido": "101181836",
@@ -6468,13 +6577,13 @@
       "tecnico": "Marin, Leandro Alexis",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "3950",
+      "instalaQr": "3034",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "8214",
+      "retiraQr": "3688",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100142681Retirado con exito wf 100223486"
+      "obs": "Instalado con exito wf 100131655Retirado con exito wf 100139138"
     }
   ],
   "10250": [
@@ -6799,13 +6908,13 @@
       "tecnico": "Marin, Leandro Alexis",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "5648",
+      "instalaQr": "8520",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "Sin QR",
+      "retiraQr": "6635",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100174023Creado wf por idunico inexistente 100251054Retirado con exito wf 100251054"
+      "obs": "Instalado con exito wf 100242983Retirado con exito wf 100190389"
     },
     {
       "pedido": "101212963",
@@ -6814,13 +6923,13 @@
       "tecnico": "Marin, Leandro Alexis",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "8520",
+      "instalaQr": "5648",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "6635",
+      "retiraQr": "Sin QR",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100242983Retirado con exito wf 100190389"
+      "obs": "Instalado con exito wf 100174023Creado wf por idunico inexistente 100251054Retirado con exito wf 100251054"
     },
     {
       "pedido": "101212963",
@@ -7310,21 +7419,6 @@
       "tecnico": "Moralez, Pablo",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "8406",
-      "retiraBase": "49-211432-000A",
-      "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "7758",
-      "esStockFijo": true,
-      "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100234029Retirado con exito wf 100211920"
-    },
-    {
-      "pedido": "101186058",
-      "fecha": "2026-05-26",
-      "hora": "15:05:29",
-      "tecnico": "Moralez, Pablo",
-      "instalaBase": "49-211432-000A",
-      "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
       "instalaQr": "7123",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
@@ -7347,6 +7441,21 @@
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
       "obs": "Instalado con exito wf 100235851Retirado con exito wf 100199235"
+    },
+    {
+      "pedido": "101186058",
+      "fecha": "2026-05-26",
+      "hora": "15:05:29",
+      "tecnico": "Moralez, Pablo",
+      "instalaBase": "49-211432-000A",
+      "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
+      "instalaQr": "8406",
+      "retiraBase": "49-211432-000A",
+      "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
+      "retiraQr": "7758",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100234029Retirado con exito wf 100211920"
     },
     {
       "pedido": "101183218",
@@ -8016,7 +8125,7 @@
       "retiraQr": "4470",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Cambio de base con exito wf 100117176No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 27/04/2026-13:54:33\r\n\r\nFecha Automatica Ult Transaccion : 27/04/2026-13:55:21\r\n\r\nRetirado con exito wf 100153604"
+      "obs": "Cambio de base con exito wf 100117176No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 27/04/2026-13:54:33\r\r\nFecha Automatica Ult Transaccion : 27/04/2026-13:55:21\r\r\nRetirado con exito wf 100153604"
     },
     {
       "pedido": "101175781",
@@ -8302,6 +8411,21 @@
     }
   ],
   "10458": [
+    {
+      "pedido": "101216836",
+      "fecha": "2026-09-15",
+      "hora": "13:35:56",
+      "tecnico": "Gonzalez, Leonardo",
+      "instalaBase": "00-104777-000D",
+      "instalaDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
+      "instalaQr": "14709",
+      "retiraBase": "00-104777-000D",
+      "retiraDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
+      "retiraQr": "11565",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100244498Retirado con exito wf 100196935"
+    },
     {
       "pedido": "101157465",
       "fecha": "2026-02-06",
@@ -8817,13 +8941,13 @@
       "tecnico": "Marin, Leandro Alexis",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "7611",
+      "instalaQr": "0157",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "5003",
+      "retiraQr": "2812",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100208097Retirado con exito wf 100165011"
+      "obs": "Instalado con exito wf 100031203Retirado con exito wf 100128000"
     },
     {
       "pedido": "101186195",
@@ -8832,13 +8956,13 @@
       "tecnico": "Marin, Leandro Alexis",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "0157",
+      "instalaQr": "7611",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "2812",
+      "retiraQr": "5003",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100031203Retirado con exito wf 100128000"
+      "obs": "Instalado con exito wf 100208097Retirado con exito wf 100165011"
     },
     {
       "pedido": "101175496",
@@ -9239,7 +9363,7 @@
       "retiraQr": "0000",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100184938No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 01/04/2026-12:28:20\r\n\r\nFecha Automatica Ult Transaccion : 01/04/2026-12:29:00\r\n\r\nCreado wf por idunico inexistente 100245767Retirado con exito wf 100245767"
+      "obs": "Cambio de base con exito wf 100184938No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 01/04/2026-12:28:20\r\r\nFecha Automatica Ult Transaccion : 01/04/2026-12:29:00\r\r\nCreado wf por idunico inexistente 100245767Retirado con exito wf 100245767"
     }
   ],
   "10758": [
@@ -9489,7 +9613,7 @@
       "retiraQr": "0533",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100118443No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 25/03/2026-14:53:17\r\n\r\nFecha Automatica Ult Transaccion : 25/03/2026-14:53:58\r\n\r\nRetirado con exito wf 100171661"
+      "obs": "Cambio de base con exito wf 100118443No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 25/03/2026-14:53:17\r\r\nFecha Automatica Ult Transaccion : 25/03/2026-14:53:58\r\r\nRetirado con exito wf 100171661"
     },
     {
       "pedido": "101155561",
@@ -10134,7 +10258,7 @@
       "retiraQr": "9001",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100244129No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 13/03/2026-09:59:25\r\n\r\nFecha Automatica Ult Transaccion : 13/03/2026-10:00:01\r\n\r\nCreado wf por idunico inexistente 100245273Retirado con exito wf 100245273"
+      "obs": "Cambio de base con exito wf 100244129No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 13/03/2026-09:59:25\r\r\nFecha Automatica Ult Transaccion : 13/03/2026-10:00:01\r\r\nCreado wf por idunico inexistente 100245273Retirado con exito wf 100245273"
     },
     {
       "pedido": "101157783",
@@ -10252,6 +10376,21 @@
   ],
   "11117": [
     {
+      "pedido": "101216609",
+      "fecha": "2026-09-16",
+      "hora": "11:53:47",
+      "tecnico": "Garcia, Alejandro Javier",
+      "instalaBase": "GR-020201-0014",
+      "instalaDesc": "CARD READER ICT3Q8-3A0179 (SANKYO) GRG PN 202010014.",
+      "instalaQr": "0019",
+      "retiraBase": "GR-020201",
+      "retiraDesc": "CARD READER ICT3Q8-3A0179 (SANKYO) GRG PN 202010014.",
+      "retiraQr": "0014",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100221975Creado wf por idunico inexistente 100251487Retirado con exito wf 100251487"
+    },
+    {
       "pedido": "101158124",
       "fecha": "2026-02-10",
       "hora": "12:27:26",
@@ -10264,7 +10403,7 @@
       "retiraQr": "0006",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100243175No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 10/02/2026-12:31:07\r\n\r\nFecha Automatica Ult Transaccion : 10/02/2026-12:31:08\r\n\r\nCreado wf por idunico inexistente 100243863Retirado con exito wf 100243863"
+      "obs": "Cambio de base con exito wf 100243175No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 10/02/2026-12:31:07\r\r\nFecha Automatica Ult Transaccion : 10/02/2026-12:31:08\r\r\nCreado wf por idunico inexistente 100243863Retirado con exito wf 100243863"
     }
   ],
   "11118": [
@@ -10437,6 +10576,21 @@
       "fecha": "2026-05-12",
       "hora": "13:02:20",
       "tecnico": "Martos, Jose Angel",
+      "instalaBase": "GR-050201-2939",
+      "instalaDesc": "CAM8350 ESCROW MODULE 502012939",
+      "instalaQr": "0120",
+      "retiraBase": "GR-050201-2939",
+      "retiraDesc": "CAM8350 ESCROW MODULE 502012939",
+      "retiraQr": "0GEN",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100240866Creado wf por idunico inexistente 100247950Retirado con exito wf 100247950"
+    },
+    {
+      "pedido": "101182176",
+      "fecha": "2026-05-12",
+      "hora": "13:02:20",
+      "tecnico": "Martos, Jose Angel",
       "instalaBase": "GR-050201-2917",
       "instalaDesc": "CAM8350 CASSETTE 502012917",
       "instalaQr": "0086",
@@ -10461,21 +10615,6 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100243721Creado wf por idunico inexistente 100247952Retirado con exito wf 100247952"
-    },
-    {
-      "pedido": "101182176",
-      "fecha": "2026-05-12",
-      "hora": "13:02:20",
-      "tecnico": "Martos, Jose Angel",
-      "instalaBase": "GR-050201-2939",
-      "instalaDesc": "CAM8350 ESCROW MODULE 502012939",
-      "instalaQr": "0120",
-      "retiraBase": "GR-050201-2939",
-      "retiraDesc": "CAM8350 ESCROW MODULE 502012939",
-      "retiraQr": "0GEN",
-      "esStockFijo": true,
-      "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100240866Creado wf por idunico inexistente 100247950Retirado con exito wf 100247950"
     },
     {
       "pedido": "101177359",
@@ -11688,6 +11827,21 @@
       "fecha": "2026-09-03",
       "hora": "12:30:09",
       "tecnico": "Chiriello, Pablo Javier",
+      "instalaBase": "GR-021404-0229",
+      "instalaDesc": "IPC-102-DX MAINBOARD (TEB-M1061) (214040229)",
+      "instalaQr": "0066",
+      "retiraBase": "GR-021404",
+      "retiraDesc": "IPC-102-DX MAINBOARD (TEB-M1061) (214040229)",
+      "retiraQr": "0229",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100245080Instalado con exito wf 100245080Creado wf por idunico inexistente 100251107Retirado con exito wf 100251107"
+    },
+    {
+      "pedido": "101211148",
+      "fecha": "2026-09-03",
+      "hora": "12:30:09",
+      "tecnico": "Chiriello, Pablo Javier",
       "instalaBase": "GR-021402-0505",
       "instalaDesc": "Disco SSD 1TB_mSATA GRG",
       "instalaQr": "0037",
@@ -11712,21 +11866,6 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Cambio de base con exito wf 100221989Instalado con exito wf 100221989Creado wf por idunico inexistente 100251106Retirado con exito wf 100251106"
-    },
-    {
-      "pedido": "101211148",
-      "fecha": "2026-09-03",
-      "hora": "12:30:09",
-      "tecnico": "Chiriello, Pablo Javier",
-      "instalaBase": "GR-021404-0229",
-      "instalaDesc": "IPC-102-DX MAINBOARD (TEB-M1061) (214040229)",
-      "instalaQr": "0066",
-      "retiraBase": "GR-021404",
-      "retiraDesc": "IPC-102-DX MAINBOARD (TEB-M1061) (214040229)",
-      "retiraQr": "0229",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100245080Instalado con exito wf 100245080Creado wf por idunico inexistente 100251107Retirado con exito wf 100251107"
     }
   ],
   "13309": [
@@ -14109,7 +14248,7 @@
       "retiraQr": "0034",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100089626No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 20/03/2026-11:42:29\r\n\r\nFecha Automatica Ult Transaccion : 20/03/2026-11:42:33\r\n\r\nRetirado con exito wf 100042914"
+      "obs": "Cambio de base con exito wf 100089626No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 20/03/2026-11:42:29\r\r\nFecha Automatica Ult Transaccion : 20/03/2026-11:42:33\r\r\nRetirado con exito wf 100042914"
     },
     {
       "pedido": "101168193",
@@ -14124,10 +14263,25 @@
       "retiraQr": "0644",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100220179No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 20/03/2026-11:42:30\r\n\r\nFecha Automatica Ult Transaccion : 20/03/2026-11:42:35\r\n\r\nRetirado con exito wf 100157994"
+      "obs": "Cambio de base con exito wf 100220179No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 20/03/2026-11:42:30\r\r\nFecha Automatica Ult Transaccion : 20/03/2026-11:42:35\r\r\nRetirado con exito wf 100157994"
     }
   ],
   "810871": [
+    {
+      "pedido": "101216830",
+      "fecha": "2026-09-16",
+      "hora": "12:02:02",
+      "tecnico": "Bastias, Carlos Ignacio",
+      "instalaBase": "49-223820-000A",
+      "instalaDesc": "PRNTR,1-SD THRM RCPT,80MM TOSHIBA *49257458000A/B*",
+      "instalaQr": "1587",
+      "retiraBase": "49-223820-000A",
+      "retiraDesc": "PRNTR,1-SD THRM RCPT,80MM TOSHIBA *49257458000A/B*",
+      "retiraQr": "1502",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100223240Retirado con exito wf 100208059"
+    },
     {
       "pedido": "101214831",
       "fecha": "2026-09-08",
@@ -14156,7 +14310,7 @@
       "retiraQr": "10GEN",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Cambio de base con exito wf 100239464No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 01/04/2026-09:12:18\r\n\r\nFecha Automatica Ult Transaccion : 01/04/2026-09:12:59\r\n\r\nCreado wf por idunico inexistente 100245757Retirado con exito wf 100245757"
+      "obs": "Cambio de base con exito wf 100239464No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 01/04/2026-09:12:18\r\r\nFecha Automatica Ult Transaccion : 01/04/2026-09:12:59\r\r\nCreado wf por idunico inexistente 100245757Retirado con exito wf 100245757"
     },
     {
       "pedido": "101164015",
@@ -14593,6 +14747,21 @@
   ],
   "812051": [
     {
+      "pedido": "101215248",
+      "fecha": "2026-09-15",
+      "hora": "12:55:08",
+      "tecnico": "Vicente, Francisco Ariel",
+      "instalaBase": "49-208102-000M",
+      "instalaDesc": "CCA,DISPENSER NEW",
+      "instalaQr": "1342",
+      "retiraBase": "49-208102-000M",
+      "retiraDesc": "CCA,DISPENSER NEW",
+      "retiraQr": "0GEN",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100234635Creado wf por idunico inexistente 100251370Retirado con exito wf 100251370"
+    },
+    {
       "pedido": "101162508",
       "fecha": "2026-03-03",
       "hora": "13:56:52",
@@ -14669,6 +14838,21 @@
     }
   ],
   "812061": [
+    {
+      "pedido": "101211705",
+      "fecha": "2026-09-15",
+      "hora": "14:50:43",
+      "tecnico": "Vicente, Francisco Ariel",
+      "instalaBase": "49-208102-000M",
+      "instalaDesc": "CCA,DISPENSER NEW",
+      "instalaQr": "0547",
+      "retiraBase": "49-208102-000M",
+      "retiraDesc": "CCA,DISPENSER NEW",
+      "retiraQr": "0GEN",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100140816Creado wf por idunico inexistente 100251467Retirado con exito wf 100251467"
+    },
     {
       "pedido": "101194403",
       "fecha": "2026-06-30",
@@ -15328,19 +15512,19 @@
   ],
   "815631": [
     {
-      "pedido": "101215755",
-      "fecha": "2026-09-10",
-      "hora": "11:17:34",
+      "pedido": "101216203",
+      "fecha": "2026-09-16",
+      "hora": "10:29:53",
       "tecnico": "Martos, Jose Angel",
-      "instalaBase": "00-105153-301C",
-      "instalaDesc": "CARD CAGE PROCESSOR SIERRA,C2D,3.0GHZ,2GB",
-      "instalaQr": "0149",
-      "retiraBase": "00-105153-301C",
-      "retiraDesc": "CARD CAGE PROCESSOR SIERRA,C2D,3.0GHZ,2GB",
-      "retiraQr": "0098",
+      "instalaBase": "49-220759-000B",
+      "instalaDesc": "ASM, CCA, TRANSPORT",
+      "instalaQr": "0534",
+      "retiraBase": "49-220759-000B",
+      "retiraDesc": "ASM, CCA, TRANSPORT",
+      "retiraQr": "0GEN",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100235104Retirado con exito wf 100150364"
+      "obs": "Instalado con exito wf 100207468Creado wf por idunico inexistente 100251485Retirado con exito wf 100251485"
     },
     {
       "pedido": "101215755",
@@ -15371,6 +15555,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100202730Creado wf por idunico inexistente 100251246Retirado con exito wf 100251246"
+    },
+    {
+      "pedido": "101215755",
+      "fecha": "2026-09-10",
+      "hora": "11:17:34",
+      "tecnico": "Martos, Jose Angel",
+      "instalaBase": "00-105153-301C",
+      "instalaDesc": "CARD CAGE PROCESSOR SIERRA,C2D,3.0GHZ,2GB",
+      "instalaQr": "0149",
+      "retiraBase": "00-105153-301C",
+      "retiraDesc": "CARD CAGE PROCESSOR SIERRA,C2D,3.0GHZ,2GB",
+      "retiraQr": "0098",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100235104Retirado con exito wf 100150364"
     },
     {
       "pedido": "101195659",
@@ -15965,13 +16164,13 @@
       "tecnico": "Marin, Leandro Alexis",
       "instalaBase": "00-104777-000D",
       "instalaDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
-      "instalaQr": "14621",
+      "instalaQr": "14624",
       "retiraBase": "00-104777-000D",
       "retiraDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
       "retiraQr": "Sin QR",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100243645Creado wf por idunico inexistente 100248303Retirado con exito wf 100248303"
+      "obs": "Instalado con exito wf 100243648Creado wf por idunico inexistente 100248302Retirado con exito wf 100248302"
     },
     {
       "pedido": "101186443",
@@ -15995,13 +16194,13 @@
       "tecnico": "Marin, Leandro Alexis",
       "instalaBase": "00-104777-000D",
       "instalaDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
-      "instalaQr": "14624",
+      "instalaQr": "14621",
       "retiraBase": "00-104777-000D",
       "retiraDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
       "retiraQr": "Sin QR",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100243648Creado wf por idunico inexistente 100248302Retirado con exito wf 100248302"
+      "obs": "Instalado con exito wf 100243645Creado wf por idunico inexistente 100248303Retirado con exito wf 100248303"
     },
     {
       "pedido": "101184945",
@@ -16384,6 +16583,21 @@
   ],
   "832031": [
     {
+      "pedido": "101195787",
+      "fecha": "2026-09-15",
+      "hora": "12:06:00",
+      "tecnico": "Lorca Biassi, Enzo Martin",
+      "instalaBase": "49-201788-000G",
+      "instalaDesc": "REPL KIT, DSPL, LCD, 15 IN, CONS D *49-201788-000B/C/D/G*",
+      "instalaQr": "0021",
+      "retiraBase": "49-201788-000G",
+      "retiraDesc": "REPL KIT, DSPL, LCD, 15 IN, CONS D *49-201788-000B/C/D/G*",
+      "retiraQr": "0GEN",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100025743Creado wf por idunico inexistente 100251369Retirado con exito wf 100251369"
+    },
+    {
       "pedido": "101176874",
       "fecha": "2026-04-27",
       "hora": "11:24:04",
@@ -16484,13 +16698,13 @@
       "tecnico": "Fiorio, Andres Ezequiel",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "8651",
+      "instalaQr": "8597",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "3428",
+      "retiraQr": "7935",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100249387Instalado con exito wf 100249387Retirado con exito wf 100135840"
+      "obs": "Cambio de base con exito wf 100248160Instalado con exito wf 100248160Retirado con exito wf 100215803"
     },
     {
       "pedido": "101213431",
@@ -16499,13 +16713,13 @@
       "tecnico": "Fiorio, Andres Ezequiel",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "8597",
+      "instalaQr": "8651",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "7935",
+      "retiraQr": "3428",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100248160Instalado con exito wf 100248160Retirado con exito wf 100215803"
+      "obs": "Cambio de base con exito wf 100249387Instalado con exito wf 100249387Retirado con exito wf 100135840"
     },
     {
       "pedido": "101210155",
@@ -16860,13 +17074,13 @@
       "tecnico": "Marin, Leandro Alexis",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "8578",
+      "instalaQr": "8580",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "7763",
+      "retiraQr": "2646",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100247408Retirado con exito wf 100211925"
+      "obs": "Instalado con exito wf 100247480Retirado con exito wf 100121001"
     },
     {
       "pedido": "101182635",
@@ -16875,13 +17089,13 @@
       "tecnico": "Marin, Leandro Alexis",
       "instalaBase": "49-211432-000A",
       "instalaDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "instalaQr": "8580",
+      "instalaQr": "8578",
       "retiraBase": "49-211432-000A",
       "retiraDesc": "PICKER, AFD, AGGREESSIVE *49-200000-000A*",
-      "retiraQr": "2646",
+      "retiraQr": "7763",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100247480Retirado con exito wf 100121001"
+      "obs": "Instalado con exito wf 100247408Retirado con exito wf 100211925"
     },
     {
       "pedido": "101180485",
@@ -16967,21 +17181,6 @@
       "fecha": "2026-05-20",
       "hora": "12:01:46",
       "tecnico": "Gonzalez Lopez, Raul Lionel",
-      "instalaBase": "00-104777-000D",
-      "instalaDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
-      "instalaQr": "14290",
-      "retiraBase": "00-104777-000D",
-      "retiraDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
-      "retiraQr": "Sin QR",
-      "esStockFijo": true,
-      "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100231053Creado wf por idunico inexistente 100248116Retirado con exito wf 100248116"
-    },
-    {
-      "pedido": "101184968",
-      "fecha": "2026-05-20",
-      "hora": "12:01:46",
-      "tecnico": "Gonzalez Lopez, Raul Lionel",
       "instalaBase": "00-104777-000M",
       "instalaDesc": "GAVETA DINERO OPTEVA CONVENIENCE AFD 1.5 *4A-SARSB0-0000*",
       "instalaQr": "3911",
@@ -16991,6 +17190,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100227318Creado wf por idunico inexistente 100248115Retirado con exito wf 100248115"
+    },
+    {
+      "pedido": "101184968",
+      "fecha": "2026-05-20",
+      "hora": "12:01:46",
+      "tecnico": "Gonzalez Lopez, Raul Lionel",
+      "instalaBase": "00-104777-000D",
+      "instalaDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
+      "instalaQr": "14290",
+      "retiraBase": "00-104777-000D",
+      "retiraDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
+      "retiraQr": "Sin QR",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100231053Creado wf por idunico inexistente 100248116Retirado con exito wf 100248116"
     },
     {
       "pedido": "101173141",
@@ -17199,6 +17413,21 @@
     }
   ],
   "870281": [
+    {
+      "pedido": "101216397",
+      "fecha": "2026-09-14",
+      "hora": "14:35:20",
+      "tecnico": "Pavon, Diego Emanuel",
+      "instalaBase": "00-104777-000D",
+      "instalaDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
+      "instalaQr": "14720",
+      "retiraBase": "00-104777-000D",
+      "retiraDesc": "GAVETA DINERO OPTEVA SECURE TAMPER UNIV",
+      "retiraQr": "Sin QR",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100244511Creado wf por idunico inexistente 100251349Retirado con exito wf 100251349"
+    },
     {
       "pedido": "101193426",
       "fecha": "2026-07-02",
@@ -17543,7 +17772,7 @@
       "retiraQr": "0034",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100160483No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 07/03/2026-11:30:31\r\n\r\nFecha Automatica Ult Transaccion : 07/03/2026-11:31:07\r\n\r\nRetirado con exito wf 100070509"
+      "obs": "Cambio de base con exito wf 100160483No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 07/03/2026-11:30:31\r\r\nFecha Automatica Ult Transaccion : 07/03/2026-11:31:07\r\r\nRetirado con exito wf 100070509"
     },
     {
       "pedido": "101161353",
@@ -17868,7 +18097,246 @@
       "obs": "Instalado con exito wf 100215299Retirado con exito wf 100170640"
     }
   ],
+  "005124003770": [
+    {
+      "pedido": "101216431",
+      "fecha": "2026-09-16",
+      "hora": "13:41:05",
+      "tecnico": "Lorca Biassi, Enzo Martin",
+      "instalaBase": "SC-000042-000A",
+      "instalaDesc": "UPS PUMA SERIES 1800 VA/900W",
+      "instalaQr": "0162",
+      "retiraBase": "SC-000042-0000A",
+      "retiraDesc": "SC-000042-0000A",
+      "retiraQr": "0GEN",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Estado incorrecto de la parte 100179732La parte SC-000042-0000 no se encontro en el sistemaNo se encontro la parte para retirar."
+    },
+    {
+      "pedido": "101216431",
+      "fecha": "2026-09-16",
+      "hora": "13:41:05",
+      "tecnico": "Lorca Biassi, Enzo Martin",
+      "instalaBase": "P8-000000-0038",
+      "instalaDesc": "DISCO SOLIDO 120GB KINGSTON V300 SSD 2.5 SATA 3 *49-252152-000A*",
+      "instalaQr": "0780",
+      "retiraBase": "P8-000000-0038",
+      "retiraDesc": "DISCO SOLIDO 120GB KINGSTON V300 SSD 2.5 SATA 3 *49-252152-000A*",
+      "retiraQr": "00M2",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100246857Instalado con exito wf 100246857Creado wf por idunico inexistente 100251491Retirado con exito wf 100251491"
+    },
+    {
+      "pedido": "101201903",
+      "fecha": "2026-07-16",
+      "hora": "10:16:04",
+      "tecnico": "Fiorio, Andres Ezequiel",
+      "instalaBase": "SC-000040-000A",
+      "instalaDesc": "UPS SP2 T-1000 DE 1000 VA/900W",
+      "instalaQr": "0197",
+      "retiraBase": "SC-000040-000A",
+      "retiraDesc": "UPS SP2 T-1000 DE 1000 VA/900W",
+      "retiraQr": "0GEN",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100245106Creado wf por idunico inexistente 100249439Retirado con exito wf 100249439"
+    }
+  ],
+  "002170005870": [
+    {
+      "pedido": "101216177",
+      "fecha": "2026-09-16",
+      "hora": "13:14:57",
+      "tecnico": "Montiel, Juan Fernando",
+      "instalaBase": "SC-000003-000A",
+      "instalaDesc": "MODULO DEPÓSITO DE BILLETES DE ALTA VELOCIDAD SNBC MOD BNE-S110M",
+      "instalaQr": "2452",
+      "retiraBase": "SC-000003-000A",
+      "retiraDesc": "MODULO DEPÓSITO DE BILLETES DE ALTA VELOCIDAD SNBC MOD BNE-S110M",
+      "retiraQr": "Sin QR",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100250112Creado wf por idunico inexistente 100251490Retirado con exito wf 100251490"
+    }
+  ],
+  "TAREAS GENERALES": [
+    {
+      "pedido": "101216902",
+      "fecha": "2026-09-15",
+      "hora": "18:09:03",
+      "tecnico": "Quiroga, Emmanuel",
+      "instalaBase": "GL-XION85-000A",
+      "instalaDesc": "UPS PN XION850 *SC-000022-000A*",
+      "instalaQr": "0910",
+      "retiraBase": "GL-XION85-000A",
+      "retiraDesc": "UPS PN XION850 *SC-000022-000A*",
+      "retiraQr": "Sin QR",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "No se pudo grabar la instalacion ->No se pudo grabar el Formulario.Creado wf por idunico inexistente 100251474Retirado con exito wf 100251474"
+    }
+  ],
+  "010933000370": [
+    {
+      "pedido": "101215718",
+      "fecha": "2026-09-15",
+      "hora": "16:12:26",
+      "tecnico": "Castaño, Matias",
+      "instalaBase": "SC-CASSBL-P100",
+      "instalaDesc": "CASSETTE P1000 - PARA CAJA VALIDADORA P1000",
+      "instalaQr": "0328",
+      "retiraBase": "SC-CASSBL-P100",
+      "retiraDesc": "CASSETTE P1000 - PARA CAJA VALIDADORA P1000",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100210095Instalado con exito wf 100210095Creado wf por idunico inexistente 100251472Retirado con exito wf 100251472"
+    },
+    {
+      "pedido": "101215718",
+      "fecha": "2026-09-15",
+      "hora": "16:12:26",
+      "tecnico": "Castaño, Matias",
+      "instalaBase": "SC-CASSBL-P100",
+      "instalaDesc": "CASSETTE P1000 - PARA CAJA VALIDADORA P1000",
+      "instalaQr": "0329",
+      "retiraBase": "SC-CASSBL-P100",
+      "retiraDesc": "CASSETTE P1000 - PARA CAJA VALIDADORA P1000",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100210096Instalado con exito wf 100210096Creado wf por idunico inexistente 100251471Retirado con exito wf 100251471"
+    },
+    {
+      "pedido": "101215213",
+      "fecha": "2026-09-08",
+      "hora": "15:32:25",
+      "tecnico": "Buratti, Fabian",
+      "instalaBase": "GL-00D100-000A",
+      "instalaDesc": "MODULO DE-100",
+      "instalaQr": "0104",
+      "retiraBase": "GL-00D100-000A",
+      "retiraDesc": "MODULO DE-100",
+      "retiraQr": "0092",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "No se pudo grabar la instalacion ->No se pudo grabar el Formulario.Retirado con exito wf 100229483"
+    }
+  ],
+  "009352000270": [
+    {
+      "pedido": "101216540",
+      "fecha": "2026-09-15",
+      "hora": "15:25:48",
+      "tecnico": "Ochoa, Diego Armando",
+      "instalaBase": "GL-XION85-000A",
+      "instalaDesc": "UPS PN XION850 *SC-000022-000A*",
+      "instalaQr": "0778",
+      "retiraBase": "GL-XION85-000A",
+      "retiraDesc": "UPS PN XION850 *SC-000022-000A*",
+      "retiraQr": "Sin QR",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100213516Creado wf por idunico inexistente 100251468Retirado con exito wf 100251468"
+    }
+  ],
+  "056TI0003": [
+    {
+      "pedido": "101215868",
+      "fecha": "2026-09-15",
+      "hora": "14:29:08",
+      "tecnico": "Marin, Leandro Alexis",
+      "instalaBase": "SV-223939-000D",
+      "instalaDesc": "ASSY,VALIDATOR,TYPE B,W/TENSIO",
+      "instalaQr": "0813",
+      "retiraBase": "SV-223939-000D",
+      "retiraDesc": "ASSY,VALIDATOR,TYPE B,W/TENSIO",
+      "retiraQr": "0194",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100126590Retirado con exito wf 100071735"
+    },
+    {
+      "pedido": "101215868",
+      "fecha": "2026-09-15",
+      "hora": "14:29:08",
+      "tecnico": "Marin, Leandro Alexis",
+      "instalaBase": "SV-219708-000Z",
+      "instalaDesc": "ASSEMBLY,TURN,SCANNER SIN VALIDADOR",
+      "instalaQr": "0094",
+      "retiraBase": "SV-219708-000Z",
+      "retiraDesc": "ASSEMBLY,TURN,SCANNER SIN VALIDADOR",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100086184Creado wf por idunico inexistente 100251466Retirado con exito wf 100251466"
+    },
+    {
+      "pedido": "101215868",
+      "fecha": "2026-09-15",
+      "hora": "14:29:08",
+      "tecnico": "Marin, Leandro Alexis",
+      "instalaBase": "SV-217424-000F",
+      "instalaDesc": "ASSY,ENA,CI,PACKAGED",
+      "instalaQr": "0220",
+      "retiraBase": "SV-217424-000F",
+      "retiraDesc": "ASSY,ENA,CI,PACKAGED",
+      "retiraQr": "0485",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100082407Retirado con exito wf 100149849"
+    },
+    {
+      "pedido": "101209232",
+      "fecha": "2026-08-19",
+      "hora": "13:42:09",
+      "tecnico": "Marin, Leandro Alexis",
+      "instalaBase": "SV-217424-000F",
+      "instalaDesc": "ASSY,ENA,CI,PACKAGED",
+      "instalaQr": "0454",
+      "retiraBase": "SV-217424-000F",
+      "retiraDesc": "ASSY,ENA,CI,PACKAGED",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100139503Creado wf por idunico inexistente 100250234Retirado con exito wf 100250234"
+    }
+  ],
+  "009845001070": [
+    {
+      "pedido": "101215722",
+      "fecha": "2026-09-15",
+      "hora": "12:06:45",
+      "tecnico": "Pavon, Diego Emanuel",
+      "instalaBase": "GL-0PCP1K-000A",
+      "instalaDesc": "PC PARA P1000",
+      "instalaQr": "0099",
+      "retiraBase": "GL-0PCP1K-000A",
+      "retiraDesc": "PC PARA P1000",
+      "retiraQr": "0018",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100245647Retirado con exito wf 100111649"
+    }
+  ],
   "007089005070": [
+    {
+      "pedido": "101216297",
+      "fecha": "2026-09-15",
+      "hora": "11:09:29",
+      "tecnico": "Gonzalez Cabrera, Antonio",
+      "instalaBase": "SC-RS123W-000A",
+      "instalaDesc": "ROUTER TELDAT SWITCH 4 PUERTOS 4G/LTE PN RCRSH123W4GLQAM",
+      "instalaQr": "1702",
+      "retiraBase": "SC-TLDPM1-0A1A",
+      "retiraDesc": "ROUTER C/FUENTE-TELDAT TLDPM10A1 4G PN RCTVH110G",
+      "retiraQr": "0018",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100251029Retirado con exito wf 100106694"
+    },
     {
       "pedido": "101216138",
       "fecha": "2026-09-11",
@@ -17885,22 +18353,118 @@
       "obs": "Instalado con exito wf 100215424Creado wf por idunico inexistente 100251337Retirado con exito wf 100251337"
     }
   ],
-  "006224000070": [
+  "001035201271": [
     {
-      "pedido": "101215167",
-      "fecha": "2026-09-11",
-      "hora": "17:38:16",
-      "tecnico": "Quiroga, Emmanuel",
-      "instalaBase": "SC-RSH013-000A",
-      "instalaDesc": "SC-RSH013-000A",
-      "instalaQr": "0548",
-      "retiraBase": "SC-RSH013-000A",
-      "retiraDesc": "SC-RSH013-000A",
-      "retiraQr": "0073",
+      "pedido": "101216631",
+      "fecha": "2026-09-15",
+      "hora": "09:41:13",
+      "tecnico": "Gonzalez, Leonardo",
+      "instalaBase": "GL-XION85-000A",
+      "instalaDesc": "UPS PN XION850 *SC-000022-000A*",
+      "instalaQr": "0904",
+      "retiraBase": "GL-XION85-000A",
+      "retiraDesc": "UPS PN XION850 *SC-000022-000A*",
+      "retiraQr": "0GEN",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100243112Creado wf por idunico inexistente 100251361Retirado con exito wf 100251361"
+    },
+    {
+      "pedido": "101208713",
+      "fecha": "2026-08-18",
+      "hora": "13:13:13",
+      "tecnico": "Bastias, Carlos Ignacio",
+      "instalaBase": "GL-SB1015-000A",
+      "instalaDesc": "ALL IN ONE CON LIC. INCUIDA VERS ACTUAL PN SB1015Q",
+      "instalaQr": "0143",
+      "retiraBase": "GL-SB1015-000A",
+      "retiraDesc": "ALL IN ONE CON LIC. INCUIDA VERS ACTUAL PN SB1015Q",
+      "retiraQr": "0368",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100251080Retirado con exito wf 100218645"
+      "obs": "Instalado con exito wf 100166388Retirado con exito wf 100237102"
+    }
+  ],
+  "057TI0004": [
+    {
+      "pedido": "101215468",
+      "fecha": "2026-09-15",
+      "hora": "09:22:56",
+      "tecnico": "Nicolai, Gustavo",
+      "instalaBase": "SV-219708-000Z",
+      "instalaDesc": "ASSEMBLY,TURN,SCANNER SIN VALIDADOR",
+      "instalaQr": "0303",
+      "retiraBase": "SV-219708-000Z",
+      "retiraDesc": "ASSEMBLY,TURN,SCANNER SIN VALIDADOR",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "No se pudo grabar la instalacion ->Esta parte ya tiene una OR asignada. Usar la operación recepcion de partes del modulo OR.Creado wf por idunico inexistente 100251357Retirado con exito wf 100251357"
     },
+    {
+      "pedido": "101215468",
+      "fecha": "2026-09-15",
+      "hora": "09:22:56",
+      "tecnico": "Nicolai, Gustavo",
+      "instalaBase": "SV-223939-000D",
+      "instalaDesc": "ASSY,VALIDATOR,TYPE B,W/TENSIO",
+      "instalaQr": "0203",
+      "retiraBase": "SV-223939-000D",
+      "retiraDesc": "ASSY,VALIDATOR,TYPE B,W/TENSIO",
+      "retiraQr": "0645",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100072336Retirado con exito wf 100100942"
+    },
+    {
+      "pedido": "101158478",
+      "fecha": "2026-02-12",
+      "hora": "12:26:39",
+      "tecnico": "Nicolai, Gustavo",
+      "instalaBase": "SV-221808-000D",
+      "instalaDesc": "CHEST, TRANSPORT RL",
+      "instalaQr": "0081",
+      "retiraBase": "SV-221808-000D",
+      "retiraDesc": "CHEST, TRANSPORT RL",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100214611Instalado con exito wf 100214611Creado wf por idunico inexistente 100243952Retirado con exito wf 100243952"
+    }
+  ],
+  "003660000670": [
+    {
+      "pedido": "101216042",
+      "fecha": "2026-09-14",
+      "hora": "09:25:24",
+      "tecnico": "Gonzalez Lopez, Raul Lionel",
+      "instalaBase": "SC-RS123W-000A",
+      "instalaDesc": "ROUTER TELDAT SWITCH 4 PUERTOS 4G/LTE PN RCRSH123W4GLQAM",
+      "instalaQr": "1701",
+      "retiraBase": "SC-RS123W-000A",
+      "retiraDesc": "ROUTER TELDAT SWITCH 4 PUERTOS 4G/LTE PN RCRSH123W4GLQAM",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "No se pudo grabar la instalacion ->No se pudo grabar el Formulario.Creado wf por idunico inexistente 100251338Retirado con exito wf 100251338"
+    },
+    {
+      "pedido": "101216042",
+      "fecha": "2026-09-14",
+      "hora": "09:25:24",
+      "tecnico": "Gonzalez Lopez, Raul Lionel",
+      "instalaBase": "SC-000016-000A",
+      "instalaDesc": "CHIP SIM MOVISTAR",
+      "instalaQr": "0368",
+      "retiraBase": "SC-000016-000A",
+      "retiraDesc": "CHIP SIM MOVISTAR",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100192693Creado wf por idunico inexistente 100251339Retirado con exito wf 100251339"
+    }
+  ],
+  "006224000070": [
     {
       "pedido": "101215167",
       "fecha": "2026-09-11",
@@ -17915,6 +18479,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100203952Creado wf por idunico inexistente 100251336Retirado con exito wf 100251336"
+    },
+    {
+      "pedido": "101215167",
+      "fecha": "2026-09-11",
+      "hora": "17:38:16",
+      "tecnico": "Quiroga, Emmanuel",
+      "instalaBase": "SC-RSH013-000A",
+      "instalaDesc": "SC-RSH013-000A",
+      "instalaQr": "0548",
+      "retiraBase": "SC-RSH013-000A",
+      "retiraDesc": "SC-RSH013-000A",
+      "retiraQr": "0073",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100251080Retirado con exito wf 100218645"
     }
   ],
   "SRO": [
@@ -17923,45 +18502,15 @@
       "fecha": "2026-09-11",
       "hora": "16:44:19",
       "tecnico": "Hernandez, Marcos Alberto",
-      "instalaBase": "W0-000000-9651",
-      "instalaDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
-      "instalaQr": "3390",
-      "retiraBase": "W0-000000",
-      "retiraDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
-      "retiraQr": "9651",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100237679Instalado con exito wf 100237679Creado wf por idunico inexistente 100251332Retirado con exito wf 100251332"
-    },
-    {
-      "pedido": "101216139",
-      "fecha": "2026-09-11",
-      "hora": "16:44:19",
-      "tecnico": "Hernandez, Marcos Alberto",
-      "instalaBase": "W0-000000-9651",
-      "instalaDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
-      "instalaQr": "3385",
-      "retiraBase": "W0-000000-9651",
-      "retiraDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
-      "retiraQr": "2982",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100237349Instalado con exito wf 100237349Retirado con exito wf 100223329"
-    },
-    {
-      "pedido": "101216139",
-      "fecha": "2026-09-11",
-      "hora": "16:44:19",
-      "tecnico": "Hernandez, Marcos Alberto",
-      "instalaBase": "W0-000000-6651",
-      "instalaDesc": "CMD_RR CASSETTE WITHOUT LOCK",
-      "instalaQr": "0238",
-      "retiraBase": "W0-000000",
-      "retiraDesc": "CMD_RR CASSETTE WITHOUT LOCK",
-      "retiraQr": "6651",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100214529Instalado con exito wf 100214529Creado wf por idunico inexistente 100251333Retirado con exito wf 100251333"
+      "instalaBase": "00-103334-000E",
+      "instalaDesc": "GAVETA RECHAZO OPTEVA SECURE DIVERT AFD",
+      "instalaQr": "2771",
+      "retiraBase": "00-103334-000E",
+      "retiraDesc": "GAVETA RECHAZO OPTEVA SECURE DIVERT AFD",
+      "retiraQr": "2204",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Estado incorrecto de la parte 100219826Retirado con exito wf 100181318"
     },
     {
       "pedido": "101216139",
@@ -17983,15 +18532,45 @@
       "fecha": "2026-09-11",
       "hora": "16:44:19",
       "tecnico": "Hernandez, Marcos Alberto",
-      "instalaBase": "00-103334-000E",
-      "instalaDesc": "GAVETA RECHAZO OPTEVA SECURE DIVERT AFD",
-      "instalaQr": "2771",
-      "retiraBase": "00-103334-000E",
-      "retiraDesc": "GAVETA RECHAZO OPTEVA SECURE DIVERT AFD",
-      "retiraQr": "2204",
-      "esStockFijo": true,
-      "origenStock": "Stock Fijo Técnico",
-      "obs": "Estado incorrecto de la parte 100219826Retirado con exito wf 100181318"
+      "instalaBase": "W0-000000-6651",
+      "instalaDesc": "CMD_RR CASSETTE WITHOUT LOCK",
+      "instalaQr": "0238",
+      "retiraBase": "W0-000000",
+      "retiraDesc": "CMD_RR CASSETTE WITHOUT LOCK",
+      "retiraQr": "6651",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100214529Instalado con exito wf 100214529Creado wf por idunico inexistente 100251333Retirado con exito wf 100251333"
+    },
+    {
+      "pedido": "101216139",
+      "fecha": "2026-09-11",
+      "hora": "16:44:19",
+      "tecnico": "Hernandez, Marcos Alberto",
+      "instalaBase": "W0-000000-9651",
+      "instalaDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
+      "instalaQr": "3385",
+      "retiraBase": "W0-000000-9651",
+      "retiraDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
+      "retiraQr": "2982",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100237349Instalado con exito wf 100237349Retirado con exito wf 100223329"
+    },
+    {
+      "pedido": "101216139",
+      "fecha": "2026-09-11",
+      "hora": "16:44:19",
+      "tecnico": "Hernandez, Marcos Alberto",
+      "instalaBase": "W0-000000-9651",
+      "instalaDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
+      "instalaQr": "3390",
+      "retiraBase": "W0-000000",
+      "retiraDesc": "CASH OUT CASS.CMD-V4 WITHOUT LOCK",
+      "retiraQr": "9651",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100237679Instalado con exito wf 100237679Creado wf por idunico inexistente 100251332Retirado con exito wf 100251332"
     },
     {
       "pedido": "101206282",
@@ -19114,39 +19693,7 @@
       "obs": "No se pudo grabar el cambio de base ->No se pudo grabar el Formulario.Creado wf por idunico inexistente 100251209Retirado con exito wf 100251209"
     }
   ],
-  "010933000370": [
-    {
-      "pedido": "101215213",
-      "fecha": "2026-09-08",
-      "hora": "15:32:25",
-      "tecnico": "Buratti, Fabian",
-      "instalaBase": "GL-00D100-000A",
-      "instalaDesc": "MODULO DE-100",
-      "instalaQr": "0104",
-      "retiraBase": "GL-00D100-000A",
-      "retiraDesc": "MODULO DE-100",
-      "retiraQr": "0092",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "No se pudo grabar la instalacion ->No se pudo grabar el Formulario.Retirado con exito wf 100229483"
-    }
-  ],
   "008681070170": [
-    {
-      "pedido": "101214727",
-      "fecha": "2026-09-08",
-      "hora": "15:31:09",
-      "tecnico": "Chiriello, Pablo Javier",
-      "instalaBase": "55-001185-000A",
-      "instalaDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
-      "instalaQr": "0448",
-      "retiraBase": "55-001185-000A",
-      "retiraDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
-      "retiraQr": "Sin QR",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100248508Creado wf por idunico inexistente 100251204Retirado con exito wf 100251204"
-    },
     {
       "pedido": "101214727",
       "fecha": "2026-09-08",
@@ -19161,6 +19708,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100249645Creado wf por idunico inexistente 100251205Retirado con exito wf 100251205"
+    },
+    {
+      "pedido": "101214727",
+      "fecha": "2026-09-08",
+      "hora": "15:31:09",
+      "tecnico": "Chiriello, Pablo Javier",
+      "instalaBase": "55-001185-000A",
+      "instalaDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
+      "instalaQr": "0448",
+      "retiraBase": "55-001185-000A",
+      "retiraDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100248508Creado wf por idunico inexistente 100251204Retirado con exito wf 100251204"
     }
   ],
   "001TI0003": [
@@ -19201,21 +19763,6 @@
       "fecha": "2026-09-08",
       "hora": "12:00:53",
       "tecnico": "Gonzalez, Leonardo",
-      "instalaBase": "SV-217422-000F",
-      "instalaDesc": "ASSY,ESCROW,ENA,SERVICE,PACKAG was D",
-      "instalaQr": "0935",
-      "retiraBase": "SV-217422-000F",
-      "retiraDesc": "ASSY,ESCROW,ENA,SERVICE,PACKAG was D",
-      "retiraQr": "0648",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100161035Retirado con exito wf 100122101"
-    },
-    {
-      "pedido": "101214837",
-      "fecha": "2026-09-08",
-      "hora": "12:00:53",
-      "tecnico": "Gonzalez, Leonardo",
       "instalaBase": "49-222609-000B",
       "instalaDesc": "CCA, ESCROW",
       "instalaQr": "0729",
@@ -19225,6 +19772,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100179745Retirado con exito wf 100153123"
+    },
+    {
+      "pedido": "101214837",
+      "fecha": "2026-09-08",
+      "hora": "12:00:53",
+      "tecnico": "Gonzalez, Leonardo",
+      "instalaBase": "SV-217422-000F",
+      "instalaDesc": "ASSY,ESCROW,ENA,SERVICE,PACKAG was D",
+      "instalaQr": "0935",
+      "retiraBase": "SV-217422-000F",
+      "retiraDesc": "ASSY,ESCROW,ENA,SERVICE,PACKAG was D",
+      "retiraQr": "0648",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100161035Retirado con exito wf 100122101"
     }
   ],
   "036TI0001": [
@@ -19562,21 +20124,6 @@
       "fecha": "2026-05-08",
       "hora": "15:22:49",
       "tecnico": "Ibañez, Pablo Fernando",
-      "instalaBase": "55-001185-000A",
-      "instalaDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
-      "instalaQr": "0407",
-      "retiraBase": "55-001185-000A",
-      "retiraDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
-      "retiraQr": "Sin QR",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100247430Creado wf por idunico inexistente 100247896Retirado con exito wf 100247896"
-    },
-    {
-      "pedido": "101179254",
-      "fecha": "2026-05-08",
-      "hora": "15:22:49",
-      "tecnico": "Ibañez, Pablo Fernando",
       "instalaBase": "SC-000369-000A",
       "instalaDesc": "INDUSTRIAL MINI PC I7 8550U 8G RAM, 512G SSD M2, WIFI 300M WITH W10 64BIT KEY PC COMPLET",
       "instalaQr": "1423",
@@ -19586,6 +20133,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100243342Creado wf por idunico inexistente 100247895Retirado con exito wf 100247895"
+    },
+    {
+      "pedido": "101179254",
+      "fecha": "2026-05-08",
+      "hora": "15:22:49",
+      "tecnico": "Ibañez, Pablo Fernando",
+      "instalaBase": "55-001185-000A",
+      "instalaDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
+      "instalaQr": "0407",
+      "retiraBase": "55-001185-000A",
+      "retiraDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100247430Creado wf por idunico inexistente 100247896Retirado con exito wf 100247896"
     }
   ],
   "002472004370": [
@@ -20232,15 +20794,15 @@
       "fecha": "2026-05-26",
       "hora": "14:22:04",
       "tecnico": "Foschi, Alejandro",
-      "instalaBase": "55-001163-000A",
-      "instalaDesc": "ARDUINO UNO R3 SMD CH340 ATMEGA328",
-      "instalaQr": "0289",
-      "retiraBase": "55-001163-000A",
-      "retiraDesc": "ARDUINO UNO R3 SMD CH340 ATMEGA328",
+      "instalaBase": "55-001185-000A",
+      "instalaDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
+      "instalaQr": "0405",
+      "retiraBase": "55-001185-000A",
+      "retiraDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
       "retiraQr": "0GEN",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100198221Creado wf por idunico inexistente 100248256Retirado con exito wf 100248256"
+      "obs": "Instalado con exito wf 100247428Creado wf por idunico inexistente 100248255Retirado con exito wf 100248255"
     },
     {
       "pedido": "101185317",
@@ -20262,15 +20824,15 @@
       "fecha": "2026-05-26",
       "hora": "14:22:04",
       "tecnico": "Foschi, Alejandro",
-      "instalaBase": "55-001185-000A",
-      "instalaDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
-      "instalaQr": "0405",
-      "retiraBase": "55-001185-000A",
-      "retiraDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
+      "instalaBase": "55-001163-000A",
+      "instalaDesc": "ARDUINO UNO R3 SMD CH340 ATMEGA328",
+      "instalaQr": "0289",
+      "retiraBase": "55-001163-000A",
+      "retiraDesc": "ARDUINO UNO R3 SMD CH340 ATMEGA328",
       "retiraQr": "0GEN",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100247428Creado wf por idunico inexistente 100248255Retirado con exito wf 100248255"
+      "obs": "Instalado con exito wf 100198221Creado wf por idunico inexistente 100248256Retirado con exito wf 100248256"
     }
   ],
   "010941000070": [
@@ -20531,23 +21093,6 @@
       "obs": "No se pudo grabar la instalacion ->No se pudo grabar el Formulario.Creado wf por idunico inexistente 100244102Retirado con exito wf 100244102"
     }
   ],
-  "056TI0003": [
-    {
-      "pedido": "101209232",
-      "fecha": "2026-08-19",
-      "hora": "13:42:09",
-      "tecnico": "Marin, Leandro Alexis",
-      "instalaBase": "SV-217424-000F",
-      "instalaDesc": "ASSY,ENA,CI,PACKAGED",
-      "instalaQr": "0454",
-      "retiraBase": "SV-217424-000F",
-      "retiraDesc": "ASSY,ENA,CI,PACKAGED",
-      "retiraQr": "Sin QR",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100139503Creado wf por idunico inexistente 100250234Retirado con exito wf 100250234"
-    }
-  ],
   "008415005770": [
     {
       "pedido": "101209380",
@@ -20642,23 +21187,6 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Cambio de base con exito wf 100249145Instalado con exito wf 100249145Creado wf por idunico inexistente 100250185Retirado con exito wf 100250185"
-    }
-  ],
-  "001035201271": [
-    {
-      "pedido": "101208713",
-      "fecha": "2026-08-18",
-      "hora": "13:13:13",
-      "tecnico": "Bastias, Carlos Ignacio",
-      "instalaBase": "GL-SB1015-000A",
-      "instalaDesc": "ALL IN ONE CON LIC. INCUIDA VERS ACTUAL PN SB1015Q",
-      "instalaQr": "0143",
-      "retiraBase": "GL-SB1015-000A",
-      "retiraDesc": "ALL IN ONE CON LIC. INCUIDA VERS ACTUAL PN SB1015Q",
-      "retiraQr": "0368",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100166388Retirado con exito wf 100237102"
     }
   ],
   "006624118770": [
@@ -22881,21 +23409,6 @@
       "fecha": "2026-05-15",
       "hora": "11:47:00",
       "tecnico": "Vicente, Francisco Ariel",
-      "instalaBase": "CI-3300CO-M609",
-      "instalaDesc": "CUSTOM PLUS 2 0128 PRINTER PN 3300COM609",
-      "instalaQr": "0046",
-      "retiraBase": "CI-3300CO-M609",
-      "retiraDesc": "CUSTOM PLUS 2 0128 PRINTER PN 3300COM609",
-      "retiraQr": "0GEN",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100136237Creado wf por idunico inexistente 100248040Retirado con exito wf 100248040"
-    },
-    {
-      "pedido": "101183580",
-      "fecha": "2026-05-15",
-      "hora": "11:47:00",
-      "tecnico": "Vicente, Francisco Ariel",
       "instalaBase": "CI-3300CO-M868",
       "instalaDesc": "7\" LCD TFT TOUCH SCREEN PN 3300COM868",
       "instalaQr": "0120",
@@ -22905,6 +23418,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100243147Creado wf por idunico inexistente 100248039Retirado con exito wf 100248039"
+    },
+    {
+      "pedido": "101183580",
+      "fecha": "2026-05-15",
+      "hora": "11:47:00",
+      "tecnico": "Vicente, Francisco Ariel",
+      "instalaBase": "CI-3300CO-M609",
+      "instalaDesc": "CUSTOM PLUS 2 0128 PRINTER PN 3300COM609",
+      "instalaQr": "0046",
+      "retiraBase": "CI-3300CO-M609",
+      "retiraDesc": "CUSTOM PLUS 2 0128 PRINTER PN 3300COM609",
+      "retiraQr": "0GEN",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100136237Creado wf por idunico inexistente 100248040Retirado con exito wf 100248040"
     }
   ],
   "006624118370": [
@@ -23336,23 +23864,6 @@
       "obs": "Estado incorrecto de la parte 100239089Estado incorrecto de la parte 100244759"
     }
   ],
-  "005124003770": [
-    {
-      "pedido": "101201903",
-      "fecha": "2026-07-16",
-      "hora": "10:16:04",
-      "tecnico": "Fiorio, Andres Ezequiel",
-      "instalaBase": "SC-000040-000A",
-      "instalaDesc": "UPS SP2 T-1000 DE 1000 VA/900W",
-      "instalaQr": "0197",
-      "retiraBase": "SC-000040-000A",
-      "retiraDesc": "UPS SP2 T-1000 DE 1000 VA/900W",
-      "retiraQr": "0GEN",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100245106Creado wf por idunico inexistente 100249439Retirado con exito wf 100249439"
-    }
-  ],
   "010945000070": [
     {
       "pedido": "101199637",
@@ -23672,7 +24183,7 @@
       "retiraQr": "Sin QR",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Cambio de base con exito wf 100235988No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 18/03/2026-09:10:33\r\n\r\nFecha Automatica Ult Transaccion : 18/03/2026-09:11:01\r\n\r\nCreado wf por idunico inexistente 100245388Retirado con exito wf 100245388"
+      "obs": "Cambio de base con exito wf 100235988No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 18/03/2026-09:10:33\r\r\nFecha Automatica Ult Transaccion : 18/03/2026-09:11:01\r\r\nCreado wf por idunico inexistente 100245388Retirado con exito wf 100245388"
     }
   ],
   "005091039270": [
@@ -26228,21 +26739,6 @@
       "fecha": "2026-05-26",
       "hora": "10:47:12",
       "tecnico": "Gonzalez Lopez, Raul Lionel",
-      "instalaBase": "55-001185-000A",
-      "instalaDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
-      "instalaQr": "0211",
-      "retiraBase": "55-001185-000A",
-      "retiraDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
-      "retiraQr": "Sin QR",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Instalado con exito wf 100200700Creado wf por idunico inexistente 100248249Retirado con exito wf 100248249"
-    },
-    {
-      "pedido": "101184615",
-      "fecha": "2026-05-26",
-      "hora": "10:47:12",
-      "tecnico": "Gonzalez Lopez, Raul Lionel",
       "instalaBase": "55-001163-000A",
       "instalaDesc": "ARDUINO UNO R3 SMD CH340 ATMEGA328",
       "instalaQr": "0438",
@@ -26252,6 +26748,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100235894Creado wf por idunico inexistente 100248250Retirado con exito wf 100248250"
+    },
+    {
+      "pedido": "101184615",
+      "fecha": "2026-05-26",
+      "hora": "10:47:12",
+      "tecnico": "Gonzalez Lopez, Raul Lionel",
+      "instalaBase": "55-001185-000A",
+      "instalaDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
+      "instalaQr": "0211",
+      "retiraBase": "55-001185-000A",
+      "retiraDesc": "IO BOARD SNBC CTI90 VERS 4.2.5",
+      "retiraQr": "Sin QR",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Instalado con exito wf 100200700Creado wf por idunico inexistente 100248249Retirado con exito wf 100248249"
     }
   ],
   "006824000170": [
@@ -26482,15 +26993,15 @@
       "fecha": "2026-05-19",
       "hora": "08:33:55",
       "tecnico": "Gonzalez Cabrera, Antonio",
-      "instalaBase": "49-223820-000A",
-      "instalaDesc": "PRNTR,1-SD THRM RCPT,80MM TOSHIBA *49257458000A/B*",
-      "instalaQr": "0432",
-      "retiraBase": "00-103323-000B",
-      "retiraDesc": "PRNTR, THRM RCPT, 80, USB *00-103323-000E*",
-      "retiraQr": "0000",
-      "esStockFijo": true,
-      "origenStock": "Stock Fijo Técnico",
-      "obs": "Cambio de base con exito wf 100093447Instalado con exito wf 100093447Creado wf por idunico inexistente 100248093Retirado con exito wf 100248093"
+      "instalaBase": "00-155574-291C",
+      "instalaDesc": "CARD CAGE PROCESSOR CANYON,CI5, 2.9GHZ,2GB",
+      "instalaQr": "0162",
+      "retiraBase": "00-105153-301C",
+      "retiraDesc": "CARD CAGE PROCESSOR SIERRA,C2D,3.0GHZ,2GB",
+      "retiraQr": "000",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100239874Instalado con exito wf 100239874Creado wf por idunico inexistente 100248095Retirado con exito wf 100248095"
     },
     {
       "pedido": "101180912",
@@ -26512,33 +27023,18 @@
       "fecha": "2026-05-19",
       "hora": "08:33:55",
       "tecnico": "Gonzalez Cabrera, Antonio",
-      "instalaBase": "00-155574-291C",
-      "instalaDesc": "CARD CAGE PROCESSOR CANYON,CI5, 2.9GHZ,2GB",
-      "instalaQr": "0162",
-      "retiraBase": "00-105153-301C",
-      "retiraDesc": "CARD CAGE PROCESSOR SIERRA,C2D,3.0GHZ,2GB",
-      "retiraQr": "000",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100239874Instalado con exito wf 100239874Creado wf por idunico inexistente 100248095Retirado con exito wf 100248095"
+      "instalaBase": "49-223820-000A",
+      "instalaDesc": "PRNTR,1-SD THRM RCPT,80MM TOSHIBA *49257458000A/B*",
+      "instalaQr": "0432",
+      "retiraBase": "00-103323-000B",
+      "retiraDesc": "PRNTR, THRM RCPT, 80, USB *00-103323-000E*",
+      "retiraQr": "0000",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Cambio de base con exito wf 100093447Instalado con exito wf 100093447Creado wf por idunico inexistente 100248093Retirado con exito wf 100248093"
     }
   ],
   "008681045170": [
-    {
-      "pedido": "101183776",
-      "fecha": "2026-05-15",
-      "hora": "14:27:10",
-      "tecnico": "Pavon, Diego Emanuel",
-      "instalaBase": "GL-000000-3876",
-      "instalaDesc": "FUENTE 24V 4A (GLORY). PLUG 5.5X2.5 PN 3876",
-      "instalaQr": "0349",
-      "retiraBase": "GL-000000",
-      "retiraDesc": "FUENTE 24V 4A (GLORY). PLUG 5.5X2.5 PN 3876",
-      "retiraQr": "3876",
-      "esStockFijo": true,
-      "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100174976Creado wf por idunico inexistente 100248050Retirado con exito wf 100248050"
-    },
     {
       "pedido": "101183776",
       "fecha": "2026-05-15",
@@ -26553,24 +27049,24 @@
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
       "obs": "Instalado con exito wf 100229778Retirado con exito wf 100133599"
+    },
+    {
+      "pedido": "101183776",
+      "fecha": "2026-05-15",
+      "hora": "14:27:10",
+      "tecnico": "Pavon, Diego Emanuel",
+      "instalaBase": "GL-000000-3876",
+      "instalaDesc": "FUENTE 24V 4A (GLORY). PLUG 5.5X2.5 PN 3876",
+      "instalaQr": "0349",
+      "retiraBase": "GL-000000",
+      "retiraDesc": "FUENTE 24V 4A (GLORY). PLUG 5.5X2.5 PN 3876",
+      "retiraQr": "3876",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100174976Creado wf por idunico inexistente 100248050Retirado con exito wf 100248050"
     }
   ],
   "010253004871": [
-    {
-      "pedido": "101176808",
-      "fecha": "2026-05-15",
-      "hora": "10:33:11",
-      "tecnico": "Martos, Jose Angel",
-      "instalaBase": "55-001163-000A",
-      "instalaDesc": "ARDUINO UNO R3 SMD CH340 ATMEGA328",
-      "instalaQr": "0476",
-      "retiraBase": "55-001163-000A",
-      "retiraDesc": "ARDUINO UNO R3 SMD CH340 ATMEGA328",
-      "retiraQr": "0031",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100238217Instalado con exito wf 100238217Retirado con exito wf 100147893"
-    },
     {
       "pedido": "101176808",
       "fecha": "2026-05-15",
@@ -26585,6 +27081,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Cambio de base con exito wf 100247427Instalado con exito wf 100247427Creado wf por idunico inexistente 100248049Retirado con exito wf 100248049"
+    },
+    {
+      "pedido": "101176808",
+      "fecha": "2026-05-15",
+      "hora": "10:33:11",
+      "tecnico": "Martos, Jose Angel",
+      "instalaBase": "55-001163-000A",
+      "instalaDesc": "ARDUINO UNO R3 SMD CH340 ATMEGA328",
+      "instalaQr": "0476",
+      "retiraBase": "55-001163-000A",
+      "retiraDesc": "ARDUINO UNO R3 SMD CH340 ATMEGA328",
+      "retiraQr": "0031",
+      "esStockFijo": false,
+      "origenStock": "Stock Central (Retorno Semanal)",
+      "obs": "Cambio de base con exito wf 100238217Instalado con exito wf 100238217Retirado con exito wf 100147893"
     }
   ],
   "010953000270": [
@@ -26836,21 +27347,6 @@
       "fecha": "2026-05-11",
       "hora": "16:09:24",
       "tecnico": "Castaño, Matias",
-      "instalaBase": "SC-000003-000A",
-      "instalaDesc": "MODULO DEPÓSITO DE BILLETES DE ALTA VELOCIDAD SNBC MOD BNE-S110M",
-      "instalaQr": "2403",
-      "retiraBase": "SC-000003-000A",
-      "retiraDesc": "MODULO DEPÓSITO DE BILLETES DE ALTA VELOCIDAD SNBC MOD BNE-S110M",
-      "retiraQr": "Sin QR",
-      "esStockFijo": true,
-      "origenStock": "Stock Fijo Técnico",
-      "obs": "Instalado con exito wf 100247478Creado wf por idunico inexistente 100247927Retirado con exito wf 100247927"
-    },
-    {
-      "pedido": "101182198",
-      "fecha": "2026-05-11",
-      "hora": "16:09:24",
-      "tecnico": "Castaño, Matias",
       "instalaBase": "SC-TLDPV0-6A1A",
       "instalaDesc": "ROUTER C/FUENTE-TELDAT TLDPV06A1 VIEJO-3G PN RCTVH110G",
       "instalaQr": "0297",
@@ -26860,6 +27356,21 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "No se pudo grabar la instalacion ->No se pudo grabar el Formulario.Creado wf por idunico inexistente 100247926Retirado con exito wf 100247926"
+    },
+    {
+      "pedido": "101182198",
+      "fecha": "2026-05-11",
+      "hora": "16:09:24",
+      "tecnico": "Castaño, Matias",
+      "instalaBase": "SC-000003-000A",
+      "instalaDesc": "MODULO DEPÓSITO DE BILLETES DE ALTA VELOCIDAD SNBC MOD BNE-S110M",
+      "instalaQr": "2403",
+      "retiraBase": "SC-000003-000A",
+      "retiraDesc": "MODULO DEPÓSITO DE BILLETES DE ALTA VELOCIDAD SNBC MOD BNE-S110M",
+      "retiraQr": "Sin QR",
+      "esStockFijo": true,
+      "origenStock": "Stock Fijo Técnico",
+      "obs": "Instalado con exito wf 100247478Creado wf por idunico inexistente 100247927Retirado con exito wf 100247927"
     }
   ],
   "006624118970": [
@@ -27411,7 +27922,7 @@
       "retiraQr": "Sin QR",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100229423No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 17/04/2026-14:42:52\r\n\r\nFecha Automatica Ult Transaccion : 17/04/2026-14:43:37\r\n\r\nCreado wf por idunico inexistente 100246956Retirado con exito wf 100246956"
+      "obs": "Cambio de base con exito wf 100229423No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 17/04/2026-14:42:52\r\r\nFecha Automatica Ult Transaccion : 17/04/2026-14:43:37\r\r\nCreado wf por idunico inexistente 100246956Retirado con exito wf 100246956"
     }
   ],
   "008681051870": [
@@ -27479,7 +27990,7 @@
       "retiraQr": "Sin QR",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100151592No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 15/04/2026-16:48:35\r\n\r\nFecha Automatica Ult Transaccion : 15/04/2026-16:48:41\r\n\r\nCreado wf por idunico inexistente 100246915Retirado con exito wf 100246915"
+      "obs": "Cambio de base con exito wf 100151592No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 15/04/2026-16:48:35\r\r\nFecha Automatica Ult Transaccion : 15/04/2026-16:48:41\r\r\nCreado wf por idunico inexistente 100246915Retirado con exito wf 100246915"
     }
   ],
   "004925002470": [
@@ -28321,7 +28832,7 @@
       "retiraQr": "Sin QR",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Cambio de base con exito wf 100231298No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 26/03/2026-13:53:52\r\n\r\nFecha Automatica Ult Transaccion : 26/03/2026-13:54:32\r\n\r\nCreado wf por idunico inexistente 100245620Retirado con exito wf 100245620"
+      "obs": "Cambio de base con exito wf 100231298No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 26/03/2026-13:53:52\r\r\nFecha Automatica Ult Transaccion : 26/03/2026-13:54:32\r\r\nCreado wf por idunico inexistente 100245620Retirado con exito wf 100245620"
     },
     {
       "pedido": "101169551",
@@ -28336,7 +28847,7 @@
       "retiraQr": "11670",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Cambio de base con exito wf 100222391No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 26/03/2026-13:53:58\r\n\r\nFecha Automatica Ult Transaccion : 26/03/2026-13:54:39\r\n\r\nRetirado con exito wf 100199099"
+      "obs": "Cambio de base con exito wf 100222391No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 26/03/2026-13:53:58\r\r\nFecha Automatica Ult Transaccion : 26/03/2026-13:54:39\r\r\nRetirado con exito wf 100199099"
     },
     {
       "pedido": "101169551",
@@ -28366,7 +28877,7 @@
       "retiraQr": "Sin QR",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Cambio de base con exito wf 100218874No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 26/03/2026-13:54:09\r\n\r\nFecha Automatica Ult Transaccion : 26/03/2026-13:54:50\r\n\r\nCreado wf por idunico inexistente 100245622Retirado con exito wf 100245622"
+      "obs": "Cambio de base con exito wf 100218874No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 26/03/2026-13:54:09\r\r\nFecha Automatica Ult Transaccion : 26/03/2026-13:54:50\r\r\nCreado wf por idunico inexistente 100245622Retirado con exito wf 100245622"
     },
     {
       "pedido": "101169551",
@@ -28381,7 +28892,7 @@
       "retiraQr": "9651",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100237581No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 26/03/2026-13:53:26\r\n\r\nFecha Automatica Ult Transaccion : 26/03/2026-13:54:06\r\n\r\nCreado wf por idunico inexistente 100245616Retirado con exito wf 100245616"
+      "obs": "Cambio de base con exito wf 100237581No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 26/03/2026-13:53:26\r\r\nFecha Automatica Ult Transaccion : 26/03/2026-13:54:06\r\r\nCreado wf por idunico inexistente 100245616Retirado con exito wf 100245616"
     },
     {
       "pedido": "101169551",
@@ -28396,7 +28907,7 @@
       "retiraQr": "Sin QR",
       "esStockFijo": true,
       "origenStock": "Stock Fijo Técnico",
-      "obs": "Cambio de base con exito wf 100223281No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 26/03/2026-13:54:02\r\n\r\nFecha Automatica Ult Transaccion : 26/03/2026-13:54:44\r\n\r\nCreado wf por idunico inexistente 100245621Retirado con exito wf 100245621"
+      "obs": "Cambio de base con exito wf 100223281No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 26/03/2026-13:54:02\r\r\nFecha Automatica Ult Transaccion : 26/03/2026-13:54:44\r\r\nCreado wf por idunico inexistente 100245621Retirado con exito wf 100245621"
     }
   ],
   "001035040871": [
@@ -28443,7 +28954,7 @@
       "retiraQr": "2323",
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100220712No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\n\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\n\r\nFecha Automatica Actual          : 10/02/2026-15:03:07\r\n\r\nFecha Automatica Ult Transaccion : 10/02/2026-15:03:08\r\n\r\nRetirado con exito wf 100239931"
+      "obs": "Cambio de base con exito wf 100220712No se pudo grabar la instalacion ->No se pudo validar la Transaccion.\r\r\nLa Fecha Actual del Servidor de BD es anterior a la fecha automatica de la Ultima Transaccion. Verifique\r\r\nFecha Automatica Actual          : 10/02/2026-15:03:07\r\r\nFecha Automatica Ult Transaccion : 10/02/2026-15:03:08\r\r\nRetirado con exito wf 100239931"
     }
   ],
   "008350004670": [
@@ -29558,23 +30069,6 @@
       "esStockFijo": false,
       "origenStock": "Stock Central (Retorno Semanal)",
       "obs": "Instalado con exito wf 100241525Creado wf por idunico inexistente 100243947Retirado con exito wf 100243947"
-    }
-  ],
-  "057TI0004": [
-    {
-      "pedido": "101158478",
-      "fecha": "2026-02-12",
-      "hora": "12:26:39",
-      "tecnico": "Nicolai, Gustavo",
-      "instalaBase": "SV-221808-000D",
-      "instalaDesc": "CHEST, TRANSPORT RL",
-      "instalaQr": "0081",
-      "retiraBase": "SV-221808-000D",
-      "retiraDesc": "CHEST, TRANSPORT RL",
-      "retiraQr": "Sin QR",
-      "esStockFijo": false,
-      "origenStock": "Stock Central (Retorno Semanal)",
-      "obs": "Cambio de base con exito wf 100214611Instalado con exito wf 100214611Creado wf por idunico inexistente 100243952Retirado con exito wf 100243952"
     }
   ],
   "015TI0002": [

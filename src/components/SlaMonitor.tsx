@@ -104,15 +104,10 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
     return map;
   }, []);
 
-  // Regions list
+  // Regions list: Strictly PATAGONIA and SUROESTE
   const regionsList = useMemo(() => {
-    const set = new Set<string>();
-    tickets.forEach(t => {
-      if (t.region) set.add(t.region);
-    });
-    ['PATAGONIA', 'SUROESTE', 'AMBA', 'LITORAL'].forEach(r => set.add(r));
-    return Array.from(set).filter(Boolean).sort();
-  }, [tickets]);
+    return ['PATAGONIA', 'SUROESTE'];
+  }, []);
 
   // Available Zonas Locales based on Selected Region
   const availableZonasLocales = useMemo(() => {
@@ -122,8 +117,6 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         if (z.zonaLocal) set.add(z.zonaLocal);
       }
     });
-    if (selectedRegion === 'AMBA' || selectedRegion === 'ALL') set.add('AMBA');
-    if (selectedRegion === 'LITORAL' || selectedRegion === 'ALL') set.add('Litoral');
     return Array.from(set).sort();
   }, [selectedRegion]);
 
@@ -133,7 +126,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
     tickets.forEach(t => {
       const master = masterTecMap.get(t.tecnico?.toLowerCase());
       const ticketRegion = master?.region || t.region || 'PATAGONIA';
-      const ticketZonaLocal = master?.zonaLocal || t.zonaLocal || ZONA_TECNICA_TO_LOCAL[t.zonaTecnica || t.zona] || (ticketRegion === 'AMBA' ? 'AMBA' : ticketRegion === 'LITORAL' ? 'Litoral' : 'General');
+      const ticketZonaLocal = master?.zonaLocal || t.zonaLocal || ZONA_TECNICA_TO_LOCAL[t.zonaTecnica || t.zona] || 'General';
       const ticketZona = t.zonaTecnica || t.zona;
 
       const matchRegion = selectedRegion === 'ALL' || ticketRegion === selectedRegion || t.region === selectedRegion;
@@ -164,7 +157,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
       const master = masterTecMap.get(t.tecnico.toLowerCase());
       const techRegion = master?.region || t.region || 'PATAGONIA';
-      const techZonaLocal = master?.zonaLocal || t.zonaLocal || ZONA_TECNICA_TO_LOCAL[t.zonaTecnica || t.zona] || (techRegion === 'AMBA' ? 'AMBA' : techRegion === 'LITORAL' ? 'Litoral' : 'General');
+      const techZonaLocal = master?.zonaLocal || t.zonaLocal || ZONA_TECNICA_TO_LOCAL[t.zonaTecnica || t.zona] || 'General';
       const techZona = master?.zonaTecnica || t.zonaTecnica || t.zona;
 
       const matchRegion = selectedRegion === 'ALL' || techRegion === selectedRegion || t.region === selectedRegion;
@@ -401,8 +394,12 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
       const master = masterTecMap.get(t.tecnico?.toLowerCase());
       const ticketRegion = master?.region || t.region || 'PATAGONIA';
-      const ticketZonaLocal = master?.zonaLocal || t.zonaLocal || ZONA_TECNICA_TO_LOCAL[t.zonaTecnica || t.zona] || (ticketRegion === 'AMBA' ? 'AMBA' : ticketRegion === 'LITORAL' ? 'Litoral' : 'General');
+      const ticketZonaLocal = master?.zonaLocal || t.zonaLocal || ZONA_TECNICA_TO_LOCAL[t.zonaTecnica || t.zona] || 'General';
       const ticketZona = master?.zonaTecnica || t.zonaTecnica || t.zona;
+
+      // Strict regional boundary: ONLY PATAGONIA and SUROESTE
+      const isAllowedRegion = (ticketRegion === 'PATAGONIA' || ticketRegion === 'SUROESTE' || t.region === 'PATAGONIA' || t.region === 'SUROESTE');
+      if (!isAllowedRegion) return false;
 
       // Region Filter
       if (selectedRegion !== 'ALL') {

@@ -10,6 +10,7 @@ import {
   UploadCloud,
   Building2,
   FileSpreadsheet,
+  LayoutDashboard,
   Pin,
   PinOff,
   Sparkles,
@@ -79,6 +80,13 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
       badgeType: 'warning'
     },
     {
+      key: 'dashboard_operativo',
+      label: 'Dashboard Operativo',
+      shortLabel: 'Dashboard',
+      category: 'GESTIÓN',
+      icon: LayoutDashboard,
+    },
+    {
       key: 'base_instalada',
       label: 'Base Instalada 2026',
       shortLabel: 'Base',
@@ -89,8 +97,8 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
     },
     {
       key: 'analisis_patagonia',
-      label: 'Análisis Patagonia (Excel)',
-      shortLabel: 'Planillas',
+      label: 'Análisis Atenciones',
+      shortLabel: 'Atenciones',
       category: 'GESTIÓN',
       icon: FileSpreadsheet,
     },
