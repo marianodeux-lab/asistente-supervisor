@@ -21,7 +21,7 @@ import {
   Filter
 } from 'lucide-react';
 import { EquipoCronico, ZonaInfo } from '../types';
-import { formatExcelDate } from '../utils/formatters';
+import { formatExcelDate, isAtmEquipment } from '../utils/formatters';
 
 interface RecurrenceRadarProps {
   cronicos: EquipoCronico[];
@@ -111,22 +111,31 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
           c.cliente.toLowerCase().includes(query) ||
           c.modelo.toLowerCase().includes(query) ||
           c.zona.toLowerCase().includes(query) ||
+          (c.zonaLocal && c.zonaLocal.toLowerCase().includes(query)) ||
           (c.localidad && c.localidad.toLowerCase().includes(query));
         if (!match) return false;
       }
-      if (selectedZona !== 'ALL' && c.zona !== selectedZona) return false;
+      if (selectedZona !== 'ALL') {
+        const matchZona = c.zonaLocal === selectedZona || c.zona === selectedZona;
+        if (!matchZona) return false;
+      }
       if (criticidadFilter === 'CRITICO' && c.dynamicSalud !== 'CRÍTICO') return false;
       if (criticidadFilter === 'ADVERTENCIA' && c.dynamicSalud !== 'ADVERTENCIA') return false;
       return true;
     }).sort((a, b) => b.totalFallasPeriodo - a.totalFallasPeriodo);
   }, [processedCronicos, search, selectedZona, criticidadFilter]);
 
-  // Dynamic Summary Metrics based STRICTLY on the selected period
-  const totalCriticos = useMemo(() => processedCronicos.filter(c => c.dynamicSalud === 'CRÍTICO').length, [processedCronicos]);
-  const totalAdvertencia = useMemo(() => processedCronicos.filter(c => c.dynamicSalud === 'ADVERTENCIA').length, [processedCronicos]);
-  const totalVisitasCampo = useMemo(() => processedCronicos.reduce((acc, curr) => acc + curr.visitasCampoPeriodo, 0), [processedCronicos]);
-  const totalSoporteRemoto = useMemo(() => processedCronicos.reduce((acc, curr) => acc + curr.remotoTelcaPeriodo, 0), [processedCronicos]);
-  const totalFallasSla = useMemo(() => processedCronicos.reduce((acc, curr) => acc + curr.totalFallasPeriodo, 0), [processedCronicos]);
+  // Dynamic Summary Metrics based STRICTLY on the selected period AND selected Zona
+  const zonaProcessed = useMemo(() => {
+    if (selectedZona === 'ALL') return processedCronicos;
+    return processedCronicos.filter(c => c.zonaLocal === selectedZona || c.zona === selectedZona);
+  }, [processedCronicos, selectedZona]);
+
+  const totalCriticos = useMemo(() => zonaProcessed.filter(c => c.dynamicSalud === 'CRÍTICO').length, [zonaProcessed]);
+  const totalAdvertencia = useMemo(() => zonaProcessed.filter(c => c.dynamicSalud === 'ADVERTENCIA').length, [zonaProcessed]);
+  const totalVisitasCampo = useMemo(() => zonaProcessed.reduce((acc, curr) => acc + curr.visitasCampoPeriodo, 0), [zonaProcessed]);
+  const totalSoporteRemoto = useMemo(() => zonaProcessed.reduce((acc, curr) => acc + curr.remotoTelcaPeriodo, 0), [zonaProcessed]);
+  const totalFallasSla = useMemo(() => zonaProcessed.reduce((acc, curr) => acc + curr.totalFallasPeriodo, 0), [zonaProcessed]);
 
   // Pagination
   const totalPages = Math.ceil(filtered.length / pageSize) || 1;
@@ -438,31 +447,51 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
                   {/* Client & Model */}
                   <h4 className="text-sm font-bold text-white truncate">{c.cliente}</h4>
                   <p className="text-xs text-slate-400 mb-2">
-                    {c.modelo} • <strong className="text-slate-300">{c.localidad} ({c.zona})</strong>
+                    {c.modelo} • <strong className="text-slate-300">{c.localidad} ({c.zonaLocal || c.zona})</strong>
                   </p>
 
                   {/* FIELD VISITS vs TELCA2 BREAKDOWN BOX */}
-                  <div className="grid grid-cols-2 gap-2 mb-3">
-                    <div className="bg-slate-950 p-2 rounded-lg border border-emerald-500/30 text-xs">
-                      <span className="text-[10px] text-emerald-400 font-bold block uppercase flex items-center gap-1">
-                        <UserCheck className="w-3 h-3" /> Visitas a Campo:
-                      </span>
-                      <p className="text-sm font-black text-white font-mono mt-0.5">
-                        {c.visitasCampoPeriodo}
-                      </p>
-                      <span className="text-[10px] text-slate-400">Técnicos in situ</span>
-                    </div>
+                  {(() => {
+                    const isAtm = isAtmEquipment(c.modelo, (c as any).tipo || (c as any).tipoSeg);
+                    if (isAtm) {
+                      return (
+                        <div className="bg-slate-950 p-2.5 rounded-lg border border-emerald-500/30 text-xs mb-3 flex items-center justify-between">
+                          <div>
+                            <span className="text-[10px] text-emerald-400 font-bold uppercase flex items-center gap-1">
+                              <UserCheck className="w-3.5 h-3.5" /> Visitas Técnicas Presenciales:
+                            </span>
+                            <span className="text-[10px] text-slate-400">Atención in situ (Cajero ATM sin asistencia remota)</span>
+                          </div>
+                          <p className="text-lg font-black text-white font-mono">
+                            {c.visitasCampoPeriodo}
+                          </p>
+                        </div>
+                      );
+                    }
+                    return (
+                      <div className="grid grid-cols-2 gap-2 mb-3">
+                        <div className="bg-slate-950 p-2 rounded-lg border border-emerald-500/30 text-xs">
+                          <span className="text-[10px] text-emerald-400 font-bold block uppercase flex items-center gap-1">
+                            <UserCheck className="w-3 h-3" /> Visitas a Campo:
+                          </span>
+                          <p className="text-sm font-black text-white font-mono mt-0.5">
+                            {c.visitasCampoPeriodo}
+                          </p>
+                          <span className="text-[10px] text-slate-400">Técnicos in situ</span>
+                        </div>
 
-                    <div className="bg-slate-950 p-2 rounded-lg border border-teal-500/30 text-xs">
-                      <span className="text-[10px] text-teal-400 font-bold block uppercase flex items-center gap-1">
-                        <Headphones className="w-3 h-3" /> Soporte TELCA2:
-                      </span>
-                      <p className="text-sm font-black text-white font-mono mt-0.5">
-                        {c.remotoTelcaPeriodo}
-                      </p>
-                      <span className="text-[10px] text-slate-400">Atención remota</span>
-                    </div>
-                  </div>
+                        <div className="bg-slate-950 p-2 rounded-lg border border-teal-500/30 text-xs">
+                          <span className="text-[10px] text-teal-400 font-bold block uppercase flex items-center gap-1">
+                            <Headphones className="w-3 h-3" /> Soporte TELCA2:
+                          </span>
+                          <p className="text-sm font-black text-white font-mono mt-0.5">
+                            {c.remotoTelcaPeriodo}
+                          </p>
+                          <span className="text-[10px] text-slate-400">Atención remota</span>
+                        </div>
+                      </div>
+                    );
+                  })()}
 
                   {/* MTM Tracking */}
                   <div className="bg-slate-950 p-2 rounded-lg border border-slate-800/80 mb-3 flex items-center justify-between text-xs">
@@ -478,10 +507,17 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
                   <div className="flex items-start gap-1.5 text-[11px] text-slate-300 bg-purple-950/30 border border-purple-800/40 p-2 rounded-lg mb-3">
                     <Sparkles className="w-3.5 h-3.5 text-purple-400 flex-shrink-0 mt-0.5" />
                     <p className="line-clamp-2 leading-relaxed">
-                      {isCritico 
-                        ? `Reincidencia severa (${c.visitasCampoPeriodo} visitas a campo, ${c.remotoTelcaPeriodo} atenciones TELCA2 en el período). Requiere auditoría y reemplazo de módulo crítico.`
-                        : `Reincidente moderado (${c.visitasCampoPeriodo} visitas a campo, ${c.remotoTelcaPeriodo} atenciones TELCA2). Revisar calibración y estado en próxima visita.`
-                      }
+                      {(() => {
+                        const isAtm = isAtmEquipment(c.modelo, (c as any).tipo || (c as any).tipoSeg);
+                        if (isAtm) {
+                          return isCritico
+                            ? `Reincidencia severa (${c.visitasCampoPeriodo} visitas a campo en el período). Requiere auditoría y reemplazo de módulo crítico.`
+                            : `Reincidente moderado (${c.visitasCampoPeriodo} visitas de campo). Revisar calibración y estado en próxima visita.`;
+                        }
+                        return isCritico
+                          ? `Reincidencia severa (${c.visitasCampoPeriodo} visitas a campo${c.remotoTelcaPeriodo > 0 ? `, ${c.remotoTelcaPeriodo} atenciones TELCA2 en el período` : ''}). Requiere auditoría y reemplazo de módulo crítico.`
+                          : `Reincidente moderado (${c.visitasCampoPeriodo} visitas de campo${c.remotoTelcaPeriodo > 0 ? `, ${c.remotoTelcaPeriodo} atenciones TELCA2` : ''}). Revisar calibración y estado en próxima visita.`;
+                      })()}
                     </p>
                   </div>
                 </div>

@@ -19,6 +19,7 @@ import {
   Info
 } from 'lucide-react';
 import { StockAuditoriaState, TecnicoStockAuditoria } from '../types';
+import { formatExcelDate } from '../utils/formatters';
 
 interface StockAuditoriaViewProps {
   data: StockAuditoriaState;
@@ -459,7 +460,7 @@ export const StockAuditoriaView: React.FC<StockAuditoriaViewProps> = ({
                             <span>•</span>
                             <span>Cliente: <strong className="text-slate-300">{d.cliente || '-'}</strong></span>
                             <span>•</span>
-                            <span>Fecha: <strong>{d.fecha}</strong></span>
+                            <span>Fecha: <strong className="font-mono text-slate-200">{formatExcelDate(d.fecha)}</strong></span>
                           </div>
                         </div>
                       ))}
@@ -513,7 +514,7 @@ export const StockAuditoriaView: React.FC<StockAuditoriaViewProps> = ({
                                 <span>•</span>
                               </>
                             )}
-                            <span>Asignado: <strong>{r.fechaMov}</strong></span>
+                            <span>Asignado: <strong className="font-mono text-slate-200">{formatExcelDate(r.fechaMov)}</strong></span>
                             {r.ubicacion && (
                               <>
                                 <span>•</span>
@@ -578,7 +579,7 @@ export const StockAuditoriaView: React.FC<StockAuditoriaViewProps> = ({
                               )}
                               {((p as any).fechaOrMetro || (p as any).fecha) && (
                                 <>
-                                  <span>Fecha OR: <strong className="text-slate-200 font-mono">{(p as any).fechaOrMetro || (p as any).fecha}</strong></span>
+                                  <span>Fecha OR: <strong className="text-slate-200 font-mono">{formatExcelDate((p as any).fechaOrMetro || (p as any).fecha)}</strong></span>
                                   <span>•</span>
                                 </>
                               )}

@@ -334,3 +334,27 @@ export function evaluarTiempoLaboralMp(
   };
 }
 
+/**
+ * Determina si un equipo es Cajero Automático (ATM) o Terminal Cash Today (Smart Box).
+ * Regla de negocio: Los cajeros automáticos (ATM) jamás reciben asistencia remota ni tienen atenciones TELCA.
+ */
+export function isAtmEquipment(modelo?: string, tipo?: string): boolean {
+  const m = String(modelo || '').toUpperCase();
+  const t = String(tipo || '').toUpperCase();
+  if (
+    t.includes('SMART BOX') ||
+    m.includes('SMART BOX') ||
+    m.includes('SMARTBOX') ||
+    m.includes('CTI') || 
+    m.includes('CTE') || 
+    m.includes('KISAN') || 
+    m.includes('TAS') || 
+    m.includes('TDE') || 
+    m.includes('CASH') ||
+    m.includes('SNBC') ||
+    m.includes('CIMA')
+  ) {
+    return false; // Es Cash Today
+  }
+  return true; // Es Cajero Automático (ATM)
+}

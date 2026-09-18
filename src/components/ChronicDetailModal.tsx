@@ -12,7 +12,7 @@ import {
   Package
 } from 'lucide-react';
 import { EquipoCronico } from '../types';
-import { formatExcelDate } from '../utils/formatters';
+import { formatExcelDate, isAtmEquipment } from '../utils/formatters';
 
 interface ChronicDetailModalProps {
   cronico: EquipoCronico | null;
@@ -30,6 +30,11 @@ export const ChronicDetailModal: React.FC<ChronicDetailModalProps> = ({
   const validTecnicos = (cronico.tecnicosInvolucrados || []).filter(
     t => t && t !== 'Técnico' && t !== 'SIN ASIGNAR' && t !== '-'
   );
+
+  const isAtm = isAtmEquipment(cronico.modelo, cronico.tipoSeg);
+  const cleanRecomendacion = cronico.recomendacion
+    ? (isAtm ? cronico.recomendacion.replace(/,\s*\d+\s*(?:atenciones|cierres)?\s*TELCA2?/gi, '') : cronico.recomendacion)
+    : '';
 
   return (
     <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
@@ -53,7 +58,7 @@ export const ChronicDetailModal: React.FC<ChronicDetailModalProps> = ({
                 </span>
               </div>
               <p className="text-xs text-slate-400">
-                Cliente: <strong className="text-slate-200">{cronico.cliente}</strong> • Modelo: <strong className="text-slate-200">{cronico.modelo}</strong> • Zona: <strong className="text-amber-400">{cronico.zona}</strong>
+                Cliente: <strong className="text-slate-200">{cronico.cliente}</strong> • Modelo: <strong className="text-slate-200">{cronico.modelo}</strong> • Zona: <strong className="text-amber-400">{cronico.zonaLocal ? `${cronico.zonaLocal} (${cronico.zona})` : cronico.zona}</strong>
               </p>
             </div>
           </div>
@@ -75,7 +80,7 @@ export const ChronicDetailModal: React.FC<ChronicDetailModalProps> = ({
               Diagnóstico y Acción Preventiva Sugerida para el Supervisor
             </div>
             <p className="text-xs text-slate-200 leading-relaxed font-medium">
-              {cronico.recomendacion}
+              {cleanRecomendacion}
             </p>
             <div className="flex flex-wrap items-center gap-4 text-[11px] text-slate-400 pt-1">
               <span><strong>Fallas SLA (60 días):</strong> {cronico.totalFallas}</span>

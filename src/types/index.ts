@@ -208,6 +208,8 @@ export interface EquipoCronico {
   ultimasFallas: FallaHistorica[];
   todasFallas?: FallaHistorica[];
   zona: string;
+  zonaLocal?: string;
+  tipoSeg?: string;
   tecnicosInvolucrados: string[];
   causasFrecuentes: Record<string, number>;
   conceptosFrecuentes?: Record<string, number>;
@@ -378,6 +380,56 @@ export interface CargaLaboralState {
     ratioKmVsduracion: number;
   };
   porTecnico: TecnicoCarga[];
+}
+
+export interface PedidoDiaItem {
+  cliente: string;
+  equipo: string;
+  direccion: string;
+  localidad: string;
+  distanciaKm: number;
+  horaInicio: string;
+  horaFin: string;
+  tiempoLaboral: string;
+  observaciones: string;
+}
+
+export interface CargaLaboralDia {
+  diaSemana: string;
+  diaNum: number;
+  tieneActividad: boolean;
+  totalPedidos: number;
+  primerPedido: PedidoDiaItem | null;
+  ultimoPedido: PedidoDiaItem | null;
+  horasLaboralesDiaStr: string;
+  horasLaboralesDiaMinutos: number;
+  kmEstimadosDia: number;
+  pedidos: PedidoDiaItem[];
+}
+
+export interface CargaLaboralSemanalItem {
+  tecnico: string;
+  zonaLocal: string;
+  region: string;
+  zonaTecnica: string;
+  semana: number;
+  diasConActividad: number;
+  totalPedidosSemana: number;
+  totalHorasTrabajadasStr: string;
+  totalHorasTrabajadasMinutos: number;
+  promedioHorasDiaStr: string;
+  horasDisponiblesSemanales: string;
+  diferenciaHorasStr: string;
+  esDeficitario: boolean;
+  totalKmSemana: number;
+  dias: CargaLaboralDia[];
+}
+
+export interface CargaLaboralSemanalPayload {
+  semanaActual: number;
+  semanasDisponibles: number[];
+  tecnicosDisponibles: string[];
+  resumenSemanas: CargaLaboralSemanalItem[];
 }
 
 export interface RepuestoMasUsado {

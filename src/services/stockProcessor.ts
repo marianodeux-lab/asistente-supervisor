@@ -8,6 +8,7 @@ import {
 } from '../types';
 import zonasReferencia from '../data/zonasTecnicosReferencia.json';
 import stockFijoData from '../data/stockFijoData.json';
+import { formatExcelDate } from '../utils/formatters';
 
 // Technicians reference map (Strictly Patagonia & Suroeste)
 const tecToZonaMap = new Map<string, typeof zonasReferencia[0]>();
@@ -136,12 +137,12 @@ export function buildStockAuditoriaState(rawDeuda: any[], rawTecnico: any[], _ra
       pedRetiro: String(r['Ped Retiro'] || '').trim(),
       codEquipo: String(r['Cod Equipo'] || '').trim(),
       cliente: String(r['Cliente Desc'] || '').trim(),
-      fecha: String(r['F Ing Lab'] || r['F Mov Stock'] || ''),
+      fecha: formatExcelDate(r['F Ing Lab'] || r['F Mov Stock'] || ''),
       marca: String(r['Marca Desc'] || '').trim(),
       ubicacion: String(r['Ubicacion en deposito'] || '').trim(),
       devEnTransito: dev,
       esEnTransito,
-      fechaOrMetro: orMetro,
+      fechaOrMetro: formatExcelDate(orMetro),
       transporteOrMetro: transMetro
     };
 
@@ -174,7 +175,7 @@ export function buildStockAuditoriaState(rawDeuda: any[], rawTecnico: any[], _ra
       pedidoCot: String(r['Pedido Cot Solicita'] || '').trim(),
       pedidoStock: String(r['Pedido Stock Solicita'] || '').trim(),
       cliente: String(r['Cliente Cot Solicita'] || '').trim(),
-      fechaMov: String(r['F Mov Stock'] || ''),
+      fechaMov: formatExcelDate(r['F Mov Stock'] || ''),
       ubicacion: String(r['Ubicacion en deposito'] || '').trim(),
       devEnTransito: dev,
       esEnTransito,

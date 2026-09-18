@@ -175,7 +175,7 @@ for (const item of slaFailuresMap.values()) {
 const defaultMin60dIso = '2026-07-08';
 const defaultMax60dIso = '2026-09-07';
 
-// Load lunoToRepuestosMap and mpCerradosMap if available
+// Load lunoToRepuestosMap, mpCerradosMap, zonasReferencia, baseInstalada, and agenda
 let lunoToRepMap = {};
 try {
   const ltrPath = path.join(outDir, 'lunoToRepuestosMap.json');
@@ -188,15 +188,147 @@ try {
   if (fs.existsSync(mpcPath)) mpCerradosMap = JSON.parse(fs.readFileSync(mpcPath, 'utf8'));
 } catch (e) {}
 
+// Build Local Zone lookup maps
+const tecToLocalMap = new Map();
+try {
+  const zRef = JSON.parse(fs.readFileSync(path.join(outDir, 'zonasTecnicosReferencia.json'), 'utf8'));
+  zRef.forEach(z => {
+    if (z.nombre && z.zonaLocal) {
+      tecToLocalMap.set(z.nombre.toLowerCase().trim(), z.zonaLocal);
+    }
+  });
+} catch (e) {}
+
+const locToLocalMap = new Map();
+const atmToLocalMap = new Map();
+
+try {
+  const agenda = JSON.parse(fs.readFileSync(path.join(outDir, 'agendaData.json'), 'utf8'));
+  agenda.forEach(a => {
+    if (a.localidad && a.zonaLocal) {
+      locToLocalMap.set(a.localidad.toLowerCase().trim(), a.zonaLocal);
+    }
+  });
+} catch (e) {}
+
+try {
+  const baseClientes = JSON.parse(fs.readFileSync(path.join(outDir, 'baseInstaladaClientesData.json'), 'utf8'));
+  baseClientes.forEach(b => {
+    const zl = b.tecnicoZona ? tecToLocalMap.get(b.tecnicoZona.toLowerCase().trim()) : null;
+    if (b.atm && zl) {
+      atmToLocalMap.set(String(b.atm).trim(), zl);
+    }
+    if (b.localidad && zl && !locToLocalMap.has(b.localidad.toLowerCase().trim())) {
+      locToLocalMap.set(b.localidad.toLowerCase().trim(), zl);
+    }
+  });
+} catch (e) {}
+
+// Fallback direct locality mapping
+const LOCALIDAD_ZONA_FALLBACK = {
+  'bahia blanca': 'Centro',
+  'viedma': 'Centro',
+  'punta alta': 'Centro',
+  'carmen de patagones': 'Centro',
+  'coronel dorrego': 'Centro',
+  'coronel pringles': 'Centro',
+  'mar del plata': 'Atlántica',
+  'miramar': 'Atlántica',
+  'balcarce': 'Atlántica',
+  'necochea': 'Atlántica',
+  'quequen': 'Atlántica',
+  'general madariaga': 'Atlántica',
+  'pinamar': 'Atlántica',
+  'villa gesell': 'Atlántica',
+  'chapadmalal': 'Atlántica',
+  'batan': 'Atlántica',
+  'santa clara del mar': 'Atlántica',
+  'trenque lauquen': 'Oeste',
+  'pehuajo': 'Oeste',
+  'general villegas': 'Oeste',
+  'olavarria': 'Oeste',
+  'azul': 'Oeste',
+  'bolivar': 'Oeste',
+  'hinojo': 'Oeste',
+  'pigue': 'Oeste',
+  'carhue': 'Oeste',
+  'santa rosa': 'La Pampa',
+  'general pico': 'La Pampa',
+  'general acha': 'La Pampa',
+  'realico': 'La Pampa',
+  'eduardo castex': 'La Pampa',
+  'macachin': 'La Pampa',
+  'neuquen': 'Suroeste',
+  'neuquén': 'Suroeste',
+  'cipolletti': 'Suroeste',
+  'bariloche': 'Suroeste',
+  'san carlos de bariloche': 'Suroeste',
+  'villa la angostura': 'Suroeste',
+  'san martin de los andes': 'Suroeste',
+  'trelew': 'Sur',
+  'rawson': 'Sur',
+  'puerto madryn': 'Sur',
+  'comodoro rivadavia': 'Sur',
+  'rio gallegos': 'Sur',
+  'caleta olivia': 'Sur',
+  'ushuaia': 'Contratistas',
+  'rio grande': 'Contratistas',
+  'las grutas': 'Contratistas'
+};
+
+function resolveZonaLocal(equipo, localidad, tecnicos, zonaDefault) {
+  const eqKey = String(equipo).trim();
+  if (atmToLocalMap.has(eqKey)) return atmToLocalMap.get(eqKey);
+
+  for (const t of tecnicos) {
+    const norm = String(t).toLowerCase().trim();
+    if (tecToLocalMap.has(norm)) return tecToLocalMap.get(norm);
+  }
+
+  const locNorm = String(localidad || '').toLowerCase().trim();
+  if (locToLocalMap.has(locNorm)) return locToLocalMap.get(locNorm);
+  if (LOCALIDAD_ZONA_FALLBACK[locNorm]) return LOCALIDAD_ZONA_FALLBACK[locNorm];
+
+  if (zonaDefault === 'Suroeste') return 'Suroeste';
+  return 'Centro';
+}
+
+function isAtmEquipment(modelo, tipo) {
+  const m = String(modelo || '').toUpperCase();
+  const t = String(tipo || '').toUpperCase();
+  if (
+    t.includes('SMART BOX') ||
+    m.includes('SMART BOX') ||
+    m.includes('SMARTBOX') ||
+    m.includes('CTI') || 
+    m.includes('CTE') || 
+    m.includes('KISAN') || 
+    m.includes('TAS') || 
+    m.includes('TDE') || 
+    m.includes('CASH') ||
+    m.includes('SNBC') ||
+    m.includes('CIMA')
+  ) {
+    return false; // Cash Today
+  }
+  return true; // Cajero Automático ATM
+}
+
 // Build strict Reincidentes Array
 const reincidentesEstrictos = Array.from(slaFailuresMap.values())
   .filter(item => item.fallasSla.length >= 2) // repeated failures
   .map(item => {
+    const isAtm = isAtmEquipment(item.modelo);
+
     // Failures strictly in last 60 days
     const fallas60d = item.fallasSla.filter(f => f.rawDateIso >= defaultMin60dIso && f.rawDateIso <= defaultMax60dIso);
     const cantFallas60d = fallas60d.length > 0 ? fallas60d.length : item.fallasSla.length;
     const visitasCampo60d = (fallas60d.length > 0 ? fallas60d : item.fallasSla).filter(f => f.esVisitaCampo).length;
-    const remotoTelca60d = (fallas60d.length > 0 ? fallas60d : item.fallasSla).filter(f => f.esRemotoTelca).length;
+    
+    // ATMs NEVER have TELCA closures
+    const remotoTelca60d = isAtm 
+      ? 0 
+      : (fallas60d.length > 0 ? fallas60d : item.fallasSla).filter(f => f.esRemotoTelca).length;
 
     let estadoSalud = "ADVERTENCIA";
     let nivelCriticidad = 2;
@@ -207,6 +339,33 @@ const reincidentesEstrictos = Array.from(slaFailuresMap.values())
 
     const ultimoMtm = lastMtmMap.get(item.equipo) || null;
     const mpInfo = mpCerradosMap[item.equipo] || null;
+    const zonaLocal = resolveZonaLocal(item.equipo, item.localidad, item.tecnicos, item.zona);
+
+    // Dynamic Causes map: For ATM, do NOT include TELCA
+    const causasFrecuentes = {
+      "Visitas a Campo": visitasCampo60d
+    };
+    if (!isAtm && remotoTelca60d > 0) {
+      causasFrecuentes["Soporte Remoto (TELCA2)"] = remotoTelca60d;
+    }
+
+    // Recommendation logic: strictly no TELCA mention for ATM
+    let recomendacion = '';
+    if (isAtm) {
+      recomendacion = estadoSalud === 'CRÍTICO'
+        ? `Reincidencia severa (${visitasCampo60d} visitas a campo en período). ${ultimoMtm ? `Último preventivo: ${ultimoMtm}.` : 'Sin MTM reciente.'} Se sugiere auditoría en sitio y recambio de módulo crítico.`
+        : `Reincidente moderado (${visitasCampo60d} visitas de campo). Revisar calibración y estado de componentes en próxima visita.`;
+    } else {
+      if (remotoTelca60d > 0) {
+        recomendacion = estadoSalud === 'CRÍTICO'
+          ? `Reincidencia severa (${visitasCampo60d} visitas a campo, ${remotoTelca60d} cierres TELCA2 en período). ${ultimoMtm ? `Último preventivo: ${ultimoMtm}.` : 'Sin MTM reciente.'} Se sugiere auditoría en sitio y recambio de módulo crítico.`
+          : `Reincidente moderado (${visitasCampo60d} visitas de campo, ${remotoTelca60d} atenciones TELCA2). Revisar calibración y estado de componentes en próxima visita.`;
+      } else {
+        recomendacion = estadoSalud === 'CRÍTICO'
+          ? `Reincidencia severa (${visitasCampo60d} visitas a campo en período). ${ultimoMtm ? `Último preventivo: ${ultimoMtm}.` : 'Sin MTM reciente.'} Se sugiere auditoría en sitio y recambio de módulo crítico.`
+          : `Reincidente moderado (${visitasCampo60d} visitas de campo). Revisar calibración y estado de componentes en próxima visita.`;
+      }
+    }
 
     return {
       luno: item.equipo,
@@ -216,6 +375,8 @@ const reincidentesEstrictos = Array.from(slaFailuresMap.values())
       direccion: item.direccion,
       localidad: item.localidad,
       zona: item.zona,
+      zonaLocal,
+      tipoSeg: isAtm ? 'ATM' : 'Cash Today',
       totalFallas: cantFallas60d,
       fallasServiceCall: cantFallas60d,
       totalVisitasCampo: visitasCampo60d,
@@ -234,16 +395,12 @@ const reincidentesEstrictos = Array.from(slaFailuresMap.values())
       tecnicosInvolucrados: Array.from(item.tecnicos),
       ultimasFallas: item.fallasSla.slice(0, 10),
       todasFallas: item.fallasSla,
-      causasFrecuentes: { 
-        "Visitas a Campo": visitasCampo60d,
-        "Soporte Remoto (TELCA2)": remotoTelca60d
-      },
-      recomendacion: estadoSalud === 'CRÍTICO'
-        ? `Reincidencia severa (${visitasCampo60d} visitas a campo, ${remotoTelca60d} cierres TELCA2 en período). ${ultimoMtm ? `Último preventivo: ${ultimoMtm}.` : 'Sin MTM reciente.'} Se sugiere auditoría en sitio y recambio de módulo crítico.`
-        : `Reincidente moderado (${visitasCampo60d} visitas de campo, ${remotoTelca60d} atenciones TELCA2). Revisar calibración y estado de componentes en próxima visita.`
+      causasFrecuentes,
+      recomendacion
     };
   })
   .sort((a, b) => b.totalFallas - a.totalFallas);
 
 fs.writeFileSync(path.join(outDir, 'reincidenciasData.json'), JSON.stringify(reincidentesEstrictos, null, 2));
-console.log(`✅ Reincidencias estrictas generadas: ${reincidentesEstrictos.length} equipos con fallas repetidas en SLA (60 días)`);
+console.log(`✅ Reincidencias estrictas generadas con zonaLocal y regla No-TELCA en ATM: ${reincidentesEstrictos.length} equipos`);
+
