@@ -295,10 +295,6 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
     ).length;
   }, [tickets, todayStr, tomorrowStr]);
 
-  const movilSCount = useMemo(() => {
-    return tickets.filter(t => t.notificadoMovil || t.m === 'S').length;
-  }, [tickets]);
-
   const okCount = useMemo(() => controlInicioList.filter(i => i.estadoMarcaje === 'ASISTENCIA_OK').length, [controlInicioList]);
   const pendCount = useMemo(() => controlInicioList.filter(i => i.estadoMarcaje === 'PENDIENTE_INICIO').length, [controlInicioList]);
   const sinPedidosCount = useMemo(() => controlInicioList.filter(i => i.estadoMarcaje === 'SIN_PEDIDOS').length, [controlInicioList]);
@@ -346,67 +342,38 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
     }).length;
   }, [tickets, coordinatedAddresses]);
 
-  // 1. Pedidos Asignados a mis técnicos informados al móvil (columna M = 'S'): exactamente 31 pedidos
-  const misAsignadosMovil = useMemo(() => {
-    return tickets.filter(t => {
-      const isAsig = t.esAsignadoCOT || t.origenReporte === 'Asignados';
-      const isMovil = t.notificadoMovil || t.m === 'S';
-      const isPat = t.region === 'PATAGONIA' || !t.region;
-      return isAsig && isMovil && isPat;
-    });
+  // 1. Pedidos Asignados a la supervisión (Total Asignados en Agenda COT)
+  const asignadosEnCotList = useMemo(() => {
+    return tickets.filter(t => t.esAsignadoCOT || (t.tecnico && t.tecnico.toLowerCase() !== 'sin asignar'));
   }, [tickets]);
 
   const totalAsignadosCOT = useMemo(() => {
-    return misAsignadosMovil.length;
-  }, [misAsignadosMovil]);
+    return asignadosEnCotList.length;
+  }, [asignadosEnCotList]);
 
-  // 2. Pedidos de reportes Pendientes Patagonia (8) y Suroeste (10): exactamente 18 pedidos
+  const movilSCount = useMemo(() => {
+    return asignadosEnCotList.filter(t => t.notificadoMovil || t.m === 'S').length;
+  }, [asignadosEnCotList]);
+
+  // 2. Pedidos de reportes Pendientes Patagonia y Suroeste
   const pendientesPatagoniaSuroeste = useMemo(() => {
-    const allowedSurZones = ['IN BAR', 'IN CIP', 'IN NQN'];
-    return tickets.filter(t => {
-      const isPendiente = (t as any).esPendiente || (!t.esAsignadoCOT && t.origenReporte !== 'Asignados');
-      if (!isPendiente) return false;
-      if (t.origenReporte === 'Patagonia' || t.region === 'PATAGONIA') return true;
-      if (t.origenReporte === 'Suroeste' || t.region === 'SUROESTE') {
-        const z = (t.zonaTecnica || t.zona || '').toUpperCase();
-        return allowedSurZones.some(az => z.includes(az));
-      }
-      return false;
-    });
+    return tickets.filter(t => (t as any).esPendiente || t.origenFlujo === 'SC_PENDIENTE');
   }, [tickets]);
 
-  // 3. Matcheo dinámico de los 18 pendientes contra todos los asignados en COT
-  const assignedOrdersSet = useMemo(() => {
-    const set = new Set<string>();
-    tickets.forEach(t => {
-      if (t.esAsignadoCOT || t.origenReporte === 'Asignados') {
-        if (t.pedido) set.add(t.pedido);
-      }
-    });
-    return set;
-  }, [tickets]);
-
-  // De los 18 pendientes, los que fueron asignados en COT (11 pedidos)
+  // De los pendientes, los que fueron asignados en COT
   const pendientesAsignadosEnCot = useMemo(() => {
-    return pendientesPatagoniaSuroeste.filter(t => (t as any).esAsignadoEnCot || assignedOrdersSet.has(t.pedido));
-  }, [pendientesPatagoniaSuroeste, assignedOrdersSet]);
+    return pendientesPatagoniaSuroeste.filter(t => t.esAsignadoCOT || (t.tecnico && t.tecnico.toLowerCase() !== 'sin asignar'));
+  }, [pendientesPatagoniaSuroeste]);
 
-  // De los 18 pendientes, los que NO fueron asignados en COT (7 pedidos sin asignar - riesgo SLA directo)
+  // De los pendientes, los que NO fueron asignados en COT (Riesgo SLA directo)
   const pendientesSinAsignarEnCot = useMemo(() => {
-    return pendientesPatagoniaSuroeste.filter(t => !(t as any).esAsignadoEnCot && !assignedOrdersSet.has(t.pedido));
-  }, [pendientesPatagoniaSuroeste, assignedOrdersSet]);
+    return pendientesPatagoniaSuroeste.filter(t => !t.esAsignadoCOT && (!t.tecnico || t.tecnico.toLowerCase() === 'sin asignar'));
+  }, [pendientesPatagoniaSuroeste]);
 
-  // Total en Agenda = Asignados Móvil (31) + Pendientes (18) = 49 pedidos
+  // Total en Agenda = Total tickets unificados
   const totalEnAgenda = useMemo(() => {
-    return misAsignadosMovil.length + pendientesPatagoniaSuroeste.length;
-  }, [misAsignadosMovil, pendientesPatagoniaSuroeste]);
-
-  const agenda49IdSet = useMemo(() => {
-    const set = new Set<string>();
-    misAsignadosMovil.forEach(t => set.add(t.id));
-    pendientesPatagoniaSuroeste.forEach(t => set.add(t.id));
-    return set;
-  }, [misAsignadosMovil, pendientesPatagoniaSuroeste]);
+    return tickets.length;
+  }, [tickets]);
 
   const scPendientesTotal = pendientesPatagoniaSuroeste.length;
   const scSinAsignar = pendientesSinAsignarEnCot.length;
@@ -517,27 +484,21 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       if (selectedEstado !== 'ALL' && t.estado !== selectedEstado) return false;
 
       // Special Filter
-      if (specialFilter === 'ALL') {
-        // En Total en Agenda se visualizan exactamente los 49 pedidos (31 Asignados Móvil + 18 Pendientes)
-        if (!agenda49IdSet.has(t.id)) {
-          return false;
-        }
-      }
       if (specialFilter === 'SC_PENDIENTES') {
-        const isPend = (t as any).esPendiente || ((t.origenReporte === 'Patagonia' || t.origenReporte === 'Suroeste') && !t.esAsignadoCOT);
+        const isPend = (t as any).esPendiente || t.origenFlujo === 'SC_PENDIENTE';
         if (!isPend) return false;
       }
       if (specialFilter === 'SC_SIN_ASIGNAR') {
-        const isSinAsignar = pendientesSinAsignarEnCot.some(p => p.id === t.id || p.pedido === t.pedido);
+        const isSinAsignar = !t.esAsignadoCOT && (!t.tecnico || t.tecnico.toLowerCase() === 'sin asignar');
         if (!isSinAsignar) return false;
       }
       if (specialFilter === 'SC_PENDIENTES_ASIGNADOS') {
-        const isAsignadoCot = pendientesAsignadosEnCot.some(p => p.id === t.id || p.pedido === t.pedido);
+        const isAsignadoCot = ((t as any).esPendiente || t.origenFlujo === 'SC_PENDIENTE') && (t.esAsignadoCOT || (t.tecnico && t.tecnico.toLowerCase() !== 'sin asignar'));
         if (!isAsignadoCot) return false;
       }
       if (specialFilter === 'ASIGNADO_COT') {
-        const isAsigMovil = misAsignadosMovil.some(a => a.id === t.id || a.pedido === t.pedido);
-        if (!isAsigMovil) return false;
+        const isAsig = t.esAsignadoCOT || (t.tecnico && t.tecnico.toLowerCase() !== 'sin asignar');
+        if (!isAsig) return false;
       }
       if (specialFilter === 'MP_DEFICIENTE' && !t.esMpDeficiente) return false;
       if (specialFilter === 'MOVIL_S' && !t.notificadoMovil && t.m !== 'S') return false;
@@ -610,7 +571,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       {/* Top Banner & Fast SLA Filter Tabs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
         
-        {/* CARD 1: TOTAL EN AGENDA (49 PEDIDOS: 31 ASIGNADOS + 18 PENDIENTES) */}
+        {/* CARD 1: TOTAL EN AGENDA */}
         <button
           onClick={() => { setSpecialFilter('ALL'); setSlaFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
@@ -627,7 +588,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           <div className="flex items-baseline gap-2 mt-1">
             <p className="text-2xl font-black text-white">{totalEnAgenda}</p>
             <span className="text-[10px] text-emerald-400 font-bold">
-              {`${totalAsignadosCOT} asig. + ${pendientesPatagoniaSuroeste.length} pend.`}
+              {`${totalAsignadosCOT} asignados COT`}
             </span>
           </div>
 
@@ -642,7 +603,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
                 specialFilter === 'SC_PENDIENTES_ASIGNADOS' ? 'bg-emerald-500/20 text-emerald-300 font-bold' : 'text-emerald-400/90 hover:bg-emerald-950/40'
               }`}
-              title="De los 18 pendientes, pedidos que ya figuran asignados en el reporte de Asignados"
+              title="Pedidos de los reportes pendientes que ya figuran asignados en la agenda de campo"
             >
               <span className="flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
@@ -672,7 +633,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           </div>
         </button>
 
-        {/* CARD 2: ASIGNADOS FLOW COT (31 PEDIDOS CON MÓVIL S) */}
+        {/* CARD 2: ASIGNADOS FLOW COT */}
         <button
           onClick={() => { setSpecialFilter('ASIGNADO_COT'); setSlaFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
@@ -694,9 +655,9 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           <div className="mt-2 pt-1.5 border-t border-slate-800 text-[10px] space-y-0.5 text-slate-300">
             <div className="flex items-center justify-between">
               <span>Informados al móvil:</span>
-              <span className="text-[10px] text-blue-300 font-mono font-bold">M = 'S' ({totalAsignadosCOT})</span>
+              <span className="text-[10px] text-blue-300 font-mono font-bold">M = 'S' ({movilSCount})</span>
             </div>
-            <p className="text-[10px] text-slate-400 truncate">Patagonia (Mis Técnicos)</p>
+            <p className="text-[10px] text-slate-400 truncate">20 Técnicos de Supervisión</p>
           </div>
         </button>
 
@@ -897,19 +858,31 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                 </thead>
                 <tbody className="divide-y divide-slate-800/60 font-sans">
                   {filteredControlInicio.map((item, idx) => {
-                    // All tickets assigned to this technician for today
-                    const techTodayTickets = tickets.filter(t => 
-                      t.tecnico && t.tecnico.toLowerCase() === item.tecnico.toLowerCase() &&
-                      (t.fCoorDate === todayStr || (t.fechaCoordinada && t.fechaCoordinada.includes(todayStr)))
-                    ).sort((a, b) => {
+                    const normTec = item.tecnico.toLowerCase().trim();
+
+                    // All tickets assigned to this technician
+                    const techAllTickets = tickets.filter(t => {
+                      const tec = (t.tecnico || '').toLowerCase().trim();
+                      const tecZ = (t.tecnicoZona || '').toLowerCase().trim();
+                      return tec === normTec || tecZ === normTec || tec.includes(normTec) || normTec.includes(tec);
+                    }).sort((a, b) => {
                       const timeA = a.hCoor || a.fechaCoordinada || '99:99';
                       const timeB = b.hCoor || b.fechaCoordinada || '99:99';
                       return timeA.localeCompare(timeB);
                     });
 
-                    // Match first ticket
-                    const firstOrder = techTodayTickets[0];
-                    const hasTodayOrder = !!firstOrder;
+                    const techTodayTickets = techAllTickets.filter(t => 
+                      t.fCoorDate === todayStr || (t.fechaCoordinada && t.fechaCoordinada.includes(todayStr))
+                    );
+
+                    const techTomorrowTickets = techAllTickets.filter(t => 
+                      t.fCoorDate === tomorrowStr || (t.fechaCoordinada && t.fechaCoordinada.includes(tomorrowStr))
+                    );
+
+                    // Match first ticket: priority today > tomorrow > next in agenda > item.primerPedido
+                    const firstOrder = techTodayTickets[0] || techTomorrowTickets[0] || techAllTickets[0];
+                    const hasOrders = techAllTickets.length > 0;
+                    const hasTodayOrder = techTodayTickets.length > 0;
 
                     // Operational details
                     const horaCoord = firstOrder ? (firstOrder.hCoor || formatTimeClean(firstOrder.fechaCoordinada)) : (item.primerPedido ? formatTimeClean(item.primerPedido.horaCoordinada) : null);
@@ -929,9 +902,9 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                     const isMp = concepto === 'MP' || concepto === 'MTM';
                     const isContractor = item.zonaLocal === 'Contratistas';
 
-                    const isOk = item.estadoMarcaje === 'ASISTENCIA_OK' || (hasTodayOrder && estado === 'SEG Asistencia');
-                    const isSin = !hasTodayOrder && item.estadoMarcaje === 'SIN_PEDIDOS';
-                    const isPend = !isOk && !isSin;
+                    const isOk = item.estadoMarcaje === 'ASISTENCIA_OK' || (hasTodayOrder && (estado.toUpperCase().includes('ASISTENCIA') || estado.toUpperCase().includes('CONTROL FINAL')));
+                    const isSin = !hasOrders;
+                    const isPend = hasOrders && !isOk;
 
                     return (
                       <tr 
@@ -974,7 +947,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                           }`}>
                             {isOk && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />}
                             {isPend && <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />}
-                            {isOk ? 'OK 07-10hs' : isPend ? 'Pendiente' : 'Sin Servicios'}
+                            {isOk ? 'OK 07-10hs' : isPend ? (hasTodayOrder ? 'Pend. Hoy' : techTomorrowTickets.length > 0 ? 'Prog. Mañana' : 'En Agenda') : 'Sin Servicios'}
                           </span>
                         </td>
 
@@ -1014,7 +987,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
                         {/* 5. Cliente & Luno (ATM) */}
                         <td className="py-2.5 px-3 max-w-[170px]">
-                          {hasTodayOrder || item.primerPedido ? (
+                          {firstOrder || item.primerPedido ? (
                             <div className="space-y-0.5 truncate">
                               <p className="font-semibold text-white truncate" title={clienteName}>
                                 {clienteName}
@@ -1035,7 +1008,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
                         {/* 6. Dirección & Localidad */}
                         <td className="py-2.5 px-3 max-w-[180px]">
-                          {hasTodayOrder || item.primerPedido ? (
+                          {firstOrder || item.primerPedido ? (
                             <div className="space-y-0.5 truncate text-slate-300">
                               <p className="font-medium truncate flex items-center gap-1" title={localidad}>
                                 <MapPin className="w-3 h-3 text-slate-500 flex-shrink-0" />
@@ -1063,7 +1036,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
                         {/* 8. Estado & SLA */}
                         <td className="py-2.5 px-3 whitespace-nowrap">
-                          {hasTodayOrder || item.primerPedido ? (
+                          {firstOrder || item.primerPedido ? (
                             <div className="space-y-1">
                               <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-900 border border-slate-800 text-slate-200 block w-fit">
                                 {estado}
@@ -1085,10 +1058,20 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         <td className="py-2.5 px-3 text-center whitespace-nowrap">
                           <span className={`px-2 py-1 rounded-lg text-xs font-mono font-black ${
                             techTodayTickets.length > 0 
-                              ? 'bg-amber-500/10 border border-amber-500/40 text-amber-300' 
+                              ? 'bg-amber-500/10 border border-amber-500/40 text-amber-300'
+                              : techTomorrowTickets.length > 0
+                              ? 'bg-blue-500/10 border border-blue-500/40 text-blue-300'
+                              : techAllTickets.length > 0
+                              ? 'bg-slate-800 border border-slate-700 text-slate-200'
                               : 'bg-slate-900 border border-slate-800 text-slate-500'
                           }`}>
-                            {techTodayTickets.length} {techTodayTickets.length === 1 ? 'pedido' : 'pedidos'}
+                            {techTodayTickets.length > 0 
+                              ? `${techTodayTickets.length} hoy (${techAllTickets.length} tot.)`
+                              : techTomorrowTickets.length > 0
+                              ? `${techTomorrowTickets.length} mañ. (${techAllTickets.length} tot.)`
+                              : techAllTickets.length > 0
+                              ? `${techAllTickets.length} en agenda`
+                              : '0 pedidos'}
                           </span>
                         </td>
 

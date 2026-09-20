@@ -1,158 +1,11 @@
 {
   "metadata": {
-    "generatedAt": "2026-09-20T22:37:37.940Z",
+    "generatedAt": "2026-09-20T23:07:27.589Z",
     "description": "Única Fuente de Verdad Canónica para Modelos, Negocios, Fabricantes, MPCR y Reglas de Negocio",
     "rulesVersion": "2.0.0",
     "totalMappedModels": 142
   },
   "catalog": [
-    {
-      "marcaOriginal": "DIEBOLD NIXDORF",
-      "modeloOriginal": "CS2070",
-      "negocio": "ATM",
-      "fabricante": "Diebold Nixdorf",
-      "modeloBase": "CS2070",
-      "modeloEstandar": "CS2070 Cash",
-      "mpcr": "DN",
-      "callRate": 0.5,
-      "totalBaseInstaladaRecords": 96,
-      "foundInMonths": [
-        "Abril.xlsx",
-        "Agosto.xlsx",
-        "Enero.xlsx",
-        "Febrero.xlsx",
-        "Julio.xlsx",
-        "Junio.xlsx",
-        "Marzo.xlsx",
-        "Mayo.xlsx"
-      ]
-    },
-    {
-      "marcaOriginal": "DIEBOLD NIXDORF",
-      "modeloOriginal": "CS2070 FL",
-      "negocio": "ATM",
-      "fabricante": "Diebold Nixdorf",
-      "modeloBase": "CS2070 FL",
-      "modeloEstandar": "CS2070 Cash",
-      "mpcr": "DN",
-      "callRate": 0.5,
-      "totalBaseInstaladaRecords": 16,
-      "foundInMonths": [
-        "Abril.xlsx",
-        "Agosto.xlsx",
-        "Enero.xlsx",
-        "Febrero.xlsx",
-        "Julio.xlsx",
-        "Junio.xlsx",
-        "Marzo.xlsx",
-        "Mayo.xlsx"
-      ]
-    },
-    {
-      "marcaOriginal": "DIEBOLD NIXDORF",
-      "modeloOriginal": "CS2070 RL",
-      "negocio": "ATM",
-      "fabricante": "Diebold Nixdorf",
-      "modeloBase": "CS2070 RL",
-      "modeloEstandar": "CS2070 Cash",
-      "mpcr": "DN",
-      "callRate": 0.5,
-      "totalBaseInstaladaRecords": 456,
-      "foundInMonths": [
-        "Abril.xlsx",
-        "Agosto.xlsx",
-        "Enero.xlsx",
-        "Febrero.xlsx",
-        "Julio.xlsx",
-        "Junio.xlsx",
-        "Marzo.xlsx",
-        "Mayo.xlsx"
-      ]
-    },
-    {
-      "marcaOriginal": "DIEBOLD NIXDORF",
-      "modeloOriginal": "ATM CS280 RL",
-      "negocio": "ATM",
-      "fabricante": "Diebold Nixdorf",
-      "modeloBase": "ATM CS280 RL",
-      "modeloEstandar": "CS280 Cash",
-      "mpcr": "DN",
-      "callRate": 0.5,
-      "totalBaseInstaladaRecords": 8,
-      "foundInMonths": [
-        "Abril.xlsx",
-        "Agosto.xlsx",
-        "Enero.xlsx",
-        "Febrero.xlsx",
-        "Julio.xlsx",
-        "Junio.xlsx",
-        "Marzo.xlsx",
-        "Mayo.xlsx"
-      ]
-    },
-    {
-      "marcaOriginal": "DIEBOLD NIXDORF",
-      "modeloOriginal": "CS280",
-      "negocio": "ATM",
-      "fabricante": "Diebold Nixdorf",
-      "modeloBase": "CS280",
-      "modeloEstandar": "CS280 Cash",
-      "mpcr": "DN",
-      "callRate": 0.5,
-      "totalBaseInstaladaRecords": 312,
-      "foundInMonths": [
-        "Abril.xlsx",
-        "Agosto.xlsx",
-        "Enero.xlsx",
-        "Febrero.xlsx",
-        "Julio.xlsx",
-        "Junio.xlsx",
-        "Marzo.xlsx",
-        "Mayo.xlsx"
-      ]
-    },
-    {
-      "marcaOriginal": "DIEBOLD NIXDORF",
-      "modeloOriginal": "CS280 FL",
-      "negocio": "ATM",
-      "fabricante": "Diebold Nixdorf",
-      "modeloBase": "CS280 FL",
-      "modeloEstandar": "CS280 Cash",
-      "mpcr": "DN",
-      "callRate": 0.5,
-      "totalBaseInstaladaRecords": 40,
-      "foundInMonths": [
-        "Abril.xlsx",
-        "Agosto.xlsx",
-        "Enero.xlsx",
-        "Febrero.xlsx",
-        "Julio.xlsx",
-        "Junio.xlsx",
-        "Marzo.xlsx",
-        "Mayo.xlsx"
-      ]
-    },
-    {
-      "marcaOriginal": "DIEBOLD NIXDORF",
-      "modeloOriginal": "CS280 RL",
-      "negocio": "ATM",
-      "fabricante": "Diebold Nixdorf",
-      "modeloBase": "CS280 RL",
-      "modeloEstandar": "CS280 Cash",
-      "mpcr": "DN",
-      "callRate": 0.5,
-      "totalBaseInstaladaRecords": 2046,
-      "foundInMonths": [
-        "Abril.xlsx",
-        "Agosto.xlsx",
-        "Enero.xlsx",
-        "Febrero.xlsx",
-        "Julio.xlsx",
-        "Junio.xlsx",
-        "Marzo.xlsx",
-        "Mayo.xlsx"
-      ]
-    },
     {
       "marcaOriginal": "OPTEVA",
       "modeloOriginal": "ATM  OPTEVA 510",
@@ -2382,6 +2235,188 @@
       ]
     },
     {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS2070",
+      "negocio": "ATM",
+      "fabricante": "Wincor",
+      "modeloBase": "CS2070",
+      "modeloEstandar": "Wincor CS2070 Full CCDM",
+      "mpcr": "WINCOR",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 96,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS2070 FL",
+      "negocio": "ATM",
+      "fabricante": "Wincor",
+      "modeloBase": "CS2070 FL",
+      "modeloEstandar": "Wincor CS2070 Full CCDM",
+      "mpcr": "WINCOR",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS2070 RL",
+      "negocio": "ATM",
+      "fabricante": "Wincor",
+      "modeloBase": "CS2070 RL",
+      "modeloEstandar": "Wincor CS2070 Full CCDM",
+      "mpcr": "WINCOR",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 456,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "ATM CS280 RL",
+      "negocio": "ATM",
+      "fabricante": "Wincor",
+      "modeloBase": "ATM CS280 RL",
+      "modeloEstandar": "Wincor CS280 Cash",
+      "mpcr": "WINCOR",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS280",
+      "negocio": "ATM",
+      "fabricante": "Wincor",
+      "modeloBase": "CS280",
+      "modeloEstandar": "Wincor CS280 Cash",
+      "mpcr": "WINCOR",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 312,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS280 FL",
+      "negocio": "ATM",
+      "fabricante": "Wincor",
+      "modeloBase": "CS280 FL",
+      "modeloEstandar": "Wincor CS280 Cash",
+      "mpcr": "WINCOR",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 40,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS280 RL",
+      "negocio": "ATM",
+      "fabricante": "Wincor",
+      "modeloBase": "CS280 RL",
+      "modeloEstandar": "Wincor CS280 Cash",
+      "mpcr": "WINCOR",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 2046,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "INLANE 300",
+      "negocio": "Cash Today",
+      "fabricante": "CIMA",
+      "modeloBase": "INLANE 300",
+      "modeloEstandar": "CIMA Inlane 300",
+      "mpcr": "CIMA",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 4,
+      "foundInMonths": [
+        "Agosto.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "INLANE 300 DEPO",
+      "negocio": "Cash Today",
+      "fabricante": "CIMA",
+      "modeloBase": "INLANE 300 DEPO",
+      "modeloEstandar": "CIMA Inlane 300 Depo",
+      "mpcr": "CIMA",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 20,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
       "marcaOriginal": "Smart Box",
       "modeloOriginal": "CIMA SDM500",
       "negocio": "Cash Today",
@@ -2585,41 +2620,6 @@
         "Agosto.xlsx",
         "Enero.xlsx",
         "Febrero.xlsx",
-        "Julio.xlsx",
-        "Junio.xlsx",
-        "Marzo.xlsx",
-        "Mayo.xlsx"
-      ]
-    },
-    {
-      "marcaOriginal": "SMART BOX",
-      "modeloOriginal": "INLANE 300",
-      "negocio": "Cash Today",
-      "fabricante": "GLORY",
-      "modeloBase": "INLANE 300",
-      "modeloEstandar": "INLANE 300",
-      "mpcr": "GLORY",
-      "callRate": 0.35,
-      "totalBaseInstaladaRecords": 4,
-      "foundInMonths": [
-        "Agosto.xlsx",
-        "Julio.xlsx",
-        "Junio.xlsx"
-      ]
-    },
-    {
-      "marcaOriginal": "SMART BOX",
-      "modeloOriginal": "INLANE 300 DEPO",
-      "negocio": "Cash Today",
-      "fabricante": "GLORY",
-      "modeloBase": "INLANE 300 DEPO",
-      "modeloEstandar": "INLANE 300 DEPO",
-      "mpcr": "GLORY",
-      "callRate": 0.35,
-      "totalBaseInstaladaRecords": 20,
-      "foundInMonths": [
-        "Abril.xlsx",
-        "Agosto.xlsx",
         "Julio.xlsx",
         "Junio.xlsx",
         "Marzo.xlsx",
@@ -2929,10 +2929,10 @@
       "fabricantes": [
         "Diebold Nixdorf",
         "Diebold Procomp",
-        "GRG Banking"
+        "GRG Banking",
+        "Wincor"
       ],
       "mpcrs": [
-        "DN",
         "OPTEVA",
         "OPTEVA MI",
         "OPTEVA ECRM",
@@ -2941,7 +2941,8 @@
         "GRG",
         "GRG H22",
         "GRG H34",
-        "GRG H68"
+        "GRG H68",
+        "WINCOR"
       ]
     },
     "Cash Today": {
@@ -2961,7 +2962,6 @@
         "GLORY P1001",
         "GLORY P500",
         "GLORY TAS",
-        "GLORY",
         "GUNNEBO",
         "KISAN",
         "MEI",

@@ -72,13 +72,27 @@ export const ASSIGNED_TECHNICIANS_RULE = {
 // MP (MANTENIMIENTO PREVENTIVO) THRESHOLDS
 // ═══════════════════════════════════════════════════════════════
 
-/** Umbral máximo de tiempo de asistencia (T Asis) en minutos, por tipo de equipo */
+/**
+ * Umbrales de desvío por tiempo insuficiente en sitio para Mantenimiento Preventivo:
+ * - < 60 minutos para ATM, Glory y CIMA
+ * - < 40 minutos para SNBC
+ */
 export const MP_TASIS_THRESHOLDS = {
-  ATM: 45,
-  CASH_TODAY: 30,
-  GLORY_CIMA: 60,
-  DEFAULT: 45
+  ATM: 60,
+  GLORY: 60,
+  CIMA: 60,
+  SNBC: 40,
+  DEFAULT: 60
 } as const;
+
+/** Helper para evaluar si la duración en sitio de un MP fue insuficiente (alerta de desvío) */
+export function isMpTimeDeviation(tiempoMinutos: number, fabricanteOrTipo: string): boolean {
+  const norm = (fabricanteOrTipo || '').toUpperCase();
+  if (norm.includes('SNBC')) {
+    return tiempoMinutos < 40;
+  }
+  return tiempoMinutos < 60; // ATM, Glory, CIMA, Default
+}
 
 /** Días para considerar un MP como "deficiente" (si falla dentro de este rango post-MP) */
 export const MP_DEFICIENTE_DAYS = 30;

@@ -67,11 +67,17 @@ function resolveHardwareMapping(marca, modelo) {
     mpcr = 'CRP';
     callRate = 0.3;
   } else if (negocio === 'Cash Today') {
-    if (modeloUpper.includes('CIMA') || modeloUpper.includes('SDM500')) {
+    if (modeloUpper.includes('CIMA') || modeloUpper.includes('SDM500') || modeloUpper.includes('INLANE')) {
       fabricante = 'CIMA';
-      modeloBase = 'SDM500';
-      modeloEstandar = 'CIMA SDM500';
-      mpcr = 'CIMA';
+      if (modeloUpper.includes('INLANE')) {
+        modeloBase = modeloUpper.includes('DEPO') ? 'INLANE 300 DEPO' : 'INLANE 300';
+        modeloEstandar = modeloUpper.includes('DEPO') ? 'CIMA Inlane 300 Depo' : 'CIMA Inlane 300';
+        mpcr = 'CIMA';
+      } else {
+        modeloBase = 'SDM500';
+        modeloEstandar = 'CIMA SDM500';
+        mpcr = 'CIMA';
+      }
       callRate = 0.35;
     } else if (modeloUpper.includes('CTE1')) {
       fabricante = 'SNBC';
@@ -103,7 +109,7 @@ function resolveHardwareMapping(marca, modelo) {
       modeloEstandar = 'DI90S';
       mpcr = 'CTI90 SNBC';
       callRate = 0.35;
-    } else if (modeloUpper.includes('GLORY') || modeloUpper.includes('P500') || modeloUpper.includes('P1000') || modeloUpper.includes('P1001') || modeloUpper.includes('INLANE')) {
+    } else if (modeloUpper.includes('GLORY') || modeloUpper.includes('P500') || modeloUpper.includes('P1000') || modeloUpper.includes('P1001')) {
       fabricante = 'GLORY';
       if (modeloUpper.includes('P1000')) {
         modeloBase = 'GLORY P1000';
@@ -113,10 +119,6 @@ function resolveHardwareMapping(marca, modelo) {
         modeloBase = 'GLORY P1001';
         modeloEstandar = 'GLORY P1001';
         mpcr = 'GLORY P1001';
-      } else if (modeloUpper.includes('INLANE')) {
-        modeloBase = modeloUpper.includes('DEPO') ? 'INLANE 300 DEPO' : 'INLANE 300';
-        modeloEstandar = modeloBase;
-        mpcr = 'GLORY';
       } else {
         modeloBase = 'GLORY P500';
         modeloEstandar = 'GLORY P500';
@@ -150,7 +152,23 @@ function resolveHardwareMapping(marca, modelo) {
     }
   } else {
     // Negocio === 'ATM'
-    if (marcaUpper === 'GRG' || modeloUpper.includes('DT-7000') || modeloUpper.includes('CI8000')) {
+    if (modeloUpper.includes('CS280') || modeloUpper.includes('CS285') || modeloUpper.includes('CS2070')) {
+      fabricante = 'Wincor';
+      if (modeloUpper.includes('CS2070')) {
+        modeloBase = modelo;
+        modeloEstandar = 'Wincor CS2070 Full CCDM';
+        mpcr = 'WINCOR';
+      } else if (modeloUpper.includes('CS285')) {
+        modeloBase = modelo;
+        modeloEstandar = 'Wincor CS285 TTW';
+        mpcr = 'WINCOR';
+      } else if (modeloUpper.includes('CS280')) {
+        modeloBase = modelo;
+        modeloEstandar = 'Wincor CS280 Cash';
+        mpcr = 'WINCOR';
+      }
+      callRate = 0.5;
+    } else if (marcaUpper === 'GRG' || modeloUpper.includes('DT-7000') || modeloUpper.includes('CI8000')) {
       fabricante = 'GRG Banking';
       if (modeloUpper.includes('H68') || modeloUpper.includes('68N') || modeloUpper.includes('68V')) {
         modeloBase = modelo;
@@ -178,23 +196,11 @@ function resolveHardwareMapping(marca, modelo) {
         mpcr = 'GRG';
         callRate = 0.5;
       }
-    } else if (marcaUpper.includes('DIEBOLD NIXDORF') || modeloUpper.includes('CS280') || modeloUpper.includes('CS285') || modeloUpper.includes('CS2070') || modeloUpper.includes('DN200V')) {
+    } else if (marcaUpper.includes('DIEBOLD NIXDORF') || modeloUpper.includes('DN200V')) {
       fabricante = 'Diebold Nixdorf';
       if (modeloUpper.includes('DN200V')) {
         modeloBase = modelo;
         modeloEstandar = 'DN200V Reciclador';
-        mpcr = 'DN';
-      } else if (modeloUpper.includes('CS2070')) {
-        modeloBase = modelo;
-        modeloEstandar = 'CS2070 Cash';
-        mpcr = 'DN';
-      } else if (modeloUpper.includes('CS285')) {
-        modeloBase = modelo;
-        modeloEstandar = 'CS285 TTW';
-        mpcr = 'DN';
-      } else if (modeloUpper.includes('CS280')) {
-        modeloBase = modelo;
-        modeloEstandar = 'CS280 Cash';
         mpcr = 'DN';
       } else if (modeloUpper.includes('4534')) {
         fabricante = 'Diebold Procomp';

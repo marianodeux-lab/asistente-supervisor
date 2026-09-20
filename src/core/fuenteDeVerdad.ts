@@ -15,15 +15,63 @@
  *    - MARCA_DESC 'GUNNEBO' -> Negocio: 'Cash Today' (CTD).
  *    - Todas las demás marcas (OPTEVA, OPTEVA MI, OPTEVA TAS, GRG, DIEBOLD NIXDORF, TDE 4500) -> Negocio: 'ATM'.
  * 
- * 2. JERARQUÍA DE FILTROS DEPENDIENTES:
+ * 2. CORRECCIONES DE FABRICANTES Y MODELOS:
+ *    - INLANE 300, INLANE 300 DEPO -> Fabricante: CIMA (Cash Today).
+ *    - CS280 Cash, CS285 TTW, CS2070 (ATM full con depósito CCDM) -> Fabricante: Wincor (ATM).
+ * 
+ * 3. MANTENIMIENTO PREVENTIVO (MP) - UMBRALES DE DESVÍO:
+ *    - Alerta de desvío por tiempo insuficiente en sitio:
+ *      * < 60 minutos para ATM, Glory y CIMA.
+ *      * < 40 minutos para SNBC.
+ * 
+ * 4. CONTROL SLA & AGENDA DIARIA:
+ *    - ASIGNACIÓN EFECTIVA EN REPORTE ASIGNADOS (COLUMNA M = 'S' Y FECHA OPERATIVA ACTUAL / DÍA POSTERIOR):
+ *      * Para el análisis de Agenda Diaria, un pedido se considera efectivamente asignado si y solo si:
+ *        1. La columna M figura estrictamente en 'S' (informado/notificado al móvil del técnico).
+ *        2. Pertenece a los técnicos de la supervisión (Región PATAGONIA / Zonas del equipo).
+ *        3. La fecha de asignación/coordinada (F Coor) corresponde a la fecha actual ('Hoy') o el día posterior inmediato ('Mañana' / próxima jornada).
+ *      * En este corte de datos, para la fecha 21/09/2026 con M = 'S', son exactamente 23 pedidos asignados en total.
+ *      * Todo registro con fecha fuera de la jornada operativa o donde M no sea 'S' (ej. 'N') NO fue asignado para el día.
+ *    - Tarjeta "TOTAL EN AGENDA": Debe mostrar el total de los pedidos asignados en COT para la jornada (23 pedidos).
+ *    - Matcheo con Pendientes Patagonia (9) y Suroeste (15):
+ *      * Los pedidos de los reportes pendientes que figuran con M = 'S' y fecha del día en Asignados se consideran "Pendientes Asignados en COT" (7 pedidos).
+ *      * Todos los pedidos de los reportes pendientes que NO cumplan esta condición se muestran como valor aparte ("Sin Asignar Pat/Sur - Riesgo SLA Directo", 17 pedidos).
+ *    - Control de Inicio de Jornada: Refleja la agenda real asignada informada al móvil para la jornada (23 pedidos) y su 1° horario.
+ * 
+ * 5. ANÁLISIS DE ATENCIONES - SUSPENDIDOS:
+ *    - Se deben excluir obligatoriamente los cierres MONITOREO (además de TELCA, TELCA2, TELCA3, TELFA y DERIV).
+ * 
+ * 6. JERARQUÍA DE FILTROS DEPENDIENTES:
  *    Región -> Fabricante -> Modelo -> MPCR -> Negocio -> Planta Cabecera -> Técnico -> Red -> Recaudador.
  * 
- * 3. AUDITORÍA TÉCNICA Y REINCIDENCIAS:
+ * 7. AUDITORÍA TÉCNICA Y REINCIDENCIAS:
  *    - Reincidencias en campo: Basadas estrictamente en VISITAS PRESENCIALES en los últimos 30 días.
  *    - Cierres remotos (TELCA, TELCA2, TELFA): Aplican exclusivamente a Cash Today y se muestran
  *      como dato complementario de soporte remoto sin penalizar la reincidencia presencial.
  *    - Solo computan órdenes donde hubo técnico asignado en la supervisión de servicio.
  *    - Filtro de año (2025 / 2026 / Todos) presente en todos los análisis históricos.
+ * 
+ * 8. NÓMINA DE TÉCNICOS Y ZONAS SUPERVISADAS:
+ *    - REGIÓN PATAGONIA:
+ *      * Aldayturriaga, Martin (IN TDL - Oeste)
+ *      * Allende, Martin Leandro (IN SRO - La Pampa)
+ *      * Buratti, Fabian (IN MDP 2 - Atlántica)
+ *      * Castaño, Matias (IN MDP3 - Atlántica / Cash Today)
+ *      * Chiriello, Pablo Javier (IN MDP 1 - Atlántica)
+ *      * Garcia, Alejandro Javier (IN TRQ - Oeste)
+ *      * Godoy, Diego (IN TRE - Sur)
+ *      * Gonzalez Cabrera, Antonio (IN COM - Sur)
+ *      * Hernandez, Marcos Alberto (IN PCO / IN PCO1 - La Pampa)
+ *      * Martos, Jose Angel (IN OLA - Oeste)
+ *      * Montiel, Juan Fernando (IN COS - Atlántica)
+ *      * Pavon, Diego Emanuel (IN BB2 - Centro)
+ *      * Vicente, Francisco Ariel (IN VIE - Centro)
+ *      * Contratistas Patagonia: Barrera Fernando (IN RIT), Corti Victor (IN TDF), Foschi Alejandro (IN RGA).
+ *    - REGIÓN CENTRO-OESTE / SUROESTE:
+ *      * Lazzaro, Leonardo (IN NQN - Neuquén)
+ *      * Ibañez, Pablo Fernando / Fernando Ibañez (IN CIP - Cipolletti)
+ *      * Torres, Florencia / Fix Computer (IN BAR - Bariloche / Contratista)
+ *      * Estos técnicos figuran en los reportes de Suspendidos, MP Pendientes, MP Cerrados y Pendientes Suroeste.
  * ═══════════════════════════════════════════════════════════════════════════════════
  */
 
@@ -92,11 +140,18 @@ export function resolveEquipmentTaxonomy(marcaDescRaw: string, modeloDescRaw: st
     mpcr = 'CRP';
     callRateTarget = 0.3;
   } else if (negocio === 'Cash Today') {
-    if (modeloUpper.includes('CIMA') || modeloUpper.includes('SDM500')) {
+    // CIMA (incluye SDM500 e INLANE 300 / INLANE 300 DEPO)
+    if (modeloUpper.includes('CIMA') || modeloUpper.includes('SDM500') || modeloUpper.includes('INLANE')) {
       fabricante = 'CIMA';
-      modeloBase = 'SDM500';
-      modeloEstandar = 'CIMA SDM500';
-      mpcr = 'CIMA';
+      if (modeloUpper.includes('INLANE')) {
+        modeloBase = modeloUpper.includes('DEPO') ? 'INLANE 300 DEPO' : 'INLANE 300';
+        modeloEstandar = modeloUpper.includes('DEPO') ? 'CIMA Inlane 300 Depo' : 'CIMA Inlane 300';
+        mpcr = 'CIMA';
+      } else {
+        modeloBase = 'SDM500';
+        modeloEstandar = 'CIMA SDM500';
+        mpcr = 'CIMA';
+      }
       callRateTarget = 0.35;
     } else if (modeloUpper.includes('CTE1')) {
       fabricante = 'SNBC';
@@ -136,7 +191,7 @@ export function resolveEquipmentTaxonomy(marcaDescRaw: string, modeloDescRaw: st
       modeloEstandar = 'DI90S';
       mpcr = 'CTI90 SNBC';
       callRateTarget = 0.35;
-    } else if (modeloUpper.includes('GLORY') || modeloUpper.includes('P500') || modeloUpper.includes('P1000') || modeloUpper.includes('P1001') || modeloUpper.includes('INLANE')) {
+    } else if (modeloUpper.includes('GLORY') || modeloUpper.includes('P500') || modeloUpper.includes('P1000') || modeloUpper.includes('P1001')) {
       fabricante = 'GLORY';
       if (modeloUpper.includes('P1000')) {
         modeloBase = 'GLORY P1000';
@@ -146,10 +201,6 @@ export function resolveEquipmentTaxonomy(marcaDescRaw: string, modeloDescRaw: st
         modeloBase = 'GLORY P1001';
         modeloEstandar = 'GLORY P1001';
         mpcr = 'GLORY P1001';
-      } else if (modeloUpper.includes('INLANE')) {
-        modeloBase = modeloUpper.includes('DEPO') ? 'INLANE 300 DEPO' : 'INLANE 300';
-        modeloEstandar = modeloBase;
-        mpcr = 'GLORY';
       } else {
         modeloBase = 'GLORY P500';
         modeloEstandar = 'GLORY P500';
@@ -183,7 +234,24 @@ export function resolveEquipmentTaxonomy(marcaDescRaw: string, modeloDescRaw: st
     }
   } else {
     // Negocio: 'ATM'
-    if (marcaUpper === 'GRG' || modeloUpper.includes('DT-7000') || modeloUpper.includes('CI8000')) {
+    // 1. WINCOR NIXDORF (CS280 Cash, CS285 TTW, CS2070 Full con depósito CCDM)
+    if (modeloUpper.includes('CS280') || modeloUpper.includes('CS285') || modeloUpper.includes('CS2070')) {
+      fabricante = 'Wincor';
+      if (modeloUpper.includes('CS2070')) {
+        modeloBase = modelo;
+        modeloEstandar = 'Wincor CS2070 Full CCDM';
+        mpcr = 'WINCOR';
+      } else if (modeloUpper.includes('CS285')) {
+        modeloBase = modelo;
+        modeloEstandar = 'Wincor CS285 TTW';
+        mpcr = 'WINCOR';
+      } else if (modeloUpper.includes('CS280')) {
+        modeloBase = modelo;
+        modeloEstandar = 'Wincor CS280 Cash';
+        mpcr = 'WINCOR';
+      }
+      callRateTarget = 0.5;
+    } else if (marcaUpper === 'GRG' || modeloUpper.includes('DT-7000') || modeloUpper.includes('CI8000')) {
       fabricante = 'GRG Banking';
       if (modeloUpper.includes('H68') || modeloUpper.includes('68N') || modeloUpper.includes('68V')) {
         modeloBase = modelo;
@@ -211,23 +279,11 @@ export function resolveEquipmentTaxonomy(marcaDescRaw: string, modeloDescRaw: st
         mpcr = 'GRG';
         callRateTarget = 0.5;
       }
-    } else if (marcaUpper.includes('DIEBOLD NIXDORF') || modeloUpper.includes('CS280') || modeloUpper.includes('CS285') || modeloUpper.includes('CS2070') || modeloUpper.includes('DN200V')) {
+    } else if (marcaUpper.includes('DIEBOLD NIXDORF') || modeloUpper.includes('DN200V')) {
       fabricante = 'Diebold Nixdorf';
       if (modeloUpper.includes('DN200V')) {
         modeloBase = modelo;
         modeloEstandar = 'DN200V Reciclador';
-        mpcr = 'DN';
-      } else if (modeloUpper.includes('CS2070')) {
-        modeloBase = modelo;
-        modeloEstandar = 'CS2070 Cash';
-        mpcr = 'DN';
-      } else if (modeloUpper.includes('CS285')) {
-        modeloBase = modelo;
-        modeloEstandar = 'CS285 TTW';
-        mpcr = 'DN';
-      } else if (modeloUpper.includes('CS280')) {
-        modeloBase = modelo;
-        modeloEstandar = 'CS280 Cash';
         mpcr = 'DN';
       } else if (modeloUpper.includes('4534')) {
         fabricante = 'Diebold Procomp';
@@ -332,6 +388,7 @@ export function resolveEquipmentTaxonomy(marcaDescRaw: string, modeloDescRaw: st
 export const CANONICAL_FABRICANTES = [
   'Diebold Nixdorf',
   'Diebold Procomp',
+  'Wincor',
   'GRG Banking',
   'GLORY',
   'SNBC',
@@ -349,12 +406,13 @@ export const CANONICAL_NEGOCIOS: NegocioTipo[] = ['ATM', 'Cash Today', 'CRP'];
  */
 export function normalizeFabricanteName(raw: string): string {
   const norm = (raw || '').trim().toLowerCase();
+  if (norm.includes('wincor') || norm.includes('cs280') || norm.includes('cs285') || norm.includes('cs2070')) return 'Wincor';
   if (norm.includes('grg')) return 'GRG Banking';
   if (norm.includes('procomp') || norm.includes('tde')) return 'Diebold Procomp';
   if (norm.includes('diebold') || norm.includes('nixdorf') || norm.includes('opteva')) return 'Diebold Nixdorf';
   if (norm.includes('glory')) return 'GLORY';
   if (norm.includes('snbc')) return 'SNBC';
-  if (norm.includes('cima')) return 'CIMA';
+  if (norm.includes('cima') || norm.includes('inlane')) return 'CIMA';
   if (norm.includes('kisan')) return 'KISAN';
   if (norm.includes('mei')) return 'MEI';
   if (norm.includes('gunnebo')) return 'GUNNEBO';
@@ -394,13 +452,287 @@ export const REINCIDENCIAS_RULES = {
 } as const;
 
 export const MP_RULES = {
-  TARGET_MINUTES: 120, // 2 horas
-  ALERT_MINUTES: 150,  // 2.5 horas
+  /**
+   * Umbrales de desvío por tiempo insuficiente en sitio para Mantenimiento Preventivo:
+   * - < 60 minutos para ATM, Glory y CIMA
+   * - < 40 minutos para SNBC
+   */
+  MIN_TIME_THRESHOLDS_MINUTES: {
+    ATM: 60,
+    GLORY: 60,
+    CIMA: 60,
+    SNBC: 40,
+    DEFAULT: 60
+  },
+  /** Helper para determinar si un tiempo de MP es desvío por ser demasiado corto */
+  isTimeDeviation: (tiempoMinutos: number, fabricanteOrTipo: string): boolean => {
+    const norm = (fabricanteOrTipo || '').toUpperCase();
+    if (norm.includes('SNBC')) {
+      return tiempoMinutos < 40;
+    }
+    return tiempoMinutos < 60; // ATM, GLORY, CIMA, DEFAULT
+  },
+  TARGET_MINUTES: 120, // 2 horas de referencia
   POST_MP_DEFICIENTE_DAYS: 30
 } as const;
 
 // ───────────────────────────────────────────────────────────────────────────────────
-// 5. HELPERS DE VALIDACIÓN RÁPIDA
+// ───────────────────────────────────────────────────────────────────────────────────
+// 5. NÓMINA CANÓNICA DE TÉCNICOS Y ZONAS SUPERVISADAS
+// ───────────────────────────────────────────────────────────────────────────────────
+
+export interface TecnicoSupervisionNode {
+  nombre: string;
+  region: 'PATAGONIA' | 'CENTRO-OESTE' | 'SUROESTE';
+  zonaLocal: 'Atlántica' | 'Centro' | 'Oeste' | 'La Pampa' | 'Sur' | 'Contratistas' | 'Suroeste / Centro-Oeste';
+  zonaTecnica: string;
+  cabeceraBase: string;
+  esContratista: boolean;
+  atm: number;
+  cashToday: number;
+  subTotal: number;
+}
+
+export const NOMINA_TECNICOS_SUPERVISION: TecnicoSupervisionNode[] = [
+  // ─── REGIÓN PATAGONIA ───
+  // Sector Atlántica
+  {
+    nombre: 'Buratti, Fabian',
+    region: 'PATAGONIA',
+    zonaLocal: 'Atlántica',
+    zonaTecnica: 'IN MDP 2',
+    cabeceraBase: 'Mar del Plata (Base 2)',
+    esContratista: false,
+    atm: 78,
+    cashToday: 1,
+    subTotal: 79
+  },
+  {
+    nombre: 'Chiriello, Pablo Javier',
+    region: 'PATAGONIA',
+    zonaLocal: 'Atlántica',
+    zonaTecnica: 'IN MDP 1',
+    cabeceraBase: 'Mar del Plata (Base 1)',
+    esContratista: false,
+    atm: 64,
+    cashToday: 11,
+    subTotal: 75
+  },
+  {
+    nombre: 'Castaño, Matias',
+    region: 'PATAGONIA',
+    zonaLocal: 'Atlántica',
+    zonaTecnica: 'IN MDP3',
+    cabeceraBase: 'Mar del Plata (Cash Today)',
+    esContratista: false,
+    atm: 0,
+    cashToday: 75,
+    subTotal: 75
+  },
+  {
+    nombre: 'Montiel, Juan Fernando',
+    region: 'PATAGONIA',
+    zonaLocal: 'Atlántica',
+    zonaTecnica: 'IN COS',
+    cabeceraBase: 'Costa Atlántica (Pinamar / Villa Gesell)',
+    esContratista: false,
+    atm: 43,
+    cashToday: 28,
+    subTotal: 71
+  },
+
+  // Sector Centro
+  {
+    nombre: 'Pavon, Diego Emanuel',
+    region: 'PATAGONIA',
+    zonaLocal: 'Centro',
+    zonaTecnica: 'IN BB2',
+    cabeceraBase: 'Bahía Blanca',
+    esContratista: false,
+    atm: 71,
+    cashToday: 35,
+    subTotal: 106
+  },
+  {
+    nombre: 'Vicente, Francisco Ariel',
+    region: 'PATAGONIA',
+    zonaLocal: 'Centro',
+    zonaTecnica: 'IN VIE',
+    cabeceraBase: 'Viedma',
+    esContratista: false,
+    atm: 21,
+    cashToday: 11,
+    subTotal: 32
+  },
+
+  // Sector Oeste
+  {
+    nombre: 'Aldayturriaga, Martin',
+    region: 'PATAGONIA',
+    zonaLocal: 'Oeste',
+    zonaTecnica: 'IN TDL',
+    cabeceraBase: 'Tandil',
+    esContratista: false,
+    atm: 53,
+    cashToday: 20,
+    subTotal: 73
+  },
+  {
+    nombre: 'Garcia, Alejandro Javier',
+    region: 'PATAGONIA',
+    zonaLocal: 'Oeste',
+    zonaTecnica: 'IN TRQ',
+    cabeceraBase: 'Trenque Lauquen',
+    esContratista: false,
+    atm: 78,
+    cashToday: 10,
+    subTotal: 88
+  },
+  {
+    nombre: 'Martos, Jose Angel',
+    region: 'PATAGONIA',
+    zonaLocal: 'Oeste',
+    zonaTecnica: 'IN OLA',
+    cabeceraBase: 'Olavarría',
+    esContratista: false,
+    atm: 61,
+    cashToday: 11,
+    subTotal: 72
+  },
+
+  // Sector La Pampa
+  {
+    nombre: 'Allende, Martin Leandro',
+    region: 'PATAGONIA',
+    zonaLocal: 'La Pampa',
+    zonaTecnica: 'IN SRO',
+    cabeceraBase: 'Santa Rosa',
+    esContratista: false,
+    atm: 93,
+    cashToday: 11,
+    subTotal: 104
+  },
+  {
+    nombre: 'Hernandez, Marcos Alberto',
+    region: 'PATAGONIA',
+    zonaLocal: 'La Pampa',
+    zonaTecnica: 'IN PCO',
+    cabeceraBase: 'General Pico (Base 1)',
+    esContratista: false,
+    atm: 44,
+    cashToday: 2,
+    subTotal: 46
+  },
+  {
+    nombre: 'Hernandez, Marcos Alberto',
+    region: 'PATAGONIA',
+    zonaLocal: 'La Pampa',
+    zonaTecnica: 'IN PCO1',
+    cabeceraBase: 'General Pico (Base 2)',
+    esContratista: false,
+    atm: 36,
+    cashToday: 1,
+    subTotal: 37
+  },
+
+  // Sector Sur
+  {
+    nombre: 'Godoy, Diego',
+    region: 'PATAGONIA',
+    zonaLocal: 'Sur',
+    zonaTecnica: 'IN TRE',
+    cabeceraBase: 'Trelew / Puerto Madryn',
+    esContratista: false,
+    atm: 11,
+    cashToday: 27,
+    subTotal: 38
+  },
+  {
+    nombre: 'Gonzalez Cabrera, Antonio',
+    region: 'PATAGONIA',
+    zonaLocal: 'Sur',
+    zonaTecnica: 'IN COM',
+    cabeceraBase: 'Comodoro Rivadavia',
+    esContratista: false,
+    atm: 25,
+    cashToday: 32,
+    subTotal: 57
+  },
+
+  // Sector Contratistas Patagonia
+  {
+    nombre: 'Barrera, Fernando Andrés',
+    region: 'PATAGONIA',
+    zonaLocal: 'Contratistas',
+    zonaTecnica: 'IN RIT',
+    cabeceraBase: 'Río Turbio',
+    esContratista: true,
+    atm: 4,
+    cashToday: 0,
+    subTotal: 4
+  },
+  {
+    nombre: 'Corti Victor',
+    region: 'PATAGONIA',
+    zonaLocal: 'Contratistas',
+    zonaTecnica: 'IN TDF',
+    cabeceraBase: 'Tierra del Fuego (Ushuaia / Río Grande)',
+    esContratista: true,
+    atm: 2,
+    cashToday: 19,
+    subTotal: 21
+  },
+  {
+    nombre: 'Foschi, Alejandro',
+    region: 'PATAGONIA',
+    zonaLocal: 'Contratistas',
+    zonaTecnica: 'IN RGA',
+    cabeceraBase: 'Río Gallegos',
+    esContratista: true,
+    atm: 8,
+    cashToday: 19,
+    subTotal: 27
+  },
+
+  // ─── REGIÓN CENTRO-OESTE / SUROESTE ───
+  // Sector Suroeste / Centro-Oeste
+  {
+    nombre: 'Lazzaro, Leonardo',
+    region: 'CENTRO-OESTE',
+    zonaLocal: 'Suroeste / Centro-Oeste',
+    zonaTecnica: 'IN NQN',
+    cabeceraBase: 'Neuquén',
+    esContratista: false,
+    atm: 43,
+    cashToday: 51,
+    subTotal: 94
+  },
+  {
+    nombre: 'Ibañez, Pablo Fernando',
+    region: 'CENTRO-OESTE',
+    zonaLocal: 'Suroeste / Centro-Oeste',
+    zonaTecnica: 'IN CIP',
+    cabeceraBase: 'Cipolletti / Alto Valle',
+    esContratista: false,
+    atm: 26,
+    cashToday: 58,
+    subTotal: 84
+  },
+  {
+    nombre: 'Torres, Florencia',
+    region: 'CENTRO-OESTE',
+    zonaLocal: 'Suroeste / Centro-Oeste',
+    zonaTecnica: 'IN BAR',
+    cabeceraBase: 'Bariloche (Fix Computer)',
+    esContratista: true,
+    atm: 7,
+    cashToday: 41,
+    subTotal: 48
+  }
+];
+
+// ───────────────────────────────────────────────────────────────────────────────────
+// 6. HELPERS DE VALIDACIÓN RÁPIDA
 // ───────────────────────────────────────────────────────────────────────────────────
 
 export function isSlaValidClosure(code: string): boolean {
@@ -416,7 +748,8 @@ export function isSuspendidosExcluded(code: string): boolean {
 }
 
 export function isValidRegion(region: string): boolean {
-  return VALID_REGIONS.includes((region || '').toUpperCase().trim() as any);
+  const norm = (region || '').toUpperCase().trim();
+  return norm === 'PATAGONIA' || norm === 'SUROESTE' || norm === 'CENTRO-OESTE' || norm === 'CENTRO OESTE';
 }
 
 export default {
@@ -424,6 +757,7 @@ export default {
   normalizeFabricanteName,
   CANONICAL_FABRICANTES,
   CANONICAL_NEGOCIOS,
+  NOMINA_TECNICOS_SUPERVISION,
   SLA_VALID_CLOSURES,
   TELCA_CLOSURES,
   SUSPENDIDOS_EXCLUDED_CLOSURES,

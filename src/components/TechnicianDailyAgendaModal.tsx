@@ -61,8 +61,41 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
   // All tickets assigned to this technician
   const techAllTickets = useMemo(() => {
     if (!tecnicoNombre) return [];
-    return tickets.filter(t => t.tecnico && t.tecnico.toLowerCase() === tecnicoNombre.toLowerCase());
+    const norm = tecnicoNombre.toLowerCase().trim();
+    return tickets.filter(t => {
+      const tec = (t.tecnico || '').toLowerCase().trim();
+      const tecZ = (t.tecnicoZona || '').toLowerCase().trim();
+      return tec === norm || tecZ === norm || tec.includes(norm) || norm.includes(tec);
+    });
   }, [tickets, tecnicoNombre]);
+
+  // Counts for Day Tabs
+  const countHoy = useMemo(() => {
+    return techAllTickets.filter(t => t.fCoorDate === activeDateStr || (t.fechaCoordinada && t.fechaCoordinada.includes(activeDateStr))).length;
+  }, [techAllTickets, activeDateStr]);
+
+  const countManana = useMemo(() => {
+    return techAllTickets.filter(t => t.fCoorDate === tomorrowDateStr || (t.fechaCoordinada && t.fechaCoordinada.includes(tomorrowDateStr))).length;
+  }, [techAllTickets, tomorrowDateStr]);
+
+  const countTodos = techAllTickets.length;
+
+  // Auto-select tab with orders
+  React.useEffect(() => {
+    if (techAllTickets.length > 0) {
+      const hasHoy = techAllTickets.some(t => t.fCoorDate === activeDateStr || (t.fechaCoordinada && t.fechaCoordinada.includes(activeDateStr)));
+      const hasManana = techAllTickets.some(t => t.fCoorDate === tomorrowDateStr || (t.fechaCoordinada && t.fechaCoordinada.includes(tomorrowDateStr)));
+      if (hasHoy) {
+        setModalDateFilter('HOY');
+      } else if (hasManana) {
+        setModalDateFilter('MANANA');
+      } else {
+        setModalDateFilter('TODOS');
+      }
+    } else {
+      setModalDateFilter('TODOS');
+    }
+  }, [tecnicoNombre, techAllTickets, activeDateStr, tomorrowDateStr]);
 
   // Filtered tickets based on selected day
   const filteredTickets = useMemo(() => {
@@ -80,17 +113,6 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
       return timeA.localeCompare(timeB);
     });
   }, [techAllTickets, modalDateFilter, activeDateStr, tomorrowDateStr]);
-
-  // Counts for Day Tabs
-  const countHoy = useMemo(() => {
-    return techAllTickets.filter(t => t.fCoorDate === activeDateStr || (t.fechaCoordinada && t.fechaCoordinada.includes(activeDateStr))).length;
-  }, [techAllTickets, activeDateStr]);
-
-  const countManana = useMemo(() => {
-    return techAllTickets.filter(t => t.fCoorDate === tomorrowDateStr || (t.fechaCoordinada && t.fechaCoordinada.includes(tomorrowDateStr))).length;
-  }, [techAllTickets, tomorrowDateStr]);
-
-  const countTodos = techAllTickets.length;
 
   // Day KPIs Breakdown
   const kpis = useMemo(() => {
@@ -261,10 +283,25 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
         {/* CHRONOLOGICAL VISITS LIST */}
         <div className="flex-1 overflow-y-auto p-4 space-y-3">
           {filteredTickets.length === 0 ? (
-            <div className="text-center py-12 text-slate-500 space-y-2">
-              <Calendar className="w-10 h-10 mx-auto opacity-30 text-amber-400" />
-              <p className="text-sm font-semibold">No se registran visitas coordinadas para este día.</p>
-              <p className="text-xs text-slate-500">Puedes consultar la pestaña "Todos los Pedidos" para ver el total asignado.</p>
+            <div className="text-center py-12 text-slate-400 space-y-3">
+              <Calendar className="w-12 h-12 mx-auto opacity-30 text-amber-400" />
+              <p className="text-base font-bold text-white">
+                No se registran visitas coordinadas para {modalDateFilter === 'HOY' ? `Hoy (${activeDateStr})` : modalDateFilter === 'MANANA' ? `Mañana (${tomorrowDateStr})` : 'el filtro seleccionado'}.
+              </p>
+              <p className="text-xs text-slate-400 max-w-md mx-auto">
+                Este técnico cuenta con un total de <strong className="text-amber-400 font-mono">{techAllTickets.length} pedidos asignados</strong> en su agenda activa de campo.
+              </p>
+              {techAllTickets.length > 0 && (
+                <div className="pt-2">
+                  <button
+                    onClick={() => setModalDateFilter('TODOS')}
+                    className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-amber-500/20 transition inline-flex items-center gap-2"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    <span>Ver todos los {techAllTickets.length} pedidos asignados</span>
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
             filteredTickets.map((t, idx) => {
@@ -390,8 +427,10 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
         </div>
 
         {/* MODAL FOOTER */}
-        <div className="p-3 border-t border-slate-800 bg-slate-950 flex items-center justify-between text-xs text-slate-400">
-          <span>{filteredTickets.length} pedidos coordinados para {tecnicoNombre}</span>
+        <div className="p-3 border-t border-slate-800 bg-slate-950 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-400">
+          <div>
+            <span className="font-semibold text-white">{filteredTickets.length}</span> pedidos en vista &bull; <span className="font-mono font-bold text-amber-400">{techAllTickets.length}</span> pedidos asignados a <strong className="text-slate-200">{tecnicoNombre}</strong>
+          </div>
           <button
             onClick={onClose}
             className="px-4 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold transition"

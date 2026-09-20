@@ -249,14 +249,9 @@ function processSuspendidosFile(filePath, isSuroeste = false) {
     const ped = String(r['PEDIDO'] || r['Pedido'] || '').trim();
     if (!ped) return;
 
-    // 1. Regla: Excluir cierres TELCA (se muestran exclusivamente en la pestaña homónima)
+    // 1. Regla Fuente de Verdad: Excluir cierres TELCA, TELFA, MONITOREO y DERIV de Suspendidos
     const codCierre = String(r['CODIGOCIERRE'] || r['Cod Cierre'] || '').trim().toUpperCase();
-    if (codCierre.startsWith('TELCA') || codCierre === 'TELFA') {
-      return;
-    }
-
-    // 2. Regla: Excluir cierres DERIV (desvíos de soporte remoto a visita técnica)
-    if (codCierre === 'DERIV') {
+    if (codCierre.startsWith('TELCA') || codCierre === 'TELFA' || codCierre.includes('MONITOREO') || codCierre === 'DERIV') {
       return;
     }
 
