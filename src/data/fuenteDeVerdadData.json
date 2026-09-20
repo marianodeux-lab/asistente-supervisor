@@ -1,0 +1,3142 @@
+{
+  "metadata": {
+    "generatedAt": "2026-09-20T22:37:37.940Z",
+    "description": "Única Fuente de Verdad Canónica para Modelos, Negocios, Fabricantes, MPCR y Reglas de Negocio",
+    "rulesVersion": "2.0.0",
+    "totalMappedModels": 142
+  },
+  "catalog": [
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS2070",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "CS2070",
+      "modeloEstandar": "CS2070 Cash",
+      "mpcr": "DN",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 96,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS2070 FL",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "CS2070 FL",
+      "modeloEstandar": "CS2070 Cash",
+      "mpcr": "DN",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS2070 RL",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "CS2070 RL",
+      "modeloEstandar": "CS2070 Cash",
+      "mpcr": "DN",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 456,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "ATM CS280 RL",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM CS280 RL",
+      "modeloEstandar": "CS280 Cash",
+      "mpcr": "DN",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS280",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "CS280",
+      "modeloEstandar": "CS280 Cash",
+      "mpcr": "DN",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 312,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS280 FL",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "CS280 FL",
+      "modeloEstandar": "CS280 Cash",
+      "mpcr": "DN",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 40,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "CS280 RL",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "CS280 RL",
+      "modeloEstandar": "CS280 Cash",
+      "mpcr": "DN",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 2046,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 510",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510",
+      "modeloEstandar": "Opteva 510",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 41,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 510 EDC R",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 EDC R",
+      "modeloEstandar": "Opteva 510",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 510 EDC R FTA",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 EDC R FTA",
+      "modeloEstandar": "Opteva 510",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 510 EDC R FTA IP",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 EDC R FTA IP",
+      "modeloEstandar": "Opteva 510",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 510 F/L",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 F/L",
+      "modeloEstandar": "Opteva 510",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 30,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 510 FTA IP",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 FTA IP",
+      "modeloEstandar": "Opteva 510",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 510 IP",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 510 IP",
+      "modeloEstandar": "Opteva 510",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM OPTEVA 510 R/L 3DES",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 510 R/L 3DES",
+      "modeloEstandar": "Opteva 510",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 3,
+      "foundInMonths": [
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Marzo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM OPTEVA 510 R/L 3DES IP",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 510 R/L 3DES IP",
+      "modeloEstandar": "Opteva 510",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 4,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Marzo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM CD OPTEVA 520",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM CD OPTEVA 520",
+      "modeloEstandar": "Opteva 520",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 42,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM CD OPTEVA 520 F/L",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM CD OPTEVA 520 F/L",
+      "modeloEstandar": "Opteva 520",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 12,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM CD OPTEVA 520 R/L",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM CD OPTEVA 520 R/L",
+      "modeloEstandar": "Opteva 520",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 86,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 6080,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522 EDC R",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 EDC R",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 24,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522 EDC R IP",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 EDC R IP",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522 EDC R RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 EDC R RB",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 18,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522 EDC R/G VOZ",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 EDC R/G VOZ",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 40,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522 F/L",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 F/L",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 59,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522 G VOZ",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 G VOZ",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 72,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522 G VOZ RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 G VOZ RB",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522 IP",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 IP",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522 R/L",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 R/L",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 14,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM  OPTEVA 522 RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM  OPTEVA 522 RB",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 195,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM OPTEVA 522 5ºGAV",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 522 5ºGAV",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 48,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM OPTEVA 522 5ºGAV RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 522 5ºGAV RB",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 24,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM OPTEVA 522 EDC R/G VOZ RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 522 EDC R/G VOZ RB",
+      "modeloEstandar": "Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 56,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 F/L ENA",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L ENA",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 F/L ENA IDM",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L ENA IDM",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 80,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 336,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R EMV RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R EMV RB",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA EDC R",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA EDC R",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 21,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA FTA RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA FTA RB",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA IDM",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA IDM",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 48,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA IDM RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA IDM RB",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 24,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA RB",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 88,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 120,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 40,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R RB",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV FTA",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV FTA",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV RB",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 40,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV/G VOZ",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV/G VOZ",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 14,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L ENA/3DES",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L ENA/3DES",
+      "modeloEstandar": "Opteva 720 ENA / MI",
+      "mpcr": "OPTEVA MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 F/L",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 62,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 F/L 5ºGAV",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L 5ºGAV",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 24,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 F/L FTA",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L FTA",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 F/L FTA RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L FTA RB",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 F/L IP",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 F/L IP",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 6,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 999,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 3DES",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 3DES",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 40,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 3DES EDC R",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 3DES EDC R",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 24,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 3DES IP",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 3DES IP",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 3DES RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 3DES RB",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 100,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 5°GAV/EDC R/RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5°GAV/EDC R/RB",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 24,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 5ºGAV",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 426,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 5ºGAV / EDC",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV / EDC",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 5ºGAV EDC R/G VOZ RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV EDC R/G VOZ RB",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 48,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 5ºGAV RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV RB",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 121,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 96,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ RB",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L EDC R",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L EDC R",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L FTA",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L FTA",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L FTA IP",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L FTA IP",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 9,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L G VOZ",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L G VOZ",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "ATM FULL OPTEVA 720 R/L RB",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM FULL OPTEVA 720 R/L RB",
+      "modeloEstandar": "Opteva 720 Full",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 96,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA",
+      "modeloOriginal": "OPTEVA 828",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "Opteva 828",
+      "modeloEstandar": "Opteva 828",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA MI",
+      "modeloOriginal": "ATM OPTEVA 868 ECRM DISP IDM",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "ATM OPTEVA 868 ECRM DISP IDM",
+      "modeloEstandar": "Opteva 868 ECRM",
+      "mpcr": "OPTEVA ECRM",
+      "callRate": 0.7,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA TAS",
+      "modeloOriginal": "TAS CD OPTEVA 520 R/L",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS CD OPTEVA 520 R/L",
+      "modeloEstandar": "Tas Opteva 520",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 88,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA TAS",
+      "modeloOriginal": "TAS  OPTEVA 522",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS  OPTEVA 522",
+      "modeloEstandar": "Tas Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 198,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA TAS",
+      "modeloOriginal": "TAS OPTEVA 522 FL – TAS",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 522 FL – TAS",
+      "modeloEstandar": "Tas Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA TAS",
+      "modeloOriginal": "TAS OPTEVA 522 RL – TAS",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 522 RL – TAS",
+      "modeloEstandar": "Tas Opteva 522",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA TAS",
+      "modeloOriginal": "TAS OPTEVA 720 F/L",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 F/L",
+      "modeloEstandar": "Tas Opteva 720",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 24,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA TAS",
+      "modeloOriginal": "TAS OPTEVA 720 F/L ENA",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 F/L ENA",
+      "modeloEstandar": "Tas Opteva 720",
+      "mpcr": "TAS MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 178,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA TAS",
+      "modeloOriginal": "TAS OPTEVA 720 R/L",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 R/L",
+      "modeloEstandar": "Tas Opteva 720",
+      "mpcr": "OPTEVA",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 284,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA TAS",
+      "modeloOriginal": "TAS OPTEVA 720 R/L ENA",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 R/L ENA",
+      "modeloEstandar": "Tas Opteva 720",
+      "mpcr": "TAS MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 839,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "OPTEVA TAS",
+      "modeloOriginal": "TAS OPTEVA 720 R/L ENA2",
+      "negocio": "ATM",
+      "fabricante": "Diebold Nixdorf",
+      "modeloBase": "TAS OPTEVA 720 R/L ENA2",
+      "modeloEstandar": "Tas Opteva 720",
+      "mpcr": "TAS MI",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4500",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500",
+      "modeloEstandar": "TDE 4500",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 24,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4500  IDM",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500  IDM",
+      "modeloEstandar": "TDE 4500  IDM",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 27,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4500 FL IDM",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500 FL IDM",
+      "modeloEstandar": "TDE 4500 FL IDM",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 55,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4500 RL",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500 RL",
+      "modeloEstandar": "TDE 4500 RL",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 14,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4500 RL IDM",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500 RL IDM",
+      "modeloEstandar": "TDE 4500 RL IDM",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 47,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4500 Slim",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4500 Slim",
+      "modeloEstandar": "TDE 4500 Slim",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 82,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4533-020",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4533-020",
+      "modeloEstandar": "TDE 4533-020",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 201,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4533-021",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4533-021",
+      "modeloEstandar": "TDE 4533-021",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 62,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4533-022",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4533-022",
+      "modeloEstandar": "TDE 4533-022",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 52,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4533-023",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4533-023",
+      "modeloEstandar": "TDE 4533-023",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 25,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "ATMR 4534 515",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4534",
+      "modeloEstandar": "TDE 4534",
+      "mpcr": "TDE",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 3,
+      "foundInMonths": [
+        "Agosto.xlsx",
+        "Julio.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "DIEBOLD NIXDORF",
+      "modeloOriginal": "ATMR 4534-515",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4534",
+      "modeloEstandar": "TDE 4534",
+      "mpcr": "TDE",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 15,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "TDE 4500",
+      "modeloOriginal": "TDE 4535",
+      "negocio": "ATM",
+      "fabricante": "Diebold Procomp",
+      "modeloBase": "TDE 4535",
+      "modeloEstandar": "TDE 4535",
+      "mpcr": "TDE",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 16,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "CI8000",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "CI8000",
+      "modeloEstandar": "GRG CI8000",
+      "mpcr": "GRG",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 1,
+      "foundInMonths": [
+        "Agosto.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000I64A",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000I64A",
+      "modeloEstandar": "GRG DT-7000I64A",
+      "mpcr": "GRG",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 3,
+      "foundInMonths": [
+        "Agosto.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000P2800NL",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000P2800NL",
+      "modeloEstandar": "GRG DT-7000P2800NL",
+      "mpcr": "GRG",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 1,
+      "foundInMonths": [
+        "Agosto.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H22N RL",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H22N RL",
+      "modeloEstandar": "GRG H22 Cash",
+      "mpcr": "GRG H22",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 107,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H22V",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H22V",
+      "modeloEstandar": "GRG H22 Cash",
+      "mpcr": "GRG H22",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 7610,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H22VL",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H22VL",
+      "modeloEstandar": "GRG H22 Cash",
+      "mpcr": "GRG H22",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 871,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H22VLR",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H22VLR",
+      "modeloEstandar": "GRG H22 Cash",
+      "mpcr": "GRG H22",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 505,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H34N",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H34N",
+      "modeloEstandar": "GRG H34 Full",
+      "mpcr": "GRG H34",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 4479,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H34N (FECT)",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H34N (FECT)",
+      "modeloEstandar": "GRG H34 Full",
+      "mpcr": "GRG H34",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 2594,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H34N (FECT) S/CHK",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H34N (FECT) S/CHK",
+      "modeloEstandar": "GRG H34 Full",
+      "mpcr": "GRG H34",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H34N (FET)",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H34N (FET)",
+      "modeloEstandar": "GRG H34 Full",
+      "mpcr": "GRG H34",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 40,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H34N (FET) S/CHK",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H34N (FET) S/CHK",
+      "modeloEstandar": "GRG H34 Full",
+      "mpcr": "GRG H34",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H34N S/CHK",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H34N S/CHK",
+      "modeloEstandar": "GRG H34 Full",
+      "mpcr": "GRG H34",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 224,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H34NL",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H34NL",
+      "modeloEstandar": "GRG H34 Full",
+      "mpcr": "GRG H34",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H68NLR ATM",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H68NLR ATM",
+      "modeloEstandar": "GRG H68 Reciclador",
+      "mpcr": "GRG H68",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 406,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H68NLR TAS",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H68NLR TAS",
+      "modeloEstandar": "GRG H68 Reciclador",
+      "mpcr": "GRG H68",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 618,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H68VLR",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H68VLR",
+      "modeloEstandar": "GRG H68 Reciclador",
+      "mpcr": "GRG H68",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 566,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H68VLR ATM",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H68VLR ATM",
+      "modeloEstandar": "GRG H68 Reciclador",
+      "mpcr": "GRG H68",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 69,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GRG",
+      "modeloOriginal": "DT-7000H68VLR+BAM",
+      "negocio": "ATM",
+      "fabricante": "GRG Banking",
+      "modeloBase": "DT-7000H68VLR+BAM",
+      "modeloEstandar": "GRG H68 Reciclador",
+      "mpcr": "GRG H68",
+      "callRate": 0.5,
+      "totalBaseInstaladaRecords": 72,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "Smart Box",
+      "modeloOriginal": "CIMA SDM500",
+      "negocio": "Cash Today",
+      "fabricante": "CIMA",
+      "modeloBase": "SDM500",
+      "modeloEstandar": "CIMA SDM500",
+      "mpcr": "CIMA",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 747,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "CIMA SDM500",
+      "negocio": "Cash Today",
+      "fabricante": "CIMA",
+      "modeloBase": "SDM500",
+      "modeloEstandar": "CIMA SDM500",
+      "mpcr": "CIMA",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 982,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "GLORY P1000",
+      "negocio": "Cash Today",
+      "fabricante": "GLORY",
+      "modeloBase": "GLORY P1000",
+      "modeloEstandar": "GLORY P1000",
+      "mpcr": "GLORY P1000",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 468,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "Smart Box",
+      "modeloOriginal": "GLORY P1000",
+      "negocio": "Cash Today",
+      "fabricante": "GLORY",
+      "modeloBase": "GLORY P1000",
+      "modeloEstandar": "GLORY P1000",
+      "mpcr": "GLORY P1000",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 51,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "GLORY P1001",
+      "negocio": "Cash Today",
+      "fabricante": "GLORY",
+      "modeloBase": "GLORY P1001",
+      "modeloEstandar": "GLORY P1001",
+      "mpcr": "GLORY P1001",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 142,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "Smart Box",
+      "modeloOriginal": "GLORY P1001",
+      "negocio": "Cash Today",
+      "fabricante": "GLORY",
+      "modeloBase": "GLORY P1001",
+      "modeloEstandar": "GLORY P1001",
+      "mpcr": "GLORY P1001",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 42,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "Smart Box",
+      "modeloOriginal": "GLORY P500",
+      "negocio": "Cash Today",
+      "fabricante": "GLORY",
+      "modeloBase": "GLORY P500",
+      "modeloEstandar": "GLORY P500",
+      "mpcr": "GLORY P500",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 908,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "GLORY P500",
+      "negocio": "Cash Today",
+      "fabricante": "GLORY",
+      "modeloBase": "GLORY P500",
+      "modeloEstandar": "GLORY P500",
+      "mpcr": "GLORY P500",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 2351,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "Smart Box",
+      "modeloOriginal": "TAS",
+      "negocio": "Cash Today",
+      "fabricante": "GLORY",
+      "modeloBase": "TAS",
+      "modeloEstandar": "GLORY TAS",
+      "mpcr": "GLORY TAS",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 240,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "TAS",
+      "negocio": "Cash Today",
+      "fabricante": "GLORY",
+      "modeloBase": "TAS",
+      "modeloEstandar": "GLORY TAS",
+      "mpcr": "GLORY TAS",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 304,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "INLANE 300",
+      "negocio": "Cash Today",
+      "fabricante": "GLORY",
+      "modeloBase": "INLANE 300",
+      "modeloEstandar": "INLANE 300",
+      "mpcr": "GLORY",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 4,
+      "foundInMonths": [
+        "Agosto.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "INLANE 300 DEPO",
+      "negocio": "Cash Today",
+      "fabricante": "GLORY",
+      "modeloBase": "INLANE 300 DEPO",
+      "modeloEstandar": "INLANE 300 DEPO",
+      "mpcr": "GLORY",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 20,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "GUNNEBO",
+      "modeloOriginal": "CAJA ROBOTIZADA",
+      "negocio": "Cash Today",
+      "fabricante": "GUNNEBO",
+      "modeloBase": "CAJA ROBOTIZADA",
+      "modeloEstandar": "Gunnebo Robotizada",
+      "mpcr": "GUNNEBO",
+      "callRate": 0.2,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "KISAN KD30",
+      "negocio": "Cash Today",
+      "fabricante": "KISAN",
+      "modeloBase": "KISAN KD30",
+      "modeloEstandar": "KISAN KD30",
+      "mpcr": "KISAN",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 205,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "PMINI-MEI",
+      "negocio": "Cash Today",
+      "fabricante": "MEI",
+      "modeloBase": "PMINI-MEI",
+      "modeloEstandar": "PMINI-MEI",
+      "mpcr": "MEI",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 32,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "CTE1 SNBC",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "CTE1 SNBC",
+      "modeloEstandar": "CTE1 SNBC",
+      "mpcr": "CTE1 SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 292,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "CTE2 SNBC",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "CTE2 SNBC",
+      "modeloEstandar": "CTE2 SNBC",
+      "mpcr": "CTE2 SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 2351,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "CTE2 SNBC -C",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "CTE2 SNBC -C",
+      "modeloEstandar": "CTE2 SNBC -C",
+      "mpcr": "CTE2 SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 709,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "CTI COMPACT",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "CTI COMPACT",
+      "modeloEstandar": "CTI COMPACT",
+      "mpcr": "CTI UL SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 7,
+      "foundInMonths": [
+        "Agosto.xlsx",
+        "Julio.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "CTI UL",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "CTI UL",
+      "modeloEstandar": "CTI UL",
+      "mpcr": "CTI UL SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 1586,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "Smart Box",
+      "modeloOriginal": "CTI UL",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "CTI UL",
+      "modeloEstandar": "CTI UL",
+      "mpcr": "CTI UL SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 1,
+      "foundInMonths": [
+        "Agosto.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "CTI UL- C",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "CTI UL - C",
+      "modeloEstandar": "CTI UL - C",
+      "mpcr": "CTI UL SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 2687,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "CTI90 SNBC",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "CTI90 SNBC",
+      "modeloEstandar": "CTI90 SNBC",
+      "mpcr": "CTI90 SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 4269,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "Smart Box",
+      "modeloOriginal": "CTI90 SNBC",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "CTI90 SNBC",
+      "modeloEstandar": "CTI90 SNBC",
+      "mpcr": "CTI90 SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 1,
+      "foundInMonths": [
+        "Junio.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "CTI90 SNBC - C",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "CTI90 SNBC - C",
+      "modeloEstandar": "CTI90 SNBC - C",
+      "mpcr": "CTI90 SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 1606,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "SMART BOX",
+      "modeloOriginal": "DI90S",
+      "negocio": "Cash Today",
+      "fabricante": "SNBC",
+      "modeloBase": "DI90S",
+      "modeloEstandar": "DI90S",
+      "mpcr": "CTI90 SNBC",
+      "callRate": 0.35,
+      "totalBaseInstaladaRecords": 8,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marcaOriginal": "CRP",
+      "modeloOriginal": "CRP-100",
+      "negocio": "CRP",
+      "fabricante": "Prosegur CRP",
+      "modeloBase": "CRP-100",
+      "modeloEstandar": "CRP-100 Control Asistencia",
+      "mpcr": "CRP",
+      "callRate": 0.3,
+      "totalBaseInstaladaRecords": 416,
+      "foundInMonths": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    }
+  ],
+  "byNegocio": {
+    "ATM": {
+      "models": 115,
+      "totalEquipmentCount": 33420,
+      "fabricantes": [
+        "Diebold Nixdorf",
+        "Diebold Procomp",
+        "GRG Banking"
+      ],
+      "mpcrs": [
+        "DN",
+        "OPTEVA",
+        "OPTEVA MI",
+        "OPTEVA ECRM",
+        "TAS MI",
+        "TDE",
+        "GRG",
+        "GRG H22",
+        "GRG H34",
+        "GRG H68"
+      ]
+    },
+    "Cash Today": {
+      "models": 26,
+      "totalEquipmentCount": 20021,
+      "fabricantes": [
+        "CIMA",
+        "GLORY",
+        "GUNNEBO",
+        "KISAN",
+        "MEI",
+        "SNBC"
+      ],
+      "mpcrs": [
+        "CIMA",
+        "GLORY P1000",
+        "GLORY P1001",
+        "GLORY P500",
+        "GLORY TAS",
+        "GLORY",
+        "GUNNEBO",
+        "KISAN",
+        "MEI",
+        "CTE1 SNBC",
+        "CTE2 SNBC",
+        "CTI UL SNBC",
+        "CTI90 SNBC"
+      ]
+    },
+    "CRP": {
+      "models": 1,
+      "totalEquipmentCount": 416,
+      "fabricantes": [
+        "Prosegur CRP"
+      ],
+      "mpcrs": [
+        "CRP"
+      ]
+    }
+  },
+  "callRates": [
+    {
+      "Fabricante": "CIMA",
+      "MPCR": "CIMA",
+      "Call Rate": 0.35,
+      " CIMA ": "Diebold Nixdorf",
+      "Etiquetas de fila": "Diebold Nixdorf"
+    },
+    {
+      "Fabricante": "SNBC",
+      "MPCR": "CTE1 SNBC",
+      "Call Rate": 0.35,
+      " CIMA ": "Diebold Procomp",
+      "Etiquetas de fila": "DN"
+    },
+    {
+      "Fabricante": "SNBC",
+      "MPCR": "CTE2 SNBC",
+      "Call Rate": 0.35,
+      " CIMA ": "GLORY",
+      "Etiquetas de fila": "OPTEVA"
+    },
+    {
+      "Fabricante": "SNBC",
+      "MPCR": "CTI UL SNBC",
+      "Call Rate": 0.35,
+      " CIMA ": "GRG Banking",
+      "Etiquetas de fila": "OPTEVA ECRM"
+    },
+    {
+      "Fabricante": "SNBC",
+      "MPCR": "CTI90 SNBC",
+      "Call Rate": 0.35,
+      " CIMA ": "GUNNEBO",
+      "Etiquetas de fila": "OPTEVA MI"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "MPCR": "DN",
+      "Call Rate": 0.5,
+      " CIMA ": "MEI",
+      "Etiquetas de fila": "TAS ECRM"
+    },
+    {
+      "Fabricante": "GLORY",
+      "MPCR": "GLORY P1000",
+      "Call Rate": 0.35,
+      " CIMA ": "Prosegur",
+      "Etiquetas de fila": "TAS MI"
+    },
+    {
+      "Fabricante": "GLORY",
+      "MPCR": "GLORY P1001",
+      "Call Rate": 0.35,
+      " CIMA ": "SNBC",
+      "Etiquetas de fila": "GRG Banking"
+    },
+    {
+      "Fabricante": "GLORY",
+      "MPCR": "GLORY P500",
+      "Call Rate": 0.35,
+      " CIMA ": "Wincor",
+      "Etiquetas de fila": "GRG H21"
+    },
+    {
+      "Fabricante": "GLORY",
+      "MPCR": "GLORY TAS",
+      "Call Rate": 0.35,
+      "Etiquetas de fila": "GRG H22"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "MPCR": "GRG H21",
+      "Call Rate": 0.5,
+      "Etiquetas de fila": "GRG H34"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "MPCR": "GRG H22",
+      "Call Rate": 0.5,
+      "Etiquetas de fila": "GRG H68"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "MPCR": "GRG H34",
+      "Call Rate": 0.5,
+      "Etiquetas de fila": "Wincor"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "MPCR": "GRG H68",
+      "Call Rate": 0.5,
+      "Etiquetas de fila": "WINCOR"
+    },
+    {
+      "Fabricante": "GUNNEBO",
+      "MPCR": "GUNNEBO",
+      "Call Rate": 0.2,
+      "Etiquetas de fila": "WINCOR MI"
+    },
+    {
+      "Fabricante": "MEI",
+      "MPCR": "MEI",
+      "Call Rate": 0.35,
+      "Etiquetas de fila": "Total general"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "MPCR": "OPTEVA",
+      "Call Rate": 0.5
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "MPCR": "OPTEVA ECRM",
+      "Call Rate": 0.7
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "MPCR": "OPTEVA MI",
+      "Call Rate": 0.5
+    },
+    {
+      "Fabricante": "Prosegur",
+      "MPCR": "PROSEGUR",
+      "Call Rate": 1.3
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "MPCR": "TAS ECRM",
+      "Call Rate": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "MPCR": "TAS MI",
+      "Call Rate": 0.5
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "MPCR": "TDE",
+      "Call Rate": 0.3
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "MPCR": "TDE MI",
+      "Call Rate": 0.5
+    },
+    {
+      "Fabricante": "Wincor",
+      "MPCR": "WINCOR",
+      "Call Rate": 0.5
+    },
+    {
+      "Fabricante": "Wincor",
+      "MPCR": "WINCOR MI",
+      "Call Rate": 0.5
+    }
+  ]
+}

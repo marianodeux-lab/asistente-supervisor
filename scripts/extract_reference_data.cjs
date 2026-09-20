@@ -172,9 +172,46 @@ if (fs.existsSync(fileSf)) {
 }
 fs.writeFileSync(path.join(outDir, 'stockFijoData.json'), JSON.stringify(stockFijoList, null, 2));
 
-// 4. Extract Base Instalada Clientes (Agosto 2026 BASE)
+// 4. Extract Base Instalada Clientes (Agosto 2026 BASE) con Fuente de Verdad
 const fileAgo = path.resolve(__dirname, '../Reportes/Base Instalada/2026/2026/Agosto.xlsx');
 let baseInstaladaClientesList = [];
+
+// Load Fuente de Verdad Catalog
+const fdvJsonPath = path.join(outDir, 'fuenteDeVerdadData.json');
+let fdvMap = new Map();
+if (fs.existsSync(fdvJsonPath)) {
+  const fdvObj = JSON.parse(fs.readFileSync(fdvJsonPath, 'utf8'));
+  (fdvObj.catalog || []).forEach(item => {
+    const key = `${(item.marcaOriginal || '').trim().toUpperCase()}|||${(item.modeloOriginal || '').trim().toUpperCase()}`;
+    fdvMap.set(key, item);
+  });
+}
+
+function resolveTaxonomyFromFdv(marcaRaw, modeloRaw) {
+  const marca = (marcaRaw || '').trim();
+  const modelo = (modeloRaw || '').trim();
+  const key = `${marca.toUpperCase()}|||${modelo.toUpperCase()}`;
+  if (fdvMap.has(key)) return fdvMap.get(key);
+
+  const marcaUpper = marca.toUpperCase();
+  let negocio = 'ATM';
+  if (marcaUpper.includes('SMART BOX') || marcaUpper.includes('SMARTBOX') || marcaUpper.includes('GUNNEBO')) {
+    negocio = 'Cash Today';
+  } else if (marcaUpper.includes('CRP')) {
+    negocio = 'CRP';
+  }
+  return {
+    marcaOriginal: marca,
+    modeloOriginal: modelo,
+    negocio,
+    fabricante: negocio === 'CRP' ? 'Prosegur CRP' : (negocio === 'Cash Today' ? 'SNBC' : 'Diebold Nixdorf'),
+    modeloBase: modelo,
+    modeloEstandar: modelo,
+    mpcr: negocio === 'Cash Today' ? 'GLORY' : (negocio === 'CRP' ? 'CRP' : 'OPTEVA'),
+    callRateTarget: 0.5
+  };
+}
+
 if (fs.existsSync(fileAgo)) {
   const wbAgo = XLSX.readFile(fileAgo);
   const wsAgo = wbAgo.Sheets['BASE'] || wbAgo.Sheets[wbAgo.SheetNames[0]];
@@ -183,11 +220,11 @@ if (fs.existsSync(fileAgo)) {
   baseInstaladaClientesList = rawAgo.map(r => {
     const d = parseDate(r['FECHAHABILITACION']);
     const slaText = r['SLA_R'] ? (`${r['SLA_R']}h`) : (r['SLA_S'] ? (`${r['SLA_S']}h`) : '-');
-    const marcaDesc = String(r['MARCA_DESC'] || '').trim();
+    const marcaRaw = String(r['MARCA_DESC'] || r['MARCA'] || '').trim();
+    const modeloRaw = String(r['MODELO_DESC'] || r['MODELO'] || '').trim();
     const red = String(r['RED'] || '').trim();
-    // Business Rule: Cuando MARCA_DESC es Smart Box y la RED es Prosegur, define que el equipo es Cash Today
-    const isCashToday = marcaDesc.toLowerCase() === 'smart box' && red.toLowerCase() === 'prosegur';
-    const negocio = isCashToday ? 'Cash Today' : 'ATM';
+    
+    const tax = resolveTaxonomyFromFdv(marcaRaw, modeloRaw);
 
     return {
       cliente: String(r['CLIENTE_DESC'] || r['CLIENTE'] || '').trim(),
@@ -197,20 +234,24 @@ if (fs.existsSync(fileAgo)) {
       localidad: String(r['LOCALIDAD'] || '').trim(),
       provincia: String(r['PROVINCIA'] || '').trim(),
       distancia: String(r['KM'] || '0').trim(),
-      mpcr: getMpcr(r['MARCA_DESC'], r['MODELO_DESC']),
+      mpcr: tax.mpcr,
       red: red,
       sla: slaText,
       tecnicoZona: String(r['TECNICO_ZONA'] || '').trim(),
       antiguedad: calcAntiguedad(d),
       fechaHabilitacion: formatFecha(d),
-      // Metadata for dependent cascading filters
-      fabricante: marcaDesc,
-      modelo: String(r['MODELO_DESC'] || '').trim(),
-      region: String(r['REGIONTECNICO'] || '').trim(),
+      // Standardized Fuente de Verdad Metadata
+      fabricante: tax.fabricante,
+      modelo: tax.modeloEstandar,
+      modeloBase: tax.modeloBase,
+      modeloOriginal: modeloRaw,
+      marcaOriginal: marcaRaw,
+      region: String(r['REGIONTECNICO'] || 'PATAGONIA').trim(),
       plantaCabecera: getPlantaCabecera(r['ZONA_DESC'], r['LOCALIDAD']),
-      negocio: negocio,
-      esCashToday: isCashToday,
-      recaudador: String(r['RECAUDADOR'] || '').trim()
+      negocio: tax.negocio,
+      esCashToday: tax.negocio === 'Cash Today',
+      recaudador: String(r['RECAUDADOR'] || '').trim(),
+      callRateTarget: tax.callRateTarget
     };
   }).filter(e => e.cliente || e.atm);
 }

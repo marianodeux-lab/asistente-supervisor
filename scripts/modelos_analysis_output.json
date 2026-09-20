@@ -1,0 +1,3997 @@
+{
+  "mpcrRows": [
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "DN200V RL",
+      "MODELOS": "DN200V RECICLADOR",
+      "MPCR": "DN",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 510",
+      "Recuento": 6,
+      "Modelos MPCR": 1,
+      "ATM": "GENERICO",
+      "RELEVAMIENTO": "AUTO TECNICO LITORAL"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "Modelo Base": "DT-7000I21",
+      "MODELOS": "GRG H21",
+      "Dispensador GRG H21": "GRG H21",
+      "MPCR": "GRG H21",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 510 EDC R",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "GENERICO",
+      "RELEVAMIENTO": "AUTO TECNICO MEDITERRANEA"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "Modelo Base": "DT-7000H22N RL",
+      "MODELOS": "GRG CASH",
+      "Dispensador GRG": "GRG",
+      "MPCR": "GRG H22",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 510 EDC R FTA",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "GENERICO",
+      "RELEVAMIENTO": "AUTO TECNICO NEA"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "Modelo Base": "DT-7000H22V",
+      "MODELOS": "GRG CASH",
+      "Dispensador GRG": "GRG",
+      "MPCR": "GRG H22",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 510 EDC R FTA IP",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "GENERICO",
+      "RELEVAMIENTO": "AUTO TECNICO NOA"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "Modelo Base": "DT-7000H22VL",
+      "MODELOS": "GRG CASH",
+      "Dispensador GRG": "GRG",
+      "MPCR": "GRG H22",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 510 F/L",
+      "Recuento": 5,
+      "Modelos MPCR": 1,
+      "ATM": "GENERICO",
+      "RELEVAMIENTO": "AUTO TECNICO PATAGONIA"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "Modelo Base": "DT-7000H22VLR",
+      "MODELOS": "GRG CASH",
+      "Dispensador GRG": "GRG",
+      "MPCR": "GRG H22",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 510 FTA IP",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "GENERICO",
+      "RELEVAMIENTO": "AUTO TECNICO SUROESTE"
+    },
+    {
+      "Fabricante": "GRG",
+      "Modelo Base": "DT-7000H34N",
+      "MODELOS": "GRG FULL",
+      "Dispensador GRG": "GRG",
+      "GRG CAM": "CAM",
+      "MPCR": "GRG H34",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 510 IP",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "HYOSUNG",
+      "RELEVAMIENTO": "MX5700 RL"
+    },
+    {
+      "Fabricante": "GRG",
+      "Modelo Base": "DT-7000H34N (FECT)",
+      "MODELOS": "GRG FULL",
+      "Dispensador GRG": "GRG",
+      "GRG CAM": "CAM",
+      "MPCR": "GRG H34",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 522",
+      "Recuento": 780,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM CD 6622 RL"
+    },
+    {
+      "Fabricante": "GRG",
+      "Modelo Base": "DT-7000H34N (FET)",
+      "MODELOS": "GRG FULL",
+      "Dispensador GRG": "GRG",
+      "GRG CAM": "CAM",
+      "MPCR": "GRG H34",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 522 EDC R",
+      "Recuento": 3,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM CD 6623 RL"
+    },
+    {
+      "Fabricante": "GRG",
+      "Modelo Base": "DT-7000H34NL",
+      "MODELOS": "GRG FULL",
+      "Dispensador GRG": "GRG",
+      "GRG CAM": "CAM",
+      "MPCR": "GRG H34",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 522 EDC R IP",
+      "Recuento": 2,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM CD NCR 6622 RL"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "Modelo Base": "DT-7000H34N (FECT) S/CHK",
+      "MODELOS": "GRG FULL",
+      "Dispensador GRG": "GRG",
+      "GRG CAM": "CAM",
+      "MPCR": "GRG H34",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 522 EDC R RB",
+      "Recuento": 3,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 5675 RL"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "Modelo Base": "DT-7000H34N (FET) S/CHK",
+      "MODELOS": "GRG FULL",
+      "Dispensador GRG": "GRG",
+      "GRG CAM": "CAM",
+      "MPCR": "GRG H34",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 522 EDC R/G VOZ",
+      "Recuento": 5,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 5867 RL"
+    },
+    {
+      "Fabricante": "GRG Banking",
+      "Modelo Base": "DT-7000H34N S/CHK",
+      "MODELOS": "GRG FULL",
+      "Dispensador GRG": "GRG",
+      "GRG CAM": "CAM",
+      "MPCR": "GRG H34",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 522 F/L",
+      "Recuento": 5,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 5870 FL"
+    },
+    {
+      "Fabricante": "GRG",
+      "Modelo Base": "DT-7000H68NLR ATM",
+      "MODELOS": "GRG Reciclador",
+      "GRG REC": "Reciclador",
+      "MPCR": "GRG H68",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 522 G VOZ",
+      "Recuento": 9,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 5875 FL"
+    },
+    {
+      "Fabricante": "GRG",
+      "Modelo Base": "DT-7000H68NLR TAS",
+      "MODELOS": "GRG Reciclador",
+      "GRG REC": "Reciclador",
+      "MPCR": "GRG H68",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 522 G VOZ RB",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 5875 RL"
+    },
+    {
+      "Fabricante": "GRG",
+      "Modelo Base": "DT-7000H68VLR",
+      "MODELOS": "GRG Reciclador",
+      "GRG REC": "Reciclador",
+      "MPCR": "GRG H68",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 522 IP",
+      "Recuento": 2,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 5877 FL"
+    },
+    {
+      "Fabricante": "GRG",
+      "Modelo Base": "DT-7000H68VLR ATM",
+      "MODELOS": "GRG Reciclador",
+      "GRG REC": "Reciclador",
+      "MPCR": "GRG H68",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 522 RB",
+      "Recuento": 25,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 6622 FL"
+    },
+    {
+      "Fabricante": "GRG",
+      "Modelo Base": "DT-7000H68VLR+BAM",
+      "MODELOS": "GRG Reciclador",
+      "GRG REC": "Reciclador",
+      "MPCR": "GRG H68",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM  OPTEVA 620 R/L",
+      "Recuento": 5,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 6622 RL"
+    },
+    {
+      "Fabricante": "GUNNEBO",
+      "Modelo Base": "CAJA ROBOTIZADA",
+      "MODELOS": "Gunnebo",
+      "MPCR": "Gunnebo",
+      "Negocio": "CTD",
+      "MARCA_DESC": "DIEBOLD NIXDORF",
+      "MODELO_DESC": "ATM 828 FL",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 6623 FL"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 510",
+      "MODELOS": "Diebold Opteva 510 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM CD OPTEVA 520",
+      "Recuento": 4,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 6623 RL"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 510 EDC R",
+      "MODELOS": "Diebold Opteva 510 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM CD OPTEVA 520 F/L",
+      "Recuento": 3,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 6627 RL"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 510 EDC R FTA",
+      "MODELOS": "Diebold Opteva 510 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM CD OPTEVA 520 R/L",
+      "Recuento": 10,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 6632 FL"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 510 EDC R FTA IP",
+      "MODELOS": "Diebold Opteva 510 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "DIEBOLD NIXDORF",
+      "MODELO_DESC": "ATM CS280 RL",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 6632 RL"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 510 F/L",
+      "MODELOS": "Diebold Opteva 510 F/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 F/L",
+      "Recuento": 8,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 6634 RL"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 510 FTA IP",
+      "MODELOS": "Diebold Opteva 510 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 F/L 5ºGAV",
+      "Recuento": 3,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 6682 FL"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 510 IP",
+      "MODELOS": "Diebold Opteva 510 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 F/L ENA",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "NCR",
+      "RELEVAMIENTO": "ATM NCR 6682 RL"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 F/L ENA IDM",
+      "Recuento": 10,
+      "Modelos MPCR": 1,
+      "ATM": "OPTEVA",
+      "RELEVAMIENTO": "ATM  OPTEVA 522 R/L"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522 EDC R",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 F/L FTA",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "OPTEVA",
+      "RELEVAMIENTO": "ATM OPTEVA 510 R/L"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522 EDC R IP",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 F/L FTA RB",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "OPTEVA",
+      "RELEVAMIENTO": "ATM OPTEVA 520 R/L"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522 EDC R RB",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 F/L IP",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "OPTEVA",
+      "RELEVAMIENTO": "ATM OPTEVA 522 NDX/5ºGAV"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522 EDC R/G VOZ",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L",
+      "Recuento": 128,
+      "Modelos MPCR": 1,
+      "ATM": "OPTEVA",
+      "RELEVAMIENTO": "ATM OPTEVA 722 R/L"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522 F/L",
+      "MODELOS": "Diebold Opteva 510 F/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 3DES",
+      "Recuento": 5,
+      "Modelos MPCR": 1,
+      "ATM": "ORUS",
+      "RELEVAMIENTO": "RELEVAMIENTO"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522 G VOZ",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 3DES EDC R",
+      "Recuento": 4,
+      "Modelos MPCR": 1,
+      "ATM": "RENAULT",
+      "RELEVAMIENTO": "KANGOO II EXPRESS CONFORT 1.6 SCE"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522 G VOZ RB",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 3DES IP",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "RENAULT",
+      "RELEVAMIENTO": "KANGOO II EXPRESS PROFESIONAL 1.6 SCE"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522 IP",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 3DES RB",
+      "Recuento": 15,
+      "Modelos MPCR": 1,
+      "ATM": "RENAULT",
+      "RELEVAMIENTO": "KANGOO PH3 CONFORT 1.6 1P"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522 R/L",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 5°GAV/EDC R/RB",
+      "Recuento": 3,
+      "Modelos MPCR": 1,
+      "ATM": "RENAULT",
+      "RELEVAMIENTO": "SANDERO LIFE 1.6"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 522 RB",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 5ºGAV",
+      "Recuento": 54,
+      "Modelos MPCR": 1,
+      "ATM": "SMART BOX",
+      "RELEVAMIENTO": "CAJAS TRAD"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 620 R/L",
+      "MODELOS": "Diebold Opteva 620 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 5ºGAV / EDC",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "SMART BOX",
+      "RELEVAMIENTO": "RELEVAMIENTO"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 620 R/L 3DES",
+      "MODELOS": "Diebold Opteva 620 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 5ºGAV EDC R/G VOZ RB",
+      "Recuento": 6,
+      "Modelos MPCR": 1,
+      "ATM": "SMART BOX",
+      "RELEVAMIENTO": "TAREAS ESP"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 620 R/L EDC R",
+      "MODELOS": "Diebold Opteva 620 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 5ºGAV RB",
+      "Recuento": 16,
+      "Modelos MPCR": 1,
+      "ATM": "TOYOTA",
+      "RELEVAMIENTO": "ETIOS X 1.5 6M/T 5P HATCHBACK"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 620 R/L EDC R FTA",
+      "MODELOS": "Diebold Opteva 620 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ",
+      "Recuento": 12,
+      "Modelos MPCR": 1,
+      "ATM": "TOYOTA",
+      "RELEVAMIENTO": "ETIOS X 1.5 SEDAN"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 620 R/L EDC R IP",
+      "MODELOS": "Diebold Opteva 620 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ RB",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "TOYOTA",
+      "RELEVAMIENTO": "HILUX 4X4 CD SR 3.0 TDI - C3"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 620 R/L FTA",
+      "MODELOS": "Diebold Opteva 620 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L EDC R",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "TOYOTA",
+      "RELEVAMIENTO": "HILUX 4X4 D/C DX 2.4 TDI 6M/T"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 620 R/L FTA IP",
+      "MODELOS": "Diebold Opteva 620 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA",
+      "Recuento": 42,
+      "Modelos MPCR": 1,
+      "ATM": "VARIOS",
+      "RELEVAMIENTO": "ATM"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 620 R/L IP",
+      "MODELOS": "Diebold Opteva 620 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "VARIOS",
+      "RELEVAMIENTO": "Devolucion de partes"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM  OPTEVA 620 R/L RB",
+      "MODELOS": "Diebold Opteva 620 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R EMV RB",
+      "Recuento": 1,
+      "Modelos MPCR": 1,
+      "ATM": "VARIOS",
+      "RELEVAMIENTO": "Proyecto"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM CD OPTEVA 520",
+      "MODELOS": "Diebold Opteva 520 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA EDC R",
+      "Recuento": 3,
+      "Modelos MPCR": 1,
+      "ATM": "VARIOS",
+      "RELEVAMIENTO": "Stock Regional"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM CD OPTEVA 520 EDC R",
+      "MODELOS": "Diebold Opteva 520 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA FTA RB",
+      "Recuento": 2,
+      "Modelos MPCR": 1,
+      "ATM": "VOLKSWAGEN",
+      "RELEVAMIENTO": "GOL TREND TRENDLINE 1.6L 5P"
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM CD OPTEVA 520 F/L",
+      "MODELOS": "Diebold Opteva 520 F/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA IDM",
+      "Recuento": 6,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM CD OPTEVA 520 R/L",
+      "MODELOS": "Diebold Opteva 520 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA IDM RB",
+      "Recuento": 3,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM CD OPTEVA 520 R/L 5°GAV",
+      "MODELOS": "Diebold Opteva 520 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA RB",
+      "Recuento": 11,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 F/L",
+      "MODELOS": "Diebold Opteva 720 F/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV",
+      "Recuento": 15,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 F/L 5ºGAV",
+      "MODELOS": "Diebold Opteva 720 F/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R",
+      "Recuento": 5,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 F/L FTA",
+      "MODELOS": "Diebold Opteva 720 F/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R RB",
+      "Recuento": 2,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 F/L FTA RB",
+      "MODELOS": "Diebold Opteva 720 F/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV FTA",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 F/L IP",
+      "MODELOS": "Diebold Opteva 720 F/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV RB",
+      "Recuento": 5,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV/G VOZ",
+      "Recuento": 2,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 3DES",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L ENA/3DES",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 3DES EDC R",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L FTA",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 3DES IP",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L FTA IP",
+      "Recuento": 2,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 3DES RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L G VOZ",
+      "Recuento": 2,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 3DES/5ºGAV",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM FULL OPTEVA 720 R/L RB",
+      "Recuento": 12,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 5°GAV/EDC R/RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM OPTEVA 510 R/L 3DES",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 5ºGAV",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM OPTEVA 510 R/L 3DES IP",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 5ºGAV / EDC",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM OPTEVA 522 5ºGAV",
+      "Recuento": 6,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 5ºGAV EDC R/G VOZ RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM OPTEVA 522 5ºGAV RB",
+      "Recuento": 3,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 5ºGAV RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "ATM OPTEVA 522 EDC R/G VOZ RB",
+      "Recuento": 7,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA MI",
+      "MODELO_DESC": "ATM OPTEVA 868 ECRM DISP IDM",
+      "Recuento": 2,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GUNNEBO",
+      "MODELO_DESC": "CAJA ROBOTIZADA",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L EDC R",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "CIMA SDM500",
+      "Recuento": 108,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L EDC R FTA",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "CIMA SDM500",
+      "Recuento": 144,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L FTA",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "DIEBOLD NIXDORF",
+      "MODELO_DESC": "CS2070",
+      "Recuento": 12,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L FTA IP",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "DIEBOLD NIXDORF",
+      "MODELO_DESC": "CS2070 FL",
+      "Recuento": 2,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L G VOZ",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "DIEBOLD NIXDORF",
+      "MODELO_DESC": "CS2070 RL",
+      "Recuento": 57,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "DIEBOLD NIXDORF",
+      "MODELO_DESC": "CS280",
+      "Recuento": 39,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 510 R/L",
+      "MODELOS": "Diebold Opteva 510 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "DIEBOLD NIXDORF",
+      "MODELO_DESC": "CS280 FL",
+      "Recuento": 4,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 510 R/L 3DES",
+      "MODELOS": "Diebold Opteva 510 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "DIEBOLD NIXDORF",
+      "MODELO_DESC": "CS280 RL",
+      "Recuento": 251,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 510 R/L 3DES IP",
+      "MODELOS": "Diebold Opteva 510 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "CTE1 SNBC",
+      "Recuento": 38,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 520 R/L",
+      "MODELOS": "Diebold Opteva 520 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "CTE2 SNBC",
+      "Recuento": 286,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 522  NDX SP4",
+      "MODELOS": "Diebold Opteva 510 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "CTE2 SNBC -C",
+      "Recuento": 89,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 522 5ºGAV",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "CTI UL",
+      "Recuento": 174,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 522 5ºGAV RB",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "CTI UL- C",
+      "Recuento": 320,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 522 EDC R/G VOZ RB",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "CTI90 SNBC",
+      "Recuento": 566,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 522 NDX/5ºGAV",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "CTI90 SNBC - C",
+      "Recuento": 205,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 722 R/L",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "DI90S",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS  OPTEVA 522",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H22N RL",
+      "Recuento": 17,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS CD OPTEVA 520 R/L",
+      "MODELOS": "Diebold Opteva 520 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H22V",
+      "Recuento": 901,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 520 R/L",
+      "MODELOS": "Diebold Opteva 520 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H22VL",
+      "Recuento": 109,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 522 FL – TAS",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H22VLR",
+      "Recuento": 60,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 522 RL – TAS",
+      "MODELOS": "Diebold Opteva 522 R/L",
+      "AFD": "AFD",
+      "MPCR": "OPTEVA",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H34N",
+      "Recuento": 561,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "3700 FL ECRM",
+      "MODELOS": "NEXTGEN 3700",
+      "ECRM": "ECRM",
+      "MPCR": "OPTEVA ECRM",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H34N (FECT)",
+      "Recuento": 318,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "3700 FL ECRM – IDM",
+      "MODELOS": "NEXTGEN 3700",
+      "ECRM": "ECRM",
+      "IDM": "IDM",
+      "MPCR": "OPTEVA ECRM",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H34N (FECT) S/CHK",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM 828 FL",
+      "MODELOS": "Diebold Opteva 828 ",
+      "AFD": "AFD",
+      "ECRM": "ECRM",
+      "MPCR": "OPTEVA ECRM",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H34N (FET)",
+      "Recuento": 5,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 368 R/L",
+      "MODELOS": "Diebold Opteva 368",
+      "ECRM": "ECRM",
+      "MPCR": "OPTEVA ECRM",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H34N (FET) S/CHK",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 868 ECRM",
+      "MODELOS": "Diebold Opteva 868",
+      "AFD": "AFD",
+      "ECRM": "ECRM",
+      "MPCR": "OPTEVA ECRM",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H34N S/CHK",
+      "Recuento": 28,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM OPTEVA 868 ECRM DISP IDM",
+      "MODELOS": "Diebold Opteva 868",
+      "AFD": "AFD",
+      "ECRM": "ECRM",
+      "IDM": "IDM",
+      "MPCR": "OPTEVA ECRM",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H34NL",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "CS3700 RL",
+      "MODELOS": "NEXTGEN 3700 R/L",
+      "ECRM": "ECRM",
+      "MPCR": "OPTEVA ECRM",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H68NLR ATM",
+      "Recuento": 30,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "OPTEVA 828",
+      "MODELOS": "Diebold Opteva 828 ",
+      "ECRM": "ECRM",
+      "MPCR": "OPTEVA ECRM",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H68NLR TAS",
+      "Recuento": 52,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 868 ECRM IDM",
+      "MODELOS": "Diebold Opteva 868",
+      "AFD": "AFD",
+      "ECRM": "ECRM",
+      "IDM": "IDM",
+      "MPCR": "OPTEVA ECRM",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H68VLR",
+      "Recuento": 73,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 F/L ENA",
+      "MODELOS": "Diebold Opteva 720 F/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H68VLR ATM",
+      "Recuento": 8,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 F/L ENA IDM",
+      "MODELOS": "Diebold Opteva 720 F/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "IDM": "IDM",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "GRG",
+      "MODELO_DESC": "DT-7000H68VLR+BAM",
+      "Recuento": 9,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "GLORY P1000",
+      "Recuento": 60,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "GLORY P1000",
+      "Recuento": 7,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R EMV",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "GLORY P1001",
+      "Recuento": 18,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R EMV RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "GLORY P1001",
+      "Recuento": 6,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA EDC R",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "GLORY P500",
+      "Recuento": 116,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA FTA RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "GLORY P500",
+      "Recuento": 299,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA IDM",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "IDM": "IDM",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA",
+      "MODELO_DESC": "OPTEVA 828",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA IDM EDC R EMV",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "IDM": "IDM",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "PMINI-MEI",
+      "Recuento": 4,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA IDM EDC R/5 GAV",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "IDM": "IDM",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "TAS",
+      "Recuento": 38,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA IDM RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "IDM": "IDM",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "Smart Box",
+      "MODELO_DESC": "TAS",
+      "Recuento": 30,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA TAS",
+      "MODELO_DESC": "TAS  OPTEVA 522",
+      "Recuento": 23,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA TAS",
+      "MODELO_DESC": "TAS CD OPTEVA 520 R/L",
+      "Recuento": 11,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA TAS",
+      "MODELO_DESC": "TAS OPTEVA 522 FL – TAS",
+      "Recuento": 2,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA TAS",
+      "MODELO_DESC": "TAS OPTEVA 522 RL – TAS",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV FTA",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA TAS",
+      "MODELO_DESC": "TAS OPTEVA 720 F/L",
+      "Recuento": 3,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV RB",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA TAS",
+      "MODELO_DESC": "TAS OPTEVA 720 F/L ENA",
+      "Recuento": 23,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV/G VOZ",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA TAS",
+      "MODELO_DESC": "TAS OPTEVA 720 R/L",
+      "Recuento": 37,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L ENA/3DES",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "ENA": "ENA",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA TAS",
+      "MODELO_DESC": "TAS OPTEVA 720 R/L ENA",
+      "Recuento": 106,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "ATM FULL OPTEVA 720 R/L IDM",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "AFD": "AFD",
+      "IDM": "IDM",
+      "MPCR": "OPTEVA MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "OPTEVA TAS",
+      "MODELO_DESC": "TAS OPTEVA 720 R/L ENA2",
+      "Recuento": 1,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 868 ECRM DEP IDM",
+      "MODELOS": "Diebold Opteva 868",
+      "AFD": "AFD",
+      "ECRM": "ECRM",
+      "IDM": "IDM",
+      "MPCR": "TAS ECRM",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4500",
+      "Recuento": 3,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 720 F/L",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "MPCR": "TAS MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4500  IDM",
+      "Recuento": 4,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 720 F/L ENA",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "ENA": "ENA",
+      "MPCR": "TAS MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4500 FL IDM",
+      "Recuento": 8,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 720 F/L ENA IDM",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "ENA": "ENA",
+      "IDM": "IDM",
+      "MPCR": "TAS MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4500 RL",
+      "Recuento": 6,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 720 R/L",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "MPCR": "TAS MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4500 RL IDM",
+      "Recuento": 8,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 720 R/L ENA",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "ENA": "ENA",
+      "MPCR": "TAS MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4500 Slim",
+      "Recuento": 15,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 720 R/L ENA IDM",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "ENA": "ENA",
+      "IDM": "IDM",
+      "MPCR": "TAS MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4533-020",
+      "Recuento": 43,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Nixdorf",
+      "Modelo Base": "TAS OPTEVA 720 R/L ENA2",
+      "MODELOS": "Diebold Opteva 720 R/L",
+      "ENA": "ENA",
+      "IDM": "IDM",
+      "MPCR": "TAS MI",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4533-021",
+      "Recuento": 9,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4500",
+      "MODELOS": "Procomp TDE4500",
+      "MPCR": "TDE",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4533-022",
+      "Recuento": 10,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4500 FL",
+      "MODELOS": "Procomp TDE4500",
+      "MPCR": "TDE",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4533-023",
+      "Recuento": 4,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4500 RL",
+      "MODELOS": "Procomp TDE4500",
+      "MPCR": "TDE",
+      "Negocio": "ATM",
+      "MARCA_DESC": "TDE 4500",
+      "MODELO_DESC": "TDE 4535",
+      "Recuento": 2,
+      "Modelos MPCR": 1
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4500 Slim",
+      "MODELOS": "Procomp TDE4500",
+      "MPCR": "TDE",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4533-020",
+      "MODELOS": "Procomp TDE4500",
+      "MPCR": "TDE",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4533-021",
+      "MODELOS": "Procomp TDE4500",
+      "MPCR": "TDE",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4533-022",
+      "MODELOS": "Procomp TDE4500",
+      "MPCR": "TDE",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4533-023",
+      "MODELOS": "Procomp TDE4500",
+      "MPCR": "TDE",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4535",
+      "MODELOS": "Procomp TDE4500",
+      "MPCR": "TDE",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4500  IDM",
+      "MODELOS": "Procomp TDE4500",
+      "IDM": "IDM",
+      "MPCR": "TDE MI",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4500 FL IDM",
+      "MODELOS": "Procomp TDE4500",
+      "IDM": "IDM",
+      "MPCR": "TDE MI",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "Diebold Procomp",
+      "Modelo Base": "TDE 4500 RL IDM",
+      "MODELOS": "Procomp TDE4500",
+      "IDM": "IDM",
+      "MPCR": "TDE MI",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "DIEBOLD NIXDORF",
+      "Modelo Base": "ATM CS280 RL",
+      "MODELOS": "Procash 280",
+      "MPCR": "CS280",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "DIEBOLD NIXDORF",
+      "Modelo Base": "CS2070",
+      "MODELOS": "Wincor 2070",
+      "CDM": "CDM",
+      "CCDM": "CCDM",
+      "MPCR": "CS2070",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "DIEBOLD NIXDORF",
+      "Modelo Base": "CS2070 FL",
+      "MODELOS": "Wincor 2070 F/L",
+      "CDM": "CDM",
+      "CCDM": "CCDM",
+      "MPCR": "CS2070",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "DIEBOLD NIXDORF",
+      "Modelo Base": "CS2070 RL",
+      "MODELOS": "Wincor 2070",
+      "CDM": "CDM",
+      "CCDM": "CCDM",
+      "MPCR": "CS2070",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "DIEBOLD NIXDORF",
+      "Modelo Base": "CS280",
+      "MODELOS": "Procash 280",
+      "CDM": "CDM",
+      "MPCR": "CS280",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "DIEBOLD NIXDORF",
+      "Modelo Base": "CS280 FL",
+      "MODELOS": "Procash 280 F/L",
+      "CDM": "CDM",
+      "MPCR": "CS280",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "DIEBOLD NIXDORF",
+      "Modelo Base": "CS280 RL",
+      "MODELOS": "Procash 280",
+      "CDM": "CDM",
+      "MPCR": "CS280",
+      "Negocio": "ATM"
+    },
+    {
+      "Fabricante": "CIMA",
+      "Modelo Base": "CIMA SDM500",
+      "MODELOS": "CIMA SDM500",
+      "MPCR": "CIMA",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "SNBC",
+      "Modelo Base": "CTE1 SNBC",
+      "MODELOS": "CTE1 SNBC",
+      "MPCR": "CTE1 SNBC",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "SNBC",
+      "Modelo Base": "CTE2 SNBC",
+      "MODELOS": "CTE2 SNBC",
+      "MPCR": "CTE2 SNBC",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "SNBC",
+      "Modelo Base": "CTE2 SNBC -C",
+      "MODELOS": "CTE2 SNBC -C",
+      "MPCR": "CTE2 SNBC",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "SNBC",
+      "Modelo Base": "CTI UL",
+      "MODELOS": "CTI UL",
+      "MPCR": "CTI UL",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "SNBC",
+      "Modelo Base": "CTI UL- C",
+      "MODELOS": "CTI UL- C",
+      "MPCR": "CTI UL",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "SNBC",
+      "Modelo Base": "CTI90 SNBC",
+      "MODELOS": "CTI90 SNBC",
+      "MPCR": "CTI90 SNBC",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "SNBC",
+      "Modelo Base": "CTI90 SNBC - C",
+      "MODELOS": "CTI90 SNBC - C",
+      "MPCR": "CTI90 SNBC",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "Smart Box",
+      "Modelo Base": "DI90S",
+      "MODELOS": "DI90S",
+      "MPCR": "DI90S",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "GLORY",
+      "Modelo Base": "GLORY P1000",
+      "MODELOS": "GLORY P1000",
+      "MPCR": "GLORY P1000",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "GLORY",
+      "Modelo Base": "GLORY P1001",
+      "MODELOS": "GLORY P1001",
+      "MPCR": "GLORY P1001",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "GLORY",
+      "Modelo Base": "GLORY P500",
+      "MODELOS": "GLORY P500",
+      "MPCR": "GLORY P500",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "Smart Box",
+      "Modelo Base": "PMINI-MEI",
+      "MODELOS": "PMINI-MEI",
+      "MPCR": "PMINI-MEI",
+      "Negocio": "CTD"
+    },
+    {
+      "Fabricante": "Prosegur",
+      "Modelo Base": "TAS",
+      "MODELOS": "TAS",
+      "MPCR": "TAS",
+      "Negocio": "CTD"
+    }
+  ],
+  "baseCombos": [
+    {
+      "marca": "CRP",
+      "modelo": "CRP-100",
+      "count": 416,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "DIEBOLD NIXDORF",
+      "modelo": "ATM CS280 RL",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "DIEBOLD NIXDORF",
+      "modelo": "ATMR 4534 515",
+      "count": 3,
+      "files": [
+        "Agosto.xlsx",
+        "Julio.xlsx"
+      ]
+    },
+    {
+      "marca": "DIEBOLD NIXDORF",
+      "modelo": "ATMR 4534-515",
+      "count": 15,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "DIEBOLD NIXDORF",
+      "modelo": "CS2070",
+      "count": 96,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "DIEBOLD NIXDORF",
+      "modelo": "CS2070 FL",
+      "count": 16,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "DIEBOLD NIXDORF",
+      "modelo": "CS2070 RL",
+      "count": 456,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "DIEBOLD NIXDORF",
+      "modelo": "CS280",
+      "count": 312,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "DIEBOLD NIXDORF",
+      "modelo": "CS280 FL",
+      "count": 40,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "DIEBOLD NIXDORF",
+      "modelo": "CS280 RL",
+      "count": 2046,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "CI8000",
+      "count": 1,
+      "files": [
+        "Agosto.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H22N RL",
+      "count": 107,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H22V",
+      "count": 7610,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H22VL",
+      "count": 871,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H22VLR",
+      "count": 505,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H34N",
+      "count": 4479,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H34N (FECT)",
+      "count": 2594,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H34N (FECT) S/CHK",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H34N (FET)",
+      "count": 40,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H34N (FET) S/CHK",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H34N S/CHK",
+      "count": 224,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H34NL",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H68NLR ATM",
+      "count": 406,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H68NLR TAS",
+      "count": 618,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H68VLR",
+      "count": 566,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H68VLR ATM",
+      "count": 69,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000H68VLR+BAM",
+      "count": 72,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000I64A",
+      "count": 3,
+      "files": [
+        "Agosto.xlsx"
+      ]
+    },
+    {
+      "marca": "GRG",
+      "modelo": "DT-7000P2800NL",
+      "count": 1,
+      "files": [
+        "Agosto.xlsx"
+      ]
+    },
+    {
+      "marca": "GUNNEBO",
+      "modelo": "CAJA ROBOTIZADA",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 510",
+      "count": 41,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 510 EDC R",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 510 EDC R FTA",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 510 EDC R FTA IP",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 510 F/L",
+      "count": 30,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 510 FTA IP",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 510 IP",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522",
+      "count": 6080,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522 EDC R",
+      "count": 24,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522 EDC R IP",
+      "count": 16,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522 EDC R RB",
+      "count": 18,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522 EDC R/G VOZ",
+      "count": 40,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522 F/L",
+      "count": 59,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522 G VOZ",
+      "count": 72,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522 G VOZ RB",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522 IP",
+      "count": 16,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522 R/L",
+      "count": 14,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM  OPTEVA 522 RB",
+      "count": 195,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM CD OPTEVA 520",
+      "count": 42,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM CD OPTEVA 520 F/L",
+      "count": 12,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM CD OPTEVA 520 R/L",
+      "count": 86,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 F/L",
+      "count": 62,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 F/L 5ºGAV",
+      "count": 24,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 F/L FTA",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 F/L FTA RB",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 F/L IP",
+      "count": 6,
+      "files": [
+        "Abril.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L",
+      "count": 999,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 3DES",
+      "count": 40,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 3DES EDC R",
+      "count": 24,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 3DES IP",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 3DES RB",
+      "count": 100,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 5°GAV/EDC R/RB",
+      "count": 24,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV",
+      "count": 426,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV / EDC",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV EDC R/G VOZ RB",
+      "count": 48,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV RB",
+      "count": 121,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ",
+      "count": 96,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L 5ºGAV/G VOZ RB",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L EDC R",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L FTA",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L FTA IP",
+      "count": 9,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L G VOZ",
+      "count": 16,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM FULL OPTEVA 720 R/L RB",
+      "count": 96,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM OPTEVA 510 R/L 3DES",
+      "count": 3,
+      "files": [
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Marzo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM OPTEVA 510 R/L 3DES IP",
+      "count": 4,
+      "files": [
+        "Abril.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Marzo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM OPTEVA 522 5ºGAV",
+      "count": 48,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM OPTEVA 522 5ºGAV RB",
+      "count": 24,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "ATM OPTEVA 522 EDC R/G VOZ RB",
+      "count": 56,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA",
+      "modelo": "OPTEVA 828",
+      "count": 16,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 F/L ENA",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 F/L ENA IDM",
+      "count": 80,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA",
+      "count": 336,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA 3DES EDC R EMV RB",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA EDC R",
+      "count": 21,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA FTA RB",
+      "count": 16,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA IDM",
+      "count": 48,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA IDM RB",
+      "count": 24,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA RB",
+      "count": 88,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV",
+      "count": 120,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R",
+      "count": 40,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV EDC R RB",
+      "count": 16,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV FTA",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV RB",
+      "count": 40,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/ 5 GAV/G VOZ",
+      "count": 14,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM FULL OPTEVA 720 R/L ENA/3DES",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA MI",
+      "modelo": "ATM OPTEVA 868 ECRM DISP IDM",
+      "count": 16,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA TAS",
+      "modelo": "TAS  OPTEVA 522",
+      "count": 198,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA TAS",
+      "modelo": "TAS CD OPTEVA 520 R/L",
+      "count": 88,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA TAS",
+      "modelo": "TAS OPTEVA 522 FL – TAS",
+      "count": 16,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA TAS",
+      "modelo": "TAS OPTEVA 522 RL – TAS",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA TAS",
+      "modelo": "TAS OPTEVA 720 F/L",
+      "count": 24,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA TAS",
+      "modelo": "TAS OPTEVA 720 F/L ENA",
+      "count": 178,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA TAS",
+      "modelo": "TAS OPTEVA 720 R/L",
+      "count": 284,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA TAS",
+      "modelo": "TAS OPTEVA 720 R/L ENA",
+      "count": 839,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "OPTEVA TAS",
+      "modelo": "TAS OPTEVA 720 R/L ENA2",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "Smart Box",
+      "modelo": "CIMA SDM500",
+      "count": 747,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "Smart Box",
+      "modelo": "CTI UL",
+      "count": 1,
+      "files": [
+        "Agosto.xlsx"
+      ]
+    },
+    {
+      "marca": "Smart Box",
+      "modelo": "CTI90 SNBC",
+      "count": 1,
+      "files": [
+        "Junio.xlsx"
+      ]
+    },
+    {
+      "marca": "Smart Box",
+      "modelo": "GLORY P1000",
+      "count": 51,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "Smart Box",
+      "modelo": "GLORY P1001",
+      "count": 42,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "Smart Box",
+      "modelo": "GLORY P500",
+      "count": 908,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "Smart Box",
+      "modelo": "TAS",
+      "count": 240,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "CIMA SDM500",
+      "count": 982,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "CTE1 SNBC",
+      "count": 292,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "CTE2 SNBC",
+      "count": 2351,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "CTE2 SNBC -C",
+      "count": 709,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "CTI COMPACT",
+      "count": 7,
+      "files": [
+        "Agosto.xlsx",
+        "Julio.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "CTI UL",
+      "count": 1586,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "CTI UL- C",
+      "count": 2687,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "CTI90 SNBC",
+      "count": 4269,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "CTI90 SNBC - C",
+      "count": 1606,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "DI90S",
+      "count": 8,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "GLORY P1000",
+      "count": 468,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "GLORY P1001",
+      "count": 142,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "GLORY P500",
+      "count": 2351,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "INLANE 300",
+      "count": 4,
+      "files": [
+        "Agosto.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "INLANE 300 DEPO",
+      "count": 20,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "KISAN KD30",
+      "count": 205,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "PMINI-MEI",
+      "count": 32,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "SMART BOX",
+      "modelo": "TAS",
+      "count": 304,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4500",
+      "count": 24,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4500  IDM",
+      "count": 27,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4500 FL IDM",
+      "count": 55,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4500 RL",
+      "count": 14,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4500 RL IDM",
+      "count": 47,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4500 Slim",
+      "count": 82,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4533-020",
+      "count": 201,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4533-021",
+      "count": 62,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4533-022",
+      "count": 52,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4533-023",
+      "count": 25,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    },
+    {
+      "marca": "TDE 4500",
+      "modelo": "TDE 4535",
+      "count": 16,
+      "files": [
+        "Abril.xlsx",
+        "Agosto.xlsx",
+        "Enero.xlsx",
+        "Febrero.xlsx",
+        "Julio.xlsx",
+        "Junio.xlsx",
+        "Marzo.xlsx",
+        "Mayo.xlsx"
+      ]
+    }
+  ]
+}

@@ -787,12 +787,20 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
                     <td className="py-2.5 px-3 font-mono font-bold text-amber-400 whitespace-nowrap">
                       <div className="flex items-center gap-1.5">
                         <span>{row.atm || '-'}</span>
-                        {(row.esCashToday || row.negocio === 'Cash Today' || (row.fabricante?.toLowerCase().trim() === 'smart box' && row.red?.toLowerCase().trim() === 'prosegur')) && (
+                        {row.negocio === 'Cash Today' && (
                           <span 
                             className="px-1.5 py-0.2 rounded bg-purple-950/90 border border-purple-500/50 text-purple-300 font-bold text-[9px] tracking-wide"
-                            title="Terminal Cash Today (Smart Box / Prosegur)"
+                            title="Terminal Cash Today (Smart Box)"
                           >
                             CTD
+                          </span>
+                        )}
+                        {row.negocio === 'CRP' && (
+                          <span 
+                            className="px-1.5 py-0.2 rounded bg-cyan-950/90 border border-cyan-500/50 text-cyan-300 font-bold text-[9px] tracking-wide"
+                            title="Control de Asistencia del Personal (Plantas Prosegur)"
+                          >
+                            CRP
                           </span>
                         )}
                       </div>
