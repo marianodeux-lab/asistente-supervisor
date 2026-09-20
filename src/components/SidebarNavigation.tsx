@@ -213,26 +213,26 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                 onClick={() => onTabChange(item.key)}
                 className={`group w-full flex items-center rounded-xl px-2.5 py-2.5 transition-all text-left relative ${
                   isActive
-                    ? 'bg-[#1e2029] text-white shadow-sm border border-white/10'
-                    : 'text-slate-400 hover:text-slate-100 hover:bg-[#181920]'
+                    ? 'bg-[#1b203c] text-white shadow-md border border-blue-500/30'
+                    : 'text-slate-400 hover:text-slate-100 hover:bg-[#14182d]'
                 }`}
                 title={!expanded ? item.label : undefined}
               >
                 {/* Active Indicator Strip */}
                 {isActive && (
-                  <div className="absolute left-0 top-2 bottom-2 w-1 bg-amber-500 rounded-r-full shadow-sm shadow-amber-500/50" />
+                  <div className="absolute left-0 top-2 bottom-2 w-1 bg-blue-500 rounded-r-full shadow-sm shadow-blue-500/50" />
                 )}
 
                 {/* Icon */}
                 <div className={`flex items-center justify-center w-5 h-5 flex-shrink-0 ${
-                  isActive ? 'text-amber-400' : 'text-slate-400 group-hover:text-slate-200'
+                  isActive ? 'text-blue-400' : 'text-slate-400 group-hover:text-slate-200'
                 }`}>
                   <Icon className="w-4 h-4" />
                 </div>
 
                 {/* Collapsed notification dot */}
                 {!expanded && item.badge !== undefined && item.badge > 0 && (
-                  <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-500 ring-2 ring-[#121318]" />
+                  <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-500 ring-2 ring-[#0c0f1d]" />
                 )}
 
                 {/* Expanded Label & Badges */}
@@ -247,12 +247,12 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                     {item.badge !== undefined && (
                       <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ml-1.5 flex-shrink-0 ${
                         isActive
-                          ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                          ? 'bg-blue-500/20 text-blue-300 border border-blue-500/40'
                           : item.badgeType === 'danger'
                           ? 'bg-red-950/60 text-red-300 border border-red-500/40'
                           : item.badgeType === 'warning'
                           ? 'bg-amber-950/60 text-amber-300 border border-amber-500/40'
-                          : 'bg-[#22242d] text-slate-300 border border-white/5'
+                          : 'bg-[#1e2444] text-slate-300 border border-white/5'
                       }`}>
                         {item.badge}
                       </span>

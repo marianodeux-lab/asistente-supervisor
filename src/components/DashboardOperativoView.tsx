@@ -38,6 +38,7 @@ import {
   Cell
 } from 'recharts';
 import { AnalisisRow, StockFijoItem, ZonaTecnicoRef } from '../types';
+import { getTechnicianAvatar, getInitials } from '../utils/avatarUtils';
 
 // Static / Metadata mappings
 const MESES_NOMBRES: Record<number, string> = {
@@ -1661,14 +1662,29 @@ export const DashboardOperativoView: React.FC = () => {
                   ) : (
                     technicianMetrics.map((t, idx) => (
                       <tr key={t.tecnico + idx} className="hover:bg-white/[0.02] transition-colors group">
-                        {/* 1. Técnico & Zona */}
+                        {/* 1. Técnico & Zona with Avatar */}
                         <td className="py-3 px-4">
-                          <div className="font-bold text-white group-hover:text-cyan-300 transition-colors">
-                            {t.tecnico}
-                          </div>
-                          <div className="text-[11px] text-slate-400 flex items-center gap-1 mt-0.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400/80" />
-                            <span>{t.zona}</span>
+                          <div className="flex items-center gap-3">
+                            {getTechnicianAvatar(t.tecnico) ? (
+                              <img
+                                src={getTechnicianAvatar(t.tecnico)!}
+                                alt={t.tecnico}
+                                className="w-8 h-8 rounded-full object-cover border border-cyan-400/60 shadow flex-shrink-0"
+                              />
+                            ) : (
+                              <div className="w-8 h-8 rounded-full bg-slate-800 text-cyan-300 font-bold text-xs flex items-center justify-center border border-white/10 flex-shrink-0">
+                                {getInitials(t.tecnico)}
+                              </div>
+                            )}
+                            <div>
+                              <div className="font-bold text-white group-hover:text-cyan-300 transition-colors">
+                                {t.tecnico}
+                              </div>
+                              <div className="text-[11px] text-slate-400 flex items-center gap-1 mt-0.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400/80" />
+                                <span>{t.zona}</span>
+                              </div>
+                            </div>
                           </div>
                         </td>
 

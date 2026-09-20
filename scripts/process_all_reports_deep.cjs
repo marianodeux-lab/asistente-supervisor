@@ -4,7 +4,12 @@ const path = require('path');
 
 const outDir = path.resolve(__dirname, '../src/data');
 
-console.log('🚀 Processing all Flow Pro reports with full Source of Truth rules & cross-referencing...');
+// Dynamic reference date: always use the current date at processing time
+const REF_DATE = new Date();
+const REF_DATE_ISO = REF_DATE.toISOString().split('T')[0];
+const REF_DATE_FORMATTED = `${String(REF_DATE.getDate()).padStart(2, '0')}/${String(REF_DATE.getMonth() + 1).padStart(2, '0')}/${REF_DATE.getFullYear()}`;
+const REF_TIME = REF_DATE.getTime();
+console.log(`🚀 Processing all Flow Pro reports (ref date: ${REF_DATE_FORMATTED})...`);
 
 // 1. Codigos de Cierre Dictionary
 const codigosCierre = {
@@ -83,7 +88,7 @@ const marianoCoTechs = new Set([
 
 // Helper to parse dates into ISO / standard format
 function parseDateAny(val) {
-  if (!val) return '2026-02-28';
+  if (!val) return '';
   if (typeof val === 'number') {
     try {
       const d = XLSX.SSF.parse_date_code(val);
@@ -404,7 +409,7 @@ function formatTimeStr(val) {
 }
 
 function parseDateFormatted(val) {
-  if (!val) return '07/09/2026';
+  if (!val) return '';
   if (typeof val === 'number') {
     try {
       const d = new Date(Math.round((val - 25569) * 86400 * 1000));
@@ -413,7 +418,7 @@ function parseDateFormatted(val) {
       const year = d.getFullYear();
       return `${day}/${month}/${year}`;
     } catch (e) {
-      return '07/09/2026';
+      return '';
     }
   }
   const s = String(val).trim();
@@ -707,8 +712,7 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       }
     }
 
-    const patagoniaRegions = ['PATAGONIA'];
-    const allowedSuroesteZones = ['IN BAR', 'IN CIP', 'IN NQN'];
+    // NOTE: Using patagoniaRegions and allowedSuroesteZones from outer scope (lines 385-388)
 
     // STRICT REGIONAL FILTER: Discard any ticket outside Patagonia & Suroeste
     if (regionFinal !== 'PATAGONIA' && regionFinal !== 'SUROESTE') {
@@ -772,9 +776,8 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       obsUltimoMp = mpCerrado.obsMp || null;
       if (mpCerrado.rawDateIso) {
         const mpDate = new Date(mpCerrado.rawDateIso);
-        // Compare with reference date 07/09/2026
-        const refTime = new Date('2026-09-07T12:00:00Z').getTime();
-        const diffDays = Math.round((refTime - mpDate.getTime()) / (1000 * 60 * 60 * 24));
+        // Compare with dynamic reference date (current processing date)
+        const diffDays = Math.round((REF_TIME - mpDate.getTime()) / (1000 * 60 * 60 * 24));
         diasDesdeUltimoMp = diffDays >= 0 ? diffDays : null;
         esMpDeficiente = diffDays >= 0 && diffDays <= 30;
       }
@@ -786,7 +789,7 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       if (visitasCampo.length > 0 && visitasCampo[0].fecha) {
         const dIso = toIsoDate(visitasCampo[0].fecha);
         if (dIso) {
-          const days = Math.round((new Date('2026-09-07T12:00:00Z').getTime() - new Date(dIso).getTime()) / (1000 * 60 * 60 * 24));
+          const days = Math.round((REF_TIME - new Date(dIso).getTime()) / (1000 * 60 * 60 * 24));
           diasDesdeUltimaAtencion = days <= 1 ? '1 día' : (days < 30 ? `${days} días` : `${Math.round(days / 30)} mes(es)`);
         } else {
           diasDesdeUltimaAtencion = '1 día';
@@ -840,7 +843,7 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
     // True SLA remaining hours calculation without forcing 1h on expired tickets
     let realHsSla = 0;
     const vtoDate = parseExcelDateTime(r['Fecha Vto']);
-    const refTime = new Date('2026-09-13T12:00:00').getTime();
+    const refTime = REF_TIME;
     if (vtoDate) {
       realHsSla = Math.round((vtoDate.getTime() - refTime) / (1000 * 60 * 60));
     } else {

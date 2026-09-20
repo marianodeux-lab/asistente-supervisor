@@ -1,8 +1,18 @@
 import { UserAccount } from '../types';
 
-const USERS_STORAGE_KEY = 'stp_users_db_v1';
-const CURRENT_USER_KEY = 'stp_active_user_v1';
-const PASSWORDS_STORAGE_KEY = 'stp_users_passwords_v1';
+const USERS_STORAGE_KEY = 'stp_users_db_v2';
+const CURRENT_USER_KEY = 'stp_active_user_v2';
+const PASSWORDS_STORAGE_KEY = 'stp_users_passwords_v2';
+const RESET_TOKENS_KEY = 'stp_reset_tokens_v1';
+
+// SHA-256 hash helper (browser-native crypto)
+async function hashPassword(password: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
 const INITIAL_USERS: UserAccount[] = [
   {
@@ -13,9 +23,9 @@ const INITIAL_USERS: UserAccount[] = [
     cargo: 'Administrador General • Supervisor Regional',
     region: 'PATAGONIA & SUROESTE',
     zona: 'Todas las Zonas',
-    estado: 'ACTIVO',
-    requiereCambioClave: false,
-    ultimoAcceso: '07/09/2026 16:30',
+    estado: 'PENDIENTE_PRIMER_INGRESO',
+    requiereCambioClave: true,
+    ultimoAcceso: 'Pendiente primer acceso',
     fechaCreacion: '01/01/2026'
   },
   {
@@ -33,11 +43,8 @@ const INITIAL_USERS: UserAccount[] = [
   }
 ];
 
-// Initialize passwords map (Mariano has default pass; Marcos must create on first entry)
-const INITIAL_PASSWORDS: Record<string, string> = {
-  'marianodeux@gmail.com': 'Mariano2026!',
-  // Marcos does not have an active password until first access
-};
+// No hardcoded passwords — all users must set their password on first login
+const INITIAL_PASSWORDS: Record<string, string> = {};
 
 export class AuthService {
   static getUsers(): UserAccount[] {
@@ -112,7 +119,7 @@ export class AuthService {
     }
   }
 
-  static login(email: string, password: string): { success: boolean; message: string; user?: UserAccount; requireSetup?: boolean } {
+  static async login(email: string, password: string): Promise<{ success: boolean; message: string; user?: UserAccount; requireSetup?: boolean }> {
     const cleanEmail = email.trim().toLowerCase();
     const users = this.getUsers();
     const user = users.find(u => u.email.toLowerCase() === cleanEmail);
@@ -135,9 +142,10 @@ export class AuthService {
     }
 
     const passwords = this.getPasswords();
-    const storedPass = passwords[cleanEmail];
+    const storedHash = passwords[cleanEmail];
+    const inputHash = await hashPassword(password);
 
-    if (!storedPass || storedPass !== password) {
+    if (!storedHash || storedHash !== inputHash) {
       return { success: false, message: 'Contraseña incorrecta. Si la olvidó, utilice "¿Olvidaste tu contraseña?".' };
     }
 
@@ -145,7 +153,7 @@ export class AuthService {
     return { success: true, message: 'Ingreso exitoso', user };
   }
 
-  static registerFirstPassword(email: string, newPassword: string): { success: boolean; message: string; user?: UserAccount } {
+  static async registerFirstPassword(email: string, newPassword: string): Promise<{ success: boolean; message: string; user?: UserAccount }> {
     const cleanEmail = email.trim().toLowerCase();
     const users = this.getUsers();
     const userIndex = users.findIndex(u => u.email.toLowerCase() === cleanEmail);
@@ -159,7 +167,7 @@ export class AuthService {
     }
 
     const passwords = this.getPasswords();
-    passwords[cleanEmail] = newPassword;
+    passwords[cleanEmail] = await hashPassword(newPassword);
     this.savePasswords(passwords);
 
     const updatedUser: UserAccount = {
@@ -176,7 +184,7 @@ export class AuthService {
     return { success: true, message: 'Contraseña generada y cuenta activada con éxito.', user: updatedUser };
   }
 
-  static resetPasswordWithCode(email: string, recoveryCode: string, newPassword: string): { success: boolean; message: string } {
+  static async resetPasswordWithCode(email: string, recoveryCode: string, newPassword: string): Promise<{ success: boolean; message: string }> {
     const cleanEmail = email.trim().toLowerCase();
     const users = this.getUsers();
     const user = users.find(u => u.email.toLowerCase() === cleanEmail);
@@ -185,9 +193,11 @@ export class AuthService {
       return { success: false, message: 'No existe ningún usuario registrado con ese correo.' };
     }
 
-    // Accept master supervisor reset code or generated code
-    if (recoveryCode.trim() !== 'STP-2026' && recoveryCode.trim() !== 'RESET-MARCOS' && recoveryCode.length < 4) {
-      return { success: false, message: 'Código de recuperación inválido.' };
+    // Validate recovery code against stored tokens
+    const tokens = this.getResetTokens();
+    const token = tokens.find(t => t.email === cleanEmail && t.codigo === recoveryCode.trim());
+    if (!token || token.fechaExpiracion < Date.now()) {
+      return { success: false, message: 'Código de recuperación inválido o expirado.' };
     }
 
     if (newPassword.length < 6) {
@@ -195,8 +205,11 @@ export class AuthService {
     }
 
     const passwords = this.getPasswords();
-    passwords[cleanEmail] = newPassword;
+    passwords[cleanEmail] = await hashPassword(newPassword);
     this.savePasswords(passwords);
+
+    // Remove used token
+    this.saveResetTokens(tokens.filter(t => t !== token));
 
     const updatedUsers = users.map(u => {
       if (u.email.toLowerCase() === cleanEmail) {
@@ -209,6 +222,20 @@ export class AuthService {
     return { success: true, message: 'Contraseña restablecida exitosamente. Ya puede iniciar sesión con su nueva clave.' };
   }
 
+  // Reset token management
+  private static getResetTokens(): { email: string; codigo: string; fechaExpiracion: number }[] {
+    try {
+      const stored = localStorage.getItem(RESET_TOKENS_KEY);
+      return stored ? JSON.parse(stored) : [];
+    } catch { return []; }
+  }
+
+  private static saveResetTokens(tokens: { email: string; codigo: string; fechaExpiracion: number }[]): void {
+    try {
+      localStorage.setItem(RESET_TOKENS_KEY, JSON.stringify(tokens));
+    } catch (e) { console.warn('Error saving reset tokens', e); }
+  }
+
   static adminResetUserPassword(targetEmail: string): { success: boolean; tempCode: string; message: string } {
     const cleanEmail = targetEmail.trim().toLowerCase();
     const users = this.getUsers();
@@ -218,7 +245,15 @@ export class AuthService {
       return { success: false, tempCode: '', message: 'Usuario no encontrado.' };
     }
 
-    const tempCode = 'STP-' + Math.floor(100000 + Math.random() * 900000);
+    // Generate random 6-digit recovery code with 15-minute expiration
+    const tempCode = String(Math.floor(100000 + Math.random() * 900000));
+    const tokens = this.getResetTokens();
+    tokens.push({
+      email: cleanEmail,
+      codigo: tempCode,
+      fechaExpiracion: Date.now() + 15 * 60 * 1000 // 15 minutes
+    });
+    this.saveResetTokens(tokens);
 
     const updatedUsers = [...users];
     updatedUsers[userIndex] = {
@@ -231,7 +266,7 @@ export class AuthService {
     return { 
       success: true, 
       tempCode, 
-      message: `Enlace de restablecimiento generado para ${cleanEmail}. Código temporal: ${tempCode}` 
+      message: `Código de restablecimiento generado para ${cleanEmail}. Código temporal (válido 15 min): ${tempCode}` 
     };
   }
 

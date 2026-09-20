@@ -41,6 +41,7 @@ import zonasReferencia from '../data/zonasTecnicosReferencia.json';
 import controlInicioRaw from '../data/controlInicioData.json';
 import { formatTimeClean, ZONA_TECNICA_TO_LOCAL, getZonaLabelWithLocal } from '../utils/formatters';
 import { TechnicianDailyAgendaModal } from './TechnicianDailyAgendaModal';
+import { MapaAgendaDiaria } from './MapaAgendaDiaria';
 
 interface SlaMonitorProps {
   tickets: Ticket[];
@@ -83,6 +84,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
   const [specialFilter, setSpecialFilter] = useState<'ALL' | 'SC_PENDIENTES' | 'SC_SIN_ASIGNAR' | 'SC_PENDIENTES_ASIGNADOS' | 'MP_DEFICIENTE' | 'REINCIDENTE' | 'ASIGNADO_COT' | 'MOVIL_S' | 'MP_PENDIENTE' | 'ADICIONAL_PENDIENTE' | 'AIEC'>('ALL');
   const [slaFilter, setSlaFilter] = useState<'ALL' | 'CRITICAL' | 'WARNING' | 'OK'>('ALL');
   const [sortBy, setSortBy] = useState<'sla_desc' | 'sla_asc' | 'pedido' | 'cliente' | 'fecha'>('sla_desc');
+  const [agendaDisplayMode, setAgendaDisplayMode] = useState<'TABLA' | 'MAPA'>('TABLA');
 
   // Control Inicio Sector Filter, View Mode & Floating Agenda Modal
   const [showControlInicio, setShowControlInicio] = useState<boolean>(true);
@@ -1345,6 +1347,33 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               <option value="cliente">Cliente (A-Z)</option>
             </select>
 
+            <div className="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800">
+              <button
+                onClick={() => setAgendaDisplayMode('TABLA')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                  agendaDisplayMode === 'TABLA'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+                title="Vista Tabla de Pedidos"
+              >
+                <TableIcon className="w-3.5 h-3.5" />
+                <span>Tabla</span>
+              </button>
+              <button
+                onClick={() => setAgendaDisplayMode('MAPA')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                  agendaDisplayMode === 'MAPA'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+                title="Vista Mapa Geográfico & Recorridos"
+              >
+                <MapPin className="w-3.5 h-3.5 text-blue-300" />
+                <span>Mapa & Rutas</span>
+              </button>
+            </div>
+
             <button
               onClick={handleExportCSV}
               className="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-2 rounded-lg text-xs font-semibold border border-slate-700 transition"
@@ -1470,8 +1499,17 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
       </div>
 
-      {/* Tickets Table / List */}
-      <div id="agenda-table-section" className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+      {/* Agenda Content: Map View vs Table View */}
+      {agendaDisplayMode === 'MAPA' ? (
+        <MapaAgendaDiaria
+          tickets={filteredTickets}
+          zonas={zonas}
+          onSelectTicket={onSelectTicket}
+          selectedTechName={selectedTecnico}
+          onSelectTech={(tech) => setSelectedTecnico(tech)}
+        />
+      ) : (
+        <div id="agenda-table-section" className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
         
         {/* Table Header with Pagination size selector */}
         <div className="px-5 py-3.5 bg-slate-950 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
@@ -1876,6 +1914,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         </div>
 
       </div>
+      )}
 
       {/* Floating Modal: Agenda Diaria del Técnico */}
       <TechnicianDailyAgendaModal

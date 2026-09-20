@@ -1,18 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Header } from './components/Header';
 import { SidebarNavigation } from './components/SidebarNavigation';
 import { TabKey } from './components/TabNavigation';
-import { SlaMonitor } from './components/SlaMonitor';
-import { RecurrenceRadar } from './components/RecurrenceRadar';
-import { PreventivosManager } from './components/PreventivosManager';
-import { CallRateAnalytics } from './components/CallRateAnalytics';
-import { CargaLaboralView } from './components/CargaLaboralView';
-import { DespachosRepuestosView } from './components/DespachosRepuestosView';
-import { ReferenceTablesView } from './components/ReferenceTablesView';
-import { BaseInstaladaView } from './components/BaseInstaladaView';
-import { AnalisisPatagoniaView } from './components/AnalisisPatagoniaView';
-import { DashboardOperativoView } from './components/DashboardOperativoView';
-import { ReportRepository, ReportItem } from './components/ReportRepository';
 import { TicketDetailModal } from './components/TicketDetailModal';
 import { ChronicDetailModal } from './components/ChronicDetailModal';
 import { AuthModal } from './components/AuthModal';
@@ -20,13 +9,35 @@ import { UserManagementModal } from './components/UserManagementModal';
 import { HallAiAssistantModal } from './components/HallAiAssistantModal';
 import { AuthService } from './services/authService';
 import { ReportSyncService } from './services/reportSyncService';
+import type { ReportItem } from './components/ReportRepository';
 
-// Preloaded datasets
+// Lazy-loaded views: each tab loads its component + data on demand
+const SlaMonitor = React.lazy(() => import('./components/SlaMonitor').then(m => ({ default: m.SlaMonitor })));
+const RecurrenceRadar = React.lazy(() => import('./components/RecurrenceRadar').then(m => ({ default: m.RecurrenceRadar })));
+const PreventivosManager = React.lazy(() => import('./components/PreventivosManager').then(m => ({ default: m.PreventivosManager })));
+const CallRateAnalytics = React.lazy(() => import('./components/CallRateAnalytics').then(m => ({ default: m.CallRateAnalytics })));
+const CargaLaboralView = React.lazy(() => import('./components/CargaLaboralView').then(m => ({ default: m.CargaLaboralView })));
+const DespachosRepuestosView = React.lazy(() => import('./components/DespachosRepuestosView').then(m => ({ default: m.DespachosRepuestosView })));
+const ReferenceTablesView = React.lazy(() => import('./components/ReferenceTablesView').then(m => ({ default: m.ReferenceTablesView })));
+const BaseInstaladaView = React.lazy(() => import('./components/BaseInstaladaView').then(m => ({ default: m.BaseInstaladaView })));
+const AnalisisPatagoniaView = React.lazy(() => import('./components/AnalisisPatagoniaView').then(m => ({ default: m.AnalisisPatagoniaView })));
+const DashboardOperativoView = React.lazy(() => import('./components/DashboardOperativoView').then(m => ({ default: m.DashboardOperativoView })));
+const ReportRepository = React.lazy(() => import('./components/ReportRepository').then(m => ({ default: m.ReportRepository })));
+
+// Loading fallback component
+const ViewLoadingFallback = () => (
+  <div className="flex items-center justify-center h-96">
+    <div className="flex flex-col items-center gap-3">
+      <div className="w-8 h-8 border-2 border-amber-500 border-t-transparent rounded-full animate-spin" />
+      <p className="text-sm text-slate-400">Cargando vista...</p>
+    </div>
+  </div>
+);
+
+// Preloaded lightweight datasets
 import initialTickets from './data/agendaData.json';
-import initialCronicos from './data/reincidenciasData.json';
 import initialPreventivos from './data/preventivosData.json';
 import initialCallRate from './data/callRateData.json';
-import initialCargaLaboral from './data/cargaLaboralData.json';
 import initialDespachos from './data/despachosData.json';
 import initialRepuestos from './data/repuestosData.json';
 import tecnicosZonas from './data/tecnicosZonasData.json';
@@ -35,8 +46,6 @@ import stockFijoData from './data/stockFijoData.json';
 import modelosMpcrData from './data/modelosMpcrData.json';
 import zonasTecnicosRef from './data/zonasTecnicosReferencia.json';
 import ctdDemoradosData from './data/ctdRadarDemoradosData.json';
-import baseInstaladaClientesData from './data/baseInstaladaClientesData.json';
-import stockAuditoriaData from './data/stockAuditoriaData.json';
 import stockRegionalMdpData from './data/stockRegionalMdpData.json';
 import solicitudesStockData from './data/solicitudesStockData.json';
 
@@ -72,22 +81,41 @@ export function App() {
 
   const [activeTab, setActiveTab] = useState<TabKey>('sla_agenda');
 
-  // Application Data State
+  // Application Data State (Heavy datasets loaded asynchronously)
   const [tickets, setTickets] = useState<Ticket[]>(initialTickets as unknown as Ticket[]);
-  const [cronicos, setCronicos] = useState<EquipoCronico[]>(initialCronicos as unknown as EquipoCronico[]);
+  const [cronicos, setCronicos] = useState<EquipoCronico[]>([]);
   const [preventivos, setPreventivos] = useState<PreventivosState>(initialPreventivos as PreventivosState);
   const [callRate, setCallRate] = useState<CallRateState>(initialCallRate as CallRateState);
-  const [cargaLaboral, setCargaLaboral] = useState<CargaLaboralState>(initialCargaLaboral as CargaLaboralState);
+  const [cargaLaboral, setCargaLaboral] = useState<CargaLaboralState>({} as CargaLaboralState);
   const [despachos, setDespachos] = useState<DespachoItem[]>(initialDespachos as DespachoItem[]);
   const [repuestos, setRepuestos] = useState<RepuestosState>(initialRepuestos as RepuestosState);
-  const [stockAuditoria, setStockAuditoria] = useState<StockAuditoriaState>(stockAuditoriaData as unknown as StockAuditoriaState);
+  const [stockAuditoria, setStockAuditoria] = useState<StockAuditoriaState>({} as StockAuditoriaState);
   
   // Reference Tables State
   const [stockFijo, setStockFijo] = useState<StockFijoItem[]>(stockFijoData as StockFijoItem[]);
   const [modelosMpcr, setModelosMpcr] = useState<ModeloMpcrItem[]>(modelosMpcrData.modelos as ModeloMpcrItem[]);
   const [benchmarks, setBenchmarks] = useState<CallRateBenchmark[]>(modelosMpcrData.benchmarks as CallRateBenchmark[]);
   const [zonasRef, setZonasRef] = useState<ZonaTecnicoRef[]>(zonasTecnicosRef as unknown as ZonaTecnicoRef[]);
-  const [baseClientes, setBaseClientes] = useState<BaseInstaladaClienteRow[]>(baseInstaladaClientesData as BaseInstaladaClienteRow[]);
+  const [baseClientes, setBaseClientes] = useState<BaseInstaladaClienteRow[]>([]);
+
+  // Async load large datasets in background
+  useEffect(() => {
+    import('./data/reincidenciasData.json').then(m => {
+      setCronicos(m.default as unknown as EquipoCronico[]);
+    }).catch(console.warn);
+
+    import('./data/baseInstaladaClientesData.json').then(m => {
+      setBaseClientes(m.default as BaseInstaladaClienteRow[]);
+    }).catch(console.warn);
+
+    import('./data/cargaLaboralData.json').then(m => {
+      setCargaLaboral(m.default as CargaLaboralState);
+    }).catch(console.warn);
+
+    import('./data/stockAuditoriaData.json').then(m => {
+      setStockAuditoria(m.default as unknown as StockAuditoriaState);
+    }).catch(console.warn);
+  }, []);
 
   const tecnicos: TecnicoInfo[] = tecnicosZonas.tecnicos;
   const zonas: ZonaInfo[] = tecnicosZonas.zonas;
@@ -186,15 +214,14 @@ export function App() {
       const res = await ReportSyncService.fetchActiveDataset<Ticket[]>('agenda_activa');
       if (res.data && res.data.payload && Array.isArray(res.data.payload) && res.data.payload.length > 0) {
         const cloudTickets = res.data.payload;
-        // Guarda de sanidad: La agenda diaria operativa de campo debe contener exactamente los 49 pedidos unificados.
-        // Si el dataset de la nube tiene 117 o miles de filas (cargas no filtradas o reportes históricos), se preserva la agenda local de 49 pedidos y se sanea la nube.
-        if (cloudTickets.length !== 49) {
-          console.warn(`[App] Dataset agenda_activa en la nube tiene ${cloudTickets.length} registros (desactualizado/sin filtrar). Se preserva la agenda oficial local de 49 pedidos y se sanea la nube.`);
-          ReportSyncService.upsertReportDataset('agenda_activa', initialTickets, {
-            updated_by: 'Mariano Deus',
-            archivos_origen: ['Asignados.xls', 'Pendientes Patagonia.xls', 'Pendientes Suroeste.xls'],
-            total_registros: initialTickets.length
-          }).catch(err => console.warn('No se pudo sanear agenda_activa en la nube:', err));
+        // Semantic validation: verify tickets have required properties
+        const isValid = cloudTickets.length > 0 && cloudTickets[0] && 
+          typeof cloudTickets[0] === 'object' && 
+          ('id' in cloudTickets[0] || 'pedido' in cloudTickets[0]) &&
+          ('luno' in cloudTickets[0] || 'tecnico' in cloudTickets[0]);
+        
+        if (!isValid) {
+          console.warn(`[App] Dataset agenda_activa en la nube tiene formato inválido. Se preserva la agenda local.`);
         } else {
           setTickets(cloudTickets);
 
@@ -278,6 +305,7 @@ export function App() {
 
         {/* High Availability Scrollable Data Canvas */}
         <main className="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-6 space-y-5 bg-[#0e0f13]">
+          <Suspense fallback={<ViewLoadingFallback />}>
           
           {/* Tab 1: Control SLA & Agenda Diaria */}
           {activeTab === 'sla_agenda' && (
@@ -376,6 +404,8 @@ export function App() {
               onStockAuditSuccess={(newStock) => setStockAuditoria(newStock)}
             />
           )}
+
+          </Suspense>
 
           {/* Footer inside data scroll */}
           <footer className="border-t border-white/5 py-4 text-center text-xs text-slate-500 mt-8">

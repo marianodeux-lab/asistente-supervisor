@@ -14,6 +14,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { Ticket, EquipoCronico, UserAccount } from '../types';
+import { getTechnicianAvatar } from '../utils/avatarUtils';
 
 interface HeaderProps {
   currentUser: UserAccount;
@@ -171,11 +172,19 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="relative">
           <button
             onClick={() => setShowUserDropdown(prev => !prev)}
-            className="flex items-center gap-1.5 bg-[#181920] hover:bg-[#1f212a] border border-white/10 hover:border-amber-500/50 rounded-lg p-1 pr-2 transition text-left"
+            className="flex items-center gap-2 bg-[#14182d] hover:bg-[#1b203c] border border-white/10 hover:border-blue-500/50 rounded-xl p-1.5 pr-2.5 transition text-left shadow-sm"
           >
-            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-amber-400 to-amber-600 text-slate-950 flex items-center justify-center font-black text-xs shadow">
-              {currentUser.nombre.charAt(0)}
-            </div>
+            {getTechnicianAvatar(currentUser.nombre) || (currentUser.rol === 'ADMIN' ? '/avatars/Deus_Mariano.png' : null) ? (
+              <img
+                src={getTechnicianAvatar(currentUser.nombre) || '/avatars/Deus_Mariano.png'}
+                alt={currentUser.nombre}
+                className="w-7 h-7 rounded-full object-cover border border-blue-400 shadow"
+              />
+            ) : (
+              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white flex items-center justify-center font-black text-xs shadow">
+                {currentUser.nombre.charAt(0)}
+              </div>
+            )}
             <span className="text-xs font-bold text-white hidden md:inline leading-none">
               {currentUser.nombre.split(' ')[0]}
             </span>

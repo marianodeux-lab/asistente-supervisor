@@ -78,14 +78,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   };
 
   // Handle Login Submit
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
     setSuccessMsg('');
     setIsLoading(true);
 
-    setTimeout(() => {
-      const res = AuthService.login(email, password);
+    try {
+      const res = await AuthService.login(email, password);
       setIsLoading(false);
 
       if (res.requireSetup) {
@@ -107,11 +107,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           onClose();
         }, 600);
       }
-    }, 400);
+    } catch (err: any) {
+      setIsLoading(false);
+      setErrorMsg(err?.message || 'Error al iniciar sesión');
+    }
   };
 
   // Handle First Password Setup Submit (for Marcos or new users)
-  const handleFirstLoginSubmit = (e: React.FormEvent) => {
+  const handleFirstLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
     setSuccessMsg('');
@@ -127,8 +130,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     }
 
     setIsLoading(true);
-    setTimeout(() => {
-      const res = AuthService.registerFirstPassword(firstLoginEmail, newPassword);
+    try {
+      const res = await AuthService.registerFirstPassword(firstLoginEmail, newPassword);
       setIsLoading(false);
 
       if (!res.success) {
@@ -143,7 +146,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         }
         onClose();
       }, 1000);
-    }, 500);
+    } catch (err: any) {
+      setIsLoading(false);
+      setErrorMsg(err?.message || 'Error al guardar la contraseña');
+    }
   };
 
   // Handle Password Recovery Request
@@ -169,7 +175,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   };
 
   // Handle Password Reset Confirm
-  const handleConfirmReset = (e: React.FormEvent) => {
+  const handleConfirmReset = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
     setSuccessMsg('');
@@ -179,19 +185,23 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       return;
     }
 
-    const res = AuthService.resetPasswordWithCode(recoveryEmail, recoveryCode, recoveryNewPass);
-    if (!res.success) {
-      setErrorMsg(res.message);
-      return;
-    }
+    try {
+      const res = await AuthService.resetPasswordWithCode(recoveryEmail, recoveryCode, recoveryNewPass);
+      if (!res.success) {
+        setErrorMsg(res.message);
+        return;
+      }
 
-    setSuccessMsg(res.message);
-    setTimeout(() => {
-      setEmail(recoveryEmail);
-      setPassword(recoveryNewPass);
-      setMode('LOGIN');
-      setRecoveryStep(1);
-    }, 1500);
+      setSuccessMsg(res.message);
+      setTimeout(() => {
+        setEmail(recoveryEmail);
+        setPassword(recoveryNewPass);
+        setMode('LOGIN');
+        setRecoveryStep(1);
+      }, 1500);
+    } catch (err: any) {
+      setErrorMsg(err?.message || 'Error al restablecer la contraseña');
+    }
   };
 
   return (
