@@ -45,6 +45,30 @@ export const SUROESTE_ZONES_EXPANDED = [
 ] as const;
 
 // ═══════════════════════════════════════════════════════════════
+// REINCIDENCIAS & FIELD TECHNICAL SUPERVISION RULES
+// ═══════════════════════════════════════════════════════════════
+
+/** Reglas de cálculo del Radar de Reincidencias */
+export const REINCIDENCIAS_RULES = {
+  /** Período por defecto de análisis: últimos 30 días */
+  DEFAULT_PERIOD_DAYS: 30,
+  /** La reincidencia de campo SE BASA EXCLUSIVAMENTE EN VISITAS PRESENCIALES DE TÉCNICOS */
+  FIELD_VISITS_ONLY: true,
+  /** Los cierres remotos (TELCA, TELCA2, TELFA) APLICAN SÓLO A CASH TODAY y son dato informativo complementario */
+  REMOTE_CLOSURES_APPLY_ONLY_TO_CASH_TODAY: true,
+  /** Umbral de criticidad en 30 días */
+  CRITICO_FIELD_VISITS_THRESHOLD: 3, // 3 o más visitas presenciales a campo
+  ADVERTENCIA_FIELD_VISITS_THRESHOLD: 2 // 2 visitas presenciales a campo
+} as const;
+
+/** Regla de asignación para análisis técnico */
+export const ASSIGNED_TECHNICIANS_RULE = {
+  /** Para analizar el rendimiento del servicio técnico propio, sólo computan registros con técnico asignado / presencial */
+  REQUIRE_ASSIGNED_TECHNICIAN_FOR_TECH_METRICS: true,
+  EXCLUDE_UNASSIGNED_FROM_FIELD_METRICS: true
+} as const;
+
+// ═══════════════════════════════════════════════════════════════
 // MP (MANTENIMIENTO PREVENTIVO) THRESHOLDS
 // ═══════════════════════════════════════════════════════════════
 
@@ -98,5 +122,7 @@ export const REPORT_RULES = {
   suroesteZones: [...SUROESTE_ZONES],
   suroesteZonesExpanded: [...SUROESTE_ZONES_EXPANDED],
   mpTasisThresholds: { ...MP_TASIS_THRESHOLDS },
-  mpDeficienteDays: MP_DEFICIENTE_DAYS
+  mpDeficienteDays: MP_DEFICIENTE_DAYS,
+  reincidenciasRules: { ...REINCIDENCIAS_RULES },
+  assignedTechniciansRule: { ...ASSIGNED_TECHNICIANS_RULE }
 } as const;

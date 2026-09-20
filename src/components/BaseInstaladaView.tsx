@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { BaseInstaladaClienteRow } from '../types';
 import modelosDiscrepancias from '../data/modelosDiscrepanciasData.json';
+import { normalizeFabricante } from '../core/modelRules';
 
 interface BaseInstaladaViewProps {
   data: BaseInstaladaClienteRow[];
@@ -39,15 +40,17 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
     });
     return set;
   }, []);
-  // 9 Dependent Filters ordered strictly by relevance
+
+  // 9 Dependent Filters strictly structured by Modelos MPCR Hardware Families:
+  // 1. Región -> 2. Fabricante -> 3. Modelo -> 4. MPCR -> 5. Negocio -> 6. Planta Cabecera -> 7. Técnico -> 8. Red -> 9. Recaudador
+  const [filterRegion, setFilterRegion] = useState<string>('ALL');
   const [filterFabricante, setFilterFabricante] = useState<string>('ALL');
   const [filterModelo, setFilterModelo] = useState<string>('ALL');
   const [filterMpcr, setFilterMpcr] = useState<string>('ALL');
-  const [filterRed, setFilterRed] = useState<string>('ALL');
-  const [filterTecnico, setFilterTecnico] = useState<string>('ALL');
-  const [filterRegion, setFilterRegion] = useState<string>('ALL');
-  const [filterPlantaCabecera, setFilterPlantaCabecera] = useState<string>('ALL');
   const [filterNegocio, setFilterNegocio] = useState<string>('ALL');
+  const [filterPlantaCabecera, setFilterPlantaCabecera] = useState<string>('ALL');
+  const [filterTecnico, setFilterTecnico] = useState<string>('ALL');
+  const [filterRed, setFilterRed] = useState<string>('ALL');
   const [filterRecaudador, setFilterRecaudador] = useState<string>('ALL');
 
   // Search & Pagination
@@ -55,135 +58,155 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
   const [pageSize, setPageSize] = useState<number>(40);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // Dependent cascading options calculations
-  // 1. Region options (from all data)
+  // ═══════════════════════════════════════════════════════════════
+  // STRICT CASCADING DEPENDENT OPTIONS (Modelos MPCR Source of Truth)
+  // ═══════════════════════════════════════════════════════════════
+
+  // 1. Región options (from all data)
   const regionOptions = useMemo(() => {
     const set = new Set<string>();
-    data.forEach(item => { if (item.region) set.add(item.region); });
+    data.forEach(item => { if (item.region) set.add(item.region.trim()); });
     return Array.from(set).sort();
   }, [data]);
 
   const dataAfterRegion = useMemo(() => {
     if (filterRegion === 'ALL') return data;
-    return data.filter(d => d.region === filterRegion);
+    return data.filter(d => (d.region || '').trim().toUpperCase() === filterRegion.trim().toUpperCase());
   }, [data, filterRegion]);
 
-  // 2. Planta Cabecera options (dependent on Region)
-  const plantaCabeceraOptions = useMemo(() => {
+  // 2. Fabricante options (dependent on Región, normalized via Modelos MPCR)
+  const fabricanteOptions = useMemo(() => {
     const set = new Set<string>();
-    dataAfterRegion.forEach(item => { if (item.plantaCabecera) set.add(item.plantaCabecera); });
+    dataAfterRegion.forEach(item => {
+      const fab = normalizeFabricante(item.fabricante);
+      if (fab && fab !== 'Otro') set.add(fab);
+    });
     return Array.from(set).sort();
   }, [dataAfterRegion]);
 
-  const dataAfterPlantaCabecera = useMemo(() => {
-    if (filterPlantaCabecera === 'ALL') return dataAfterRegion;
-    return dataAfterRegion.filter(d => d.plantaCabecera === filterPlantaCabecera);
-  }, [dataAfterRegion, filterPlantaCabecera]);
-
-  // 3. Tecnico options (dependent on Region + Planta Cabecera)
-  const tecnicoOptions = useMemo(() => {
-    const set = new Set<string>();
-    dataAfterPlantaCabecera.forEach(item => { if (item.tecnicoZona) set.add(item.tecnicoZona); });
-    return Array.from(set).sort();
-  }, [dataAfterPlantaCabecera]);
-
-  const dataAfterTecnico = useMemo(() => {
-    if (filterTecnico === 'ALL') return dataAfterPlantaCabecera;
-    return dataAfterPlantaCabecera.filter(d => d.tecnicoZona === filterTecnico);
-  }, [dataAfterPlantaCabecera, filterTecnico]);
-
-  // 4. Fabricante options (dependent on Region + Planta Cabecera + Tecnico)
-  const fabricanteOptions = useMemo(() => {
-    const set = new Set<string>();
-    dataAfterTecnico.forEach(item => { if (item.fabricante) set.add(item.fabricante); });
-    return Array.from(set).sort();
-  }, [dataAfterTecnico]);
-
   const dataAfterFabricante = useMemo(() => {
-    if (filterFabricante === 'ALL') return dataAfterTecnico;
-    return dataAfterTecnico.filter(d => d.fabricante === filterFabricante);
-  }, [dataAfterTecnico, filterFabricante]);
+    if (filterFabricante === 'ALL') return dataAfterRegion;
+    return dataAfterRegion.filter(d => normalizeFabricante(d.fabricante) === filterFabricante);
+  }, [dataAfterRegion, filterFabricante]);
 
-  // 5. Modelo options (dependent on Fabricante)
+  // 3. Modelo options (dependent on Fabricante)
   const modeloOptions = useMemo(() => {
     const set = new Set<string>();
-    dataAfterFabricante.forEach(item => { if (item.modelo) set.add(item.modelo); });
+    dataAfterFabricante.forEach(item => { if (item.modelo) set.add(item.modelo.trim()); });
     return Array.from(set).sort();
   }, [dataAfterFabricante]);
 
   const dataAfterModelo = useMemo(() => {
     if (filterModelo === 'ALL') return dataAfterFabricante;
-    return dataAfterFabricante.filter(d => d.modelo === filterModelo);
+    return dataAfterFabricante.filter(d => (d.modelo || '').trim() === filterModelo.trim());
   }, [dataAfterFabricante, filterModelo]);
 
-  // 6. MPCR options (dependent on Fabricante + Modelo)
+  // 4. MPCR options (dependent on Fabricante + Modelo)
   const mpcrOptions = useMemo(() => {
     const set = new Set<string>();
-    dataAfterModelo.forEach(item => { if (item.mpcr) set.add(item.mpcr); });
+    dataAfterModelo.forEach(item => { if (item.mpcr) set.add(item.mpcr.trim()); });
     return Array.from(set).sort();
   }, [dataAfterModelo]);
 
   const dataAfterMpcr = useMemo(() => {
     if (filterMpcr === 'ALL') return dataAfterModelo;
-    return dataAfterModelo.filter(d => d.mpcr === filterMpcr);
+    return dataAfterModelo.filter(d => (d.mpcr || '').trim() === filterMpcr.trim());
   }, [dataAfterModelo, filterMpcr]);
 
-  // 7. Red options (dependent on previous)
-  const redOptions = useMemo(() => {
+  // 5. Negocio options (dependent on MPCR / Modelo: ATM vs Cash Today)
+  const negocioOptions = useMemo(() => {
     const set = new Set<string>();
-    dataAfterMpcr.forEach(item => { if (item.red) set.add(item.red); });
+    dataAfterMpcr.forEach(item => {
+      const neg = (item.negocio || (item.esCashToday ? 'Cash Today' : 'ATM')).trim();
+      if (neg) set.add(neg);
+    });
     return Array.from(set).sort();
   }, [dataAfterMpcr]);
 
-  const dataAfterRed = useMemo(() => {
-    if (filterRed === 'ALL') return dataAfterMpcr;
-    return dataAfterMpcr.filter(d => d.red === filterRed);
-  }, [dataAfterMpcr, filterRed]);
-
-  // 8. Negocio options (dependent on previous)
-  const negocioOptions = useMemo(() => {
-    const set = new Set<string>();
-    dataAfterRed.forEach(item => { if (item.negocio) set.add(item.negocio); });
-    return Array.from(set).sort();
-  }, [dataAfterRed]);
-
   const dataAfterNegocio = useMemo(() => {
-    if (filterNegocio === 'ALL') return dataAfterRed;
-    return dataAfterRed.filter(d => d.negocio === filterNegocio);
-  }, [dataAfterRed, filterNegocio]);
+    if (filterNegocio === 'ALL') return dataAfterMpcr;
+    return dataAfterMpcr.filter(d => {
+      const neg = (d.negocio || (d.esCashToday ? 'Cash Today' : 'ATM')).trim();
+      return neg === filterNegocio;
+    });
+  }, [dataAfterMpcr, filterNegocio]);
+
+  // 6. Planta Cabecera options (dependent on Región & Negocio)
+  const plantaCabeceraOptions = useMemo(() => {
+    const set = new Set<string>();
+    dataAfterNegocio.forEach(item => { if (item.plantaCabecera) set.add(item.plantaCabecera.trim()); });
+    return Array.from(set).sort();
+  }, [dataAfterNegocio]);
+
+  const dataAfterPlantaCabecera = useMemo(() => {
+    if (filterPlantaCabecera === 'ALL') return dataAfterNegocio;
+    return dataAfterNegocio.filter(d => (d.plantaCabecera || '').trim() === filterPlantaCabecera.trim());
+  }, [dataAfterNegocio, filterPlantaCabecera]);
+
+  // 7. Técnico Zona options (dependent on Planta Cabecera & Región)
+  const tecnicoOptions = useMemo(() => {
+    const set = new Set<string>();
+    dataAfterPlantaCabecera.forEach(item => { if (item.tecnicoZona) set.add(item.tecnicoZona.trim()); });
+    return Array.from(set).sort();
+  }, [dataAfterPlantaCabecera]);
+
+  const dataAfterTecnico = useMemo(() => {
+    if (filterTecnico === 'ALL') return dataAfterPlantaCabecera;
+    return dataAfterPlantaCabecera.filter(d => (d.tecnicoZona || '').trim() === filterTecnico.trim());
+  }, [dataAfterPlantaCabecera, filterTecnico]);
+
+  // 8. Red options (dependent on previous)
+  const redOptions = useMemo(() => {
+    const set = new Set<string>();
+    dataAfterTecnico.forEach(item => { if (item.red) set.add(item.red.trim()); });
+    return Array.from(set).sort();
+  }, [dataAfterTecnico]);
+
+  const dataAfterRed = useMemo(() => {
+    if (filterRed === 'ALL') return dataAfterTecnico;
+    return dataAfterTecnico.filter(d => (d.red || '').trim() === filterRed.trim());
+  }, [dataAfterTecnico, filterRed]);
 
   // 9. Recaudador options (dependent on previous)
   const recaudadorOptions = useMemo(() => {
     const set = new Set<string>();
-    dataAfterNegocio.forEach(item => { if (item.recaudador) set.add(item.recaudador); });
+    dataAfterRed.forEach(item => { if (item.recaudador) set.add(item.recaudador.trim()); });
     return Array.from(set).sort();
-  }, [dataAfterNegocio]);
+  }, [dataAfterRed]);
+
+  const dataAfterRecaudador = useMemo(() => {
+    if (filterRecaudador === 'ALL') return dataAfterRed;
+    return dataAfterRed.filter(d => (d.recaudador || '').trim() === filterRecaudador.trim());
+  }, [dataAfterRed, filterRecaudador]);
 
   // Final filtered list with all 9 filters + Search
   const filteredData = useMemo(() => {
-    let result = dataAfterNegocio;
-    if (filterRecaudador !== 'ALL') {
-      result = result.filter(d => d.recaudador === filterRecaudador);
-    }
+    let result = dataAfterRecaudador;
     if (searchTerm.trim()) {
       const q = searchTerm.toLowerCase();
       result = result.filter(d => 
-        d.cliente.toLowerCase().includes(q) ||
-        d.atm.toLowerCase().includes(q) ||
-        d.serie.toLowerCase().includes(q) ||
-        d.direccion.toLowerCase().includes(q) ||
-        d.localidad.toLowerCase().includes(q) ||
-        d.provincia.toLowerCase().includes(q) ||
-        d.tecnicoZona.toLowerCase().includes(q) ||
-        d.mpcr.toLowerCase().includes(q) ||
-        d.red.toLowerCase().includes(q) ||
+        (d.cliente || '').toLowerCase().includes(q) ||
+        (d.atm || '').toLowerCase().includes(q) ||
+        (d.serie || '').toLowerCase().includes(q) ||
+        (d.direccion || '').toLowerCase().includes(q) ||
+        (d.localidad || '').toLowerCase().includes(q) ||
+        (d.provincia || '').toLowerCase().includes(q) ||
+        (d.tecnicoZona || '').toLowerCase().includes(q) ||
+        (d.mpcr || '').toLowerCase().includes(q) ||
+        (d.red || '').toLowerCase().includes(q) ||
         (d.negocio && d.negocio.toLowerCase().includes(q))
       );
     }
     return result;
-  }, [dataAfterNegocio, filterRecaudador, searchTerm]);
+  }, [dataAfterRecaudador, searchTerm]);
 
   // Auto-reset dependent filters if selected value is no longer present in valid options
+  useEffect(() => {
+    if (filterFabricante !== 'ALL' && !fabricanteOptions.includes(filterFabricante)) {
+      setFilterFabricante('ALL');
+    }
+  }, [fabricanteOptions, filterFabricante]);
+
   useEffect(() => {
     if (filterModelo !== 'ALL' && !modeloOptions.includes(filterModelo)) {
       setFilterModelo('ALL');
@@ -197,22 +220,10 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
   }, [mpcrOptions, filterMpcr]);
 
   useEffect(() => {
-    if (filterRed !== 'ALL' && !redOptions.includes(filterRed)) {
-      setFilterRed('ALL');
+    if (filterNegocio !== 'ALL' && !negocioOptions.includes(filterNegocio)) {
+      setFilterNegocio('ALL');
     }
-  }, [redOptions, filterRed]);
-
-  useEffect(() => {
-    if (filterTecnico !== 'ALL' && !tecnicoOptions.includes(filterTecnico)) {
-      setFilterTecnico('ALL');
-    }
-  }, [tecnicoOptions, filterTecnico]);
-
-  useEffect(() => {
-    if (filterRegion !== 'ALL' && !regionOptions.includes(filterRegion)) {
-      setFilterRegion('ALL');
-    }
-  }, [regionOptions, filterRegion]);
+  }, [negocioOptions, filterNegocio]);
 
   useEffect(() => {
     if (filterPlantaCabecera !== 'ALL' && !plantaCabeceraOptions.includes(filterPlantaCabecera)) {
@@ -221,10 +232,16 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
   }, [plantaCabeceraOptions, filterPlantaCabecera]);
 
   useEffect(() => {
-    if (filterNegocio !== 'ALL' && !negocioOptions.includes(filterNegocio)) {
-      setFilterNegocio('ALL');
+    if (filterTecnico !== 'ALL' && !tecnicoOptions.includes(filterTecnico)) {
+      setFilterTecnico('ALL');
     }
-  }, [negocioOptions, filterNegocio]);
+  }, [tecnicoOptions, filterTecnico]);
+
+  useEffect(() => {
+    if (filterRed !== 'ALL' && !redOptions.includes(filterRed)) {
+      setFilterRed('ALL');
+    }
+  }, [redOptions, filterRed]);
 
   useEffect(() => {
     if (filterRecaudador !== 'ALL' && !recaudadorOptions.includes(filterRecaudador)) {
@@ -236,14 +253,14 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
   useEffect(() => {
     setCurrentPage(1);
   }, [
+    filterRegion,
     filterFabricante, 
     filterModelo, 
     filterMpcr, 
+    filterNegocio,
+    filterPlantaCabecera,
+    filterTecnico,
     filterRed, 
-    filterTecnico, 
-    filterRegion, 
-    filterPlantaCabecera, 
-    filterNegocio, 
     filterRecaudador, 
     searchTerm, 
     pageSize
@@ -251,27 +268,27 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
 
   // Reset all filters function
   const handleResetFilters = () => {
+    setFilterRegion('ALL');
     setFilterFabricante('ALL');
     setFilterModelo('ALL');
     setFilterMpcr('ALL');
-    setFilterRed('ALL');
-    setFilterTecnico('ALL');
-    setFilterRegion('ALL');
-    setFilterPlantaCabecera('ALL');
     setFilterNegocio('ALL');
+    setFilterPlantaCabecera('ALL');
+    setFilterTecnico('ALL');
+    setFilterRed('ALL');
     setFilterRecaudador('ALL');
     setSearchTerm('');
   };
 
   const hasActiveFilters = 
+    filterRegion !== 'ALL' ||
     filterFabricante !== 'ALL' ||
     filterModelo !== 'ALL' ||
     filterMpcr !== 'ALL' ||
-    filterRed !== 'ALL' ||
-    filterTecnico !== 'ALL' ||
-    filterRegion !== 'ALL' ||
-    filterPlantaCabecera !== 'ALL' ||
     filterNegocio !== 'ALL' ||
+    filterPlantaCabecera !== 'ALL' ||
+    filterTecnico !== 'ALL' ||
+    filterRed !== 'ALL' ||
     filterRecaudador !== 'ALL' ||
     searchTerm.trim() !== '';
 
@@ -427,13 +444,13 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
             </div>
             <div>
               <h4 className="text-sm font-bold text-slate-100 uppercase tracking-wider flex items-center gap-2">
-                Filtros Dependientes en Cascada
+                Jerarquía de Filtros Dependientes • Familias Modelos MPCR
                 <span className="text-[11px] font-normal px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
-                  Orden de Relevancia
+                  Fuente de Verdad
                 </span>
               </h4>
               <p className="text-xs text-slate-400">
-                Las opciones de cada filtro se restringen automáticamente en base a las selecciones previas.
+                Región &bull; Fabricante &bull; Modelo &bull; MPCR &bull; Negocio &bull; Planta Cabecera &bull; Técnico Zona &bull; Red &bull; Recaudador.
               </p>
             </div>
           </div>
@@ -480,46 +497,10 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
             </select>
           </div>
 
-          {/* 2. PLANTA CABECERA */}
+          {/* 2. FABRICANTE */}
           <div className="space-y-1">
             <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
               <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">2</span>
-              Planta Cabecera
-            </label>
-            <select
-              value={filterPlantaCabecera}
-              onChange={(e) => setFilterPlantaCabecera(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
-            >
-              <option value="ALL">Todas las Plantas ({plantaCabeceraOptions.length})</option>
-              {plantaCabeceraOptions.map(pc => (
-                <option key={pc} value={pc}>{pc}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* 3. TECNICO */}
-          <div className="space-y-1">
-            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">3</span>
-              TECNICO
-            </label>
-            <select
-              value={filterTecnico}
-              onChange={(e) => setFilterTecnico(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
-            >
-              <option value="ALL">Todos los Técnicos ({tecnicoOptions.length})</option>
-              {tecnicoOptions.map(t => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* 4. FABRICANTE */}
-          <div className="space-y-1">
-            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">4</span>
               FABRICANTE
             </label>
             <select
@@ -534,10 +515,10 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
             </select>
           </div>
 
-          {/* 5. MODELO */}
+          {/* 3. MODELO */}
           <div className="space-y-1">
             <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">5</span>
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">3</span>
               MODELO
             </label>
             <select
@@ -552,10 +533,10 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
             </select>
           </div>
 
-          {/* 6. MPCR */}
+          {/* 4. MPCR */}
           <div className="space-y-1">
             <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">6</span>
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">4</span>
               MPCR
             </label>
             <select
@@ -570,28 +551,10 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
             </select>
           </div>
 
-          {/* 7. RED */}
+          {/* 5. NEGOCIO */}
           <div className="space-y-1">
             <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">7</span>
-              RED
-            </label>
-            <select
-              value={filterRed}
-              onChange={(e) => setFilterRed(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
-            >
-              <option value="ALL">Todas las Redes ({redOptions.length})</option>
-              {redOptions.map(r => (
-                <option key={r} value={r}>{r}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* 8. NEGOCIO */}
-          <div className="space-y-1">
-            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">8</span>
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">5</span>
               NEGOCIO
             </label>
             <select
@@ -602,6 +565,60 @@ export const BaseInstaladaView: React.FC<BaseInstaladaViewProps> = ({ data }) =>
               <option value="ALL">Todos los Negocios ({negocioOptions.length})</option>
               {negocioOptions.map(n => (
                 <option key={n} value={n}>{n}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* 6. PLANTA CABECERA */}
+          <div className="space-y-1">
+            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">6</span>
+              Planta Cabecera
+            </label>
+            <select
+              value={filterPlantaCabecera}
+              onChange={(e) => setFilterPlantaCabecera(e.target.value)}
+              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+            >
+              <option value="ALL">Todas las Plantas ({plantaCabeceraOptions.length})</option>
+              {plantaCabeceraOptions.map(pc => (
+                <option key={pc} value={pc}>{pc}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* 7. TECNICO */}
+          <div className="space-y-1">
+            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">7</span>
+              TECNICO
+            </label>
+            <select
+              value={filterTecnico}
+              onChange={(e) => setFilterTecnico(e.target.value)}
+              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+            >
+              <option value="ALL">Todos los Técnicos ({tecnicoOptions.length})</option>
+              {tecnicoOptions.map(t => (
+                <option key={t} value={t}>{t}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* 8. RED */}
+          <div className="space-y-1">
+            <label className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">8</span>
+              RED
+            </label>
+            <select
+              value={filterRed}
+              onChange={(e) => setFilterRed(e.target.value)}
+              className="w-full bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+            >
+              <option value="ALL">Todas las Redes ({redOptions.length})</option>
+              {redOptions.map(r => (
+                <option key={r} value={r}>{r}</option>
               ))}
             </select>
           </div>
