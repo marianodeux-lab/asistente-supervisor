@@ -37,3 +37,5 @@ Thumbs.db
 # Temporary files & Excel locks
 ~$*
 *.tmp
+
+.vercel

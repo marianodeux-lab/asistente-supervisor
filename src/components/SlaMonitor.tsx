@@ -74,13 +74,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
   const [search, setSearch] = useState('');
   const [dateFilter, setDateFilter] = useState<'HOY' | 'MANANA' | 'HOY_Y_MANANA' | 'TODOS'>('HOY_Y_MANANA');
   
-  // Cascading Filter States
   const [selectedRegion, setSelectedRegion] = useState<string>('ALL');
   const [selectedZonaLocal, setSelectedZonaLocal] = useState<string>('ALL');
   const [selectedZona, setSelectedZona] = useState<string>('ALL');
   const [selectedTecnico, setSelectedTecnico] = useState<string>('ALL');
   const [selectedCliente, setSelectedCliente] = useState<string>('ALL');
   const [selectedEstado, setSelectedEstado] = useState<string>('ALL');
+  const [selectedYear, setSelectedYear] = useState<string>('ALL');
   const [specialFilter, setSpecialFilter] = useState<'ALL' | 'SC_PENDIENTES' | 'SC_SIN_ASIGNAR' | 'SC_PENDIENTES_ASIGNADOS' | 'MP_DEFICIENTE' | 'REINCIDENTE' | 'ASIGNADO_COT' | 'MOVIL_S' | 'MP_PENDIENTE' | 'ADICIONAL_PENDIENTE' | 'AIEC'>('ALL');
   const [slaFilter, setSlaFilter] = useState<'ALL' | 'CRITICAL' | 'WARNING' | 'OK'>('ALL');
   const [sortBy, setSortBy] = useState<'sla_desc' | 'sla_asc' | 'pedido' | 'cliente' | 'fecha'>('sla_desc');
@@ -255,6 +255,21 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
     const set = new Set<string>();
     tickets.forEach(t => { if (t.estado) set.add(t.estado); });
     return Array.from(set).sort();
+  }, [tickets]);
+
+  // Available Years
+  const availableYears = useMemo(() => {
+    const set = new Set<string>();
+    tickets.forEach(t => {
+      const dStr = String(t.fCoorDate || t.fechaCoordinada || (t as any).fechaFin || (t as any).fecha || '');
+      const m = dStr.match(/\b(202[0-9])\b/);
+      if (m) set.add(m[1]);
+      else {
+        const m2 = dStr.match(/\/(2[0-9])\b/);
+        if (m2) set.add('20' + m2[1]);
+      }
+    });
+    return Array.from(set).sort().reverse();
   }, [tickets]);
 
   // Chronic map for quick badge check
@@ -446,6 +461,14 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       const isAllowedRegion = (ticketRegion === 'PATAGONIA' || ticketRegion === 'SUROESTE' || t.region === 'PATAGONIA' || t.region === 'SUROESTE');
       if (!isAllowedRegion) return false;
 
+      // Year Filter
+      if (selectedYear !== 'ALL') {
+        const dStr = String(t.fCoorDate || t.fechaCoordinada || (t as any).fechaFin || (t as any).fecha || '');
+        const m = dStr.match(/\b(202[0-9])\b/);
+        const y = m ? m[1] : (dStr.match(/\/(2[0-9])\b/) ? '20' + dStr.match(/\/(2[0-9])\b/)![1] : '2026');
+        if (y !== selectedYear) return false;
+      }
+
       // Region Filter
       if (selectedRegion !== 'ALL') {
         if (ticketRegion !== selectedRegion && t.region !== selectedRegion) return false;
@@ -536,12 +559,12 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       if (sortBy === 'cliente') return a.cliente.localeCompare(b.cliente);
       return 0;
     });
-  }, [tickets, search, dateFilter, selectedRegion, selectedZonaLocal, selectedZona, selectedTecnico, selectedCliente, selectedEstado, specialFilter, slaFilter, sortBy, cronicoMap, masterTecMap]);
+  }, [tickets, search, dateFilter, selectedYear, selectedRegion, selectedZonaLocal, selectedZona, selectedTecnico, selectedCliente, selectedEstado, specialFilter, slaFilter, sortBy, cronicoMap, masterTecMap]);
 
   // Reset page to 1 when filters change
   useEffect(() => {
     setCurrentPage(1);
-  }, [search, dateFilter, selectedRegion, selectedZonaLocal, selectedZona, selectedTecnico, selectedCliente, selectedEstado, specialFilter, slaFilter, sortBy, pageSize]);
+  }, [search, dateFilter, selectedYear, selectedRegion, selectedZonaLocal, selectedZona, selectedTecnico, selectedCliente, selectedEstado, specialFilter, slaFilter, sortBy, pageSize]);
 
   // Pagination calculations
   const totalPages = Math.ceil(filteredTickets.length / pageSize) || 1;
@@ -1386,9 +1409,28 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
         </div>
 
-        {/* Strictly Cascading / Dependent Dropdown Filters (6 Columns) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 pt-3 border-t border-slate-800/80">
+        {/* Strictly Cascading / Dependent Dropdown Filters */}
+        <div className={`grid grid-cols-2 sm:grid-cols-3 ${availableYears.length > 1 ? 'lg:grid-cols-7' : 'lg:grid-cols-6'} gap-2.5 pt-3 border-t border-slate-800/80`}>
           
+          {/* 0. Año */}
+          {availableYears.length > 1 && (
+            <div>
+              <label className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block mb-1">
+                Año
+              </label>
+              <select
+                value={selectedYear}
+                onChange={(e) => { setSelectedYear(e.target.value); setCurrentPage(1); }}
+                className="w-full bg-slate-950 border border-amber-500/40 rounded-lg text-xs text-amber-300 py-1.5 px-2 focus:outline-none focus:border-amber-500 font-bold"
+              >
+                <option value="ALL">Todos ({availableYears.length})</option>
+                {availableYears.map(yr => (
+                  <option key={yr} value={yr}>Año {yr}</option>
+                ))}
+              </select>
+            </div>
+          )}
+
           {/* 1. Región */}
           <div>
             <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">

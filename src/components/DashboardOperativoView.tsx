@@ -103,6 +103,15 @@ export interface SparePartMetric {
   enStockFijo: boolean;
 }
 
+function extractRowYear(r: any): string {
+  const dStr = String(r['FECHA FIN'] || r['MARCA FIN'] || r['FECHAALTA'] || r['MARCA ALTA'] || r['fecha'] || r['Fecha'] || '');
+  const m = dStr.match(/\b(202[0-9])\b/);
+  if (m) return m[1];
+  const m2 = dStr.match(/\/(2[0-9])\b/);
+  if (m2) return '20' + m2[1];
+  return '2026';
+}
+
 export const DashboardOperativoView: React.FC = () => {
   // Navigation Tabs inside Dashboard
   const [activeSubTab, setActiveSubTab] = useState<'OPERACIONES_SLA' | 'REPUESTOS_TECNICOS'>('OPERACIONES_SLA');
@@ -115,6 +124,7 @@ export const DashboardOperativoView: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // General Filters (Apply to both SLA line chart and KPIs)
+  const [selectedYear, setSelectedYear] = useState<string>('ALL');
   const [selectedNegocio, setSelectedNegocio] = useState<string>('ALL');
   const [selectedZonaLocal, setSelectedZonaLocal] = useState<string>('ALL');
   const [selectedTecnico, setSelectedTecnico] = useState<string>('ALL');
@@ -179,6 +189,7 @@ export const DashboardOperativoView: React.FC = () => {
 
   // Distinct Options for Dropdowns
   const options = useMemo(() => {
+    const years = new Set<string>();
     const negocios = new Set<string>();
     const fabricantes = new Set<string>();
     const mpcrs = new Set<string>();
@@ -187,6 +198,12 @@ export const DashboardOperativoView: React.FC = () => {
     const monthWeeksMap = new Map<number, Set<number>>();
 
     rawData.forEach(r => {
+      const y = extractRowYear(r);
+      if (y) years.add(y);
+
+      // If a year is selected, only show options for that year
+      if (selectedYear !== 'ALL' && y !== selectedYear) return;
+
       const neg = (r.NEGOCIO || r.Negocio || '').trim();
       if (neg) negocios.add(neg);
 
@@ -216,6 +233,7 @@ export const DashboardOperativoView: React.FC = () => {
     });
 
     return {
+      years: Array.from(years).sort().reverse(),
       negocios: Array.from(negocios).sort(),
       fabricantes: Array.from(fabricantes).sort(),
       mpcrs: Array.from(mpcrs).sort(),
@@ -223,7 +241,7 @@ export const DashboardOperativoView: React.FC = () => {
       meses: Array.from(meses).sort((a, b) => a - b),
       monthWeeksMap
     };
-  }, [rawData, selectedZonaLocal]);
+  }, [rawData, selectedYear, selectedZonaLocal]);
 
   // Dependent Weeks for selected Month
   const availableWeeks = useMemo(() => {
@@ -249,6 +267,7 @@ export const DashboardOperativoView: React.FC = () => {
 
   // Reset filters helper
   const handleResetFilters = () => {
+    setSelectedYear('ALL');
     setSelectedNegocio('ALL');
     setSelectedZonaLocal('ALL');
     setSelectedTecnico('ALL');
@@ -264,6 +283,11 @@ export const DashboardOperativoView: React.FC = () => {
   // -------------------------------------------------------------
   const generalFilteredData = useMemo(() => {
     return rawData.filter(r => {
+      // Año
+      if (selectedYear !== 'ALL') {
+        const y = extractRowYear(r);
+        if (y !== selectedYear) return false;
+      }
       // Negocio
       if (selectedNegocio !== 'ALL') {
         const val = (r.NEGOCIO || r.Negocio || '').trim().toLowerCase();
@@ -291,7 +315,7 @@ export const DashboardOperativoView: React.FC = () => {
       }
       return true;
     });
-  }, [rawData, selectedNegocio, selectedZonaLocal, selectedTecnico, selectedFabricante, selectedMpcr]);
+  }, [rawData, selectedYear, selectedNegocio, selectedZonaLocal, selectedTecnico, selectedFabricante, selectedMpcr]);
 
   // -------------------------------------------------------------
   // Filter Layer 2: Temporal Filters (Applied to KPI Cards and Tables)
@@ -856,7 +880,22 @@ export const DashboardOperativoView: React.FC = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {/* Año */}
+            <div>
+              <label className="block text-[11px] font-semibold text-amber-400 mb-1">Año</label>
+              <select
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+                className="w-full bg-slate-950/80 border border-amber-500/30 rounded-xl px-3 py-2 text-xs text-amber-200 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-500/30 font-bold"
+              >
+                <option value="ALL">Todos ({options.years.length})</option>
+                {options.years.map(y => (
+                  <option key={y} value={y}>Año {y}</option>
+                ))}
+              </select>
+            </div>
+
             {/* Negocio */}
             <div>
               <label className="block text-[11px] font-semibold text-slate-400 mb-1">Negocio</label>
@@ -1113,13 +1152,15 @@ export const DashboardOperativoView: React.FC = () => {
               <div>
                 <div className="flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-cyan-400" />
-                  <h3 className="text-base font-black text-white tracking-tight">Evolución Mensual de Cumplimiento SLA</h3>
+                  <h3 className="text-base font-black text-white tracking-tight">
+                    Evolución Mensual de Cumplimiento SLA {selectedYear !== 'ALL' ? `(${selectedYear})` : '(Consolidado)'}
+                  </h3>
                   <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-cyan-500/15 text-cyan-300 border border-cyan-500/25 rounded-md">
                     Gráfico de Líneas
                   </span>
                 </div>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  Evolución anual mes a mes para el segmento filtrado ({selectedNegocio !== 'ALL' ? selectedNegocio : 'Todos los negocios'} • {selectedZonaLocal !== 'ALL' ? selectedZonaLocal : 'Todas las zonas'})
+                  Evolución mes a mes para el segmento filtrado ({selectedYear !== 'ALL' ? `Año ${selectedYear}` : 'Todos los Años'} • {selectedNegocio !== 'ALL' ? selectedNegocio : 'Todos los negocios'} • {selectedZonaLocal !== 'ALL' ? selectedZonaLocal : 'Todas las zonas'})
                 </p>
               </div>
 

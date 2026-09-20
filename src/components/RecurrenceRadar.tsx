@@ -43,10 +43,10 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
   // Date-to-Date Range States (Default to last 60 days of dataset: 2026-07-08 to 2026-09-07)
   const [fechaDesde, setFechaDesde] = useState<string>('2026-07-08');
   const [fechaHasta, setFechaHasta] = useState<string>('2026-09-07');
-  const [periodPreset, setPeriodPreset] = useState<'30D' | '60D' | '90D' | 'ALL' | 'CUSTOM'>('60D');
+  const [periodPreset, setPeriodPreset] = useState<'30D' | '60D' | '90D' | '2026' | '2025' | 'ALL' | 'CUSTOM'>('60D');
   const [tipoAtencion, setTipoAtencion] = useState<'TODAS' | 'SOLO_CAMPO' | 'SOLO_TELCA2'>('TODAS');
 
-  const handleApplyPreset = (preset: '30D' | '60D' | '90D' | 'ALL') => {
+  const handleApplyPreset = (preset: '30D' | '60D' | '90D' | '2026' | '2025' | 'ALL') => {
     setPeriodPreset(preset);
     if (preset === '30D') {
       setFechaDesde('2026-08-08');
@@ -57,6 +57,12 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
     } else if (preset === '90D') {
       setFechaDesde('2026-06-08');
       setFechaHasta('2026-09-07');
+    } else if (preset === '2026') {
+      setFechaDesde('2026-01-01');
+      setFechaHasta('2026-12-31');
+    } else if (preset === '2025') {
+      setFechaDesde('2025-01-01');
+      setFechaHasta('2025-12-31');
     } else if (preset === 'ALL') {
       setFechaDesde('2025-01-01');
       setFechaHasta('2026-12-31');
@@ -236,6 +242,26 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
               Últimos 90 días
             </button>
             <button
+              onClick={() => handleApplyPreset('2026')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition ${
+                periodPreset === '2026'
+                  ? 'bg-amber-500 text-slate-950 shadow ring-1 ring-amber-400'
+                  : 'bg-slate-950 border border-amber-500/30 text-amber-300 hover:bg-slate-800'
+              }`}
+            >
+              Año 2026
+            </button>
+            <button
+              onClick={() => handleApplyPreset('2025')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition ${
+                periodPreset === '2025'
+                  ? 'bg-amber-500 text-slate-950 shadow ring-1 ring-amber-400'
+                  : 'bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800'
+              }`}
+            >
+              Año 2025
+            </button>
+            <button
               onClick={() => handleApplyPreset('ALL')}
               className={`px-2.5 py-1 rounded-lg text-xs font-bold transition ${
                 periodPreset === 'ALL'
@@ -243,7 +269,7 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
                   : 'bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800'
               }`}
             >
-              Todo el Historial
+              Histórico Completo (2025-2026)
             </button>
           </div>
 

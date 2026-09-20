@@ -67,6 +67,15 @@ const MESES_NOMBRES: Record<string, string> = {
   '12': '12 - Diciembre'
 };
 
+function extractRowYear(r: any): string {
+  const dStr = String(r['FECHA FIN'] || r['MARCA FIN'] || r['FECHAALTA'] || r['MARCA ALTA'] || r['fecha'] || r['Fecha'] || '');
+  const m = dStr.match(/\b(202[0-9])\b/);
+  if (m) return m[1];
+  const m2 = dStr.match(/\/(2[0-9])\b/);
+  if (m2) return '20' + m2[1];
+  return '2026';
+}
+
 export const AnalisisPatagoniaView: React.FC = () => {
   // Active Sub-Tab
   const [activeSubTab, setActiveSubTab] = useState<SubTabKey>('SUSPENDIDOS');
@@ -85,6 +94,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
 
   // Filters / Slicers State (Exact match to Excel Slicers)
   const [search, setSearch] = useState<string>('');
+  const [selectedYear, setSelectedYear] = useState<string>('ALL');
   const [selectedNegocio, setSelectedNegocio] = useState<string>('ALL');
   const [selectedSla, setSelectedSla] = useState<'ALL' | '1' | '0'>('ALL');
   const [selectedZonaLocal, setSelectedZonaLocal] = useState<string>('ALL');
@@ -152,6 +162,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
   // Reset all filters to default
   const handleResetFilters = () => {
     setSearch('');
+    setSelectedYear('ALL');
     setSelectedNegocio('ALL');
     setSelectedSla('ALL');
     setSelectedZonaLocal('ALL');
@@ -205,6 +216,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
 
   // Dynamic Options for Slicers based on current dataset
   const options = useMemo(() => {
+    const years = new Set<string>();
     const negocios = new Set<string>();
     const zonasLocales = new Set<string>();
     const tecnicos = new Set<string>();
@@ -216,6 +228,9 @@ export const AnalisisPatagoniaView: React.FC = () => {
     const monthWeeksMap: Record<string, Set<string>> = {};
 
     currentRawData.forEach(r => {
+      const y = extractRowYear(r);
+      if (y) years.add(y);
+
       const neg = r.NEGOCIO || r.Negocio;
       if (neg) negocios.add(neg);
 
@@ -261,6 +276,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
     }
 
     return {
+      years: Array.from(years).sort().reverse(),
       negocios: Array.from(negocios).sort(),
       zonasLocales: ['Atlántica', 'Centro', 'Contratistas', 'La Pampa', 'Oeste', 'Sur', 'Suroeste'].filter(z => zonasLocales.has(z) || true),
       tecnicos: Array.from(tecnicos).sort(),
@@ -294,6 +310,12 @@ export const AnalisisPatagoniaView: React.FC = () => {
   // Base cohort filtered by all criteria EXCEPT selectedDerivado
   const contextFilteredData = useMemo(() => {
     return currentRawData.filter(r => {
+      // 0. Año
+      if (selectedYear !== 'ALL') {
+        const rowYear = extractRowYear(r);
+        if (rowYear !== selectedYear) return false;
+      }
+
       // 1. Negocio
       if (selectedNegocio !== 'ALL') {
         const neg = r.NEGOCIO || r.Negocio;
@@ -719,7 +741,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="text-xl font-black text-white tracking-wide">
-                  Análisis Atenciones 2026
+                  Análisis Atenciones {selectedYear !== 'ALL' ? selectedYear : 'Consolidado (2025/2026)'}
                 </h1>
                 <span className="px-2.5 py-0.5 bg-amber-500/20 border border-amber-500/50 text-amber-300 text-xs font-bold rounded-full">
                   Archivo Maestro Excel
@@ -1256,9 +1278,27 @@ export const AnalisisPatagoniaView: React.FC = () => {
             })}
           </div>
 
-          {/* Slicer 3: Mes y Semana como Desplegable Dependiente del Mes */}
+          {/* Slicer 3: Año, Mes y Semana como Desplegable Dependiente del Mes */}
           <div className="flex items-center gap-4 flex-wrap pt-2 border-t border-slate-800/80">
             
+            {/* Año Dropdown */}
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1">
+                <CalendarRange className="w-3.5 h-3.5" />
+                <span>Año:</span>
+              </span>
+              <select
+                value={selectedYear}
+                onChange={(e) => { setSelectedYear(e.target.value); setCurrentPage(1); }}
+                className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-amber-500 font-bold"
+              >
+                <option value="ALL">Todos los Años ({options.years.length})</option>
+                {options.years.map(yr => (
+                  <option key={yr} value={yr}>Año {yr}</option>
+                ))}
+              </select>
+            </div>
+
             {/* Mes Dropdown */}
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1">
