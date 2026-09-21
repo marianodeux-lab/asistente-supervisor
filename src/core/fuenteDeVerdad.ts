@@ -24,19 +24,42 @@
  *      * < 60 minutos para ATM, Glory y CIMA.
  *      * < 40 minutos para SNBC.
  * 
- * 4. CONTROL SLA & AGENDA DIARIA:
- *    - ASIGNACIÓN EFECTIVA EN REPORTE ASIGNADOS (COLUMNA M = 'S' Y FECHA OPERATIVA ACTUAL / DÍA POSTERIOR):
- *      * Para el análisis de Agenda Diaria, un pedido se considera efectivamente asignado si y solo si:
+ * 4. CONTROL SLA & AGENDA DIARIA (CONTROL DE INICIO • MARCAJE DE ASISTENCIA • CRUCES INTELIGENTES):
+ *    - FUENTES DE DATOS DE CORTE DIARIO:
+ *      * Se nutre de los reportes en D:\Asistente Supervisor\Reportes\Agenda Diaria:
+ *        `Asignados.xls`, `Adicionales.xls`, `Pendientes Patagonia.xls`, `Pendientes Suroeste.xls`.
+ *      * Define la agenda operativa de 'Hoy' o la proyectada del 'Día Siguiente / Mañana' (con filtro dinámico de jornada).
+ * 
+ *    - ASIGNACIÓN EFECTIVA EN REPORTE ASIGNADOS:
+ *      * Un pedido se considera efectivamente asignado a la supervisión si y solo si:
  *        1. La columna M figura estrictamente en 'S' (informado/notificado al móvil del técnico).
- *        2. Pertenece a los técnicos de la supervisión (Región PATAGONIA / Zonas del equipo).
- *        3. La fecha de asignación/coordinada (F Coor) corresponde a la fecha actual ('Hoy') o el día posterior inmediato ('Mañana' / próxima jornada).
- *      * En este corte de datos, para la fecha 21/09/2026 con M = 'S', son exactamente 23 pedidos asignados en total.
- *      * Todo registro con fecha fuera de la jornada operativa o donde M no sea 'S' (ej. 'N') NO fue asignado para el día.
- *    - Tarjeta "TOTAL EN AGENDA": Debe mostrar el total de los pedidos asignados en COT para la jornada (23 pedidos).
- *    - Matcheo con Pendientes Patagonia (9) y Suroeste (15):
- *      * Los pedidos de los reportes pendientes que figuran con M = 'S' y fecha del día en Asignados se consideran "Pendientes Asignados en COT" (7 pedidos).
- *      * Todos los pedidos de los reportes pendientes que NO cumplan esta condición se muestran como valor aparte ("Sin Asignar Pat/Sur - Riesgo SLA Directo", 17 pedidos).
- *    - Control de Inicio de Jornada: Refleja la agenda real asignada informada al móvil para la jornada (23 pedidos) y su 1° horario.
+ *        2. Pertenece a los técnicos de la supervisión (Región PATAGONIA y CENTRO-OESTE / SUROESTE).
+ *        3. La fecha de asignación/coordinada (F Coor) corresponde a la fecha actual ('Hoy') o el día posterior inmediato ('Mañana').
+ *      * En el corte 21/09/2026 con M = 'S', son exactamente 23 pedidos asignados en total.
+ *      * Todo registro fuera de fecha o con M != 'S' no fue informado al móvil para la jornada.
+ * 
+ *    - CRUCES INTELIGENTES POR EQUIPO (LUNO):
+ *      1. MP PENDIENTE ("Oportunidad de Preventivo"):
+ *         * Cruza cada LUNO con los reportes `MP Pendientes` (Patagonia, Suroeste y Bariloche).
+ *         * Si el equipo tiene un MP pendiente, se alerta visualmente para que el técnico aproveche la visita y realice el preventivo en el mismo viaje.
+ *      2. ÚLTIMA ATENCIÓN / HISTORIAL PREVIO:
+ *         * Cruza con `MP Cerrados`, `SLA` y `Suspendidos` para determinar:
+ *           - Tiempo transcurrido: Formato canónico `SC - X meses, Y días` / `MPR - X meses, Y días`.
+ *           - Tipo de pedido previo: Service Call (SC), Mantenimiento Preventivo (MPR / PMR), etc.
+ *           - Tiempo laboral empleado en sitio (T Asis / horas y minutos de atención).
+ *           - Observaciones del cierre previo (Obs Control / Notas de servicio).
+ *           - Técnico que realizó la atención anterior.
+ *      3. HISTORIAL DE REPUESTOS Y DESPACHOS:
+ *         * Cruza el LUNO y Pedido con `Reporte Buzon Movimientos.xlsx` y cierres con repuestos.
+ *         * Identifica repuestos utilizados, retirados, despachos de stock en tránsito y remitos.
+ *         * Indicador de Reincidencia (R) en el equipo en los últimos 30 días.
+ * 
+ *    - CONCILIACIÓN CON PENDIENTES (Patagonia 9 + Suroeste 15 = 24 tickets):
+ *      * 7 pedidos figuran asignados en COT con M = 'S' ("Pendientes Asignados en COT").
+ *      * 17 pedidos no fueron asignados para la jornada ("Sin Asignar Pat/Sur - Riesgo SLA Directo").
+ * 
+ *    - CONTROL DE INICIO DE JORNADA:
+ *      * Refleja la agenda real informada al móvil para la jornada y verifica el estado de marcaje de asistencia (07:00 a 10:00 hs).
  * 
  * 5. ANÁLISIS DE ATENCIONES - SUSPENDIDOS:
  *    - Se deben excluir obligatoriamente los cierres MONITOREO (además de TELCA, TELCA2, TELCA3, TELFA y DERIV).
