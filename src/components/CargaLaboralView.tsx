@@ -97,7 +97,12 @@ export const CargaLaboralView: React.FC<CargaLaboralViewProps> = ({ data, zonas 
           t.zona.toLowerCase().includes(query);
         if (!match) return false;
       }
-      if (selectedZona !== 'ALL' && t.zona !== selectedZona) return false;
+      if (selectedZona !== 'ALL') {
+        const sNorm = selectedZona.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+        const tNorm = (t.zona || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+        const match = tNorm === sNorm || `zona ${tNorm}` === sNorm || sNorm.includes(tNorm);
+        if (!match) return false;
+      }
       return true;
     });
   }, [porTecnico, search, selectedZona]);

@@ -26,7 +26,7 @@ import {
   Building,
   UserCheck
 } from 'lucide-react';
-import { PreventivosState, ZonaInfo, CtdDemoradoItem } from '../types';
+import { PreventivosState, ZonaInfo, CtdDemoradoItem, ResumenLocalidadMp } from '../types';
 
 interface PreventivosManagerProps {
   preventivos: PreventivosState;
@@ -78,6 +78,13 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
   const [pageSizeMp, setPageSizeMp] = useState<number>(40);
   const [currentPageMp, setCurrentPageMp] = useState<number>(1);
 
+  // Filters and Pagination for Localidades MP Summary Table
+  const [searchLocalidad, setSearchLocalidad] = useState<string>('');
+  const [pageSizeLoc, setPageSizeLoc] = useState<number>(20);
+  const [currentPageLoc, setCurrentPageLoc] = useState<number>(1);
+  const [sortFieldLoc, setSortFieldLoc] = useState<'total' | 'localidad' | 'atm' | 'ctd' | 'zonaLocal'>('total');
+  const [sortAscLoc, setSortAscLoc] = useState<boolean>(false);
+
   // Filters for CTD Demorados Radar
   const [searchCtd, setSearchCtd] = useState('');
   const [selectedZonaCtd, setSelectedZonaCtd] = useState<string>('ALL');
@@ -103,11 +110,11 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
 
   // Breakdown of Pendings: ATM vs CTD
   const totalPendientesAtm = useMemo(() => {
-    return preventivos.pendientesDetalle.filter(p => p.negocio === 'ATM').length;
+    return preventivos.pendientesDetalle.filter(p => (p.negocio || '').toUpperCase().includes('ATM')).length;
   }, [preventivos.pendientesDetalle]);
 
   const totalPendientesCtd = useMemo(() => {
-    return preventivos.pendientesDetalle.filter(p => p.negocio !== 'ATM').length;
+    return preventivos.pendientesDetalle.filter(p => !(p.negocio || '').toUpperCase().includes('ATM')).length;
   }, [preventivos.pendientesDetalle]);
 
   // Dynamic Required Paces
@@ -125,21 +132,60 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
     return parseFloat((ritmoDiarioAtm + ritmoDiarioCtd).toFixed(1));
   }, [ritmoDiarioAtm, ritmoDiarioCtd]);
 
-  // Filter pending MP list
+  // Normalize comparison helper
+  const normalizeStr = (str: string = '') => {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+  };
+
+  // Filter pending MP list with robust zone and business matching
   const filteredPendientes = useMemo(() => {
     return preventivos.pendientesDetalle.filter(p => {
+      // 1. Search Query
       if (search.trim()) {
-        const query = search.toLowerCase();
+        const query = normalizeStr(search);
         const match = 
-          p.pedido.toLowerCase().includes(query) ||
-          p.cliente.toLowerCase().includes(query) ||
-          p.luno.toLowerCase().includes(query) ||
-          p.localidad.toLowerCase().includes(query) ||
-          p.tecnico.toLowerCase().includes(query);
+          normalizeStr(p.pedido).includes(query) ||
+          normalizeStr(p.cliente).includes(query) ||
+          normalizeStr(p.luno).includes(query) ||
+          normalizeStr(p.localidad).includes(query) ||
+          normalizeStr(p.direccion).includes(query) ||
+          normalizeStr(p.tecnico).includes(query) ||
+          normalizeStr(p.modelo).includes(query) ||
+          normalizeStr(p.fabricante).includes(query) ||
+          normalizeStr(p.zona).includes(query) ||
+          normalizeStr(p.zonaLocal).includes(query) ||
+          normalizeStr(p.zonaTecnica).includes(query);
         if (!match) return false;
       }
-      if (selectedZona !== 'ALL' && p.zona !== selectedZona) return false;
-      if (selectedNegocio !== 'ALL' && p.negocio !== selectedNegocio) return false;
+
+      // 2. Zona filter (supports matching by zona, zonaLocal, zonaTecnica)
+      if (selectedZona !== 'ALL') {
+        const selNorm = normalizeStr(selectedZona);
+        const pZona = normalizeStr(p.zona);
+        const pLocal = normalizeStr(p.zonaLocal);
+        const pTec = normalizeStr(p.zonaTecnica);
+        
+        const matchZona = 
+          pZona === selNorm ||
+          pLocal === selNorm ||
+          pTec === selNorm ||
+          `zona ${pZona}` === selNorm ||
+          `zona ${pLocal}` === selNorm;
+        
+        if (!matchZona) return false;
+      }
+
+      // 3. Negocio filter (ATM vs Cash Today)
+      if (selectedNegocio !== 'ALL') {
+        const negNorm = (p.negocio || '').trim().toUpperCase();
+        const selNorm = selectedNegocio.trim().toUpperCase();
+        const isAtm = negNorm.includes('ATM');
+        const isCtd = negNorm.includes('CASH') || negNorm.includes('CTD');
+
+        if (selNorm.includes('ATM') && !isAtm) return false;
+        if ((selNorm.includes('CASH') || selNorm.includes('CTD')) && !isCtd) return false;
+      }
+
       return true;
     });
   }, [preventivos.pendientesDetalle, search, selectedZona, selectedNegocio]);
@@ -151,20 +197,186 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
     return filteredPendientes.slice(start, start + pageSizeMp);
   }, [filteredPendientes, currentPageMp, pageSizeMp]);
 
+  // ══════════════════════════════════════════════════════════════════════════════
+  // TABLA DETALLE DE MP POR LOCALIDAD Y NEGOCIO (CON CANTIDAD TOTAL DE PENDIENTES)
+  // ══════════════════════════════════════════════════════════════════════════════
+  const resumenLocalidades = useMemo(() => {
+    // If backend provided pre-aggregated resumenPorLocalidad, we can enrich it or dynamically aggregate from pendientesDetalle
+    const map = new Map<string, {
+      localidad: string;
+      zonaLocal: string;
+      zonaTecnica: string;
+      atm: number;
+      ctd: number;
+      total: number;
+      tecnicosSet: Set<string>;
+    }>();
+
+    preventivos.pendientesDetalle.forEach(p => {
+      const loc = (p.localidad || 'Sin Localidad').trim();
+      const zLocal = p.zonaLocal || p.zona || 'General';
+      const zTec = p.zonaTecnica || '';
+
+      if (!map.has(loc)) {
+        map.set(loc, {
+          localidad: loc,
+          zonaLocal: zLocal,
+          zonaTecnica: zTec,
+          atm: 0,
+          ctd: 0,
+          total: 0,
+          tecnicosSet: new Set<string>()
+        });
+      }
+
+      const item = map.get(loc)!;
+      const isAtm = (p.negocio || '').toUpperCase().includes('ATM');
+      if (isAtm) {
+        item.atm++;
+      } else {
+        item.ctd++;
+      }
+      item.total++;
+
+      if (p.tecnico && p.tecnico.toLowerCase() !== 'sin asignar') {
+        item.tecnicosSet.add(p.tecnico);
+      }
+    });
+
+    return Array.from(map.values()).map(e => ({
+      localidad: e.localidad,
+      zonaLocal: e.zonaLocal,
+      zonaTecnica: e.zonaTecnica,
+      atm: e.atm,
+      ctd: e.ctd,
+      total: e.total,
+      tecnicos: Array.from(e.tecnicosSet).join(', ') || 'Sin asignar'
+    }));
+  }, [preventivos.pendientesDetalle]);
+
+  // Filtered and Sorted Localidades
+  const filteredLocalidades = useMemo(() => {
+    const list = resumenLocalidades.filter(loc => {
+      // 1. Search Query on Localidades table
+      if (searchLocalidad.trim()) {
+        const q = normalizeStr(searchLocalidad);
+        const match = 
+          normalizeStr(loc.localidad).includes(q) ||
+          normalizeStr(loc.zonaLocal).includes(q) ||
+          normalizeStr(loc.zonaTecnica).includes(q) ||
+          normalizeStr(loc.tecnicos).includes(q);
+        if (!match) return false;
+      }
+
+      // 2. Global Selected Zona
+      if (selectedZona !== 'ALL') {
+        const selNorm = normalizeStr(selectedZona);
+        const zLocal = normalizeStr(loc.zonaLocal);
+        const zTec = normalizeStr(loc.zonaTecnica);
+        const matchZona = 
+          zLocal === selNorm ||
+          zTec === selNorm ||
+          `zona ${zLocal}` === selNorm;
+        if (!matchZona) return false;
+      }
+
+      // 3. Global Selected Negocio
+      if (selectedNegocio !== 'ALL') {
+        const selNorm = selectedNegocio.toUpperCase();
+        if (selNorm.includes('ATM') && loc.atm === 0) return false;
+        if ((selNorm.includes('CASH') || selNorm.includes('CTD')) && loc.ctd === 0) return false;
+      }
+
+      return true;
+    });
+
+    // Sorting
+    return list.sort((a, b) => {
+      let valA: any = a[sortFieldLoc];
+      let valB: any = b[sortFieldLoc];
+
+      if (typeof valA === 'number' && typeof valB === 'number') {
+        return sortAscLoc ? valA - valB : valB - valA;
+      }
+
+      const strA = normalizeStr(String(valA));
+      const strB = normalizeStr(String(valB));
+      return sortAscLoc ? strA.localeCompare(strB) : strB.localeCompare(strA);
+    });
+  }, [resumenLocalidades, searchLocalidad, selectedZona, selectedNegocio, sortFieldLoc, sortAscLoc]);
+
+  // Paginated Localidades
+  const totalPagesLoc = Math.ceil(filteredLocalidades.length / pageSizeLoc) || 1;
+  const paginatedLocalidades = useMemo(() => {
+    const start = (currentPageLoc - 1) * pageSizeLoc;
+    return filteredLocalidades.slice(start, start + pageSizeLoc);
+  }, [filteredLocalidades, currentPageLoc, pageSizeLoc]);
+
+  // Totals for the Localidades summary
+  const totalMpLocalidadesFiltradas = useMemo(() => {
+    return filteredLocalidades.reduce((acc, curr) => acc + curr.total, 0);
+  }, [filteredLocalidades]);
+
+  const totalAtmLocalidadesFiltradas = useMemo(() => {
+    return filteredLocalidades.reduce((acc, curr) => acc + curr.atm, 0);
+  }, [filteredLocalidades]);
+
+  const totalCtdLocalidadesFiltradas = useMemo(() => {
+    return filteredLocalidades.reduce((acc, curr) => acc + curr.ctd, 0);
+  }, [filteredLocalidades]);
+
+  // Sort handler for Localidades
+  const handleSortLoc = (field: 'total' | 'localidad' | 'atm' | 'ctd' | 'zonaLocal') => {
+    if (sortFieldLoc === field) {
+      setSortAscLoc(prev => !prev);
+    } else {
+      setSortFieldLoc(field);
+      setSortAscLoc(field === 'localidad' || field === 'zonaLocal');
+    }
+  };
+
+  // Export CSV for Localidades Table
+  const handleExportLocalidadesCSV = () => {
+    const headers = ["Localidad", "Zona Local", "Zona Tecnica", "MP Pendientes ATM", "MP Pendientes Cash Today", "Total MP Pendientes", "Tecnicos Asignados"];
+    const rows = filteredLocalidades.map(l => [
+      `"${l.localidad}"`,
+      `"${l.zonaLocal}"`,
+      `"${l.zonaTecnica}"`,
+      l.atm,
+      l.ctd,
+      l.total,
+      `"${l.tecnicos}"`
+    ]);
+    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `mp_detalle_por_localidad_negocio_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   // Filter CTD Demorados List
   const filteredCtdDemorados = useMemo(() => {
     return ctdDemorados.filter(c => {
       if (searchCtd.trim()) {
-        const q = searchCtd.toLowerCase();
+        const q = normalizeStr(searchCtd);
         const match = 
-          c.luno.toLowerCase().includes(q) ||
-          c.cliente.toLowerCase().includes(q) ||
-          c.localidad.toLowerCase().includes(q) ||
-          c.tecnico.toLowerCase().includes(q) ||
-          c.modelo.toLowerCase().includes(q);
+          normalizeStr(c.luno).includes(q) ||
+          normalizeStr(c.cliente).includes(q) ||
+          normalizeStr(c.localidad).includes(q) ||
+          normalizeStr(c.tecnico).includes(q) ||
+          normalizeStr(c.modelo).includes(q) ||
+          normalizeStr(c.zona).includes(q);
         if (!match) return false;
       }
-      if (selectedZonaCtd !== 'ALL' && c.zona !== selectedZonaCtd) return false;
+      if (selectedZonaCtd !== 'ALL') {
+        const selNorm = normalizeStr(selectedZonaCtd);
+        const cZona = normalizeStr(c.zona);
+        const match = cZona === selNorm || `zona ${cZona}` === selNorm;
+        if (!match) return false;
+      }
       if (criticidadCtd !== 'ALL' && c.criticidad !== criticidadCtd) return false;
       return true;
     });
@@ -189,12 +401,14 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
 
   // Export CSV for Pending MP
   const handleExportCSV = () => {
-    const headers = ["Pedido", "Cliente", "Equipo", "Zona", "Localidad", "Direccion", "Tecnico", "Modelo", "Negocio", "Fabricante"];
+    const headers = ["Pedido", "Cliente", "Equipo", "Zona", "Zona Local", "Zona Tecnica", "Localidad", "Direccion", "Tecnico", "Modelo", "Negocio", "Fabricante"];
     const rows = filteredPendientes.map(p => [
       p.pedido,
       `"${p.cliente}"`,
       p.luno,
       p.zona,
+      `"${p.zonaLocal || p.zona}"`,
+      `"${p.zonaTecnica || ''}"`,
       `"${p.localidad}"`,
       `"${p.direccion}"`,
       `"${p.tecnico}"`,
@@ -582,6 +796,261 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
             </div>
           </div>
 
+          {/* ══════════════════════════════════════════════════════════════════════════════════════ */}
+          {/* TABLA RESUMEN / DETALLE DE MP POR LOCALIDAD Y NEGOCIO (CON TOTAL DE PENDIENTES)         */}
+          {/* ══════════════════════════════════════════════════════════════════════════════════════ */}
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl space-y-0">
+            
+            {/* Header & Controls */}
+            <div className="px-5 py-4 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+              
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 shadow-inner">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="text-sm font-bold text-white">Detalle de MP por Localidad y Negocio</h3>
+                    <span className="text-xs bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2.5 py-0.5 rounded-full font-bold font-mono">
+                      {filteredLocalidades.length} localidades • {totalMpLocalidadesFiltradas} MP pendientes
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Consolidado geográfico por localidad con desglose entre <strong>ATM</strong> y <strong>Cash Today</strong> y nómina de técnicos responsables.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 justify-end">
+                
+                {/* Search Localidad */}
+                <div className="relative w-full sm:w-56">
+                  <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={searchLocalidad}
+                    onChange={(e) => { setSearchLocalidad(e.target.value); setCurrentPageLoc(1); }}
+                    placeholder="Buscar localidad, técnico..."
+                    className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-8 pr-2.5 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                  />
+                  {searchLocalidad && (
+                    <button
+                      onClick={() => { setSearchLocalidad(''); setCurrentPageLoc(1); }}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white text-xs font-bold"
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
+
+                {/* Page Size Selector */}
+                <div className="flex items-center bg-slate-950 border border-slate-800 rounded-lg overflow-hidden p-0.5">
+                  {[10, 20, 50, 100].map(sz => (
+                    <button
+                      key={sz}
+                      onClick={() => { setPageSizeLoc(sz); setCurrentPageLoc(1); }}
+                      className={`px-2 py-0.5 text-[11px] font-bold rounded transition ${
+                        pageSizeLoc === sz
+                          ? 'bg-amber-500 text-slate-950 shadow'
+                          : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                      }`}
+                    >
+                      {sz}
+                    </button>
+                  ))}
+                </div>
+
+                {/* CSV Export */}
+                <button
+                  onClick={handleExportLocalidadesCSV}
+                  className="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-700 transition"
+                  title="Exportar resumen de MP por localidad a CSV"
+                >
+                  <Download className="w-3.5 h-3.5 text-amber-400" />
+                  <span>CSV Localidades</span>
+                </button>
+
+              </div>
+
+            </div>
+
+            {/* Quick Summary Pill Bar */}
+            <div className="px-5 py-2.5 bg-slate-950/60 border-b border-slate-800/80 flex items-center justify-between flex-wrap gap-2 text-xs">
+              <div className="flex items-center gap-4 text-slate-400 flex-wrap">
+                <span>Total MP en vista: <strong className="text-amber-400 font-mono text-sm">{totalMpLocalidadesFiltradas}</strong></span>
+                <span>•</span>
+                <span>ATM: <strong className="text-blue-400 font-mono">{totalAtmLocalidadesFiltradas}</strong></span>
+                <span>•</span>
+                <span>Cash Today: <strong className="text-emerald-400 font-mono">{totalCtdLocalidadesFiltradas}</strong></span>
+              </div>
+              <span className="text-[11px] text-slate-500">
+                Haz clic en las cabeceras para ordenar columnas
+              </span>
+            </div>
+
+            {/* Table View */}
+            <div className="overflow-x-auto max-h-[420px]">
+              <table className="w-full text-left border-collapse text-xs">
+                <thead className="sticky top-0 bg-slate-950 z-10 shadow-sm">
+                  <tr className="text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800/80">
+                    <th 
+                      onClick={() => handleSortLoc('localidad')}
+                      className="py-3 px-4 cursor-pointer hover:text-white select-none"
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <span>Localidad</span>
+                        {sortFieldLoc === 'localidad' && (
+                          <span className="text-amber-400">{sortAscLoc ? '▲' : '▼'}</span>
+                        )}
+                      </div>
+                    </th>
+                    <th 
+                      onClick={() => handleSortLoc('zonaLocal')}
+                      className="py-3 px-4 cursor-pointer hover:text-white select-none"
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <span>Zona Local & Técnica</span>
+                        {sortFieldLoc === 'zonaLocal' && (
+                          <span className="text-amber-400">{sortAscLoc ? '▲' : '▼'}</span>
+                        )}
+                      </div>
+                    </th>
+                    <th 
+                      onClick={() => handleSortLoc('atm')}
+                      className="py-3 px-4 text-center cursor-pointer hover:text-white select-none"
+                    >
+                      <div className="flex items-center justify-center gap-1.5">
+                        <span>MP ATM</span>
+                        {sortFieldLoc === 'atm' && (
+                          <span className="text-blue-400">{sortAscLoc ? '▲' : '▼'}</span>
+                        )}
+                      </div>
+                    </th>
+                    <th 
+                      onClick={() => handleSortLoc('ctd')}
+                      className="py-3 px-4 text-center cursor-pointer hover:text-white select-none"
+                    >
+                      <div className="flex items-center justify-center gap-1.5">
+                        <span>MP Cash Today</span>
+                        {sortFieldLoc === 'ctd' && (
+                          <span className="text-emerald-400">{sortAscLoc ? '▲' : '▼'}</span>
+                        )}
+                      </div>
+                    </th>
+                    <th 
+                      onClick={() => handleSortLoc('total')}
+                      className="py-3 px-4 text-center cursor-pointer hover:text-white select-none"
+                    >
+                      <div className="flex items-center justify-center gap-1.5">
+                        <span className="text-amber-300 font-bold">Total MP Pendientes</span>
+                        {sortFieldLoc === 'total' && (
+                          <span className="text-amber-400">{sortAscLoc ? '▲' : '▼'}</span>
+                        )}
+                      </div>
+                    </th>
+                    <th className="py-3 px-4">Técnicos Asignados en Zona</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60">
+                  {paginatedLocalidades.length === 0 ? (
+                    <tr>
+                      <td colSpan={6} className="py-10 text-center text-slate-400">
+                        No se encontraron localidades con los filtros aplicados.
+                      </td>
+                    </tr>
+                  ) : (
+                    paginatedLocalidades.map((loc, idx) => (
+                      <tr key={idx} className="hover:bg-slate-800/50 transition">
+                        <td className="py-2.5 px-4 font-bold text-white">
+                          <div className="flex items-center gap-2">
+                            <MapPin className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                            <span>{loc.localidad}</span>
+                          </div>
+                        </td>
+                        <td className="py-2.5 px-4">
+                          <span className="text-slate-200 font-medium">{loc.zonaLocal}</span>
+                          {loc.zonaTecnica && (
+                            <span className="text-[11px] text-slate-400 block font-mono">({loc.zonaTecnica})</span>
+                          )}
+                        </td>
+                        <td className="py-2.5 px-4 text-center">
+                          <span className={`px-2.5 py-0.5 rounded-full text-xs font-mono font-bold ${
+                            loc.atm > 0 
+                              ? 'bg-blue-950 text-blue-300 border border-blue-600/60' 
+                              : 'text-slate-600 font-normal'
+                          }`}>
+                            {loc.atm}
+                          </span>
+                        </td>
+                        <td className="py-2.5 px-4 text-center">
+                          <span className={`px-2.5 py-0.5 rounded-full text-xs font-mono font-bold ${
+                            loc.ctd > 0 
+                              ? 'bg-emerald-950 text-emerald-300 border border-emerald-600/60' 
+                              : 'text-slate-600 font-normal'
+                          }`}>
+                            {loc.ctd}
+                          </span>
+                        </td>
+                        <td className="py-2.5 px-4 text-center">
+                          <span className="px-3 py-1 rounded-lg text-xs font-mono font-black bg-amber-500/20 text-amber-300 border border-amber-500/50 inline-block shadow-sm">
+                            {loc.total}
+                          </span>
+                        </td>
+                        <td className="py-2.5 px-4 text-slate-300 text-[11px]">
+                          <span className="truncate max-w-sm block" title={loc.tecnicos}>
+                            {loc.tecnicos}
+                          </span>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Pagination footer */}
+            <div className="px-5 py-3 bg-slate-950 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+              <div className="text-slate-400">
+                Mostrando <strong className="text-white font-mono">{filteredLocalidades.length === 0 ? 0 : (currentPageLoc - 1) * pageSizeLoc + 1}</strong> a <strong className="text-white font-mono">{Math.min(currentPageLoc * pageSizeLoc, filteredLocalidades.length)}</strong> de <strong className="text-amber-400 font-mono">{filteredLocalidades.length}</strong> localidades
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => setCurrentPageLoc(1)}
+                  disabled={currentPageLoc === 1}
+                  className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition"
+                >
+                  <ChevronsLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setCurrentPageLoc(prev => Math.max(prev - 1, 1))}
+                  disabled={currentPageLoc === 1}
+                  className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <span className="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-slate-200 font-mono font-semibold">
+                  Página {currentPageLoc} de {totalPagesLoc}
+                </span>
+                <button
+                  onClick={() => setCurrentPageLoc(prev => Math.min(prev + 1, totalPagesLoc))}
+                  disabled={currentPageLoc === totalPagesLoc}
+                  className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setCurrentPageLoc(totalPagesLoc)}
+                  disabled={currentPageLoc === totalPagesLoc}
+                  className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition"
+                >
+                  <ChevronsRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+          </div>
+
           {/* Pending MP Table */}
           <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
             
@@ -589,9 +1058,9 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
             <div className="px-5 py-3.5 bg-slate-950 border-b border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
               
               <div className="flex items-center gap-3 w-full sm:w-auto">
-                <h3 className="text-sm font-bold text-white">Detalle de Preventivos Pendientes</h3>
-                <span className="text-xs bg-slate-800 text-slate-300 px-2.5 py-0.5 rounded-full font-semibold">
-                  {filteredPendientes.length} pendientes
+                <h3 className="text-sm font-bold text-white">Detalle de Preventivos Pendientes (Órdenes)</h3>
+                <span className="text-xs bg-slate-800 text-slate-300 px-2.5 py-0.5 rounded-full font-semibold font-mono">
+                  {filteredPendientes.length} órdenes pendientes
                 </span>
               </div>
 
@@ -608,7 +1077,7 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
                 <select
                   value={selectedZona}
                   onChange={(e) => { setSelectedZona(e.target.value); setCurrentPageMp(1); }}
-                  className="bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 py-1.5 px-2 focus:outline-none focus:border-amber-500"
+                  className="bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 py-1.5 px-2 focus:outline-none focus:border-amber-500 cursor-pointer"
                 >
                   <option value="ALL">Todas las Zonas</option>
                   {zonas.map(z => (
@@ -619,11 +1088,11 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
                 <select
                   value={selectedNegocio}
                   onChange={(e) => { setSelectedNegocio(e.target.value); setCurrentPageMp(1); }}
-                  className="bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 py-1.5 px-2 focus:outline-none focus:border-amber-500"
+                  className="bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 py-1.5 px-2 focus:outline-none focus:border-amber-500 cursor-pointer"
                 >
                   <option value="ALL">Todos los Negocios (ATM + Cash Today)</option>
                   <option value="ATM">ATM (Bancarios & Red Orus)</option>
-                  <option value="CASH TODAY">Cash Today (CTD - Retail)</option>
+                  <option value="Cash Today">Cash Today (CTD - Retail)</option>
                 </select>
 
                 {/* Page size selector */}

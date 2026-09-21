@@ -282,6 +282,16 @@ export interface ZonaPreventivo {
   ritmoDiario: number;
 }
 
+export interface ResumenLocalidadMp {
+  localidad: string;
+  zonaLocal: string;
+  zonaTecnica: string;
+  atm: number;
+  ctd: number;
+  total: number;
+  tecnicos: string;
+}
+
 export interface MpPendienteDetalle {
   pedido: string;
   cliente: string;
@@ -291,8 +301,12 @@ export interface MpPendienteDetalle {
   tecnico: string;
   modelo: string;
   zona: string;
+  zonaLocal?: string;
+  zonaTecnica?: string;
   negocio: string;
   fabricante: string;
+  detalleFalla?: string;
+  esSinAsignar?: boolean;
 }
 
 export interface CtdDemoradoItem {
@@ -318,6 +332,7 @@ export interface PreventivosState {
   ritmoDiarioRequerido: number;
   porZona: ZonaPreventivo[];
   pendientesDetalle: MpPendienteDetalle[];
+  resumenPorLocalidad?: ResumenLocalidadMp[];
   ctdDemorados?: CtdDemoradoItem[];
 }
 

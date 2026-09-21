@@ -307,6 +307,15 @@ export const AnalisisPatagoniaView: React.FC = () => {
     }
   };
 
+  // Normalize text helper for resilient matching
+  const normalizeText = (val: any = ''): string => {
+    return String(val || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .trim()
+      .toLowerCase();
+  };
+
   // Base cohort filtered by all criteria EXCEPT selectedDerivado
   const contextFilteredData = useMemo(() => {
     return currentRawData.filter(r => {
@@ -316,45 +325,67 @@ export const AnalisisPatagoniaView: React.FC = () => {
         if (rowYear !== selectedYear) return false;
       }
 
-      // 1. Negocio
+      // 1. Negocio (ATM vs Cash Today vs CRP)
       if (selectedNegocio !== 'ALL') {
-        const neg = r.NEGOCIO || r.Negocio;
-        if (neg !== selectedNegocio) return false;
+        const rNeg = normalizeText(r.NEGOCIO || r.Negocio || (r as any).negocio);
+        const sNeg = normalizeText(selectedNegocio);
+        const isAtm = rNeg.includes('atm');
+        const isCtd = rNeg.includes('cash') || rNeg.includes('ctd');
+
+        if (sNeg.includes('atm') && !isAtm) return false;
+        if ((sNeg.includes('cash') || sNeg.includes('ctd')) && !isCtd) return false;
+        if (!sNeg.includes('atm') && !sNeg.includes('cash') && !sNeg.includes('ctd') && rNeg !== sNeg) return false;
       }
 
       // 2. SLA (1 / 0)
       if (selectedSla !== 'ALL') {
-        const slaVal = r['CUMPLIO SLA'] !== undefined ? r['CUMPLIO SLA'] : r['Cumplio SLA TS'];
-        if (String(slaVal) !== selectedSla) return false;
+        const rawSla = r['CUMPLIO SLA'] !== undefined ? r['CUMPLIO SLA'] : (r['Cumplio SLA TS'] !== undefined ? r['Cumplio SLA TS'] : (r as any).cumplioSla);
+        const isCumplio = rawSla === 1 || rawSla === '1' || rawSla === true || rawSla === 'SI' || rawSla === 'Sí';
+        if (selectedSla === '1' && !isCumplio) return false;
+        if (selectedSla === '0' && isCumplio) return false;
       }
 
-      // 3. Zona Local
+      // 3. Zona Local (Accent and casing insensitive)
       if (selectedZonaLocal !== 'ALL') {
-        const zl = r['ZONA LOCAL'] || r['Zona Local'];
-        if (zl !== selectedZonaLocal) return false;
+        const sZl = normalizeText(selectedZonaLocal);
+        const rZl = normalizeText(r['ZONA LOCAL'] || r['Zona Local'] || (r as any).zonaLocal || r.ZONA || r.Zona || (r as any).zona);
+        const rZt = normalizeText(r['ZONA TECNICA'] || r['Zona Tecnica'] || (r as any).zonaTecnica);
+        const match = rZl === sZl || rZl.includes(sZl) || sZl.includes(rZl) || rZt === sZl;
+        if (!match) return false;
       }
 
       // 4. Técnico (TECNICO ZONA for TELCA, TECNICO ASISTIO for Suspendidos/SLA)
       if (selectedTecnico !== 'ALL') {
+        const sTec = normalizeText(selectedTecnico);
+        const tecAsistio = normalizeText(r['TECNICO ASISTIO'] || (r as any).tecnicoAsistio || r.TECNICO || r.Tecnico);
+        const tecAsig = normalizeText(r['TECNICO ASIG'] || r['Tecnico Asig'] || (r as any).tecnicoAsig);
+        const tecZona = normalizeText(r['TECNICO ZONA'] || r['Tecnico Zona'] || (r as any).tecnicoZona);
+
         if (activeSubTab === 'TELCA') {
-          const tz = r['TECNICO ZONA'] || r['Tecnico Zona'];
-          if (tz !== selectedTecnico) return false;
+          const match = (tecZona && (tecZona === sTec || tecZona.includes(sTec))) || 
+                        (tecAsistio && (tecAsistio === sTec || tecAsistio.includes(sTec)));
+          if (!match) return false;
         } else {
-          const ta = r['TECNICO ASISTIO'] || r['Tecnico Asig'] || r['TECNICO ZONA'] || r['Tecnico Zona'];
-          if (ta !== selectedTecnico) return false;
+          const match = (tecAsistio && (tecAsistio === sTec || tecAsistio.includes(sTec))) ||
+                        (tecAsig && (tecAsig === sTec || tecAsig.includes(sTec))) ||
+                        (tecZona && (tecZona === sTec || tecZona.includes(sTec)));
+          if (!match) return false;
         }
       }
 
       // 5. Mes
       if (selectedMes !== 'ALL') {
-        const m = String(r.Mes !== undefined && r.Mes !== '' ? r.Mes : (r['Nombre del mes'] || ''));
-        if (m !== selectedMes) return false;
+        const mRaw = r.Mes !== undefined && r.Mes !== '' ? String(r.Mes) : String(r['Nombre del mes'] || '');
+        const sMesNorm = normalizeText(selectedMes);
+        const mNorm = normalizeText(mRaw);
+        const matchMes = mNorm === sMesNorm || mRaw === selectedMes || (Number(mRaw) === Number(selectedMes));
+        if (!matchMes) return false;
       }
 
       // 6. Semana (dependent on Mes)
       if (selectedSemana !== 'ALL') {
-        const sem = String(r.Semana !== undefined && r.Semana !== '' ? r.Semana : (r['Semana del año'] || ''));
-        if (sem !== selectedSemana) return false;
+        const semRaw = String(r.Semana !== undefined && r.Semana !== '' ? r.Semana : (r['Semana del año'] || ''));
+        if (semRaw !== selectedSemana && Number(semRaw) !== Number(selectedSemana)) return false;
       }
 
       // 7. Día de la Semana
@@ -362,39 +393,48 @@ export const AnalisisPatagoniaView: React.FC = () => {
         if (selectedDia === 'FIN_DE_SEMANA') {
           if (!checkIsWeekend(r)) return false;
         } else {
-          const d = r.Día || r['Día'];
-          if (d && d.toLowerCase() !== selectedDia.toLowerCase()) return false;
+          const dNorm = normalizeText(r.Día || r['Día'] || r['Día de la semana']);
+          const sDiaNorm = normalizeText(selectedDia);
+          if (!dNorm.includes(sDiaNorm) && !sDiaNorm.includes(dNorm)) return false;
         }
       }
 
       // 8. Cliente
       if (selectedCliente !== 'ALL') {
-        const cli = r.CLIENTE || r.Cliente;
-        if (cli !== selectedCliente) return false;
+        const cliNorm = normalizeText(r.CLIENTE || r.Cliente || (r as any).cliente);
+        const sCliNorm = normalizeText(selectedCliente);
+        if (cliNorm !== sCliNorm && !cliNorm.includes(sCliNorm) && !sCliNorm.includes(cliNorm)) return false;
       }
 
       // 9. Falla Recurrente (S / N)
       if (selectedRecurrente !== 'ALL') {
-        const rec = r['FALLA RECURRENTE'] || r['Falla Recurrente'] || 'N';
-        if (rec !== selectedRecurrente) return false;
+        const rec = String(r['FALLA RECURRENTE'] || r['Falla Recurrente'] || (r as any).fallaRecurrente || 'N').trim().toUpperCase();
+        const sRec = selectedRecurrente.trim().toUpperCase();
+        if (rec !== sRec) return false;
       }
 
       // 10. Utiliza Repuesto (Sí / No)
       if (selectedRepuesto !== 'ALL') {
-        const rep = r['Utiliza Repuesto'] || 'No';
-        if (rep !== selectedRepuesto) return false;
+        const rep = normalizeText(r['Utiliza Repuesto'] || (r as any).utilizaRepuesto || 'No');
+        const sRep = normalizeText(selectedRepuesto);
+        const isSi = rep === 'si' || rep === 's' || rep === '1' || rep === 'true';
+        const isReqSi = sRep === 'si' || sRep === 's';
+        if (isReqSi && !isSi) return false;
+        if (!isReqSi && isSi) return false;
       }
 
       // 11. Concepto Llamada
       if (selectedConcepto !== 'ALL') {
-        const cpt = r['CONCEPTO LLAMADA'] || r.Tipo || r.TIPO;
-        if (cpt !== selectedConcepto) return false;
+        const cpt = normalizeText(r['CONCEPTO LLAMADA'] || r.Tipo || r.TIPO || (r as any).concepto);
+        const sCpt = normalizeText(selectedConcepto);
+        if (cpt !== sCpt && !cpt.includes(sCpt)) return false;
       }
 
       // 12. Código Cierre
       if (selectedCodigoCierre !== 'ALL') {
-        const cod = r['CODIGO CIERRE'] || r['Cod Cierre'];
-        if (cod !== selectedCodigoCierre) return false;
+        const cod = normalizeText(r['CODIGO CIERRE'] || r['Cod Cierre'] || (r as any).codigoCierre);
+        const sCod = normalizeText(selectedCodigoCierre);
+        if (cod !== sCod && !cod.includes(sCod)) return false;
       }
 
       // 13. Fin de Semana (Guardia Sáb/Dom vs Día Hábil)
@@ -405,7 +445,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
       }
 
       // 14. Fechas Desde / Hasta
-      const fechaRow = r['MARCA ALTA'] || r['Fecha Alta'] || r['MARCA FIN'];
+      const fechaRow = r['MARCA ALTA'] || r['Fecha Alta'] || r['MARCA FIN'] || r['FECHA FIN'] || (r as any).fecha;
       if (fechaDesde && fechaRow) {
         if (fechaRow < fechaDesde) return false;
       }
@@ -415,16 +455,27 @@ export const AnalisisPatagoniaView: React.FC = () => {
 
       // 15. Free text search
       if (search.trim()) {
-        const q = search.toLowerCase();
-        const ped = String(r.PEDIDO || r.Pedido || '');
-        const atm = String(r.ATM || r['ATM ID'] || '');
-        const cli = String(r.CLIENTE || r.Cliente || '').toLowerCase();
-        const dir = String(r.DIRECCION || r.Direccion || '').toLowerCase();
-        const loc = String(r.LOCALIDAD || r.Localidad || '').toLowerCase();
-        const fal = String(r['DETALLE FALLA'] || r['Falla Informada'] || r['PROBLEMA ENCONTRADO'] || '').toLowerCase();
-        const obs = String(r['OBSERVACIONES CONTROL'] || r.Observaciones || '').toLowerCase();
+        const q = normalizeText(search);
+        const ped = normalizeText(r.PEDIDO || r.Pedido);
+        const atm = normalizeText(r.ATM || r['ATM ID']);
+        const cli = normalizeText(r.CLIENTE || r.Cliente);
+        const dir = normalizeText(r.DIRECCION || r.Direccion);
+        const loc = normalizeText(r.LOCALIDAD || r.Localidad);
+        const fal = normalizeText(r['DETALLE FALLA'] || r['Falla Informada'] || r['PROBLEMA ENCONTRADO']);
+        const obs = normalizeText(r['OBSERVACIONES CONTROL'] || r.Observaciones);
+        const tec = normalizeText(r['TECNICO ASISTIO'] || r['TECNICO ZONA'] || r['Tecnico Asig']);
+        const mod = normalizeText(r.MODELO || r.Modelo || r.MPCR);
 
-        const match = ped.includes(q) || atm.includes(q) || cli.includes(q) || dir.includes(q) || loc.includes(q) || fal.includes(q) || obs.includes(q);
+        const match = 
+          ped.includes(q) || 
+          atm.includes(q) || 
+          cli.includes(q) || 
+          dir.includes(q) || 
+          loc.includes(q) || 
+          fal.includes(q) || 
+          obs.includes(q) || 
+          tec.includes(q) || 
+          mod.includes(q);
         if (!match) return false;
       }
 
@@ -432,6 +483,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
     });
   }, [
     currentRawData,
+    selectedYear,
     selectedNegocio,
     selectedSla,
     selectedZonaLocal,

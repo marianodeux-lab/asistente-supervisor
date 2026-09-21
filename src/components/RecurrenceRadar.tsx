@@ -128,7 +128,10 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
         if (!match) return false;
       }
       if (selectedZona !== 'ALL') {
-        const matchZona = c.zonaLocal === selectedZona || c.zona === selectedZona;
+        const sNorm = selectedZona.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+        const zLocalNorm = (c.zonaLocal || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+        const zNorm = (c.zona || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+        const matchZona = zLocalNorm === sNorm || zNorm === sNorm || `zona ${zLocalNorm}` === sNorm || `zona ${zNorm}` === sNorm;
         if (!matchZona) return false;
       }
       if (criticidadFilter === 'CRITICO' && c.dynamicSalud !== 'CRÍTICO') return false;
@@ -140,7 +143,12 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
   // Dynamic Summary Metrics based STRICTLY on the selected period AND selected Zona
   const zonaProcessed = useMemo(() => {
     if (selectedZona === 'ALL') return processedCronicos;
-    return processedCronicos.filter(c => c.zonaLocal === selectedZona || c.zona === selectedZona);
+    const sNorm = selectedZona.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+    return processedCronicos.filter(c => {
+      const zLocalNorm = (c.zonaLocal || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+      const zNorm = (c.zona || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+      return zLocalNorm === sNorm || zNorm === sNorm || `zona ${zLocalNorm}` === sNorm || `zona ${zNorm}` === sNorm;
+    });
   }, [processedCronicos, selectedZona]);
 
   const totalCriticos = useMemo(() => zonaProcessed.filter(c => c.dynamicSalud === 'CRÍTICO').length, [zonaProcessed]);

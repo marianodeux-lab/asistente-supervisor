@@ -122,12 +122,63 @@ function getDateInfo(val, fechaStrFallback) {
   };
 }
 
-// Helper para discriminar Negocio: SMART BOX = Cash Today
+const ZONA_TECNICA_TO_LOCAL = {
+  'IN MDP 1': 'Atlántica',
+  'IN MDP 2': 'Atlántica',
+  'IN MDP3': 'Atlántica',
+  'IN COS': 'Atlántica',
+  'IN SRO': 'La Pampa',
+  'IN PCO': 'La Pampa',
+  'IN PCO1': 'La Pampa',
+  'IN TDL': 'Oeste',
+  'IN TRQ': 'Oeste',
+  'IN OLA': 'Oeste',
+  'IN BB2': 'Centro',
+  'IN VIE': 'Centro',
+  'IN TRE': 'Sur',
+  'IN COM': 'Sur',
+  'IN BAR': 'Suroeste',
+  'IN CIP': 'Suroeste',
+  'IN NQN': 'Suroeste',
+  'IN RIT': 'Contratistas',
+  'IN TDF': 'Contratistas',
+  'IN RGA': 'Contratistas'
+};
+
+const myTechMap = new Map();
+misTecnicosData.forEach(z => {
+  myTechMap.set(z.nombre.toLowerCase().trim(), z);
+});
+
+function resolveZonaLocal(rawZona, tecName) {
+  if (rawZona && ZONA_TECNICA_TO_LOCAL[rawZona.trim()]) {
+    return ZONA_TECNICA_TO_LOCAL[rawZona.trim()];
+  }
+  if (tecName) {
+    const tNorm = tecName.toLowerCase().trim();
+    if (myTechMap.has(tNorm)) {
+      return myTechMap.get(tNorm).zonaLocal;
+    }
+    for (const [k, v] of myTechMap.entries()) {
+      if (k.includes(tNorm) || tNorm.includes(k)) return v.zonaLocal;
+    }
+  }
+  return 'General';
+}
+
+// Helper para discriminar Negocio: SMART BOX / CIMA / GLORY / SNBC = Cash Today
 function getNegocio(r) {
   const tipo = String(r['TIPO'] || r['Tipo'] || '').trim().toUpperCase();
   const mod = String(r['MODELO'] || r['Modelo'] || '').trim().toUpperCase();
+  const marca = String(r['MARCA'] || r['Marca'] || r['MARCA_DESC'] || '').trim().toUpperCase();
   const tipoSeg = String(r['TIPOSEG'] || r['Tipo Seg'] || '').trim();
-  if (tipo.includes('SMART BOX') || mod.includes('SMART BOX') || mod.includes('CIMA') || mod.includes('CTI')) {
+
+  if (marca.includes('SMART BOX') || marca.includes('SMARTBOX') || marca.includes('GUNNEBO')) return 'Cash Today';
+  if (marca.includes('CRP')) return 'CRP';
+  if (tipo.includes('SMART BOX') || mod.includes('SMART BOX') || mod.includes('CIMA') || 
+      mod.includes('CTI') || mod.includes('CTE') || mod.includes('SDM') || 
+      mod.includes('GLORY') || mod.includes('P500') || mod.includes('P1000') || 
+      mod.includes('P1001') || mod.includes('KISAN') || mod.includes('INLANE')) {
     return 'Cash Today';
   }
   return tipoSeg || 'ATM';
@@ -186,6 +237,9 @@ function processSlaFile(filePath, isSuroeste = false) {
 
     const cumplioSlaVal = Number(r['Cumplio SLA TS']) === 1 || String(r['Cumplio SLA TS']).toUpperCase() === 'S' ? 1 : 0;
     const negocio = getNegocio(r);
+    const tecAsistio = String(r['Tecnico Asig'] || r['Tecnico Zona'] || '').trim();
+    const tecZona = String(r['Tecnico Zona'] || '').trim();
+    const zonaLocal = resolveZonaLocal(rawZona, tecAsistio || tecZona);
 
     const row = {
       id: `sla_${ped}`,
@@ -196,9 +250,9 @@ function processSlaFile(filePath, isSuroeste = false) {
       LOCALIDAD: String(r['Localidad'] || r['LOCALIDAD'] || '').trim(),
       PROVINCIA: String(r['Provincia'] || r['PROVINCIA'] || '').trim(),
       ZONA: rawZona,
-      'ZONA LOCAL': isSuroeste ? 'Suroeste' : 'Patagonia',
-      'TECNICO ASISTIO': String(r['Tecnico Asig'] || r['Tecnico Zona'] || '').trim(),
-      'TECNICO ZONA': String(r['Tecnico Zona'] || '').trim(),
+      'ZONA LOCAL': zonaLocal,
+      'TECNICO ASISTIO': tecAsistio,
+      'TECNICO ZONA': tecZona,
       'FECHA FIN': fechaFinStr,
       'MARCA FIN': marcaFinStr,
       'CODIGO CIERRE': String(r['Cod Cierre'] || r['CODIGOCIERRE'] || 'COMPL').trim(),
@@ -294,6 +348,8 @@ function processSuspendidosFile(filePath, isSuroeste = false) {
     // Regla de Repuesto: Discrimina del reporte SLA donde figura si el pedido consumió parte
     const usedPartInSla = ordersWithStockInSla.has(ped);
 
+    const zonaLocal = resolveZonaLocal(rawZona, tecAsistio || tecAsignado || tecZona);
+
     const row = {
       id: `susp_${ped}`,
       PEDIDO: ped,
@@ -303,7 +359,7 @@ function processSuspendidosFile(filePath, isSuroeste = false) {
       LOCALIDAD: String(r['LOCALIDAD'] || r['Localidad'] || '').trim(),
       PROVINCIA: String(r['PROVINCIA'] || r['Provincia'] || '').trim(),
       ZONA: rawZona,
-      'ZONA LOCAL': isSuroeste ? 'Suroeste' : 'Patagonia',
+      'ZONA LOCAL': zonaLocal,
       'TECNICO ASISTIO': tecAsistio || tecAsignado,
       'TECNICO ZONA': tecZona,
       FECHAALTA: excelDateToString(r['FECHAALTA'] || r['FECHA ALTA'], false),
