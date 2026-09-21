@@ -39,6 +39,7 @@ import {
 import { Ticket, TecnicoInfo, ZonaInfo, EquipoCronico, ControlInicioItem } from '../types';
 import zonasReferencia from '../data/zonasTecnicosReferencia.json';
 import controlInicioRaw from '../data/controlInicioData.json';
+import agendaDataRaw from '../data/agendaData.json';
 import { formatTimeClean, ZONA_TECNICA_TO_LOCAL, getZonaLabelWithLocal } from '../utils/formatters';
 import { TechnicianDailyAgendaModal } from './TechnicianDailyAgendaModal';
 import { MapaAgendaDiaria } from './MapaAgendaDiaria';
@@ -53,13 +54,21 @@ interface SlaMonitorProps {
 }
 
 export const SlaMonitor: React.FC<SlaMonitorProps> = ({
-  tickets,
+  tickets: propTickets,
   tecnicos,
   zonas,
   cronicos,
   onSelectTicket,
   onOpenCronicoDetail
 }) => {
+  // Canonical daily agenda dataset: prioritize canonical agendaData.json (40 tickets with 23 assigned COT)
+  // Rejects any old historical bulk dump (> 200 items) that may have been cached in browser or cloud
+  const tickets = useMemo(() => {
+    if (propTickets && propTickets.length > 0 && propTickets.length <= 200) {
+      return propTickets;
+    }
+    return agendaDataRaw as unknown as Ticket[];
+  }, [propTickets]);
   // Dynamic Current Dates (Hoy y Día Posterior)
   const { todayStr, tomorrowStr } = useMemo(() => {
     const now = new Date();

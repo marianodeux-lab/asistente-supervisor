@@ -214,14 +214,19 @@ export function App() {
       const res = await ReportSyncService.fetchActiveDataset<Ticket[]>('agenda_activa');
       if (res.data && res.data.payload && Array.isArray(res.data.payload) && res.data.payload.length > 0) {
         const cloudTickets = res.data.payload;
-        // Semantic validation: verify tickets have required properties
-        const isValid = cloudTickets.length > 0 && cloudTickets[0] && 
+        // Semantic validation: verify tickets have required properties and realistic daily agenda size (<= 200 tickets)
+        // Stale historical dumps (> 200 items) are rejected and purged from local cache.
+        const isReasonableDailySize = cloudTickets.length <= 200;
+        const isValid = isReasonableDailySize && cloudTickets[0] && 
           typeof cloudTickets[0] === 'object' && 
           ('id' in cloudTickets[0] || 'pedido' in cloudTickets[0]) &&
           ('luno' in cloudTickets[0] || 'tecnico' in cloudTickets[0]);
         
         if (!isValid) {
-          console.warn(`[App] Dataset agenda_activa en la nube tiene formato inválido. Se preserva la agenda local.`);
+          console.warn(`[App] Dataset agenda_activa (${cloudTickets.length} registros) no corresponde a una agenda diaria (máx 200). Se preserva la agenda canónica.`);
+          try {
+            localStorage.removeItem('stp_dataset_cache_agenda_activa');
+          } catch(e) {}
         } else {
           setTickets(cloudTickets);
 
