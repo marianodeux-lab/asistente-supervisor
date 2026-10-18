@@ -89,11 +89,14 @@ if (fs.existsSync(fileBuzon)) {
   console.log(`📬 Buzón de Movimientos cargado: ${buzonMap.size} pedidos con movimientos indexados.`);
 }
 
-// 4. Cargar Stock Fijo de los Técnicos (StockFijo.xls)
-// Relación: Técnico + PN
+// 4. Cargar Stock Fijo de los Técnicos (Stock Fijo Asignado.xls)
+// Relación: Técnico + PN - Solo Columnas A a D (PN, BASESTOCK, TIPO, CANTMINIMA)
 const stockFijoSet = new Set();
 const stockFijoDetailMap = new Map();
-const fileStockFijo = path.resolve(projectRoot, 'Reportes/Datos/StockFijo.xls');
+let fileStockFijo = path.resolve(projectRoot, 'Reportes/Repuestos/Stock Fijo Asignado.xls');
+if (!fs.existsSync(fileStockFijo)) {
+  fileStockFijo = path.resolve(projectRoot, 'Reportes/Datos/StockFijo.xls');
+}
 if (fs.existsSync(fileStockFijo)) {
   const wb = XLSX.readFile(fileStockFijo);
   const ws = wb.Sheets[wb.SheetNames[0]];
@@ -101,18 +104,17 @@ if (fs.existsSync(fileStockFijo)) {
   raw.forEach(r => {
     const tec = String(r['BASESTOCK'] || '').toLowerCase().trim();
     const pn = String(r['PN'] || '').toUpperCase().trim();
-    if (tec && pn) {
+    // Filtro estricto: solo técnicos de supervisión
+    if (tec && pn && myTechMap.has(tec)) {
       const key = `${tec}|${pn}`;
       stockFijoSet.add(key);
       stockFijoDetailMap.set(key, {
         pn,
-        cantMinima: Number(r['CANTMINIMA'] || 0),
-        unidades: Number(r['UNIDADES'] || 0),
-        diferencia: Number(r['DIFERENCIA'] || 0)
+        cantMinima: Number(r['CANTMINIMA'] || 0)
       });
     }
   });
-  console.log(`🧰 Stock Fijo cargado: ${stockFijoSet.size} combinaciones Técnico-PN.`);
+  console.log(`🧰 Stock Fijo cargado: ${stockFijoSet.size} combinaciones Técnico-PN (Columnas A-D, Técnicos Supervisión).`);
 }
 
 // 5. Cargar Solicitudes Pendientes de Reposición (Informe Stock Fijo - Consumibles - Herramientas y S. regional.xlsx)

@@ -157,8 +157,11 @@ function parsePartCode(code) {
   return { raw: s, pnBase: s, qr: 'Sin QR' };
 }
 
-// 3. Load Stock Fijo map (Tecnico + PN Base -> cantMinima)
-const fileStockFijo = path.resolve(__dirname, '../Reportes/Datos/StockFijo.xls');
+// 3. Load Stock Fijo map (Tecnico + PN Base -> cantMinima) - Columns A to D only, filtered to supervisor's technicians
+let fileStockFijo = path.resolve(__dirname, '../Reportes/Repuestos/Stock Fijo Asignado.xls');
+if (!fs.existsSync(fileStockFijo)) {
+  fileStockFijo = path.resolve(__dirname, '../Reportes/Datos/StockFijo.xls');
+}
 const sfMap = new Map();
 if (fs.existsSync(fileStockFijo)) {
   const sfWb = XLSX.readFile(fileStockFijo);
@@ -168,11 +171,12 @@ if (fs.existsSync(fileStockFijo)) {
     const tec = String(r['BASESTOCK'] || '').trim().toLowerCase();
     const pn = String(r['PN'] || '').trim().toUpperCase();
     const cant = Number(r['CANTMINIMA'] || 0);
-    if (tec && pn) {
+    // Strict filter: Only supervisor technicians from Zonas Técnicos
+    if (tec && pn && misTecnicosNombres.has(tec)) {
       sfMap.set(tec + '|' + pn, cant);
     }
   });
-  console.log(`✅ Stock Fijo referenciado: ${sfMap.size} asignaciones mapeadas`);
+  console.log(`✅ Stock Fijo referenciado: ${sfMap.size} asignaciones mapeadas (Exclusivo Técnicos Supervisión)`);
 }
 
 // 3b. Load Master LP (PN -> Descripcion)
@@ -367,8 +371,10 @@ const mpBar = loadMpPending(path.resolve(__dirname, '../Reportes/MP Pendientes B
 const allMpPending = [...mpPat, ...mpSur, ...mpBar];
 console.log(`✅ MP Pendientes: ${allMpPending.length} preventivos pendientes (${mpPendingByLuno.size} equipos identificados)`);
 
-// 7. Map Adicionales per Luno
+// 7. Map Adicionales per Luno (Patagonia y Suroeste estricto)
 const adicionalesByLuno = new Map(); // luno -> { pedido, detalleFalla, concepto, tec }
+
+// 7a. Adicionales Patagonia
 const fileAdicionales = path.resolve(__dirname, '../Reportes/Agenda Diaria/Adicionales.xls');
 if (fs.existsSync(fileAdicionales)) {
   const adWb = XLSX.readFile(fileAdicionales);
@@ -383,11 +389,44 @@ if (fs.existsSync(fileAdicionales)) {
       tecnico: String(r['Tec Zona'] || r['Tecnico'] || '').trim()
     });
   });
-  console.log(`✅ Adicionales mapeados: ${adicionalesByLuno.size} equipos con AIEC Adicional`);
+  console.log(`✅ Adicionales Patagonia mapeados: ${adicionalesByLuno.size} equipos con AIEC Adicional`);
+}
+
+// 7b. Adicionales Suroeste (Estrictamente filtrado a zonas supervisadas: IN BAR, IN CIP, IN NQN)
+const fileAdicionalesSur = path.resolve(__dirname, '../Reportes/Agenda Diaria/Adicionales Suroeste.xls');
+if (fs.existsSync(fileAdicionalesSur)) {
+  const adSurWb = XLSX.readFile(fileAdicionalesSur);
+  const adSurData = XLSX.utils.sheet_to_json(adSurWb.Sheets[adSurWb.SheetNames[0]]);
+  const allowedZonesStrict = new Set(['IN BAR', 'IN CIP', 'IN NQN']);
+  const allowedSuroesteTechs = new Set(['torres, florencia', 'ibañez, pablo fernando', 'lazzaro, leonardo']);
+  let countSurValidos = 0;
+
+  adSurData.forEach(r => {
+    const z = String(r['Zona'] || '').trim().toUpperCase();
+    const zSES = String(r['Zona SES'] || '').trim().toUpperCase();
+    const tecZ = String(r['Tec Zona'] || '').trim().toLowerCase();
+    const tecAsig = String(r['Tec Asignado'] || '').trim().toLowerCase();
+
+    // Filtro estricto: Solo IN BAR, IN CIP, IN NQN. Desestimar el resto de las zonas (Cuyo, Córdoba, San Luis, etc.)
+    const isAllowed = allowedZonesStrict.has(z) || allowedZonesStrict.has(zSES) ||
+                      allowedSuroesteTechs.has(tecZ) || allowedSuroesteTechs.has(tecAsig);
+    if (!isAllowed) return;
+
+    const luno = String(r['Luno'] || r['LUNO'] || '').trim();
+    if (!luno) return;
+    countSurValidos++;
+    adicionalesByLuno.set(luno, {
+      pedido: String(r['Pedido'] || r['PEDIDO'] || ''),
+      detalleFalla: String(r['Detalle Falla'] || r['Desc Problema'] || 'AIEC Adicional').trim(),
+      concepto: String(r['Cpto Llamada'] || 'AIEC').trim(),
+      tecnico: String(r['Tec Zona'] || r['Tec Asignado'] || '').trim()
+    });
+  });
+  console.log(`✅ Adicionales Suroeste mapeados: ${countSurValidos} equipos incorporados (filtrados estrictamente a IN BAR, IN CIP, IN NQN)`);
 }
 
 // 8. Merge Agenda Diaria Files with Precise Regional Filter for Asignados
-const allowedSuroesteZones = ['IN BAR', 'IN CIP', 'IN NQN', 'Suroeste', 'Bariloche', 'Cipolletti', 'Neuquen', 'Neuquén'];
+const allowedSuroesteZones = ['IN BAR', 'IN CIP', 'IN NQN', 'Bariloche', 'Cipolletti', 'Neuquen', 'Neuquén'];
 const ambaRegions = ['CABA', 'ZONA NORTE', 'ZONA SUR', 'ZONA OESTE', 'C2D', 'AMBA'];
 const litoralRegions = ['LITORAL-NORTE', 'LITORAL'];
 const patagoniaRegions = ['PATAGONIA', 'SUROESTE'];

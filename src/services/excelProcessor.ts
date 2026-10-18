@@ -72,8 +72,8 @@ if (Array.isArray(reincidenciasData)) {
   });
 }
 
-// Regional boundaries and allowed zones: strictly Patagonia and Suroeste
-const allowedSuroesteZones = ['IN BAR', 'IN CIP', 'IN NQN', 'Suroeste', 'Bariloche', 'Cipolletti', 'Neuquen', 'Neuquén'];
+// Regional boundaries and allowed zones: strictly Patagonia and Suroeste (IN BAR, IN CIP, IN NQN)
+const allowedSuroesteZones = ['IN BAR', 'IN CIP', 'IN NQN', 'Bariloche', 'Cipolletti', 'Neuquen', 'Neuquén'];
 const patagoniaRegions = ['PATAGONIA', 'SUROESTE'];
 
 // Helper to parse dates from Excel numbers or strings into DD/MM/YYYY

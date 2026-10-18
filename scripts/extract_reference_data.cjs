@@ -150,8 +150,11 @@ function calcAntiguedad(d) {
   return `${years} ${years === 1 ? 'año' : 'años'} ${months} ${months === 1 ? 'mes' : 'meses'}`;
 }
 
-// 3. Extract Stock Fijo (ONLY SUPERVISOR ASSIGNED TECHNICIANS)
-const fileSf = path.resolve(__dirname, '../Reportes/Datos/StockFijo.xls');
+// 3. Extract Stock Fijo (ONLY SUPERVISOR ASSIGNED TECHNICIANS - COLUMNS A to D ONLY)
+let fileSf = path.resolve(__dirname, '../Reportes/Repuestos/Stock Fijo Asignado.xls');
+if (!fs.existsSync(fileSf)) {
+  fileSf = path.resolve(__dirname, '../Reportes/Datos/StockFijo.xls');
+}
 let stockFijoList = [];
 if (fs.existsSync(fileSf)) {
   const wb = XLSX.readFile(fileSf);
@@ -161,9 +164,7 @@ if (fs.existsSync(fileSf)) {
     pn: String(r['PN'] || '').trim(),
     tecnico: String(r['BASESTOCK'] || '').trim(),
     tipo: String(r['TIPO'] || 'STOCK FIJO').trim(),
-    cantMinima: Number(r['CANTMINIMA']) || 0,
-    unidades: Number(r['UNIDADES']) || 0,
-    diferencia: Number(r['DIFERENCIA']) || 0
+    cantMinima: Number(r['CANTMINIMA']) || 0
   })).filter(s => {
     if (!s.pn || !s.tecnico) return false;
     // Strict filter: ONLY supervisor's technicians

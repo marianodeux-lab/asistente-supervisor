@@ -1,13 +1,13 @@
 {
-  "fechaActualizacion": "19/09/2026",
-  "fechaActualizacionSuspendidos": "19/09/2026",
-  "fechaActualizacionSla": "19/09/2026",
+  "fechaActualizacion": "18/10/2026",
+  "fechaActualizacionSuspendidos": "18/10/2026",
+  "fechaActualizacionSla": "17/10/2026",
   "fechaActualizacionTelca": "16/09/2026",
   "fuente": "Reportes Activos (Patagonia & Suroeste)",
-  "totalSuspendidos": 7034,
-  "totalSla": 3838,
+  "totalSuspendidos": 7865,
+  "totalSla": 2965,
   "totalTelca": 11220,
-  "repuestosUtilizadosSla": 760,
-  "pctRepuestosSla": 19.8,
-  "totalGeneral": 22092
+  "repuestosUtilizadosSla": 569,
+  "pctRepuestosSla": 19.2,
+  "totalGeneral": 22050
 }

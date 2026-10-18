@@ -94,7 +94,24 @@
  *      * Lazzaro, Leonardo (IN NQN - Neuquén)
  *      * Ibañez, Pablo Fernando / Fernando Ibañez (IN CIP - Cipolletti)
  *      * Torres, Florencia / Fix Computer (IN BAR - Bariloche / Contratista)
- *      * Estos técnicos figuran en los reportes de Suspendidos, MP Pendientes, MP Cerrados y Pendientes Suroeste.
+ *      * Estos técnicos figuran en los reportes de Suspendidos, MP Pendientes, MP Cerrados, Pendientes Suroeste y Adicionales Suroeste.
+ * 
+ * 9. STOCK FIJO ASIGNADO (Reportes/Repuestos/Stock Fijo Asignado.xls):
+ *    - Se procesan ÚNICAMENTE las Columnas A a D:
+ *      * Columna A: PN (Part Number del repuesto/módulo)
+ *      * Columna B: BASESTOCK (Técnico o móvil asignado)
+ *      * Columna C: TIPO ('STOCK FIJO')
+ *      * Columna D: CANTMINIMA (Cupo o dotación que el técnico tiene asignada de esa parte,
+ *        y que debiera tener en su stock móvil si la logística cumple con la reposición conforme se utiliza).
+ *    - Las columnas E (UNIDADES) y F (DIFERENCIA) se desestiman por no aportar al análisis operativo.
+ *    - Filtrado estricto a los técnicos asignados a la supervisión (19 técnicos: Patagonia y Suroeste).
+ * 
+ * 10. REPORTE ADICIONALES SUROESTE (Reportes/Agenda Diaria/Adicionales Suroeste.xls):
+ *    - Filtrado territorial estricto: De este reporte SOLO se toman los pedidos de las zonas bajo
+ *      supervisión del usuario: IN BAR (Bariloche), IN CIP (Cipolletti) e IN NQN (Neuquén),
+ *      y sus técnicos asignados (Florencia Torres, Pablo Fernando Ibañez, Leonardo Lazzaro).
+ *    - Todo registro perteneciente a otras zonas (Mendoza, San Luis, San Rafael, Córdoba, etc.) se
+ *      desestima automáticamente por quedar fuera del control y supervisión operativa.
  * ═══════════════════════════════════════════════════════════════════════════════════
  */
 
