@@ -304,22 +304,22 @@ export const MapaAgendaDiaria: React.FC<MapaAgendaDiariaProps> = ({
   };
 
   return (
-    <div className={`space-y-4 ${isFullScreen ? 'fixed inset-4 z-50 bg-[#0c0f1d] p-4 rounded-2xl shadow-2xl border border-slate-700' : ''}`}>
+    <div className={`space-y-4 ${isFullScreen ? 'fixed inset-4 z-50 bg-slate-100 p-4 rounded-2xl shadow-2xl border border-slate-300' : ''}`}>
       
       {/* Control Toolbar */}
-      <div className="bg-[#14182d] border border-white/10 rounded-2xl p-4 shadow-xl flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-xs flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400">
-            <Compass className="w-5 h-5 animate-pulse" />
+          <div className="p-2.5 rounded-xl bg-teal-50 border border-teal-200 text-teal-700">
+            <Compass className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-base font-bold text-white tracking-tight">Geolocalización & Rutas de Agenda</h3>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">
+              <h3 className="text-base font-bold text-slate-900 tracking-tight">Geolocalización & Rutas de Agenda</h3>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-50 text-teal-800 border border-teal-200">
                 {mappedTickets.length} Atenciones Mapeadas
               </span>
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500">
               Visualización espacial de visitas por localidad, optimización de trayectos y cálculo de km.
             </p>
           </div>
@@ -328,22 +328,22 @@ export const MapaAgendaDiaria: React.FC<MapaAgendaDiariaProps> = ({
         {/* Filters & Actions */}
         <div className="flex flex-wrap items-center gap-2">
           {/* Zona Filter */}
-          <div className="flex items-center gap-1.5 bg-[#1b203c] border border-slate-700/70 rounded-xl px-3 py-1.5 text-xs text-slate-300">
+          <div className="flex items-center gap-1.5 bg-slate-100 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-700">
             <Filter className="w-3.5 h-3.5 text-slate-400" />
             <select
               value={selectedZona}
               onChange={e => setSelectedZona(e.target.value)}
-              className="bg-transparent text-white text-xs font-semibold focus:outline-none cursor-pointer"
+              className="bg-transparent text-slate-800 text-xs font-semibold focus:outline-none cursor-pointer"
             >
-              <option value="ALL" className="bg-slate-900">Todas las Zonas</option>
+              <option value="ALL">Todas las Zonas</option>
               {zonas.map(z => (
-                <option key={z.id} value={z.nombre} className="bg-slate-900">{z.nombre}</option>
+                <option key={z.id} value={z.nombre}>{z.nombre}</option>
               ))}
             </select>
           </div>
 
           {/* Technician Filter */}
-          <div className="flex items-center gap-1.5 bg-[#1b203c] border border-slate-700/70 rounded-xl px-3 py-1.5 text-xs text-slate-300">
+          <div className="flex items-center gap-1.5 bg-slate-100 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-700">
             <User className="w-3.5 h-3.5 text-slate-400" />
             <select
               value={selectedTecnico}
@@ -351,11 +351,11 @@ export const MapaAgendaDiaria: React.FC<MapaAgendaDiariaProps> = ({
                 setSelectedTecnico(e.target.value);
                 if (onSelectTech) onSelectTech(e.target.value);
               }}
-              className="bg-transparent text-white text-xs font-semibold focus:outline-none cursor-pointer max-w-[180px] truncate"
+              className="bg-transparent text-slate-800 text-xs font-semibold focus:outline-none cursor-pointer max-w-[180px] truncate"
             >
-              <option value="ALL" className="bg-slate-900">Todos los Técnicos ({techniciansList.length})</option>
+              <option value="ALL">Todos los Técnicos ({techniciansList.length})</option>
               {techniciansList.map(t => (
-                <option key={t.nombre} value={t.nombre} className="bg-slate-900">
+                <option key={t.nombre} value={t.nombre}>
                   {t.nombre} ({t.ticketsCount})
                 </option>
               ))}
@@ -363,22 +363,22 @@ export const MapaAgendaDiaria: React.FC<MapaAgendaDiariaProps> = ({
           </div>
 
           {/* SLA Filter */}
-          <div className="flex items-center gap-1 bg-[#1b203c] border border-slate-700/70 rounded-xl p-1 text-xs">
+          <div className="flex items-center gap-1 bg-slate-100 border border-slate-200 rounded-xl p-1 text-xs">
             <button
               onClick={() => setSlaFilter('ALL')}
-              className={`px-2 py-1 rounded-lg text-xs font-semibold transition ${slaFilter === 'ALL' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'}`}
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${slaFilter === 'ALL' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'}`}
             >
               Todos
             </button>
             <button
               onClick={() => setSlaFilter('CRITICO')}
-              className={`px-2 py-1 rounded-lg text-xs font-semibold transition ${slaFilter === 'CRITICO' ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-white'}`}
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${slaFilter === 'CRITICO' ? 'bg-rose-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'}`}
             >
               Críticos
             </button>
             <button
               onClick={() => setSlaFilter('ALERTA')}
-              className={`px-2 py-1 rounded-lg text-xs font-semibold transition ${slaFilter === 'ALERTA' ? 'bg-amber-600 text-white' : 'text-slate-400 hover:text-white'}`}
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${slaFilter === 'ALERTA' ? 'bg-amber-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'}`}
             >
               Alerta
             </button>
@@ -387,7 +387,7 @@ export const MapaAgendaDiaria: React.FC<MapaAgendaDiariaProps> = ({
           {/* Fullscreen Toggle */}
           <button
             onClick={() => setIsFullScreen(!isFullScreen)}
-            className="p-2 rounded-xl bg-[#1b203c] hover:bg-slate-700 border border-slate-700/70 text-slate-300 hover:text-white transition"
+            className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600 hover:text-slate-900 transition"
             title={isFullScreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
           >
             {isFullScreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
@@ -403,91 +403,91 @@ export const MapaAgendaDiaria: React.FC<MapaAgendaDiariaProps> = ({
           
           {/* Quick Region Buttons */}
           <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
-            <span className="text-slate-400 font-semibold text-[11px] uppercase tracking-wider flex items-center gap-1">
-              <Layers className="w-3.5 h-3.5 text-blue-400" /> Enfoque:
+            <span className="text-slate-500 font-semibold text-[11px] uppercase tracking-wider flex items-center gap-1">
+              <Layers className="w-3.5 h-3.5 text-teal-600" /> Enfoque:
             </span>
             <button
               onClick={() => handleQuickZoom('ALL')}
-              className="px-2.5 py-1 rounded-lg bg-[#14182d] hover:bg-[#1b203c] border border-white/5 text-slate-300 hover:text-white transition font-medium"
+              className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900 transition font-medium shadow-xs"
             >
               Patagonia Completa
             </button>
             <button
               onClick={() => handleQuickZoom('NORTE')}
-              className="px-2.5 py-1 rounded-lg bg-[#14182d] hover:bg-[#1b203c] border border-white/5 text-slate-300 hover:text-white transition font-medium"
+              className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900 transition font-medium shadow-xs"
             >
               Alto Valle / Neuquén
             </button>
             <button
               onClick={() => handleQuickZoom('SUR')}
-              className="px-2.5 py-1 rounded-lg bg-[#14182d] hover:bg-[#1b203c] border border-white/5 text-slate-300 hover:text-white transition font-medium"
+              className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900 transition font-medium shadow-xs"
             >
               Chubut / Comodoro
             </button>
             <button
               onClick={() => handleQuickZoom('COSTA')}
-              className="px-2.5 py-1 rounded-lg bg-[#14182d] hover:bg-[#1b203c] border border-white/5 text-slate-300 hover:text-white transition font-medium"
+              className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900 transition font-medium shadow-xs"
             >
               Atlántica / MDP
             </button>
             <button
               onClick={() => handleQuickZoom('CORDILLERA')}
-              className="px-2.5 py-1 rounded-lg bg-[#14182d] hover:bg-[#1b203c] border border-white/5 text-slate-300 hover:text-white transition font-medium"
+              className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900 transition font-medium shadow-xs"
             >
               Suroeste / Bariloche
             </button>
           </div>
 
           {/* Map Leaflet Container */}
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#0c0f1d]" style={{ height: isFullScreen ? 'calc(100vh - 220px)' : '520px' }}>
+          <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xs bg-slate-100" style={{ height: isFullScreen ? 'calc(100vh - 220px)' : '520px' }}>
             <div ref={mapContainerRef} className="w-full h-full" />
 
             {/* Map Legend Overlay */}
-            <div className="absolute bottom-4 left-4 z-[1000] bg-[#14182d]/90 backdrop-blur-md border border-white/10 rounded-xl p-3 shadow-xl text-xs space-y-1.5 max-w-[200px]">
-              <div className="font-bold text-white text-[11px] uppercase tracking-wider mb-1">Estado SLA</div>
-              <div className="flex items-center gap-2 text-slate-300">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500 shadow-sm shadow-red-500/50" />
+            <div className="absolute bottom-4 left-4 z-[1000] bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl p-3 shadow-md text-xs space-y-1.5 max-w-[200px]">
+              <div className="font-bold text-slate-900 text-[11px] uppercase tracking-wider mb-1">Estado SLA</div>
+              <div className="flex items-center gap-2 text-slate-700">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-xs" />
                 <span>Crítico / Vencido (&lt; 2h)</span>
               </div>
-              <div className="flex items-center gap-2 text-slate-300">
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-sm shadow-amber-500/50" />
+              <div className="flex items-center gap-2 text-slate-700">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-xs" />
                 <span>En Advertencia (2h - 6h)</span>
               </div>
-              <div className="flex items-center gap-2 text-slate-300">
-                <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-sm shadow-blue-500/50" />
+              <div className="flex items-center gap-2 text-slate-700">
+                <span className="w-2.5 h-2.5 rounded-full bg-teal-600 shadow-xs" />
                 <span>En Tiempo (&gt; 6h)</span>
               </div>
             </div>
 
             {/* Technician Route Summary Floating Card (if single technician selected) */}
             {selectedTecnico !== 'ALL' && (
-              <div className="absolute top-4 right-4 z-[1000] bg-[#14182d]/95 backdrop-blur-md border border-blue-500/30 rounded-xl p-3.5 shadow-2xl max-w-[260px]">
+              <div className="absolute top-4 right-4 z-[1000] bg-white/95 backdrop-blur-md border border-teal-200 rounded-xl p-3.5 shadow-md max-w-[260px]">
                 <div className="flex items-center gap-2 mb-2">
                   {getTechnicianAvatar(selectedTecnico) ? (
                     <img 
                       src={getTechnicianAvatar(selectedTecnico)!} 
                       alt={selectedTecnico} 
-                      className="w-9 h-9 rounded-full object-cover border-2 border-blue-400"
+                      className="w-9 h-9 rounded-full object-cover border-2 border-teal-500"
                     />
                   ) : (
-                    <div className="w-9 h-9 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-xs">
+                    <div className="w-9 h-9 rounded-full bg-teal-700 text-white font-bold flex items-center justify-center text-xs">
                       {getInitials(selectedTecnico)}
                     </div>
                   )}
                   <div>
-                    <h4 className="text-xs font-bold text-white truncate">{selectedTecnico}</h4>
-                    <p className="text-[10px] text-blue-400 font-semibold">Itinerario de Visitas</p>
+                    <h4 className="text-xs font-bold text-slate-900 truncate">{selectedTecnico}</h4>
+                    <p className="text-[10px] text-teal-700 font-semibold">Itinerario de Visitas</p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-700/60 text-center">
-                  <div className="bg-[#1b203c] p-2 rounded-lg">
-                    <div className="text-[10px] text-slate-400">Trayecto Est.</div>
-                    <div className="text-sm font-extrabold text-blue-300">{routeStats.totalKm} km</div>
+                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200 text-center">
+                  <div className="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                    <div className="text-[10px] text-slate-500">Trayecto Est.</div>
+                    <div className="text-sm font-extrabold text-teal-800">{routeStats.totalKm} km</div>
                   </div>
-                  <div className="bg-[#1b203c] p-2 rounded-lg">
-                    <div className="text-[10px] text-slate-400">Tiempo Ruta</div>
-                    <div className="text-sm font-extrabold text-emerald-300">{routeStats.estHours} hs</div>
+                  <div className="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                    <div className="text-[10px] text-slate-500">Tiempo Ruta</div>
+                    <div className="text-sm font-extrabold text-emerald-800">{routeStats.estHours} hs</div>
                   </div>
                 </div>
               </div>
@@ -497,13 +497,13 @@ export const MapaAgendaDiaria: React.FC<MapaAgendaDiariaProps> = ({
 
         {/* Right Localities & Dispatch Panel */}
         <div className="space-y-3">
-          <div className="bg-[#14182d] border border-white/10 rounded-2xl p-4 shadow-xl flex flex-col h-[565px]">
-            <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/5">
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-xs flex flex-col h-[565px]">
+            <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
               <div className="flex items-center gap-2">
-                <Building className="w-4 h-4 text-blue-400" />
-                <h4 className="text-sm font-bold text-white">Localidades del Día</h4>
+                <Building className="w-4 h-4 text-teal-600" />
+                <h4 className="text-sm font-bold text-slate-900">Localidades del Día</h4>
               </div>
-              <span className="text-xs font-bold text-slate-400">
+              <span className="text-xs font-semibold text-slate-500">
                 {localitiesSummary.length} ciudades
               </span>
             </div>
@@ -513,7 +513,7 @@ export const MapaAgendaDiaria: React.FC<MapaAgendaDiariaProps> = ({
               {localitiesSummary.map(loc => (
                 <div 
                   key={loc.localidad}
-                  className="p-2.5 rounded-xl bg-[#1b203c] border border-slate-700/50 hover:border-blue-500/40 transition group cursor-pointer"
+                  className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-teal-400 transition group cursor-pointer"
                   onClick={() => {
                     const firstTicket = loc.tickets[0];
                     if (firstTicket) {
@@ -525,30 +525,30 @@ export const MapaAgendaDiaria: React.FC<MapaAgendaDiariaProps> = ({
                   }}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-bold text-white group-hover:text-blue-300 transition">
+                    <span className="text-xs font-bold text-slate-900 group-hover:text-teal-700 transition">
                       {loc.localidad}
                     </span>
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-50 text-teal-800 border border-teal-200">
                       {loc.count} {loc.count === 1 ? 'visita' : 'visitas'}
                     </span>
                   </div>
 
-                  <div className="space-y-1 mt-1.5 pt-1.5 border-t border-slate-700/30">
+                  <div className="space-y-1 mt-1.5 pt-1.5 border-t border-slate-200">
                     {loc.tickets.slice(0, 3).map(t => (
                       <div 
                         key={t.id} 
-                        className="flex items-center justify-between text-[11px] text-slate-300 hover:text-white"
+                        className="flex items-center justify-between text-[11px] text-slate-600 hover:text-slate-900"
                         onClick={(e) => {
                           e.stopPropagation();
                           onSelectTicket(t);
                         }}
                       >
-                        <span className="truncate max-w-[120px] font-mono text-[10px] text-slate-400">{t.pedido}</span>
-                        <span className="truncate max-w-[90px] text-[10px] text-slate-300">{t.cliente}</span>
+                        <span className="truncate max-w-[120px] font-mono text-[10px] text-slate-500">{t.pedido}</span>
+                        <span className="truncate max-w-[90px] text-[10px] text-slate-700">{t.cliente}</span>
                       </div>
                     ))}
                     {loc.tickets.length > 3 && (
-                      <div className="text-[10px] text-slate-500 font-medium text-right">
+                      <div className="text-[10px] text-slate-400 font-medium text-right">
                         +{loc.tickets.length - 3} más...
                       </div>
                     )}
@@ -557,15 +557,15 @@ export const MapaAgendaDiaria: React.FC<MapaAgendaDiariaProps> = ({
               ))}
 
               {localitiesSummary.length === 0 && (
-                <div className="text-center py-12 text-slate-500 text-xs">
+                <div className="text-center py-12 text-slate-400 text-xs">
                   No hay visitas para los filtros seleccionados.
                 </div>
               )}
             </div>
 
             {/* Quick Km Notice */}
-            <div className="mt-3 pt-3 border-t border-white/5 bg-[#1b203c]/60 p-2.5 rounded-xl flex items-start gap-2 text-[11px] text-slate-400">
-              <Info className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+            <div className="mt-3 pt-3 border-t border-slate-100 bg-slate-50 p-2.5 rounded-xl flex items-start gap-2 text-[11px] text-slate-500">
+              <Info className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
               <span>Coordenadas exactas obtenidas de la base geocodificada de 6.702 ATMs en Patagonia y Argentina.</span>
             </div>
           </div>

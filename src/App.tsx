@@ -23,13 +23,14 @@ const BaseInstaladaView = React.lazy(() => import('./components/BaseInstaladaVie
 const AnalisisPatagoniaView = React.lazy(() => import('./components/AnalisisPatagoniaView').then(m => ({ default: m.AnalisisPatagoniaView })));
 const DashboardOperativoView = React.lazy(() => import('./components/DashboardOperativoView').then(m => ({ default: m.DashboardOperativoView })));
 const ReportRepository = React.lazy(() => import('./components/ReportRepository').then(m => ({ default: m.ReportRepository })));
+const SlaCausalidadesView = React.lazy(() => import('./components/SlaCausalidadesView').then(m => ({ default: m.SlaCausalidadesView })));
 
 // Loading fallback component
 const ViewLoadingFallback = () => (
   <div className="flex items-center justify-center h-96">
     <div className="flex flex-col items-center gap-3">
-      <div className="w-8 h-8 border-2 border-amber-500 border-t-transparent rounded-full animate-spin" />
-      <p className="text-sm text-slate-400">Cargando vista...</p>
+      <div className="w-8 h-8 border-2 border-teal-600 border-t-transparent rounded-full animate-spin" />
+      <p className="text-sm text-slate-500">Cargando vista...</p>
     </div>
   </div>
 );
@@ -279,7 +280,7 @@ export function App() {
   };
 
   return (
-    <div className="h-screen w-screen bg-[#0e0f13] text-[#f1f3f6] flex flex-row overflow-hidden selection:bg-amber-500 selection:text-slate-950">
+    <div className="h-screen w-screen bg-[#f1f5f9] text-[#1e293b] flex flex-row overflow-hidden selection:bg-teal-500 selection:text-white">
       
       {/* Auto-Hiding Left Rail Sidebar with Hover Expansion */}
       <SidebarNavigation
@@ -309,7 +310,7 @@ export function App() {
         />
 
         {/* High Availability Scrollable Data Canvas */}
-        <main className="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-6 space-y-5 bg-[#0e0f13]">
+        <main className="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-6 space-y-5 bg-[#f1f5f9]">
           <Suspense fallback={<ViewLoadingFallback />}>
           
           {/* Tab 1: Control SLA & Agenda Diaria */}
@@ -322,6 +323,11 @@ export function App() {
               onSelectTicket={setSelectedTicket}
               onOpenCronicoDetail={setSelectedCronico}
             />
+          )}
+
+          {/* Tab: Auditoría Causal de SLA & Causa Raíz */}
+          {activeTab === 'sla_causalidades' && (
+            <SlaCausalidadesView />
           )}
 
           {/* Tab 2: Radar de Reincidencias */}
@@ -413,7 +419,7 @@ export function App() {
           </Suspense>
 
           {/* Footer inside data scroll */}
-          <footer className="border-t border-white/5 py-4 text-center text-xs text-slate-500 mt-8">
+          <footer className="border-t border-slate-200 py-4 text-center text-xs text-slate-500 mt-8">
             <p>Portal Asistente Supervisor • Servicio Técnico Patagonia & Suroeste (IN BAR, IN CIP, IN NQN) • Operaciones Flow Pro</p>
           </footer>
 

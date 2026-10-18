@@ -585,23 +585,23 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           onClick={() => { setSpecialFilter('ALL'); setSlaFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
             specialFilter === 'ALL' && slaFilter === 'ALL'
-              ? 'bg-slate-800 border-amber-500/80 shadow-lg shadow-amber-500/10'
-              : 'bg-slate-900/80 border-slate-800 hover:bg-slate-800/60'
+              ? 'bg-white border-teal-600 ring-2 ring-teal-500/10 shadow-xs'
+              : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400">Total en Agenda</span>
-            <Clock className="w-4 h-4 text-amber-400" />
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total en Agenda</span>
+            <Clock className="w-4 h-4 text-teal-600" />
           </div>
           
           <div className="flex items-baseline gap-2 mt-1">
-            <p className="text-2xl font-black text-white">{totalEnAgenda}</p>
-            <span className="text-[10px] text-emerald-400 font-bold">
+            <p className="text-2xl font-black text-slate-900">{totalEnAgenda}</p>
+            <span className="text-[10px] text-teal-700 font-bold bg-teal-50 px-1.5 py-0.5 rounded border border-teal-100">
               {`${totalAsignadosCOT} asignados COT`}
             </span>
           </div>
 
-          <div className="mt-2 pt-1.5 border-t border-slate-800 text-[10px] space-y-1">
+          <div className="mt-2 pt-1.5 border-t border-slate-100 text-[10px] space-y-1">
             {/* Pendientes Asignados en COT */}
             <div 
               onClick={(e) => {
@@ -610,15 +610,15 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                 setSlaFilter('ALL');
               }}
               className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
-                specialFilter === 'SC_PENDIENTES_ASIGNADOS' ? 'bg-emerald-500/20 text-emerald-300 font-bold' : 'text-emerald-400/90 hover:bg-emerald-950/40'
+                specialFilter === 'SC_PENDIENTES_ASIGNADOS' ? 'bg-emerald-100 text-emerald-900 font-bold border border-emerald-200' : 'text-emerald-800 bg-emerald-50 hover:bg-emerald-100/70 border border-emerald-100'
               }`}
               title="Pedidos de los reportes pendientes que ya figuran asignados en la agenda de campo"
             >
-              <span className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span className="flex items-center gap-1 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
                 Pend. Asignados COT:
               </span>
-              <strong className="text-emerald-400 font-mono font-bold">{pendientesAsignadosEnCot.length}</strong>
+              <strong className="text-emerald-800 font-mono font-bold">{pendientesAsignadosEnCot.length}</strong>
             </div>
 
             {/* Sin Asignar en Patagonia / Suroeste */}
@@ -629,15 +629,15 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                 setSlaFilter('ALL');
               }}
               className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
-                specialFilter === 'SC_SIN_ASIGNAR' ? 'bg-red-500/20 text-red-300 font-bold' : 'text-red-400/90 hover:bg-red-950/40'
+                specialFilter === 'SC_SIN_ASIGNAR' ? 'bg-rose-100 text-rose-900 font-bold border border-rose-200' : 'text-rose-800 bg-rose-50 hover:bg-rose-100/70 border border-rose-100'
               }`}
               title="Filtrar pedidos de los reportes pendientes que no fueron asignados en COT (Riesgo SLA directo)"
             >
-              <span className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span>
+              <span className="flex items-center gap-1 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
                 Sin Asignar (Pat/Sur):
               </span>
-              <strong className="text-red-400 font-mono font-black">{pendientesSinAsignarEnCot.length}</strong>
+              <strong className="text-rose-800 font-mono font-bold">{pendientesSinAsignarEnCot.length}</strong>
             </div>
           </div>
         </button>
@@ -647,26 +647,26 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           onClick={() => { setSpecialFilter('ASIGNADO_COT'); setSlaFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
             specialFilter === 'ASIGNADO_COT'
-              ? 'bg-blue-950/70 border-blue-500 shadow-lg shadow-blue-500/20'
-              : 'bg-slate-900/80 border-slate-800 hover:bg-blue-950/30'
+              ? 'bg-white border-teal-600 ring-2 ring-teal-500/10 shadow-xs'
+              : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-blue-400">Asignados COT</span>
-            <UserCheck className="w-4 h-4 text-blue-400" />
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Asignados COT</span>
+            <UserCheck className="w-4 h-4 text-teal-600" />
           </div>
           
           <div className="flex items-baseline gap-2 mt-1">
-            <p className="text-2xl font-black text-blue-300">{totalAsignadosCOT}</p>
-            <span className="text-[10px] text-slate-400 font-semibold">agenda de campo</span>
+            <p className="text-2xl font-black text-slate-900">{totalAsignadosCOT}</p>
+            <span className="text-[10px] text-slate-500 font-medium">agenda de campo</span>
           </div>
 
-          <div className="mt-2 pt-1.5 border-t border-slate-800 text-[10px] space-y-0.5 text-slate-300">
+          <div className="mt-2 pt-1.5 border-t border-slate-100 text-[10px] space-y-0.5 text-slate-600">
             <div className="flex items-center justify-between">
               <span>Informados al móvil:</span>
-              <span className="text-[10px] text-blue-300 font-mono font-bold">M = 'S' ({movilSCount})</span>
+              <span className="text-[10px] text-teal-800 font-mono font-bold">M = 'S' ({movilSCount})</span>
             </div>
-            <p className="text-[10px] text-slate-400 truncate">20 Técnicos de Supervisión</p>
+            <p className="text-[10px] text-slate-500 truncate">20 Técnicos de Supervisión</p>
           </div>
         </button>
 
@@ -675,18 +675,18 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           onClick={() => { setSlaFilter('CRITICAL'); setSpecialFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
             slaFilter === 'CRITICAL'
-              ? 'bg-red-950/70 border-red-500 shadow-lg shadow-red-500/20'
-              : 'bg-slate-900/80 border-slate-800 hover:bg-red-950/30'
+              ? 'bg-white border-rose-400 ring-2 ring-rose-400/10 shadow-xs'
+              : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-red-400">SLA Crítico / &gt;85%</span>
-            <Flame className="w-4 h-4 text-red-400 animate-pulse" />
+            <span className="text-xs font-semibold text-rose-700 uppercase tracking-wider">SLA Crítico / &gt;85%</span>
+            <Flame className="w-4 h-4 text-rose-500" />
           </div>
-          <p className="text-2xl font-black text-red-300 mt-1">
+          <p className="text-2xl font-black text-rose-700 mt-1">
             {tickets.filter(t => t.slaPorcentaje >= 85 || t.hsSla <= 2).length}
           </p>
-          <span className="text-[10px] text-red-300/80 block mt-1">Riesgo inminente de penalización</span>
+          <span className="text-[10px] text-slate-500 block mt-1">Riesgo inminente de penalización</span>
         </button>
 
         {/* CARD 4: RIESGO MP DEFICIENTE (< 30 DÍAS) */}
@@ -694,18 +694,18 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           onClick={() => { setSpecialFilter('MP_DEFICIENTE'); setSlaFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
             specialFilter === 'MP_DEFICIENTE'
-              ? 'bg-rose-950/80 border-rose-500 shadow-lg shadow-rose-500/20'
-              : 'bg-slate-900/80 border-slate-800 hover:bg-rose-950/30'
+              ? 'bg-white border-amber-400 ring-2 ring-amber-400/10 shadow-xs'
+              : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-rose-400">🚨 MP Deficiente</span>
-            <AlertTriangle className="w-4 h-4 text-rose-400" />
+            <span className="text-xs font-semibold text-amber-800 uppercase tracking-wider">MP Deficiente</span>
+            <AlertTriangle className="w-4 h-4 text-amber-600" />
           </div>
-          <p className="text-2xl font-black text-rose-300 mt-1">
+          <p className="text-2xl font-black text-amber-800 mt-1">
             {mpDeficienteTotal}
           </p>
-          <div className="mt-1 text-[10px] text-rose-300/80 leading-tight">
+          <div className="mt-1 text-[10px] text-slate-500 leading-tight">
             <span>Falla &lt; 30 días post-preventivo</span>
             <span className="block text-slate-400 mt-0.5">Cruza c/ MP Cerrados</span>
           </div>
@@ -716,43 +716,43 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           onClick={() => { setSlaFilter('OK'); setSpecialFilter('ALL'); }}
           className={`p-4 rounded-xl text-left border transition-all ${
             slaFilter === 'OK'
-              ? 'bg-emerald-950/70 border-emerald-500 shadow-lg shadow-emerald-500/20'
-              : 'bg-slate-900/80 border-slate-800 hover:bg-emerald-950/30'
+              ? 'bg-white border-teal-600 ring-2 ring-teal-500/10 shadow-xs'
+              : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400">En Término &lt;65%</span>
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <span className="text-xs font-semibold text-teal-800 uppercase tracking-wider">En Término &lt;65%</span>
+            <CheckCircle2 className="w-4 h-4 text-teal-600" />
           </div>
-          <p className="text-2xl font-black text-emerald-300 mt-1">
+          <p className="text-2xl font-black text-teal-800 mt-1">
             {tickets.filter(t => t.slaPorcentaje < 65).length}
           </p>
-          <span className="text-[10px] text-emerald-300/80 block mt-1">Operación en rango óptimo</span>
+          <span className="text-[10px] text-slate-500 block mt-1">Operación en rango óptimo</span>
         </button>
 
       </div>
 
       {/* CONTROL DE INICIO DE JORNADA (MARCAJE DE ASISTENCIA 07:00 - 10:00 HS) */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-950 border border-emerald-500/30 rounded-2xl p-5 shadow-2xl space-y-4">
+      <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-4">
         
         {/* Header with Title & Summary Badges */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-3 border-b border-slate-800/80">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-3 border-b border-slate-100">
           <div className="space-y-1">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-400 shadow-inner">
-                <Activity className="w-5 h-5 animate-pulse" />
+              <div className="p-2 bg-teal-50 border border-teal-200 rounded-xl text-teal-700">
+                <Activity className="w-5 h-5" />
               </div>
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h3 className="text-base font-black text-white tracking-wide">
+                  <h3 className="text-base font-bold text-slate-900 tracking-wide">
                     Control de Inicio de Jornada &bull; Marcaje de Asistencia
                   </h3>
-                  <span className="px-2 py-0.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[11px] font-bold rounded-full">
+                  <span className="px-2 py-0.5 bg-teal-50 border border-teal-200 text-teal-800 text-[11px] font-bold rounded-full">
                     1° Pedido 07:00 a 10:00 hs
                   </span>
                 </div>
-                <p className="text-xs text-slate-400">
-                  Verificación de puntualidad de primer horario en estado <strong className="text-emerald-400 font-mono">SEG Asistencia</strong> (homónimo a marcar tarjeta de asistencia).
+                <p className="text-xs text-slate-500">
+                  Verificación de puntualidad de primer horario en estado <strong className="text-teal-700 font-mono">SEG Asistencia</strong> (homónimo a marcar tarjeta de asistencia).
                 </p>
               </div>
             </div>
@@ -760,28 +760,28 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
           {/* Metric KPI Chips & Collapse Toggle */}
           <div className="flex items-center flex-wrap gap-2">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-950/70 border border-emerald-500/60 rounded-xl text-emerald-300 text-xs font-bold shadow-sm">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs font-semibold shadow-xs">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
               <span>{okCount} Presentes en Horario</span>
             </div>
 
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-950/70 border border-amber-500/60 rounded-xl text-amber-300 text-xs font-bold shadow-sm">
-              <Clock className="w-3.5 h-3.5 text-amber-400" />
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 border border-amber-200 rounded-xl text-amber-800 text-xs font-semibold shadow-xs">
+              <Clock className="w-3.5 h-3.5 text-amber-600" />
               <span>{pendCount} Pendientes de Inicio</span>
             </div>
 
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-400 text-xs font-medium">
-              <UserX className="w-3.5 h-3.5 text-slate-500" />
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 border border-slate-200 rounded-xl text-slate-600 text-xs font-medium">
+              <UserX className="w-3.5 h-3.5 text-slate-400" />
               <span>{sinPedidosCount} Sin Servicios Hoy</span>
             </div>
 
-            <div className="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 ml-1">
+            <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 ml-1">
               <button
                 onClick={() => setViewModeControlInicio('TABLE')}
                 className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition ${
                   viewModeControlInicio === 'TABLE'
-                    ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-teal-900 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="Vista Tabla de Técnicos y Contratistas"
               >
@@ -792,8 +792,8 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                 onClick={() => setViewModeControlInicio('GRID')}
                 className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition ${
                   viewModeControlInicio === 'GRID'
-                    ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-teal-900 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="Vista Cuadrícula de Tarjetas"
               >
@@ -804,7 +804,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
             <button
               onClick={() => setShowControlInicio(prev => !prev)}
-              className="flex items-center gap-1 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold rounded-xl transition"
+              className="flex items-center gap-1 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition"
             >
               <span>{showControlInicio ? 'Ocultar Sección' : 'Ver 20 Técnicos'}</span>
               {showControlInicio ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -815,8 +815,8 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         {/* Sector Filter Bar (Zona Local) */}
         {showControlInicio && (
           <div className="flex items-center gap-1.5 flex-wrap pt-1 pb-1">
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-1 flex items-center gap-1">
-              <Compass className="w-3 h-3 text-amber-400" /> Sector / Zona Local:
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mr-1 flex items-center gap-1">
+              <Compass className="w-3 h-3 text-teal-600" /> Sector / Zona Local:
             </span>
             {['ALL', 'Atlántica', 'La Pampa', 'Oeste', 'Centro', 'Sur', 'Suroeste', 'Contratistas'].map(sec => {
               const count = sec === 'ALL' 
@@ -828,15 +828,15 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                 <button
                   key={sec}
                   onClick={() => setCiSectorFilter(sec)}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
+                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 ${
                     isSelected
-                      ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                      : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-850'
+                      ? 'bg-teal-700 text-white shadow-xs'
+                      : 'bg-slate-100 border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                   }`}
                 >
                   <span>{sec === 'ALL' ? 'Todos los Sectores' : sec}</span>
-                  <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
-                    isSelected ? 'bg-slate-950 text-emerald-300' : 'bg-slate-800 text-slate-400'
+                  <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                    isSelected ? 'bg-teal-900 text-teal-100' : 'bg-slate-200 text-slate-600'
                   }`}>
                     {count}
                   </span>
@@ -848,11 +848,11 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
         {/* VISTA 1: TABLA COMPLETA DE TÉCNICOS Y CONTRATISTAS (PREDETERMINADA) */}
         {showControlInicio && viewModeControlInicio === 'TABLE' && (
-          <div className="border border-slate-800 rounded-xl overflow-hidden shadow-xl bg-slate-950/60 animate-fadeIn">
+          <div className="border border-slate-200 rounded-xl overflow-hidden shadow-xs bg-white animate-fadeIn">
             <div className="overflow-x-auto scrollbar-thin">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-slate-900/90 text-slate-400 border-b border-slate-800 font-bold uppercase tracking-wider text-[10px]">
+                  <tr className="bg-slate-100 text-slate-700 border-b border-slate-200 font-bold uppercase tracking-wider text-[10px]">
                     <th className="py-3 px-3">Técnico / Contratista</th>
                     <th className="py-3 px-3">Marcaje (07-10 hs)</th>
                     <th className="py-3 px-3">1° Horario</th>
@@ -865,7 +865,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                     <th className="py-3 px-3 text-right">Acción</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 font-sans">
+                <tbody className="divide-y divide-slate-100 font-sans">
                   {filteredControlInicio.map((item, idx) => {
                     const normTec = item.tecnico.toLowerCase().trim();
 
@@ -918,26 +918,26 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                     return (
                       <tr 
                         key={`ci-row-${item.tecnico}-${idx}`}
-                        className="hover:bg-slate-900/70 transition-colors group cursor-pointer"
+                        className="hover:bg-teal-50/30 transition-colors group cursor-pointer text-slate-800"
                         onClick={() => setSelectedTechAgenda(item.tecnico)}
                       >
                         {/* 1. Técnico / Contratista */}
                         <td className="py-2.5 px-3">
                           <div className="flex items-center gap-2">
-                            <div className="w-7 h-7 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-amber-400 font-bold text-xs group-hover:border-amber-400 transition">
+                            <div className="w-7 h-7 rounded-lg bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-700 font-bold text-xs group-hover:border-teal-400 transition">
                               {item.tecnico.slice(0, 1)}
                             </div>
                             <div>
-                              <div className="font-bold text-white group-hover:text-amber-400 transition flex items-center gap-1.5">
+                              <div className="font-bold text-slate-900 group-hover:text-teal-700 transition flex items-center gap-1.5">
                                 <span>{item.tecnico}</span>
                                 {isContractor && (
-                                  <span className="px-1.5 py-0.2 rounded text-[9px] font-black bg-purple-950 text-purple-300 border border-purple-800 uppercase">
+                                  <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-purple-50 text-purple-700 border border-purple-200 uppercase">
                                     Contratista
                                   </span>
                                 )}
                               </div>
-                              <div className="text-[10px] text-slate-400 flex items-center gap-1">
-                                <span className="text-amber-400 font-mono font-semibold">{item.zonaTecnica}</span>
+                              <div className="text-[10px] text-slate-500 flex items-center gap-1">
+                                <span className="text-teal-700 font-mono font-semibold">{item.zonaTecnica}</span>
                                 <span>•</span>
                                 <span>{item.zonaLocal}</span>
                               </div>
@@ -947,15 +947,15 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
                         {/* 2. Marcaje Asistencia */}
                         <td className="py-2.5 px-3 whitespace-nowrap">
-                          <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider inline-flex items-center gap-1 ${
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider inline-flex items-center gap-1 ${
                             isOk
-                              ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                              ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                               : isPend
-                              ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                              : 'bg-slate-800 text-slate-400 border border-slate-700'
+                              ? 'bg-amber-50 text-amber-800 border border-amber-200'
+                              : 'bg-slate-100 text-slate-600 border border-slate-200'
                           }`}>
-                            {isOk && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />}
-                            {isPend && <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />}
+                            {isOk && <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />}
+                            {isPend && <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
                             {isOk ? 'OK 07-10hs' : isPend ? (hasTodayOrder ? 'Pend. Hoy' : techTomorrowTickets.length > 0 ? 'Prog. Mañana' : 'En Agenda') : 'Sin Servicios'}
                           </span>
                         </td>
@@ -963,12 +963,12 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         {/* 3. 1° Horario */}
                         <td className="py-2.5 px-3 whitespace-nowrap">
                           {horaCoord ? (
-                            <div className="flex items-center gap-1 text-slate-200 font-mono font-bold bg-slate-900 px-2 py-1 rounded border border-slate-800 w-fit">
-                              <Clock className="w-3 h-3 text-amber-400" />
+                            <div className="flex items-center gap-1 text-slate-700 font-mono font-bold bg-slate-50 px-2 py-1 rounded border border-slate-200 w-fit">
+                              <Clock className="w-3 h-3 text-teal-600" />
                               <span>{horaCoord} hs</span>
                             </div>
                           ) : (
-                            <span className="text-slate-500 italic">--:--</span>
+                            <span className="text-slate-400 italic">--:--</span>
                           )}
                         </td>
 
@@ -977,20 +977,20 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                           {pedidoNum ? (
                             <div className="space-y-0.5">
                               <div className="flex items-center gap-1.5">
-                                <span className={`px-1.5 py-0.2 rounded text-[9px] font-black uppercase ${
-                                  isAiec ? 'bg-cyan-950 text-cyan-300 border border-cyan-800' :
-                                  isMp ? 'bg-purple-950 text-purple-300 border border-purple-800' :
-                                  'bg-amber-950 text-amber-300 border border-amber-800'
+                                <span className={`px-1.5 py-0.2 rounded text-[9px] font-bold uppercase ${
+                                  isAiec ? 'bg-sky-50 text-sky-800 border border-sky-200' :
+                                  isMp ? 'bg-purple-50 text-purple-800 border border-purple-200' :
+                                  'bg-teal-50 text-teal-800 border border-teal-200'
                                 }`}>
                                   {concepto}
                                 </span>
-                                <span className="font-mono font-bold text-white text-xs">
+                                <span className="font-mono font-bold text-slate-900 text-xs">
                                   #{pedidoNum}
                                 </span>
                               </div>
                             </div>
                           ) : (
-                            <span className="text-slate-500 text-xs">-</span>
+                            <span className="text-slate-400 text-xs">-</span>
                           )}
                         </td>
 
@@ -998,48 +998,48 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         <td className="py-2.5 px-3 max-w-[170px]">
                           {firstOrder || item.primerPedido ? (
                             <div className="space-y-0.5 truncate">
-                              <p className="font-semibold text-white truncate" title={clienteName}>
+                              <p className="font-semibold text-slate-900 truncate" title={clienteName}>
                                 {clienteName}
                               </p>
-                              <p className="text-[10px] text-amber-400 font-mono">
+                              <p className="text-[10px] text-teal-700 font-mono">
                                 ATM {lunoAtm}
                               </p>
                               {clienteReal && (
-                                <p className="text-[10px] text-slate-300 truncate" title={`Sitio: ${clienteReal}`}>
+                                <p className="text-[10px] text-slate-600 truncate" title={`Sitio: ${clienteReal}`}>
                                   📍 {clienteReal}
                                 </p>
                               )}
                             </div>
                           ) : (
-                            <span className="text-slate-500 italic">Sin asignar</span>
+                            <span className="text-slate-400 italic">Sin asignar</span>
                           )}
                         </td>
 
                         {/* 6. Dirección & Localidad */}
                         <td className="py-2.5 px-3 max-w-[180px]">
                           {firstOrder || item.primerPedido ? (
-                            <div className="space-y-0.5 truncate text-slate-300">
-                              <p className="font-medium truncate flex items-center gap-1" title={localidad}>
-                                <MapPin className="w-3 h-3 text-slate-500 flex-shrink-0" />
+                            <div className="space-y-0.5 truncate text-slate-600">
+                              <p className="font-medium truncate flex items-center gap-1 text-slate-800" title={localidad}>
+                                <MapPin className="w-3 h-3 text-slate-400 flex-shrink-0" />
                                 <span>{localidad}</span>
                               </p>
-                              <p className="text-[10px] text-slate-400 truncate" title={direccion}>
+                              <p className="text-[10px] text-slate-500 truncate" title={direccion}>
                                 {direccion}
                               </p>
                             </div>
                           ) : (
-                            <span className="text-slate-500 italic">-</span>
+                            <span className="text-slate-400 italic">-</span>
                           )}
                         </td>
 
                         {/* 7. Detalle Falla / Motivo */}
                         <td className="py-2.5 px-3 max-w-[200px]">
                           {detalleFalla && detalleFalla !== '-' ? (
-                            <div className="bg-slate-900/80 border border-slate-800 px-2 py-1 rounded text-slate-300 text-[11px] italic truncate" title={detalleFalla}>
+                            <div className="bg-slate-50 border border-slate-200 px-2 py-1 rounded text-slate-700 text-[11px] italic truncate" title={detalleFalla}>
                               "{detalleFalla}"
                             </div>
                           ) : (
-                            <span className="text-slate-500 italic text-[11px]">Sin detalle registrado</span>
+                            <span className="text-slate-400 italic text-[11px]">Sin detalle registrado</span>
                           )}
                         </td>
 
@@ -1047,32 +1047,32 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         <td className="py-2.5 px-3 whitespace-nowrap">
                           {firstOrder || item.primerPedido ? (
                             <div className="space-y-1">
-                              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-900 border border-slate-800 text-slate-200 block w-fit">
+                              <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 border border-slate-200 text-slate-700 block w-fit">
                                 {estado}
                               </span>
                               {!isAiec && slaPorcentaje > 0 && (
                                 <span className={`text-[10px] font-mono font-bold block ${
-                                  slaPorcentaje >= 85 ? 'text-red-400' : 'text-slate-400'
+                                  slaPorcentaje >= 85 ? 'text-rose-700' : 'text-slate-600'
                                 }`}>
                                   SLA: {slaPorcentaje}% ({hsSla}h rest.)
                                 </span>
                               )}
                             </div>
                           ) : (
-                            <span className="text-slate-500">-</span>
+                            <span className="text-slate-400">-</span>
                           )}
                         </td>
 
                         {/* 9. Agenda Hoy */}
                         <td className="py-2.5 px-3 text-center whitespace-nowrap">
-                          <span className={`px-2 py-1 rounded-lg text-xs font-mono font-black ${
+                          <span className={`px-2 py-1 rounded-lg text-xs font-mono font-bold ${
                             techTodayTickets.length > 0 
-                              ? 'bg-amber-500/10 border border-amber-500/40 text-amber-300'
+                              ? 'bg-teal-50 border border-teal-200 text-teal-800'
                               : techTomorrowTickets.length > 0
-                              ? 'bg-blue-500/10 border border-blue-500/40 text-blue-300'
+                              ? 'bg-sky-50 border border-sky-200 text-sky-800'
                               : techAllTickets.length > 0
-                              ? 'bg-slate-800 border border-slate-700 text-slate-200'
-                              : 'bg-slate-900 border border-slate-800 text-slate-500'
+                              ? 'bg-slate-100 border border-slate-200 text-slate-700'
+                              : 'bg-slate-50 border border-slate-200 text-slate-400'
                           }`}>
                             {techTodayTickets.length > 0 
                               ? `${techTodayTickets.length} hoy (${techAllTickets.length} tot.)`
@@ -1091,7 +1091,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                               e.stopPropagation();
                               setSelectedTechAgenda(item.tecnico);
                             }}
-                            className="px-2.5 py-1 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 border border-slate-700 text-slate-200 text-xs font-bold rounded-lg transition inline-flex items-center gap-1 shadow-sm"
+                            className="px-2.5 py-1 bg-slate-100 hover:bg-teal-700 hover:text-white border border-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition inline-flex items-center gap-1 shadow-xs"
                             title="Abrir agenda flotante del día"
                           >
                             <span>Ver Agenda</span>
@@ -1129,94 +1129,88 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                 <div
                   key={`${item.tecnico}-${idx}`}
                   onClick={() => setSelectedTechAgenda(item.tecnico)}
-                  className={`p-3.5 rounded-xl border transition-all cursor-pointer group relative overflow-visible ${
+                  className={`p-3.5 rounded-xl border bg-white transition-all cursor-pointer group relative overflow-visible shadow-xs ${
                     isOk
-                      ? 'bg-slate-950/70 border-emerald-500/40 hover:border-emerald-400 hover:bg-emerald-950/20'
+                      ? 'border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50/20'
                       : isPend
-                      ? 'bg-slate-950/70 border-amber-500/50 hover:border-amber-400 hover:bg-amber-950/20 ring-1 ring-amber-500/20'
-                      : 'bg-slate-950/40 border-slate-800 hover:border-slate-700 hover:bg-slate-900/40 opacity-75'
+                      ? 'border-amber-300 hover:border-amber-500 hover:bg-amber-50/20'
+                      : 'border-slate-200 hover:border-slate-300 opacity-80'
                   }`}
                   title={`Clic para ver agenda completa de ${item.tecnico}`}
                 >
                   {/* Top: Tech Name + Status Badge */}
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div>
-                      <h4 className="text-xs font-bold text-white group-hover:text-amber-400 transition truncate max-w-[150px]">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-teal-700 transition truncate max-w-[150px]">
                         {item.tecnico}
                       </h4>
-                      <div className="flex items-center gap-1 text-[10px] text-slate-400">
-                        <span className="text-amber-400 font-mono font-semibold">{item.zonaTecnica}</span>
+                      <div className="flex items-center gap-1 text-[10px] text-slate-500">
+                        <span className="text-teal-700 font-mono font-semibold">{item.zonaTecnica}</span>
                         <span>•</span>
-                        <span className="text-slate-300">{item.zonaLocal}</span>
+                        <span className="text-slate-600">{item.zonaLocal}</span>
                       </div>
                     </div>
 
                     {/* Status badge */}
-                    <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider flex items-center gap-1 flex-shrink-0 ${
+                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 flex-shrink-0 ${
                       isOk
-                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                        ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                         : isPend
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                        : 'bg-slate-800 text-slate-400 border border-slate-700'
+                        ? 'bg-amber-50 text-amber-800 border border-amber-200'
+                        : 'bg-slate-100 text-slate-600 border border-slate-200'
                     }`}>
-                      {isOk && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />}
-                      {isPend && <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />}
+                      {isOk && <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />}
+                      {isPend && <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
                       {isOk ? 'OK 07-10hs' : isPend ? 'Pendiente' : 'Sin Agenda'}
                     </span>
                   </div>
 
                   {/* Body: First Scheduled Ticket Details */}
                   {item.primerPedido ? (
-                    <div className="space-y-1 text-[11px] bg-slate-900/80 p-2 rounded-lg border border-slate-800/80">
-                      <div className="flex items-center justify-between text-slate-300">
+                    <div className="space-y-1 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-200">
+                      <div className="flex items-center justify-between text-slate-700">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-bold flex items-center gap-1 text-amber-300">
-                            <Clock className="w-3 h-3 text-amber-400" />
+                          <span className="font-bold flex items-center gap-1 text-teal-800">
+                            <Clock className="w-3 h-3 text-teal-600" />
                             1° Coord: {formatTimeClean(item.primerPedido.horaCoordinada)}
                           </span>
                           <span className={`px-1 py-0.2 rounded font-bold text-[9px] uppercase ${
-                            isAiec ? 'bg-cyan-950 text-cyan-300 border border-cyan-800' :
-                            isMp ? 'bg-purple-950 text-purple-300 border border-purple-800' :
-                            'bg-amber-950 text-amber-300 border border-amber-800'
+                            isAiec ? 'bg-sky-50 text-sky-800 border border-sky-200' :
+                            isMp ? 'bg-purple-50 text-purple-800 border border-purple-200' :
+                            'bg-teal-50 text-teal-800 border border-teal-200'
                           }`}>
                             {concept}
                           </span>
                         </div>
-                        <span className={`font-mono text-[10px] px-1.5 py-0.2 rounded font-semibold ${
-                          item.primerPedido.estado === 'SEG Asistencia'
-                            ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
-                            : item.primerPedido.estado === 'SEG Control Final'
-                            ? 'bg-blue-950 text-blue-300 border border-blue-800'
-                            : 'bg-amber-950 text-amber-300 border border-amber-800'
-                        }`}>
+                        <span className="font-mono text-[10px] px-1.5 py-0.2 rounded font-semibold bg-slate-100 text-slate-700 border border-slate-200">
                           {item.primerPedido.estado}
                         </span>
                       </div>
 
-                      <p className="font-medium text-slate-200 truncate" title={`${item.primerPedido.cliente} - LUNO: ${item.primerPedido.luno}`}>
-                        {item.primerPedido.cliente} <span className="text-slate-400 font-mono">({item.primerPedido.luno})</span>
+                      <p className="font-medium text-slate-900 truncate" title={`${item.primerPedido.cliente} - LUNO: ${item.primerPedido.luno}`}>
+                        {item.primerPedido.cliente} <span className="text-slate-500 font-mono">({item.primerPedido.luno})</span>
                       </p>
 
                       {(item.primerPedido.clienteReal || matchingTicket?.clienteReal) && (
-                        <p className="text-[10px] text-amber-300 font-bold truncate flex items-center gap-1" title={`Sitio Real: ${item.primerPedido.clienteReal || matchingTicket?.clienteReal}`}>
-                          <Store className="w-2.5 h-2.5 text-amber-400 flex-shrink-0" />
+                        <p className="text-[10px] text-teal-800 font-bold truncate flex items-center gap-1" title={`Sitio Real: ${item.primerPedido.clienteReal || matchingTicket?.clienteReal}`}>
+                          <Store className="w-2.5 h-2.5 text-teal-600 flex-shrink-0" />
                           <span>Sitio: {item.primerPedido.clienteReal || matchingTicket?.clienteReal}</span>
                         </p>
                       )}
                       
-                      <p className="text-[10px] text-slate-400 truncate flex items-center gap-1">
-                        <MapPin className="w-2.5 h-2.5 text-slate-500 flex-shrink-0" />
+                      <p className="text-[10px] text-slate-500 truncate flex items-center gap-1">
+                        <MapPin className="w-2.5 h-2.5 text-slate-400 flex-shrink-0" />
                         {item.primerPedido.localidad} - {item.primerPedido.direccion}
                       </p>
                     </div>
                   ) : (
-                    <div className="py-2 text-center text-[11px] text-slate-500 italic bg-slate-900/40 rounded-lg border border-slate-850">
+                    <div className="py-2 text-center text-[11px] text-slate-400 italic bg-slate-50 rounded-lg border border-slate-200">
                       Sin primer servicio registrado hoy
                     </div>
                   )}
 
                   {/* Hover indicator */}
-                  <div className="mt-2 text-[10px] text-slate-500 group-hover:text-amber-400 flex items-center justify-end gap-0.5 transition">
+                  <div className="mt-2 text-[10px] text-slate-500 group-hover:text-teal-700 flex items-center justify-end gap-0.5 transition">
                     <span>Ver agenda del día</span>
                     <ChevronRight className="w-3 h-3" />
                   </div>
@@ -1229,29 +1223,29 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
       </div>
 
       {/* Filter Toolbar */}
-      <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-xl space-y-4 shadow-lg">
+      <div className="bg-white border border-slate-200 p-4 rounded-xl space-y-4 shadow-xs">
         
         {/* Date Selector Switcher Bar & Quick Filters */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-slate-800/80">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
           
           {/* Date Selector Buttons */}
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5 mr-1">
-              <Calendar className="w-3.5 h-3.5 text-amber-400" /> Agenda:
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5 mr-1">
+              <Calendar className="w-3.5 h-3.5 text-teal-600" /> Agenda:
             </span>
-            <div className="flex flex-wrap items-center bg-slate-950 border border-slate-800 rounded-xl p-1 gap-1">
+            <div className="flex flex-wrap items-center bg-slate-100 border border-slate-200 rounded-xl p-1 gap-1">
               <button
                 onClick={() => { setDateFilter('HOY_Y_MANANA'); setCurrentPage(1); }}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                   dateFilter === 'HOY_Y_MANANA'
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                    ? 'bg-teal-700 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                 }`}
                 title={`Ver pedidos coordinados para hoy (${todayStr}) y mañana (${tomorrowStr})`}
               >
                 <span>📅 Hoy + Mañana</span>
-                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
-                  dateFilter === 'HOY_Y_MANANA' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                  dateFilter === 'HOY_Y_MANANA' ? 'bg-teal-900 text-teal-100' : 'bg-slate-200 text-slate-600'
                 }`}>
                   {hoyYMananaCount}
                 </span>
@@ -1259,16 +1253,16 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
               <button
                 onClick={() => { setDateFilter('HOY'); setCurrentPage(1); }}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition ${
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
                   dateFilter === 'HOY'
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                    ? 'bg-teal-700 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                 }`}
                 title={`Ver pedidos coordinados únicamente para hoy (${todayStr})`}
               >
                 <span>🕒 Hoy ({todayStr})</span>
-                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
-                  dateFilter === 'HOY' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                  dateFilter === 'HOY' ? 'bg-teal-900 text-teal-100' : 'bg-slate-200 text-slate-600'
                 }`}>
                   {hoyCount}
                 </span>
@@ -1276,16 +1270,16 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
               <button
                 onClick={() => { setDateFilter('MANANA'); setCurrentPage(1); }}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition ${
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
                   dateFilter === 'MANANA'
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                    ? 'bg-teal-700 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                 }`}
                 title={`Ver pedidos coordinados para el día siguiente (${tomorrowStr})`}
               >
                 <span>☀️ Mañana ({tomorrowStr})</span>
-                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
-                  dateFilter === 'MANANA' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                  dateFilter === 'MANANA' ? 'bg-teal-900 text-teal-100' : 'bg-slate-200 text-slate-600'
                 }`}>
                   {mananaCount}
                 </span>
@@ -1293,16 +1287,16 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
               <button
                 onClick={() => { setDateFilter('TODOS'); setCurrentPage(1); }}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition ${
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
                   dateFilter === 'TODOS'
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                    ? 'bg-teal-700 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                 }`}
                 title="Ver todos los pedidos sin filtro de fecha"
               >
                 <span>📋 Todos</span>
-                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
-                  dateFilter === 'TODOS' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                  dateFilter === 'TODOS' ? 'bg-teal-900 text-teal-100' : 'bg-slate-200 text-slate-600'
                 }`}>
                   {tickets.length}
                 </span>
@@ -1314,17 +1308,17 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={() => setSpecialFilter(prev => prev === 'MOVIL_S' ? 'ALL' : 'MOVIL_S')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border transition ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition ${
                 specialFilter === 'MOVIL_S'
-                  ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-md shadow-emerald-500/20'
-                  : 'bg-slate-950 border-slate-800 text-slate-300 hover:border-emerald-500/50 hover:text-white'
+                  ? 'bg-teal-700 text-white border-teal-700 shadow-xs'
+                  : 'bg-slate-100 border-slate-200 text-slate-700 hover:border-teal-400'
               }`}
               title="Filtrar pedidos donde Columna H ('M') = 'S' (Informado a móvil del técnico)"
             >
-              <Smartphone className={`w-3.5 h-3.5 ${specialFilter === 'MOVIL_S' ? 'text-slate-950' : 'text-emerald-400'}`} />
+              <Smartphone className={`w-3.5 h-3.5 ${specialFilter === 'MOVIL_S' ? 'text-white' : 'text-teal-600'}`} />
               <span>📱 Informados al Móvil (M = S)</span>
-              <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
-                specialFilter === 'MOVIL_S' ? 'bg-slate-950 text-emerald-300' : 'bg-slate-800 text-emerald-400'
+              <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                specialFilter === 'MOVIL_S' ? 'bg-teal-900 text-teal-100' : 'bg-slate-200 text-slate-700'
               }`}>
                 {movilSCount}
               </span>
@@ -1343,18 +1337,18 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Buscar por N° Pedido, Cliente, ID de Equipo, Técnico, Detalle de Falla o Ciudad..."
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-4 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500"
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-9 pr-4 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:bg-white"
             />
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs text-slate-400 flex items-center gap-1">
-              <ArrowUpDown className="w-3.5 h-3.5 text-amber-400" /> Ordenar:
+            <span className="text-xs text-slate-500 flex items-center gap-1">
+              <ArrowUpDown className="w-3.5 h-3.5 text-teal-600" /> Ordenar:
             </span>
             <select
               value={sortBy}
               onChange={(e: any) => setSortBy(e.target.value)}
-              className="bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 py-2 px-2.5 focus:outline-none focus:border-amber-500 cursor-pointer"
+              className="bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-700 py-2 px-2.5 focus:outline-none focus:border-teal-500 cursor-pointer"
             >
               <option value="sla_desc">Mayor % SLA (Más Urgentes)</option>
               <option value="sla_asc">Menor % SLA</option>
@@ -1362,13 +1356,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               <option value="cliente">Cliente (A-Z)</option>
             </select>
 
-            <div className="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800">
+            <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
               <button
                 onClick={() => setAgendaDisplayMode('TABLA')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                   agendaDisplayMode === 'TABLA'
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-teal-700 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="Vista Tabla de Pedidos"
               >
@@ -1377,24 +1371,24 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
               </button>
               <button
                 onClick={() => setAgendaDisplayMode('MAPA')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                   agendaDisplayMode === 'MAPA'
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-teal-700 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="Vista Mapa Geográfico & Recorridos"
               >
-                <MapPin className="w-3.5 h-3.5 text-blue-300" />
+                <MapPin className="w-3.5 h-3.5" />
                 <span>Mapa & Rutas</span>
               </button>
             </div>
 
             <button
               onClick={handleExportCSV}
-              className="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-2 rounded-lg text-xs font-semibold border border-slate-700 transition"
+              className="flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg text-xs font-semibold border border-slate-200 transition"
               title="Descargar lista filtrada en formato CSV"
             >
-              <Download className="w-3.5 h-3.5 text-amber-400" />
+              <Download className="w-3.5 h-3.5 text-teal-600" />
               <span>CSV</span>
             </button>
           </div>
@@ -1402,18 +1396,18 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         </div>
 
         {/* Strictly Cascading / Dependent Dropdown Filters */}
-        <div className={`grid grid-cols-2 sm:grid-cols-3 ${availableYears.length > 1 ? 'lg:grid-cols-7' : 'lg:grid-cols-6'} gap-2.5 pt-3 border-t border-slate-800/80`}>
+        <div className={`grid grid-cols-2 sm:grid-cols-3 ${availableYears.length > 1 ? 'lg:grid-cols-7' : 'lg:grid-cols-6'} gap-2.5 pt-3 border-t border-slate-100`}>
           
           {/* 0. Año */}
           {availableYears.length > 1 && (
             <div>
-              <label className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block mb-1">
+              <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
                 Año
               </label>
               <select
                 value={selectedYear}
                 onChange={(e) => { setSelectedYear(e.target.value); setCurrentPage(1); }}
-                className="w-full bg-slate-950 border border-amber-500/40 rounded-lg text-xs text-amber-300 py-1.5 px-2 focus:outline-none focus:border-amber-500 font-bold"
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 py-1.5 px-2 focus:outline-none focus:border-teal-500 font-medium"
               >
                 <option value="ALL">Todos ({availableYears.length})</option>
                 {availableYears.map(yr => (
@@ -1425,13 +1419,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
           {/* 1. Región */}
           <div>
-            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
               1. Región Operativa
             </label>
             <select
               value={selectedRegion}
               onChange={(e) => handleRegionChange(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 py-1.5 px-2 focus:outline-none focus:border-amber-500 font-medium"
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 py-1.5 px-2 focus:outline-none focus:border-teal-500 font-medium"
             >
               <option value="ALL">Todas las Regiones</option>
               {regionsList.map(r => (
@@ -1442,13 +1436,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
           {/* 2. Zona Local (Sector) */}
           <div>
-            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
               2. Zona Local
             </label>
             <select
               value={selectedZonaLocal}
               onChange={(e) => handleZonaLocalChange(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 py-1.5 px-2 focus:outline-none focus:border-amber-500 font-medium"
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 py-1.5 px-2 focus:outline-none focus:border-teal-500 font-medium"
             >
               <option value="ALL">Todas ({availableZonasLocales.length})</option>
               {availableZonasLocales.map(zl => (
@@ -1459,13 +1453,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
           {/* 3. Zona Técnica (Dependiente de Región & Zona Local con Formato ZT + Local) */}
           <div>
-            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
               3. Zona Técnica
             </label>
             <select
               value={selectedZona}
               onChange={(e) => handleZonaChange(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 py-1.5 px-2 focus:outline-none focus:border-amber-500 font-medium"
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 py-1.5 px-2 focus:outline-none focus:border-teal-500 font-medium"
             >
               <option value="ALL">Todas ({availableZonas.length})</option>
               {availableZonas.map(z => (
@@ -1476,13 +1470,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
           {/* 4. Técnico Asignado (STRICTLY Dependent on Región + Zona Local + Zona Técnica) */}
           <div>
-            <label className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block mb-1">
+            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
               4. Técnico ({availableTecnicos.length})
             </label>
             <select
               value={selectedTecnico}
               onChange={(e) => handleTecnicoChange(e.target.value)}
-              className="w-full bg-slate-950 border border-amber-500/40 rounded-lg text-xs text-slate-100 py-1.5 px-2 focus:outline-none focus:border-amber-500 font-medium"
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 py-1.5 px-2 focus:outline-none focus:border-teal-500 font-medium"
             >
               <option value="ALL">Todos los Técnicos ({availableTecnicos.length})</option>
               {availableTecnicos.map(t => (
@@ -1493,13 +1487,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
           {/* 5. Filtro de Alertas / Llamadas Especiales */}
           <div>
-            <label className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block mb-1">
+            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
               5. Filtro Especial
             </label>
             <select
               value={specialFilter}
               onChange={(e: any) => setSpecialFilter(e.target.value)}
-              className="w-full bg-slate-950 border border-amber-500/40 rounded-lg text-xs text-amber-300 py-1.5 px-2 focus:outline-none focus:border-amber-500 font-semibold"
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 py-1.5 px-2 focus:outline-none focus:border-teal-500 font-semibold"
             >
               <option value="ALL">Sin Filtro Especial</option>
               <option value="SC_PENDIENTES">🚨 SC Pendientes Región ({scPendientesTotal})</option>
@@ -1516,11 +1510,11 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
           {/* 6. Cliente */}
           <div>
-            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">6. Cliente</label>
+            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">6. Cliente</label>
             <select
               value={selectedCliente}
               onChange={(e) => { setSelectedCliente(e.target.value); setCurrentPage(1); }}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 py-1.5 px-2 focus:outline-none focus:border-amber-500"
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 py-1.5 px-2 focus:outline-none focus:border-teal-500"
             >
               <option value="ALL">Todos ({clientesList.length})</option>
               {clientesList.map(c => (
@@ -1543,29 +1537,29 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           onSelectTech={(tech) => setSelectedTecnico(tech)}
         />
       ) : (
-        <div id="agenda-table-section" className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+        <div id="agenda-table-section" className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
         
         {/* Table Header with Pagination size selector */}
-        <div className="px-5 py-3.5 bg-slate-950 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <h3 className="text-sm font-bold text-white">Pedidos en Agenda Diaria</h3>
-            <span className="text-xs bg-slate-800 text-slate-300 px-2.5 py-0.5 rounded-full font-semibold">
+            <h3 className="text-sm font-bold text-slate-900">Pedidos en Agenda Diaria</h3>
+            <span className="text-xs bg-slate-200/80 text-slate-700 px-2.5 py-0.5 rounded-full font-semibold">
               {filteredTickets.length} pedidos encontrados
             </span>
           </div>
 
           {/* Page size selector */}
-          <div className="flex items-center gap-2 text-xs text-slate-400">
+          <div className="flex items-center gap-2 text-xs text-slate-500">
             <span>Mostrar por página:</span>
-            <div className="flex items-center bg-slate-900 border border-slate-800 rounded-lg overflow-hidden p-0.5">
+            <div className="flex items-center bg-slate-100 border border-slate-200 rounded-lg overflow-hidden p-0.5">
               {[20, 40, 100, 200].map(sz => (
                 <button
                   key={sz}
                   onClick={() => setPageSize(sz)}
-                  className={`px-2.5 py-1 text-xs font-bold rounded transition ${
+                  className={`px-2.5 py-1 text-xs font-semibold rounded transition ${
                     pageSize === sz
-                      ? 'bg-amber-500 text-slate-950 shadow'
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                      ? 'bg-teal-700 text-white shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                   }`}
                 >
                   {sz}
@@ -1579,7 +1573,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="bg-slate-950/60 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800/80">
+              <tr className="bg-slate-100 text-slate-700 uppercase tracking-wider font-bold text-[10px] border-b border-slate-200">
                 <th className="py-3 px-4">Días última atención & R</th>
                 <th className="py-3 px-4">Pedido / Equipo & MP</th>
                 <th className="py-3 px-4">Cliente & Ubicación</th>
@@ -1591,7 +1585,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                 <th className="py-3 px-3 text-center">Acción</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-slate-100 font-sans">
               {paginatedTickets.length === 0 ? (
                 <tr>
                   <td colSpan={9} className="py-12 text-center text-slate-400">
@@ -1613,20 +1607,20 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                     <tr
                       key={t.id}
                       onClick={() => onSelectTicket(t)}
-                      className="hover:bg-slate-800/60 transition cursor-pointer group"
+                      className="hover:bg-teal-50/30 transition cursor-pointer group text-slate-800"
                     >
                       {/* 1. Días última atención & R */}
                       <td className="py-3 px-4 font-medium whitespace-nowrap">
                         <div className="space-y-1">
-                          <span className="text-xs font-semibold text-slate-200 block">
+                          <span className="text-xs font-semibold text-slate-800 block">
                             {t.diasDesdeUltimaAtencion || t.diasUltimaAtencion || '1 día'}
                           </span>
                           {((t.reincidenciaCount && t.reincidenciaCount > 0) || cronico) && (
                             <span 
-                              className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-purple-950 border border-purple-500/60 text-purple-300 font-bold text-[10px] shadow-sm"
+                              className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-purple-50 border border-purple-200 text-purple-700 font-bold text-[10px]"
                               title={`Reincidencias registradas en equipo (R = ${t.reincidenciaCount || (cronico ? cronico.totalFallas : 1)})`}
                             >
-                              <RotateCcw className="w-2.5 h-2.5 text-purple-400" />
+                              <RotateCcw className="w-2.5 h-2.5 text-purple-600" />
                               R: {t.reincidenciaCount || (cronico ? cronico.totalFallas : 1)}
                             </span>
                           )}
@@ -1636,19 +1630,19 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                       {/* 2. Pedido / Equipo & MP */}
                       <td className="py-3 px-4 font-medium">
                         <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="font-mono text-amber-400 font-bold group-hover:underline">
+                          <span className="font-mono text-teal-700 font-bold group-hover:underline">
                             #{t.pedido}
                           </span>
                           {t.esPedidoSuspendidoPrevio && (
                             <span 
-                              className="px-1.5 py-0.2 rounded bg-amber-950/90 border border-amber-500 text-amber-300 font-bold text-[10px]"
+                              className="px-1.5 py-0.2 rounded bg-amber-50 border border-amber-200 text-amber-800 font-bold text-[10px]"
                               title={`Pedido reanudado: suspendido previamente por ${t.suspensionPrevia?.codigoCierre || t.suspensionPrevia?.codCierre || 'cierre'}: ${t.suspensionPrevia?.descCierre || t.suspensionPrevia?.desc || ''}`}
                             >
                               ⏸️ Reanudado ({t.suspensionPrevia?.codigoCierre || t.suspensionPrevia?.codCierre || 'PPR'})
                             </span>
                           )}
                           {isAIEC && (
-                            <span className="px-1.5 py-0.2 rounded bg-cyan-950 border border-cyan-800 text-cyan-300 font-bold text-[10px]">
+                            <span className="px-1.5 py-0.2 rounded bg-sky-50 border border-sky-200 text-sky-800 font-bold text-[10px]">
                               AIEC
                             </span>
                           )}
@@ -1659,42 +1653,42 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                                 onOpenCronicoDetail(cronico);
                               }}
                               title={`¡Equipo Crónico! ${cronico.totalFallas} fallas repetidas en SLA (60 días)`}
-                              className="px-1.5 py-0.2 rounded bg-purple-950 border border-purple-500 text-purple-300 font-bold text-[10px] flex items-center gap-1 hover:bg-purple-900"
+                              className="px-1.5 py-0.2 rounded bg-purple-50 border border-purple-200 text-purple-700 font-bold text-[10px] flex items-center gap-1 hover:bg-purple-100"
                             >
-                              <Radio className="w-2.5 h-2.5 animate-pulse text-purple-400" />
+                              <Radio className="w-2.5 h-2.5 text-purple-600" />
                               CRÓNICO
                             </button>
                           )}
                         </div>
-                        <div className="flex items-center gap-1 text-[11px] text-slate-400 font-mono mt-0.5">
-                          <span>Eq: <strong className="text-slate-200">{t.luno || '-'}</strong></span>
+                        <div className="flex items-center gap-1 text-[11px] text-slate-500 font-mono mt-0.5">
+                          <span>Eq: <strong className="text-slate-800">{t.luno || '-'}</strong></span>
                         </div>
                         {/* MP Cerrados Detection: Alerta de MP Deficiente (<30d) vs MP OK (>30d) */}
                         {t.esMpDeficiente ? (
                           <div 
-                            className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-red-950/90 border border-red-500/80 text-red-300 text-[10px] font-bold shadow-sm"
+                            className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-rose-50 border border-rose-200 text-rose-800 text-[10px] font-bold shadow-xs"
                             title={`¡Alerta de Calidad! Este equipo tuvo un Mantenimiento Preventivo cerrado hace solo ${t.diasDesdeUltimoMp ?? '<30'} días (${t.ultimoMpFecha || ''}${t.tecnicoUltimoMp ? ` por ${t.tecnicoUltimoMp}` : ''}). Falla prematura post-MP.`}
                           >
-                            <AlertTriangle className="w-3 h-3 text-red-400 flex-shrink-0 animate-bounce" />
+                            <AlertTriangle className="w-3 h-3 text-rose-600 flex-shrink-0" />
                             <span>🚨 MP Deficiente ({t.diasDesdeUltimoMp ?? '<30'}d)</span>
                           </div>
                         ) : t.ultimoMpFecha ? (
                           <div 
-                            className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-950/60 border border-emerald-700/60 text-emerald-400 text-[10px] font-medium"
+                            className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-medium"
                             title={`Último MP cerrado el ${t.ultimoMpFecha}${t.diasDesdeUltimoMp ? ` (hace ${t.diasDesdeUltimoMp} días)` : ''}${t.tecnicoUltimoMp ? ` por ${t.tecnicoUltimoMp}` : ''}`}
                           >
-                            <CheckCircle2 className="w-2.5 h-2.5 text-emerald-400 flex-shrink-0" />
+                            <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600 flex-shrink-0" />
                             <span>MP {t.ultimoMpFecha}</span>
                           </div>
                         ) : null}
 
                         {t.tiempoAsistenciaMp && (
                           <div className="flex items-center gap-1 mt-0.5">
-                            <span className={`text-[10px] font-mono ${t.alertaTiempoMp?.tieneAlerta ? 'text-amber-400 font-bold' : 'text-slate-400'}`}>
+                            <span className={`text-[10px] font-mono ${t.alertaTiempoMp?.tieneAlerta ? 'text-amber-700 font-bold' : 'text-slate-500'}`}>
                               T Asis: {t.tiempoAsistenciaMp}
                             </span>
                             {t.alertaTiempoMp?.tieneAlerta && (
-                              <span className="text-[10px] text-amber-400" title={t.alertaTiempoMp.mensaje}>⚠️</span>
+                              <span className="text-[10px] text-amber-600" title={t.alertaTiempoMp.mensaje}>⚠️</span>
                             )}
                           </div>
                         )}
@@ -1702,19 +1696,19 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
                       {/* 3. Cliente & Ubicación */}
                       <td className="py-3 px-4">
-                        <span className="font-bold text-white block">{t.cliente}</span>
+                        <span className="font-bold text-slate-900 block">{t.cliente}</span>
                         {t.clienteReal && (
                           <div 
-                            className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-amber-500/15 border border-amber-500/40 text-amber-300 text-[10px] font-bold"
+                            className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-teal-50 border border-teal-200 text-teal-800 text-[10px] font-semibold"
                             title={`Relevamiento Cash Today: El cliente comercial y sucursal a relevar es ${t.clienteReal}${t.sucursalRelevamiento ? ` (${t.sucursalRelevamiento})` : ''}`}
                           >
-                            <Store className="w-3 h-3 text-amber-400 flex-shrink-0" />
+                            <Store className="w-3 h-3 text-teal-600 flex-shrink-0" />
                             <span className="truncate max-w-[180px]">Sitio Real: {t.clienteReal}</span>
-                            {t.sucursalRelevamiento && <span className="text-amber-200/90 font-normal">({t.sucursalRelevamiento})</span>}
+                            {t.sucursalRelevamiento && <span className="text-teal-700 font-normal">({t.sucursalRelevamiento})</span>}
                           </div>
                         )}
-                        <span className="text-[11px] text-slate-400 flex items-center gap-1 truncate max-w-[200px]" title={`${t.localidad} - ${t.direccion}`}>
-                          <MapPin className="w-3 h-3 text-slate-500 flex-shrink-0" />
+                        <span className="text-[11px] text-slate-500 flex items-center gap-1 truncate max-w-[200px]" title={`${t.localidad} - ${t.direccion}`}>
+                          <MapPin className="w-3 h-3 text-slate-400 flex-shrink-0" />
                           {t.localidad} {t.direccion ? `(${t.direccion})` : ''}
                         </span>
                       </td>
@@ -1723,31 +1717,31 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                       <td className="py-3 px-4">
                         {isSinAsignar ? (
                           <div>
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-red-950 border border-red-500 text-red-300 font-bold text-[11px] shadow-sm animate-pulse">
-                              <AlertTriangle className="w-3 h-3 text-red-400 flex-shrink-0" />
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-rose-50 border border-rose-200 text-rose-800 font-bold text-[11px] shadow-xs">
+                              <AlertTriangle className="w-3 h-3 text-rose-600 flex-shrink-0" />
                               🚨 SIN COORDINAR / Riesgo SLA
                             </span>
-                            <span className="text-[10px] text-slate-400 block mt-0.5">
-                              Reporte: <strong className="text-amber-400">{t.origenReporte || 'Pendientes'}</strong> • Zona {t.zonaTecnica || t.zona}
+                            <span className="text-[10px] text-slate-500 block mt-0.5">
+                              Reporte: <strong className="text-teal-700">{t.origenReporte || 'Pendientes'}</strong> • Zona {t.zonaTecnica || t.zona}
                             </span>
                           </div>
                         ) : (
                           <div>
                             <div className="flex items-center gap-1.5">
-                              <span className="font-semibold text-slate-100">{t.tecnico}</span>
-                              <span className="inline-flex items-center px-1.5 py-0.2 rounded bg-emerald-950/60 border border-emerald-700/60 text-emerald-400 text-[9px] font-bold">
+                              <span className="font-semibold text-slate-900">{t.tecnico}</span>
+                              <span className="inline-flex items-center px-1.5 py-0.2 rounded bg-emerald-50 border border-emerald-200 text-emerald-800 text-[9px] font-bold">
                                 ✓ Coordinado
                               </span>
                             </div>
-                            <div className="flex items-center gap-1 text-[11px] text-amber-400/90 font-medium flex-wrap mt-0.5">
+                            <div className="flex items-center gap-1 text-[11px] text-teal-700 font-medium flex-wrap mt-0.5">
                               <span>{t.zonaTecnica || t.zona}</span>
                               {localZone && (
-                                <span className="text-[10px] text-slate-300 bg-slate-950 px-1 rounded border border-slate-800">
+                                <span className="text-[10px] text-slate-600 bg-slate-100 px-1 rounded border border-slate-200">
                                   {localZone}
                                 </span>
                               )}
                               {t.region && (
-                                <span className="text-[10px] text-slate-400 bg-slate-950 px-1 rounded border border-slate-800">
+                                <span className="text-[10px] text-slate-500 bg-slate-100 px-1 rounded border border-slate-200">
                                   {t.region}
                                 </span>
                               )}
@@ -1758,17 +1752,17 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
                       {/* 5. Detalle Falla & Alertas */}
                       <td className="py-3 px-4 max-w-[280px]">
-                        <p className="text-xs text-slate-200 font-medium truncate" title={t.detalleFalla}>
+                        <p className="text-xs text-slate-700 font-medium truncate" title={t.detalleFalla}>
                           {t.detalleFalla || '-'}
                         </p>
 
                         {/* CALLOUT: AIEC comparte mismo domicilio con pedido coordinado */}
                         {sharesAddressWithCoordinated && (
                           <div 
-                            className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 text-[10px] font-bold shadow-sm"
+                            className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold shadow-xs"
                             title="Existe otro pedido coordinado en este mismo domicilio. Se recomienda aprovechar la visita del técnico para realizar el AIEC sin incurrir en traslados adicionales."
                           >
-                            <MapPin className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                            <MapPin className="w-3 h-3 text-emerald-600 flex-shrink-0" />
                             <span>📍 Mismo dom. coordinado (Aprovechar visita)</span>
                           </div>
                         )}
@@ -1776,10 +1770,10 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         {/* CALLOUT: MP PENDIENTE SIN ASIGNAR */}
                         {t.alertaMpSinAsignar && (
                           <div 
-                            className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-bold shadow-sm"
+                            className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-50 border border-amber-200 text-amber-800 text-[10px] font-bold shadow-xs"
                             title={`Mantenimiento Preventivo pendiente en este equipo (Pedido MP #${t.mpPendienteDetalle?.pedido || '-'}). No fue asignado en la agenda.`}
                           >
-                            <Wrench className="w-3 h-3 text-amber-400 flex-shrink-0" />
+                            <Wrench className="w-3 h-3 text-amber-600 flex-shrink-0" />
                             <span>⚠️ MP Pendiente sin asignar</span>
                           </div>
                         )}
@@ -1787,10 +1781,10 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         {/* CALLOUT: ADICIONAL AIEC PENDIENTE EN ESTE EQUIPO */}
                         {t.alertaAdicionalPendiente && (
                           <div 
-                            className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-[10px] font-bold shadow-sm ml-1"
+                            className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-sky-50 border border-sky-200 text-sky-800 text-[10px] font-bold shadow-xs ml-1"
                             title={`Este equipo tiene un llamado Adicional AIEC registrado (Pedido #${t.adicionalDetalle?.pedido || '-'}: ${t.adicionalDetalle?.detalleFalla || ''}).`}
                           >
-                            <Pin className="w-3 h-3 text-cyan-400 flex-shrink-0" />
+                            <Pin className="w-3 h-3 text-sky-600 flex-shrink-0" />
                             <span>📌 Adicional AIEC en equipo</span>
                           </div>
                         )}
@@ -1800,12 +1794,12 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-1.5 flex-wrap">
                           <span className={`inline-block px-2 py-0.5 rounded text-[11px] font-bold ${
-                            isAIEC ? 'bg-cyan-950 text-cyan-300 border border-cyan-800' :
-                            t.estado === 'SEG Asistencia' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700' :
-                            t.estado === 'SEG Control Final' || t.estado === 'SEG Fin Asistencia' ? 'bg-blue-950 text-blue-300 border border-blue-700' :
-                            t.estado === 'SEG Espera' || t.estado === 'SEG Espera Llegada' ? 'bg-purple-950 text-purple-300 border border-purple-700' :
-                            t.estado === 'SEG Registrado' ? 'bg-amber-950 text-amber-300 border border-amber-700' :
-                            'bg-slate-800 text-slate-300 border border-slate-700'
+                            isAIEC ? 'bg-sky-50 text-sky-800 border border-sky-200' :
+                            t.estado === 'SEG Asistencia' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' :
+                            t.estado === 'SEG Control Final' || t.estado === 'SEG Fin Asistencia' ? 'bg-teal-50 text-teal-800 border border-teal-200' :
+                            t.estado === 'SEG Espera' || t.estado === 'SEG Espera Llegada' ? 'bg-purple-50 text-purple-800 border border-purple-200' :
+                            t.estado === 'SEG Registrado' ? 'bg-amber-50 text-amber-800 border border-amber-200' :
+                            'bg-slate-100 text-slate-700 border border-slate-200'
                           }`}>
                             {t.estado}
                           </span>
@@ -1813,28 +1807,28 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                           {/* Móvil S badge */}
                           {isMovil && (
                             <span 
-                              className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/80 text-emerald-300 text-[10px] font-bold"
+                              className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-teal-50 border border-teal-200 text-teal-800 text-[10px] font-bold"
                               title="Pedido informado al móvil correspondiente del técnico (Columna H = 'S')"
                             >
-                              <Smartphone className="w-2.5 h-2.5 text-emerald-400" />
+                              <Smartphone className="w-2.5 h-2.5 text-teal-600" />
                               <span>Móvil S</span>
                             </span>
                           )}
                         </div>
 
                         {/* Coordination Time strictly formatted without seconds */}
-                        <span className="text-[11px] text-slate-400 block mt-1 font-mono">
+                        <span className="text-[11px] text-slate-500 block mt-1 font-mono">
                           🕒 {formatTimeClean(t.hCoor ? `${t.fCoorDate || ''} ${t.hCoor}` : t.fechaCoordinada || '09:00')}
                         </span>
                       </td>
 
                       {/* 7. Stock / Repuesto */}
                       <td className="py-3 px-4">
-                        <span className="text-slate-300 font-medium block truncate max-w-[130px]" title={t.repuestos}>
+                        <span className="text-slate-700 font-medium block truncate max-w-[130px]" title={t.repuestos}>
                           {t.repuestos}
                         </span>
                         {t.stock && t.stock !== '-' && t.stock !== '0' && (
-                          <span className="text-[10px] text-emerald-400 font-mono">
+                          <span className="text-[10px] text-teal-700 font-mono font-bold">
                             Stock #{t.stock}
                           </span>
                         )}
@@ -1845,26 +1839,26 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                         <div className="inline-block text-right">
                           <div className="flex items-center justify-end gap-1.5">
                             <span className={`font-black text-xs ${
-                              isAIEC ? 'text-cyan-400 font-bold' :
-                              isCritical ? 'text-red-400 font-extrabold' :
-                              isWarning ? 'text-amber-400' :
-                              'text-emerald-400'
+                              isAIEC ? 'text-sky-700 font-bold' :
+                              isCritical ? 'text-rose-700 font-extrabold' :
+                              isWarning ? 'text-amber-700 font-bold' :
+                              'text-teal-700 font-bold'
                             }`}>
                               {isAIEC ? 'Sin SLA' : `${t.slaPorcentaje}%`}
                             </span>
                             {!isAIEC && (
-                              <span className={`text-[10px] font-mono ${t.slaPorcentaje >= 100 || t.hsSla <= 0 ? 'text-red-400 font-bold' : 'text-slate-400'}`}>
+                              <span className={`text-[10px] font-mono ${t.slaPorcentaje >= 100 || t.hsSla <= 0 ? 'text-rose-700 font-bold' : 'text-slate-500'}`}>
                                 {t.slaPorcentaje >= 100 || t.hsSla <= 0 ? '(Vencido)' : `(${t.hsSla}h rest.)`}
                               </span>
                             )}
                           </div>
                           {!isAIEC && (
-                            <div className="w-24 h-1.5 bg-slate-800 rounded-full overflow-hidden mt-1 ml-auto">
+                            <div className="w-24 h-1.5 bg-slate-100 border border-slate-200 rounded-full overflow-hidden mt-1 ml-auto">
                               <div
                                 className={`h-full rounded-full ${
-                                  isCritical ? 'bg-red-500' :
+                                  isCritical ? 'bg-rose-500' :
                                   isWarning ? 'bg-amber-500' :
-                                  'bg-emerald-500'
+                                  'bg-teal-600'
                                 }`}
                                 style={{ width: `${Math.min(t.slaPorcentaje, 100)}%` }}
                               />
@@ -1880,7 +1874,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                             e.stopPropagation();
                             onSelectTicket(t);
                           }}
-                          className="p-1.5 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-400 transition"
+                          className="p-1.5 rounded-lg bg-slate-100 hover:bg-teal-700 hover:text-white text-slate-600 transition shadow-xs"
                           title="Ver detalle de pedido e historial"
                         >
                           <ChevronRight className="w-4 h-4" />
@@ -1896,10 +1890,10 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         </div>
 
         {/* PAGINATION FOOTER */}
-        <div className="px-5 py-3.5 bg-slate-950 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+        <div className="px-5 py-3.5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
           
-          <div className="text-slate-400">
-            Mostrando <strong className="text-white font-mono">{filteredTickets.length === 0 ? 0 : (currentPage - 1) * pageSize + 1}</strong> a <strong className="text-white font-mono">{Math.min(currentPage * pageSize, filteredTickets.length)}</strong> de <strong className="text-amber-400 font-mono">{filteredTickets.length}</strong> pedidos
+          <div>
+            Mostrando <strong className="text-slate-900 font-mono">{filteredTickets.length === 0 ? 0 : (currentPage - 1) * pageSize + 1}</strong> a <strong className="text-slate-900 font-mono">{Math.min(currentPage * pageSize, filteredTickets.length)}</strong> de <strong className="text-teal-800 font-mono font-bold">{filteredTickets.length}</strong> pedidos
           </div>
 
           {/* Page Controls */}
@@ -1907,7 +1901,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
             <button
               onClick={() => setCurrentPage(1)}
               disabled={currentPage === 1}
-              className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition"
+              className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition shadow-xs"
               title="Primera página"
             >
               <ChevronsLeft className="w-4 h-4" />
@@ -1916,20 +1910,20 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
             <button
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition"
+              className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition shadow-xs"
               title="Página anterior"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
 
-            <span className="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-slate-200 font-mono font-semibold">
+            <span className="px-3 py-1 bg-white border border-slate-200 rounded-lg text-slate-700 font-mono font-semibold shadow-xs">
               Página {currentPage} de {totalPages}
             </span>
 
             <button
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition"
+              className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition shadow-xs"
               title="Página siguiente"
             >
               <ChevronRight className="w-4 h-4" />
@@ -1938,7 +1932,7 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
             <button
               onClick={() => setCurrentPage(totalPages)}
               disabled={currentPage === totalPages}
-              className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition"
+              className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition shadow-xs"
               title="Última página"
             >
               <ChevronsRight className="w-4 h-4" />

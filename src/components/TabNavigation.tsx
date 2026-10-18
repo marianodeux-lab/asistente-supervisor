@@ -10,12 +10,14 @@ import {
   UploadCloud,
   Building2,
   FileSpreadsheet,
-  LayoutDashboard
+  LayoutDashboard,
+  ShieldAlert
 } from 'lucide-react';
 
 export type TabKey = 
   | 'dashboard_operativo'
   | 'sla_agenda' 
+  | 'sla_causalidades'
   | 'reincidencias' 
   | 'preventivos' 
   | 'base_instalada'
@@ -47,66 +49,72 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
     {
       key: 'dashboard_operativo',
       label: 'Dashboard KPIs',
-      icon: <LayoutDashboard className="w-4 h-4 text-cyan-400" />
+      icon: <LayoutDashboard className="w-4 h-4 text-teal-600" />
     },
     {
       key: 'sla_agenda',
       label: 'Control SLA & Agenda',
-      icon: <Clock className="w-4 h-4" />,
+      icon: <Clock className="w-4 h-4 text-slate-500" />,
       badge: ticketCount
+    },
+    {
+      key: 'sla_causalidades',
+      label: 'Auditoría SLA & Causales',
+      icon: <ShieldAlert className="w-4 h-4 text-teal-600" />,
+      badge: 664
     },
     {
       key: 'reincidencias',
       label: 'Radar de Reincidencias',
-      icon: <Activity className="w-4 h-4" />,
+      icon: <Activity className="w-4 h-4 text-purple-500" />,
       badge: cronicosCount
     },
     {
       key: 'preventivos',
       label: 'Plan de Preventivos (MP)',
-      icon: <Wrench className="w-4 h-4" />,
+      icon: <Wrench className="w-4 h-4 text-amber-500" />,
       badge: mpPendingCount
     },
     {
       key: 'base_instalada',
       label: 'Base Instalada',
-      icon: <Building2 className="w-4 h-4" />,
+      icon: <Building2 className="w-4 h-4 text-sky-500" />,
       badge: baseEquiposCount
     },
     {
       key: 'analisis_patagonia',
       label: 'Análisis Atenciones',
-      icon: <FileSpreadsheet className="w-4 h-4" />
+      icon: <FileSpreadsheet className="w-4 h-4 text-teal-600" />
     },
     {
       key: 'tablas_ref',
       label: 'Stock Fijo & Referencias',
-      icon: <Database className="w-4 h-4" />
+      icon: <Database className="w-4 h-4 text-slate-500" />
     },
     {
       key: 'call_rate',
       label: 'Call Rate & Fabricantes',
-      icon: <BarChart3 className="w-4 h-4" />
+      icon: <BarChart3 className="w-4 h-4 text-slate-500" />
     },
     {
       key: 'carga_laboral',
       label: 'Carga Laboral & KM',
-      icon: <Truck className="w-4 h-4" />
+      icon: <Truck className="w-4 h-4 text-slate-500" />
     },
     {
       key: 'repuestos',
       label: 'Repuestos & Despachos',
-      icon: <Package className="w-4 h-4" />
+      icon: <Package className="w-4 h-4 text-slate-500" />
     },
     {
       key: 'importador',
       label: 'Repositorio de Reportes',
-      icon: <UploadCloud className="w-4 h-4" />
+      icon: <UploadCloud className="w-4 h-4 text-slate-500" />
     }
   ];
 
   return (
-    <nav className="bg-slate-900/90 border-b border-slate-800 px-4 lg:px-8 py-2 overflow-x-auto scrollbar-thin">
+    <nav className="bg-white/95 border-b border-slate-200/90 px-4 lg:px-8 py-2 overflow-x-auto scrollbar-thin backdrop-blur-xs">
       <div className="flex items-center gap-1.5 min-w-max">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.key;
@@ -114,10 +122,10 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
             <button
               key={tab.key}
               onClick={() => onTabChange(tab.key)}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                 isActive
-                  ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/80'
+                  ? 'bg-teal-50 text-teal-900 border border-teal-200 font-bold shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               {tab.icon}
@@ -126,8 +134,8 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
                 <span
                   className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
                     isActive
-                      ? 'bg-slate-950 text-amber-300'
-                      : 'bg-slate-800 text-slate-300 border border-slate-700'
+                      ? 'bg-teal-100 text-teal-800'
+                      : 'bg-slate-100 text-slate-600 border border-slate-200'
                   }`}
                 >
                   {tab.badge}

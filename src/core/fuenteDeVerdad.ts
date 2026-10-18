@@ -499,6 +499,54 @@ export const MP_RULES = {
   POST_MP_DEFICIENTE_DAYS: 30
 } as const;
 
+export const SLA_CAUSALIDAD_RULES = {
+  /** Regla de obtención de PN desde Buzón de Movimientos */
+  extractPnFromIdUnico: (idUnicoInstala: string): string => {
+    const s = (idUnicoInstala || '').trim();
+    return s.length > 5 ? s.slice(0, -5).trim() : s;
+  },
+
+  /** Categorías de causalidad canónicas */
+  CATEGORIAS: {
+    CAT_A: {
+      codigo: 'A',
+      titulo: 'Dependencia Legítima de Stock Central',
+      responsable: 'Logística Central',
+      descripcion: 'El repuesto instalado no pertenece al Stock Fijo del técnico o requirió solicitud Flow Stock.'
+    },
+    CAT_B: {
+      codigo: 'B',
+      titulo: 'Probable Incumplimiento de Reposición SF',
+      responsable: 'Logística Central / Cadena Reposición',
+      descripcion: 'El repuesto pertenece al Stock Fijo pero el técnico tenía una solicitud de reposición previa no abastecida.'
+    },
+    CAT_C: {
+      codigo: 'C',
+      titulo: 'Posible Desvío Operativo',
+      responsable: 'Técnico / Supervisión Campo',
+      descripcion: 'El repuesto pertenece al Stock Fijo y no constan solicitudes de reposición pendientes previas.'
+    },
+    CAT_D: {
+      codigo: 'D',
+      titulo: 'Clasificación Incorrecta del COT',
+      responsable: 'COT / Mesa Operativa',
+      descripcion: 'La evidencia observable de partes contradice el motivo informado por el COT.'
+    },
+    CAT_E: {
+      codigo: 'E',
+      titulo: 'Cliente / Factores Externos',
+      responsable: 'Entidad / Terceros',
+      descripcion: 'Vencimiento originado por demoras de acceso, horario bancario o energía.'
+    },
+    CAT_F: {
+      codigo: 'F',
+      titulo: 'Atención Sin Cambio de Partes / Causa Operativa',
+      responsable: 'Sin evidencia de repuesto',
+      descripcion: 'Atención resuelta sin instalación de partes en buzón ni solicitud Flow.'
+    }
+  }
+} as const;
+
 // ───────────────────────────────────────────────────────────────────────────────────
 // ───────────────────────────────────────────────────────────────────────────────────
 // 5. NÓMINA CANÓNICA DE TÉCNICOS Y ZONAS SUPERVISADAS

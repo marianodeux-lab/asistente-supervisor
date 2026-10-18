@@ -795,3 +795,149 @@ export interface AnalisisMetadata {
   totalTelca: number;
   totalGeneral: number;
 }
+
+// ==========================================
+// Auditoría Causal de SLA - Causa Raíz Patagonia
+// ==========================================
+
+export type SlaCausalidadCategoria =
+  | 'CAT_A_STOCK_CENTRAL'
+  | 'CAT_B_REPOSICION_SF'
+  | 'CAT_C_DESVIO_OPERATIVO'
+  | 'CAT_D_COT_INCORRECTO'
+  | 'CAT_E_CLIENTE_TERCEROS'
+  | 'CAT_F_SIN_REPUESTO_INFO';
+
+export type CotConsistencia =
+  | 'CONSISTENTE'
+  | 'INCONSISTENTE_CULPO_AL_TECNICO'
+  | 'INCONSISTENTE_REPUESTO_FICTICIO'
+  | 'DISCREPANCIA_OPERATIVA'
+  | 'SIN_DECLARACION_COT';
+
+export interface SlaCausalidadAuditItem {
+  id: string;
+  pedido: string;
+  cliente: string;
+  luno: string;
+  entidad: string;
+  equipo: string;
+  localidad: string;
+  provincia: string;
+  zona: string;
+  zonaLocal: string;
+  region: string;
+  tecnicoAsig: string;
+  tecnicoZona: string;
+  fechaAlta: string;
+  fechaFin: string;
+  tiempoSlaExcedidoStr: string;
+  tiempoSlaExcedidoMinutos: number;
+  horasExcedidas: number;
+  stockFlow: number;
+  motivoCot: string;
+  motivoCotDetalle: string;
+  
+  tieneRepuestoBuzon: boolean;
+  idUnicoInstala?: string;
+  pnInstalado?: string;
+  descInstalado?: string;
+  esStockFijo: boolean;
+  
+  tieneSolicitudPendienteSf: boolean;
+  solicitudPendienteDetalle?: {
+    nroSolicitud: string | number;
+    fechaSolicitudStr: string;
+    cantStkCentral: number | null;
+    tipoParte: string;
+    concepto: string;
+    diasDemora: number;
+  } | null;
+
+  categoria: SlaCausalidadCategoria;
+  categoriaCodigo: 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
+  categoriaTitulo: string;
+  causaRaizEstimada: string;
+  responsabilidadPrincipal: 'LOGISTICA_CENTRAL' | 'LOGISTICA_REPOSICION_SF' | 'TECNICA_CAMPO' | 'COT_MESA' | 'CLIENTE_TERCEROS' | 'SIN_EVIDENCIA';
+
+  consistenciaCot: CotConsistencia;
+  esInconsistenciaCot: boolean;
+  detalleConsistencia: string;
+
+  evidenciaObservable: string[];
+  riesgosOperativos: string[];
+  accionesRecomendadas: string[];
+}
+
+export interface SlaCausalidadesResumen {
+  fechaCorte: string;
+  totalVencidos: number;
+  totalHorasSlaPerdidas: number;
+  promedioHorasPorVencido: number;
+  pedidosConRepuestoEnBuzon: number;
+  porcentajeConRepuesto: number;
+  
+  porCategoria: {
+    catA_stockCentral: { count: number; horas: number; pct: number };
+    catB_reposicionSf: { count: number; horas: number; pct: number };
+    catC_desvioOperativo: { count: number; horas: number; pct: number };
+    catD_cotIncorrecto: { count: number; horas: number; pct: number };
+    catE_clienteTerceros: { count: number; horas: number; pct: number };
+    catF_sinRepuestoInfo: { count: number; horas: number; pct: number };
+  };
+
+  responsabilidad: {
+    logisticaCentralHoras: number;
+    logisticaCentralCount: number;
+    logisticaCentralPct: number;
+    desvioTecnicoHoras: number;
+    desvioTecnicoCount: number;
+    desvioTecnicoPct: number;
+    cotInconsistenciasCount: number;
+    cotInconsistenciasPct: number;
+    cotCulpoTecnicoInjustamente: number;
+    cotInventoRepuesto: number;
+    clienteTercerosCount: number;
+  };
+
+  topPnsCriticos: {
+    pn: string;
+    desc: string;
+    pedidosCount: number;
+    horasPerdidas: number;
+    esSf: boolean;
+    tecnicosAfectados: string[];
+  }[];
+
+  topTecnicosAfectados: {
+    tecnico: string;
+    zona: string;
+    vencidosCount: number;
+    horasPerdidas: number;
+    porCatA_B: number;
+    porCatC: number;
+  }[];
+
+  topEntidades: { entidad: string; vencidosCount: number; horasPerdidas: number }[];
+  topLocalidades: { localidad: string; vencidosCount: number; horasPerdidas: number }[];
+  inconsistenciasCotList: {
+    pedido: string;
+    tecnico: string;
+    cliente: string;
+    motivoCot: string;
+    categoria: string;
+    causaReal: string;
+    tiempoExcedido: string;
+    detalleConsistencia: string;
+  }[];
+}
+
+export interface SlaCausalidadesDataset {
+  metadata: {
+    generadoEl: string;
+    fuente: string;
+  };
+  resumen: SlaCausalidadesResumen;
+  items: SlaCausalidadAuditItem[];
+}
+

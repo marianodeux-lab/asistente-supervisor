@@ -794,12 +794,12 @@ export const DashboardOperativoView: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center min-h-[500px] space-y-4">
         <div className="relative">
-          <div className="w-16 h-16 rounded-full border-4 border-cyan-500/20 border-t-cyan-500 animate-spin" />
-          <Activity className="w-6 h-6 text-cyan-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+          <div className="w-16 h-16 rounded-full border-4 border-teal-200 border-t-teal-600 animate-spin" />
+          <Activity className="w-6 h-6 text-teal-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         </div>
         <div className="text-center space-y-1">
-          <p className="text-lg font-bold text-white tracking-wide">Cargando Dashboard Operativo...</p>
-          <p className="text-xs text-slate-400">Procesando métricas de atenciones, base instalada y stock fijo</p>
+          <p className="text-lg font-bold text-slate-800 tracking-wide">Cargando Dashboard Operativo...</p>
+          <p className="text-xs text-slate-500">Procesando métricas de atenciones, base instalada y stock fijo</p>
         </div>
       </div>
     );
@@ -811,20 +811,20 @@ export const DashboardOperativoView: React.FC = () => {
       {/* ==================================================================== */}
       {/* 1. Header & Tabs Bar */}
       {/* ==================================================================== */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-950/90 p-5 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
         <div>
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-gradient-to-br from-cyan-500/20 to-blue-600/30 rounded-xl border border-cyan-500/30 shadow-lg shadow-cyan-500/10">
-              <BarChart3 className="w-6 h-6 text-cyan-400" />
+            <div className="p-2.5 bg-teal-50 rounded-xl border border-teal-200 text-teal-700 shadow-xs">
+              <BarChart3 className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-black tracking-tight text-white">Dashboard Operativo & KPIs</h1>
-                <span className="px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded-full">
+                <h1 className="text-2xl font-bold tracking-tight text-slate-800">Dashboard Operativo & KPIs</h1>
+                <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-teal-50 text-teal-800 border border-teal-200 rounded-full">
                   Control Ejecutivo
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-500 mt-0.5">
                 Métricas integradas de cumplimiento SLA, Call Rate, análisis de repuestos y efectividad de técnicos
               </p>
             </div>
@@ -832,13 +832,13 @@ export const DashboardOperativoView: React.FC = () => {
         </div>
 
         {/* Sub-Tabs Switcher */}
-        <div className="flex items-center bg-black/40 p-1.5 rounded-xl border border-white/10 shadow-inner">
+        <div className="flex items-center bg-slate-100 p-1.5 rounded-xl border border-slate-200 shadow-inner">
           <button
             onClick={() => setActiveSubTab('OPERACIONES_SLA')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 ${
               activeSubTab === 'OPERACIONES_SLA'
-                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25'
-                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                ? 'bg-teal-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
             }`}
           >
             <TrendingUp className="w-4 h-4" />
@@ -848,8 +848,8 @@ export const DashboardOperativoView: React.FC = () => {
             onClick={() => setActiveSubTab('REPUESTOS_TECNICOS')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 ${
               activeSubTab === 'REPUESTOS_TECNICOS'
-                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25'
-                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                ? 'bg-teal-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
             }`}
           >
             <Wrench className="w-4 h-4" />
@@ -861,19 +861,19 @@ export const DashboardOperativoView: React.FC = () => {
       {/* ==================================================================== */}
       {/* 2. Filtros Generales y Temporales */}
       {/* ==================================================================== */}
-      <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 shadow-xl backdrop-blur-md space-y-4">
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-xs space-y-4">
         
         {/* Panel A: Filtros Generales */}
         <div>
           <div className="flex items-center justify-between mb-2.5">
             <div className="flex items-center gap-2">
-              <Filter className="w-4 h-4 text-cyan-400" />
-              <span className="text-xs font-black uppercase tracking-wider text-slate-300">Filtros Generales</span>
-              <span className="text-[11px] text-slate-400">• Aplican a todas las métricas y al gráfico de SLA</span>
+              <Filter className="w-4 h-4 text-teal-600" />
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-700">Filtros Generales</span>
+              <span className="text-[11px] text-slate-500">• Aplican a todas las métricas y al gráfico de SLA</span>
             </div>
             <button
               onClick={handleResetFilters}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-colors"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Limpiar Filtros</span>
@@ -883,11 +883,11 @@ export const DashboardOperativoView: React.FC = () => {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {/* Año */}
             <div>
-              <label className="block text-[11px] font-semibold text-amber-400 mb-1">Año</label>
+              <label className="block text-[11px] font-semibold text-slate-600 mb-1">Año</label>
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="w-full bg-slate-950/80 border border-amber-500/30 rounded-xl px-3 py-2 text-xs text-amber-200 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-500/30 font-bold"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30 font-bold"
               >
                 <option value="ALL">Todos ({options.years.length})</option>
                 {options.years.map(y => (
@@ -898,11 +898,11 @@ export const DashboardOperativoView: React.FC = () => {
 
             {/* Negocio */}
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">Negocio</label>
+              <label className="block text-[11px] font-semibold text-slate-600 mb-1">Negocio</label>
               <select
                 value={selectedNegocio}
                 onChange={(e) => setSelectedNegocio(e.target.value)}
-                className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todos los Negocios</option>
                 {options.negocios.map(n => (
@@ -913,14 +913,14 @@ export const DashboardOperativoView: React.FC = () => {
 
             {/* Zona Local */}
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">Zona Local</label>
+              <label className="block text-[11px] font-semibold text-slate-600 mb-1">Zona Local</label>
               <select
                 value={selectedZonaLocal}
                 onChange={(e) => {
                   setSelectedZonaLocal(e.target.value);
                   setSelectedTecnico('ALL');
                 }}
-                className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todas las Zonas ({ZONAS_LOCALES.length})</option>
                 {ZONAS_LOCALES.map(z => (
@@ -931,11 +931,11 @@ export const DashboardOperativoView: React.FC = () => {
 
             {/* Técnico Zona */}
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">Técnico Zona</label>
+              <label className="block text-[11px] font-semibold text-slate-600 mb-1">Técnico Zona</label>
               <select
                 value={selectedTecnico}
                 onChange={(e) => setSelectedTecnico(e.target.value)}
-                className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todos los Técnicos ({options.tecnicos.length})</option>
                 {options.tecnicos.map(t => (
@@ -946,11 +946,11 @@ export const DashboardOperativoView: React.FC = () => {
 
             {/* Fabricante */}
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">Fabricante</label>
+              <label className="block text-[11px] font-semibold text-slate-600 mb-1">Fabricante</label>
               <select
                 value={selectedFabricante}
                 onChange={(e) => setSelectedFabricante(e.target.value)}
-                className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todos los Fabricantes ({options.fabricantes.length})</option>
                 {options.fabricantes.map(f => (
@@ -961,11 +961,11 @@ export const DashboardOperativoView: React.FC = () => {
 
             {/* MPCR */}
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">MPCR</label>
+              <label className="block text-[11px] font-semibold text-slate-600 mb-1">MPCR</label>
               <select
                 value={selectedMpcr}
                 onChange={(e) => setSelectedMpcr(e.target.value)}
-                className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todos los MPCR ({options.mpcrs.length})</option>
                 {options.mpcrs.map(m => (
@@ -977,22 +977,22 @@ export const DashboardOperativoView: React.FC = () => {
         </div>
 
         {/* Separator */}
-        <div className="border-t border-white/5" />
+        <div className="border-t border-slate-200" />
 
         {/* Panel B: Filtros Temporales (Aparte & Aislados del gráfico de SLA) */}
-        <div className="bg-slate-950/60 rounded-xl p-3 border border-white/5">
+        <div className="bg-slate-50 rounded-xl p-3 border border-slate-200">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-amber-400" />
-              <span className="text-xs font-black uppercase tracking-wider text-amber-300">
+              <Calendar className="w-4 h-4 text-teal-700" />
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
                 Filtros Temporales (Período de Análisis KPIs)
               </span>
-              <span className="px-2 py-0.5 text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-md">
+              <span className="px-2 py-0.5 text-[10px] font-bold bg-teal-50 text-teal-800 border border-teal-200 rounded-md">
                 Independientes del Gráfico SLA Mensual
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 flex items-center gap-1">
-              <Info className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+            <p className="text-[11px] text-slate-500 flex items-center gap-1">
+              <Info className="w-3.5 h-3.5 text-teal-600 flex-shrink-0" />
               <span>El gráfico de SLA mantiene la evolución anual completa para el segmento filtrado.</span>
             </p>
           </div>
@@ -1000,14 +1000,14 @@ export const DashboardOperativoView: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {/* Mes */}
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">Mes</label>
+              <label className="block text-[11px] font-semibold text-slate-600 mb-1">Mes</label>
               <select
                 value={selectedMes}
                 onChange={(e) => {
                   setSelectedMes(e.target.value);
                   setSelectedSemana('ALL');
                 }}
-                className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500/30"
+                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todos los Meses (Evolución Completa)</option>
                 {options.meses.map(m => (
@@ -1018,13 +1018,13 @@ export const DashboardOperativoView: React.FC = () => {
 
             {/* Semana dependiente */}
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">
+              <label className="block text-[11px] font-semibold text-slate-600 mb-1">
                 Semana {selectedMes !== 'ALL' ? `(Mes ${selectedMes})` : '(Todas)'}
               </label>
               <select
                 value={selectedSemana}
                 onChange={(e) => setSelectedSemana(e.target.value)}
-                className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500/30"
+                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todas las Semanas</option>
                 {availableWeeks.map(w => (
@@ -1035,10 +1035,10 @@ export const DashboardOperativoView: React.FC = () => {
 
             {/* Resumen del Corte Activo */}
             <div className="sm:col-span-2 flex items-center justify-end">
-              <div className="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-xl border border-white/5 text-xs text-slate-300">
-                <span>Registros en segmento: <strong className="text-white font-mono">{generalFilteredData.length.toLocaleString()}</strong></span>
-                <span className="text-slate-600">•</span>
-                <span>En ventana temporal: <strong className="text-cyan-400 font-mono">{temporalFilteredData.length.toLocaleString()}</strong></span>
+              <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-slate-200 text-xs text-slate-600 shadow-xs">
+                <span>Registros en segmento: <strong className="text-slate-800 font-mono">{generalFilteredData.length.toLocaleString()}</strong></span>
+                <span className="text-slate-300">•</span>
+                <span>En ventana temporal: <strong className="text-teal-700 font-mono font-bold">{temporalFilteredData.length.toLocaleString()}</strong></span>
               </div>
             </div>
           </div>
@@ -1056,110 +1056,108 @@ export const DashboardOperativoView: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
             {/* KPI 1: Cantidad de Pedidos Atendidos */}
-            <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900/90 to-blue-950/40 p-5 rounded-2xl border border-blue-500/20 shadow-xl shadow-blue-500/5 group hover:border-blue-500/40 transition-all duration-300">
+            <div className="relative overflow-hidden bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-teal-300 transition-all duration-300">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-300">Pedidos Atendidos</span>
-                <div className="p-2 bg-blue-500/10 rounded-xl border border-blue-500/20 text-blue-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-600">Pedidos Atendidos</span>
+                <div className="p-2 bg-sky-50 rounded-xl border border-sky-200 text-sky-700">
                   <Activity className="w-4 h-4" />
                 </div>
               </div>
               <div className="mt-3 flex items-baseline gap-2">
-                <p className="text-3xl font-black text-white tracking-tight font-mono">
+                <p className="text-3xl font-bold text-slate-800 tracking-tight font-mono">
                   {kpis.totalPedidos.toLocaleString()}
                 </p>
-                <span className="text-xs font-semibold text-slate-400">órdenes</span>
+                <span className="text-xs font-semibold text-slate-500">órdenes</span>
               </div>
-              <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
-                <span>Preventivos: <strong className="text-slate-200">{kpis.preventivosCount}</strong></span>
-                <span>Correctivos: <strong className="text-slate-200">{kpis.correctivosCount}</strong></span>
+              <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                <span>Preventivos: <strong className="text-slate-700">{kpis.preventivosCount}</strong></span>
+                <span>Correctivos: <strong className="text-slate-700">{kpis.correctivosCount}</strong></span>
               </div>
             </div>
 
             {/* KPI 2: Call Rate en función de la Base Instalada */}
-            <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900/90 to-cyan-950/40 p-5 rounded-2xl border border-cyan-500/20 shadow-xl shadow-cyan-500/5 group hover:border-cyan-500/40 transition-all duration-300">
+            <div className="relative overflow-hidden bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-teal-300 transition-all duration-300">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-cyan-300">Call Rate vs Base</span>
-                <div className="p-2 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-cyan-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-teal-800">Call Rate vs Base</span>
+                <div className="p-2 bg-teal-50 rounded-xl border border-teal-200 text-teal-700">
                   <Building2 className="w-4 h-4" />
                 </div>
               </div>
               <div className="mt-3 flex items-baseline gap-2">
-                <p className="text-3xl font-black text-cyan-300 tracking-tight font-mono">
+                <p className="text-3xl font-bold text-teal-700 tracking-tight font-mono">
                   {kpis.callRateRatio}
                 </p>
-                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
                   {kpis.callRatePct}%
                 </span>
               </div>
-              <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
+              <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
                 <span>Fallas / Equipo</span>
-                <span>Base: <strong className="text-slate-200">{kpis.baseTotal.toLocaleString()}</strong> ATMs</span>
+                <span>Base: <strong className="text-slate-700">{kpis.baseTotal.toLocaleString()}</strong> ATMs</span>
               </div>
             </div>
 
             {/* KPI 3: Pedidos con Repuesto Utilizado */}
-            <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900/90 to-purple-950/40 p-5 rounded-2xl border border-purple-500/20 shadow-xl shadow-purple-500/5 group hover:border-purple-500/40 transition-all duration-300">
+            <div className="relative overflow-hidden bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-purple-300 transition-all duration-300">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Uso de Repuestos</span>
-                <div className="p-2 bg-purple-500/10 rounded-xl border border-purple-500/20 text-purple-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-purple-800">Uso de Repuestos</span>
+                <div className="p-2 bg-purple-50 rounded-xl border border-purple-200 text-purple-700">
                   <Package className="w-4 h-4" />
                 </div>
               </div>
               <div className="mt-3 flex items-baseline gap-2">
-                <p className="text-3xl font-black text-purple-300 tracking-tight font-mono">
+                <p className="text-3xl font-bold text-purple-800 tracking-tight font-mono">
                   {kpis.pedidosConRepuesto.toLocaleString()}
                 </p>
-                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-50 text-purple-800 border border-purple-200">
                   {kpis.pctConRepuesto}%
                 </span>
               </div>
-              <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
+              <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
                 <span>Pedidos requirieron repuesto</span>
-                <span>Instalados: <strong className="text-slate-200">{kpis.totalUnidadesRepuestos}</strong></span>
+                <span>Instalados: <strong className="text-slate-700">{kpis.totalUnidadesRepuestos}</strong></span>
               </div>
             </div>
 
             {/* KPI 4: Cumplimiento SLA del Período */}
-            <div className={`relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900/90 ${
-              kpis.pctSla >= 90 ? 'to-emerald-950/40 border-emerald-500/20 shadow-emerald-500/5' : 'to-amber-950/40 border-amber-500/20 shadow-amber-500/5'
-            } p-5 rounded-2xl border shadow-xl transition-all duration-300`}>
+            <div className="relative overflow-hidden bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-300 transition-all duration-300">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">SLA Período Activo</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">SLA Período Activo</span>
                 <div className={`p-2 rounded-xl border ${
-                  kpis.pctSla >= 90 ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-amber-500/10 border-amber-500/20 text-amber-400'
+                  kpis.pctSla >= 90 ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-amber-50 border-amber-200 text-amber-700'
                 }`}>
                   <ShieldCheck className="w-4 h-4" />
                 </div>
               </div>
               <div className="mt-3 flex items-baseline gap-2">
-                <p className={`text-3xl font-black font-mono ${kpis.pctSla >= 90 ? 'text-emerald-300' : 'text-amber-300'}`}>
+                <p className={`text-3xl font-bold font-mono ${kpis.pctSla >= 90 ? 'text-emerald-700' : 'text-amber-700'}`}>
                   {kpis.pctSla}%
                 </p>
-                <span className="text-xs font-semibold text-slate-400">cumplimiento</span>
+                <span className="text-xs font-semibold text-slate-500">cumplimiento</span>
               </div>
-              <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
-                <span>En SLA: <strong className="text-slate-200">{kpis.pedidosCumplioSla.toLocaleString()}</strong></span>
-                <span>Meta: <strong className="text-amber-400">95.0%</strong></span>
+              <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                <span>En SLA: <strong className="text-slate-700">{kpis.pedidosCumplioSla.toLocaleString()}</strong></span>
+                <span>Meta: <strong className="text-amber-700 font-bold">95.0%</strong></span>
               </div>
             </div>
 
           </div>
 
           {/* Gráfico SLA General Mensual de Líneas */}
-          <div className="bg-slate-900/90 border border-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-xl space-y-4">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4">
             
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-cyan-400" />
-                  <h3 className="text-base font-black text-white tracking-tight">
+                  <TrendingUp className="w-5 h-5 text-teal-600" />
+                  <h3 className="text-base font-bold text-slate-800 tracking-tight">
                     Evolución Mensual de Cumplimiento SLA {selectedYear !== 'ALL' ? `(${selectedYear})` : '(Consolidado)'}
                   </h3>
-                  <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-cyan-500/15 text-cyan-300 border border-cyan-500/25 rounded-md">
+                  <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-teal-50 text-teal-800 border border-teal-200 rounded-md">
                     Gráfico de Líneas
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Evolución mes a mes para el segmento filtrado ({selectedYear !== 'ALL' ? `Año ${selectedYear}` : 'Todos los Años'} • {selectedNegocio !== 'ALL' ? selectedNegocio : 'Todos los negocios'} • {selectedZonaLocal !== 'ALL' ? selectedZonaLocal : 'Todas las zonas'})
                 </p>
               </div>
@@ -1167,12 +1165,12 @@ export const DashboardOperativoView: React.FC = () => {
               {/* Legend & Target */}
               <div className="flex items-center gap-4 text-xs">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-cyan-400 shadow-md shadow-cyan-400/50" />
-                  <span className="text-slate-300 font-semibold">% SLA Real</span>
+                  <div className="w-3 h-3 rounded-full bg-teal-600 shadow-xs" />
+                  <span className="text-teal-800 font-semibold">% SLA Real</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-0.5 border-t-2 border-dashed border-amber-400" />
-                  <span className="text-amber-300 font-semibold">Meta SLA (95%)</span>
+                  <div className="w-4 h-0.5 border-t-2 border-dashed border-amber-500" />
+                  <span className="text-amber-700 font-semibold">Meta SLA (95%)</span>
                 </div>
               </div>
             </div>
@@ -1181,52 +1179,52 @@ export const DashboardOperativoView: React.FC = () => {
             <div className="w-full h-80 pt-2">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={monthlySlaChartData} margin={{ top: 10, right: 30, left: 0, bottom: 10 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.3} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.8} />
                   <XAxis 
                     dataKey="mesNombre" 
-                    stroke="#94a3b8" 
+                    stroke="#64748b" 
                     fontSize={11} 
                     tickLine={false}
-                    axisLine={{ stroke: '#334155' }}
+                    axisLine={{ stroke: '#cbd5e1' }}
                   />
                   <YAxis 
-                    stroke="#94a3b8" 
+                    stroke="#64748b" 
                     fontSize={11} 
                     domain={[0, 100]}
                     tickFormatter={(v) => `${v}%`}
                     tickLine={false}
-                    axisLine={{ stroke: '#334155' }}
+                    axisLine={{ stroke: '#cbd5e1' }}
                   />
                   <Tooltip 
                     content={({ active, payload }) => {
                       if (active && payload && payload.length) {
                         const d = payload[0].payload;
                         return (
-                          <div className="bg-slate-950/95 border border-cyan-500/30 p-3.5 rounded-xl shadow-2xl backdrop-blur-md min-w-[210px] space-y-2">
-                            <div className="flex items-center justify-between border-b border-white/10 pb-1.5">
-                              <span className="text-xs font-bold text-white uppercase tracking-wider">{d.mesNombre}</span>
-                              <span className="text-[10px] font-bold text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded">
+                          <div className="bg-white border border-slate-200 p-3.5 rounded-xl shadow-xl min-w-[210px] space-y-2">
+                            <div className="flex items-center justify-between border-b border-slate-100 pb-1.5">
+                              <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">{d.mesNombre}</span>
+                              <span className="text-[10px] font-bold text-teal-800 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200">
                                 Mes {d.mesNum}
                               </span>
                             </div>
                             <div className="space-y-1 text-xs">
-                              <div className="flex justify-between text-slate-300">
+                              <div className="flex justify-between text-slate-700">
                                 <span>Cumplimiento SLA:</span>
-                                <strong className={`font-mono text-sm ${d.pctSla >= 90 ? 'text-emerald-400' : 'text-amber-400'}`}>
+                                <strong className={`font-mono text-sm ${d.pctSla >= 90 ? 'text-emerald-700' : 'text-amber-700'}`}>
                                   {d.pctSla}%
                                 </strong>
                               </div>
-                              <div className="flex justify-between text-slate-400 text-[11px]">
+                              <div className="flex justify-between text-slate-500 text-[11px]">
                                 <span>Total Pedidos:</span>
-                                <strong className="font-mono text-slate-200">{d.totalPedidos.toLocaleString()}</strong>
+                                <strong className="font-mono text-slate-800">{d.totalPedidos.toLocaleString()}</strong>
                               </div>
-                              <div className="flex justify-between text-slate-400 text-[11px]">
+                              <div className="flex justify-between text-slate-500 text-[11px]">
                                 <span>En SLA:</span>
-                                <strong className="font-mono text-emerald-400">{d.pedidosCumplio.toLocaleString()}</strong>
+                                <strong className="font-mono text-emerald-700">{d.pedidosCumplio.toLocaleString()}</strong>
                               </div>
-                              <div className="flex justify-between text-slate-400 text-[11px]">
+                              <div className="flex justify-between text-slate-500 text-[11px]">
                                 <span>Fuera de SLA:</span>
-                                <strong className="font-mono text-rose-400">{d.pedidosFuera.toLocaleString()}</strong>
+                                <strong className="font-mono text-rose-700">{d.pedidosFuera.toLocaleString()}</strong>
                               </div>
                             </div>
                           </div>
@@ -1237,15 +1235,15 @@ export const DashboardOperativoView: React.FC = () => {
                   />
                   <ReferenceLine 
                     y={95} 
-                    stroke="#f59e0b" 
+                    stroke="#d97706" 
                     strokeDasharray="4 4" 
                     strokeWidth={1.5}
-                    label={{ value: 'Meta 95%', position: 'right', fill: '#f59e0b', fontSize: 11, fontWeight: 'bold' }} 
+                    label={{ value: 'Meta 95%', position: 'right', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }} 
                   />
                   <Line 
                     type="monotone" 
                     dataKey="pctSla" 
-                    stroke="#06b6d4" 
+                    stroke="#0d9488" 
                     strokeWidth={3} 
                     dot={(props: any) => {
                       const { cx, cy, payload } = props;
@@ -1256,14 +1254,14 @@ export const DashboardOperativoView: React.FC = () => {
                           cx={cx} 
                           cy={cy} 
                           r={isHighlighted ? 7 : 4} 
-                          fill={isHighlighted ? '#f59e0b' : '#06b6d4'} 
-                          stroke={isHighlighted ? '#ffffff' : '#0f172a'} 
+                          fill={isHighlighted ? '#d97706' : '#0d9488'} 
+                          stroke="#ffffff" 
                           strokeWidth={2}
-                          className="transition-all duration-200 cursor-pointer"
+                          className="transition-all duration-200 cursor-pointer shadow-xs"
                         />
                       );
                     }}
-                    activeDot={{ r: 7, fill: '#38bdf8', stroke: '#ffffff', strokeWidth: 2 }} 
+                    activeDot={{ r: 7, fill: '#0f766e', stroke: '#ffffff', strokeWidth: 2 }} 
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -1271,34 +1269,34 @@ export const DashboardOperativoView: React.FC = () => {
 
             {/* Monthly Breakdown Table strip */}
             <div className="overflow-x-auto pt-2">
-              <table className="w-full text-xs text-center border-t border-white/5">
+              <table className="w-full text-xs text-center border-t border-slate-200">
                 <thead>
-                  <tr className="text-slate-400 font-semibold border-b border-white/5">
+                  <tr className="text-slate-600 font-semibold border-b border-slate-200 bg-slate-50">
                     <th className="py-2 px-2 text-left">Métrica / Mes</th>
                     {monthlySlaChartData.map(d => (
-                      <th key={d.mesNum} className={`py-2 px-2 ${d.isSelected ? 'text-amber-400 font-bold bg-amber-500/10' : ''}`}>
+                      <th key={d.mesNum} className={`py-2 px-2 ${d.isSelected ? 'text-teal-900 font-bold bg-teal-50' : ''}`}>
                         {d.mesNombre.slice(0, 3)}
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5 text-slate-300 font-mono">
+                <tbody className="divide-y divide-slate-100 text-slate-700 font-mono">
                   <tr>
-                    <td className="py-2 px-2 text-left font-sans text-slate-400 font-medium">Pedidos Atendidos</td>
+                    <td className="py-2 px-2 text-left font-sans text-slate-600 font-medium">Pedidos Atendidos</td>
                     {monthlySlaChartData.map(d => (
-                      <td key={d.mesNum} className={`py-2 px-2 ${d.isSelected ? 'bg-amber-500/10 font-bold text-white' : ''}`}>
+                      <td key={d.mesNum} className={`py-2 px-2 ${d.isSelected ? 'bg-teal-50 font-bold text-slate-900' : ''}`}>
                         {d.totalPedidos.toLocaleString()}
                       </td>
                     ))}
                   </tr>
                   <tr>
-                    <td className="py-2 px-2 text-left font-sans text-slate-400 font-medium">% SLA Cumplido</td>
+                    <td className="py-2 px-2 text-left font-sans text-slate-600 font-medium">% SLA Cumplido</td>
                     {monthlySlaChartData.map(d => (
                       <td 
                         key={d.mesNum} 
                         className={`py-2 px-2 font-bold ${
-                          d.pctSla >= 90 ? 'text-emerald-400' : 'text-amber-400'
-                        } ${d.isSelected ? 'bg-amber-500/10 underline' : ''}`}
+                          d.pctSla >= 90 ? 'text-emerald-700' : 'text-amber-700'
+                        } ${d.isSelected ? 'bg-teal-50 underline' : ''}`}
                       >
                         {d.pctSla}%
                       </td>
@@ -1320,18 +1318,18 @@ export const DashboardOperativoView: React.FC = () => {
         <div className="space-y-8">
           
           {/* SECCIÓN A: Ranking de los Repuestos más utilizados */}
-          <div className="bg-slate-900/90 border border-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-xl space-y-5">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-5">
             
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/5 pb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <Package className="w-5 h-5 text-purple-400" />
-                  <h3 className="text-base font-black text-white tracking-tight">Ranking de Repuestos Más Utilizados</h3>
-                  <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-purple-500/15 text-purple-300 border border-purple-500/25 rounded-md">
+                  <Package className="w-5 h-5 text-teal-600" />
+                  <h3 className="text-base font-bold text-slate-800 tracking-tight">Ranking de Repuestos Más Utilizados</h3>
+                  <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-800 border border-purple-200 rounded-md">
                     {sparePartsRanking.list.length} partes registradas
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Consumo acumulado de repuestos con los filtros generales aplicados ({sparePartsRanking.totalRepuestos.toLocaleString()} unidades totales)
                 </p>
               </div>
@@ -1348,14 +1346,14 @@ export const DashboardOperativoView: React.FC = () => {
                       setPartSearch(e.target.value);
                       setPartPage(1);
                     }}
-                    className="bg-slate-950/80 border border-white/10 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/30 w-60"
+                    className="bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/30 w-60"
                   />
                 </div>
 
                 {/* Export CSV */}
                 <button
                   onClick={handleExportRepuestosCsv}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors shadow-xs"
                   title="Descargar ranking a CSV"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -1365,8 +1363,8 @@ export const DashboardOperativoView: React.FC = () => {
             </div>
 
             {/* Top 10 Visual Bar Chart */}
-            <div className="bg-slate-950/50 p-4 rounded-xl border border-white/5">
-              <span className="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-3">
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-3">
                 Top 10 Repuestos de Mayor Rotación
               </span>
               <div className="h-64">
@@ -1376,12 +1374,12 @@ export const DashboardOperativoView: React.FC = () => {
                     layout="vertical"
                     margin={{ top: 5, right: 30, left: 40, bottom: 5 }}
                   >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.2} horizontal={false} />
-                    <XAxis type="number" stroke="#94a3b8" fontSize={11} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.8} horizontal={false} />
+                    <XAxis type="number" stroke="#64748b" fontSize={11} />
                     <YAxis 
                       type="category" 
                       dataKey="pn" 
-                      stroke="#94a3b8" 
+                      stroke="#64748b" 
                       fontSize={11} 
                       tickLine={false}
                       width={160}
@@ -1391,15 +1389,15 @@ export const DashboardOperativoView: React.FC = () => {
                         if (active && payload && payload.length) {
                           const d = payload[0].payload as SparePartMetric;
                           return (
-                            <div className="bg-slate-950/95 border border-purple-500/30 p-3 rounded-xl shadow-2xl backdrop-blur-md text-xs space-y-1.5 max-w-xs">
-                              <div className="font-bold text-white">{d.pn}</div>
-                              <p className="text-[11px] text-slate-300">{d.descripcion}</p>
-                              <div className="pt-1.5 border-t border-white/10 flex justify-between">
-                                <span className="text-slate-400">Instalaciones:</span>
-                                <strong className="font-mono text-purple-300">{d.usos} unidades ({d.pctSobreTotal}%)</strong>
+                            <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xl text-xs space-y-1.5 max-w-xs text-slate-800">
+                              <div className="font-bold text-slate-900">{d.pn}</div>
+                              <p className="text-[11px] text-slate-600">{d.descripcion}</p>
+                              <div className="pt-1.5 border-t border-slate-100 flex justify-between">
+                                <span className="text-slate-500">Instalaciones:</span>
+                                <strong className="font-mono text-teal-800">{d.usos} unidades ({d.pctSobreTotal}%)</strong>
                               </div>
                               {d.enStockFijo && (
-                                <span className="inline-block px-2 py-0.5 text-[10px] font-bold bg-cyan-500/20 text-cyan-300 rounded border border-cyan-500/30">
+                                <span className="inline-block px-2 py-0.5 text-[10px] font-bold bg-teal-50 text-teal-800 rounded border border-teal-200">
                                   ✓ Asignado en Stock Fijo
                                 </span>
                               )}
@@ -1413,7 +1411,7 @@ export const DashboardOperativoView: React.FC = () => {
                       {sparePartsRanking.top10.map((entry, index) => (
                         <Cell 
                           key={`cell-${index}`} 
-                          fill={index === 0 ? '#c084fc' : index < 3 ? '#a855f7' : '#7e22ce'} 
+                          fill={index === 0 ? '#0d9488' : index < 3 ? '#14b8a6' : '#2dd4bf'} 
                         />
                       ))}
                     </Bar>
@@ -1423,9 +1421,9 @@ export const DashboardOperativoView: React.FC = () => {
             </div>
 
             {/* Full Spare Parts Table */}
-            <div className="overflow-x-auto rounded-xl border border-white/5">
+            <div className="overflow-x-auto rounded-xl border border-slate-200">
               <table className="w-full text-xs text-left">
-                <thead className="bg-slate-950/80 text-slate-400 font-semibold uppercase tracking-wider border-b border-white/5">
+                <thead className="bg-slate-100 text-slate-700 font-semibold uppercase tracking-wider border-b border-slate-200">
                   <tr>
                     <th className="py-3 px-3 text-center w-16">Rank</th>
                     <th 
@@ -1433,7 +1431,7 @@ export const DashboardOperativoView: React.FC = () => {
                         if (partSortKey === 'pn') setPartSortAsc(!partSortAsc);
                         else { setPartSortKey('pn'); setPartSortAsc(true); }
                       }}
-                      className="py-3 px-3 cursor-pointer hover:text-white"
+                      className="py-3 px-3 cursor-pointer hover:text-slate-900"
                     >
                       <div className="flex items-center gap-1">
                         <span>Part Number (PN)</span>
@@ -1446,7 +1444,7 @@ export const DashboardOperativoView: React.FC = () => {
                         if (partSortKey === 'usos') setPartSortAsc(!partSortAsc);
                         else { setPartSortKey('usos'); setPartSortAsc(false); }
                       }}
-                      className="py-3 px-3 text-right cursor-pointer hover:text-white"
+                      className="py-3 px-3 text-right cursor-pointer hover:text-slate-900"
                     >
                       <div className="flex items-center justify-end gap-1">
                         <span>Cantidad Utilizada</span>
@@ -1458,7 +1456,7 @@ export const DashboardOperativoView: React.FC = () => {
                         if (partSortKey === 'pctSobreTotal') setPartSortAsc(!partSortAsc);
                         else { setPartSortKey('pctSobreTotal'); setPartSortAsc(false); }
                       }}
-                      className="py-3 px-3 text-right cursor-pointer hover:text-white"
+                      className="py-3 px-3 text-right cursor-pointer hover:text-slate-900"
                     >
                       <div className="flex items-center justify-end gap-1">
                         <span>% Sobre Total</span>
@@ -1468,7 +1466,7 @@ export const DashboardOperativoView: React.FC = () => {
                     <th className="py-3 px-3 text-center">Catálogo SF</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5 text-slate-300">
+                <tbody className="divide-y divide-slate-100 text-slate-700">
                   {sparePartsRanking.list.length === 0 ? (
                     <tr>
                       <td colSpan={6} className="py-8 text-center text-slate-500">
@@ -1481,33 +1479,33 @@ export const DashboardOperativoView: React.FC = () => {
                       .map((part, idx) => {
                         const globalIndex = (partPage - 1) * PART_PAGE_SIZE + idx + 1;
                         return (
-                          <tr key={part.pn + idx} className="hover:bg-white/[0.02] transition-colors">
-                            <td className="py-2.5 px-3 text-center font-mono text-slate-400">
+                          <tr key={part.pn + idx} className="hover:bg-teal-50/40 transition-colors">
+                            <td className="py-2.5 px-3 text-center font-mono text-slate-500">
                               <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-[11px] font-bold ${
-                                globalIndex === 1 ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' :
-                                globalIndex === 2 ? 'bg-slate-300/20 text-slate-200 border border-slate-300/30' :
-                                globalIndex === 3 ? 'bg-amber-700/20 text-amber-400 border border-amber-700/30' :
+                                globalIndex === 1 ? 'bg-amber-50 text-amber-800 border border-amber-200' :
+                                globalIndex === 2 ? 'bg-slate-100 text-slate-700 border border-slate-200' :
+                                globalIndex === 3 ? 'bg-amber-100 text-amber-800 border border-amber-300' :
                                 'text-slate-500'
                               }`}>
                                 {globalIndex}
                               </span>
                             </td>
-                            <td className="py-2.5 px-3 font-mono font-bold text-cyan-300 whitespace-nowrap">
+                            <td className="py-2.5 px-3 font-mono font-bold text-teal-800 whitespace-nowrap">
                               {part.pn}
                             </td>
-                            <td className="py-2.5 px-3 text-slate-200 max-w-md truncate" title={part.descripcion}>
+                            <td className="py-2.5 px-3 text-slate-800 max-w-md truncate" title={part.descripcion}>
                               {part.descripcion}
                             </td>
-                            <td className="py-2.5 px-3 text-right font-mono font-bold text-white">
+                            <td className="py-2.5 px-3 text-right font-mono font-bold text-slate-900">
                               {part.usos.toLocaleString()}
                             </td>
-                            <td className="py-2.5 px-3 text-right font-mono text-purple-300">
+                            <td className="py-2.5 px-3 text-right font-mono text-purple-700 font-semibold">
                               {part.pctSobreTotal}%
                             </td>
                             <td className="py-2.5 px-3 text-center">
                               {part.enStockFijo ? (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">
-                                  <CheckCircle2 className="w-3 h-3" />
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                                  <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                                   <span>Stock Fijo</span>
                                 </span>
                               ) : (
@@ -1525,7 +1523,7 @@ export const DashboardOperativoView: React.FC = () => {
 
               {/* Table Pagination */}
               {sparePartsRanking.list.length > PART_PAGE_SIZE && (
-                <div className="flex items-center justify-between px-4 py-3 bg-slate-950/60 border-t border-white/5 text-xs text-slate-400">
+                <div className="flex items-center justify-between px-4 py-3 bg-slate-50 border-t border-slate-200 text-xs text-slate-600">
                   <span>
                     Mostrando {((partPage - 1) * PART_PAGE_SIZE) + 1} a {Math.min(partPage * PART_PAGE_SIZE, sparePartsRanking.list.length)} de {sparePartsRanking.list.length} repuestos
                   </span>
@@ -1533,15 +1531,15 @@ export const DashboardOperativoView: React.FC = () => {
                     <button
                       onClick={() => setPartPage(p => Math.max(1, p - 1))}
                       disabled={partPage === 1}
-                      className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                      className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shadow-xs"
                     >
                       Anterior
                     </button>
-                    <span className="font-mono text-slate-300">{partPage} / {Math.ceil(sparePartsRanking.list.length / PART_PAGE_SIZE)}</span>
+                    <span className="font-mono text-slate-700 font-semibold">{partPage} / {Math.ceil(sparePartsRanking.list.length / PART_PAGE_SIZE)}</span>
                     <button
                       onClick={() => setPartPage(p => Math.min(Math.ceil(sparePartsRanking.list.length / PART_PAGE_SIZE), p + 1))}
                       disabled={partPage >= Math.ceil(sparePartsRanking.list.length / PART_PAGE_SIZE)}
-                      className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                      className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shadow-xs"
                     >
                       Siguiente
                     </button>
@@ -1553,18 +1551,18 @@ export const DashboardOperativoView: React.FC = () => {
           </div>
 
           {/* SECCIÓN B: Tabla Resumida y Limpia de Técnicos */}
-          <div className="bg-slate-900/90 border border-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-xl space-y-5">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-5">
             
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/5 pb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <Users className="w-5 h-5 text-emerald-400" />
-                  <h3 className="text-base font-black text-white tracking-tight">Rendimiento Operativo por Técnico</h3>
-                  <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-500/25 rounded-md">
+                  <Users className="w-5 h-5 text-teal-600" />
+                  <h3 className="text-base font-bold text-slate-800 tracking-tight">Rendimiento Operativo por Técnico</h3>
+                  <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-teal-50 text-teal-800 border border-teal-200 rounded-md">
                     {technicianMetrics.length} técnicos
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Efectividad en primera visita, MTM sin fallas a 60 días, volumen de repuestos y porcentaje cubierto por su Stock Fijo
                 </p>
               </div>
@@ -1578,14 +1576,14 @@ export const DashboardOperativoView: React.FC = () => {
                     placeholder="Buscar técnico o zona..."
                     value={techSearch}
                     onChange={(e) => setTechSearch(e.target.value)}
-                    className="bg-slate-950/80 border border-white/10 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 w-56"
+                    className="bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/30 w-56"
                   />
                 </div>
 
                 {/* Export CSV */}
                 <button
                   onClick={handleExportTecnicosCsv}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors shadow-xs"
                   title="Descargar matriz a CSV"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -1595,16 +1593,16 @@ export const DashboardOperativoView: React.FC = () => {
             </div>
 
             {/* Clean Executive Table */}
-            <div className="overflow-x-auto rounded-xl border border-white/5">
+            <div className="overflow-x-auto rounded-xl border border-slate-200">
               <table className="w-full text-xs text-left">
-                <thead className="bg-slate-950/90 text-slate-400 font-semibold uppercase tracking-wider border-b border-white/5">
+                <thead className="bg-slate-100 text-slate-700 font-semibold uppercase tracking-wider border-b border-slate-200">
                   <tr>
                     <th 
                       onClick={() => {
                         if (techSortKey === 'tecnico') setTechSortAsc(!techSortAsc);
                         else { setTechSortKey('tecnico'); setTechSortAsc(true); }
                       }}
-                      className="py-3.5 px-4 cursor-pointer hover:text-white"
+                      className="py-3.5 px-4 cursor-pointer hover:text-slate-900"
                     >
                       <div className="flex items-center gap-1">
                         <span>Técnico & Zona</span>
@@ -1617,7 +1615,7 @@ export const DashboardOperativoView: React.FC = () => {
                         if (techSortKey === 'pedidosAtendidos') setTechSortAsc(!techSortAsc);
                         else { setTechSortKey('pedidosAtendidos'); setTechSortAsc(false); }
                       }}
-                      className="py-3.5 px-3 text-right cursor-pointer hover:text-white"
+                      className="py-3.5 px-3 text-right cursor-pointer hover:text-slate-900"
                     >
                       <div className="flex items-center justify-end gap-1">
                         <span>Pedidos Atendidos</span>
@@ -1630,7 +1628,7 @@ export const DashboardOperativoView: React.FC = () => {
                         if (techSortKey === 'efectividadPrimeraVisita') setTechSortAsc(!techSortAsc);
                         else { setTechSortKey('efectividadPrimeraVisita'); setTechSortAsc(false); }
                       }}
-                      className="py-3.5 px-3 text-center cursor-pointer hover:text-white"
+                      className="py-3.5 px-3 text-center cursor-pointer hover:text-slate-900"
                     >
                       <div className="flex items-center justify-center gap-1">
                         <span>% Efectividad 1ª Visita</span>
@@ -1643,7 +1641,7 @@ export const DashboardOperativoView: React.FC = () => {
                         if (techSortKey === 'mpCount') setTechSortAsc(!techSortAsc);
                         else { setTechSortKey('mpCount'); setTechSortAsc(false); }
                       }}
-                      className="py-3.5 px-3 text-right cursor-pointer hover:text-white"
+                      className="py-3.5 px-3 text-right cursor-pointer hover:text-slate-900"
                     >
                       <div className="flex items-center justify-end gap-1">
                         <span>Cantidad de MP</span>
@@ -1656,7 +1654,7 @@ export const DashboardOperativoView: React.FC = () => {
                         if (techSortKey === 'efectividadMp') setTechSortAsc(!techSortAsc);
                         else { setTechSortKey('efectividadMp'); setTechSortAsc(false); }
                       }}
-                      className="py-3.5 px-3 text-center cursor-pointer hover:text-white"
+                      className="py-3.5 px-3 text-center cursor-pointer hover:text-slate-900"
                       title="Equipos que no fallaron en los siguientes 60 días posteriores al MP"
                     >
                       <div className="flex items-center justify-center gap-1">
@@ -1670,7 +1668,7 @@ export const DashboardOperativoView: React.FC = () => {
                         if (techSortKey === 'repuestosUsadosCount') setTechSortAsc(!techSortAsc);
                         else { setTechSortKey('repuestosUsadosCount'); setTechSortAsc(false); }
                       }}
-                      className="py-3.5 px-3 text-right cursor-pointer hover:text-white"
+                      className="py-3.5 px-3 text-right cursor-pointer hover:text-slate-900"
                     >
                       <div className="flex items-center justify-end gap-1">
                         <span>Repuestos Usados</span>
@@ -1683,7 +1681,7 @@ export const DashboardOperativoView: React.FC = () => {
                         if (techSortKey === 'pctRepuestosEnSf') setTechSortAsc(!techSortAsc);
                         else { setTechSortKey('pctRepuestosEnSf'); setTechSortAsc(false); }
                       }}
-                      className="py-3.5 px-4 text-right cursor-pointer hover:text-white"
+                      className="py-3.5 px-4 text-right cursor-pointer hover:text-slate-900"
                       title="% de pedidos con repuestos que están asignados al Stock Fijo del técnico"
                     >
                       <div className="flex items-center justify-end gap-1">
@@ -1693,7 +1691,7 @@ export const DashboardOperativoView: React.FC = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5 text-slate-300">
+                <tbody className="divide-y divide-slate-100 text-slate-700">
                   {technicianMetrics.length === 0 ? (
                     <tr>
                       <td colSpan={7} className="py-8 text-center text-slate-500">
@@ -1702,7 +1700,7 @@ export const DashboardOperativoView: React.FC = () => {
                     </tr>
                   ) : (
                     technicianMetrics.map((t, idx) => (
-                      <tr key={t.tecnico + idx} className="hover:bg-white/[0.02] transition-colors group">
+                      <tr key={t.tecnico + idx} className="hover:bg-teal-50/40 transition-colors group">
                         {/* 1. Técnico & Zona with Avatar */}
                         <td className="py-3 px-4">
                           <div className="flex items-center gap-3">
@@ -1710,19 +1708,19 @@ export const DashboardOperativoView: React.FC = () => {
                               <img
                                 src={getTechnicianAvatar(t.tecnico)!}
                                 alt={t.tecnico}
-                                className="w-8 h-8 rounded-full object-cover border border-cyan-400/60 shadow flex-shrink-0"
+                                className="w-8 h-8 rounded-full object-cover border border-teal-300 shadow-xs flex-shrink-0"
                               />
                             ) : (
-                              <div className="w-8 h-8 rounded-full bg-slate-800 text-cyan-300 font-bold text-xs flex items-center justify-center border border-white/10 flex-shrink-0">
+                              <div className="w-8 h-8 rounded-full bg-teal-50 text-teal-800 font-bold text-xs flex items-center justify-center border border-teal-200 flex-shrink-0">
                                 {getInitials(t.tecnico)}
                               </div>
                             )}
                             <div>
-                              <div className="font-bold text-white group-hover:text-cyan-300 transition-colors">
+                              <div className="font-bold text-slate-800 group-hover:text-teal-800 transition-colors">
                                 {t.tecnico}
                               </div>
-                              <div className="text-[11px] text-slate-400 flex items-center gap-1 mt-0.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400/80" />
+                              <div className="text-[11px] text-slate-500 flex items-center gap-1 mt-0.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
                                 <span>{t.zona}</span>
                               </div>
                             </div>
@@ -1730,7 +1728,7 @@ export const DashboardOperativoView: React.FC = () => {
                         </td>
 
                         {/* 2. Pedidos Atendidos */}
-                        <td className="py-3 px-3 text-right font-mono font-bold text-white">
+                        <td className="py-3 px-3 text-right font-mono font-bold text-slate-900">
                           {t.pedidosAtendidos.toLocaleString()}
                         </td>
 
@@ -1738,10 +1736,10 @@ export const DashboardOperativoView: React.FC = () => {
                         <td className="py-3 px-3 text-center">
                           <span className={`inline-flex items-center justify-center px-2.5 py-1 rounded-full text-xs font-mono font-bold ${
                             t.efectividadPrimeraVisita >= 85 
-                              ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' 
+                              ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' 
                               : t.efectividadPrimeraVisita >= 75 
-                              ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30' 
-                              : 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
+                              ? 'bg-amber-50 text-amber-800 border border-amber-200' 
+                              : 'bg-rose-50 text-rose-800 border border-rose-200'
                           }`}>
                             {t.efectividadPrimeraVisita}%
                           </span>
@@ -1751,7 +1749,7 @@ export const DashboardOperativoView: React.FC = () => {
                         </td>
 
                         {/* 4. Cantidad de MP */}
-                        <td className="py-3 px-3 text-right font-mono font-semibold text-slate-200">
+                        <td className="py-3 px-3 text-right font-mono font-semibold text-slate-700">
                           {t.mpCount.toLocaleString()}
                         </td>
 
@@ -1761,24 +1759,24 @@ export const DashboardOperativoView: React.FC = () => {
                             <div>
                               <span className={`inline-flex items-center justify-center px-2.5 py-1 rounded-full text-xs font-mono font-bold ${
                                 t.efectividadMp >= 80 
-                                  ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' 
+                                  ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' 
                                   : t.efectividadMp >= 65 
-                                  ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30' 
-                                  : 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
+                                  ? 'bg-amber-50 text-amber-800 border border-amber-200' 
+                                  : 'bg-rose-50 text-rose-800 border border-rose-200'
                               }`}>
                                 {t.efectividadMp}%
                               </span>
-                              <span className="block text-[10px] text-slate-400 mt-0.5 font-mono">
+                              <span className="block text-[10px] text-slate-500 mt-0.5 font-mono">
                                 {t.mpSinFalla60d}/{t.mpCount} sin fallas
                               </span>
                             </div>
                           ) : (
-                            <span className="text-[11px] text-slate-500">Sin MPs</span>
+                            <span className="text-[11px] text-slate-400">Sin MPs</span>
                           )}
                         </td>
 
                         {/* 6. Repuestos Usados */}
-                        <td className="py-3 px-3 text-right font-mono font-semibold text-purple-300">
+                        <td className="py-3 px-3 text-right font-mono font-semibold text-purple-700">
                           {t.repuestosUsadosCount.toLocaleString()}
                         </td>
 
@@ -1788,18 +1786,18 @@ export const DashboardOperativoView: React.FC = () => {
                             <div>
                               <div className="flex items-center justify-end gap-2">
                                 <span className={`font-mono font-bold ${
-                                  t.pctRepuestosEnSf >= 70 ? 'text-emerald-400' :
-                                  t.pctRepuestosEnSf >= 40 ? 'text-amber-400' : 'text-slate-400'
+                                  t.pctRepuestosEnSf >= 70 ? 'text-emerald-700' :
+                                  t.pctRepuestosEnSf >= 40 ? 'text-amber-700' : 'text-slate-500'
                                 }`}>
                                   {t.pctRepuestosEnSf}%
                                 </span>
                               </div>
-                              <span className="block text-[10px] text-slate-400 mt-0.5 font-mono">
+                              <span className="block text-[10px] text-slate-500 mt-0.5 font-mono">
                                 {t.repuestosEnSfCount} de {t.pedidosConRepuesto} en SF
                               </span>
                             </div>
                           ) : (
-                            <span className="text-[11px] text-slate-500">Sin consumo</span>
+                            <span className="text-[11px] text-slate-400">Sin consumo</span>
                           )}
                         </td>
                       </tr>

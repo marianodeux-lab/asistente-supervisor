@@ -36,10 +36,13 @@ echo.
 echo [3/4] Procesando Archivo Maestro Analisis Patagonia 2026 y Derivaciones TELCA...
 call node scripts/process_analisis_patagonia.cjs
 call node scripts/generate_telca_derivaciones.cjs
+echo.
+echo [*] Procesando Auditoria de Causalidades SLA Patagonia y Suroeste...
+call node scripts/process_sla_causalidades.cjs
 if %ERRORLEVEL% NEQ 0 (
     color 0C
     echo.
-    echo [ERROR] Hubo un error al procesar el Analisis Patagonia 2026.
+    echo [ERROR] Hubo un error al procesar las causalidades de SLA.
     pause
     exit /b %ERRORLEVEL%
 )

@@ -5,27 +5,53 @@
     --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
     --font-heading: 'Plus Jakarta Sans', 'Outfit', sans-serif;
     
-    /* Modern Deep Navy & Obsidian Palette (CRM Hq / Tresto Admin Style) */
-    --bg-canvas: #0c0f1d;
-    --bg-surface: #14182d;
-    --bg-surface-hover: #1b203c;
-    --bg-surface-elevated: #202747;
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-card: #252c50;
+    /* Calming Gray & Turquoise Palette (Auditoría Ejecutiva & Supervisor) */
+    --bg-canvas: #f1f5f9;         /* Fondo gris claro descansado */
+    --bg-canvas-subtle: #e2e8f0;  /* Gris de contraste suave */
+    --bg-surface: #ffffff;        /* Superficie de tarjetas y ventanas */
+    --bg-surface-hover: #f8fafc;  /* Hover tenue en tarjetas */
+    --bg-surface-elevated: #ffffff;
+    --border-subtle: #e2e8f0;     /* Bordes finos y discretos */
+    --border-card: #cbd5e1;       /* Bordes de cuadros y tablas */
 
-    /* Chart / Accent Palette */
-    --chart-blue: #0084ff;
-    --chart-orange: #ff8a00;
-    --chart-coral: #ff4b68;
-    --chart-mint: #00d68f;
-    --chart-violet: #8b5cf6;
-    --chart-amber: #f59e0b;
+    /* Turquoise / Teal Primario */
+    --teal-primary: #0d9488;
+    --teal-hover: #0f766e;
+    --teal-light: #f0fdfa;
+    --teal-border: #99f6e4;
+    --teal-text: #115e59;
+
+    /* Gama de Pasteles para Énfasis y Estados */
+    --pastel-rose-bg: #fff1f2;
+    --pastel-rose-border: #fecdd3;
+    --pastel-rose-text: #be123c;
+    --pastel-rose-icon: #f43f5e;
+
+    --pastel-amber-bg: #fffbeb;
+    --pastel-amber-border: #fde68a;
+    --pastel-amber-text: #b45309;
+    --pastel-amber-icon: #f59e0b;
+
+    --pastel-emerald-bg: #ecfdf5;
+    --pastel-emerald-border: #a7f3d0;
+    --pastel-emerald-text: #065f46;
+    --pastel-emerald-icon: #10b981;
+
+    --pastel-blue-bg: #f0f9ff;
+    --pastel-blue-border: #bae6fd;
+    --pastel-blue-text: #0369a1;
+    --pastel-blue-icon: #0284c7;
+
+    --pastel-purple-bg: #faf5ff;
+    --pastel-purple-border: #e9d5ff;
+    --pastel-purple-text: #6b21a8;
+    --pastel-purple-icon: #9333ea;
   }
   
   body {
     font-family: var(--font-sans);
     background-color: var(--bg-canvas);
-    color: #f1f5f9;
+    color: #1e293b;
     overflow-x: hidden;
     letter-spacing: -0.01em;
   }
@@ -33,111 +59,136 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     letter-spacing: -0.02em;
+    color: #0f172a;
   }
 }
 
-/* Custom Deep Dark Scrollbar */
+/* Custom Soft Gray Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0c0f1d;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232a4a;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #394372;
+  background: #94a3b8;
 }
 
-/* Premium Dark Cards (CRM Hq Admin & Tresto Admin Style) */
+/* Calm Gray & Turquoise Window / Card Styles */
 .topo-card, .crm-card {
-  background-color: #14182d;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
 }
 
 .topo-card-hover, .crm-card-hover {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .topo-card-hover:hover, .crm-card-hover:hover {
-  background-color: #1b203c;
-  border-color: rgba(255, 255, 255, 0.14);
+  background-color: #f8fafc;
+  border-color: #99f6e4;
+  box-shadow: 0 4px 12px -2px rgba(13, 148, 136, 0.08);
 }
 
-/* Glassmorphism Dark Panel */
+/* Soft Turquoise Glassmorphism Panel */
 .glass-panel {
-  background: rgba(20, 24, 45, 0.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .glass-panel-hover {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .glass-panel-hover:hover {
-  background: rgba(27, 32, 60, 0.95);
-  border-color: rgba(255, 255, 255, 0.16);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.6);
+  background: #ffffff;
+  border-color: #5eead4;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px -5px rgba(13, 148, 136, 0.1);
 }
 
-/* KPI Gradient Pills & Highlights */
+/* Pastel Pills & Badges */
+.badge-pastel-rose {
+  background-color: var(--pastel-rose-bg);
+  border: 1px solid var(--pastel-rose-border);
+  color: var(--pastel-rose-text);
+}
+.badge-pastel-amber {
+  background-color: var(--pastel-amber-bg);
+  border: 1px solid var(--pastel-amber-border);
+  color: var(--pastel-amber-text);
+}
+.badge-pastel-emerald {
+  background-color: var(--pastel-emerald-bg);
+  border: 1px solid var(--pastel-emerald-border);
+  color: var(--pastel-emerald-text);
+}
+.badge-pastel-blue {
+  background-color: var(--pastel-blue-bg);
+  border: 1px solid var(--pastel-blue-border);
+  color: var(--pastel-blue-text);
+}
+.badge-pastel-purple {
+  background-color: var(--pastel-purple-bg);
+  border: 1px solid var(--pastel-purple-border);
+  color: var(--pastel-purple-text);
+}
+.badge-pastel-teal {
+  background-color: var(--teal-light);
+  border: 1px solid var(--teal-border);
+  color: var(--teal-text);
+}
+
+/* Soft Turquoise KPI Highlights */
+.kpi-gradient-teal {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+}
+
 .kpi-gradient-gold {
-  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
 }
 
 .kpi-gradient-blue {
   background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
 }
 
-.kpi-gradient-orange {
-  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-}
-
-.kpi-gradient-mint {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-}
-
-.kpi-gradient-purple {
-  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-}
-
-/* Glow effects for urgent SLA & HAL 9000 */
+/* Gentle Glow Effects */
 .glow-critical {
-  box-shadow: 0 0 18px -2px rgba(239, 68, 68, 0.45);
+  box-shadow: 0 0 12px 0 rgba(244, 63, 94, 0.25);
 }
 .glow-warning {
-  box-shadow: 0 0 18px -2px rgba(245, 158, 11, 0.45);
+  box-shadow: 0 0 12px 0 rgba(245, 158, 11, 0.25);
 }
 .glow-success {
-  box-shadow: 0 0 18px -2px rgba(16, 185, 129, 0.45);
+  box-shadow: 0 0 12px 0 rgba(16, 185, 129, 0.25);
 }
-.glow-blue {
-  box-shadow: 0 0 18px -2px rgba(0, 132, 255, 0.45);
-}
-.glow-hal {
-  box-shadow: 0 0 20px 3px rgba(239, 68, 68, 0.4);
+.glow-teal {
+  box-shadow: 0 0 12px 0 rgba(20, 184, 166, 0.25);
 }
 
-/* Leaflet Dark Customizations */
+/* Leaflet Clean Gray & Teal Customizations */
 .leaflet-container {
-  background: #0c0f1d !important;
+  background: #e2e8f0 !important;
   border-radius: 0.75rem;
   font-family: var(--font-sans) !important;
 }
 
 .leaflet-popup-content-wrapper {
-  background: #14182d !important;
-  color: #f1f5f9 !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: #ffffff !important;
+  color: #1e293b !important;
+  border: 1px solid #cbd5e1 !important;
   border-radius: 0.75rem !important;
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.8) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15) !important;
 }
 
 .leaflet-popup-tip {
-  background: #14182d !important;
+  background: #ffffff !important;
 }

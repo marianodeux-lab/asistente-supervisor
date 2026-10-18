@@ -12,6 +12,7 @@ import zonasReferencia from '../data/zonasTecnicosReferencia.json';
 import stockFijoData from '../data/stockFijoData.json';
 import stockRegionalMdpData from '../data/stockRegionalMdpData.json';
 import solicitudesStockData from '../data/solicitudesStockData.json';
+import causalidadesDatasetRaw from '../data/analisisSlaCausalidadesData.json';
 
 const GEMINI_STORAGE_KEY = 'stp_gemini_api_key';
 const CANDIDATE_MODELS = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-pro'];
@@ -230,6 +231,12 @@ REGLAS DE NEGOCIO OBLIGATORIAS:
 - Si CANTSTKCENTRAL > 0: Casa Central tiene stock disponible en estantería pero no despachó. La demora es exclusivamente atribuible a Logística Central. Mariano Deux debe intimar el despacho urgente de esas piezas.
 - Si CANTSTKCENTRAL = 0 o nulo: Desabastecimiento general en Central / quiebre de proveedor. La valija incompleta del técnico NO es imputable a él.
 - Los consumibles (TIPOPARTE = 'NORET') jamás constituyen deuda exigible.
+14. AUDITORÍA FORENSE DE CAUSALIDAD SLA Y REFUTACIÓN AL COT:
+- Total pedidos fuera de SLA auditados en Patagonia & Suroeste: ${causalidadesDatasetRaw.resumen.totalVencidos} pedidos (${causalidadesDatasetRaw.resumen.totalHorasSlaPerdidas} hs perdidas).
+- Responsabilidad de Logística Central (Cat A + B): ${causalidadesDatasetRaw.resumen.responsabilidad.logisticaCentralCount} pedidos (${causalidadesDatasetRaw.resumen.responsabilidad.logisticaCentralPct}% del total). La inmensa mayoría de vencimientos se deben a demoras de despacho o solicitudes pendientes de reposición de Central, no a desempeño técnico.
+- Desvío operativo en campo (Cat C): solo ${causalidadesDatasetRaw.resumen.responsabilidad.desvioTecnicoCount} pedidos (${causalidadesDatasetRaw.resumen.responsabilidad.desvioTecnicoPct}%).
+- Inconsistencias de carga del COT: ${causalidadesDatasetRaw.resumen.responsabilidad.cotInconsistenciasCount} pedidos (${causalidadesDatasetRaw.resumen.responsabilidad.cotInconsistenciasPct}%). En ${causalidadesDatasetRaw.resumen.responsabilidad.cotCulpoTecnicoInjustamente} casos el COT culpó injustamente al técnico cuando la causa raíz fue falta de repuesto.
+- En cualquier reclamo o discusión sobre SLA, debes rebatir los motivos informados por el COT demostrando con evidencia objetiva (Buzón de Movimientos + Flow Stock + Solicitudes Pendientes) cuál fue la causa raíz real.
 
 SITUACIÓN OPERATIVA ACTUAL CONSOLIDADA:
 - Deuda real en mano en la región: ${ctx.stockAuditoria.totalAdeudadoRegion} piezas (${ctx.stockAuditoria.totalDeudaRealRegion} recambios cambiados en campo + ${ctx.stockAuditoria.totalRetornosSemanalesRegion} retornos semanales fuera de SF).

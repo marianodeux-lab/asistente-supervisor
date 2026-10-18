@@ -141,34 +141,34 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
   if (!isOpen || !tecnicoNombre) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 animate-fadeIn">
       <div 
-        className="bg-slate-900 border border-amber-500/40 rounded-2xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl shadow-amber-500/10 overflow-hidden"
+        className="bg-white border border-slate-200 rounded-2xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* MODAL HEADER */}
-        <div className="p-5 border-b border-slate-800 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 flex items-center justify-between gap-4">
+        <div className="p-5 border-b border-slate-100 bg-slate-50 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-black text-lg shadow-inner">
+            <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-700 font-bold text-lg">
               <User className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="text-lg font-black text-white tracking-wide">
+                <h2 className="text-lg font-bold text-slate-900 tracking-wide">
                   {tecnicoNombre}
                 </h2>
-                <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
+                <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${
                   isContractor 
-                    ? 'bg-purple-950/80 text-purple-300 border border-purple-700/60' 
-                    : 'bg-emerald-950/80 text-emerald-300 border border-emerald-700/60'
+                    ? 'bg-purple-50 text-purple-700 border border-purple-200' 
+                    : 'bg-teal-50 text-teal-800 border border-teal-200'
                 }`}>
                   {isContractor ? 'Contratista de Zona' : 'Técnico Flow Patagonia'}
                 </span>
-                <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs border border-slate-700 font-semibold">
+                <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-mono text-xs border border-slate-200 font-medium">
                   {techInfo?.zonaTecnica} • {techInfo?.zonaLocal}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-500 mt-0.5">
                 Itinerario cronológico de visitas coordinadas en agenda de campo
               </p>
             </div>
@@ -176,7 +176,7 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
             title="Cerrar ventana"
           >
             <X className="w-5 h-5" />
@@ -184,22 +184,22 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
         </div>
 
         {/* DAY SELECTOR TABS & SUMMARY KPI BAR */}
-        <div className="p-4 bg-slate-950/60 border-b border-slate-800/80 space-y-3">
+        <div className="p-4 bg-slate-50/70 border-b border-slate-100 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             {/* Day Selector Buttons */}
-            <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-800">
+            <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
               <button
                 onClick={() => setModalDateFilter('HOY')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 ${
                   modalDateFilter === 'HOY'
-                    ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                    ? 'bg-teal-700 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span>Hoy ({activeDateStr})</span>
-                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
-                  modalDateFilter === 'HOY' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                  modalDateFilter === 'HOY' ? 'bg-teal-900 text-teal-100' : 'bg-slate-200 text-slate-600'
                 }`}>
                   {countHoy}
                 </span>
@@ -207,16 +207,16 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
 
               <button
                 onClick={() => setModalDateFilter('MANANA')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 ${
                   modalDateFilter === 'MANANA'
-                    ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                    ? 'bg-teal-700 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span>Mañana ({tomorrowDateStr})</span>
-                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
-                  modalDateFilter === 'MANANA' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                  modalDateFilter === 'MANANA' ? 'bg-teal-900 text-teal-100' : 'bg-slate-200 text-slate-600'
                 }`}>
                   {countManana}
                 </span>
@@ -224,15 +224,15 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
 
               <button
                 onClick={() => setModalDateFilter('TODOS')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 ${
                   modalDateFilter === 'TODOS'
-                    ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                    ? 'bg-teal-700 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
                 <span>Todos los Pedidos</span>
-                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
-                  modalDateFilter === 'TODOS' ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-300'
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                  modalDateFilter === 'TODOS' ? 'bg-teal-900 text-teal-100' : 'bg-slate-200 text-slate-600'
                 }`}>
                   {countTodos}
                 </span>
@@ -241,41 +241,41 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
 
             {/* Quick Time Window Span */}
             <div className="flex items-center gap-3 text-xs">
-              <div className="flex items-center gap-1 text-slate-300">
-                <Clock className="w-3.5 h-3.5 text-amber-400" />
+              <div className="flex items-center gap-1 text-slate-600">
+                <Clock className="w-3.5 h-3.5 text-teal-600" />
                 <span>Jornada: </span>
-                <span className="font-mono font-bold text-white">{kpis.firstTime}</span>
-                <span className="text-slate-500">➜</span>
-                <span className="font-mono font-bold text-white">{kpis.lastTime}</span>
+                <span className="font-mono font-bold text-slate-900">{kpis.firstTime}</span>
+                <span className="text-slate-400">➜</span>
+                <span className="font-mono font-bold text-slate-900">{kpis.lastTime}</span>
               </div>
             </div>
           </div>
 
           {/* Quick Metrics Chips */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
-            <div className="p-2 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between">
-              <span className="text-[11px] text-slate-400 font-semibold">Total Coordinados:</span>
-              <span className="text-sm font-black text-white font-mono">{kpis.total}</span>
+            <div className="p-2 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-xs">
+              <span className="text-[11px] text-slate-500 font-medium">Total Coordinados:</span>
+              <span className="text-sm font-black text-slate-900 font-mono">{kpis.total}</span>
             </div>
-            <div className="p-2 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between">
-              <span className="text-[11px] text-amber-400 font-semibold">Service Calls (SC):</span>
-              <span className="text-sm font-black text-amber-300 font-mono">{kpis.scCount}</span>
+            <div className="p-2 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-xs">
+              <span className="text-[11px] text-teal-700 font-medium">Service Calls (SC):</span>
+              <span className="text-sm font-black text-teal-800 font-mono">{kpis.scCount}</span>
             </div>
-            <div className="p-2 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between">
-              <span className="text-[11px] text-purple-400 font-semibold">Preventivos (MP):</span>
-              <span className="text-sm font-black text-purple-300 font-mono">{kpis.mpCount}</span>
+            <div className="p-2 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-xs">
+              <span className="text-[11px] text-purple-700 font-medium">Preventivos (MP):</span>
+              <span className="text-sm font-black text-purple-800 font-mono">{kpis.mpCount}</span>
             </div>
-            <div className="p-2 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between">
-              <span className="text-[11px] text-cyan-400 font-semibold">Adicionales (AIEC):</span>
-              <span className="text-sm font-black text-cyan-300 font-mono">{kpis.aiecCount}</span>
+            <div className="p-2 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-xs">
+              <span className="text-[11px] text-sky-700 font-medium">Adicionales (AIEC):</span>
+              <span className="text-sm font-black text-sky-800 font-mono">{kpis.aiecCount}</span>
             </div>
           </div>
 
           {kpis.localities.length > 0 && (
-            <div className="flex items-center gap-1.5 text-xs text-slate-400 overflow-x-auto pb-0.5">
-              <Navigation className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
-              <span className="font-semibold text-slate-300">Localidades:</span>
-              <span className="text-slate-400 truncate">{kpis.localities.join(' • ')}</span>
+            <div className="flex items-center gap-1.5 text-xs text-slate-500 overflow-x-auto pb-0.5">
+              <Navigation className="w-3.5 h-3.5 text-teal-600 flex-shrink-0" />
+              <span className="font-semibold text-slate-700">Localidades:</span>
+              <span className="text-slate-500 truncate">{kpis.localities.join(' • ')}</span>
             </div>
           )}
         </div>
@@ -284,18 +284,18 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
         <div className="flex-1 overflow-y-auto p-4 space-y-3">
           {filteredTickets.length === 0 ? (
             <div className="text-center py-12 text-slate-400 space-y-3">
-              <Calendar className="w-12 h-12 mx-auto opacity-30 text-amber-400" />
-              <p className="text-base font-bold text-white">
+              <Calendar className="w-12 h-12 mx-auto opacity-30 text-teal-600" />
+              <p className="text-base font-bold text-slate-800">
                 No se registran visitas coordinadas para {modalDateFilter === 'HOY' ? `Hoy (${activeDateStr})` : modalDateFilter === 'MANANA' ? `Mañana (${tomorrowDateStr})` : 'el filtro seleccionado'}.
               </p>
-              <p className="text-xs text-slate-400 max-w-md mx-auto">
-                Este técnico cuenta con un total de <strong className="text-amber-400 font-mono">{techAllTickets.length} pedidos asignados</strong> en su agenda activa de campo.
+              <p className="text-xs text-slate-500 max-w-md mx-auto">
+                Este técnico cuenta con un total de <strong className="text-teal-800 font-mono">{techAllTickets.length} pedidos asignados</strong> en su agenda activa de campo.
               </p>
               {techAllTickets.length > 0 && (
                 <div className="pt-2">
                   <button
                     onClick={() => setModalDateFilter('TODOS')}
-                    className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-amber-500/20 transition inline-flex items-center gap-2"
+                    className="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-xl shadow-xs transition inline-flex items-center gap-2"
                   >
                     <Sparkles className="w-4 h-4" />
                     <span>Ver todos los {techAllTickets.length} pedidos asignados</span>
@@ -315,42 +315,42 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
               return (
                 <div 
                   key={t.id || `visit-${idx}`}
-                  className={`p-4 rounded-xl border transition-all relative group ${
+                  className={`p-4 rounded-xl border bg-white transition-all relative group text-slate-800 shadow-xs ${
                     isFirst 
-                      ? 'bg-slate-950/80 border-emerald-500/50 shadow-md shadow-emerald-500/5' 
-                      : 'bg-slate-950/40 border-slate-800 hover:border-slate-700 hover:bg-slate-900/50'
+                      ? 'border-emerald-300 ring-1 ring-emerald-300/40' 
+                      : 'border-slate-200 hover:border-slate-300'
                   }`}
                 >
                   {/* Visita Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-800/80">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <div className="flex items-center gap-1 px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono font-bold text-xs rounded-lg">
-                        <Clock className="w-3.5 h-3.5 text-amber-400" />
+                      <div className="flex items-center gap-1 px-2.5 py-1 bg-teal-50 border border-teal-200 text-teal-800 font-mono font-bold text-xs rounded-lg">
+                        <Clock className="w-3.5 h-3.5 text-teal-600" />
                         <span>{hora} hs</span>
                       </div>
 
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider ${
-                        isAiec ? 'bg-cyan-950 text-cyan-300 border border-cyan-800' :
-                        isMp ? 'bg-purple-950 text-purple-300 border border-purple-800' :
-                        'bg-amber-950 text-amber-300 border border-amber-800'
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                        isAiec ? 'bg-sky-50 text-sky-800 border border-sky-200' :
+                        isMp ? 'bg-purple-50 text-purple-800 border border-purple-200' :
+                        'bg-teal-50 text-teal-800 border border-teal-200'
                       }`}>
                         {isAiec ? '📌 AIEC' : isMp ? '🔄 Preventivo' : '🛠️ Service Call'}
                       </span>
 
-                      <span className="font-mono font-bold text-white text-xs">
+                      <span className="font-mono font-bold text-slate-900 text-xs">
                         #{t.pedido}
                       </span>
 
                       {isFirst && (
-                        <span className="px-2 py-0.5 bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 text-[10px] font-black rounded-full uppercase">
+                        <span className="px-2 py-0.5 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold rounded-full uppercase">
                           1° Pedido de la Jornada
                         </span>
                       )}
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="text-xs text-slate-400">Estado:</span>
-                      <span className="text-xs font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/60">
+                      <span className="text-xs text-slate-500">Estado:</span>
+                      <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                         {t.estado}
                       </span>
                     </div>
@@ -360,42 +360,42 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
                   <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                     <div className="space-y-1.5">
                       <div className="flex items-baseline gap-1.5">
-                        <span className="text-slate-400 font-medium">Cliente:</span>
-                        <span className="font-bold text-white">{t.cliente}</span>
-                        <span className="font-mono text-amber-400 font-semibold">(ATM {t.luno})</span>
+                        <span className="text-slate-500 font-medium">Cliente:</span>
+                        <span className="font-bold text-slate-900">{t.cliente}</span>
+                        <span className="font-mono text-teal-700 font-semibold">(ATM {t.luno})</span>
                       </div>
 
                       {(t.clienteReal || t.sucursalRelevamiento) && (
-                        <div className="text-[11px] text-amber-300 flex items-center gap-1 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-500/30">
-                          <Store className="w-3 h-3 text-amber-400 flex-shrink-0" />
+                        <div className="text-[11px] text-teal-800 flex items-center gap-1 bg-teal-50 px-2 py-0.5 rounded border border-teal-200 font-semibold">
+                          <Store className="w-3 h-3 text-teal-600 flex-shrink-0" />
                           <span>Sitio Real: <strong>{t.clienteReal || 'Sucursal'}</strong></span>
                           {t.sucursalRelevamiento && (
-                            <span className="text-slate-400">({t.sucursalRelevamiento})</span>
+                            <span className="text-slate-500 font-normal">({t.sucursalRelevamiento})</span>
                           )}
                         </div>
                       )}
 
-                      <div className="flex items-start gap-1.5 text-slate-300">
-                        <MapPin className="w-3.5 h-3.5 text-slate-500 flex-shrink-0 mt-0.5" />
+                      <div className="flex items-start gap-1.5 text-slate-600">
+                        <MapPin className="w-3.5 h-3.5 text-slate-400 flex-shrink-0 mt-0.5" />
                         <span>{t.direccion}, {t.localidad}</span>
                       </div>
                     </div>
 
                     <div className="space-y-1.5">
                       {t.detalleFalla ? (
-                        <div className="bg-slate-900/90 border border-slate-800 p-2 rounded-lg text-slate-300 text-[11px] italic">
+                        <div className="bg-slate-50 border border-slate-200 p-2 rounded-lg text-slate-700 text-[11px] italic">
                           "{t.detalleFalla}"
                         </div>
                       ) : (
-                        <p className="text-slate-500 italic text-[11px]">Sin detalle de falla registrado</p>
+                        <p className="text-slate-400 italic text-[11px]">Sin detalle de falla registrado</p>
                       )}
 
                       <div className="flex items-center justify-between pt-1">
                         {!isAiec && (
                           <div className={`flex items-center gap-1.5 text-xs font-mono font-bold ${
-                            isCriticalSla ? 'text-red-400' : 'text-slate-300'
+                            isCriticalSla ? 'text-rose-700' : 'text-slate-600'
                           }`}>
-                            {isCriticalSla && <Flame className="w-3.5 h-3.5 text-red-400 animate-pulse" />}
+                            {isCriticalSla && <Flame className="w-3.5 h-3.5 text-rose-600" />}
                             <span>SLA: {t.slaPorcentaje}% ({t.hsSla}h rest.)</span>
                           </div>
                         )}
@@ -405,7 +405,7 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
                             onClose();
                             onSelectTicket(t);
                           }}
-                          className="ml-auto flex items-center gap-1 px-3 py-1 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 border border-slate-700 text-slate-200 text-xs font-bold rounded-lg transition"
+                          className="ml-auto flex items-center gap-1 px-3 py-1 bg-slate-100 hover:bg-teal-700 hover:text-white border border-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition shadow-xs"
                         >
                           <span>Ver Ficha Ticket</span>
                           <ExternalLink className="w-3 h-3" />
@@ -415,8 +415,8 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
                   </div>
 
                   {t.esMpDeficiente && (
-                    <div className="mt-2.5 px-2.5 py-1 bg-rose-950/80 border border-rose-500/60 rounded-lg text-rose-300 text-[11px] font-bold flex items-center gap-1.5">
-                      <AlertTriangle className="w-3.5 h-3.5 text-rose-400 flex-shrink-0" />
+                    <div className="mt-2.5 px-2.5 py-1 bg-rose-50 border border-rose-200 rounded-lg text-rose-800 text-[11px] font-bold flex items-center gap-1.5">
+                      <AlertTriangle className="w-3.5 h-3.5 text-rose-600 flex-shrink-0" />
                       <span>Alerta Operativa: MP preventivo realizado hace {t.diasDesdeUltimoMp} días</span>
                     </div>
                   )}
@@ -427,13 +427,13 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
         </div>
 
         {/* MODAL FOOTER */}
-        <div className="p-3 border-t border-slate-800 bg-slate-950 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-400">
+        <div className="p-3 border-t border-slate-100 bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-600">
           <div>
-            <span className="font-semibold text-white">{filteredTickets.length}</span> pedidos en vista &bull; <span className="font-mono font-bold text-amber-400">{techAllTickets.length}</span> pedidos asignados a <strong className="text-slate-200">{tecnicoNombre}</strong>
+            <span className="font-semibold text-slate-900">{filteredTickets.length}</span> pedidos en vista &bull; <span className="font-mono font-bold text-teal-800">{techAllTickets.length}</span> pedidos asignados a <strong className="text-slate-900">{tecnicoNombre}</strong>
           </div>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold transition"
+            className="px-4 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold transition"
           >
             Cerrar Agenda
           </button>
