@@ -811,7 +811,7 @@ export const DashboardOperativoView: React.FC = () => {
       {/* ==================================================================== */}
       {/* 1. Header & Tabs Bar */}
       {/* ==================================================================== */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#f1f5f9] p-5 rounded-2xl border border-slate-300 shadow-xs">
         <div>
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-teal-50 rounded-xl border border-teal-200 text-teal-700 shadow-xs">
@@ -832,13 +832,13 @@ export const DashboardOperativoView: React.FC = () => {
         </div>
 
         {/* Sub-Tabs Switcher */}
-        <div className="flex items-center bg-slate-100 p-1.5 rounded-xl border border-slate-200 shadow-inner">
+        <div className="flex items-center bg-slate-100 p-1.5 rounded-xl border border-slate-300 shadow-inner">
           <button
             onClick={() => setActiveSubTab('OPERACIONES_SLA')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 ${
               activeSubTab === 'OPERACIONES_SLA'
                 ? 'bg-teal-600 text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                : 'text-slate-700 hover:text-slate-900 hover:bg-slate-300/80'
             }`}
           >
             <TrendingUp className="w-4 h-4" />
@@ -849,7 +849,7 @@ export const DashboardOperativoView: React.FC = () => {
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 ${
               activeSubTab === 'REPUESTOS_TECNICOS'
                 ? 'bg-teal-600 text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                : 'text-slate-700 hover:text-slate-900 hover:bg-slate-300/80'
             }`}
           >
             <Wrench className="w-4 h-4" />
@@ -861,7 +861,7 @@ export const DashboardOperativoView: React.FC = () => {
       {/* ==================================================================== */}
       {/* 2. Filtros Generales y Temporales */}
       {/* ==================================================================== */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-xs space-y-4">
+      <div className="bg-[#f1f5f9] border border-slate-300 rounded-2xl p-4 shadow-xs space-y-4">
         
         {/* Panel A: Filtros Generales */}
         <div>
@@ -873,7 +873,7 @@ export const DashboardOperativoView: React.FC = () => {
             </div>
             <button
               onClick={handleResetFilters}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-300 transition-colors"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Limpiar Filtros</span>
@@ -887,7 +887,7 @@ export const DashboardOperativoView: React.FC = () => {
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30 font-bold"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30 font-bold"
               >
                 <option value="ALL">Todos ({options.years.length})</option>
                 {options.years.map(y => (
@@ -902,7 +902,7 @@ export const DashboardOperativoView: React.FC = () => {
               <select
                 value={selectedNegocio}
                 onChange={(e) => setSelectedNegocio(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todos los Negocios</option>
                 {options.negocios.map(n => (
@@ -920,7 +920,7 @@ export const DashboardOperativoView: React.FC = () => {
                   setSelectedZonaLocal(e.target.value);
                   setSelectedTecnico('ALL');
                 }}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todas las Zonas ({ZONAS_LOCALES.length})</option>
                 {ZONAS_LOCALES.map(z => (
@@ -935,7 +935,7 @@ export const DashboardOperativoView: React.FC = () => {
               <select
                 value={selectedTecnico}
                 onChange={(e) => setSelectedTecnico(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todos los Técnicos ({options.tecnicos.length})</option>
                 {options.tecnicos.map(t => (
@@ -950,7 +950,7 @@ export const DashboardOperativoView: React.FC = () => {
               <select
                 value={selectedFabricante}
                 onChange={(e) => setSelectedFabricante(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todos los Fabricantes ({options.fabricantes.length})</option>
                 {options.fabricantes.map(f => (
@@ -965,7 +965,7 @@ export const DashboardOperativoView: React.FC = () => {
               <select
                 value={selectedMpcr}
                 onChange={(e) => setSelectedMpcr(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todos los MPCR ({options.mpcrs.length})</option>
                 {options.mpcrs.map(m => (
@@ -980,7 +980,7 @@ export const DashboardOperativoView: React.FC = () => {
         <div className="border-t border-slate-200" />
 
         {/* Panel B: Filtros Temporales (Aparte & Aislados del gráfico de SLA) */}
-        <div className="bg-slate-50 rounded-xl p-3 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl p-3 border border-slate-300">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-teal-700" />
@@ -1007,7 +1007,7 @@ export const DashboardOperativoView: React.FC = () => {
                   setSelectedMes(e.target.value);
                   setSelectedSemana('ALL');
                 }}
-                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
+                className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todos los Meses (Evolución Completa)</option>
                 {options.meses.map(m => (
@@ -1024,7 +1024,7 @@ export const DashboardOperativoView: React.FC = () => {
               <select
                 value={selectedSemana}
                 onChange={(e) => setSelectedSemana(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
+                className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500/30"
               >
                 <option value="ALL">Todas las Semanas</option>
                 {availableWeeks.map(w => (
@@ -1035,7 +1035,7 @@ export const DashboardOperativoView: React.FC = () => {
 
             {/* Resumen del Corte Activo */}
             <div className="sm:col-span-2 flex items-center justify-end">
-              <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-slate-200 text-xs text-slate-600 shadow-xs">
+              <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-slate-300 text-xs text-slate-600 shadow-xs">
                 <span>Registros en segmento: <strong className="text-slate-800 font-mono">{generalFilteredData.length.toLocaleString()}</strong></span>
                 <span className="text-slate-300">•</span>
                 <span>En ventana temporal: <strong className="text-teal-700 font-mono font-bold">{temporalFilteredData.length.toLocaleString()}</strong></span>
@@ -1056,7 +1056,7 @@ export const DashboardOperativoView: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
             {/* KPI 1: Cantidad de Pedidos Atendidos */}
-            <div className="relative overflow-hidden bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-teal-300 transition-all duration-300">
+            <div className="relative overflow-hidden bg-[#f1f5f9] p-5 rounded-2xl border border-slate-300 shadow-xs hover:border-teal-300 transition-all duration-300">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-600">Pedidos Atendidos</span>
                 <div className="p-2 bg-sky-50 rounded-xl border border-sky-200 text-sky-700">
@@ -1076,7 +1076,7 @@ export const DashboardOperativoView: React.FC = () => {
             </div>
 
             {/* KPI 2: Call Rate en función de la Base Instalada */}
-            <div className="relative overflow-hidden bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-teal-300 transition-all duration-300">
+            <div className="relative overflow-hidden bg-[#f1f5f9] p-5 rounded-2xl border border-slate-300 shadow-xs hover:border-teal-300 transition-all duration-300">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-teal-800">Call Rate vs Base</span>
                 <div className="p-2 bg-teal-50 rounded-xl border border-teal-200 text-teal-700">
@@ -1098,7 +1098,7 @@ export const DashboardOperativoView: React.FC = () => {
             </div>
 
             {/* KPI 3: Pedidos con Repuesto Utilizado */}
-            <div className="relative overflow-hidden bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-purple-300 transition-all duration-300">
+            <div className="relative overflow-hidden bg-[#f1f5f9] p-5 rounded-2xl border border-slate-300 shadow-xs hover:border-purple-300 transition-all duration-300">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-purple-800">Uso de Repuestos</span>
                 <div className="p-2 bg-purple-50 rounded-xl border border-purple-200 text-purple-700">
@@ -1120,7 +1120,7 @@ export const DashboardOperativoView: React.FC = () => {
             </div>
 
             {/* KPI 4: Cumplimiento SLA del Período */}
-            <div className="relative overflow-hidden bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-300 transition-all duration-300">
+            <div className="relative overflow-hidden bg-[#f1f5f9] p-5 rounded-2xl border border-slate-300 shadow-xs hover:border-emerald-300 transition-all duration-300">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">SLA Período Activo</span>
                 <div className={`p-2 rounded-xl border ${
@@ -1144,7 +1144,7 @@ export const DashboardOperativoView: React.FC = () => {
           </div>
 
           {/* Gráfico SLA General Mensual de Líneas */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="bg-[#f1f5f9] border border-slate-300 rounded-2xl p-6 shadow-xs space-y-4">
             
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-4">
               <div>
@@ -1200,7 +1200,7 @@ export const DashboardOperativoView: React.FC = () => {
                       if (active && payload && payload.length) {
                         const d = payload[0].payload;
                         return (
-                          <div className="bg-white border border-slate-200 p-3.5 rounded-xl shadow-xl min-w-[210px] space-y-2">
+                          <div className="bg-[#f1f5f9] border border-slate-300 p-3.5 rounded-xl shadow-xl min-w-[210px] space-y-2">
                             <div className="flex items-center justify-between border-b border-slate-100 pb-1.5">
                               <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">{d.mesNombre}</span>
                               <span className="text-[10px] font-bold text-teal-800 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200">
@@ -1318,7 +1318,7 @@ export const DashboardOperativoView: React.FC = () => {
         <div className="space-y-8">
           
           {/* SECCIÓN A: Ranking de los Repuestos más utilizados */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-5">
+          <div className="bg-[#f1f5f9] border border-slate-300 rounded-2xl p-6 shadow-xs space-y-5">
             
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
               <div>
@@ -1346,14 +1346,14 @@ export const DashboardOperativoView: React.FC = () => {
                       setPartSearch(e.target.value);
                       setPartPage(1);
                     }}
-                    className="bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/30 w-60"
+                    className="bg-slate-50 border border-slate-300 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/30 w-60"
                   />
                 </div>
 
                 {/* Export CSV */}
                 <button
                   onClick={handleExportRepuestosCsv}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors shadow-xs"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:bg-slate-100 border border-slate-300 transition-colors shadow-xs"
                   title="Descargar ranking a CSV"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -1363,7 +1363,7 @@ export const DashboardOperativoView: React.FC = () => {
             </div>
 
             {/* Top 10 Visual Bar Chart */}
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-300">
               <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-3">
                 Top 10 Repuestos de Mayor Rotación
               </span>
@@ -1389,7 +1389,7 @@ export const DashboardOperativoView: React.FC = () => {
                         if (active && payload && payload.length) {
                           const d = payload[0].payload as SparePartMetric;
                           return (
-                            <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xl text-xs space-y-1.5 max-w-xs text-slate-800">
+                            <div className="bg-[#f1f5f9] border border-slate-300 p-3 rounded-xl shadow-xl text-xs space-y-1.5 max-w-xs text-slate-800">
                               <div className="font-bold text-slate-900">{d.pn}</div>
                               <p className="text-[11px] text-slate-600">{d.descripcion}</p>
                               <div className="pt-1.5 border-t border-slate-100 flex justify-between">
@@ -1421,7 +1421,7 @@ export const DashboardOperativoView: React.FC = () => {
             </div>
 
             {/* Full Spare Parts Table */}
-            <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <div className="overflow-x-auto rounded-xl border border-slate-300">
               <table className="w-full text-xs text-left">
                 <thead className="bg-slate-100 text-slate-700 font-semibold uppercase tracking-wider border-b border-slate-200">
                   <tr>
@@ -1483,7 +1483,7 @@ export const DashboardOperativoView: React.FC = () => {
                             <td className="py-2.5 px-3 text-center font-mono text-slate-500">
                               <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-[11px] font-bold ${
                                 globalIndex === 1 ? 'bg-amber-50 text-amber-800 border border-amber-200' :
-                                globalIndex === 2 ? 'bg-slate-100 text-slate-700 border border-slate-200' :
+                                globalIndex === 2 ? 'bg-slate-100 text-slate-700 border border-slate-300' :
                                 globalIndex === 3 ? 'bg-amber-100 text-amber-800 border border-amber-300' :
                                 'text-slate-500'
                               }`}>
@@ -1531,7 +1531,7 @@ export const DashboardOperativoView: React.FC = () => {
                     <button
                       onClick={() => setPartPage(p => Math.max(1, p - 1))}
                       disabled={partPage === 1}
-                      className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shadow-xs"
+                      className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shadow-xs"
                     >
                       Anterior
                     </button>
@@ -1539,7 +1539,7 @@ export const DashboardOperativoView: React.FC = () => {
                     <button
                       onClick={() => setPartPage(p => Math.min(Math.ceil(sparePartsRanking.list.length / PART_PAGE_SIZE), p + 1))}
                       disabled={partPage >= Math.ceil(sparePartsRanking.list.length / PART_PAGE_SIZE)}
-                      className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shadow-xs"
+                      className="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shadow-xs"
                     >
                       Siguiente
                     </button>
@@ -1551,7 +1551,7 @@ export const DashboardOperativoView: React.FC = () => {
           </div>
 
           {/* SECCIÓN B: Tabla Resumida y Limpia de Técnicos */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-5">
+          <div className="bg-[#f1f5f9] border border-slate-300 rounded-2xl p-6 shadow-xs space-y-5">
             
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
               <div>
@@ -1576,14 +1576,14 @@ export const DashboardOperativoView: React.FC = () => {
                     placeholder="Buscar técnico o zona..."
                     value={techSearch}
                     onChange={(e) => setTechSearch(e.target.value)}
-                    className="bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/30 w-56"
+                    className="bg-slate-50 border border-slate-300 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/30 w-56"
                   />
                 </div>
 
                 {/* Export CSV */}
                 <button
                   onClick={handleExportTecnicosCsv}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors shadow-xs"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:bg-slate-100 border border-slate-300 transition-colors shadow-xs"
                   title="Descargar matriz a CSV"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -1593,7 +1593,7 @@ export const DashboardOperativoView: React.FC = () => {
             </div>
 
             {/* Clean Executive Table */}
-            <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <div className="overflow-x-auto rounded-xl border border-slate-300">
               <table className="w-full text-xs text-left">
                 <thead className="bg-slate-100 text-slate-700 font-semibold uppercase tracking-wider border-b border-slate-200">
                   <tr>

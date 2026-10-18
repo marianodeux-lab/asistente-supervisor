@@ -63,11 +63,11 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
   const isAIEC = ticket.concepto === 'AIEC' || ticket.esAdicional;
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white border border-slate-200 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+    <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+      <div className="bg-[#f1f5f9] border border-slate-300 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
         
         {/* Header */}
-        <div className="bg-slate-50 px-6 py-4 border-b border-slate-200 flex items-center justify-between">
+        <div className="bg-slate-200/80 px-6 py-4 border-b border-slate-300 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className={`p-2.5 rounded-xl ${
               isAIEC ? 'bg-teal-50 text-teal-700 border border-teal-200' :
@@ -104,7 +104,7 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition"
+            className="p-1.5 rounded-lg bg-slate-200/80 hover:bg-slate-300 text-slate-600 hover:text-slate-900 transition"
           >
             <X className="w-5 h-5" />
           </button>

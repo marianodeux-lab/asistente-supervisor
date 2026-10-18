@@ -786,7 +786,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
     <div className="space-y-5 animate-fadeIn">
       
       {/* 1. TOP HEADER & KPI BANNER */}
-      <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs space-y-4">
+      <div className="bg-[#f1f5f9] border border-slate-300 rounded-2xl p-5 shadow-xs space-y-4">
         
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-3 border-b border-slate-100">
           <div className="flex items-center gap-3">
@@ -980,7 +980,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition ${
             activeSubTab === 'SUSPENDIDOS'
               ? 'bg-teal-600 text-white shadow-xs'
-              : 'bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              : 'bg-slate-200/80 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-300/80'
           }`}
         >
           <Wrench className="w-4 h-4" />
@@ -997,7 +997,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition ${
             activeSubTab === 'SLA'
               ? 'bg-teal-600 text-white shadow-xs'
-              : 'bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              : 'bg-slate-200/80 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-300/80'
           }`}
         >
           <Clock className="w-4 h-4" />
@@ -1014,7 +1014,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition ${
             activeSubTab === 'TELCA'
               ? 'bg-teal-600 text-white shadow-xs'
-              : 'bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              : 'bg-slate-200/80 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-300/80'
           }`}
         >
           <PhoneCall className="w-4 h-4" />
@@ -1032,7 +1032,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
 
       {/* SLA Mode Selector Bar */}
       {activeSubTab === 'SLA' && (
-        <div className="bg-white border border-teal-200 rounded-2xl p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs">
+        <div className="bg-[#f1f5f9] border border-teal-300 rounded-2xl p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs">
           <div className="flex items-center gap-2.5">
             <ShieldAlert className="w-5 h-5 text-teal-600 shrink-0" />
             <div>
@@ -1055,7 +1055,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
               onClick={() => setSlaMode('AUDITORIA_CAUSAL')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
                 slaMode === 'AUDITORIA_CAUSAL'
-                  ? 'bg-white text-teal-900 border border-teal-200 shadow-xs'
+                  ? 'bg-teal-100 text-teal-950 border border-teal-300 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -1066,7 +1066,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
               onClick={() => setSlaMode('PLANILLA_CRUDA')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
                 slaMode === 'PLANILLA_CRUDA'
-                  ? 'bg-white text-teal-900 border border-teal-200 shadow-xs'
+                  ? 'bg-teal-100 text-teal-950 border border-teal-300 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -1083,7 +1083,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
       ) : (
         <>
       {/* 3. EXCEL SLICERS & SEGMENTATION PANEL */}
-      <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs space-y-4">
+      <div className="bg-[#f1f5f9] border border-slate-300 rounded-2xl p-4 shadow-xs space-y-4">
         
         {/* Row 1: Fast Global Search + Date Range + Technician Dropdown + Cliente */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -1100,7 +1100,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
                 value={search}
                 onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
                 placeholder="Ej. BAPRO, 101162, Atasco, Bariloche..."
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-teal-500 focus:bg-white"
+                className="w-full bg-white border border-slate-300 rounded-xl shadow-xs pl-9 pr-3 py-2 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-teal-500 focus:bg-white"
               />
               {search && (
                 <button 
@@ -1122,7 +1122,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             <select
               value={selectedTecnico}
               onChange={(e) => { setSelectedTecnico(e.target.value); setCurrentPage(1); }}
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white"
+              className="w-full bg-white border border-slate-300 rounded-xl shadow-xs px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white"
             >
               <option value="ALL">Todos los Técnicos ({options.tecnicos.length})</option>
               {options.tecnicos.map(tec => (
@@ -1140,7 +1140,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             <select
               value={selectedCliente}
               onChange={(e) => { setSelectedCliente(e.target.value); setCurrentPage(1); }}
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white"
+              className="w-full bg-white border border-slate-300 rounded-xl shadow-xs px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white"
             >
               <option value="ALL">Todos los Clientes ({options.clientes.length})</option>
               {options.clientes.map(cli => (
@@ -1158,7 +1158,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             <select
               value={selectedConcepto}
               onChange={(e) => { setSelectedConcepto(e.target.value); setCurrentPage(1); }}
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white"
+              className="w-full bg-white border border-slate-300 rounded-xl shadow-xs px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white"
             >
               <option value="ALL">Todos los Conceptos ({options.conceptos.length})</option>
               {options.conceptos.map(cpt => (
@@ -1266,7 +1266,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             </div>
 
             {/* FILTRO FIN DE SEMANA / GUARDIAS */}
-            <div className="flex items-center gap-1 p-1 bg-slate-50 border border-slate-200 rounded-xl">
+            <div className="flex items-center gap-1 p-1 bg-white border border-slate-300 rounded-xl shadow-xs">
               <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider px-1.5 flex items-center gap-1">
                 <SunMedium className="w-3 h-3 text-amber-600" />
                 <span>Guardia Fin de Sem.:</span>
@@ -1397,7 +1397,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
               <select
                 value={selectedYear}
                 onChange={(e) => { setSelectedYear(e.target.value); setCurrentPage(1); }}
-                className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-teal-500 font-bold"
+                className="bg-white border border-slate-300 rounded-xl shadow-xs px-3 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-teal-500 font-bold"
               >
                 <option value="ALL">Todos los Años ({options.years.length})</option>
                 {options.years.map(yr => (
@@ -1415,7 +1415,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
               <select
                 value={selectedMes}
                 onChange={(e) => handleMesChange(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-teal-500 font-bold"
+                className="bg-white border border-slate-300 rounded-xl shadow-xs px-3 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-teal-500 font-bold"
               >
                 <option value="ALL">Todos los Meses ({options.meses.length})</option>
                 {options.meses.map(m => (
@@ -1438,7 +1438,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
               <select
                 value={selectedSemana}
                 onChange={(e) => { setSelectedSemana(e.target.value); setCurrentPage(1); }}
-                className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-teal-500 font-mono font-bold"
+                className="bg-white border border-slate-300 rounded-xl shadow-xs px-3 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-teal-500 font-mono font-bold"
               >
                 <option value="ALL">
                   {selectedMes === 'ALL' 
@@ -1493,7 +1493,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
       </div>
 
       {/* 4. HIGH-PERFORMANCE DATA TABLE */}
-      <div className="bg-white border border-slate-200/90 rounded-2xl shadow-xs overflow-hidden space-y-2">
+      <div className="bg-[#f1f5f9] border border-slate-300 rounded-2xl shadow-xs overflow-hidden space-y-2">
         
         {/* Table Top Controls (Rows Per Page & Active Count) */}
         <div className="p-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-xs text-slate-500">
@@ -1804,7 +1804,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             <button
               onClick={() => setCurrentPage(1)}
               disabled={currentPage === 1}
-              className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition"
+              className="p-1.5 rounded-lg bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition"
               title="Primera página"
             >
               <ChevronsLeft className="w-4 h-4" />
@@ -1813,7 +1813,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             <button
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition"
+              className="p-1.5 rounded-lg bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition"
               title="Página anterior"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -1826,7 +1826,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             <button
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition"
+              className="p-1.5 rounded-lg bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition"
               title="Página siguiente"
             >
               <ChevronRight className="w-4 h-4" />
@@ -1835,7 +1835,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             <button
               onClick={() => setCurrentPage(totalPages)}
               disabled={currentPage === totalPages}
-              className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition"
+              className="p-1.5 rounded-lg bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition"
               title="Última página"
             >
               <ChevronsRight className="w-4 h-4" />
@@ -1854,7 +1854,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
           {/* A. TAILORED MODAL FOR ASISTENCIA REMOTA TELCA (SOLICITUD EXPLÍCITA: ONLY 10 REQUESTED FIELDS) */}
           {activeSubTab === 'TELCA' && telcaModalData ? (
             <div 
-              className="bg-white border border-slate-200 rounded-2xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-scaleIn"
+              className="bg-[#f1f5f9] border border-slate-300 rounded-2xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-scaleIn"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
@@ -2042,7 +2042,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
                     {telcaModalData.ultimasTresAtenciones.map((atn: any, i: number) => (
                       <div 
                         key={i} 
-                        className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-2 hover:border-teal-300 transition"
+                        className="p-3.5 bg-white border border-slate-300 rounded-xl shadow-xs space-y-2 hover:border-teal-300 transition"
                       >
                         <div className="flex items-center justify-between flex-wrap gap-2 text-xs">
                           <div className="flex items-center gap-2">
@@ -2089,7 +2089,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
           ) : (
             /* B. STANDARD MODAL FOR SUSPENDIDOS & SLA */
             <div 
-              className="bg-white border border-slate-200 rounded-2xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-scaleIn"
+              className="bg-[#f1f5f9] border border-slate-300 rounded-2xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-scaleIn"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
@@ -2145,7 +2145,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
                 {(inspectedRow['OBSERVACIONES CONTROL'] || inspectedRow.Observaciones) && (
                   <div className="space-y-1">
                     <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Observaciones de Control / Informe:</span>
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-xs whitespace-pre-wrap leading-relaxed">
+                    <div className="p-3 bg-white border border-slate-300 rounded-xl shadow-xs text-slate-700 text-xs whitespace-pre-wrap leading-relaxed">
                       {inspectedRow['OBSERVACIONES CONTROL'] || inspectedRow.Observaciones}
                     </div>
                   </div>

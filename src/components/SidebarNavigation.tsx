@@ -155,12 +155,12 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
     <aside
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative z-50 flex flex-col bg-white border-r border-slate-200 transition-all duration-300 ease-in-out shadow-sm flex-shrink-0 select-none ${
+      className={`relative z-50 flex flex-col bg-[#f1f5f9] border-r border-slate-300 transition-all duration-300 ease-in-out shadow-xs flex-shrink-0 select-none ${
         expanded ? 'w-64' : 'w-16'
       }`}
     >
       {/* Top Header / HAL 9000 Branding */}
-      <div className="h-14 flex items-center px-3 border-b border-slate-100 overflow-hidden bg-slate-50/60">
+      <div className="h-14 flex items-center px-3 border-b border-slate-200 overflow-hidden bg-slate-200/60">
         <div 
           onClick={onOpenHallAi}
           className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-rose-300 shadow-xs flex-shrink-0 bg-black flex items-center justify-center cursor-pointer group hover:border-rose-400 transition-all duration-300" 
@@ -213,7 +213,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
             <React.Fragment key={item.key}>
               {showCategoryHeader && (
                 <div className="pt-2.5 pb-1 px-2">
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500">
                     {item.category}
                   </span>
                 </div>
@@ -223,8 +223,8 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                 onClick={() => onTabChange(item.key)}
                 className={`group w-full flex items-center rounded-xl px-2.5 py-2 transition-all text-left relative ${
                   isActive
-                    ? 'bg-teal-50 text-teal-900 border border-teal-200/80 font-bold shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+                    ? 'bg-teal-100/80 text-teal-950 border border-teal-300 font-bold shadow-xs'
+                    : 'text-slate-700 hover:text-slate-900 hover:bg-slate-200/70'
                 }`}
                 title={!expanded ? item.label : undefined}
               >
@@ -235,14 +235,14 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
 
                 {/* Icon */}
                 <div className={`flex items-center justify-center w-5 h-5 flex-shrink-0 ${
-                  isActive ? 'text-teal-600' : 'text-slate-400 group-hover:text-slate-600'
+                  isActive ? 'text-teal-700' : 'text-slate-400 group-hover:text-slate-600'
                 }`}>
                   <Icon className="w-4 h-4" />
                 </div>
 
                 {/* Collapsed notification dot */}
                 {!expanded && item.badge !== undefined && item.badge > 0 && (
-                  <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-teal-500 ring-2 ring-white" />
+                  <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-teal-500 ring-2 ring-slate-100" />
                 )}
 
                 {/* Expanded Label & Badges */}
@@ -257,12 +257,12 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                     {item.badge !== undefined && (
                       <span className={`text-[10px] px-1.5 py-0.2 rounded-md font-bold ml-1.5 flex-shrink-0 ${
                         isActive
-                          ? 'bg-teal-100 text-teal-800 border border-teal-200'
+                          ? 'bg-teal-200/90 text-teal-900 border border-teal-300'
                           : item.badgeType === 'danger'
                           ? 'bg-rose-50 text-rose-700 border border-rose-200'
                           : item.badgeType === 'warning'
                           ? 'bg-amber-50 text-amber-800 border border-amber-200'
-                          : 'bg-slate-100 text-slate-600 border border-slate-200'
+                          : 'bg-slate-200 text-slate-700 border border-slate-300'
                       }`}>
                         {item.badge}
                       </span>
@@ -276,13 +276,13 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
       </div>
 
       {/* Bottom Footer / HAL IA Assistant Trigger */}
-      <div className="p-2 border-t border-slate-100 bg-slate-50/50">
+      <div className="p-2 border-t border-slate-200 bg-slate-200/60">
         <button
           onClick={onOpenHallAi}
           className={`w-full flex items-center rounded-xl p-2 transition-all group ${
             expanded
-              ? 'bg-white border border-slate-200 hover:border-teal-300 text-slate-700 shadow-xs'
-              : 'justify-center text-rose-500 hover:bg-slate-100'
+              ? 'bg-[#f1f5f9] border border-slate-300 hover:border-teal-400 text-slate-800 shadow-xs'
+              : 'justify-center text-rose-500 hover:bg-slate-200'
           }`}
           title="Abrir Asistente HAL IA (Chat Inteligente)"
         >
@@ -293,7 +293,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
           {expanded && (
             <div className="ml-2.5 flex-1 min-w-0 text-left">
               <div className="flex items-center gap-1.5">
-                <span className="text-xs font-bold text-slate-800 group-hover:text-teal-700 transition-colors">
+                <span className="text-xs font-bold text-slate-800 group-hover:text-teal-800 transition-colors">
                   HAL IA Copilot
                 </span>
                 <Sparkles className="w-3 h-3 text-teal-600" />

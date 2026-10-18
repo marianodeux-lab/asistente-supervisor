@@ -263,7 +263,7 @@ export const SlaCausalidadesView: React.FC = () => {
     <div className="space-y-6 animate-fadeIn pb-16">
       
       {/* ─── 1. HERO HEADER ─── */}
-      <div className="bg-white border border-slate-200/90 rounded-3xl p-6 shadow-xs relative overflow-hidden">
+      <div className="bg-[#f1f5f9] border border-slate-300 rounded-3xl p-6 shadow-xs relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl -z-10 pointer-events-none" />
         <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-sky-500/5 rounded-full blur-3xl -z-10 pointer-events-none" />
 
@@ -282,13 +282,13 @@ export const SlaCausalidadesView: React.FC = () => {
           </div>
 
           {/* Quick SubTabs */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 self-start lg:self-center">
+          <div className="flex flex-wrap items-center gap-1.5 bg-slate-200/90 p-1.5 rounded-2xl border border-slate-300 self-start lg:self-center">
             <button
               onClick={() => setActiveSubView('AUDITORIA_TABLE')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition ${
                 activeSubView === 'AUDITORIA_TABLE'
-                  ? 'bg-white text-teal-900 border border-teal-200 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                  ? 'bg-[#f1f5f9] text-teal-950 border border-teal-300 shadow-xs'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-300/80'
               }`}
             >
               <FileSpreadsheet className="w-4 h-4 text-teal-600" />
@@ -298,8 +298,8 @@ export const SlaCausalidadesView: React.FC = () => {
               onClick={() => setActiveSubView('COMPARATIVA_COT')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition ${
                 activeSubView === 'COMPARATIVA_COT'
-                  ? 'bg-white text-purple-900 border border-purple-200 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                  ? 'bg-[#f1f5f9] text-purple-950 border border-purple-300 shadow-xs'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-300/80'
               }`}
             >
               <ShieldAlert className="w-4 h-4 text-purple-600" />
@@ -309,8 +309,8 @@ export const SlaCausalidadesView: React.FC = () => {
               onClick={() => setActiveSubView('PN_CRITICOS')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition ${
                 activeSubView === 'PN_CRITICOS'
-                  ? 'bg-white text-amber-900 border border-amber-200 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                  ? 'bg-[#f1f5f9] text-amber-950 border border-amber-300 shadow-xs'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-300/80'
               }`}
             >
               <Cpu className="w-4 h-4 text-amber-600" />
@@ -320,8 +320,8 @@ export const SlaCausalidadesView: React.FC = () => {
               onClick={() => setActiveSubView('TECNICOS_EXPOSICION')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition ${
                 activeSubView === 'TECNICOS_EXPOSICION'
-                  ? 'bg-white text-sky-900 border border-sky-200 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                  ? 'bg-[#f1f5f9] text-sky-950 border border-sky-300 shadow-xs'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-300/80'
               }`}
             >
               <UserCheck className="w-4 h-4 text-sky-600" />
@@ -334,7 +334,7 @@ export const SlaCausalidadesView: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 pt-6 border-t border-slate-200 mt-6">
           
           {/* Total Vencidos */}
-          <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-3.5 space-y-1">
+          <div className="bg-slate-200/80 border border-slate-300 rounded-2xl p-3.5 space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center justify-between">
               <span>Vencidos Auditados</span>
               <Clock className="w-3.5 h-3.5 text-slate-400" />
@@ -384,7 +384,7 @@ export const SlaCausalidadesView: React.FC = () => {
           </div>
 
           {/* Desvío Técnico (Cat C) */}
-          <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-3.5 space-y-1">
+          <div className="bg-slate-200/80 border border-slate-300 rounded-2xl p-3.5 space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center justify-between">
               <span>Desvío en Campo (Cat C)</span>
               <UserX className="w-3.5 h-3.5 text-slate-400" />
@@ -415,7 +415,7 @@ export const SlaCausalidadesView: React.FC = () => {
 
       {/* ─── 3. SUB-VIEW: PN CRÍTICOS DESTRUCTORES DE SLA ─── */}
       {activeSubView === 'PN_CRITICOS' && (
-        <div className="bg-white border border-slate-200/90 rounded-3xl p-6 shadow-xs space-y-4">
+        <div className="bg-[#f1f5f9] border border-slate-300 rounded-3xl p-6 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
@@ -439,7 +439,7 @@ export const SlaCausalidadesView: React.FC = () => {
                   setSearch(pnItem.pn);
                   setActiveSubView('AUDITORIA_TABLE');
                 }}
-                className="bg-slate-50 border border-slate-200/90 hover:border-teal-300 hover:bg-white rounded-2xl p-4 transition cursor-pointer space-y-3 group shadow-xs"
+                className="bg-slate-200/80 border border-slate-300 hover:border-teal-300 hover:bg-[#f1f5f9] rounded-2xl p-4 transition cursor-pointer space-y-3 group shadow-xs"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="space-y-1">
@@ -491,7 +491,7 @@ export const SlaCausalidadesView: React.FC = () => {
 
       {/* ─── 4. SUB-VIEW: INCONSISTENCIAS Y REFUTACIÓN AL COT ─── */}
       {activeSubView === 'COMPARATIVA_COT' && (
-        <div className="bg-white border border-slate-200/90 rounded-3xl p-6 shadow-xs space-y-6">
+        <div className="bg-[#f1f5f9] border border-slate-300 rounded-3xl p-6 shadow-xs space-y-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
@@ -521,7 +521,7 @@ export const SlaCausalidadesView: React.FC = () => {
                   const it = items.find(i => i.pedido === inc.pedido);
                   if (it) setSelectedAuditItem(it);
                 }}
-                className="bg-slate-50 border border-purple-200/70 hover:border-purple-300 hover:bg-white rounded-2xl p-4 transition cursor-pointer space-y-2.5 shadow-xs"
+                className="bg-slate-200/80 border border-purple-200 hover:border-purple-300 hover:bg-[#f1f5f9] rounded-2xl p-4 transition cursor-pointer space-y-2.5 shadow-xs"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-mono font-bold text-teal-800 text-xs">
@@ -536,7 +536,7 @@ export const SlaCausalidadesView: React.FC = () => {
                   {inc.cliente} • {inc.tecnico}
                 </div>
 
-                <div className="bg-white rounded-xl p-3 text-xs space-y-1.5 border border-slate-200">
+                <div className="bg-[#f1f5f9] rounded-xl p-3 text-xs space-y-1.5 border border-slate-300">
                   <div className="flex items-center gap-1.5 text-slate-600">
                     <span className="font-bold text-purple-700">Declaración COT:</span>
                     <span>"{inc.motivoCot}"</span>
@@ -571,7 +571,7 @@ export const SlaCausalidadesView: React.FC = () => {
 
       {/* ─── 5. SUB-VIEW: EXPOSICIÓN DE TÉCNICOS A FALTANTES ─── */}
       {activeSubView === 'TECNICOS_EXPOSICION' && (
-        <div className="bg-white border border-slate-200/90 rounded-3xl p-6 shadow-xs space-y-4">
+        <div className="bg-[#f1f5f9] border border-slate-300 rounded-3xl p-6 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
@@ -645,7 +645,7 @@ export const SlaCausalidadesView: React.FC = () => {
         <div className="space-y-4">
           
           {/* Slicers Panel */}
-          <div className="bg-white border border-slate-200/90 rounded-3xl p-4 shadow-xs space-y-4">
+          <div className="bg-[#f1f5f9] border border-slate-300 rounded-3xl p-4 shadow-xs space-y-4">
             
             {/* Top row: Search + Dropdowns */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
@@ -662,7 +662,7 @@ export const SlaCausalidadesView: React.FC = () => {
                     value={search}
                     onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
                     placeholder="Ej: 101173806, Allende, SV-217422..."
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-8 py-2 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-teal-500 focus:bg-white"
+                    className="w-full bg-white border border-slate-300 rounded-xl shadow-xs pl-9 pr-8 py-2 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-teal-500 focus:bg-white"
                   />
                   {search && (
                     <button 
@@ -683,7 +683,7 @@ export const SlaCausalidadesView: React.FC = () => {
                 <select
                   value={selectedCategoria}
                   onChange={(e) => { setSelectedCategoria(e.target.value); setCurrentPage(1); }}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white font-bold"
+                  className="w-full bg-white border border-slate-300 rounded-xl shadow-xs px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white font-bold"
                 >
                   <option value="ALL">Todas las Categorías</option>
                   <option value="CAT_A_STOCK_CENTRAL">Cat A • Stock Central ({resumen.porCategoria.catA_stockCentral.count})</option>
@@ -704,7 +704,7 @@ export const SlaCausalidadesView: React.FC = () => {
                 <select
                   value={selectedTecnico}
                   onChange={(e) => { setSelectedTecnico(e.target.value); setCurrentPage(1); }}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white"
+                  className="w-full bg-white border border-slate-300 rounded-xl shadow-xs px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white"
                 >
                   <option value="ALL">Todos los Técnicos</option>
                   {filterOptions.tecnicos.map(t => (
@@ -722,7 +722,7 @@ export const SlaCausalidadesView: React.FC = () => {
                 <select
                   value={selectedEntidad}
                   onChange={(e) => { setSelectedEntidad(e.target.value); setCurrentPage(1); }}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white"
+                  className="w-full bg-white border border-slate-300 rounded-xl shadow-xs px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-teal-500 focus:bg-white"
                 >
                   <option value="ALL">Todas las Entidades</option>
                   {filterOptions.entidades.map(ent => (
@@ -796,7 +796,7 @@ export const SlaCausalidadesView: React.FC = () => {
           </div>
 
           {/* Table Container */}
-          <div className="bg-white border border-slate-200/90 rounded-3xl shadow-xs overflow-hidden space-y-2">
+          <div className="bg-[#f1f5f9] border border-slate-300 rounded-3xl shadow-xs overflow-hidden space-y-2">
             
             {/* Top controls: Rows per page & counter */}
             <div className="p-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-xs text-slate-500">
@@ -999,28 +999,28 @@ export const SlaCausalidadesView: React.FC = () => {
                 <button
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage(1)}
-                  className="px-2 py-1 bg-white border border-slate-200 rounded text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="px-2 py-1 bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Primera
                 </button>
                 <button
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                  className="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="px-2.5 py-1 bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Anterior
                 </button>
                 <button
                   disabled={currentPage === totalPages}
                   onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                  className="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="px-2.5 py-1 bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Siguiente
                 </button>
                 <button
                   disabled={currentPage === totalPages}
                   onClick={() => setCurrentPage(totalPages)}
-                  className="px-2 py-1 bg-white border border-slate-200 rounded text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="px-2 py-1 bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Última
                 </button>
@@ -1035,10 +1035,10 @@ export const SlaCausalidadesView: React.FC = () => {
       {/* ─── 7. MODAL DE AUDITORÍA FORENSE DETALLADA (12 PASOS & FORMATO COPILOT) ─── */}
       {selectedAuditItem && (
         <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-fadeIn">
-          <div className="bg-white border border-slate-200 rounded-3xl max-w-4xl w-full shadow-2xl overflow-hidden my-8 space-y-0">
+          <div className="bg-[#f1f5f9] border border-slate-300 rounded-3xl max-w-4xl w-full shadow-2xl overflow-hidden my-8 space-y-0">
             
             {/* Modal Header */}
-            <div className="bg-slate-50 p-6 border-b border-slate-200 flex items-start justify-between relative">
+            <div className="bg-slate-200/80 p-6 border-b border-slate-300 flex items-start justify-between relative">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-xs font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
@@ -1062,7 +1062,7 @@ export const SlaCausalidadesView: React.FC = () => {
 
               <button
                 onClick={() => setSelectedAuditItem(null)}
-                className="text-slate-400 hover:text-slate-700 p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 transition"
+                className="text-slate-500 hover:text-slate-800 p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 transition"
               >
                 <X className="w-5 h-5" />
               </button>

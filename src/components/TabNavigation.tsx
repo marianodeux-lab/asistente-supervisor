@@ -114,7 +114,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
   ];
 
   return (
-    <nav className="bg-white/95 border-b border-slate-200/90 px-4 lg:px-8 py-2 overflow-x-auto scrollbar-thin backdrop-blur-xs">
+    <nav className="bg-[#f1f5f9]/95 border-b border-slate-300 px-4 lg:px-8 py-2 overflow-x-auto scrollbar-thin backdrop-blur-xs">
       <div className="flex items-center gap-1.5 min-w-max">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.key;
@@ -124,8 +124,8 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
               onClick={() => onTabChange(tab.key)}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                 isActive
-                  ? 'bg-teal-50 text-teal-900 border border-teal-200 font-bold shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                  ? 'bg-teal-100 text-teal-950 border border-teal-300 font-bold shadow-xs'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-200/80'
               }`}
             >
               {tab.icon}
@@ -134,8 +134,8 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
                 <span
                   className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
                     isActive
-                      ? 'bg-teal-100 text-teal-800'
-                      : 'bg-slate-100 text-slate-600 border border-slate-200'
+                      ? 'bg-teal-200/90 text-teal-900'
+                      : 'bg-slate-200 text-slate-700 border border-slate-300'
                   }`}
                 >
                   {tab.badge}

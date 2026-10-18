@@ -6,13 +6,13 @@
     --font-heading: 'Plus Jakarta Sans', 'Outfit', sans-serif;
     
     /* Calming Gray & Turquoise Palette (Auditoría Ejecutiva & Supervisor) */
-    --bg-canvas: #f1f5f9;         /* Fondo gris claro descansado */
-    --bg-canvas-subtle: #e2e8f0;  /* Gris de contraste suave */
-    --bg-surface: #ffffff;        /* Superficie de tarjetas y ventanas */
-    --bg-surface-hover: #f8fafc;  /* Hover tenue en tarjetas */
-    --bg-surface-elevated: #ffffff;
-    --border-subtle: #e2e8f0;     /* Bordes finos y discretos */
-    --border-card: #cbd5e1;       /* Bordes de cuadros y tablas */
+    --bg-canvas: #cbd5e1;         /* Fondo gris slate-300 (2 tonos más oscuro) */
+    --bg-canvas-subtle: #94a3b8;  /* Gris de contraste medio */
+    --bg-surface: #f1f5f9;        /* Superficie de tarjetas y ventanas (gris slate-100 que conformaba el fondo) */
+    --bg-surface-hover: #e2e8f0;  /* Hover suave en tarjetas */
+    --bg-surface-elevated: #f1f5f9;
+    --border-subtle: #cbd5e1;     /* Bordes finos y discretos */
+    --border-card: #94a3b8;       /* Bordes de cuadros y tablas */
 
     /* Turquoise / Teal Primario */
     --teal-primary: #0d9488;
@@ -51,7 +51,7 @@
   body {
     font-family: var(--font-sans);
     background-color: var(--bg-canvas);
-    color: #1e293b;
+    color: #0f172a;
     overflow-x: hidden;
     letter-spacing: -0.01em;
   }
@@ -69,39 +69,39 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #cbd5e1;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #94a3b8;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #64748b;
 }
 
 /* Calm Gray & Turquoise Window / Card Styles */
 .topo-card, .crm-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
   border-radius: 1rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
 }
 
 .topo-card-hover, .crm-card-hover {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .topo-card-hover:hover, .crm-card-hover:hover {
-  background-color: #f8fafc;
+  background-color: #e2e8f0;
   border-color: #99f6e4;
-  box-shadow: 0 4px 12px -2px rgba(13, 148, 136, 0.08);
+  box-shadow: 0 4px 12px -2px rgba(13, 148, 136, 0.1);
 }
 
 /* Soft Turquoise Glassmorphism Panel */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(241, 245, 249, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid #e2e8f0;
+  border: 1px solid #cbd5e1;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
@@ -109,10 +109,10 @@
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .glass-panel-hover:hover {
-  background: #ffffff;
+  background: #f1f5f9;
   border-color: #5eead4;
   transform: translateY(-1px);
-  box-shadow: 0 10px 25px -5px rgba(13, 148, 136, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(13, 148, 136, 0.12);
 }
 
 /* Pastel Pills & Badges */

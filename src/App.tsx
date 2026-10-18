@@ -280,7 +280,7 @@ export function App() {
   };
 
   return (
-    <div className="h-screen w-screen bg-[#f1f5f9] text-[#1e293b] flex flex-row overflow-hidden selection:bg-teal-500 selection:text-white">
+    <div className="h-screen w-screen bg-[#cbd5e1] text-[#0f172a] flex flex-row overflow-hidden selection:bg-teal-500 selection:text-white">
       
       {/* Auto-Hiding Left Rail Sidebar with Hover Expansion */}
       <SidebarNavigation
@@ -310,7 +310,7 @@ export function App() {
         />
 
         {/* High Availability Scrollable Data Canvas */}
-        <main className="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-6 space-y-5 bg-[#f1f5f9]">
+        <main className="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-6 space-y-5 bg-[#cbd5e1]">
           <Suspense fallback={<ViewLoadingFallback />}>
           
           {/* Tab 1: Control SLA & Agenda Diaria */}

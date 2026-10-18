@@ -143,11 +143,11 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 animate-fadeIn">
       <div 
-        className="bg-white border border-slate-200 rounded-2xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden"
+        className="bg-[#f1f5f9] border border-slate-300 rounded-2xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* MODAL HEADER */}
-        <div className="p-5 border-b border-slate-100 bg-slate-50 flex items-center justify-between gap-4">
+        <div className="p-5 border-b border-slate-300 bg-slate-200/80 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-700 font-bold text-lg">
               <User className="w-6 h-6" />
@@ -253,21 +253,21 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
 
           {/* Quick Metrics Chips */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
-            <div className="p-2 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-xs">
-              <span className="text-[11px] text-slate-500 font-medium">Total Coordinados:</span>
+            <div className="p-2 bg-slate-200/80 border border-slate-300 rounded-xl flex items-center justify-between shadow-xs">
+              <span className="text-[11px] text-slate-600 font-medium">Total Coordinados:</span>
               <span className="text-sm font-black text-slate-900 font-mono">{kpis.total}</span>
             </div>
-            <div className="p-2 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-xs">
-              <span className="text-[11px] text-teal-700 font-medium">Service Calls (SC):</span>
+            <div className="p-2 bg-slate-200/80 border border-slate-300 rounded-xl flex items-center justify-between shadow-xs">
+              <span className="text-[11px] text-teal-800 font-medium">Service Calls (SC):</span>
               <span className="text-sm font-black text-teal-800 font-mono">{kpis.scCount}</span>
             </div>
-            <div className="p-2 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-xs">
-              <span className="text-[11px] text-purple-700 font-medium">Preventivos (MP):</span>
-              <span className="text-sm font-black text-purple-800 font-mono">{kpis.mpCount}</span>
+            <div className="p-2 bg-slate-200/80 border border-slate-300 rounded-xl flex items-center justify-between shadow-xs">
+              <span className="text-[11px] text-purple-800 font-medium">Preventivos (MP):</span>
+              <span className="text-sm font-black text-purple-900 font-mono">{kpis.mpCount}</span>
             </div>
-            <div className="p-2 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-xs">
-              <span className="text-[11px] text-sky-700 font-medium">Adicionales (AIEC):</span>
-              <span className="text-sm font-black text-sky-800 font-mono">{kpis.aiecCount}</span>
+            <div className="p-2 bg-slate-200/80 border border-slate-300 rounded-xl flex items-center justify-between shadow-xs">
+              <span className="text-[11px] text-sky-800 font-medium">Adicionales (AIEC):</span>
+              <span className="text-sm font-black text-sky-900 font-mono">{kpis.aiecCount}</span>
             </div>
           </div>
 
@@ -315,10 +315,10 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
               return (
                 <div 
                   key={t.id || `visit-${idx}`}
-                  className={`p-4 rounded-xl border bg-white transition-all relative group text-slate-800 shadow-xs ${
+                  className={`p-4 rounded-xl border bg-[#f1f5f9] transition-all relative group text-slate-800 shadow-xs ${
                     isFirst 
-                      ? 'border-emerald-300 ring-1 ring-emerald-300/40' 
-                      : 'border-slate-200 hover:border-slate-300'
+                      ? 'border-emerald-400 ring-1 ring-emerald-300/40' 
+                      : 'border-slate-300 hover:border-slate-400'
                   }`}
                 >
                   {/* Visita Header */}

@@ -91,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
   const currentTabName = TAB_NAMES[activeTab] || 'Tablero Principal';
 
   return (
-    <header className="h-14 bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 px-3 lg:px-6 flex items-center justify-between shadow-sm flex-shrink-0 select-none">
+    <header className="h-14 bg-[#f1f5f9]/95 backdrop-blur-md border-b border-slate-300 sticky top-0 z-40 px-3 lg:px-6 flex items-center justify-between shadow-xs flex-shrink-0 select-none">
       
       {/* LEFT: Active Module Breadcrumb & Status */}
       <div className="flex items-center gap-3 min-w-0">
@@ -99,8 +99,8 @@ export const Header: React.FC<HeaderProps> = ({
           <span className="text-sm font-bold text-slate-800 tracking-tight truncate">
             {currentTabName}
           </span>
-          <span className="text-slate-300 hidden sm:inline">•</span>
-          <span className="inline-flex items-center gap-1.5 text-[11px] text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200 font-semibold">
+          <span className="text-slate-400 hidden sm:inline">•</span>
+          <span className="inline-flex items-center gap-1.5 text-[11px] text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200 font-semibold">
             <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-ping"></span>
             <span className="hidden sm:inline">Flow Pro</span> Live
           </span>
@@ -144,11 +144,11 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="flex items-center gap-2.5 relative">
         
         {/* Compact Operational Time */}
-        <div className="hidden lg:flex items-center gap-2 text-xs text-slate-600 bg-slate-100/90 px-2.5 py-1 rounded-xl border border-slate-200 font-mono">
-          <span className="text-teal-700 font-bold">Sem {weekNum}</span>
-          <span className="text-slate-300">•</span>
+        <div className="hidden lg:flex items-center gap-2 text-xs text-slate-700 bg-slate-200/70 px-2.5 py-1 rounded-xl border border-slate-300 font-mono">
+          <span className="text-teal-800 font-bold">Sem {weekNum}</span>
+          <span className="text-slate-400">•</span>
           <span className="text-slate-700">{shortDateStr}</span>
-          <span className="text-slate-300">•</span>
+          <span className="text-slate-400">•</span>
           <span className="text-slate-900 font-semibold flex items-center gap-1">
             <Clock className="w-3 h-3 text-teal-600" /> {timeStr}
           </span>
@@ -175,7 +175,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="relative">
           <button
             onClick={() => setShowUserDropdown(prev => !prev)}
-            className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 rounded-xl p-1.5 pr-2.5 transition text-left shadow-xs"
+            className="flex items-center gap-2 bg-slate-200/80 hover:bg-slate-300/80 border border-slate-300 rounded-xl p-1.5 pr-2.5 transition text-left shadow-xs"
           >
             {getTechnicianAvatar(currentUser.nombre) || (currentUser.rol === 'ADMIN' ? '/avatars/Deus_Mariano.png' : null) ? (
               <img
@@ -196,8 +196,8 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Dropdown Menu */}
           {showUserDropdown && (
-            <div className="absolute right-0 mt-2 w-64 bg-white border border-slate-200 rounded-2xl shadow-xl z-50 p-2 space-y-1 animate-fadeIn">
-              <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+            <div className="absolute right-0 mt-2 w-64 bg-[#f1f5f9] border border-slate-300 rounded-2xl shadow-xl z-50 p-2 space-y-1 animate-fadeIn">
+              <div className="p-2.5 bg-slate-200/60 rounded-xl border border-slate-300/80">
                 <p className="text-xs font-bold text-slate-800">{currentUser.nombre}</p>
                 <p className="text-[11px] text-slate-500 font-mono">{currentUser.email}</p>
                 <span className="mt-1.5 inline-block text-[10px] font-bold px-2 py-0.5 rounded bg-teal-50 text-teal-800 border border-teal-200">
@@ -211,7 +211,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setShowUserDropdown(false);
                   onOpenUserManagement();
                 }}
-                className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition text-left font-medium"
+                className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-700 hover:text-slate-900 hover:bg-slate-200/70 rounded-xl transition text-left font-medium"
               >
                 <Users className="w-3.5 h-3.5 text-teal-600" />
                 <span>Gestionar Usuarios & Accesos</span>
@@ -223,7 +223,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setShowUserDropdown(false);
                   onOpenAuthModal('FIRST_LOGIN');
                 }}
-                className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition text-left font-medium"
+                className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-700 hover:text-slate-900 hover:bg-slate-200/70 rounded-xl transition text-left font-medium"
               >
                 <KeyRound className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Primer Ingreso / Clave Marcos</span>
@@ -235,7 +235,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setShowUserDropdown(false);
                   onOpenAuthModal('LOGIN');
                 }}
-                className="w-full flex items-center gap-2 px-3 py-2 text-xs text-teal-700 hover:text-teal-900 hover:bg-teal-50 rounded-xl transition text-left font-bold border-t border-slate-100 mt-1 pt-2"
+                className="w-full flex items-center gap-2 px-3 py-2 text-xs text-teal-700 hover:text-teal-900 hover:bg-teal-50 rounded-xl transition text-left font-bold border-t border-slate-200 mt-1 pt-2"
               >
                 <UserCheck className="w-3.5 h-3.5" />
                 <span>Cambiar de Usuario / Ingresar</span>
@@ -248,7 +248,7 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           onClick={onRefresh}
           title="Recalcular métricas y sincronizar"
-          className="p-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600 hover:text-slate-900 transition shadow-xs"
+          className="p-1.5 rounded-xl bg-slate-200/80 hover:bg-slate-300/80 border border-slate-300 text-slate-700 hover:text-slate-900 transition shadow-xs"
         >
           <RefreshCw className="w-3.5 h-3.5" />
         </button>
