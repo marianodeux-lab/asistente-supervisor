@@ -63,7 +63,7 @@
     "color": "red"
   },
   "DERIV": {
-    "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+    "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
     "tipo": "MESA_CTD",
     "esRemoto": true,
     "esCampo": false,

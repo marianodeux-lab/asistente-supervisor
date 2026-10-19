@@ -341,6 +341,18 @@ export const TechnicianDailyAgendaModal: React.FC<TechnicianDailyAgendaModalProp
                         #{t.pedido}
                       </span>
 
+                      {t.esPedidoSuspendidoPrevio && (
+                        (t.suspensionPrevia?.codigoCierre === 'DERIV' || t.suspensionPrevia?.codCierre === 'DERIV' || t.suspensionPrevia?.esDerivacionMonitoreo) ? (
+                          <span className="px-2 py-0.5 bg-cyan-50 border border-cyan-200 text-cyan-800 text-[10px] font-bold rounded-full">
+                            🔄 Derivado Monitoreo
+                          </span>
+                        ) : (
+                          <span className="px-2 py-0.5 bg-amber-50 border border-amber-200 text-amber-800 text-[10px] font-bold rounded-full">
+                            ⏸️ Reanudado ({t.suspensionPrevia?.codigoCierre || t.suspensionPrevia?.codCierre || 'PPR'})
+                          </span>
+                        )
+                      )}
+
                       {isFirst && (
                         <span className="px-2 py-0.5 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold rounded-full uppercase">
                           1° Pedido de la Jornada

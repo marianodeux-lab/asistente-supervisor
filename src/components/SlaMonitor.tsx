@@ -1721,12 +1721,32 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
                             #{t.pedido}
                           </span>
                           {t.esPedidoSuspendidoPrevio && (
-                            <span 
-                              className="px-1.5 py-0.2 rounded bg-amber-50 border border-amber-200 text-amber-800 font-bold text-[10px]"
-                              title={`Pedido reanudado: suspendido previamente por ${t.suspensionPrevia?.codigoCierre || t.suspensionPrevia?.codCierre || 'cierre'}: ${t.suspensionPrevia?.descCierre || t.suspensionPrevia?.desc || ''}`}
-                            >
-                              ⏸️ Reanudado ({t.suspensionPrevia?.codigoCierre || t.suspensionPrevia?.codCierre || 'PPR'})
-                            </span>
+                            (() => {
+                              const isDeriv = 
+                                t.suspensionPrevia?.codigoCierre === 'DERIV' || 
+                                t.suspensionPrevia?.codCierre === 'DERIV' ||
+                                t.suspensionPrevia?.esDerivacionMonitoreo;
+                              
+                              if (isDeriv) {
+                                return (
+                                  <span 
+                                    className="px-1.5 py-0.2 rounded bg-cyan-50 border border-cyan-200 text-cyan-800 font-bold text-[10px]"
+                                    title={`Derivado por Monitoreo al Servicio Técnico (visita presencial): ${t.suspensionPrevia?.observaciones || t.suspensionPrevia?.obs || ''}`}
+                                  >
+                                    🔄 Derivado Monitoreo
+                                  </span>
+                                );
+                              }
+
+                              return (
+                                <span 
+                                  className="px-1.5 py-0.2 rounded bg-amber-50 border border-amber-200 text-amber-800 font-bold text-[10px]"
+                                  title={`Pedido reanudado: suspendido previamente por ${t.suspensionPrevia?.codigoCierre || t.suspensionPrevia?.codCierre || 'cierre'}: ${t.suspensionPrevia?.descCierre || t.suspensionPrevia?.desc || ''}`}
+                                >
+                                  ⏸️ Reanudado ({t.suspensionPrevia?.codigoCierre || t.suspensionPrevia?.codCierre || 'PPR'})
+                                </span>
+                              );
+                            })()
                           )}
                           {isAIEC && (
                             <span className="px-1.5 py-0.2 rounded bg-sky-50 border border-sky-200 text-sky-800 font-bold text-[10px]">

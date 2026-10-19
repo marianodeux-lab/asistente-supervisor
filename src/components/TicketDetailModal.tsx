@@ -94,9 +94,15 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
                   </span>
                 )}
                 {ticket.esPedidoSuspendidoPrevio && (
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 font-semibold">
-                    Reanudado (Previamente Suspendido)
-                  </span>
+                  (ticket.suspensionPrevia?.codigoCierre === 'DERIV' || ticket.suspensionPrevia?.codCierre === 'DERIV' || ticket.suspensionPrevia?.esDerivacionMonitoreo) ? (
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-50 text-cyan-800 border border-cyan-300 font-semibold flex items-center gap-1 shadow-2xs">
+                      🔄 Derivado por Monitoreo a Campo
+                    </span>
+                  ) : (
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 font-semibold">
+                      Reanudado (Previamente Suspendido)
+                    </span>
+                  )
                 )}
               </div>
               <p className="text-xs text-slate-500">Cliente: <strong className="text-slate-800">{ticket.cliente}</strong></p>
@@ -144,31 +150,105 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({
             </div>
           </div>
 
-          {/* BANNER: PEDIDO REANUDADO / SUSPENDIDO PREVIAMENTE */}
+          {/* BANNER: DERIVACIÓN DE MONITOREO O PEDIDO REANUDADO */}
           {ticket.esPedidoSuspendidoPrevio && (
-            <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 shadow-xs flex items-start gap-3 text-amber-900">
-              <div className="p-2 rounded-lg bg-amber-100 text-amber-700 border border-amber-200 flex-shrink-0">
-                <AlertTriangle className="w-5 h-5" />
-              </div>
-              <div className="text-xs space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-amber-900 text-sm">
-                    ⏸️ Pedido Reanudado • Suspendido Previamente
-                  </span>
-                  {(ticket.suspensionPrevia?.codigoCierre || ticket.suspensionPrevia?.codCierre) && (
-                    <span className="px-2 py-0.5 rounded bg-white text-amber-800 font-mono font-bold text-[10px] border border-amber-200">
-                      {ticket.suspensionPrevia.codigoCierre || ticket.suspensionPrevia.codCierre}: {ticket.suspensionPrevia.descCierre || ticket.suspensionPrevia.desc}
-                    </span>
-                  )}
+            (() => {
+              const isDeriv = 
+                ticket.suspensionPrevia?.codigoCierre === 'DERIV' || 
+                ticket.suspensionPrevia?.codCierre === 'DERIV' || 
+                ticket.suspensionPrevia?.esDerivacionMonitoreo;
+
+              if (isDeriv) {
+                return (
+                  <div className="p-3.5 rounded-xl bg-cyan-50 border border-cyan-200 shadow-xs flex items-start gap-3 text-cyan-950">
+                    <div className="p-2 rounded-lg bg-cyan-100 text-cyan-700 border border-cyan-200 flex-shrink-0">
+                      <ArrowRightLeft className="w-5 h-5" />
+                    </div>
+                    <div className="text-xs space-y-1.5 flex-1">
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <span className="font-bold text-cyan-950 text-sm flex items-center gap-1.5">
+                          🔄 Derivado por Monitoreo al Servicio Técnico
+                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-100 text-cyan-800 border border-cyan-200">
+                            Visita Presencial Requerida
+                          </span>
+                        </span>
+                        <span className="px-2 py-0.5 rounded bg-white text-cyan-900 font-mono font-bold text-[10px] border border-cyan-200 shadow-2xs">
+                          DERIV: Derivación Monitoreo → Servicio Técnico
+                        </span>
+                      </div>
+                      <p className="text-slate-700 leading-relaxed">
+                        Este pedido fue <strong>atendido previamente por Monitoreo / Mesa de Servicios</strong> y derivado al Servicio Técnico para realizar una <strong>visita técnica presencial</strong> en el equipo.
+                        {ticket.suspensionPrevia?.fecha && <span> Fecha de derivación: <strong>{ticket.suspensionPrevia.fecha}</strong>.</span>}
+                        <span> Atendió en mesa: <strong className="text-slate-900">{ticket.suspensionPrevia?.tecnico && ticket.suspensionPrevia.tecnico.toUpperCase() !== 'SIN ASIGNAR' ? ticket.suspensionPrevia.tecnico : 'Monitoreo / Mesa de Servicios'}</strong>.</span>
+                      </p>
+                      {(ticket.suspensionPrevia?.observaciones || ticket.suspensionPrevia?.obs) && (
+                        <div className="bg-white p-2.5 rounded-lg border border-cyan-200 text-[11px] text-slate-700 shadow-2xs">
+                          <span className="font-semibold text-cyan-900 block text-[10px] uppercase tracking-wider mb-0.5">Diagnóstico y Motivo de Derivación de Monitoreo:</span>
+                          <p className="italic">"{ticket.suspensionPrevia.observaciones || ticket.suspensionPrevia.obs}"</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 shadow-xs flex items-start gap-3 text-amber-900">
+                  <div className="p-2 rounded-lg bg-amber-100 text-amber-700 border border-amber-200 flex-shrink-0">
+                    <AlertTriangle className="w-5 h-5" />
+                  </div>
+                  <div className="text-xs space-y-1 flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-bold text-amber-900 text-sm">
+                        ⏸️ Pedido Reanudado • Suspendido Previamente
+                      </span>
+                      {(ticket.suspensionPrevia?.codigoCierre || ticket.suspensionPrevia?.codCierre) && (
+                        <span className="px-2 py-0.5 rounded bg-white text-amber-800 font-mono font-bold text-[10px] border border-amber-200">
+                          {ticket.suspensionPrevia.codigoCierre || ticket.suspensionPrevia.codCierre}: {ticket.suspensionPrevia.descCierre || ticket.suspensionPrevia.desc}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-slate-700">
+                      Este pedido coordinado en agenda coincide con una orden suspendida anteriormente en el equipo.
+                      {ticket.suspensionPrevia?.tecnico && <span> Atendió previamente: <strong className="text-slate-900">{ticket.suspensionPrevia.tecnico}</strong> ({ticket.suspensionPrevia.fecha}).</span>}
+                    </p>
+                    {(ticket.suspensionPrevia?.observaciones || ticket.suspensionPrevia?.obs) && (
+                      <p className="text-slate-600 italic bg-white p-2 rounded border border-slate-200 text-[11px]">
+                        Motivo previo de suspensión: "{ticket.suspensionPrevia.observaciones || ticket.suspensionPrevia.obs}"
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <p className="text-slate-700">
-                  Este pedido coordinado en agenda coincide con una orden suspendida anteriormente en el equipo.
-                  {ticket.suspensionPrevia?.tecnico && <span> Atendió previamente: <strong className="text-slate-900">{ticket.suspensionPrevia.tecnico}</strong> ({ticket.suspensionPrevia.fecha}).</span>}
+              );
+            })()
+          )}
+
+          {/* BANNER: ATENCIÓN INMEDIATAMENTE ANTERIOR FUE DERIV POR MONITOREO (Sin ser el mismo número de pedido) */}
+          {!ticket.esPedidoSuspendidoPrevio && ticket.ordenInmediataAnterior?.esDerivacionMonitoreo && (
+            <div className="p-3.5 rounded-xl bg-cyan-50 border border-cyan-200 shadow-xs flex items-start gap-3 text-cyan-950">
+              <div className="p-2 rounded-lg bg-cyan-100 text-cyan-700 border border-cyan-200 flex-shrink-0">
+                <ArrowRightLeft className="w-5 h-5" />
+              </div>
+              <div className="text-xs space-y-1.5 flex-1">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <span className="font-bold text-cyan-950 text-sm flex items-center gap-1.5">
+                    🔄 Pedido Inmediatamente Anterior: Derivado por Monitoreo
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-100 text-cyan-800 border border-cyan-200">
+                      Visita Presencial Requerida
+                    </span>
+                  </span>
+                  <span className="px-2 py-0.5 rounded bg-white text-cyan-900 font-mono font-bold text-[10px] border border-cyan-200 shadow-2xs">
+                    DERIV (#{ticket.ordenInmediataAnterior.pedido})
+                  </span>
+                </div>
+                <p className="text-slate-700 leading-relaxed">
+                  El pedido inmediatamente anterior en este equipo (#{ticket.ordenInmediataAnterior.pedido}) fue <strong>atendido por Monitoreo / Mesa de Servicios</strong> y derivado al Servicio Técnico para realizar una <strong>visita técnica presencial</strong> en sitio ({ticket.ordenInmediataAnterior.fecha}).
                 </p>
-                {(ticket.suspensionPrevia?.observaciones || ticket.suspensionPrevia?.obs) && (
-                  <p className="text-slate-600 italic bg-white p-2 rounded border border-slate-200 text-[11px]">
-                    Motivo previo de suspensión: "{ticket.suspensionPrevia.observaciones || ticket.suspensionPrevia.obs}"
-                  </p>
+                {ticket.ordenInmediataAnterior.observaciones && (
+                  <div className="bg-white p-2.5 rounded-lg border border-cyan-200 text-[11px] text-slate-700 shadow-2xs">
+                    <span className="font-semibold text-cyan-900 block text-[10px] uppercase tracking-wider mb-0.5">Diagnóstico y Motivo de Derivación de Monitoreo:</span>
+                    <p className="italic">"{ticket.ordenInmediataAnterior.observaciones}"</p>
+                  </div>
                 )}
               </div>
             </div>

@@ -12,7 +12,7 @@
     "tecnicoZona": "Ibañez, Pablo Fernando",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": 40,
+    "hsSla": 37,
     "fechaVencimiento": "Hasta 20/10/2026 12:00:00",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -37,6 +37,15 @@
     "repuestosHistoricos": [],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101195689",
+      "fecha": "2026-07-27",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Ibañez, Pablo Fernando",
+      "observaciones": "[27/07/2026] se realizo mantenimiento preventivo",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -90,6 +99,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/07/2026] se realizo mantenimiento preventivo",
         "zona": "IN CIP"
@@ -115,7 +125,7 @@
     "tecnicoZona": "Pavon, Diego Emanuel",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": 42,
+    "hsSla": 39,
     "fechaVencimiento": "Hasta 20/10/2026 14:00:00",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -270,6 +280,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101215319",
+      "fecha": "2026-09-08",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Vicente, Francisco Ariel",
+      "observaciones": "[08/09/2026] se realizó soldadura de cables de mecanismo de shutter, se lubricaron guias, se limpió y verificó dispensador y gavetas. modulo dispensador de dinero probado en producción con funcionario",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -319,6 +338,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[08/09/2026] se realizó soldadura de cables de mecanismo de shutter, se lubricaron guias, se limpió y verificó dispensador y gavetas. modulo dispensador de dinero probado en producción con funcionario",
         "zona": "IN BB2"
@@ -339,6 +359,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/08/2026] Se realizo mantenimiento preventivo OK Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. ATM OPERATIVO",
         "zona": "IN BB2"
@@ -359,6 +380,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/08/2026] Se detecto falla en shutter. Se realizo cambio de transporte. Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. ATM OPERATIVO",
         "zona": "IN BB2"
@@ -379,6 +401,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/07/2026]   Cambio de presentador, se prueba con funcionario, tesorera realiza extracción. // Tesorera Jesica Gutierrez solicita visita 21/7 10hs // [16/07/2026] Se realiza reinstalación del aplicativo, se suspende pedido por solicitud de repuesto",
         "zona": "IN BB2"
@@ -399,6 +422,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Tesorera Jesica Gutierrez solicita visita 21/7 9hs // [16/07/2026] Se realiza reinstalación del aplicativo, se suspende pedido por solicitud de repuesto",
         "zona": "IN BB2"
@@ -419,6 +443,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Tesorera Jesica Gutierrez solicita visita 21/7 10hs // [16/07/2026] Se realiza reinstalación del aplicativo, se suspende pedido por solicitud de repuesto",
         "zona": "IN BB2"
@@ -439,6 +464,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[16/07/2026] Se realiza reinstalación del aplicativo, se suspende pedido por solicitud de repuesto",
         "zona": "IN BB2"
@@ -459,6 +485,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[08/07/2026] Se realizo cambio de stacker, transporte y placa de dispensador. Se realizo revisión exhaustiva de los 5 modulos, realizando cambios de consumibles. Se realizaron pruebas exhaustivas de cada modulo y gaveta en diagnóstico. Se realizaron extracciones en servicio con funcionario Gutierrez Jesica de $100.000 sin presentar fallas. ATM OPERATIVO",
         "zona": "IN BB2"
@@ -479,6 +506,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[23/06/2026] se encontró divert deflextor dañado. el mismo se cambio. se realizó cambio de diverte por fallas en la apertura del mismo. y se rrsliz limpieza y calibración completa de modulo dispensador. gavetas ok. se realizaron varias pruebas en diagnóstico.  no se pudo probar en servicio ya que no van a hacer aun la carga del equipo.",
         "zona": "IN BB2"
@@ -499,6 +527,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/06/2026] Se realizo cambio de picker modulo nro 1. Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. ATM OPERATIVO",
         "zona": "IN BB2"
@@ -524,7 +553,7 @@
     "tecnicoZona": "Aldayturriaga, Martin",
     "estado": "SEG Registrado",
     "slaPorcentaje": 29,
-    "hsSla": 21,
+    "hsSla": 18,
     "fechaVencimiento": "Hasta 19/10/2026 17:00:00",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -610,6 +639,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101225119",
+      "fecha": "2026-10-15",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Aldayturriaga, Martin",
+      "observaciones": "[15/10/2026] Se resuelve problema con el dispensador de dinero, se realizó limpieza, se realizaron pruebas en producción en presencia de funcionario",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -659,6 +697,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026] Se resuelve problema con el dispensador de dinero, se realizó limpieza, se realizaron pruebas en producción en presencia de funcionario",
         "zona": "IN TDL"
@@ -679,6 +718,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[22/09/2026] Se realiza mantenimiento preventivo",
         "zona": "IN TDL"
@@ -699,6 +739,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[22/09/2026]   Se realiza cambio del shutter, se realizó limpieza, se realizaron pruebas en producción en presencia de funcionario  // [18/09/2026] se suspende pedido por solicitud de repuesto, se solicita Shutter",
         "zona": "IN TDL"
@@ -719,6 +760,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[18/09/2026] se suspende pedido por solicitud de repuesto, se solicita Shutter",
         "zona": "IN TDL"
@@ -739,6 +781,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/07/2026] Se resuelve problema con el módulo 1 del dispensador de dinero, se realizó limpieza, se realizaron pruebas en producción en presencia de funcionario",
         "zona": "IN TDL"
@@ -759,6 +802,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[04/02/2026] se realiza cambio de una gaveta de depósitos, la misma se deja funcionando en el ATM  // [03/02/2026] Se suspende pedido por solicitud de repuesto",
         "zona": "IN TDL"
@@ -779,6 +823,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[03/02/2026] Se realiza mantenimiento preventivo",
         "zona": "IN TDL"
@@ -799,6 +844,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[03/02/2026] Se suspende pedido por solicitud de repuesto",
         "zona": "IN TDL"
@@ -819,6 +865,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[02/02/2026] Se realiza cambio de la placa IOboard, se realizaron pruebas en servicio con personal de la empresa",
         "zona": "IN TDL"
@@ -839,6 +886,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[22/01/2026] Se resuelve problemas con el dispensador de dinero y el módulo de depósitos, se realizó limpieza, se realizaron pruebas en producción en presencia de funcionario",
         "zona": "IN TDL"
@@ -864,7 +912,7 @@
     "tecnicoZona": "Vicente, Francisco Ariel",
     "estado": "SEG Registrado",
     "slaPorcentaje": 29,
-    "hsSla": 21,
+    "hsSla": 18,
     "fechaVencimiento": "Hasta 19/10/2026 17:00:00",
     "fechaCoordinada": "19/10/2026 14:00",
     "fCoorDate": "19/10/2026",
@@ -914,6 +962,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101212973",
+      "fecha": "2026-09-01",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Vicente, Francisco Ariel",
+      "observaciones": "[01/09/2026] Se encontró cinta de escrow dañada. Por lo que se debió reemplazar. se realizó limpieza y calibración de módulo aceptador de efectivo. El mismo fue probado en producción con funcionario. equipo operativo",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -963,6 +1020,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[01/09/2026] Se encontró cinta de escrow dañada. Por lo que se debió reemplazar. se realizó limpieza y calibración de módulo aceptador de efectivo. El mismo fue probado en producción con funcionario. equipo operativo",
         "zona": "IN VIE"
@@ -983,6 +1041,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/07/2026] Se detecto validador mal cerrado. Se procede a cerrar compuerta. Se realizan pruebas en diagnóstico y producción con funcionario sin presentar fallas. ATM OPERATIVO",
         "zona": "IN VIE"
@@ -1003,6 +1062,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[20/07/2026] Se realizo mantenimiento preventivo OK Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. ATM OPERATIVO",
         "zona": "IN VIE"
@@ -1023,6 +1083,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[20/07/2026] Se realizo limpieza de note feeder nro 2. Se encontraron restos de billetes de $10.000 se adjuntan fotos del mismo. Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. ATM OPERATIVO",
         "zona": "IN VIE"
@@ -1043,6 +1104,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[29/05/2026] se encontró sensor de reject de modulo aceptador con suciedad. se limpio y calibro modulo completo. modulo dispensador con falla en sensor MEDS. se limpio y calibró modulo completo. equipo probado en producción con funcionario",
         "zona": "IN VIE"
@@ -1063,6 +1125,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/02/2026] se realizó mantenimiento preventivo correspondiente",
         "zona": "IN VIE"
@@ -1083,6 +1146,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/02/2026] módulo dispensador con falla en sensor mts. se procedió a realizar cambio del mismo. se calibro módulo dispensador. equipo probado en producción con funcionario",
         "zona": "IN VIE"
@@ -1108,7 +1172,7 @@
     "tecnicoZona": "Buratti, Fabian",
     "estado": "SEG Registrado",
     "slaPorcentaje": 32,
-    "hsSla": 19,
+    "hsSla": 15,
     "fechaVencimiento": "Hasta 19/10/2026 14:04:48",
     "fechaCoordinada": "19/10/2026 09:00",
     "fCoorDate": "19/10/2026",
@@ -1179,6 +1243,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101224190",
+      "fecha": "2026-10-14",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Buratti, Fabian",
+      "observaciones": "[14/10/2026]   se reemplaza HEAD con falla. Pruebas ok // [09/10/2026] se repara falla y pruebas en diagnostico ok. El atm queda fuera de linea. Prueba en servicio con falla. se suspende por pedido de repuesto DOR",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -1228,6 +1301,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/10/2026]   se reemplaza HEAD con falla. Pruebas ok // [09/10/2026] se repara falla y pruebas en diagnostico ok. El atm queda fuera de linea. Prueba en servicio con falla. se suspende por pedido de repuesto DOR",
         "zona": "IN MDP 2"
@@ -1248,6 +1322,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/10/2026] se repara falla y pruebas en diagnostico ok. El atm queda fuera de linea. Prueba en servicio con falla. se suspende por pedido de repuesto DOR",
         "zona": "IN MDP 2"
@@ -1268,6 +1343,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[06/10/2026]   se reemplaza Head con fallas. Pruebas y atm ok. // [05/10/2026] se reemplaza placa main por falla de.sensores pero Head tiene error de hw. suspendo por pedido de repuesto.",
         "zona": "IN MDP 2"
@@ -1288,6 +1364,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[05/10/2026] se reemplaza placa main por falla de.sensores pero Head tiene error de hw. suspendo por pedido de repuesto.",
         "zona": "IN MDP 2"
@@ -1308,6 +1385,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[28/09/2026] Se realizó mantenimiento preventivo",
         "zona": "IN MDP 2"
@@ -1328,6 +1406,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/09/2026] se limpió módulo y sensores. pruebas de diagnóstico ok. se verificaron logs. prueba de servicio ok",
         "zona": "IN MDP 2"
@@ -1348,6 +1427,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[28/08/2026] se detectan cables en transporte de salida de lectora. se acomodan . Atm y lectora ok",
         "zona": "IN MDP 2"
@@ -1368,6 +1448,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[04/06/2026]   se reemplaza HEAD con falla. Pruebas en servicio ok.  // [03/06/2026] suspendo por pedido de repuesto HEAD CAM8350",
         "zona": "IN MDP 2"
@@ -1388,6 +1469,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[03/06/2026] suspendo por pedido de repuesto HEAD CAM8350",
         "zona": "IN MDP 2"
@@ -1408,6 +1490,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/05/2026] se encontró correa salida en head, se acomodó. se realizaron pruebas de diagnóstico y de servicio ok",
         "zona": "IN MDP 2"
@@ -1433,7 +1516,7 @@
     "tecnicoZona": "Godoy, Diego",
     "estado": "SEG Espera Llegada",
     "slaPorcentaje": 100,
-    "hsSla": -30,
+    "hsSla": -34,
     "fechaVencimiento": "Hasta 17/10/2026 13:41:38",
     "fechaCoordinada": "19/10/2026 09:00",
     "fCoorDate": "19/10/2026",
@@ -1477,9 +1560,19 @@
       "pedido": "101225534",
       "fecha": "2026-10-16",
       "codigoCierre": "DERIV",
-      "descCierre": "Derivado de Mesa Cash Today al Servicio Técnico",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
       "observaciones": "El cliente informa que la pantalla no enciende, monitor AIO , no enciende al tratar de encender desde el boton el boton regresa a su lugar posible corto que hace el boton de encendido, Se deriva a técnico para revisar.",
-      "tecnico": "SIN ASIGNAR"
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "esDerivacionMonitoreo": true
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225638",
+      "fecha": "2026-10-17",
+      "codigoCierre": "TELCA2",
+      "descCierre": "Cierre Telefónico / Remoto Exitoso (Mesa CTD)",
+      "tecnico": "SIN ASIGNAR",
+      "observaciones": "Se le informa al cliente que tiene un pedido técnico asignado y debe de aguardar",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
@@ -1530,6 +1623,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se le informa al cliente que tiene un pedido técnico asignado y debe de aguardar",
         "zona": "IN TRE"
@@ -1540,17 +1634,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "El cliente informa que la pantalla no enciende, monitor AIO , no enciende al tratar de encender desde el boton el boton regresa a su lugar posible corto que hace el boton de encendido, Se deriva a técnico para revisar.",
         "zona": "IN TRE"
       },
@@ -1570,6 +1665,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/09/2026] Se realizó mantenimiento preventivo en equipo. Se realizan pruebas de depósito de efectivo con cliente. Prueba EXITOSA. Equipo operativo y en servicio",
         "zona": "IN TRE"
@@ -1590,6 +1686,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Técnico se comunica para verificar conexión con el equipo se logra conectar sin ningún problema y comprobación de ping de Router",
         "zona": "IN TRE"
@@ -1610,6 +1707,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se da de alta usuario con rol depositante.",
         "zona": "IN TRE"
@@ -1630,6 +1728,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[08/04/2026] al arribar a cliente se encuentra equipo operativo y en servicio. se revisaron fuentes. fuentes OK. se realiza prueba de depósito de efectivo con cliente. Prueba EXITOSA. Equipo operativo y en servicio  // posible fuente quemada",
         "zona": "IN TRE"
@@ -1640,17 +1739,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "posible fuente quemada",
         "zona": "IN TRE"
       },
@@ -1670,6 +1770,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[07/04/2026] Se realizó mantenimiento preventivo. Equipo operativo y en servicio",
         "zona": "IN TRE"
@@ -1690,6 +1791,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[07/04/2026]   Se cambió AIO y disco rígido. Se configuro AIO. equipo operativo y en servicio  // [04/04/2026] al arribar a cliente se observa pantalla de equipo (AIO) en negro. monitor de AIO quemado. se suspende por repuesto  // se verifica llegada correcta a la pc pero cliente ve pantalla en negro, se verifican conexiones y se reinicia pc pero falla persiste. se desconecta y conecta cables de zapatilla, reinicio completo, falla persiste\r\nhorario: 8:30 a 21:30 solicita que asistan lo antes posible",
         "zona": "IN TRE"
@@ -1710,6 +1812,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "SE BRINDA RECURSO",
         "zona": "IN TRE"
@@ -1735,7 +1838,7 @@
     "tecnicoZona": "Chiriello, Pablo Javier",
     "estado": "SEG Registrado",
     "slaPorcentaje": 40,
-    "hsSla": 20,
+    "hsSla": 16,
     "fechaVencimiento": "Hasta 19/10/2026 15:24:19",
     "fechaCoordinada": "19/10/2026 09:00",
     "fCoorDate": "19/10/2026",
@@ -1776,6 +1879,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101197205",
+      "fecha": "2026-09-29",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Chiriello, Pablo Javier",
+      "observaciones": "[29/09/2026] Se realizó mantenimiento preventivo",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -1825,6 +1937,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[29/09/2026] Se realizó mantenimiento preventivo",
         "zona": "IN MDP 1"
@@ -1845,6 +1958,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/05/2026]   se cambió shutter. pruebas de diagnóstico y de servicio ok junto a funcionario  // [26/05/2026] se suspende por pedido de repuesto (shutter) (se intentó reparar pero continúa falla)",
         "zona": "IN MDP 1"
@@ -1865,6 +1979,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[26/05/2026] se suspende por pedido de repuesto (shutter) (se intentó reparar pero continúa falla)",
         "zona": "IN MDP 1"
@@ -1885,6 +2000,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/04/2026] se ajusta posición de carro y se procede a limpieza y ajuste de shutter. pruebas con duncionsrio en servicio ok.",
         "zona": "IN MDP 1"
@@ -1905,6 +2021,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[08/04/2026] se solucionó problema en dispensador se realizaron pruebas correspondientes con funcionario",
         "zona": "IN MDP 1"
@@ -1925,6 +2042,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[05/02/2026] se realizó mantenimiento preventivo",
         "zona": "IN MDP 1"
@@ -1950,7 +2068,7 @@
     "tecnicoZona": "Martos, Jose Angel",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": 40,
+    "hsSla": 37,
     "fechaVencimiento": "Hasta 20/10/2026 11:56:22",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -1985,6 +2103,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101195701",
+      "fecha": "2026-10-15",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Martos, Jose Angel",
+      "observaciones": "[15/10/2026] Se realizo MP.\r\nmodulo probado en produccion junto al funcionario.\r\nequipo operativo",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": false,
     "alertaSinAsignar": false,
@@ -2034,6 +2161,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026] Se realizo MP.\r\nmodulo probado en produccion junto al funcionario.\r\nequipo operativo",
         "zona": "IN OLA"
@@ -2054,6 +2182,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026] Cambio de cca dispenser.\r\nse ejecuto fix REC_260701 v4.1.74.1 Update XFS AFD.\r\nmodulo probado en produccion junto al funcionario.\r\nEquipo operativo.",
         "zona": "IN OLA"
@@ -2074,6 +2203,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[11/03/2026] Se realizo MP.\r\nmodulo probado en produccion junto al funcionario.\r\nequipo operativo",
         "zona": "IN OLA"
@@ -2093,7 +2223,7 @@
     "tecnicoZona": "Torres, Florencia",
     "estado": "SEG Registrado",
     "slaPorcentaje": 58,
-    "hsSla": 17,
+    "hsSla": 14,
     "fechaVencimiento": "Hasta 19/10/2026 13:00:00",
     "fechaCoordinada": "19/10/2026 09:00",
     "fCoorDate": "19/10/2026",
@@ -2112,6 +2242,7 @@
     "repuestosHistoricos": [],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": null,
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -2169,7 +2300,7 @@
     "tecnicoZona": "Buratti, Fabian",
     "estado": "SEG Espera Llegada",
     "slaPorcentaje": 0,
-    "hsSla": -76,
+    "hsSla": -79,
     "fechaVencimiento": "Hasta 15/10/2026 16:00:00",
     "fechaCoordinada": "15/10/2026 10:00",
     "fCoorDate": "15/10/2026",
@@ -2188,6 +2319,15 @@
     "repuestosHistoricos": [],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101225099",
+      "fecha": "2026-10-15",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Buratti, Fabian",
+      "observaciones": "[15/10/2026] se retira tarjeta trabada en transporte. se reinivia y queda activa. atm ok",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -2237,6 +2377,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026] se retira tarjeta trabada en transporte. se reinivia y queda activa. atm ok",
         "zona": "IN MDP 2"
@@ -2257,6 +2398,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[28/09/2026] diagnóstico pruebas y preventivo ok",
         "zona": "IN MDP 2"
@@ -2277,6 +2419,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[13/02/2026] se realizó mantenimiento preventivo",
         "zona": "IN MDP 2"
@@ -2296,7 +2439,7 @@
     "tecnicoZona": "Lazzaro, Leonardo",
     "estado": "SEG Registrado",
     "slaPorcentaje": 100,
-    "hsSla": -72,
+    "hsSla": -75,
     "fechaVencimiento": "Hasta 15/10/2026 20:00:00",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -2334,9 +2477,19 @@
       "pedido": "101225159",
       "fecha": "2026-10-15",
       "codigoCierre": "DERIV",
-      "descCierre": "Derivado de Mesa Cash Today al Servicio Técnico",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
       "observaciones": "Nos contacta por error en App se verifica al momento de depositar  en pantalla un cartel donde indica \"no esta disponible las transacciones\" Y no permite ingresar dinero normalmente. Se verifica sin atascos se reinicia e igualmente persiste el fallo. Se solicita asistencia.",
-      "tecnico": "SIN ASIGNAR"
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "esDerivacionMonitoreo": true
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225159",
+      "fecha": "2026-10-15",
+      "codigoCierre": "DERIV",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "observaciones": "Nos contacta por error en App se verifica al momento de depositar  en pantalla un cartel donde indica \"no esta disponible las transacciones\" Y no permite ingresar dinero normalmente. Se verifica sin atascos se reinicia e igualmente persiste el fallo. Se solicita asistencia.",
+      "esDerivacionMonitoreo": true
     },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
@@ -2381,17 +2534,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Nos contacta por error en App se verifica al momento de depositar  en pantalla un cartel donde indica \"no esta disponible las transacciones\" Y no permite ingresar dinero normalmente. Se verifica sin atascos se reinicia e igualmente persiste el fallo. Se solicita asistencia.",
         "zona": "IN NQN"
       },
@@ -2411,6 +2565,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se verifica y se le indica que ya tiene un pedido por esa falla se le pasa el número de incidencia",
         "zona": "IN NQN"
@@ -2431,6 +2586,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se abre escrow y cliente retira dinero atascado (validado). Se reinicia y se le indica volver a depositarlo en sobre con valor 0,01. Equipo queda operativo y deposito se realizo con exito",
         "zona": "IN NQN"
@@ -2451,6 +2607,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/09/2026] cambio de ups // Equipo operativo, se solicita UPS",
         "zona": "IN NQN"
@@ -2471,6 +2628,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/09/2026] mantenimiento preventivo",
         "zona": "IN NQN"
@@ -2491,6 +2649,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Equipo operativo, se solicita UPS",
         "zona": "IN NQN"
@@ -2501,17 +2660,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Se le indica que desenchufe y la deje unos segundos desenchufada, sigue sin encender, s ele indica que la prenda levantando el chapón del botón negro y que se fije que este todo bien conectado , sigue sin encender, se le  pido que desconectes el equipo de la ups y el cable lo coloque a un enchufe de pared por favor, ahi enciende se solicita para verificar ups posiblemente descargada o dañada .\r\ntel.+5492994092495",
         "zona": "IN NQN"
       },
@@ -2531,6 +2691,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[19/08/2026] mantenimiento preventivo y migración a ninja",
         "zona": "IN NQN"
@@ -2551,6 +2712,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se asiste al tecnico para verificar transmision, no se visualizan depositos de prueba en Genkin.",
         "zona": "IN NQN"
@@ -2571,6 +2733,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Cliente se comunica por atasco, se verifican compartimentos sin éxito, se entra a ¨Menú supervisor¨ para abrir scrow y retirar atasco. Maquina queda operativa.",
         "zona": "IN NQN"
@@ -2596,7 +2759,7 @@
     "tecnicoZona": "Montiel, Juan Fernando",
     "estado": "SEG Registrado",
     "slaPorcentaje": 100,
-    "hsSla": -51,
+    "hsSla": -54,
     "fechaVencimiento": "Hasta 16/10/2026 16:47:24",
     "fechaCoordinada": "19/10/2026 10:30",
     "fCoorDate": "19/10/2026",
@@ -2651,7 +2814,17 @@
       "codigoCierre": "PPR",
       "descCierre": "Pendiente por Repuesto",
       "observaciones": "[16/10/2026]   se suspende pedido por solicitud de repuesto  // [15/10/2026] se suspende pedido a espera de coordinación con caudales para el día de mañana . se trabaja con especialista Nicolás sardon // Router emite ping pero no llega al CPU, se desconecta y vuelve a conectar el cable de red de ambos extremos sin éxito, se deriva a técnico para revisar.",
-      "tecnico": "Montiel, Juan Fernando"
+      "tecnico": "Montiel, Juan Fernando",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225116",
+      "fecha": "2026-10-16",
+      "codigoCierre": "PPR",
+      "descCierre": "Pendiente por Repuesto",
+      "tecnico": "Montiel, Juan Fernando",
+      "observaciones": "[16/10/2026]   se suspende pedido por solicitud de repuesto  // [15/10/2026] se suspende pedido a espera de coordinación con caudales para el día de mañana . se trabaja con especialista Nicolás sardon // Router emite ping pero no llega al CPU, se desconecta y vuelve a conectar el cable de red de ambos extremos sin éxito, se deriva a técnico para revisar.",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
@@ -2702,6 +2875,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[16/10/2026]   se suspende pedido por solicitud de repuesto  // [15/10/2026] se suspende pedido a espera de coordinación con caudales para el día de mañana . se trabaja con especialista Nicolás sardon // Router emite ping pero no llega al CPU, se desconecta y vuelve a conectar el cable de red de ambos extremos sin éxito, se deriva a técnico para revisar.",
         "zona": "IN COS"
@@ -2722,6 +2896,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026] se suspende pedido a espera de coordinación con caudales para el día de mañana . se trabaja con especialista Nicolás sardon // Router emite ping pero no llega al CPU, se desconecta y vuelve a conectar el cable de red de ambos extremos sin éxito, se deriva a técnico para revisar.",
         "zona": "IN COS"
@@ -2732,17 +2907,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Router emite ping pero no llega al CPU, se desconecta y vuelve a conectar el cable de red de ambos extremos sin éxito, se deriva a técnico para revisar.",
         "zona": "IN COS"
       },
@@ -2762,6 +2938,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[08/10/2026] se realiza mantenimiento preventivo en el equipo se realizaron pruebas correspondientes",
         "zona": "IN COS"
@@ -2782,6 +2959,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[11/09/2026] se realiza mantenimiento preventivo en el equipo se realizaron pruebas correspondientes",
         "zona": "IN COS"
@@ -2802,6 +2980,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "reinicio, se realiza bne, retira atasco, corrijo drop/escrow, reinicio, deposito, operativo",
         "zona": "IN COS"
@@ -2822,6 +3001,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Cliente se comunica por atasco, se verifican compartimentos sin éxito, se entra a ¨Menú supervisor¨ para abrir scrow y retirar atasco. Maquina queda operativa.",
         "zona": "IN COS"
@@ -2842,6 +3022,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[25/06/2026]   se realiza instalación de lector de códigos de barra instalación de software base y aplicativo a última versión disponible se realizaron pruebas correspondientes con monitoreo y personal de coto // [23/06/2026] se suspende pedido por solicitud de repuestos se solicita módem se trabaja con personal especialista",
         "zona": "IN COS"
@@ -2862,6 +3043,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se asiste al tecnico para verificar conectividad, envio de usuarios y transmision a Genkin OK.",
         "zona": "IN COS"
@@ -2882,6 +3064,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[23/06/2026] se suspende pedido por solicitud de repuestos se solicita módem se trabaja con personal especialista",
         "zona": "IN COS"
@@ -2907,7 +3090,7 @@
     "tecnicoZona": "Hernandez, Marcos Alberto",
     "estado": "SEG Registrado",
     "slaPorcentaje": 100,
-    "hsSla": -58,
+    "hsSla": -62,
     "fechaVencimiento": "Hasta 16/10/2026 09:35:39",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -2947,7 +3130,17 @@
       "codigoCierre": "PPR",
       "descCierre": "Pendiente por Repuesto",
       "observaciones": "[15/10/2026] Se suspende por pedido de repuesto",
-      "tecnico": "Hernandez, Marcos Alberto"
+      "tecnico": "Hernandez, Marcos Alberto",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225013",
+      "fecha": "2026-10-15",
+      "codigoCierre": "PPR",
+      "descCierre": "Pendiente por Repuesto",
+      "tecnico": "Hernandez, Marcos Alberto",
+      "observaciones": "[15/10/2026] Se suspende por pedido de repuesto",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
@@ -2998,6 +3191,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026] Se suspende por pedido de repuesto",
         "zona": "IN PCO"
@@ -3018,6 +3212,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[24/08/2026] Se reemplazo chasis de CCDM.\r\nSe realizaron pruebas en diagnostico sin presentar fallas.\r\nSe realizaron pruebas en servicio sin presentar fallas, se adjuntan comprobantes.",
         "zona": "IN PCO"
@@ -3038,6 +3233,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[19/08/2026] Se realizo M. preventivo segundo semestre 2026",
         "zona": "IN PCO"
@@ -3058,6 +3254,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[19/08/2026] Se colocaron correas del modulo que estaban fuera de posición.\r\nSe realizo desarme completo del modulo para colocar las correas y realizar la limpieza del mismo.\r\nSe realizo prueba en servicio junto al tesorero sin presentar fallas.",
         "zona": "IN PCO"
@@ -3078,6 +3275,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[19/06/2026] Se realizo M. preventivo primer semestre 2026",
         "zona": "IN PCO"
@@ -3098,6 +3296,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[19/06/2026] Se realizo configuracion de gavetas a pedido del banco.\r\n\r\nSe configuraron las siguientes gavetas con denominacion de $20.000\r\n\r\nS/N:  J925019024 - J925019027 - J925019025 - 7282032613\r\n\r\nSe realizo prueba en diagnostico sin fallas, las pruebas en servicio quedan a cargo del tesorero.\r\n\r\nSe adjuntan fotos de subtotales y prueba de dispensador qué corroboran la correcta implementacion de la tarea solicitada.",
         "zona": "IN PCO"
@@ -3118,6 +3317,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[22/05/2026] Se realizo limpieza general del modulo dispensador.\r\nSe realizo calibración de sensores y pruebas en diagnostico sin presentar fallas.\r\nSe realizo extracción en servicio junto a cliente de la entidad sin fallas.",
         "zona": "IN PCO"
@@ -3138,6 +3338,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/03/2026] Se realizo reparación de lectora de tarjetas.\r\nSe realizo prueba en servicio junto al funcionario sin presentar fallas.",
         "zona": "IN PCO"
@@ -3163,7 +3364,7 @@
     "tecnicoZona": "Buratti, Fabian",
     "estado": "SEG Asistencia",
     "slaPorcentaje": 0,
-    "hsSla": 16,
+    "hsSla": 12,
     "fechaVencimiento": "Hasta 19/10/2026 11:41:07",
     "fechaCoordinada": "09/10/2026 13:45",
     "fCoorDate": "09/10/2026",
@@ -3204,6 +3405,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101221144",
+      "fecha": "2026-10-01",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Castaño, Matias",
+      "observaciones": "[01/10/2026] tareas en planta",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -3253,6 +3463,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[01/10/2026] tareas en planta",
         "zona": "IN MDP 2"
@@ -3273,6 +3484,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[30/09/2026] se realiza muestra a potencial cliente",
         "zona": "IN MDP 2"
@@ -3293,6 +3505,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[28/09/2026] se prueba y se deja en servicio mae",
         "zona": "IN MDP 2"
@@ -3313,6 +3526,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/07/2026] instalacion",
         "zona": "IN MDP 2"
@@ -3333,6 +3547,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se asiste al tecnico para brindarle clave OTP 874318.",
         "zona": "IN MDP 2"
@@ -3352,7 +3567,7 @@
     "tecnicoZona": "Buratti, Fabian",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": -388,
+    "hsSla": -391,
     "fechaVencimiento": "Hasta 02/10/2026 16:00:00",
     "fechaCoordinada": "19/10/2026 09:00",
     "fCoorDate": "19/10/2026",
@@ -3423,6 +3638,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101224190",
+      "fecha": "2026-10-14",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Buratti, Fabian",
+      "observaciones": "[14/10/2026]   se reemplaza HEAD con falla. Pruebas ok // [09/10/2026] se repara falla y pruebas en diagnostico ok. El atm queda fuera de linea. Prueba en servicio con falla. se suspende por pedido de repuesto DOR",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": false,
     "alertaSinAsignar": false,
@@ -3472,6 +3696,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/10/2026]   se reemplaza HEAD con falla. Pruebas ok // [09/10/2026] se repara falla y pruebas en diagnostico ok. El atm queda fuera de linea. Prueba en servicio con falla. se suspende por pedido de repuesto DOR",
         "zona": "IN MDP 2"
@@ -3492,6 +3717,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/10/2026] se repara falla y pruebas en diagnostico ok. El atm queda fuera de linea. Prueba en servicio con falla. se suspende por pedido de repuesto DOR",
         "zona": "IN MDP 2"
@@ -3512,6 +3738,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[06/10/2026]   se reemplaza Head con fallas. Pruebas y atm ok. // [05/10/2026] se reemplaza placa main por falla de.sensores pero Head tiene error de hw. suspendo por pedido de repuesto.",
         "zona": "IN MDP 2"
@@ -3532,6 +3759,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[05/10/2026] se reemplaza placa main por falla de.sensores pero Head tiene error de hw. suspendo por pedido de repuesto.",
         "zona": "IN MDP 2"
@@ -3552,6 +3780,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[28/09/2026] Se realizó mantenimiento preventivo",
         "zona": "IN MDP 2"
@@ -3572,6 +3801,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/09/2026] se limpió módulo y sensores. pruebas de diagnóstico ok. se verificaron logs. prueba de servicio ok",
         "zona": "IN MDP 2"
@@ -3592,6 +3822,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[28/08/2026] se detectan cables en transporte de salida de lectora. se acomodan . Atm y lectora ok",
         "zona": "IN MDP 2"
@@ -3612,6 +3843,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[04/06/2026]   se reemplaza HEAD con falla. Pruebas en servicio ok.  // [03/06/2026] suspendo por pedido de repuesto HEAD CAM8350",
         "zona": "IN MDP 2"
@@ -3632,6 +3864,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[03/06/2026] suspendo por pedido de repuesto HEAD CAM8350",
         "zona": "IN MDP 2"
@@ -3652,6 +3885,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/05/2026] se encontró correa salida en head, se acomodó. se realizaron pruebas de diagnóstico y de servicio ok",
         "zona": "IN MDP 2"
@@ -3671,7 +3905,7 @@
     "tecnicoZona": "Chiriello, Pablo Javier",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": -321,
+    "hsSla": -324,
     "fechaVencimiento": "Hasta 05/10/2026 11:00:00",
     "fechaCoordinada": "19/10/2026 09:00",
     "fCoorDate": "19/10/2026",
@@ -3712,6 +3946,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101197205",
+      "fecha": "2026-09-29",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Chiriello, Pablo Javier",
+      "observaciones": "[29/09/2026] Se realizó mantenimiento preventivo",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": false,
     "alertaSinAsignar": false,
@@ -3761,6 +4004,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[29/09/2026] Se realizó mantenimiento preventivo",
         "zona": "IN MDP 1"
@@ -3781,6 +4025,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/05/2026]   se cambió shutter. pruebas de diagnóstico y de servicio ok junto a funcionario  // [26/05/2026] se suspende por pedido de repuesto (shutter) (se intentó reparar pero continúa falla)",
         "zona": "IN MDP 1"
@@ -3801,6 +4046,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[26/05/2026] se suspende por pedido de repuesto (shutter) (se intentó reparar pero continúa falla)",
         "zona": "IN MDP 1"
@@ -3821,6 +4067,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/04/2026] se ajusta posición de carro y se procede a limpieza y ajuste de shutter. pruebas con duncionsrio en servicio ok.",
         "zona": "IN MDP 1"
@@ -3841,6 +4088,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[08/04/2026] se solucionó problema en dispensador se realizaron pruebas correspondientes con funcionario",
         "zona": "IN MDP 1"
@@ -3861,6 +4109,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[05/02/2026] se realizó mantenimiento preventivo",
         "zona": "IN MDP 1"
@@ -3880,7 +4129,7 @@
     "tecnicoZona": "Pavon, Diego Emanuel",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": -1233,
+    "hsSla": -1237,
     "fechaVencimiento": "Hasta 28/08/2026 10:19:47",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -4035,6 +4284,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101215319",
+      "fecha": "2026-09-08",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Vicente, Francisco Ariel",
+      "observaciones": "[08/09/2026] se realizó soldadura de cables de mecanismo de shutter, se lubricaron guias, se limpió y verificó dispensador y gavetas. modulo dispensador de dinero probado en producción con funcionario",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": false,
     "alertaSinAsignar": false,
@@ -4084,6 +4342,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[08/09/2026] se realizó soldadura de cables de mecanismo de shutter, se lubricaron guias, se limpió y verificó dispensador y gavetas. modulo dispensador de dinero probado en producción con funcionario",
         "zona": "IN BB2"
@@ -4104,6 +4363,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/08/2026] Se realizo mantenimiento preventivo OK Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. ATM OPERATIVO",
         "zona": "IN BB2"
@@ -4124,6 +4384,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/08/2026] Se detecto falla en shutter. Se realizo cambio de transporte. Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. ATM OPERATIVO",
         "zona": "IN BB2"
@@ -4144,6 +4405,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/07/2026]   Cambio de presentador, se prueba con funcionario, tesorera realiza extracción. // Tesorera Jesica Gutierrez solicita visita 21/7 10hs // [16/07/2026] Se realiza reinstalación del aplicativo, se suspende pedido por solicitud de repuesto",
         "zona": "IN BB2"
@@ -4164,6 +4426,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Tesorera Jesica Gutierrez solicita visita 21/7 9hs // [16/07/2026] Se realiza reinstalación del aplicativo, se suspende pedido por solicitud de repuesto",
         "zona": "IN BB2"
@@ -4184,6 +4447,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Tesorera Jesica Gutierrez solicita visita 21/7 10hs // [16/07/2026] Se realiza reinstalación del aplicativo, se suspende pedido por solicitud de repuesto",
         "zona": "IN BB2"
@@ -4204,6 +4468,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[16/07/2026] Se realiza reinstalación del aplicativo, se suspende pedido por solicitud de repuesto",
         "zona": "IN BB2"
@@ -4224,6 +4489,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[08/07/2026] Se realizo cambio de stacker, transporte y placa de dispensador. Se realizo revisión exhaustiva de los 5 modulos, realizando cambios de consumibles. Se realizaron pruebas exhaustivas de cada modulo y gaveta en diagnóstico. Se realizaron extracciones en servicio con funcionario Gutierrez Jesica de $100.000 sin presentar fallas. ATM OPERATIVO",
         "zona": "IN BB2"
@@ -4244,6 +4510,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[23/06/2026] se encontró divert deflextor dañado. el mismo se cambio. se realizó cambio de diverte por fallas en la apertura del mismo. y se rrsliz limpieza y calibración completa de modulo dispensador. gavetas ok. se realizaron varias pruebas en diagnóstico.  no se pudo probar en servicio ya que no van a hacer aun la carga del equipo.",
         "zona": "IN BB2"
@@ -4264,6 +4531,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/06/2026] Se realizo cambio de picker modulo nro 1. Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. ATM OPERATIVO",
         "zona": "IN BB2"
@@ -4283,7 +4551,7 @@
     "tecnicoZona": "Martos, Jose Angel",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": -1233,
+    "hsSla": -1237,
     "fechaVencimiento": "Hasta 28/08/2026 10:19:40",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -4353,7 +4621,17 @@
       "codigoCierre": "PPR",
       "descCierre": "Pendiente por Repuesto",
       "observaciones": "[15/10/2026] se verifica cca dispenser (placa H).\r\nse suspende pedido por repuesto.",
-      "tecnico": "Martos, Jose Angel"
+      "tecnico": "Martos, Jose Angel",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101211845",
+      "fecha": "2026-10-15",
+      "codigoCierre": "PPR",
+      "descCierre": "Pendiente por Repuesto",
+      "tecnico": "Martos, Jose Angel",
+      "observaciones": "[15/10/2026] se verifica cca dispenser (placa H).\r\nse suspende pedido por repuesto.",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": false,
@@ -4404,6 +4682,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026] se verifica cca dispenser (placa H).\r\nse suspende pedido por repuesto.",
         "zona": "IN OLA"
@@ -4424,6 +4703,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/10/2026] cambio de lectora.\r\nalineacion con respecto a la fascia.\r\nmodulo probado en produccion junto al funcionario.\r\nEquipo operativo",
         "zona": "IN OLA"
@@ -4444,6 +4724,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/09/2026] revision del dispensador.\r\ncambio de feed shaft x 2.\r\nmodulo probado en produccion junto al funcionario.\r\nEquipo operativo",
         "zona": "IN OLA"
@@ -4464,6 +4745,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[10/08/2026] Se realizo MP.\r\nmodulo probado en produccion junto al funcionario.\r\nequipo operativo // [06/08/2026] se suspende mantenimiento por SC.",
         "zona": "IN OLA"
@@ -4484,6 +4766,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[10/08/2026] cambio de validador.\r\nmodulo probado en produccion junto al funcionario.\r\nEquipo operativo // [06/08/2026] se suspende por pedido de repuestos // [05/08/2026] se suspende pedido por repuestos.",
         "zona": "IN OLA"
@@ -4504,6 +4787,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[06/08/2026] se suspende mantenimiento por SC.",
         "zona": "IN OLA"
@@ -4524,6 +4808,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[06/08/2026] se suspende por pedido de repuestos // [05/08/2026] se suspende pedido por repuestos.",
         "zona": "IN OLA"
@@ -4544,6 +4829,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[05/08/2026] se suspende pedido por repuestos.",
         "zona": "IN OLA"
@@ -4564,6 +4850,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[02/07/2026] revision del dispensador.\r\ncambio de keypad de 4 gavetas:\r\n\r\ns/n: BR070142569 $10000\r\ns/n: BY000199970 $1000\r\ns/n: BY000253544 $1000\r\ns/n: BM00968897 $10000\r\n\r\nmodulo probado en produccion junto al funcionario.\r\nEquipo operativo",
         "zona": "IN OLA"
@@ -4584,6 +4871,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[13/04/2026] Se repararon ruedas de transporte de lectora de tarjetas. \r\nPruebas en servicio junto a funcionario exitosas",
         "zona": "IN OLA"
@@ -4603,7 +4891,7 @@
     "tecnicoZona": "Ibañez, Pablo Fernando",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": -1233,
+    "hsSla": -1237,
     "fechaVencimiento": "Hasta 28/08/2026 10:11:19",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -4622,6 +4910,15 @@
     "repuestosHistoricos": [],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101195694",
+      "fecha": "2026-07-27",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Ibañez, Pablo Fernando",
+      "observaciones": "[27/07/2026] se realizo mantenimiento preventivo",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": false,
     "alertaSinAsignar": false,
@@ -4675,6 +4972,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/07/2026] se realizo mantenimiento preventivo",
         "zona": "IN CIP"
@@ -4695,6 +4993,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[26/02/2026] se cambió consumibles dispensador \r\npruebas ok con funcionario",
         "zona": "IN CIP"
@@ -4714,7 +5013,7 @@
     "tecnicoZona": "Ibañez, Pablo Fernando",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": -1233,
+    "hsSla": -1237,
     "fechaVencimiento": "Hasta 28/08/2026 10:10:07",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -4739,6 +5038,15 @@
     "repuestosHistoricos": [],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101195689",
+      "fecha": "2026-07-27",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Ibañez, Pablo Fernando",
+      "observaciones": "[27/07/2026] se realizo mantenimiento preventivo",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": false,
     "alertaSinAsignar": false,
@@ -4792,6 +5100,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/07/2026] se realizo mantenimiento preventivo",
         "zona": "IN CIP"
@@ -4811,7 +5120,7 @@
     "tecnicoZona": "Ibañez, Pablo Fernando",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": -1233,
+    "hsSla": -1237,
     "fechaVencimiento": "Hasta 28/08/2026 10:10:06",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -4830,6 +5139,15 @@
     "repuestosHistoricos": [],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101195688",
+      "fecha": "2026-07-21",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Lazzaro, Leonardo",
+      "observaciones": "[21/07/2026] mantenimiento preventivo",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": false,
     "alertaSinAsignar": false,
@@ -4883,6 +5201,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/07/2026] mantenimiento preventivo",
         "zona": "IN CIP"
@@ -4903,6 +5222,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/07/2026] cambio de consumibles, pruebas de dispensador realizadas en diagnostico",
         "zona": "IN CIP"
@@ -4923,6 +5243,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[11/06/2026] se coloco correa verticales en posicion, cambio de consumible. prueba de dispensador realizadas en diagnostico",
         "zona": "IN CIP"
@@ -4943,6 +5264,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[21/05/2026] cambio de consumibles. pruebas de dispensador realizadas en diagnostico",
         "zona": "IN CIP"
@@ -4962,7 +5284,7 @@
     "tecnicoZona": "Garcia, Alejandro Javier",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": -2451,
+    "hsSla": -2454,
     "fechaVencimiento": "Hasta 08/07/2026 17:00:00",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -4997,6 +5319,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101189046",
+      "fecha": "2026-06-04",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Garcia, Alejandro Javier",
+      "observaciones": "[04/06/2026] Se ajustó mecanismos de fijación de lectora de tarjetas y bandeja porta lectora-impresoras.\r\nPruebas en servicio junto a funcionario exitosas",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -5050,6 +5381,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[04/06/2026] Se ajustó mecanismos de fijación de lectora de tarjetas y bandeja porta lectora-impresoras.\r\nPruebas en servicio junto a funcionario exitosas",
         "zona": "IN TRQ"
@@ -5070,6 +5402,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[02/02/2026] Mantenimiento preventivo.\r\nPruebas en servicio junto a funcionario exitosas",
         "zona": "IN TRQ"
@@ -5090,6 +5423,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[28/01/2026] Se corrigió funcionamiento del solenoide que mueve el deflector del reject.\r\nPruebas en servicio junto a funcionario exitosas",
         "zona": "IN TRQ"
@@ -5109,7 +5443,7 @@
     "tecnicoZona": "Martos, Jose Angel",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": -2577,
+    "hsSla": -2580,
     "fechaVencimiento": "Hasta 03/07/2026 11:00:00",
     "fechaCoordinada": "19/12/2026 12:30",
     "fCoorDate": "19/12/2026",
@@ -5159,6 +5493,15 @@
     ],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101220502",
+      "fecha": "2026-09-25",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Garcia, Alejandro Javier",
+      "observaciones": "[25/09/2026] Se reemplazó lectora de tarjetas por desgaste de componentes de transporte. \r\nPruebas en diagnóstico ok. \r\nPruebas en servicio junto a funcionario exitosas",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
     "alertaSinAsignar": false,
@@ -5212,6 +5555,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[25/09/2026] Se reemplazó lectora de tarjetas por desgaste de componentes de transporte. \r\nPruebas en diagnóstico ok. \r\nPruebas en servicio junto a funcionario exitosas",
         "zona": "IN OLA"
@@ -5232,6 +5576,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[19/08/2026] Se logró retirar frente de ATM y se reemplazó el lector biométrico. Se aseguró su gestión de cable a masa.\r\nQueda solucionar adaptación del frente del ATM, recortar panel del frente de madera para correcto movimiento de fascia (trabajo externo).\r\nPruebas en ser diagnóstico y en servicios junto a funcionario exitosas // [13/07/2026] se suspende pedido por repuesto.\r\nSe observa que la fascia del atm quedo pegada con suplementos a la fachada del lobby tras las reformas en dicha sucursal, lo que imposibilita cambiar el lector de huellas.\r\nel atm queda operativo.",
         "zona": "IN OLA"
@@ -5252,6 +5597,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[13/07/2026] se suspende pedido por repuesto.\r\nSe observa que la fascia del atm quedo pegada con suplementos a la fachada del lobby tras las reformas en dicha sucursal, lo que imposibilita cambiar el lector de huellas.\r\nel atm queda operativo.",
         "zona": "IN OLA"
@@ -5272,6 +5618,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Insumos entregados",
         "zona": "IN OLA"
@@ -5292,6 +5639,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[23/01/2026] Se realiza mantenimiento preventivo, pruebas en servicio sin falla con funcionario",
         "zona": "IN CSZ"
@@ -5311,7 +5659,7 @@
     "tecnicoZona": "Buratti, Fabian",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": -3634,
+    "hsSla": -3638,
     "fechaVencimiento": "Hasta 20/05/2026 09:10:20",
     "fechaCoordinada": "25/09/2026 14:00",
     "fCoorDate": "25/09/2026",
@@ -5366,7 +5714,17 @@
       "codigoCierre": "PPR",
       "descCierre": "Pendiente por Repuesto",
       "observaciones": "[20/05/2026] se solicita repuestonpara puesta en valor de equipo",
-      "tecnico": "Castaño, Matias"
+      "tecnico": "Castaño, Matias",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101209257",
+      "fecha": "2026-08-18",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Buratti, Fabian",
+      "observaciones": "[18/08/2026]   se instala InLane y capacita a personal de morphi. Equipo ok // [14/08/2026]   se conecta equipo a pc de cli3nte pero no se logra conectar el modulo con c-service. se suspende demoras en conseguir ID Cliente y ID terminal y por cliente, cierre oficina. // [13/08/2026] se realizó la búsqueda del módulo. Suspendo hasta el día de mañana que se instale.",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "ASIGNADO_COT",
     "esScVigente": true,
@@ -5417,6 +5775,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[18/08/2026]   se instala InLane y capacita a personal de morphi. Equipo ok // [14/08/2026]   se conecta equipo a pc de cli3nte pero no se logra conectar el modulo con c-service. se suspende demoras en conseguir ID Cliente y ID terminal y por cliente, cierre oficina. // [13/08/2026] se realizó la búsqueda del módulo. Suspendo hasta el día de mañana que se instale.",
         "zona": "IN MDP 2"
@@ -5437,6 +5796,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/08/2026]   se conecta equipo a pc de cli3nte pero no se logra conectar el modulo con c-service. se suspende demoras en conseguir ID Cliente y ID terminal y por cliente, cierre oficina. // [13/08/2026] se realizó la búsqueda del módulo. Suspendo hasta el día de mañana que se instale.",
         "zona": "IN MDP 2"
@@ -5457,6 +5817,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se brinda soporte",
         "zona": "IN MDP 2"
@@ -5477,6 +5838,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[13/08/2026] se realizó la búsqueda del módulo. Suspendo hasta el día de mañana que se instale.",
         "zona": "IN MDP 2"
@@ -5497,6 +5859,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[02/07/2026] se realizaron tareas en planta relacionadas con el stock regional y stock fijo",
         "zona": "IN MDP 2"
@@ -5517,6 +5880,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[02/07/2026] se realizaron tareas de recolección. de repuestos y envío a transporte",
         "zona": "IN MDP 2"
@@ -5537,6 +5901,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[01/07/2026] se acomoda sector depósito",
         "zona": "IN MDP 2"
@@ -5557,6 +5922,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[29/05/2026] se realiza control de latas en planta",
         "zona": "IN MDP 2"
@@ -5577,6 +5943,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[26/05/2026] se remplaza cabezal completo",
         "zona": "IN MDP 2"
@@ -5597,6 +5964,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[20/05/2026] se solicita repuestonpara puesta en valor de equipo",
         "zona": "IN MDP 2"
@@ -5616,7 +5984,7 @@
     "tecnicoZona": "Castaño, Matias",
     "estado": "SEG Espera",
     "slaPorcentaje": 7,
-    "hsSla": 19,
+    "hsSla": 15,
     "fechaVencimiento": "SLA 19/10/2026 14:39:25",
     "fechaCoordinada": "19/10/2026 10:00",
     "fCoorDate": "19/10/2026",
@@ -5656,7 +6024,17 @@
       "codigoCierre": "PCCV",
       "descCierre": "Pendiente Cliente con Visita",
       "observaciones": "[17/10/2026] suspendo por local cerrado. // cte reclama falla en el validador y además solicita limpieza de la maquina.\r\nSe verifico compartimientos sin atascos.",
-      "tecnico": "Buratti, Fabian"
+      "tecnico": "Buratti, Fabian",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225669",
+      "fecha": "2026-10-17",
+      "codigoCierre": "PCCV",
+      "descCierre": "Pendiente Cliente con Visita",
+      "tecnico": "Buratti, Fabian",
+      "observaciones": "[17/10/2026] suspendo por local cerrado. // cte reclama falla en el validador y además solicita limpieza de la maquina.\r\nSe verifico compartimientos sin atascos.",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "SC_PENDIENTE",
     "esScVigente": true,
@@ -5707,6 +6085,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[17/10/2026] suspendo por local cerrado. // cte reclama falla en el validador y además solicita limpieza de la maquina.\r\nSe verifico compartimientos sin atascos.",
         "zona": "IN MDP3"
@@ -5717,17 +6096,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "cte reclama falla en el validador y además solicita limpieza de la maquina.\r\nSe verifico compartimientos sin atascos.",
         "zona": "IN MDP3"
       },
@@ -5747,6 +6127,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[13/10/2026] se realiza mantenimiento preventivo",
         "zona": "IN MDP3"
@@ -5767,6 +6148,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se abre drop y termina de caer atasco quedando operativo.",
         "zona": "IN MDP3"
@@ -5787,6 +6169,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Cliente se comunica por atasco, se verifican compartimentos sin éxito, se entra a ¨Menú supervisor¨ para abrir scrow y retirar atasco. Maquina queda operativa.",
         "zona": "IN MDP3"
@@ -5807,6 +6190,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/05/2026] se realiza mantenimiento preventivo",
         "zona": "IN MDP3"
@@ -5827,6 +6211,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "El cliente llama por que la mae esta tildada, nos conectamos remamente se hace un reiniciado en conjunto vuelve , e deposita equipo queda operativo",
         "zona": "IN MDP3"
@@ -5847,6 +6232,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/04/2026] se cambió impresora . pruebas de diagnóstico y de servicio ok",
         "zona": "IN MDP3"
@@ -5867,6 +6253,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[20/03/2026] se retira atasco de billete de escrow",
         "zona": "IN MDP3"
@@ -5887,6 +6274,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "El cliente se llama por escrow trabado,se ingresa al equipo, se abre escrow. se reinicia y cliente prueba depositar. Equipo queda operativo",
         "zona": "IN MDP3"
@@ -5912,7 +6300,7 @@
     "tecnicoZona": "Montiel, Juan Fernando",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": 40,
+    "hsSla": 37,
     "fechaVencimiento": "Hasta 20/10/2026 12:00:00",
     "fechaCoordinada": "19/10/2026 22:22",
     "fCoorDate": "19/10/2026",
@@ -5934,9 +6322,19 @@
       "pedido": "101225657",
       "fecha": "2026-10-17",
       "codigoCierre": "DERIV",
-      "descCierre": "Derivado de Mesa Cash Today al Servicio Técnico",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
       "observaciones": "Cliente con usuario de windows bloqueado, no se logra ingresar por falta de conectividad, se le pide reiniciar el router pero no retoma la conexion, se solicita tecnico para verificar conectividad y usuario de windows",
-      "tecnico": "SIN ASIGNAR"
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "esDerivacionMonitoreo": true
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225657",
+      "fecha": "2026-10-17",
+      "codigoCierre": "DERIV",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "observaciones": "Cliente con usuario de windows bloqueado, no se logra ingresar por falta de conectividad, se le pide reiniciar el router pero no retoma la conexion, se solicita tecnico para verificar conectividad y usuario de windows",
+      "esDerivacionMonitoreo": true
     },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
@@ -5981,17 +6379,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Cliente con usuario de windows bloqueado, no se logra ingresar por falta de conectividad, se le pide reiniciar el router pero no retoma la conexion, se solicita tecnico para verificar conectividad y usuario de windows",
         "zona": "IN COS"
       },
@@ -6011,6 +6410,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[17/09/2026] se realiza desconexión y asistencia a traslado de equipo se vuelve a armar queda operativo se verifica con monitoreo para chequear conexión y pruebas correspondientes de depósito",
         "zona": "IN COS"
@@ -6031,6 +6431,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[17/09/2026] se realiza configuración de dvr según instructivo .",
         "zona": "IN COS"
@@ -6051,6 +6452,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Cliente se contactó para ver transacciones del 11/9. El sistema fue migrado a Ninja y no figuran en el equipo. Se le indica pedir por mail los depósitos y solicitar acceso a Genkin",
         "zona": "IN COS"
@@ -6071,6 +6473,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[13/09/2026] Se masterizó equipo por aplicación colgada. Se migró router a ninja. Se configuró app 4.43. Pruebas de diagnóstico y de servicio ok  // Se comunica el usuario indicando que el equipo queda en la pantalla de carga y no inicia la aplicación.\r\n\r\nSe accede de manera remota, se reinicia en reiteradas oportunidades y se hace reset en conjunto con el cliente pero la falla persiste.\r\n\r\nPor lo tanto se debe gestionar una visita técnica para revisar en sitio.",
         "zona": "IN COS"
@@ -6081,17 +6484,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Se comunica el usuario indicando que el equipo queda en la pantalla de carga y no inicia la aplicación.\r\n\r\nSe accede de manera remota, se reinicia en reiteradas oportunidades y se hace reset en conjunto con el cliente pero la falla persiste.\r\n\r\nPor lo tanto se debe gestionar una visita técnica para revisar en sitio.",
         "zona": "IN COS"
       },
@@ -6111,6 +6515,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[08/09/2026] se realiza relevamiento se envía informe detallado por mail",
         "zona": "IN COS"
@@ -6131,6 +6536,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[07/09/2026] se realiza mantenimiento preventivo en el equipo se realizaron pruebas correspondientes",
         "zona": "IN COS"
@@ -6151,6 +6557,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[07/09/2026] se realiza cambio de batería de cerradura se realizaron pruebas correspondientes  // Se comunica el usuario indicando problemas con la cerradura del tesoro, al colocar la clave arroja unos pitidos y no permite abrir.\r\n\r\nIndica que antes, colocaban la clave en el primer intento y abría, pero ahora es como que se bloquea sin siquiera ponerla y no permite abrir.\r\n\r\nPor lo tanto se debe gestionar una visita técnica para verificar en sitio.",
         "zona": "IN COS"
@@ -6171,6 +6578,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "se le indica que tiene pedido por dicha falla 101214997 y que debe aguardar a la misma",
         "zona": "IN COS"
@@ -6196,7 +6604,7 @@
     "tecnicoZona": "Allende, Martin Leandro",
     "estado": "SEG Espera",
     "slaPorcentaje": 0,
-    "hsSla": 40,
+    "hsSla": 37,
     "fechaVencimiento": "SLA 20/10/2026 12:00:00",
     "fechaCoordinada": "19/10/2026 16:23",
     "fCoorDate": "19/10/2026",
@@ -6251,7 +6659,17 @@
       "codigoCierre": "PCSI",
       "descCierre": "Pendiente Cliente sin ir",
       "observaciones": "Servicio extrabancario",
-      "tecnico": "SIN ASIGNAR"
+      "tecnico": "SIN ASIGNAR",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225625",
+      "fecha": "2026-10-17",
+      "codigoCierre": "PCSI",
+      "descCierre": "Pendiente Cliente sin ir",
+      "tecnico": "SIN ASIGNAR",
+      "observaciones": "Servicio extrabancario",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "SC_PENDIENTE",
     "esScVigente": true,
@@ -6302,6 +6720,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Servicio extrabancario",
         "zona": "IN SRO"
@@ -6322,6 +6741,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[19/09/2026] Se realizó mantenimiento preventivo. Se realizaron pruebas en diagnóstico y producción con clientes de la Entidad sin fallas.",
         "zona": "IN SRO"
@@ -6342,6 +6762,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[18/08/2026] Se reemplazó y configuró gaveta S/N B98325090046 de $10000, y se revisó y se reparó gaveta S/N 521P230500547 de $1000. Se realizaron verificaciones en aplicativo GRGDS y JAM que detallan la correcta configuración de ambas. Se realizaron pruebas en diagnóstico y producción con Porta valor firmante sin fallas.",
         "zona": "IN SRO"
@@ -6362,6 +6783,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/08/2026] Pedido duplicado, se atiende con el 101209340.",
         "zona": "IN SRO"
@@ -6382,6 +6804,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/08/2026] Se realizo configuración del type 3 de 10.000.\r\nSe realizo revisión completa del modulo reciclador y se realizaron pruebas en diagnostico sin presentar fallas.\r\nSe realizan extracción y deposito en servicio sin presentar falla y se adjuntan los comprobantes correspondientes. // [14/08/2026] Se intentó reparar gaveta con fallas, sin éxito. Suspende por pedido de repuesto (Gaveta recicladora)",
         "zona": "IN SRO"
@@ -6402,6 +6825,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/08/2026] Se intentó reparar gaveta con fallas, sin éxito. Suspende por pedido de repuesto (Gaveta recicladora)",
         "zona": "IN SRO"
@@ -6422,6 +6846,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[28/07/2026] SC atendido con pedido número 101204635",
         "zona": "IN SRO"
@@ -6442,6 +6867,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/07/2026] Se retiraron billetes trabados. Se realizaron pruebas en diagnóstico sin fallas.",
         "zona": "IN SRO"
@@ -6462,6 +6888,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[10/06/2026] Se acomodó cinta de escrow. Se realizaron pruebas en diagnóstico sin fallas. // a coordinar con caudales.",
         "zona": "IN SRO"
@@ -6482,6 +6909,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "a coordinar con caudales.",
         "zona": "IN SRO"
@@ -6507,7 +6935,7 @@
     "tecnicoZona": "Foschi, Alejandro",
     "estado": "SEG Registrado",
     "slaPorcentaje": 53,
-    "hsSla": 18,
+    "hsSla": 14,
     "fechaVencimiento": "Hasta 19/10/2026 13:39:09",
     "fechaCoordinada": "19/10/2026 22:22",
     "fCoorDate": "19/10/2026",
@@ -6526,6 +6954,15 @@
     "repuestosHistoricos": [],
     "esPedidoSuspendidoPrevio": false,
     "suspensionPrevia": null,
+    "ordenInmediataAnterior": {
+      "pedido": "101166827",
+      "fecha": "2026-04-09",
+      "codigoCierre": "COMPL",
+      "descCierre": "Completo (Cierre Exitoso en Campo)",
+      "tecnico": "Foschi, Alejandro",
+      "observaciones": "[09/04/2026] mantenimiento preventivo",
+      "esDerivacionMonitoreo": false
+    },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
     "alertaSinAsignar": true,
@@ -6579,6 +7016,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/04/2026] mantenimiento preventivo",
         "zona": "IN RGA"
@@ -6604,7 +7042,7 @@
     "tecnicoZona": "Chiriello, Pablo Javier",
     "estado": "SEG Espera",
     "slaPorcentaje": 94,
-    "hsSla": 15,
+    "hsSla": 11,
     "fechaVencimiento": "Hasta 19/10/2026 10:35:00",
     "fechaCoordinada": "19/10/2026 22:22",
     "fCoorDate": "19/10/2026",
@@ -6659,7 +7097,17 @@
       "codigoCierre": "PPR",
       "descCierre": "Pendiente por Repuesto",
       "observaciones": "[16/10/2026] suspendo por fallas en Head (freno acetato roto no pude reparar en campo) y fallas de sensores, placa main.",
-      "tecnico": "Buratti, Fabian"
+      "tecnico": "Buratti, Fabian",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225385",
+      "fecha": "2026-10-16",
+      "codigoCierre": "PPR",
+      "descCierre": "Pendiente por Repuesto",
+      "tecnico": "Buratti, Fabian",
+      "observaciones": "[16/10/2026] suspendo por fallas en Head (freno acetato roto no pude reparar en campo) y fallas de sensores, placa main.",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "SC_PENDIENTE",
     "esScVigente": true,
@@ -6710,6 +7158,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[16/10/2026] suspendo por fallas en Head (freno acetato roto no pude reparar en campo) y fallas de sensores, placa main.",
         "zona": "IN MDP 1"
@@ -6730,6 +7179,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[07/09/2026] se realizó mantenimiento preventivo",
         "zona": "IN MDP 1"
@@ -6750,6 +7200,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[23/04/2026] se saca módulo de modo ods. se reinicia y queda ok. pruebas de diagnóstico y de servicio ok",
         "zona": "IN MDP 1"
@@ -6770,6 +7221,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[30/03/2026] se colocan correas de modulo dispensador en su sitio\r\nse realiza prueba en producción junto al funcionario ok",
         "zona": "IN MDP 1"
@@ -6790,6 +7242,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/02/2026] se realizó mantenimiento preventivo",
         "zona": "IN MDP 1"
@@ -6810,6 +7263,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[20/01/2026] Se realiza cambio del validador y la placa main, se realizaron prueba de depósitos de billetes pero no de cheques la prueba con cheques queda a cargo del tesorero",
         "zona": "IN MDP 1"
@@ -6830,6 +7284,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/01/2026] Chequeo de módulo de depósito.",
         "zona": "IN MDP 1"
@@ -6855,7 +7310,7 @@
     "tecnicoZona": "Aldayturriaga, Martin",
     "estado": "SEG Espera",
     "slaPorcentaje": 100,
-    "hsSla": -51,
+    "hsSla": -54,
     "fechaVencimiento": "Hasta 16/10/2026 17:00:00",
     "fechaCoordinada": "19/10/2026 22:22",
     "fCoorDate": "19/10/2026",
@@ -6901,7 +7356,17 @@
       "codigoCierre": "PPR",
       "descCierre": "Pendiente por Repuesto",
       "observaciones": "[16/10/2026] Al momento de llegar el módulo de depósitos, se encontraba funcionando correctamente, se descargaron y se analizaron LOGs días antes del cambio del Head unit el martes pasado y se verifica el cambio de comportamiento de los errores en el log, revisando log recientes se llega a la conclusión que está fallando un sensor en una gaveta, se suspende pedido por solicitud de la misma",
-      "tecnico": "Aldayturriaga, Martin"
+      "tecnico": "Aldayturriaga, Martin",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225298",
+      "fecha": "2026-10-16",
+      "codigoCierre": "PPR",
+      "descCierre": "Pendiente por Repuesto",
+      "tecnico": "Aldayturriaga, Martin",
+      "observaciones": "[16/10/2026] Al momento de llegar el módulo de depósitos, se encontraba funcionando correctamente, se descargaron y se analizaron LOGs días antes del cambio del Head unit el martes pasado y se verifica el cambio de comportamiento de los errores en el log, revisando log recientes se llega a la conclusión que está fallando un sensor en una gaveta, se suspende pedido por solicitud de la misma",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "SC_PENDIENTE",
     "esScVigente": true,
@@ -6952,6 +7417,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[16/10/2026] Al momento de llegar el módulo de depósitos, se encontraba funcionando correctamente, se descargaron y se analizaron LOGs días antes del cambio del Head unit el martes pasado y se verifica el cambio de comportamiento de los errores en el log, revisando log recientes se llega a la conclusión que está fallando un sensor en una gaveta, se suspende pedido por solicitud de la misma",
         "zona": "IN TDL"
@@ -6972,6 +7438,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[13/10/2026]   Se realiza cambio del head unit al módulo de depósitos, se realizó limpieza, se realizaron pruebas en producción en presencia de funcionario  // [09/10/2026] Se viene haciendo seguimiento con tesorero desde dia Miercoles, hoy se realizaron pruebas y diagnosticos telefonicos, se analiza atasco en Head y se suspende por pedido de modulo Head.",
         "zona": "IN TDL"
@@ -6992,6 +7459,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/10/2026] Se viene haciendo seguimiento con tesorero desde dia Miercoles, hoy se realizaron pruebas y diagnosticos telefonicos, se analiza atasco en Head y se suspende por pedido de modulo Head.",
         "zona": "IN TDL"
@@ -7012,6 +7480,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[06/10/2026] se remplaza escrow, se realiza limpieza preventiva y se borran contadores junto al funcionario,  pruebas en diagnóstico y servicio ok",
         "zona": "IN TDL"
@@ -7032,6 +7501,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[30/09/2026] Se realiza mantenimiento preventivo",
         "zona": "IN TDL"
@@ -7052,6 +7522,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[30/09/2026] Se verifica configuración de denominación del ATM se verifican la configuración de las gavetas que estás de la siguiente manera 2 ID4 $2.000 (V10J220900226 y V10J220800912), 4 ID7 $10.000 (V10J220800814, V10J220900216, V10J220800709, V10J220900215) y 2 ID8 $20.000 (V10J220800758 y V10J220900202) las misma fueron validadas en los ATMs 11131 (H34 Ex power) y 6449 (H22)",
         "zona": "IN TDL"
@@ -7072,6 +7543,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[30/09/2026] Se resuelve problema con el módulo de depósito, se realizó limpieza, se realizaron pruebas en producción en presencia de funcionario",
         "zona": "IN TDL"
@@ -7092,6 +7564,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/07/2026] Se quitó una tarjeta en mal estado del lector de tarjetas, se realizó limpieza, se realizaron pruebas en producción en presencia de funcionario",
         "zona": "IN TDL"
@@ -7112,6 +7585,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[30/04/2026] Se realiza mantenimiento preventivo",
         "zona": "IN TDL"
@@ -7132,6 +7606,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[08/04/2026] se configuraron gavetas. SN 20900215 de $10000. SN 20800814 de $10000. SN 20900202 de $20000 . pruebas a cargo de funcionario",
         "zona": "IN TDL"
@@ -7157,7 +7632,7 @@
     "tecnicoZona": "Foschi, Alejandro",
     "estado": "SEG Espera Llegada",
     "slaPorcentaje": 100,
-    "hsSla": -78,
+    "hsSla": -82,
     "fechaVencimiento": "Hasta 15/10/2026 13:03:05",
     "fechaCoordinada": "19/10/2026 22:22",
     "fCoorDate": "19/10/2026",
@@ -7185,9 +7660,19 @@
       "pedido": "101225101",
       "fecha": "2026-10-14",
       "codigoCierre": "DERIV",
-      "descCierre": "Derivado de Mesa Cash Today al Servicio Técnico",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
       "observaciones": "Se solicita asistencia para la actualización de aleph ya que cuenta con la versión 4.29 y verificar conectividad ya que la misma es muy inestable.\r\nTel:+5492966532649",
-      "tecnico": "SIN ASIGNAR"
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "esDerivacionMonitoreo": true
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225073",
+      "fecha": "2026-10-14",
+      "codigoCierre": "TELCA2",
+      "descCierre": "Cierre Telefónico / Remoto Exitoso (Mesa CTD)",
+      "tecnico": "SIN ASIGNAR",
+      "observaciones": "Nos conectamos remotamente, no se observa el CIM, se ingresa a BNE, se abre el escrow, se borra la falla en el drop y en el escrow, equipo operativo, cliente deposita en forma correcta.",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
@@ -7242,6 +7727,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Nos conectamos remotamente, no se observa el CIM, se ingresa a BNE, se abre el escrow, se borra la falla en el drop y en el escrow, equipo operativo, cliente deposita en forma correcta.",
         "zona": "IN RGA"
@@ -7252,17 +7738,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Se solicita asistencia para la actualización de aleph ya que cuenta con la versión 4.29 y verificar conectividad ya que la misma es muy inestable.\r\nTel:+5492966532649",
         "zona": "IN RGA"
       },
@@ -7282,6 +7769,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "cte reclama error de aplicacion. se verifico compartimientos sin atascos. se realizo reinicio y la maquina queda operativa",
         "zona": "IN RGA"
@@ -7302,6 +7790,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "informa que retiro el atasco y reinicio el equipo, cliente deposita sin fallas, equipo operativo",
         "zona": "IN RGA"
@@ -7322,6 +7811,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "cte reclama error de aplicacion. se ingresa, se verifico compartimientos sin atascos. se verifica maquina operativa. cte realiza deposito ok",
         "zona": "IN RGA"
@@ -7342,6 +7832,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[25/05/2026] mantenimiento preventivo",
         "zona": "IN RGA"
@@ -7362,6 +7853,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "se dio de alta",
         "zona": "IN RGA"
@@ -7382,6 +7874,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se da de alta usuario depositante y se verifica que ingrese correctamente.",
         "zona": "IN RGA"
@@ -7402,6 +7895,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[30/04/2026] mantenimiento preventivo",
         "zona": "IN RGA"
@@ -7422,6 +7916,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se realiza el alta de usuario con éxito.",
         "zona": "IN RGA"
@@ -7447,7 +7942,7 @@
     "tecnicoZona": "Corti Victor",
     "estado": "SEG Registrado",
     "slaPorcentaje": 55,
-    "hsSla": 0,
+    "hsSla": -3,
     "fechaVencimiento": "Hasta 18/10/2026 20:00:00",
     "fechaCoordinada": "17/10/2026 22:25",
     "fCoorDate": "17/10/2026",
@@ -7469,9 +7964,19 @@
       "pedido": "101225697",
       "fecha": "2026-10-17",
       "codigoCierre": "DERIV",
-      "descCierre": "Derivado de Mesa Cash Today al Servicio Técnico",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
       "observaciones": "Se reinicia equipo, sin exito. Equipo persiste con error bolsa llena. Se solicita asistencia para reacomodar bolsa y verificar sensores. \r\nN° de pedido: 101225697",
-      "tecnico": "SIN ASIGNAR"
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "esDerivacionMonitoreo": true
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225697",
+      "fecha": "2026-10-17",
+      "codigoCierre": "DERIV",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "observaciones": "Se reinicia equipo, sin exito. Equipo persiste con error bolsa llena. Se solicita asistencia para reacomodar bolsa y verificar sensores. \r\nN° de pedido: 101225697",
+      "esDerivacionMonitoreo": true
     },
     "origenFlujo": "SC_PENDIENTE",
     "esScVigente": true,
@@ -7512,17 +8017,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Se reinicia equipo, sin exito. Equipo persiste con error bolsa llena. Se solicita asistencia para reacomodar bolsa y verificar sensores. \r\nN° de pedido: 101225697",
         "zona": "IN TDF"
       },
@@ -7542,6 +8048,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[16/09/2026] mantenimiento",
         "zona": "IN TDF"
@@ -7562,6 +8069,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[16/09/2026] limpieza, calibrado y reconfiguración de sensores  // Se verifica que se realizó y tomó el cambio de bolsa el 14/09 la bolsa tienen 60 billetes y luego de algunos depósitos presentó error de :\"Dispositivo lleno\"  Se reinicia e igualmente persiste el problema, se solicita asistencia para revisar sensores.",
         "zona": "IN TDF"
@@ -7572,17 +8080,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Se verifica que se realizó y tomó el cambio de bolsa el 14/09 la bolsa tienen 60 billetes y luego de algunos depósitos presentó error de :\"Dispositivo lleno\"  Se reinicia e igualmente persiste el problema, se solicita asistencia para revisar sensores.",
         "zona": "IN TDF"
       },
@@ -7602,6 +8111,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se verifica se realizo y tomó el cambio de bolsa 14/09 la bolsa tienen 60 billetes Se reinicia e igualmente persiste el problema, se solicita asistencia para revisar sensores.",
         "zona": "IN TDF"
@@ -7622,6 +8132,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[31/07/2026] se verifica UPS, no presenta falla. ante un corte de luz funciona el tiempo estipulado. se le explicó al cliente que no está preparado para un corte de luz prolongado (mayor a 10 min) ( no está en el circuito del generador)  // El cliente informa que tuvieron un corte de energía, se verifica que la UPS enciende hace ruido y se apaga, se deriva a técnico para revisar la UPS, se le indica que conecte todo a una zapatilla y lo conecte a la pared para que esté operativo hasta que asista el técnico.",
         "zona": "IN TDF"
@@ -7632,17 +8143,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "El cliente informa que tuvieron un corte de energía, se verifica que la UPS enciende hace ruido y se apaga, se deriva a técnico para revisar la UPS, se le indica que conecte todo a una zapatilla y lo conecte a la pared para que esté operativo hasta que asista el técnico.",
         "zona": "IN TDF"
       },
@@ -7662,6 +8174,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[17/04/2026] mantenimiento",
         "zona": "IN TDF"
@@ -7682,6 +8195,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[06/03/2026] instalación y configuración de equipo SNBC - remasterizacion",
         "zona": "IN TDF"
@@ -7702,6 +8216,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[06/03/2026] capacitación de uso SNBC",
         "zona": "IN TDF"
@@ -7727,7 +8242,7 @@
     "tecnicoZona": "Pavon, Diego Emanuel",
     "estado": "SEG Registrado",
     "slaPorcentaje": 0,
-    "hsSla": 39,
+    "hsSla": 36,
     "fechaVencimiento": "Hasta 20/10/2026 11:00:00",
     "fechaCoordinada": "17/10/2026 20:10",
     "fCoorDate": "17/10/2026",
@@ -7765,9 +8280,19 @@
       "pedido": "101225687",
       "fecha": "2026-10-17",
       "codigoCierre": "DERIV",
-      "descCierre": "Derivado de Mesa Cash Today al Servicio Técnico",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
       "observaciones": "Cliente se comunica nuevamente por un inconveniente en el sensor de la bolsa, inicialmente fue asistido por el camión de Prosegur posteriormente volvió a ocurrir lo que derivó en una visita técnica sin embargo el error se sigue presentando, se solicita asistencia para solventar el error de manera definitiva.",
-      "tecnico": "SIN ASIGNAR"
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "esDerivacionMonitoreo": true
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225687",
+      "fecha": "2026-10-17",
+      "codigoCierre": "DERIV",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "observaciones": "Cliente se comunica nuevamente por un inconveniente en el sensor de la bolsa, inicialmente fue asistido por el camión de Prosegur posteriormente volvió a ocurrir lo que derivó en una visita técnica sin embargo el error se sigue presentando, se solicita asistencia para solventar el error de manera definitiva.",
+      "esDerivacionMonitoreo": true
     },
     "origenFlujo": "SC_PENDIENTE",
     "esScVigente": true,
@@ -7808,17 +8333,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Cliente se comunica nuevamente por un inconveniente en el sensor de la bolsa, inicialmente fue asistido por el camión de Prosegur posteriormente volvió a ocurrir lo que derivó en una visita técnica sin embargo el error se sigue presentando, se solicita asistencia para solventar el error de manera definitiva.",
         "zona": "IN BB2"
       },
@@ -7838,6 +8364,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Actulizo fw a 5.35 quedaon ok. realiza depósito de prueba exitosa confirmando el correcto fucnionamieto del qeuipo",
         "zona": "IN BB2"
@@ -7858,6 +8385,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Ingreso al equipo, abro scrow, cliente retira sobre atascado no contabilizado. Cierro quedando operativo. Realiza depósito de prueba exitoso confirmando el correcto funcionamiento del equipo.",
         "zona": "IN BB2"
@@ -7878,6 +8406,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Ingreso al equipo, abro scrow, cliente retira dinero atascado no contabilizado. Cierro quedando operativo. Realiza depósito de prueba exitoso confirmando el correcto funcionamiento del equipo.",
         "zona": "IN BB2"
@@ -7898,6 +8427,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Cliente se contacta por sobre atascado en scrow. Se ingresa al equipo, desde menu supervisor se abre el scrow, se libera el atasco. Queda operativo, no se prueba deposito porque cliente no tiene efectivo.",
         "zona": "IN BB2"
@@ -7918,6 +8448,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se le abre el shutter, se retira el atasco, se cierra y reinicia hasta que queda correcto\r\nSe realiza deposito de prueba y queda operativo.",
         "zona": "IN BB2"
@@ -7938,6 +8469,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Se le abre el shutter, se retira el atasco, se cierra y reinicia hasta que queda correcto\r\nSe realiza deposito de prueba y queda operativo.",
         "zona": "IN BB2"
@@ -7958,6 +8490,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Cliente se comunica por atasco, se verifican compartimentos sin éxito, se entra a ¨Menú supervisor¨ para abrir scrow y retirar atasco. Maquina queda operativa.",
         "zona": "IN BB2"
@@ -7978,6 +8511,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "se realiza bne, retira atasco, disco d lleno, se borra y reinstalo sp, reinicio, equipo operativo",
         "zona": "IN BB2"
@@ -7998,6 +8532,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[07/08/2026] Se realizo mantenimiento general de la terminal. Se realizaron pruebas en diagnóstico y producción con funcionario sin presentar fallas. MAE OPERATIVA // Cliente se contacta por una diferencia contable. Se le indica reportarla por mail. Igualmente reporta que el equipo tiene fallas reiteradas, como atascos. Se solicita mantenimiento.",
         "zona": "IN BB2"
@@ -8023,7 +8558,7 @@
     "tecnicoZona": "Godoy, Diego",
     "estado": "SEG Espera",
     "slaPorcentaje": 100,
-    "hsSla": -54,
+    "hsSla": -58,
     "fechaVencimiento": "Hasta 16/10/2026 13:07:57",
     "fechaCoordinada": "15/10/2026 10:00",
     "fCoorDate": "15/10/2026",
@@ -8168,7 +8703,17 @@
       "codigoCierre": "PPR",
       "descCierre": "Pendiente por Repuesto",
       "observaciones": "[15/10/2026] se revisa impresora en equipo. se realizan pruebas de impresión en OSD. prueba EXITOSA. Impresora operativa y en servicio. se realizaron pruebas en ENA. falla en sensores de transporte superior ( se adjunta foto). se desarma y limpian sensores. persiste falla. se suspende por repuesto",
-      "tecnico": "Godoy, Diego"
+      "tecnico": "Godoy, Diego",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225195",
+      "fecha": "2026-10-15",
+      "codigoCierre": "PPR",
+      "descCierre": "Pendiente por Repuesto",
+      "tecnico": "Godoy, Diego",
+      "observaciones": "[15/10/2026] se revisa impresora en equipo. se realizan pruebas de impresión en OSD. prueba EXITOSA. Impresora operativa y en servicio. se realizaron pruebas en ENA. falla en sensores de transporte superior ( se adjunta foto). se desarma y limpian sensores. persiste falla. se suspende por repuesto",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
@@ -8223,6 +8768,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026] se revisa impresora en equipo. se realizan pruebas de impresión en OSD. prueba EXITOSA. Impresora operativa y en servicio. se realizaron pruebas en ENA. falla en sensores de transporte superior ( se adjunta foto). se desarma y limpian sensores. persiste falla. se suspende por repuesto",
         "zona": "IN TRE"
@@ -8243,6 +8789,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[14/10/2026] se revisa impresora. impresión con poco pleno negro. se cambia impresora de cliente. impresora de cliente con falla en configuración. se habla con especialistas. se revisa configuración de manera remota por Nahuel Parise. Parise nos informa que hay incompatibilidad de software con las impresoras. Se realiza reinstalación de software base. se prosigue a continuar el día de mañana. se suspende por sucursal",
         "zona": "IN TRE"
@@ -8263,6 +8810,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[07/09/2026] Se realiza cambio de ESCROW en ENA. se realiza cambio de validador en ENA. se realizan pruebas en diagnóstico. Pruebas OK. Se realizan pruebas de depósito de efectivo con funcionario bancario. Pruebas EXITOSAS. Equipo operativo y en servicio  // [03/09/2026] al arribo en cliente se encuentra equipo con falla VA06. se realizan pruebas en diagnóstico. persiste falla en validador. se suspende por repuesto",
         "zona": "IN TRE"
@@ -8283,6 +8831,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[03/09/2026] al arribo en cliente se encuentra equipo con falla VA06. se realizan pruebas en diagnóstico. persiste falla en validador. se suspende por repuesto",
         "zona": "IN TRE"
@@ -8303,6 +8852,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[01/09/2026] Se realizaron pruebas en diagnóstico con puerta tesoro abierto. se realizan pruebas de depósito en ENA. Pruebas OK. Se realizan depósitos de efectivo en producción con funcionario bancario. Depósitos OK. ENA operativo. Equipo operativo y en servicio  // [01/09/2026] al arribar a cliente se encuentra equipo trabado. se realizan pruebas en diagnóstico. Se realiza regularización de transporte vertical superior. Se realizan pruebas en diagnóstico. Pruebas OK. se realiza prueba de depósito de efectivo en producción con funcionario bancario. Pruebas OK. Se suspende pedido. queda equipo en observación",
         "zona": "IN TRE"
@@ -8323,6 +8873,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[01/09/2026] al arribar a cliente se encuentra equipo trabado. se realizan pruebas en diagnóstico. Se realiza regularización de transporte vertical superior. Se realizan pruebas en diagnóstico. Pruebas OK. se realiza prueba de depósito de efectivo en producción con funcionario bancario. Pruebas OK. Se suspende pedido. queda equipo en observación",
         "zona": "IN TRE"
@@ -8343,6 +8894,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[31/08/2026] al arribar a cliente equipo con falla. error RT06. Se realiza reset en equipo. se realiza regulación de transporte superior. se realiza prueba en diagnóstico de depósito de efectivo. NO se realiza prueba de depósito de efectivo a las gavetas de ENA (puerta tesoro cerrada). Se realiza prueba de depósito de efectivo con equipo ENA retirado. Prueba EXITOSA. Se realiza depósito de efectivo en producción. Depósitos OK. ENA operativo y en servicio",
         "zona": "IN TRE"
@@ -8363,6 +8915,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[28/08/2026]   Se cambió CI en ENA. se realizaron pruebas en diagnóstico. Pruebas OK. Se realizó prueba de depósito de efectivo con funcionario bancario. Prueba EXITOSA. ENA operativo. Tasi operativa y en servicio  // [26/08/2026] se realizó ajuste de posición de transporte superior con engranaje de CI. se revisaron gavetas de depósito y chest transport. se realizaron pruebas en diagnóstico. Falla en sensores de CI. falla en Costumer Interface. se suspende por repuesto",
         "zona": "IN TRE"
@@ -8383,6 +8936,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[26/08/2026] se realizó ajuste de posición de transporte superior con engranaje de CI. se revisaron gavetas de depósito y chest transport. se realizaron pruebas en diagnóstico. Falla en sensores de CI. falla en Costumer Interface. se suspende por repuesto",
         "zona": "IN TRE"
@@ -8403,6 +8957,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "SE REALIZAN PRUEBAS. TECNICO DEBE RETIRARSE POR HORARIO",
         "zona": "IN TRE"
@@ -8428,7 +8983,7 @@
     "tecnicoZona": "Foschi, Alejandro",
     "estado": "SEG Espera",
     "slaPorcentaje": 100,
-    "hsSla": -55,
+    "hsSla": -59,
     "fechaVencimiento": "Hasta 16/10/2026 12:34:44",
     "fechaCoordinada": "15/10/2026 13:00",
     "fCoorDate": "15/10/2026",
@@ -8468,7 +9023,17 @@
       "codigoCierre": "PPR",
       "descCierre": "Pendiente por Repuesto",
       "observaciones": "[15/10/2026] Falla en placa escrow. se solicita repuesto",
-      "tecnico": "Foschi, Alejandro"
+      "tecnico": "Foschi, Alejandro",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225185",
+      "fecha": "2026-10-15",
+      "codigoCierre": "PPR",
+      "descCierre": "Pendiente por Repuesto",
+      "tecnico": "Foschi, Alejandro",
+      "observaciones": "[15/10/2026] Falla en placa escrow. se solicita repuesto",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
@@ -8523,6 +9088,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026] Falla en placa escrow. se solicita repuesto",
         "zona": "IN RGA"
@@ -8543,6 +9109,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[17/09/2026] Falla en chest transporte. se limpian rodillos y sensores. se realiza prueba de depósito y no arroja errores",
         "zona": "IN RGA"
@@ -8563,6 +9130,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[01/07/2026] falla alineador de billetes. se lubrica ejes y calibración. prueba con billetes con resultados positivos",
         "zona": "IN RGA"
@@ -8583,6 +9151,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[30/03/2026] mantenimiento preventivo",
         "zona": "IN RGA"
@@ -8603,6 +9172,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/03/2026] no sé encontró fallas en el módulo. se limpian sensores. se realizan pruebas y no arrojó fallas. se deja en servicio.",
         "zona": "IN RGA"
@@ -8623,6 +9193,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[16/03/2026] cambio de validador. se realizan pruebas en producción. resultados ok // [12/03/2026] falla validador. se solicita repuesto",
         "zona": "IN RGA"
@@ -8643,6 +9214,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[12/03/2026] falla validador. se solicita repuesto",
         "zona": "IN RGA"
@@ -8668,7 +9240,7 @@
     "tecnicoZona": "Ibañez, Pablo Fernando",
     "estado": "SEG Registrado",
     "slaPorcentaje": 100,
-    "hsSla": -11,
+    "hsSla": -14,
     "fechaVencimiento": "Hasta 18/10/2026 08:48:13",
     "fechaCoordinada": "19/10/2026 22:22",
     "fCoorDate": "19/10/2026",
@@ -8690,9 +9262,19 @@
       "pedido": "101225624",
       "fecha": "2026-10-17",
       "codigoCierre": "DERIV",
-      "descCierre": "Derivado de Mesa Cash Today al Servicio Técnico",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
       "observaciones": "Cliente indica que tiene errores con el cierre contable, se verifica que no esta tomando los close y da diferencias, version desactualizada de aleph se solicita actualizar",
-      "tecnico": "SIN ASIGNAR"
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "esDerivacionMonitoreo": true
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225624",
+      "fecha": "2026-10-17",
+      "codigoCierre": "DERIV",
+      "descCierre": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
+      "tecnico": "Monitoreo / Mesa de Servicios",
+      "observaciones": "Cliente indica que tiene errores con el cierre contable, se verifica que no esta tomando los close y da diferencias, version desactualizada de aleph se solicita actualizar",
+      "esDerivacionMonitoreo": true
     },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
@@ -8737,17 +9319,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Cliente indica que tiene errores con el cierre contable, se verifica que no esta tomando los close y da diferencias, version desactualizada de aleph se solicita actualizar",
         "zona": "IN CIP"
       },
@@ -8767,6 +9350,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[23/09/2026] mantenimiento preventivo",
         "zona": "IN CIP"
@@ -8787,6 +9371,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[23/09/2026] se realizo pruebas de bne marcando desconexion, se realizo conexion de cables y quedo operativa // Cliente se contacta por equipo con error en dispositivo. Se revisa sin atascos y se reinicia equipo. Sale fallo al depositar. En bne reporta Open port failed. Se reinstala SP y Firmware de billetes y sigue fallando. Se solicita asistencia para revisar validador.",
         "zona": "IN CIP"
@@ -8807,6 +9392,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "se verifica, se abre shutter, se retira dinero, se reinicia, cliente comenta que luego realiza deposito.",
         "zona": "IN CIP"
@@ -8817,17 +9403,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Cliente se contacta por equipo con error en dispositivo. Se revisa sin atascos y se reinicia equipo. Sale fallo al depositar. En bne reporta Open port failed. Se reinstala SP y Firmware de billetes y sigue fallando. Se solicita asistencia para revisar validador.",
         "zona": "IN CIP"
       },
@@ -8847,6 +9434,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Cliente se contacta por billetes atascados en scrow. Se ingresa al equipo, desde menu supervisor no abre el scrow. Se abre bne, error open port. Se reinicia equipo y desde bne se abre scrow,  se libera el atasco. Queda operativo luego de un deposito de prueba.",
         "zona": "IN CIP"
@@ -8867,6 +9455,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[03/08/2026] mantenimiento preventivo",
         "zona": "IN CIP"
@@ -8887,6 +9476,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Me contacto con el cliente e indico procedimiento para verificar cableado entre la contadora y el cpu, luego de eso, el equipo queda completamente funcional. Mal derivado",
         "zona": "IN CIP"
@@ -8907,6 +9497,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Equipo con error de puertos segun indica BNE, se intentan reinicios pero el error persiste. \r\n\r\n2996011109 Claudia Conejero",
         "zona": "IN CIP"
@@ -8927,6 +9518,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "equipo ok",
         "zona": "IN CIP"
@@ -8952,7 +9544,7 @@
     "tecnicoZona": "Torres, Florencia",
     "estado": "SEG Espera",
     "slaPorcentaje": 100,
-    "hsSla": -81,
+    "hsSla": -85,
     "fechaVencimiento": "Hasta 15/10/2026 10:38:58",
     "fechaCoordinada": "15/10/2026 15:00",
     "fCoorDate": "15/10/2026",
@@ -9013,7 +9605,17 @@
       "codigoCierre": "PPR",
       "descCierre": "Pendiente por Repuesto",
       "observaciones": "[15/10/2026] se suspende por pedido de parte pantalla quemada // Se contacta el cliente indicando que luego de un corte de luz la pantalla no funciona. Se reinició el dispositivo, pero sigue sin dar imagen. Conexión al equipo tenemos, pero el cliente no ve la pantalla.",
-      "tecnico": "De Simone, Federico"
+      "tecnico": "De Simone, Federico",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101225044",
+      "fecha": "2026-10-15",
+      "codigoCierre": "PPR",
+      "descCierre": "Pendiente por Repuesto",
+      "tecnico": "De Simone, Federico",
+      "observaciones": "[15/10/2026] se suspende por pedido de parte pantalla quemada // Se contacta el cliente indicando que luego de un corte de luz la pantalla no funciona. Se reinició el dispositivo, pero sigue sin dar imagen. Conexión al equipo tenemos, pero el cliente no ve la pantalla.",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
@@ -9068,6 +9670,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026] se suspende por pedido de parte pantalla quemada // Se contacta el cliente indicando que luego de un corte de luz la pantalla no funciona. Se reinició el dispositivo, pero sigue sin dar imagen. Conexión al equipo tenemos, pero el cliente no ve la pantalla.",
         "zona": "IN BAR"
@@ -9078,17 +9681,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Se contacta el cliente indicando que luego de un corte de luz la pantalla no funciona. Se reinició el dispositivo, pero sigue sin dar imagen. Conexión al equipo tenemos, pero el cliente no ve la pantalla.",
         "zona": "IN BAR"
       },
@@ -9108,6 +9712,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[29/09/2026] se realizó mtm y pruebade equipo quedando correctamente operativo",
         "zona": "IN BAR"
@@ -9128,6 +9733,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "abro escrow, retira atasco, reinicio cim, deposito, operativo",
         "zona": "IN BAR"
@@ -9148,6 +9754,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[10/08/2026] se realizó mantenimiento preventivo y prueba de usuario en pedido 101208300. Equipo correctamente operativo",
         "zona": "IN BAR"
@@ -9168,6 +9775,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[10/08/2026] Se verifica equipo con pantalla doble (error general de ninja), se realizó reinicio de mae, mantenimiento preventivo de pedido 101207345 y depósito con usuario quedando correctamente operativo. // \tSe dio de alta el Requerimiento 101208300-0.\r\nEquipo no permite realizar depósitos, mostrando “No hay transacciones disponibles”. Se realizaron reinicios y pruebas de conectividad, pero la falla persiste.\r\nContinúa no operativo.\r\nRequiere asistencia técnica para revisión y normalización del equipo. Se reinició la aplicación, se realizaron pruebas de diagnóstico y depósito, se verificó el router, se reconectó el cable de red y se cambió de puerto. También se reinició el equipo para liberar posibles billetes trabados.",
         "zona": "IN BAR"
@@ -9178,17 +9786,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Se dio de alta el Requerimiento 101208300-0.\r\nEquipo no permite realizar depósitos, mostrando “No hay transacciones disponibles”. Se realizaron reinicios y pruebas de conectividad, pero la falla persiste.\r\nContinúa no operativo.\r\nRequiere asistencia técnica para revisión y normalización del equipo. Se reinició la aplicación, se realizaron pruebas de diagnóstico y depósito, se verificó el router, se reconectó el cable de red y se cambió de puerto. También se reinició el equipo para liberar posibles billetes trabados.",
         "zona": "IN BAR"
       },
@@ -9208,6 +9817,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[29/07/2026] se realizó mtm, limpieza de partes y prueba con usuario. Equipo operativo",
         "zona": "IN BAR"
@@ -9228,6 +9838,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[10/07/2026]  se realiza cambio de PC e instalación de imagen actualizada a ninja, se realiza prueba de depósito quedando correctamente operativo. // [06/07/2026] se verifica que el equipo demora mucho tiempo en inciar y reconoce el disco aleatorio. Se realizan pruebas con especialista pero el problema persiste. Se solicita a soporte PC para correcta reparación  // Horario sucursal 8¿a.m.–9:30¿p.m.",
         "zona": "IN BAR"
@@ -9248,6 +9859,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Tecnica se comunica para clave OTP, se brinda exitosamente.",
         "zona": "IN BAR"
@@ -9273,7 +9885,7 @@
     "tecnicoZona": "Torres, Florencia",
     "estado": "SEG Espera",
     "slaPorcentaje": 100,
-    "hsSla": -346,
+    "hsSla": -350,
     "fechaVencimiento": "Hasta 04/10/2026 09:37:56",
     "fechaCoordinada": "15/10/2026 13:15",
     "fCoorDate": "15/10/2026",
@@ -9297,7 +9909,17 @@
       "codigoCierre": "PPR",
       "descCierre": "Pendiente por Repuesto",
       "observaciones": "[15/10/2026]   se suspende por pedido de pantalla para su reemplazo // [09/10/2026] suspende por pedido de partes PC y UPS // cliente indica que no esta pudiendo depositar, se verifica sin conexión hace 19 días, se le pide foto del router pero no se ven la luces, se le pide que revise conexiones y que lo reinicie pero sigue sin conexión. Se lo guia pero indica que no abre el shutter, se le indica hacer un apagado general pero queda tildada en la pantalla de inicio. Se solicita técnico con urgencia ya que ninguno de los dos equipos les funciona",
-      "tecnico": "De Simone, Federico"
+      "tecnico": "De Simone, Federico",
+      "esDerivacionMonitoreo": false
+    },
+    "ordenInmediataAnterior": {
+      "pedido": "101222842",
+      "fecha": "2026-10-15",
+      "codigoCierre": "PPR",
+      "descCierre": "Pendiente por Repuesto",
+      "tecnico": "De Simone, Federico",
+      "observaciones": "[15/10/2026]   se suspende por pedido de pantalla para su reemplazo // [09/10/2026] suspende por pedido de partes PC y UPS // cliente indica que no esta pudiendo depositar, se verifica sin conexión hace 19 días, se le pide foto del router pero no se ven la luces, se le pide que revise conexiones y que lo reinicie pero sigue sin conexión. Se lo guia pero indica que no abre el shutter, se le indica hacer un apagado general pero queda tildada en la pantalla de inicio. Se solicita técnico con urgencia ya que ninguno de los dos equipos les funciona",
+      "esDerivacionMonitoreo": false
     },
     "origenFlujo": "MP_PENDIENTE",
     "esScVigente": true,
@@ -9352,6 +9974,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/10/2026]   se suspende por pedido de pantalla para su reemplazo // [09/10/2026] suspende por pedido de partes PC y UPS // cliente indica que no esta pudiendo depositar, se verifica sin conexión hace 19 días, se le pide foto del router pero no se ven la luces, se le pide que revise conexiones y que lo reinicie pero sigue sin conexión. Se lo guia pero indica que no abre el shutter, se le indica hacer un apagado general pero queda tildada en la pantalla de inicio. Se solicita técnico con urgencia ya que ninguno de los dos equipos les funciona",
         "zona": "IN BAR"
@@ -9372,6 +9995,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[09/10/2026] suspende por pedido de partes PC y UPS // cliente indica que no esta pudiendo depositar, se verifica sin conexión hace 19 días, se le pide foto del router pero no se ven la luces, se le pide que revise conexiones y que lo reinicie pero sigue sin conexión. Se lo guia pero indica que no abre el shutter, se le indica hacer un apagado general pero queda tildada en la pantalla de inicio. Se solicita técnico con urgencia ya que ninguno de los dos equipos les funciona",
         "zona": "IN BAR"
@@ -9382,17 +10006,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "cliente indica que no esta pudiendo depositar, se verifica sin conexión hace 19 días, se le pide foto del router pero no se ven la luces, se le pide que revise conexiones y que lo reinicie pero sigue sin conexión. Se lo guia pero indica que no abre el shutter, se le indica hacer un apagado general pero queda tildada en la pantalla de inicio. Se solicita técnico con urgencia ya que ninguno de los dos equipos les funciona",
         "zona": "IN BAR"
       },
@@ -9412,6 +10037,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[27/08/2026] se verifica con supervisora que el pedido fue mal levantado, era para la otra mae que se encuentra a la espera de parte. El equipo informado está operativo funcionando correctamente  // Equipo operativo",
         "zona": "IN BAR"
@@ -9432,6 +10058,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "Equipo operativo",
         "zona": "IN BAR"
@@ -9442,17 +10069,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Cliente se contacta porque el equipo se encuentra totalmente apagado. Se conecta directo a la corriente y enciende, operativa. La falla es de la UPS, quedo desconectada. Se solicita asistencia. \r\n\r\nMañana tiene asistencia por pantalla para la otra mae, por favor considerar.",
         "zona": "IN BAR"
       },
@@ -9472,6 +10100,7 @@
         "tuvoTecnico": true,
         "esSoporteRemoto": false,
         "esVisitaCampo": true,
+        "esDerivacionMonitoreo": false,
         "categoria": "Visita de Campo",
         "observaciones": "[15/07/2026] se realiza mantenimiento preventivo, limpieza de partes y prueba de depósito con usuario quedando correctamente operativa  // Cliente se comunica por problema con validadora visto que se encontraba apagada, se realiza procedimientos de reset sin exito, se verifican conexion sin resultado. Se solicita asistencia",
         "zona": "IN BAR"
@@ -9492,6 +10121,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "se lo guía por no poder ingresar, el cliente no comprende mucho la operatoria y luego de no poder abrir el shutter verificamos que esta apagada la recontadora, se lo guia para verificar conexiones y se reinicia equipo,al encender abre el shutter, retira atasco y prueba deposito,queda operativa",
         "zona": "IN BAR"
@@ -9512,6 +10142,7 @@
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
+        "esDerivacionMonitoreo": false,
         "categoria": "Soporte Remoto",
         "observaciones": "No se logra ingresar al equipo a pesar de reiniciar el router. Se reinicia el equipo y la falla persiste. Se envía mail a la delegación solicitando asistencia.",
         "zona": "IN BAR"
@@ -9522,17 +10153,18 @@
         "concepto": "SERVICE CALL",
         "codCierre": "DERIV",
         "cierreInfo": {
-          "desc": "Derivado de Mesa Cash Today al Servicio Técnico",
+          "desc": "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)",
           "tipo": "MESA_CTD",
           "esRemoto": true,
           "esCampo": false,
           "color": "cyan"
         },
-        "tecnico": "SIN ASIGNAR",
+        "tecnico": "Monitoreo / Mesa de Servicios",
         "tuvoTecnico": false,
         "esSoporteRemoto": true,
         "esVisitaCampo": false,
-        "categoria": "Soporte Remoto",
+        "esDerivacionMonitoreo": true,
+        "categoria": "Derivación Monitoreo",
         "observaciones": "Cliente se comunica por problema con validadora visto que se encontraba apagada, se realiza procedimientos de reset sin exito, se verifican conexion sin resultado. Se solicita asistencia",
         "zona": "IN BAR"
       }

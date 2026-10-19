@@ -22,7 +22,7 @@ const codigosCierre = {
   "PPH": { desc: "Pendiente", tipo: "PENDIENTE", esRemoto: false, esCampo: true, color: "slate" },
   "PSUP": { desc: "Pendiente Supervisor", tipo: "SUPERVISION", esRemoto: false, esCampo: true, color: "red" },
   "SPRSI": { desc: "Supervisor sin ir", tipo: "SUPERVISION", esRemoto: true, esCampo: false, color: "red" },
-  "DERIV": { desc: "Derivado de Mesa Cash Today al Servicio Técnico", tipo: "MESA_CTD", esRemoto: true, esCampo: false, color: "cyan" },
+  "DERIV": { desc: "Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)", tipo: "MESA_CTD", esRemoto: true, esCampo: false, color: "cyan" },
   "MONITOREO": { desc: "Mesa de Servicios Cash Today (Soporte Remoto)", tipo: "REMOTO", esRemoto: true, esCampo: false, color: "teal" },
   "TELCA": { desc: "Cierre Telefónico / Remoto Exitoso", tipo: "REMOTO", esRemoto: true, esCampo: false, color: "teal" },
   "TELCA2": { desc: "Cierre Telefónico / Remoto Exitoso (Mesa CTD)", tipo: "REMOTO", esRemoto: true, esCampo: false, color: "teal" },
@@ -289,17 +289,23 @@ function loadSuspendidosFile(filePath, defaultZona) {
     const fecha = parseDateAny(r['FECHAFIN'] || r['MARCA FIN'] || r['FECHAALTA'] || '2026-02-28');
     const zona = String(r['ZONA'] || r['ZONALOCAL'] || defaultZona).trim();
 
+    const isDeriv = codCierre === 'DERIV';
     const infoCierre = codigosCierre[codCierre] || { 
-      desc: codCierre || 'Cerrado', 
-      tipo: 'GENERICO', 
-      esRemoto: ['TELCA', 'TELCA2', 'TELCA3', 'TELFA', 'MONITOREO'].includes(codCierre),
-      esCampo: !['TELCA', 'TELCA2', 'TELCA3', 'TELFA', 'MONITOREO'].includes(codCierre),
-      color: 'slate' 
+      desc: isDeriv 
+        ? 'Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)'
+        : (codCierre || 'Cerrado'), 
+      tipo: isDeriv ? 'MESA_CTD' : 'GENERICO', 
+      esRemoto: ['TELCA', 'TELCA2', 'TELCA3', 'TELFA', 'MONITOREO', 'DERIV'].includes(codCierre),
+      esCampo: !['TELCA', 'TELCA2', 'TELCA3', 'TELFA', 'MONITOREO', 'DERIV'].includes(codCierre),
+      color: isDeriv ? 'cyan' : 'slate' 
     };
 
-    const esSoporteRemoto = infoCierre.esRemoto || ['TELCA', 'TELCA2', 'TELCA3', 'TELFA', 'MONITOREO'].includes(codCierre);
+    const esSoporteRemoto = infoCierre.esRemoto || ['TELCA', 'TELCA2', 'TELCA3', 'TELFA', 'MONITOREO', 'DERIV'].includes(codCierre);
     const tuvoTecnico = tec && tec !== '-' && tec !== '0' && tec.toLowerCase() !== 'sin asignar';
     const esVisitaCampo = tuvoTecnico && !esSoporteRemoto;
+    const tecFinal = isDeriv && (!tuvoTecnico || !tec)
+      ? 'Monitoreo / Mesa de Servicios'
+      : (tec || (esSoporteRemoto ? 'Mesa Soporte Remoto' : 'Sin Asignar'));
 
     if (!suspendidosHistoryMap.has(luno)) {
       suspendidosHistoryMap.set(luno, []);
@@ -311,11 +317,12 @@ function loadSuspendidosFile(filePath, defaultZona) {
       concepto: cpto || 'SERVICE CALL',
       codCierre,
       cierreInfo: infoCierre,
-      tecnico: tec || 'Mesa Soporte Remoto',
+      tecnico: tecFinal,
       tuvoTecnico,
       esSoporteRemoto,
       esVisitaCampo,
-      categoria: esSoporteRemoto ? 'Soporte Remoto' : 'Visita de Campo',
+      esDerivacionMonitoreo: isDeriv,
+      categoria: isDeriv ? 'Derivación Monitoreo' : (esSoporteRemoto ? 'Soporte Remoto' : 'Visita de Campo'),
       observaciones: obs,
       zona
     });
@@ -1019,13 +1026,40 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
     // Check if this coordinated order was previously suspended on this equipment
     const suspMatch = historialTotal.find(h => h.pedido === cleanPed);
     const esPedidoSuspendidoPrevio = !!suspMatch;
-    const suspensionPrevia = suspMatch ? {
-      pedido: suspMatch.pedido,
-      fecha: suspMatch.fecha,
-      codigoCierre: suspMatch.codCierre,
-      descCierre: suspMatch.cierreInfo?.desc || suspMatch.codCierre,
-      observaciones: suspMatch.observaciones,
-      tecnico: suspMatch.tecnico
+    let suspensionPrevia = null;
+    if (suspMatch) {
+      const isDeriv = suspMatch.codCierre === 'DERIV';
+      const tecPrevioRaw = suspMatch.tecnico || '';
+      const tecNormalizado = isDeriv && (!tecPrevioRaw || tecPrevioRaw.toUpperCase() === 'SIN ASIGNAR' || tecPrevioRaw === '-' || tecPrevioRaw === '0')
+        ? 'Monitoreo / Mesa de Servicios'
+        : (tecPrevioRaw || 'Sin Asignar');
+
+      suspensionPrevia = {
+        pedido: suspMatch.pedido,
+        fecha: suspMatch.fecha,
+        codigoCierre: suspMatch.codCierre,
+        descCierre: isDeriv 
+          ? 'Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)'
+          : (suspMatch.cierreInfo?.desc || suspMatch.codCierre),
+        observaciones: suspMatch.observaciones,
+        tecnico: tecNormalizado,
+        esDerivacionMonitoreo: isDeriv
+      };
+    }
+
+    // Pedido inmediatamente anterior en el equipo (Fuente de verdad: Si tuvo cierre DERIV fue atendido por Monitoreo y derivado al Servicio Técnico para visita presencial)
+    const ordenInmediataAnterior = historialTotal.length > 0 ? {
+      pedido: historialTotal[0].pedido,
+      fecha: historialTotal[0].fecha,
+      codigoCierre: historialTotal[0].codCierre,
+      descCierre: historialTotal[0].codCierre === 'DERIV'
+        ? 'Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)'
+        : (historialTotal[0].cierreInfo?.desc || historialTotal[0].codCierre),
+      tecnico: (historialTotal[0].codCierre === 'DERIV' && (!historialTotal[0].tecnico || historialTotal[0].tecnico.toUpperCase() === 'SIN ASIGNAR'))
+        ? 'Monitoreo / Mesa de Servicios'
+        : (historialTotal[0].tecnico || 'Sin Asignar'),
+      observaciones: historialTotal[0].observaciones,
+      esDerivacionMonitoreo: historialTotal[0].codCierre === 'DERIV'
     } : null;
 
     // True SLA remaining hours calculation without forcing 1h on expired tickets
@@ -1071,6 +1105,7 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       repuestosHistoricos: lunoToRepuestosMap.get(luno) || [],
       esPedidoSuspendidoPrevio,
       suspensionPrevia,
+      ordenInmediataAnterior,
       origenFlujo,
       esScVigente,
       alertaSinAsignar: isSinAsignar,

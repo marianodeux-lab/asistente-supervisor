@@ -106,7 +106,7 @@ export interface Ticket {
   direccionReal?: string;
   localidadReal?: string;
 
-  // Resumed / Previously Suspended Ticket Detection
+  // Resumed / Previously Suspended Ticket Detection & Monitoreo Derivations
   esPedidoSuspendidoPrevio?: boolean;
   suspensionPrevia?: {
     codCierre?: string;
@@ -117,6 +117,16 @@ export interface Ticket {
     tecnico?: string;
     obs?: string;
     observaciones?: string;
+    esDerivacionMonitoreo?: boolean;
+  } | null;
+  ordenInmediataAnterior?: {
+    pedido?: string;
+    fecha?: string;
+    codigoCierre?: string;
+    descCierre?: string;
+    tecnico?: string;
+    observaciones?: string;
+    esDerivacionMonitoreo?: boolean;
   } | null;
 
   // MP Quality & Labor Time (T Asis)

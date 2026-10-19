@@ -112,6 +112,14 @@
  *      y sus técnicos asignados (Florencia Torres, Pablo Fernando Ibañez, Leonardo Lazzaro).
  *    - Todo registro perteneciente a otras zonas (Mendoza, San Luis, San Rafael, Córdoba, etc.) se
  *      desestima automáticamente por quedar fuera del control y supervisión operativa.
+ * 
+ * 11. CIERRES DERIV (DERIVACIONES DE MONITOREO A SERVICIO TÉCNICO PRESENCIAL):
+ *    - Si el pedido inmediatamente anterior en el equipo tuvo un cierre 'DERIV', indica
+ *      que fue atendido remotamente por Monitoreo / Mesa de Servicios (Cash Today) y
+ *      derivado al Servicio Técnico para una visita presencial en sitio.
+ *    - En estos casos, el técnico previo no debe figurar como 'SIN ASIGNAR' en forma genérica,
+ *      sino consignar que fue atendido por 'Monitoreo / Mesa de Servicios' y derivado al Servicio
+ *      Técnico para su atención presencial en sitio.
  * ═══════════════════════════════════════════════════════════════════════════════════
  */
 
@@ -504,6 +512,21 @@ export const TELCA_CLOSURES = ['TELCA', 'TELCA2', 'TELCA3', 'TELFA', 'MONITOREO'
 /** Cierres excluidos del reporte de Suspendidos (no son fallas suspendidas en campo) */
 export const SUSPENDIDOS_EXCLUDED_CLOSURES = [...TELCA_CLOSURES, 'DERIV'] as const;
 
+/**
+ * REGLA CANÓNICA: CIERRE DERIV (DERIVACIÓN DE MONITOREO A SERVICIO TÉCNICO)
+ * Si el pedido inmediatamente anterior tuvo un cierre DERIV es porque fue atendido por Monitoreo
+ * y derivado al Servicio Técnico (visita presencial).
+ */
+export const DERIV_CLOSURE_RULE = {
+  codigo: 'DERIV',
+  descripcion: 'Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)',
+  atendidoPor: 'Monitoreo / Mesa de Servicios',
+  destino: 'Servicio Técnico (Visita Presencial a Campo)',
+  esRemoto: true,
+  esVisitaCampo: false,
+  significado: 'Atención realizada por la Mesa de Monitoreo que no pudo resolverse en forma remota y fue derivada al Servicio Técnico para una visita presencial en sitio.'
+} as const;
+
 /** Regiones supervisadas */
 export const VALID_REGIONS = ['PATAGONIA', 'SUROESTE'] as const;
 
@@ -880,6 +903,7 @@ export default {
   SLA_VALID_CLOSURES,
   TELCA_CLOSURES,
   SUSPENDIDOS_EXCLUDED_CLOSURES,
+  DERIV_CLOSURE_RULE,
   VALID_REGIONS,
   REINCIDENCIAS_RULES,
   MP_RULES

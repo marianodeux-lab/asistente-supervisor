@@ -24,6 +24,19 @@ export const SUSPENDIDOS_EXCLUDED_CLOSURES = [...TELCA_CLOSURES, 'DERIV'] as con
 /** Cierres de derivación (no son visitas de campo) */
 export const DERIVACION_CLOSURES = ['DERIV'] as const;
 
+/** 
+ * Regla canónica para cierres DERIV:
+ * Si el pedido inmediatamente anterior tuvo un cierre DERIV es porque fue atendido
+ * por Monitoreo y derivado al Servicio Técnico (visita presencial).
+ */
+export const DERIV_CLOSURE_INFO = {
+  codigo: 'DERIV',
+  descripcion: 'Atendido por Monitoreo y Derivado a Servicio Técnico (Visita Presencial)',
+  canal: 'Monitoreo / Mesa de Servicios',
+  destino: 'Servicio Técnico (Visita Presencial en Sitio)',
+  significado: 'Atención previa realizada por Monitoreo que requirió derivación al Servicio Técnico para asistencia presencial.'
+} as const;
+
 // ═══════════════════════════════════════════════════════════════
 // REGIONAL BOUNDARIES (Zonas y Regiones)
 // ═══════════════════════════════════════════════════════════════
