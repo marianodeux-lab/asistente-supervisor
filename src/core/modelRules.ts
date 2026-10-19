@@ -110,6 +110,16 @@ export function getNegocioForModel(fabricante: string, modelo: string, mpcr: str
   if (normFab === 'glory' || normFab === 'snbc' || normFab === 'cima' || normFab === 'kisan' || normFab === 'mei' || normFab === 'gunnebo') {
     return 'Cash Today';
   }
+  if (
+    normMod.includes('snbc') || normMod.includes('cte') || normMod.includes('cti') || 
+    normMod.includes('glory') || normMod.includes('p500') || normMod.includes('p1000') || 
+    normMod.includes('p1001') || (normMod.includes('tas') && !normMod.includes('opteva')) ||
+    normMod.includes('cima') || normMod.includes('inlane') || normMod.includes('sdm') ||
+    normMod.includes('kisan') || normMod.includes('mei') || normMod.includes('pmini') ||
+    normMod.includes('gunnebo') || normMod.includes('robotizada')
+  ) {
+    return 'Cash Today';
+  }
   return 'ATM';
 }
 

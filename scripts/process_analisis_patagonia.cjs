@@ -104,10 +104,13 @@ function getDateInfo(val, fechaStrFallback) {
 
   if (d && !isNaN(d.getTime())) {
     const dayIndex = d.getUTCDay();
+    const monthNum = d.getUTCMonth() + 1;
     return {
       dia: DIAS_SEMANA[dayIndex],
       semana: getWeekNumber(d),
-      mes: MESES_NOMBRES[d.getUTCMonth() + 1] || 'Septiembre',
+      mes: monthNum,
+      mesNum: monthNum,
+      mesNombre: MESES_NOMBRES[monthNum] || 'Septiembre',
       finDeSemana: (dayIndex === 0 || dayIndex === 6) ? 'Sí' : 'No',
       ts: d.getTime()
     };
@@ -116,7 +119,9 @@ function getDateInfo(val, fechaStrFallback) {
   return {
     dia: 'miércoles',
     semana: 38,
-    mes: 'Septiembre',
+    mes: 9,
+    mesNum: 9,
+    mesNombre: 'Septiembre',
     finDeSemana: 'No',
     ts: 0
   };
@@ -205,7 +210,7 @@ function processSlaFile(filePath, isSuroeste = false) {
   const result = [];
   raw.forEach((r) => {
     const ped = String(r['Pedido'] || r['PEDIDO'] || '').trim();
-    if (!ped) return;
+    if (!ped || ped.toLowerCase().includes('total')) return;
 
     const rawZona = String(r['Zona'] || r['ZONA'] || '').trim();
     if (isSuroeste && !mySuroesteZones.has(rawZona)) {
@@ -241,6 +246,20 @@ function processSlaFile(filePath, isSuroeste = false) {
     const tecZona = String(r['Tecnico Zona'] || '').trim();
     const zonaLocal = resolveZonaLocal(rawZona, tecAsistio || tecZona);
 
+    const rawFechaAlta = r['Fecha Alta'] || r['FECHA ALTA'] || r['Fecha Cita'];
+    const rawHoraAlta = r['Hora Alta'] || r['HORA ALTA'] || '';
+    const marcaAltaStr = excelDateToString(rawFechaAlta, true, rawHoraAlta);
+
+    const rawFechaArribo = r['Fecha Arribo'] || r['FECHA ARRIBO'] || r['Fecha Inicio'] || r['FECHA INICIO'];
+    const rawHoraArribo = r['Hora Arribo'] || r['HORA ARRIBO'] || '';
+    const marcaInicioStr = excelDateToString(rawFechaArribo, true, rawHoraArribo);
+
+    const tiempoLabor = String(r['Tiempo Labor'] || r['Tiempo Neto SLA'] || r['TIEMPO LABOR'] || '').trim();
+    const difSincro = String(r['Demora Inicio'] || r['Adic Espera'] || r['Obs Adicional Espera'] || '').trim() || '-';
+    const detalleFalla = String(r['Falla Informada'] || r['Falla Encontrada'] || r['FALLA INFORMADA'] || '').trim();
+    const modelo = String(r['Modelo'] || r['MODELO'] || '').trim();
+    const obsControl = String(r['Observaciones'] || r['OBSERVACIONES'] || '').trim();
+
     const row = {
       id: `sla_${ped}`,
       PEDIDO: ped,
@@ -253,8 +272,16 @@ function processSlaFile(filePath, isSuroeste = false) {
       'ZONA LOCAL': zonaLocal,
       'TECNICO ASISTIO': tecAsistio,
       'TECNICO ZONA': tecZona,
+      'MARCA ALTA': marcaAltaStr || fechaFinStr,
+      'MARCA INICIO': marcaInicioStr || '-',
       'FECHA FIN': fechaFinStr,
       'MARCA FIN': marcaFinStr,
+      'TIEMPO DE ASISTENCIA': tiempoLabor || '-',
+      'Dif sincro': difSincro,
+      'DETALLE FALLA': detalleFalla || 'Falla Informada SLA',
+      MODELO: modelo || 'ATM',
+      MPCR: modelo || 'ATM',
+      'OBSERVACIONES CONTROL': obsControl || '-',
       'CODIGO CIERRE': String(r['Cod Cierre'] || r['CODIGOCIERRE'] || 'COMPL').trim(),
       'CUMPLIO SLA': cumplioSlaVal,
       'FALLA RECURRENTE': String(r['Falla Recurrente'] || 'N').trim().toUpperCase() === 'S' ? 'S' : 'N',
@@ -264,7 +291,8 @@ function processSlaFile(filePath, isSuroeste = false) {
       Stock: hasPart ? String(rawStock).trim() : 0,
       'Fin de semana': dateInfo.finDeSemana,
       Semana: dateInfo.semana,
-      Mes: dateInfo.mes,
+      Mes: dateInfo.mesNum,
+      'Nombre del mes': dateInfo.mesNombre,
       Día: dateInfo.dia
     };
     result.push(row);
@@ -282,15 +310,18 @@ if (fs.existsSync(fSlaPat)) {
 }
 
 // ==========================================
-// 2. PROCESAR SUSPENDIDOS (Excluyendo TELCA y DERIV, y mapeando repuestos desde SLA)
+// 2. PROCESAR SUSPENDIDOS Y EXTRAER TELCA
 // ==========================================
-console.log('⚙️ Procesando Reportes de Suspendidos...');
+console.log('⚙️ Procesando Reportes de Suspendidos y extrayendo Atenciones Remotas (TELCA)...');
 const fSuspPat = path.resolve(projectRoot, 'Reportes/Reporte Suspendidos Patagonia.xls');
 const fSuspSur = path.resolve(projectRoot, 'Reportes/Reporte Suspendidos Suroeste.xls');
 
 let suspendidosData = [];
+const extractedTelcaRows = [];
 let maxFechaFinSuspendidosTs = 0;
 let maxFechaFinSuspendidosStr = '16/09/2026';
+let maxFechaFinTelcaTs = 0;
+let maxFechaFinTelcaStr = '16/09/2026';
 
 function processSuspendidosFile(filePath, isSuroeste = false) {
   if (!fs.existsSync(filePath)) return [];
@@ -301,54 +332,111 @@ function processSuspendidosFile(filePath, isSuroeste = false) {
   const result = [];
   raw.forEach((r) => {
     const ped = String(r['PEDIDO'] || r['Pedido'] || '').trim();
-    if (!ped) return;
+    if (!ped || ped.toLowerCase().includes('total')) return;
 
-    // 1. Regla Fuente de Verdad: Excluir cierres TELCA, TELFA, MONITOREO y DERIV de Suspendidos
-    const codCierre = String(r['CODIGOCIERRE'] || r['Cod Cierre'] || '').trim().toUpperCase();
-    if (codCierre.startsWith('TELCA') || codCierre === 'TELFA' || codCierre.includes('MONITOREO') || codCierre === 'DERIV') {
-      return;
-    }
+    const rawZona = String(r['ZONA'] || r['Zona'] || '').trim();
+    const isMyZone = !isSuroeste || mySuroesteZones.has(rawZona);
 
-    // 3. Regla: Pedidos que tuvieron visitas de técnicos a campo
     const tecAsistio = String(r['TECNICOASISTIO'] || '').trim();
     const tecAsignado = String(r['TECNICO'] || '').trim();
     const tecZona = String(r['TECNICOZONA'] || '').trim();
     const tecFinal = tecAsistio || tecAsignado || tecZona;
 
-    // Excluir cierres sin técnico asignado/asistiendo (cierres de mesa o automáticos sin visita)
-    if (!tecFinal || tecFinal.toUpperCase() === 'SIN ASIGNAR') {
-      return;
-    }
-
-    const rawZona = String(r['ZONA'] || r['Zona'] || '').trim();
-    const isMyZone = !isSuroeste || mySuroesteZones.has(rawZona);
-    const isMyTech = myTechSet.has(tecFinal.toLowerCase()) ||
-                     (tecAsistio && myTechSet.has(tecAsistio.toLowerCase())) ||
-                     (tecAsignado && myTechSet.has(tecAsignado.toLowerCase()));
-
-    // Regla: Pedidos que tuvieron visitas de mis técnicos a cargo,
-    // o algún otro técnico atendiendo pedidos en la región de Patagonia o Suroeste que me compete
-    if (!isMyTech && !isMyZone) {
-      return;
-    }
+    const codCierre = String(r['CODIGOCIERRE'] || r['Cod Cierre'] || '').trim().toUpperCase();
 
     const rawFechaFin = r['FECHAFIN'] || r['FECHA FIN'] || r['Fecha Fin'] || r['MARCA FIN'];
     const rawHoraFin = r['HORAFIN'] || r['Hora Fin'] || '';
     const marcaFinStr = excelDateToString(rawFechaFin, true, rawHoraFin);
     const fechaFinStr = excelDateToString(rawFechaFin, false);
-
     const dateInfo = getDateInfo(rawFechaFin, fechaFinStr);
+
+    const rawFechaAlta = r['FECHAALTA'] || r['FECHA ALTA'];
+    const rawHoraAlta = r['HORAALTA'] || r['HORA ALTA'] || '';
+    const marcaAltaStr = excelDateToString(rawFechaAlta, true, rawHoraAlta);
+
+    const rawFechaInicio = r['FECHAINICIO'] || r['FECHALLEGADA'] || r['FECHA INICIO'];
+    const rawHoraInicio = r['HORAINICIO'] || r['HORALLEGADA'] || r['HORA INICIO'] || '';
+    const marcaInicioStr = excelDateToString(rawFechaInicio, true, rawHoraInicio);
+
+    const tiempoLabor = String(r['TIEMPODEASISTENCIA'] || r['TIEMPO DE ASISTENCIA'] || '').trim();
+    const detalleFalla = String(r['DETALLEFALLA'] || r['DETALLEPROBLEMA'] || r['PROBLEMAENCONTRADO'] || '').trim();
+    const modelo = String(r['MODELO'] || '').trim();
+    const obsControl = String(r['OBSERVACIONESCONTROL'] || '').trim();
+    const conceptoLlamada = String(r['CONCEPTOLLAMADA'] || r['TIPO'] || 'SERVICE CALL').trim();
+    const negocio = getNegocio(r);
+    const zonaLocal = resolveZonaLocal(rawZona, tecAsistio || tecAsignado || tecZona);
+
+    // 1. Si es cierre TELCA, TELFA o MONITOREO -> Extraer hacia Atenciones Remotas (analisisTelcaData)
+    if (codCierre.startsWith('TELCA') || codCierre === 'TELFA' || codCierre.includes('MONITOREO')) {
+      if (!isMyZone) return; // Solo zonas de supervisión para Suroeste (IN BAR, IN CIP, IN NQN)
+
+      if (dateInfo.ts > maxFechaFinTelcaTs) {
+        maxFechaFinTelcaTs = dateInfo.ts;
+        maxFechaFinTelcaStr = fechaFinStr;
+      }
+
+      const telcaRow = {
+        id: `telca_${ped}`,
+        PEDIDO: ped,
+        CLIENTE: String(r['CLIENTE'] || r['Cliente'] || '').trim(),
+        ATM: String(r['ATM'] || r['ATM ID'] || '').trim(),
+        DIRECCION: String(r['DIRECCION'] || r['Direccion'] || '').trim(),
+        LOCALIDAD: String(r['LOCALIDAD'] || r['Localidad'] || '').trim(),
+        PROVINCIA: String(r['PROVINCIA'] || r['Provincia'] || '').trim(),
+        ZONA: rawZona,
+        'ZONA LOCAL': zonaLocal,
+        'TECNICO ZONA': tecFinal,
+        'TECNICO ASISTIO': '',
+        'MARCA ALTA': marcaAltaStr || fechaFinStr,
+        FECHAALTA: excelDateToString(rawFechaAlta, false),
+        'FECHA FIN': fechaFinStr,
+        'MARCA FIN': marcaFinStr,
+        'TIEMPO DE ASISTENCIA': tiempoLabor || '-',
+        'Dif sincro': '-',
+        'DETALLE FALLA': detalleFalla || 'Atención Remota TELCA',
+        MODELO: modelo || 'Cash Today',
+        MPCR: modelo || 'Cash Today',
+        'OBSERVACIONES CONTROL': obsControl || '-',
+        'CODIGO CIERRE': codCierre,
+        'CONCEPTO LLAMADA': conceptoLlamada || 'TELCA',
+        'CUMPLIO SLA': 1,
+        'FALLA RECURRENTE': String(r['FALLARECURRENTE'] || r['Falla Recurrente'] || 'N').trim().toUpperCase() === 'S' ? 'S' : 'N',
+        NEGOCIO: negocio,
+        'Utiliza Repuesto': 'No',
+        Stock: 0,
+        'Fin de semana': dateInfo.finDeSemana,
+        Semana: dateInfo.semana,
+        Mes: dateInfo.mesNum,
+        'Nombre del mes': dateInfo.mesNombre,
+        Día: dateInfo.dia
+      };
+      extractedTelcaRows.push(telcaRow);
+      return;
+    }
+
+    if (codCierre === 'DERIV') {
+      return;
+    }
+
+    // 2. Pedidos presenciales con visita a campo
+    if (!tecFinal || tecFinal.toUpperCase() === 'SIN ASIGNAR') {
+      return;
+    }
+
+    const isMyTech = myTechSet.has(tecFinal.toLowerCase()) ||
+                     (tecAsistio && myTechSet.has(tecAsistio.toLowerCase())) ||
+                     (tecAsignado && myTechSet.has(tecAsignado.toLowerCase()));
+
+    if (!isMyTech && !isMyZone) {
+      return;
+    }
+
     if (dateInfo.ts > maxFechaFinSuspendidosTs) {
       maxFechaFinSuspendidosTs = dateInfo.ts;
       maxFechaFinSuspendidosStr = fechaFinStr;
     }
 
-    const negocio = getNegocio(r);
-
-    // Regla de Repuesto: Discrimina del reporte SLA donde figura si el pedido consumió parte
     const usedPartInSla = ordersWithStockInSla.has(ped);
-
-    const zonaLocal = resolveZonaLocal(rawZona, tecAsistio || tecAsignado || tecZona);
 
     const row = {
       id: `susp_${ped}`,
@@ -362,11 +450,19 @@ function processSuspendidosFile(filePath, isSuroeste = false) {
       'ZONA LOCAL': zonaLocal,
       'TECNICO ASISTIO': tecAsistio || tecAsignado,
       'TECNICO ZONA': tecZona,
-      FECHAALTA: excelDateToString(r['FECHAALTA'] || r['FECHA ALTA'], false),
+      'MARCA ALTA': marcaAltaStr || fechaFinStr,
+      FECHAALTA: excelDateToString(rawFechaAlta, false),
+      'MARCA INICIO': marcaInicioStr || '-',
       'FECHA FIN': fechaFinStr,
       'MARCA FIN': marcaFinStr,
       'CODIGO CIERRE': codCierre || 'COMPL',
-      'TIEMPO DE ASISTENCIA': excelDateToString(r['TIEMPODEASISTENCIA'] || r['TIEMPO DE ASISTENCIA']),
+      'TIEMPO DE ASISTENCIA': tiempoLabor || '-',
+      'Dif sincro': '-',
+      'DETALLE FALLA': detalleFalla || '-',
+      MODELO: modelo || 'ATM',
+      MPCR: modelo || 'ATM',
+      'OBSERVACIONES CONTROL': obsControl || '-',
+      'CONCEPTO LLAMADA': conceptoLlamada,
       'CUMPLIO SLA': (String(r['CUMPLIOSLASOLUCION']).toUpperCase() === 'S' || Number(r['CUMPLIOSLASOLUCION']) === 1) ? 1 : 0,
       'FALLA RECURRENTE': String(r['FALLARECURRENTE'] || r['Falla Recurrente'] || 'N').trim().toUpperCase() === 'S' ? 'S' : 'N',
       NEGOCIO: negocio,
@@ -374,7 +470,8 @@ function processSuspendidosFile(filePath, isSuroeste = false) {
       Stock: usedPartInSla ? 1 : 0,
       'Fin de semana': dateInfo.finDeSemana,
       Semana: dateInfo.semana,
-      Mes: dateInfo.mes,
+      Mes: dateInfo.mesNum,
+      'Nombre del mes': dateInfo.mesNombre,
       Día: dateInfo.dia
     };
     result.push(row);
@@ -395,18 +492,32 @@ if (fs.existsSync(fSuspPat)) {
 }
 
 // ==========================================
-// 3. MANTENER O PROCESAR CERRADOS TELCA
+// 3. MERGE Y ACTUALIZACIÓN CERRADOS TELCA
 // ==========================================
+console.log(`⚙️ Procesando TELCA: ${extractedTelcaRows.length} registros extraídos de los reportes 2026...`);
 let telcaData = [];
+const telcaMap = new Map();
+
 const existingTelcaPath = path.join(outDir, 'analisisTelcaData.json');
 if (fs.existsSync(existingTelcaPath)) {
   try {
-    telcaData = JSON.parse(fs.readFileSync(existingTelcaPath, 'utf8'));
-    console.log(`✅ Telca Data cargada (${telcaData.length} registros previos)`);
+    const prev = JSON.parse(fs.readFileSync(existingTelcaPath, 'utf8'));
+    prev.forEach(r => {
+      const p = String(r.PEDIDO || '').trim();
+      if (p && !p.toLowerCase().includes('total')) telcaMap.set(p, r);
+    });
+    console.log(`✅ Telca Data previa cargada: ${telcaMap.size} registros`);
   } catch (e) {
     console.warn('No se pudo leer analisisTelcaData.json previo');
   }
 }
+
+// Sobrescribir / agregar todos los registros 2026 extraídos de los reportes actuales
+extractedTelcaRows.forEach(r => {
+  const p = String(r.PEDIDO || '').trim();
+  if (p && !p.toLowerCase().includes('total')) telcaMap.set(p, r);
+});
+telcaData = Array.from(telcaMap.values()).filter(r => !String(r.PEDIDO || '').toLowerCase().includes('total'));
 
 // Guardar archivos JSON
 if (suspendidosData.length > 0) {
@@ -415,13 +526,17 @@ if (suspendidosData.length > 0) {
 if (slaData.length > 0) {
   fs.writeFileSync(path.join(outDir, 'analisisSlaData.json'), JSON.stringify(slaData));
 }
+if (telcaData.length > 0) {
+  fs.writeFileSync(path.join(outDir, 'analisisTelcaData.json'), JSON.stringify(telcaData));
+  console.log(`✅ Archivo analisisTelcaData.json guardado con éxito (${telcaData.length} registros totales)`);
+}
 
 // Guardar metadata
 const summary = {
-  fechaActualizacion: maxFechaFinSuspendidosStr || '16/09/2026',
-  fechaActualizacionSuspendidos: maxFechaFinSuspendidosStr || '16/09/2026',
-  fechaActualizacionSla: maxFechaFinSlaStr || '13/09/2026',
-  fechaActualizacionTelca: '16/09/2026',
+  fechaActualizacion: maxFechaFinSuspendidosStr || '18/10/2026',
+  fechaActualizacionSuspendidos: maxFechaFinSuspendidosStr || '18/10/2026',
+  fechaActualizacionSla: maxFechaFinSlaStr || '18/10/2026',
+  fechaActualizacionTelca: maxFechaFinTelcaStr || '18/10/2026',
   fuente: 'Reportes Activos (Patagonia & Suroeste)',
   totalSuspendidos: suspendidosData.length,
   totalSla: slaData.length,
@@ -433,4 +548,5 @@ const summary = {
 fs.writeFileSync(path.join(outDir, 'analisisMetadata.json'), JSON.stringify(summary, null, 2));
 
 console.log('🎉 Extracción y normalización de Análisis Atenciones completada con éxito!');
+console.log(summary);
 console.log(summary);

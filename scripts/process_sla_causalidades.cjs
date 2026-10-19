@@ -218,7 +218,7 @@ function processSlaOrders(filePath, regionName, isSuroeste = false) {
 
   raw.forEach(r => {
     const ped = String(r['Pedido'] || r['PEDIDO'] || '').trim();
-    if (!ped) return;
+    if (!ped || ped.toLowerCase().includes('total')) return;
 
     // Solo procesar pedidos VENCIDOS (Cumplio SLA TS = 0)
     const cumplioSla = Number(r['Cumplio SLA TS']);

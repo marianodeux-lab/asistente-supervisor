@@ -148,11 +148,20 @@ export const AnalisisPatagoniaView: React.FC = () => {
     return () => { isMounted = false; };
   }, [activeSubTab, suspendidosData.length, slaData.length, telcaData.length]);
 
-  // Current Active Raw Dataset
+  // Current Active Raw Dataset (excluyendo cualquier fila de Total o pie de página)
   const currentRawData = useMemo(() => {
-    if (activeSubTab === 'SUSPENDIDOS') return suspendidosData;
-    if (activeSubTab === 'SLA') return slaData;
-    return telcaData;
+    let list: AnalisisRow[] = [];
+    if (activeSubTab === 'SUSPENDIDOS') list = suspendidosData;
+    else if (activeSubTab === 'SLA') list = slaData;
+    else list = telcaData;
+
+    return list.filter(r => {
+      const p = String(r.PEDIDO || (r as any).Pedido || '').toLowerCase().trim();
+      const c = String(r.CLIENTE || (r as any).Cliente || '').toLowerCase().trim();
+      if (p === 'total' || p.startsWith('total') || p === '0' || p === '-') return false;
+      if (c === 'total' || c.startsWith('total')) return false;
+      return true;
+    });
   }, [activeSubTab, suspendidosData, slaData, telcaData]);
 
   // Reset page when tab changes
@@ -381,7 +390,16 @@ export const AnalisisPatagoniaView: React.FC = () => {
         const mRaw = r.Mes !== undefined && r.Mes !== '' ? String(r.Mes) : String(r['Nombre del mes'] || '');
         const sMesNorm = normalizeText(selectedMes);
         const mNorm = normalizeText(mRaw);
-        const matchMes = mNorm === sMesNorm || mRaw === selectedMes || (Number(mRaw) === Number(selectedMes));
+        const mNombreLookup = normalizeText(MESES_NOMBRES[mRaw] || '');
+        const sNombreLookup = normalizeText(MESES_NOMBRES[selectedMes] || '');
+        const matchMes = 
+          mNorm === sMesNorm || 
+          mRaw === selectedMes || 
+          (Number(mRaw) === Number(selectedMes) && !isNaN(Number(mRaw))) ||
+          mNombreLookup.includes(sMesNorm) ||
+          sNombreLookup.includes(mNorm) ||
+          mNorm.includes(sMesNorm) ||
+          sMesNorm.includes(mNorm);
         if (!matchMes) return false;
       }
 
@@ -1542,7 +1560,7 @@ export const AnalisisPatagoniaView: React.FC = () => {
             </div>
           ) : (
             <table className="w-full text-left border-collapse text-xs select-none">
-              <thead className="sticky top-0 z-20 bg-slate-100 text-slate-700 font-bold border-b border-slate-200 uppercase tracking-wider text-[10px] shadow-xs">
+              <thead className="sticky top-0 z-20 bg-slate-600 text-[#FFD300] font-bold border-b border-slate-500 uppercase tracking-wider text-[10px] shadow-xs">
                 <tr>
                   <th onClick={() => handleSort('PEDIDO')} className="py-3 px-3 cursor-pointer hover:text-teal-700 whitespace-nowrap">
                     <div className="flex items-center gap-1">
@@ -1608,16 +1626,16 @@ export const AnalisisPatagoniaView: React.FC = () => {
                   const dir = row.DIRECCION || row.Direccion || '-';
                   const loc = row.LOCALIDAD || row.Localidad || '-';
                   const tec = activeSubTab === 'TELCA' ? (row['TECNICO ZONA'] || row['Tecnico Zona'] || '-') : (row['TECNICO ASISTIO'] || row['Tecnico Asig'] || row['TECNICO ZONA'] || '-');
-                  const mAlta = row['MARCA ALTA'] || row['Fecha Alta'] || '-';
-                  const mIni = row['MARCA INICIO'] || row['Marca Arribo'] || '-';
-                  const mFin = row['MARCA FIN'] || '-';
-                  const tAsist = row['TIEMPO DE ASISTENCIA'] || row['Tiempo Labor'] || '-';
-                  const difSinc = row['Dif sincro'] !== undefined ? row['Dif sincro'] : '-';
-                  const falla = row['DETALLE FALLA'] || row['Falla Informada'] || row['PROBLEMA ENCONTRADO'] || '-';
+                  const mAlta = row['MARCA ALTA'] || row['Fecha Alta'] || row.FECHAALTA || '-';
+                  const mIni = row['MARCA INICIO'] || row['Marca Arribo'] || row.FECHAINICIO || row.FECHALLEGADA || '-';
+                  const mFin = row['MARCA FIN'] || row['FECHA FIN'] || row.FECHAFIN || '-';
+                  const tAsist = row['TIEMPO DE ASISTENCIA'] || row['Tiempo Labor'] || row.TIEMPODEASISTENCIA || '-';
+                  const difSinc = row['Dif sincro'] !== undefined ? row['Dif sincro'] : (row['Demora Inicio'] || '-');
+                  const falla = row['DETALLE FALLA'] || row['Falla Informada'] || row['PROBLEMA ENCONTRADO'] || row.DETALLEFALLA || row.DETALLEPROBLEMA || '-';
                   const modelo = row.MODELO || row.Modelo || row.MPCR || '-';
-                  const obs = row['OBSERVACIONES CONTROL'] || row.Observaciones || '-';
-                  const codCierre = row['CODIGO CIERRE'] || row['Cod Cierre'] || '-';
-                  const concepto = row['CONCEPTO LLAMADA'] || row.Tipo || row.TIPO || '-';
+                  const obs = row['OBSERVACIONES CONTROL'] || row.Observaciones || row.OBSERVACIONESCONTROL || '-';
+                  const codCierre = row['CODIGO CIERRE'] || row['Cod Cierre'] || row.CODIGOCIERRE || '-';
+                  const concepto = row['CONCEPTO LLAMADA'] || row.Tipo || row.TIPO || row.CONCEPTOLLAMADA || '-';
                   const cumplioSla = row['CUMPLIO SLA'] !== undefined ? row['CUMPLIO SLA'] : row['Cumplio SLA TS'];
                   const recurrente = row['FALLA RECURRENTE'] || row['Falla Recurrente'] || 'N';
                   const utilizaRep = row['Utiliza Repuesto'] || (row['SOLICITUD REPUESTO'] === 'Sí' || (row.Stock && row.Stock !== 0) ? 'Sí' : 'No');

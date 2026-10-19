@@ -156,11 +156,36 @@ export function resolveEquipmentTaxonomy(marcaDescRaw: string, modeloDescRaw: st
   const marcaUpper = marca.toUpperCase();
   const modeloUpper = modelo.toUpperCase();
 
-  // 1. REGLA DE NEGOCIO PRIMARIA
+  // 1. REGLA DE NEGOCIO PRIMARIA (Identificación por Marca o Modelo intrínseco)
+  const isCtdByModel = 
+    modeloUpper.includes('SNBC') ||
+    modeloUpper.includes('CTE1') ||
+    modeloUpper.includes('CTE2') ||
+    modeloUpper.includes('CTI90') ||
+    modeloUpper.includes('CTI UL') ||
+    modeloUpper.includes('CTI COMPACT') ||
+    modeloUpper.includes('DI90S') ||
+    modeloUpper.includes('GLORY') ||
+    modeloUpper.includes('P500') ||
+    modeloUpper.includes('P1000') ||
+    modeloUpper.includes('P1001') ||
+    (modeloUpper.includes('TAS') && !modeloUpper.includes('OPTEVA')) ||
+    modeloUpper.includes('CIMA') ||
+    modeloUpper.includes('SDM500') ||
+    modeloUpper.includes('INLANE') ||
+    modeloUpper.includes('KISAN') ||
+    modeloUpper.includes('KD30') ||
+    modeloUpper.includes('PMINI') ||
+    modeloUpper.includes('MEI') ||
+    modeloUpper.includes('GUNNEBO') ||
+    modeloUpper.includes('ROBOTIZADA');
+
+  const isCrpByModel = modeloUpper.includes('CRP');
+
   let negocio: NegocioTipo = 'ATM';
-  if (marcaUpper.includes('SMART BOX') || marcaUpper.includes('SMARTBOX')) {
+  if (marcaUpper.includes('SMART BOX') || marcaUpper.includes('SMARTBOX') || isCtdByModel) {
     negocio = 'Cash Today';
-  } else if (marcaUpper.includes('CRP')) {
+  } else if (marcaUpper.includes('CRP') || isCrpByModel) {
     negocio = 'CRP';
   } else if (marcaUpper.includes('GUNNEBO')) {
     negocio = 'Cash Today';
@@ -265,12 +290,18 @@ export function resolveEquipmentTaxonomy(marcaDescRaw: string, modeloDescRaw: st
       modeloEstandar = 'GLORY TAS';
       mpcr = 'GLORY TAS';
       callRateTarget = 0.35;
-    } else if (marcaUpper.includes('GUNNEBO')) {
+    } else if (marcaUpper.includes('GUNNEBO') || modeloUpper.includes('GUNNEBO') || modeloUpper.includes('ROBOTIZADA')) {
       fabricante = 'GUNNEBO';
       modeloBase = 'CAJA ROBOTIZADA';
       modeloEstandar = 'Gunnebo Robotizada';
       mpcr = 'GUNNEBO';
       callRateTarget = 0.2;
+    } else if (modeloUpper.includes('SNBC')) {
+      fabricante = 'SNBC';
+      modeloBase = modelo;
+      modeloEstandar = modelo;
+      mpcr = 'CTI UL SNBC';
+      callRateTarget = 0.35;
     }
   } else {
     // Negocio: 'ATM'

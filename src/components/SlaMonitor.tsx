@@ -61,11 +61,17 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
   onSelectTicket,
   onOpenCronicoDetail
 }) => {
-  // Canonical daily agenda dataset: prioritize canonical agendaData.json (40 tickets with 23 assigned COT)
-  // Rejects any old historical bulk dump (> 200 items) that may have been cached in browser or cloud
+  // Canonical daily agenda dataset: prioritize canonical agendaData.json (updated from reports)
+  // Rejects any old historical bulk dump (> 200 items) or obsolete dates (e.g. from previous months)
   const tickets = useMemo(() => {
     if (propTickets && propTickets.length > 0 && propTickets.length <= 200) {
-      return propTickets;
+      const isStale = propTickets.every((t: any) => {
+        const f = t.fCoorDate || t.fechaCoordinada || '';
+        return !f.includes('/10/2026') && !f.includes('2026-10');
+      });
+      if (!isStale) {
+        return propTickets;
+      }
     }
     return agendaDataRaw as unknown as Ticket[];
   }, [propTickets]);
@@ -574,6 +580,47 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
     document.body.removeChild(link);
   };
 
+  const handleCardClick = (cardType: 'TOTAL' | 'COT' | 'CRITICAL' | 'MP_DEFICIENTE' | 'OK') => {
+    setCurrentPage(1);
+    setDateFilter('TODOS');
+    if (cardType === 'TOTAL') {
+      setSpecialFilter('ALL');
+      setSlaFilter('ALL');
+    } else if (cardType === 'COT') {
+      setSpecialFilter(prev => prev === 'ASIGNADO_COT' ? 'ALL' : 'ASIGNADO_COT');
+      setSlaFilter('ALL');
+    } else if (cardType === 'CRITICAL') {
+      setSlaFilter(prev => prev === 'CRITICAL' ? 'ALL' : 'CRITICAL');
+      setSpecialFilter('ALL');
+    } else if (cardType === 'MP_DEFICIENTE') {
+      setSpecialFilter(prev => prev === 'MP_DEFICIENTE' ? 'ALL' : 'MP_DEFICIENTE');
+      setSlaFilter('ALL');
+    } else if (cardType === 'OK') {
+      setSlaFilter(prev => prev === 'OK' ? 'ALL' : 'OK');
+      setSpecialFilter('ALL');
+    }
+    setTimeout(() => {
+      document.getElementById('agenda-table-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
+
+  const activeFilterName = useMemo(() => {
+    if (slaFilter === 'CRITICAL') return 'SLA Crítico / >85%';
+    if (slaFilter === 'OK') return 'En Término <65%';
+    if (slaFilter === 'WARNING') return 'SLA Advertencia 65-85%';
+    if (specialFilter === 'ASIGNADO_COT') return 'Asignados COT';
+    if (specialFilter === 'MP_DEFICIENTE') return 'MP Deficiente <30d';
+    if (specialFilter === 'SC_PENDIENTES_ASIGNADOS') return 'Pendientes Asignados COT';
+    if (specialFilter === 'SC_SIN_ASIGNAR') return 'Sin Asignar (Pat/Sur)';
+    if (specialFilter === 'MOVIL_S') return 'Informados al Móvil (M=S)';
+    if (specialFilter === 'SC_PENDIENTES') return 'SC Pendientes Región';
+    if (specialFilter === 'REINCIDENTE') return 'Reincidentes (R > 0)';
+    if (specialFilter === 'MP_PENDIENTE') return 'Con MP Pendiente';
+    if (specialFilter === 'ADICIONAL_PENDIENTE') return 'Con Adicional AIEC';
+    if (specialFilter === 'AIEC') return 'AIEC (Sin SLA)';
+    return null;
+  }, [slaFilter, specialFilter]);
+
   return (
     <div className="space-y-6">
       
@@ -582,12 +629,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         
         {/* CARD 1: TOTAL EN AGENDA */}
         <button
-          onClick={() => { setSpecialFilter('ALL'); setSlaFilter('ALL'); }}
-          className={`p-4 rounded-xl text-left border transition-all ${
+          onClick={() => handleCardClick('TOTAL')}
+          className={`p-4 rounded-xl text-left border transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] ${
             specialFilter === 'ALL' && slaFilter === 'ALL'
-              ? 'bg-[#f1f5f9] border-teal-600 ring-2 ring-teal-500/10 shadow-xs'
-              : 'bg-[#f1f5f9] border-slate-300 hover:border-slate-400 shadow-xs'
+              ? 'bg-teal-50/50 border-teal-600 ring-2 ring-teal-500/20 shadow-sm'
+              : 'bg-[#f1f5f9] border-slate-300 hover:border-slate-400 hover:shadow-xs'
           }`}
+          title="Ver todos los pedidos de la agenda unificada"
         >
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider">Total en Agenda</span>
@@ -606,13 +654,18 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
             <div 
               onClick={(e) => {
                 e.stopPropagation();
-                setSpecialFilter('SC_PENDIENTES_ASIGNADOS');
+                setCurrentPage(1);
+                setDateFilter('TODOS');
+                setSpecialFilter(prev => prev === 'SC_PENDIENTES_ASIGNADOS' ? 'ALL' : 'SC_PENDIENTES_ASIGNADOS');
                 setSlaFilter('ALL');
+                setTimeout(() => {
+                  document.getElementById('agenda-table-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
               }}
               className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
                 specialFilter === 'SC_PENDIENTES_ASIGNADOS' ? 'bg-emerald-100 text-emerald-900 font-bold border border-emerald-300' : 'text-emerald-800 bg-emerald-50 hover:bg-emerald-100/70 border border-emerald-200'
               }`}
-              title="Pedidos de los reportes pendientes que ya figuran asignados en la agenda de campo"
+              title="Filtrar pedidos de los reportes pendientes que ya figuran asignados en la agenda de campo"
             >
               <span className="flex items-center gap-1 font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
@@ -625,8 +678,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
             <div 
               onClick={(e) => {
                 e.stopPropagation();
-                setSpecialFilter('SC_SIN_ASIGNAR');
+                setCurrentPage(1);
+                setDateFilter('TODOS');
+                setSpecialFilter(prev => prev === 'SC_SIN_ASIGNAR' ? 'ALL' : 'SC_SIN_ASIGNAR');
                 setSlaFilter('ALL');
+                setTimeout(() => {
+                  document.getElementById('agenda-table-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
               }}
               className={`flex items-center justify-between px-1.5 py-0.5 rounded cursor-pointer transition ${
                 specialFilter === 'SC_SIN_ASIGNAR' ? 'bg-rose-100 text-rose-900 font-bold border border-rose-300' : 'text-rose-800 bg-rose-50 hover:bg-rose-100/70 border border-rose-200'
@@ -644,12 +702,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
         {/* CARD 2: ASIGNADOS FLOW COT */}
         <button
-          onClick={() => { setSpecialFilter('ASIGNADO_COT'); setSlaFilter('ALL'); }}
-          className={`p-4 rounded-xl text-left border transition-all ${
+          onClick={() => handleCardClick('COT')}
+          className={`p-4 rounded-xl text-left border transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] ${
             specialFilter === 'ASIGNADO_COT'
-              ? 'bg-[#f1f5f9] border-teal-600 ring-2 ring-teal-500/10 shadow-xs'
-              : 'bg-[#f1f5f9] border-slate-300 hover:border-slate-400 shadow-xs'
+              ? 'bg-teal-50/60 border-teal-600 ring-2 ring-teal-500/30 shadow-md'
+              : 'bg-[#f1f5f9] border-slate-300 hover:border-slate-400 hover:shadow-xs'
           }`}
+          title="Filtrar pedidos asignados en agenda de campo de la supervisión"
         >
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider">Asignados COT</span>
@@ -662,7 +721,20 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
           </div>
 
           <div className="mt-2 pt-1.5 border-t border-slate-200 text-[10px] space-y-0.5 text-slate-600">
-            <div className="flex items-center justify-between">
+            <div 
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentPage(1);
+                setDateFilter('TODOS');
+                setSpecialFilter(prev => prev === 'MOVIL_S' ? 'ALL' : 'MOVIL_S');
+                setSlaFilter('ALL');
+                setTimeout(() => {
+                  document.getElementById('agenda-table-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+              }}
+              className="flex items-center justify-between hover:bg-slate-200/60 p-0.5 rounded cursor-pointer transition"
+              title="Filtrar pedidos con móvil confirmado M='S'"
+            >
               <span>Informados al móvil:</span>
               <span className="text-[10px] text-teal-800 font-mono font-bold">M = 'S' ({movilSCount})</span>
             </div>
@@ -672,12 +744,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
         {/* CARD 3: SLA CRÍTICO / >85% */}
         <button
-          onClick={() => { setSlaFilter('CRITICAL'); setSpecialFilter('ALL'); }}
-          className={`p-4 rounded-xl text-left border transition-all ${
+          onClick={() => handleCardClick('CRITICAL')}
+          className={`p-4 rounded-xl text-left border transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] ${
             slaFilter === 'CRITICAL'
-              ? 'bg-[#f1f5f9] border-rose-400 ring-2 ring-rose-400/10 shadow-xs'
-              : 'bg-[#f1f5f9] border-slate-300 hover:border-slate-400 shadow-xs'
+              ? 'bg-rose-50/60 border-rose-500 ring-2 ring-rose-500/30 shadow-md'
+              : 'bg-[#f1f5f9] border-slate-300 hover:border-slate-400 hover:shadow-xs'
           }`}
+          title="Filtrar pedidos con SLA Crítico (consumo mayor al 85% o menos de 2h restantes)"
         >
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-rose-800 uppercase tracking-wider">SLA Crítico / &gt;85%</span>
@@ -691,12 +764,13 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
         {/* CARD 4: RIESGO MP DEFICIENTE (< 30 DÍAS) */}
         <button
-          onClick={() => { setSpecialFilter('MP_DEFICIENTE'); setSlaFilter('ALL'); }}
-          className={`p-4 rounded-xl text-left border transition-all ${
+          onClick={() => handleCardClick('MP_DEFICIENTE')}
+          className={`p-4 rounded-xl text-left border transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] ${
             specialFilter === 'MP_DEFICIENTE'
-              ? 'bg-[#f1f5f9] border-amber-400 ring-2 ring-amber-400/10 shadow-xs'
-              : 'bg-[#f1f5f9] border-slate-300 hover:border-slate-400 shadow-xs'
+              ? 'bg-amber-50/60 border-amber-500 ring-2 ring-amber-500/30 shadow-md'
+              : 'bg-[#f1f5f9] border-slate-300 hover:border-slate-400 hover:shadow-xs'
           }`}
+          title="Filtrar pedidos con falla ocurrida a menos de 30 días del preventivo cerrado"
         >
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-amber-800 uppercase tracking-wider">MP Deficiente</span>
@@ -713,18 +787,19 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
 
         {/* CARD 5: EN TÉRMINO <65% */}
         <button
-          onClick={() => { setSlaFilter('OK'); setSpecialFilter('ALL'); }}
-          className={`p-4 rounded-xl text-left border transition-all ${
+          onClick={() => handleCardClick('OK')}
+          className={`p-4 rounded-xl text-left border transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] ${
             slaFilter === 'OK'
-              ? 'bg-[#f1f5f9] border-teal-600 ring-2 ring-teal-500/10 shadow-xs'
-              : 'bg-[#f1f5f9] border-slate-300 hover:border-slate-400 shadow-xs'
+              ? 'bg-emerald-50/60 border-emerald-600 ring-2 ring-emerald-500/30 shadow-md'
+              : 'bg-[#f1f5f9] border-slate-300 hover:border-slate-400 hover:shadow-xs'
           }`}
+          title="Filtrar pedidos con SLA en rango seguro (<65% consumido)"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-teal-800 uppercase tracking-wider">En Término &lt;65%</span>
-            <CheckCircle2 className="w-4 h-4 text-teal-600" />
+            <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider">En Término &lt;65%</span>
+            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
           </div>
-          <p className="text-2xl font-black text-teal-800 mt-1">
+          <p className="text-2xl font-black text-emerald-800 mt-1">
             {tickets.filter(t => t.slaPorcentaje < 65).length}
           </p>
           <span className="text-[10px] text-slate-500 block mt-1">Operación en rango óptimo</span>
@@ -852,17 +927,17 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
             <div className="overflow-x-auto scrollbar-thin">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-slate-200/90 text-slate-800 border-b border-slate-300 font-bold uppercase tracking-wider text-[10px]">
-                    <th className="py-3 px-3">Técnico / Contratista</th>
-                    <th className="py-3 px-3">Marcaje (07-10 hs)</th>
-                    <th className="py-3 px-3">1° Horario</th>
-                    <th className="py-3 px-3">1° Pedido & Concepto</th>
-                    <th className="py-3 px-3">Cliente & Luno (ATM)</th>
-                    <th className="py-3 px-3">Dirección & Localidad</th>
-                    <th className="py-3 px-3 min-w-[180px]">Detalle Falla / Motivo</th>
-                    <th className="py-3 px-3">Estado & SLA</th>
-                    <th className="py-3 px-3 text-center">Agenda Hoy</th>
-                    <th className="py-3 px-3 text-right">Acción</th>
+                  <tr className="bg-slate-600 text-[#FFD300] border-b border-slate-500 font-bold uppercase tracking-wider text-[10px]">
+                    <th className="py-3 px-3 text-[#FFD300]">Técnico / Contratista</th>
+                    <th className="py-3 px-3 text-[#FFD300]">Marcaje (07-10 hs)</th>
+                    <th className="py-3 px-3 text-[#FFD300]">1° Horario</th>
+                    <th className="py-3 px-3 text-[#FFD300]">1° Pedido & Concepto</th>
+                    <th className="py-3 px-3 text-[#FFD300]">Cliente & Luno (ATM)</th>
+                    <th className="py-3 px-3 text-[#FFD300]">Dirección & Localidad</th>
+                    <th className="py-3 px-3 min-w-[180px] text-[#FFD300]">Detalle Falla / Motivo</th>
+                    <th className="py-3 px-3 text-[#FFD300]">Estado & SLA</th>
+                    <th className="py-3 px-3 text-center text-[#FFD300]">Agenda Hoy</th>
+                    <th className="py-3 px-3 text-right text-[#FFD300]">Acción</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 font-sans">
@@ -1541,11 +1616,23 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         
         {/* Table Header with Pagination size selector */}
         <div className="px-5 py-3.5 bg-slate-200/80 border-b border-slate-300 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <h3 className="text-sm font-bold text-slate-900">Pedidos en Agenda Diaria</h3>
             <span className="text-xs bg-slate-300/80 text-slate-800 px-2.5 py-0.5 rounded-full font-semibold">
               {filteredTickets.length} pedidos encontrados
             </span>
+            {activeFilterName && (
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-900 border border-teal-300 shadow-xs">
+                <span>Filtrando: <strong>{activeFilterName}</strong></span>
+                <button
+                  onClick={() => { setSpecialFilter('ALL'); setSlaFilter('ALL'); }}
+                  className="hover:bg-teal-200 text-teal-900 rounded-full w-4 h-4 flex items-center justify-center font-black ml-1 cursor-pointer transition"
+                  title="Quitar filtro y ver todos"
+                >
+                  ✕
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Page size selector */}
@@ -1573,16 +1660,16 @@ export const SlaMonitor: React.FC<SlaMonitorProps> = ({
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="bg-slate-200/90 text-slate-800 uppercase tracking-wider font-bold text-[10px] border-b border-slate-300">
-                <th className="py-3 px-4">Días última atención & R</th>
-                <th className="py-3 px-4">Pedido / Equipo & MP</th>
-                <th className="py-3 px-4">Cliente & Ubicación</th>
-                <th className="py-3 px-4">Técnico & Coordinación</th>
-                <th className="py-3 px-4">Detalle Falla & Alertas</th>
-                <th className="py-3 px-4">Estado / Móvil & Horario</th>
-                <th className="py-3 px-4">Stock / Repuesto</th>
-                <th className="py-3 px-4 text-right">Semáforo SLA</th>
-                <th className="py-3 px-3 text-center">Acción</th>
+              <tr className="bg-slate-600 text-[#FFD300] uppercase tracking-wider font-bold text-[10px] border-b border-slate-500">
+                <th className="py-3 px-4 text-[#FFD300]">Días última atención & R</th>
+                <th className="py-3 px-4 text-[#FFD300]">Pedido / Equipo & MP</th>
+                <th className="py-3 px-4 text-[#FFD300]">Cliente & Ubicación</th>
+                <th className="py-3 px-4 text-[#FFD300]">Técnico & Coordinación</th>
+                <th className="py-3 px-4 text-[#FFD300]">Detalle Falla & Alertas</th>
+                <th className="py-3 px-4 text-[#FFD300]">Estado / Móvil & Horario</th>
+                <th className="py-3 px-4 text-[#FFD300]">Stock / Repuesto</th>
+                <th className="py-3 px-4 text-right text-[#FFD300]">Semáforo SLA</th>
+                <th className="py-3 px-3 text-center text-[#FFD300]">Acción</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200 font-sans">

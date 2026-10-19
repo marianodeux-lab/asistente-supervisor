@@ -23,6 +23,12 @@ import {
 import { EquipoCronico, ZonaInfo } from '../types';
 import { formatExcelDate, isAtmEquipment } from '../utils/formatters';
 
+function subtractDaysIso(isoDate: string, days: number): string {
+  const d = new Date(isoDate + 'T12:00:00Z');
+  d.setUTCDate(d.getUTCDate() - days);
+  return d.toISOString().split('T')[0];
+}
+
 interface RecurrenceRadarProps {
   cronicos: EquipoCronico[];
   zonas: ZonaInfo[];
@@ -40,32 +46,38 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
   const [pageSize, setPageSize] = useState<number>(40);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // Date-to-Date Range States (Default to last 30 days of dataset: 2026-08-08 to 2026-09-07)
-  const [fechaDesde, setFechaDesde] = useState<string>('2026-08-08');
-  const [fechaHasta, setFechaHasta] = useState<string>('2026-09-07');
-  const [periodPreset, setPeriodPreset] = useState<'30D' | '60D' | '90D' | '2026' | '2025' | 'ALL' | 'CUSTOM'>('30D');
+  // Dynamically calculate latest date in dataset (defaults to 2026-10-18)
+  const maxAvailableDate = useMemo(() => {
+    let maxD = '2026-10-18';
+    for (const c of cronicos) {
+      const allEvents = c.todasFallas && c.todasFallas.length > 0 ? c.todasFallas : c.ultimasFallas || [];
+      for (const f of allEvents) {
+        if (f.rawDateIso && f.rawDateIso > maxD) {
+          maxD = f.rawDateIso;
+        }
+      }
+    }
+    return maxD;
+  }, [cronicos]);
+
+  // Date-to-Date Range States (Defaults dynamically to 60 days up to latest data: 2026-10-18)
+  const [fechaHasta, setFechaHasta] = useState<string>('2026-10-18');
+  const [fechaDesde, setFechaDesde] = useState<string>('2026-08-19');
+  const [periodPreset, setPeriodPreset] = useState<'30D' | '60D' | '90D' | '2026' | 'CUSTOM'>('60D');
   const [tipoAtencion, setTipoAtencion] = useState<'SOLO_CAMPO' | 'TODAS' | 'SOLO_TELCA2'>('SOLO_CAMPO');
 
-  const handleApplyPreset = (preset: '30D' | '60D' | '90D' | '2026' | '2025' | 'ALL') => {
+  const handleApplyPreset = (preset: '30D' | '60D' | '90D' | '2026') => {
     setPeriodPreset(preset);
+    const end = maxAvailableDate || '2026-10-18';
+    setFechaHasta(end);
     if (preset === '30D') {
-      setFechaDesde('2026-08-08');
-      setFechaHasta('2026-09-07');
+      setFechaDesde(subtractDaysIso(end, 30));
     } else if (preset === '60D') {
-      setFechaDesde('2026-07-08');
-      setFechaHasta('2026-09-07');
+      setFechaDesde(subtractDaysIso(end, 60));
     } else if (preset === '90D') {
-      setFechaDesde('2026-06-08');
-      setFechaHasta('2026-09-07');
+      setFechaDesde(subtractDaysIso(end, 90));
     } else if (preset === '2026') {
       setFechaDesde('2026-01-01');
-      setFechaHasta('2026-12-31');
-    } else if (preset === '2025') {
-      setFechaDesde('2025-01-01');
-      setFechaHasta('2025-12-31');
-    } else if (preset === 'ALL') {
-      setFechaDesde('2025-01-01');
-      setFechaHasta('2026-12-31');
     }
     setCurrentPage(1);
   };
@@ -263,27 +275,7 @@ export const RecurrenceRadar: React.FC<RecurrenceRadarProps> = ({
                   : 'bg-slate-950 border border-amber-500/30 text-amber-300 hover:bg-slate-800'
               }`}
             >
-              Año 2026
-            </button>
-            <button
-              onClick={() => handleApplyPreset('2025')}
-              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition ${
-                periodPreset === '2025'
-                  ? 'bg-amber-500 text-slate-950 shadow ring-1 ring-amber-400'
-                  : 'bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800'
-              }`}
-            >
-              Año 2025
-            </button>
-            <button
-              onClick={() => handleApplyPreset('ALL')}
-              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition ${
-                periodPreset === 'ALL'
-                  ? 'bg-amber-500 text-slate-950 shadow'
-                  : 'bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800'
-              }`}
-            >
-              Histórico Completo (2025-2026)
+              Año 2026 (Todo el período)
             </button>
           </div>
 

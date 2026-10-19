@@ -171,9 +171,20 @@ for (const item of slaFailuresMap.values()) {
   item.fallasSla.sort((a, b) => (b.rawDateIso || '').localeCompare(a.rawDateIso || ''));
 }
 
-// Default 60-day window: 2026-07-08 to 2026-09-07
-const defaultMin60dIso = '2026-07-08';
-const defaultMax60dIso = '2026-09-07';
+// Dynamic 60-day window calculated from the latest date in the SLA reports
+let maxDateIso = '2026-10-18';
+for (const item of slaFailuresMap.values()) {
+  for (const f of item.fallasSla) {
+    if (f.rawDateIso && f.rawDateIso > maxDateIso) {
+      maxDateIso = f.rawDateIso;
+    }
+  }
+}
+const maxDateObj = new Date(maxDateIso + 'T12:00:00Z');
+const minDateObj = new Date(maxDateObj.getTime() - 60 * 86400000);
+const defaultMin60dIso = minDateObj.toISOString().split('T')[0];
+const defaultMax60dIso = maxDateIso;
+console.log(`📅 Ventana móvil 60 días SLA: ${defaultMin60dIso} a ${defaultMax60dIso}`);
 
 // Load lunoToRepuestosMap, mpCerradosMap, zonasReferencia, baseInstalada, and agenda
 let lunoToRepMap = {};
@@ -296,19 +307,39 @@ function resolveZonaLocal(equipo, localidad, tecnicos, zonaDefault) {
 function isAtmEquipment(modelo, tipo) {
   const m = String(modelo || '').toUpperCase();
   const t = String(tipo || '').toUpperCase();
-  if (
+
+  const isCtd = 
     t.includes('SMART BOX') ||
+    t.includes('SMARTBOX') ||
+    t.includes('GUNNEBO') ||
     m.includes('SMART BOX') ||
     m.includes('SMARTBOX') ||
-    m.includes('CTI') || 
-    m.includes('CTE') || 
-    m.includes('KISAN') || 
-    m.includes('TAS') || 
-    m.includes('TDE') || 
-    m.includes('CASH') ||
     m.includes('SNBC') ||
-    m.includes('CIMA')
-  ) {
+    m.includes('CTE') || 
+    m.includes('CTI') || 
+    m.includes('DI90S') ||
+    m.includes('GLORY') || 
+    m.includes('P500') || 
+    m.includes('P1000') || 
+    m.includes('P1001') || 
+    (m.includes('TAS') && !m.includes('OPTEVA')) ||
+    m.includes('CIMA') || 
+    m.includes('SDM') || 
+    m.includes('INLANE') || 
+    m.includes('KISAN') || 
+    m.includes('KD30') || 
+    m.includes('MEI') || 
+    m.includes('PMINI') || 
+    m.includes('GUNNEBO') ||
+    m.includes('ROBOTIZADA') ||
+    m.includes('CASH');
+
+  // TDE y Opteva son exclusivamente ATM
+  if (m.includes('TDE') || m.includes('OPTEVA') || m.includes('CS280') || m.includes('CS285') || m.includes('CS2070')) {
+    return true;
+  }
+
+  if (isCtd) {
     return false; // Cash Today
   }
   return true; // Cajero Automático ATM

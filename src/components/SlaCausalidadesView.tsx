@@ -586,7 +586,7 @@ export const SlaCausalidadesView: React.FC = () => {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-100 text-slate-700 font-bold uppercase tracking-wider text-[10px] border-b border-slate-200">
+              <thead className="bg-slate-600 text-[#FFD300] font-bold uppercase tracking-wider text-[10px] border-b border-slate-500">
                 <tr>
                   <th className="py-3 px-3">Técnico</th>
                   <th className="py-3 px-3">Zona</th>
@@ -828,7 +828,7 @@ export const SlaCausalidadesView: React.FC = () => {
             {/* Scrollable table */}
             <div className="overflow-x-auto scrollbar-thin max-h-[700px]">
               <table className="w-full text-left text-xs border-collapse">
-                <thead className="bg-slate-100/95 sticky top-0 z-10 text-slate-700 font-bold uppercase tracking-wider text-[10px] border-b border-slate-200">
+                <thead className="bg-slate-600/95 sticky top-0 z-10 text-[#FFD300] font-bold uppercase tracking-wider text-[10px] border-b border-slate-500">
                   <tr>
                     <th onClick={() => handleSort('pedido')} className="py-3 px-3 cursor-pointer hover:text-teal-700 whitespace-nowrap">
                       <div className="flex items-center gap-1">

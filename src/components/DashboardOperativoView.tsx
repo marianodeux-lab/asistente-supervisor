@@ -1423,7 +1423,7 @@ export const DashboardOperativoView: React.FC = () => {
             {/* Full Spare Parts Table */}
             <div className="overflow-x-auto rounded-xl border border-slate-300">
               <table className="w-full text-xs text-left">
-                <thead className="bg-slate-100 text-slate-700 font-semibold uppercase tracking-wider border-b border-slate-200">
+                <thead className="bg-slate-600 text-[#FFD300] font-semibold uppercase tracking-wider border-b border-slate-500">
                   <tr>
                     <th className="py-3 px-3 text-center w-16">Rank</th>
                     <th 
@@ -1595,7 +1595,7 @@ export const DashboardOperativoView: React.FC = () => {
             {/* Clean Executive Table */}
             <div className="overflow-x-auto rounded-xl border border-slate-300">
               <table className="w-full text-xs text-left">
-                <thead className="bg-slate-100 text-slate-700 font-semibold uppercase tracking-wider border-b border-slate-200">
+                <thead className="bg-slate-600 text-[#FFD300] font-semibold uppercase tracking-wider border-b border-slate-500">
                   <tr>
                     <th 
                       onClick={() => {

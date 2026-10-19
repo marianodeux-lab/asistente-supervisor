@@ -326,6 +326,132 @@ loadSuspendidosFile(path.resolve(__dirname, '../Reportes/Reporte Suspendidos Pat
 loadSuspendidosFile(path.resolve(__dirname, '../Reportes/Reporte Suspendidos Suroeste.xls'), 'Suroeste');
 console.log(`✅ Suspendidos: ${suspendidosHistoryMap.size} Equipos con historial de intervenciones cargado (${cleanPedToLunoMap.size} pedidos mapeados a luno)`);
 
+// Función canónica para resolver taxonomía de equipos (Fuente de Verdad)
+function resolveEquipmentTaxonomy(marcaDescRaw, modeloDescRaw) {
+  const marca = (marcaDescRaw || '').trim();
+  const modelo = (modeloDescRaw || '').trim();
+  const marcaUpper = marca.toUpperCase();
+  const modeloUpper = modelo.toUpperCase();
+
+  const isCtdByModel = 
+    modeloUpper.includes('SNBC') ||
+    modeloUpper.includes('CTE1') ||
+    modeloUpper.includes('CTE2') ||
+    modeloUpper.includes('CTI90') ||
+    modeloUpper.includes('CTI UL') ||
+    modeloUpper.includes('CTI COMPACT') ||
+    modeloUpper.includes('DI90S') ||
+    modeloUpper.includes('GLORY') ||
+    modeloUpper.includes('P500') ||
+    modeloUpper.includes('P1000') ||
+    modeloUpper.includes('P1001') ||
+    (modeloUpper.includes('TAS') && !modeloUpper.includes('OPTEVA')) ||
+    modeloUpper.includes('CIMA') ||
+    modeloUpper.includes('SDM500') ||
+    modeloUpper.includes('INLANE') ||
+    modeloUpper.includes('KISAN') ||
+    modeloUpper.includes('KD30') ||
+    modeloUpper.includes('PMINI') ||
+    modeloUpper.includes('MEI') ||
+    modeloUpper.includes('GUNNEBO') ||
+    modeloUpper.includes('ROBOTIZADA');
+
+  const isCrpByModel = modeloUpper.includes('CRP');
+
+  let negocio = 'ATM';
+  if (marcaUpper.includes('SMART BOX') || marcaUpper.includes('SMARTBOX') || isCtdByModel) {
+    negocio = 'Cash Today';
+  } else if (marcaUpper.includes('CRP') || isCrpByModel) {
+    negocio = 'CRP';
+  } else if (marcaUpper.includes('GUNNEBO')) {
+    negocio = 'Cash Today';
+  }
+
+  let fabricante = 'Diebold Nixdorf';
+  let mpcr = 'OPTEVA';
+  let callRateTarget = 0.5;
+
+  if (negocio === 'CRP') {
+    fabricante = 'Prosegur CRP';
+    mpcr = 'CRP';
+    callRateTarget = 0.3;
+  } else if (negocio === 'Cash Today') {
+    if (modeloUpper.includes('CIMA') || modeloUpper.includes('SDM500') || modeloUpper.includes('INLANE')) {
+      fabricante = 'CIMA';
+      mpcr = 'CIMA';
+      callRateTarget = 0.35;
+    } else if (modeloUpper.includes('CTE1')) {
+      fabricante = 'SNBC';
+      mpcr = 'CTE1 SNBC';
+      callRateTarget = 0.35;
+    } else if (modeloUpper.includes('CTE2')) {
+      fabricante = 'SNBC';
+      mpcr = 'CTE2 SNBC';
+      callRateTarget = 0.35;
+    } else if (modeloUpper.includes('CTI90') || modeloUpper.includes('DI90S')) {
+      fabricante = 'SNBC';
+      mpcr = 'CTI90 SNBC';
+      callRateTarget = 0.35;
+    } else if (modeloUpper.includes('CTI UL') || modeloUpper.includes('CTI COMPACT') || modeloUpper.includes('SNBC')) {
+      fabricante = 'SNBC';
+      mpcr = 'CTI UL SNBC';
+      callRateTarget = 0.35;
+    } else if (modeloUpper.includes('GLORY') || modeloUpper.includes('P500') || modeloUpper.includes('P1000') || modeloUpper.includes('P1001')) {
+      fabricante = 'GLORY';
+      mpcr = modeloUpper.includes('P1000') ? 'GLORY P1000' : (modeloUpper.includes('P1001') ? 'GLORY P1001' : 'GLORY P500');
+      callRateTarget = 0.35;
+    } else if (modeloUpper.includes('KISAN') || modeloUpper.includes('KD30')) {
+      fabricante = 'KISAN';
+      mpcr = 'KISAN';
+      callRateTarget = 0.35;
+    } else if (modeloUpper.includes('PMINI') || modeloUpper.includes('MEI')) {
+      fabricante = 'MEI';
+      mpcr = 'MEI';
+      callRateTarget = 0.35;
+    } else if (modeloUpper.includes('TAS') || modeloUpper === 'TAS') {
+      fabricante = 'GLORY';
+      mpcr = 'GLORY TAS';
+      callRateTarget = 0.35;
+    } else if (marcaUpper.includes('GUNNEBO') || modeloUpper.includes('GUNNEBO') || modeloUpper.includes('ROBOTIZADA')) {
+      fabricante = 'GUNNEBO';
+      mpcr = 'GUNNEBO';
+      callRateTarget = 0.2;
+    }
+  } else {
+    // ATM
+    if (modeloUpper.includes('CS280') || modeloUpper.includes('CS285') || modeloUpper.includes('CS2070') || modeloUpper.includes('WINCOR')) {
+      fabricante = 'Wincor';
+      mpcr = 'WINCOR';
+    } else if (marcaUpper === 'GRG' || modeloUpper.includes('DT-7000') || modeloUpper.includes('CI8000') || modeloUpper.includes('GRG')) {
+      fabricante = 'GRG Banking';
+      if (modeloUpper.includes('H68') || modeloUpper.includes('68N') || modeloUpper.includes('68V')) mpcr = 'GRG H68';
+      else if (modeloUpper.includes('H34') || modeloUpper.includes('34N')) mpcr = 'GRG H34';
+      else if (modeloUpper.includes('H22') || modeloUpper.includes('22V') || modeloUpper.includes('22N')) mpcr = 'GRG H22';
+      else if (modeloUpper.includes('I21') || modeloUpper.includes('21')) mpcr = 'GRG H21';
+      else mpcr = 'GRG';
+    } else if (marcaUpper.includes('DIEBOLD NIXDORF') || modeloUpper.includes('DN200V')) {
+      fabricante = 'Diebold Nixdorf';
+      mpcr = modeloUpper.includes('DN200V') ? 'DN' : 'OPTEVA';
+    } else if (marcaUpper === 'TDE 4500' || modeloUpper.includes('TDE') || modeloUpper.includes('4533') || modeloUpper.includes('4534') || modeloUpper.includes('4535')) {
+      fabricante = 'Diebold Procomp';
+      mpcr = modeloUpper.includes('MI') ? 'TDE MI' : 'TDE';
+      callRateTarget = 0.3;
+    } else if (marcaUpper.includes('OPTEVA') || modeloUpper.includes('OPTEVA')) {
+      fabricante = 'Diebold Nixdorf';
+      if (modeloUpper.includes('868') || modeloUpper.includes('ECRM')) {
+        mpcr = 'OPTEVA ECRM';
+        callRateTarget = 0.7;
+      } else if (modeloUpper.includes('ENA') || modeloUpper.includes('IDM')) {
+        mpcr = 'OPTEVA MI';
+      } else {
+        mpcr = 'OPTEVA';
+      }
+    }
+  }
+
+  return { negocio, fabricante, mpcr, callRateTarget };
+}
+
 // 6. Map MP Pendientes per Luno
 const mpPendingByLuno = new Map(); // luno -> { pedido, detalleFalla, tecAsignado, esSinAsignar }
 function loadMpPending(filePath, zona) {
@@ -348,6 +474,11 @@ function loadMpPending(filePath, zona) {
       });
     }
 
+    const rawModelo = String(r['Modelo'] || r['MODELO'] || '').trim();
+    const rawTipo = String(r['TipoSeg'] || r['Tipo'] || '').trim();
+    const rawMarca = String(r['Marca'] || r['Fabricante'] || '').trim();
+    const tax = resolveEquipmentTaxonomy(rawMarca || rawTipo, rawModelo);
+
     return {
       pedido: ped,
       cliente: r['Cliente'] || r['CLIENTE'] || 'Cliente',
@@ -355,10 +486,11 @@ function loadMpPending(filePath, zona) {
       direccion: r['Direccion'] || r['DIRECCION'] || '',
       localidad: r['Localidad'] || r['LOCALIDAD'] || zona,
       tecnico: tecAsig,
-      modelo: r['Modelo'] || r['MODELO'] || 'ATM/CTD',
+      modelo: rawModelo || 'ATM/CTD',
       zona,
-      negocio: r['TipoSeg'] || 'ATM',
-      fabricante: r['Fabricante'] || 'Fabricante',
+      negocio: tax.negocio,
+      fabricante: tax.fabricante,
+      mpcr: tax.mpcr,
       detalleFalla: detalle,
       esSinAsignar
     };
@@ -451,10 +583,19 @@ function parseDateFormatted(val) {
   if (!val) return '';
   if (typeof val === 'number') {
     try {
+      const p = XLSX.SSF.parse_date_code(val);
+      if (p) {
+        const day = String(p.d).padStart(2, '0');
+        const month = String(p.m).padStart(2, '0');
+        const year = p.y;
+        return `${day}/${month}/${year}`;
+      }
+    } catch (e) {}
+    try {
       const d = new Date(Math.round((val - 25569) * 86400 * 1000));
-      const day = String(d.getDate()).padStart(2, '0');
-      const month = String(d.getMonth() + 1).padStart(2, '0');
-      const year = d.getFullYear();
+      const day = String(d.getUTCDate()).padStart(2, '0');
+      const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+      const year = d.getUTCFullYear();
       return `${day}/${month}/${year}`;
     } catch (e) {
       return '';
@@ -477,6 +618,14 @@ function toIsoDate(val) {
   if (!val && val !== 0) return '';
   const num = typeof val === 'number' ? val : (typeof val === 'string' && /^\d+(\.\d+)?$/.test(val.trim()) ? Number(val.trim()) : NaN);
   if (!isNaN(num) && num > 30000 && num < 70000) {
+    try {
+      const p = XLSX.SSF.parse_date_code(num);
+      if (p) {
+        const day = String(p.d).padStart(2, '0');
+        const month = String(p.m).padStart(2, '0');
+        return `${p.y}-${month}-${day}`;
+      }
+    } catch (e) {}
     const utcDays = num - 25569;
     const utcMs = utcDays * 86400 * 1000;
     const d = new Date(utcMs);
@@ -549,37 +698,32 @@ function loadMpCerrados(filePath) {
     const modeloMp = String(r['Modelo'] || '').toUpperCase();
     let tieneAlertaMp = false;
     let mensajeAlertaMp = '';
-    let umbralMinutos = 45;
+    let umbralMinutos = 60;
     let tipoEquipo = 'ATM';
 
-    if (modeloMp.includes('GLORY') || modeloMp.includes('CIMA')) {
+    // Reglas canónicas Fuente de Verdad:
+    // - < 40 minutos para SNBC
+    // - < 60 minutos para ATM, Glory y CIMA
+    if (modeloMp.includes('SNBC') || modeloMp.includes('CTE') || modeloMp.includes('CTI') || modeloMp.includes('DI90S')) {
+      umbralMinutos = 40;
+      tipoEquipo = 'SNBC';
+      if (minutosAsis > 0 && minutosAsis < 40) {
+        tieneAlertaMp = true;
+        mensajeAlertaMp = `⚠️ Tiempo MP insuficiente en SNBC (${minutosAsis} min vs mínimo requerido 40 min)`;
+      }
+    } else if (modeloMp.includes('GLORY') || modeloMp.includes('CIMA') || modeloMp.includes('SDM') || modeloMp.includes('INLANE')) {
       umbralMinutos = 60;
       tipoEquipo = 'GLORY_CIMA';
       if (minutosAsis > 0 && minutosAsis < 60) {
         tieneAlertaMp = true;
         mensajeAlertaMp = `⚠️ Tiempo MP insuficiente en Glory/CIMA (${minutosAsis} min vs mínimo requerido 60 min)`;
       }
-    } else if (
-      modeloMp.includes('CTI') || 
-      modeloMp.includes('CTE') || 
-      modeloMp.includes('KISAN') || 
-      modeloMp.includes('TAS') || 
-      modeloMp.includes('TDE') || 
-      modeloMp.includes('CASH') || 
-      modeloMp.includes('SNBC')
-    ) {
-      umbralMinutos = 30;
-      tipoEquipo = 'CASH_TODAY';
-      if (minutosAsis > 0 && minutosAsis < 30) {
-        tieneAlertaMp = true;
-        mensajeAlertaMp = `⚠️ Tiempo MP insuficiente en Cash Today (${minutosAsis} min vs mínimo requerido 30 min)`;
-      }
     } else {
-      umbralMinutos = 45;
+      umbralMinutos = 60;
       tipoEquipo = 'ATM';
-      if (minutosAsis > 0 && minutosAsis < 45) {
+      if (minutosAsis > 0 && minutosAsis < 60) {
         tieneAlertaMp = true;
-        mensajeAlertaMp = `⚠️ Tiempo MP insuficiente en ATM (${minutosAsis} min vs media de 45-60 min)`;
+        mensajeAlertaMp = `⚠️ Tiempo MP insuficiente en ATM (${minutosAsis} min vs estándar 60 min)`;
       }
     }
 
@@ -758,16 +902,21 @@ function parseAgendaSheet(filePath, tipoOrigen, defaultZona) {
       return null;
     }
 
-    // Filter Asignados: Only keep Mis Técnicos in Patagonia with M === 'S' (informados al móvil: 31 pedidos exactos)
+    // Filter Asignados: Only keep Mis Técnicos in Patagonia/Suroeste with M === 'S' in year 2026
     if (tipoOrigen === 'Asignados') {
       const isM_S = mValue === 'S';
-      const isMyPatTec = regTec === 'PATAGONIA' || lidReg === 'Hernandez, Marcos Alberto' || misTecnicosNombres.has(tecAsignado.toLowerCase());
-      if (!isM_S || !isMyPatTec) {
+      const isMyPatTec = misTecnicosNombres.has(tecAsignado.toLowerCase()) || misTecnicosNombres.has(tecZona.toLowerCase());
+      const isYear2026 = fCoorDate.includes('2026') || (r['Fecha Vto'] && String(r['Fecha Vto']).includes('2026'));
+      if (!isM_S || !isMyPatTec || !isYear2026) {
         return null;
       }
     }
 
-    // Filter Suroeste Pendientes: Strictly keep the 3 supervisor zones (IN BAR, IN CIP, IN NQN: 10 pedidos exactos)
+    // Filter Pendientes / Adicionales: discard obsolete 2019/2020 tickets
+    const isYear2026 = fCoorDate.includes('2026') || (r['Fecha Vto'] && String(r['Fecha Vto']).includes('2026')) || !fCoorDate;
+    if (!isYear2026) return null;
+
+    // Filter Suroeste Pendientes: Strictly keep the 3 supervisor zones (IN BAR, IN CIP, IN NQN)
     if (tipoOrigen === 'Suroeste' || defaultZona === 'Suroeste') {
       const isAllowedZone = allowedSuroesteZones.includes(rawZona) || 
                             allowedSuroesteZones.some(z => rawZona.toUpperCase().includes(z) || loc.toUpperCase().includes(z));
@@ -974,7 +1123,7 @@ if (fs.existsSync(path.resolve(__dirname, '../Reportes/Agenda Diaria/Asignados.x
   });
 }
 
-// 1. Asignados a técnicos con móvil (M='S'): exactamente 31 pedidos
+// 1. Asignados a técnicos con móvil (M='S'): exactamente asignados en COT
 const agendaAsignadosUnicos = agendaAsignados.map(t => ({
   ...t,
   id: `asig_${t.pedido}`,
@@ -982,77 +1131,76 @@ const agendaAsignadosUnicos = agendaAsignados.map(t => ({
   notificadoMovil: true
 }));
 
-// 2. Pendientes Patagonia (8) y Suroeste (10): exactamente 18 pedidos
-const agendaPendientesUnicos = [...agendaPatagonia, ...agendaSuroeste].map(t => {
+const asigByPedMap = new Map();
+agendaAsignadosUnicos.forEach(t => asigByPedMap.set(t.pedido, t));
+
+// 2. Pendientes Patagonia y Suroeste (IN BAR, IN CIP, IN NQN)
+// Si el pedido pendiente ya fue asignado en agenda de campo con M='S', se unifica enriqueciendo el ticket asignado para no duplicar filas
+const agendaPendientesUnicos = [];
+[...agendaPatagonia, ...agendaSuroeste].forEach(t => {
+  const existingAsig = asigByPedMap.get(t.pedido);
   const match = asigLookupMap.get(t.pedido);
-  const esAsignado = !!match;
-  const tecCot = match ? String(match['Tec Asignado'] || match['Tecnico'] || '').trim() : 'SIN ASIGNAR';
-  const mCot = match ? String(match['M'] || '').trim().toUpperCase() : 'N';
-  const estadoCot = match ? String(match['Estado'] || '').trim() : t.estado;
+  const esAsignado = !!match || !!existingAsig;
+  const tecCot = existingAsig ? existingAsig.tecnico : (match ? String(match['Tec Asignado'] || match['Tecnico'] || '').trim() : 'SIN ASIGNAR');
+  const mCot = existingAsig ? existingAsig.m : (match ? String(match['M'] || '').trim().toUpperCase() : 'N');
+  const estadoCot = existingAsig ? existingAsig.estado : (match ? String(match['Estado'] || '').trim() : t.estado);
   const cierreCot = match ? String(match['Cierre'] || '').trim() : '';
 
-  return {
-    ...t,
-    id: `pend_${t.pedido}`,
-    esPendiente: true,
-    esAsignadoEnCot: esAsignado,
-    tecAsignadoCot: tecCot,
-    mCot: mCot,
-    estadoCot: estadoCot,
-    cierreCot: cierreCot,
-    alertaSinAsignar: !esAsignado
-  };
+  if (existingAsig) {
+    existingAsig.esPendiente = true;
+    existingAsig.esAsignadoEnCot = true;
+    existingAsig.tecAsignadoCot = tecCot;
+    existingAsig.mCot = mCot;
+    existingAsig.estadoCot = estadoCot;
+    existingAsig.cierreCot = cierreCot;
+    existingAsig.alertaSinAsignar = false;
+  } else {
+    agendaPendientesUnicos.push({
+      ...t,
+      id: `pend_${t.pedido}`,
+      esPendiente: true,
+      esAsignadoEnCot: esAsignado,
+      tecAsignadoCot: tecCot,
+      mCot: mCot,
+      estadoCot: estadoCot,
+      cierreCot: cierreCot,
+      alertaSinAsignar: !esAsignado
+    });
+  }
 });
 
-// TOTAL EN AGENDA = 31 ASIGNADOS + 18 PENDIENTES = 49 PEDIDOS
+// TOTAL EN AGENDA UNIFICADA (Asignados COT + Pendientes sin duplicar)
 const unifiedAgenda = [...agendaAsignadosUnicos, ...agendaPendientesUnicos];
 
 fs.writeFileSync(path.join(outDir, 'agendaData.json'), JSON.stringify(unifiedAgenda, null, 2));
-const asignadosCotEnPendientes = agendaPendientesUnicos.filter(p => p.esAsignadoEnCot).length;
-const sinAsignarEnPendientes = agendaPendientesUnicos.filter(p => !p.esAsignadoEnCot).length;
-console.log(`✅ Agenda Diaria Unificada: ${unifiedAgenda.length} pedidos totales (31 Asignados Móvil + 18 Pendientes: ${asignadosCotEnPendientes} asignados en COT / ${sinAsignarEnPendientes} sin asignar)`);
+const asignadosCotTotal = unifiedAgenda.filter(p => p.esAsignadoCOT || p.esAsignadoEnCot).length;
+const sinAsignarEnAgenda = unifiedAgenda.filter(p => p.alertaSinAsignar).length;
+console.log(`✅ Agenda Diaria Unificada: ${unifiedAgenda.length} pedidos totales (${agendaAsignadosUnicos.length} Asignados Móvil + ${agendaPendientesUnicos.length} Pendientes únicos | ${asignadosCotTotal} asignados COT / ${sinAsignarEnAgenda} sin asignar)`);
 
-// 9. Generate Control de Inicio de Jornada Data (Primer Pedido del Día / Marcaje)
-let excelCI = [];
-const fileAgendaMaster = path.resolve(__dirname, '../Agenda Diaria.xlsx');
-if (fs.existsSync(fileAgendaMaster)) {
-  const wbAgenda = XLSX.readFile(fileAgendaMaster);
-  if (wbAgenda.Sheets['Control Inicio']) {
-    excelCI = XLSX.utils.sheet_to_json(wbAgenda.Sheets['Control Inicio'], { defval: '' });
-  }
-}
-
+// 9. Generate Control de Inicio de Jornada Data a partir de la Agenda Diaria Activa
 const controlInicioList = zonasListRef.map(tec => {
   const tecNorm = tec.nombre.toLowerCase().trim();
-  const matches = excelCI.filter(r => {
-    const t = String(r['TECNICO'] || r['Técnico'] || '').toLowerCase().trim();
-    return t === tecNorm || t.includes(tecNorm) || tecNorm.includes(t);
+
+  // Filtrar todos los pedidos de este técnico en la agenda diaria unificada
+  const techTickets = unifiedAgenda.filter(t => {
+    const tTec = (t.tecnico || '').toLowerCase().trim();
+    const tTecZ = (t.tecnicoZona || '').toLowerCase().trim();
+    return tTec === tecNorm || tTecZ === tecNorm || tTec.includes(tecNorm) || tecNorm.includes(tTec);
   });
 
-  const validRows = matches.filter(m => m.Cliente && m.Luno);
-  validRows.sort((a, b) => {
-    const hA = typeof a['Hora Coordinada'] === 'number' ? a['Hora Coordinada'] : 0.5;
-    const hB = typeof b['Hora Coordinada'] === 'number' ? b['Hora Coordinada'] : 0.5;
-    return hA - hB;
+  // Ordenar cronológicamente: fecha y hora coordinada
+  techTickets.sort((a, b) => {
+    const fA = a.fCoorDate || '';
+    const fB = b.fCoorDate || '';
+    if (fA !== fB) return fA.localeCompare(fB);
+    const hA = a.hCoor || '99:99';
+    const hB = b.hCoor || '99:99';
+    return hA.localeCompare(hB);
   });
 
-  const first = validRows.length > 0 ? validRows[0] : null;
-  const estadoStr = first ? String(first['Estado'] || '').trim() : (matches.length > 0 ? String(matches[0]['Estado'] || '') : 'Sin pedidos asignados');
+  const first = techTickets.length > 0 ? techTickets[0] : null;
+  const estadoStr = first ? first.estado : 'Sin pedidos asignados';
   const esAsistencia = estadoStr === 'SEG Asistencia' || estadoStr === 'SEG Control Final' || estadoStr === 'SEG Fin Asistencia';
-
-  let primerClienteReal = undefined;
-  let primerSucursalRelev = undefined;
-  if (first) {
-    const rawCli = String(first['Cliente'] || '').trim();
-    const rawObs = String(first['Observaciones'] || first['Detalle de falla'] || first['Detalle Falla'] || '');
-    if (/relevamiento/i.test(rawCli) || /cash today/i.test(rawCli) || /relevamiento/i.test(rawObs)) {
-      const parsedRelev = extractRelevamientoClient(rawObs);
-      if (parsedRelev) {
-        primerClienteReal = parsedRelev.clienteReal;
-        primerSucursalRelev = parsedRelev.sucursal;
-      }
-    }
-  }
 
   return {
     tecnico: tec.nombre,
@@ -1061,16 +1209,16 @@ const controlInicioList = zonasListRef.map(tec => {
     region: tec.region,
     tienePedidos: !!first,
     primerPedido: first ? {
-      pedido: String(first['Pedido'] || '').trim(),
-      concepto: String(first['Concepto'] || first['Cpto Llamada'] || 'SC').trim(),
-      cliente: String(first['Cliente'] || '').trim(),
-      clienteReal: primerClienteReal,
-      sucursalRelevamiento: primerSucursalRelev,
-      luno: String(first['Luno'] || '').trim(),
-      direccion: String(first['Direccion'] || '').trim(),
-      localidad: String(first['Localidad'] || '').trim(),
-      horaCoordinada: formatTimeStr(first['Hora Coordinada']),
-      fechaVto: String(first['Fecha Vto'] || '').trim(),
+      pedido: first.pedido,
+      concepto: first.concepto || (first.esAdicional ? 'AIEC' : 'SC'),
+      cliente: first.cliente,
+      clienteReal: first.clienteReal,
+      sucursalRelevamiento: first.sucursalRelevamiento,
+      luno: first.luno,
+      direccion: first.direccion,
+      localidad: first.localidad,
+      horaCoordinada: first.hCoor || '09:00',
+      fechaVto: first.fechaVencimiento,
       estado: estadoStr,
       cumplePrimerHorario: esAsistencia
     } : null,

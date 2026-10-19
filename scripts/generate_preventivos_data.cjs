@@ -57,12 +57,16 @@ function resolveEquipmentNegocio(modeloRaw, marcaRaw) {
 
 function resolveFabricante(modeloRaw) {
   const m = (modeloRaw || '').toUpperCase();
-  if (m.includes('GLORY') || m.includes('P500') || m.includes('P1000') || m.includes('P1001') || m.includes('TAS')) return 'GLORY';
+  if (m.includes('GLORY') || m.includes('P500') || m.includes('P1000') || m.includes('P1001') || (m.includes('TAS') && !m.includes('OPTEVA'))) return 'GLORY';
   if (m.includes('SNBC') || m.includes('CTI') || m.includes('CTE') || m.includes('DI90S')) return 'SNBC';
   if (m.includes('CIMA') || m.includes('INLANE') || m.includes('SDM500')) return 'CIMA';
+  if (m.includes('KISAN') || m.includes('KD30')) return 'KISAN';
+  if (m.includes('MEI') || m.includes('PMINI')) return 'MEI';
+  if (m.includes('GUNNEBO') || m.includes('ROBOTIZADA')) return 'GUNNEBO';
   if (m.includes('CS280') || m.includes('CS285') || m.includes('CS2070') || m.includes('WINCOR')) return 'Wincor';
-  if (m.includes('GRG') || m.includes('DT-7000') || m.includes('H22') || m.includes('H34') || m.includes('H68')) return 'GRG Banking';
-  if (m.includes('OPTEVA') || m.includes('DIEBOLD')) return 'Diebold Nixdorf';
+  if (m.includes('GRG') || m.includes('DT-7000') || m.includes('H22') || m.includes('H34') || m.includes('H68') || m.includes('I21')) return 'GRG Banking';
+  if (m.includes('TDE') || m.includes('4500') || m.includes('4533') || m.includes('4534') || m.includes('4535')) return 'Diebold Procomp';
+  if (m.includes('OPTEVA') || m.includes('DN200') || m.includes('DIEBOLD')) return 'Diebold Nixdorf';
   return 'Diebold Nixdorf';
 }
 

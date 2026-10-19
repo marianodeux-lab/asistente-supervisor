@@ -27,6 +27,7 @@ import {
   UserCheck
 } from 'lucide-react';
 import { PreventivosState, ZonaInfo, CtdDemoradoItem, ResumenLocalidadMp } from '../types';
+import { resolveEquipmentTaxonomy } from '../core/fuenteDeVerdad';
 
 interface PreventivosManagerProps {
   preventivos: PreventivosState;
@@ -108,14 +109,30 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
     return calcularDiasHabiles(fechaOperativaHoy, deadlineCtd, incluirSabados);
   }, [fechaOperativaHoy, deadlineCtd, incluirSabados]);
 
-  // Breakdown of Pendings: ATM vs CTD
-  const totalPendientesAtm = useMemo(() => {
-    return preventivos.pendientesDetalle.filter(p => (p.negocio || '').toUpperCase().includes('ATM')).length;
+  // Normalización canónica de Negocio y Fabricante según la Fuente de Verdad
+  const normalizedPendientes = useMemo(() => {
+    return (preventivos.pendientesDetalle || []).map(p => {
+      const tax = resolveEquipmentTaxonomy(p.negocio || '', p.modelo || '');
+      const fabOk = p.fabricante && p.fabricante !== 'Fabricante' && p.fabricante !== 'Submarca' 
+        ? p.fabricante 
+        : tax.fabricante;
+      return {
+        ...p,
+        negocio: tax.negocio,
+        fabricante: fabOk,
+        modelo: p.modelo || tax.modeloBase
+      };
+    });
   }, [preventivos.pendientesDetalle]);
 
+  // Breakdown of Pendings: ATM vs CTD
+  const totalPendientesAtm = useMemo(() => {
+    return normalizedPendientes.filter(p => (p.negocio || '').toUpperCase().includes('ATM')).length;
+  }, [normalizedPendientes]);
+
   const totalPendientesCtd = useMemo(() => {
-    return preventivos.pendientesDetalle.filter(p => !(p.negocio || '').toUpperCase().includes('ATM')).length;
-  }, [preventivos.pendientesDetalle]);
+    return normalizedPendientes.filter(p => !(p.negocio || '').toUpperCase().includes('ATM')).length;
+  }, [normalizedPendientes]);
 
   // Dynamic Required Paces
   const ritmoDiarioAtm = useMemo(() => {
@@ -139,7 +156,7 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
 
   // Filter pending MP list with robust zone and business matching
   const filteredPendientes = useMemo(() => {
-    return preventivos.pendientesDetalle.filter(p => {
+    return normalizedPendientes.filter(p => {
       // 1. Search Query
       if (search.trim()) {
         const query = normalizeStr(search);
@@ -188,7 +205,7 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
 
       return true;
     });
-  }, [preventivos.pendientesDetalle, search, selectedZona, selectedNegocio]);
+  }, [normalizedPendientes, search, selectedZona, selectedNegocio]);
 
   // Paginated MP Pendientes
   const totalPagesMp = Math.ceil(filteredPendientes.length / pageSizeMp) || 1;
@@ -201,7 +218,6 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
   // TABLA DETALLE DE MP POR LOCALIDAD Y NEGOCIO (CON CANTIDAD TOTAL DE PENDIENTES)
   // ══════════════════════════════════════════════════════════════════════════════
   const resumenLocalidades = useMemo(() => {
-    // If backend provided pre-aggregated resumenPorLocalidad, we can enrich it or dynamically aggregate from pendientesDetalle
     const map = new Map<string, {
       localidad: string;
       zonaLocal: string;
@@ -212,7 +228,7 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
       tecnicosSet: Set<string>;
     }>();
 
-    preventivos.pendientesDetalle.forEach(p => {
+    normalizedPendientes.forEach(p => {
       const loc = (p.localidad || 'Sin Localidad').trim();
       const zLocal = p.zonaLocal || p.zona || 'General';
       const zTec = p.zonaTecnica || '';
@@ -252,7 +268,7 @@ export const PreventivosManager: React.FC<PreventivosManagerProps> = ({
       total: e.total,
       tecnicos: Array.from(e.tecnicosSet).join(', ') || 'Sin asignar'
     }));
-  }, [preventivos.pendientesDetalle]);
+  }, [normalizedPendientes]);
 
   // Filtered and Sorted Localidades
   const filteredLocalidades = useMemo(() => {

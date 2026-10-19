@@ -215,16 +215,22 @@ export function App() {
       const res = await ReportSyncService.fetchActiveDataset<Ticket[]>('agenda_activa');
       if (res.data && res.data.payload && Array.isArray(res.data.payload) && res.data.payload.length > 0) {
         const cloudTickets = res.data.payload;
-        // Semantic validation: verify tickets have required properties and realistic daily agenda size (<= 200 tickets)
-        // Stale historical dumps (> 200 items) are rejected and purged from local cache.
+        // Semantic validation: verify tickets have required properties, realistic daily agenda size (<= 200 tickets),
+        // and are NOT stale historical data from previous months (e.g. September).
         const isReasonableDailySize = cloudTickets.length <= 200;
         const isValid = isReasonableDailySize && cloudTickets[0] && 
           typeof cloudTickets[0] === 'object' && 
           ('id' in cloudTickets[0] || 'pedido' in cloudTickets[0]) &&
           ('luno' in cloudTickets[0] || 'tecnico' in cloudTickets[0]);
-        
-        if (!isValid) {
-          console.warn(`[App] Dataset agenda_activa (${cloudTickets.length} registros) no corresponde a una agenda diaria (máx 200). Se preserva la agenda canónica.`);
+
+        // Stale check: reject if tickets belong to previous months (e.g. September 2026)
+        const isStale = cloudTickets.every((t: any) => {
+          const f = t.fCoorDate || t.fechaCoordinada || '';
+          return !f.includes('/10/2026') && !f.includes('2026-10');
+        });
+
+        if (!isValid || isStale) {
+          console.warn(`[App] Dataset agenda_activa en cache (${cloudTickets.length} registros, obsoleto: ${isStale}) fue descartado. Se purga el cache y se utiliza la agenda canónica actual.`);
           try {
             localStorage.removeItem('stp_dataset_cache_agenda_activa');
           } catch(e) {}
